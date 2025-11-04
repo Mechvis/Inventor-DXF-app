@@ -1,0 +1,6 @@
+<Project>
+  <PropertyGroup>
+    <!-- Prevent COM registration on build to avoid admin rights requirement -->
+    <RegisterForComInterop>false</RegisterForComInterop>
+  </PropertyGroup>
+</Project>

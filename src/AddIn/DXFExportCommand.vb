@@ -1,0 +1,88 @@
+Imports Inventor
+
+''' <summary>
+''' Handles the main DXF export command execution
+''' Manages the export workflow and UI interaction
+''' </summary>
+Public Class DXFExportCommand
+    Implements IDisposable
+    
+    Private ReadOnly _inventorApp As Inventor.Application
+    Private _exportDialog As ExportOptionsDialog
+    
+    Public Sub New(inventorApp As Inventor.Application)
+        _inventorApp = inventorApp
+    End Sub
+    
+    Public Sub Execute()
+        Try
+            ' Check if we have a valid document
+            If _inventorApp.ActiveDocument Is Nothing Then
+                System.Windows.Forms.MessageBox.Show("Please open an Inventor document first.", "No Document", 
+                    System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information)
+                Return
+            End If
+
+            ' Scan for sheet metal parts (includes sub-assemblies)
+            Dim scanner As New SheetMetalScanner(_inventorApp)
+            Dim sheetMetalParts = scanner.FindSheetMetalParts()
+
+            If sheetMetalParts.Count = 0 Then
+                System.Windows.Forms.MessageBox.Show("No sheet metal parts found in the current document.", "No Sheet Metal Parts",
+                    System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information)
+                Return
+            End If
+
+            ' Ensure custom iProperty Rev exists on each part if we will use it in naming
+            For Each p In sheetMetalParts
+                EnsureRevisionIProperty(p.Document)
+            Next
+
+            ' Show export options dialog
+            _exportDialog = New ExportOptionsDialog(sheetMetalParts)
+
+            If _exportDialog.ShowDialog() = System.Windows.Forms.DialogResult.OK Then
+                ' Execute the export with selected options
+                Dim exporter As New DXFExporter(_inventorApp, _exportDialog.ExportSettings)
+                exporter.ExportParts(sheetMetalParts)
+
+                System.Windows.Forms.MessageBox.Show($"Successfully exported {sheetMetalParts.Count} sheet metal parts.",
+                    "Export Complete", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information)
+            End If
+
+        Catch ex As Exception
+            System.Windows.Forms.MessageBox.Show($"Export failed: {ex.Message}", "Export Error",
+                System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error)
+        Finally
+            If _exportDialog IsNot Nothing Then
+                _exportDialog.Dispose()
+                _exportDialog = Nothing
+            End If
+        End Try
+    End Sub
+
+    Private Sub EnsureRevisionIProperty(doc As PartDocument)
+        Try
+            Dim userProps As PropertySet = doc.PropertySets("Inventor User Defined Properties")
+            Dim revProp As Inventor.Property = Nothing
+            For Each p As Inventor.Property In userProps
+                If String.Equals(p.Name, "Rev", StringComparison.OrdinalIgnoreCase) Then
+                    revProp = p
+                    Exit For
+                End If
+            Next
+            If revProp Is Nothing Then
+                userProps.Add("A", "Rev") ' default Rev=A
+                doc.Save2(True)
+            End If
+        Catch
+            ' ignore if cannot create
+        End Try
+    End Sub
+
+    Public Sub Dispose() Implements IDisposable.Dispose
+        If _exportDialog IsNot Nothing Then
+            _exportDialog.Dispose()
+        End If
+    End Sub
+End Class

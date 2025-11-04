@@ -1,0 +1,23 @@
+name: review-bundle
+on:
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch: {}
+
+jobs:
+  bundle:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Git LFS
+        run: |
+          git lfs install
+          git lfs fetch --all
+      - name: Make review bundle
+        shell: pwsh
+        run: ./scripts/Make-ReviewBundle.ps1
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ReviewBundle
+          path: artifacts/**

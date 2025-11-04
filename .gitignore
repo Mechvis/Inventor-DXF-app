@@ -1,0 +1,42 @@
+## Visual Studio
+.vs/
+[Bb]in/
+[Oo]bj/
+TestResults/
+*.user
+*.suo
+*.cache
+*.ide
+*.log
+*.opendb
+*.VC.db
+_ReSharper*/
+*.DotSettings.user
+packages/
+*.ncrunch*
+*.ipch
+*.iobj
+*.pdb
+*.ilk
+
+## Build output
+artifacts/
+out/
+dist/
+
+## OS
+Thumbs.db
+.DS_Store
+
+## NuGet
+*.nupkg
+.nuget/
+
+## Rider
+.idea/
+
+## VS Code
+.vscode/
+
+## Local tooling
+.env

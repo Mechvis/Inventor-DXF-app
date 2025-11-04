@@ -1,0 +1,5 @@
+<Project>
+  <ItemGroup>
+    <Reference Include="stdole" />
+  </ItemGroup>
+</Project>
