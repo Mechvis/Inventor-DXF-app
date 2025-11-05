@@ -105,10 +105,15 @@ Public Class ExportOptionsDialog
             ' Thumbnail using late-binding to avoid stdole reference
             Try
                 Dim thumbObj As Object = Microsoft.VisualBasic.CallByName(part.Document, "Thumbnail", CallType.Get)
-                Dim img As Image = InteropHelpers.IPictureDispToImage(thumbObj)
-                dgvParts.Rows(i).Cells(0).Value = img
-            Catch
-                ' ignore thumbnail failures
+                If thumbObj IsNot Nothing Then
+                    Dim img As Image = InteropHelpers.IPictureDispToImage(thumbObj)
+                    If img IsNot Nothing Then
+                        dgvParts.Rows(i).Cells(0).Value = img
+                    End If
+                End If
+            Catch ex As Exception
+                ' Log thumbnail failure but continue
+                System.Diagnostics.Debug.WriteLine($"Failed to load thumbnail for {part.PartName}: {ex.Message}")
             End Try
         Next
     End Sub

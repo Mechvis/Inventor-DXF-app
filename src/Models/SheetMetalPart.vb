@@ -38,8 +38,20 @@ Public Class SheetMetalPart
     Public Sub New(partDoc As PartDocument)
         Document = partDoc
         ComponentDefinition = CType(partDoc.ComponentDefinition, SheetMetalComponentDefinition)
-        FileName = System.IO.Path.GetFileNameWithoutExtension(partDoc.FullFileName)
+        
+        ' Get filename without .ipt extension
+        Dim fullFileName As String = partDoc.FullFileName
+        If Not String.IsNullOrEmpty(fullFileName) Then
+            FileName = System.IO.Path.GetFileNameWithoutExtension(fullFileName)
+        Else
+            FileName = partDoc.DisplayName
+        End If
+        
+        ' Remove .ipt extension if present in DisplayName
         PartName = partDoc.DisplayName
+        If PartName.EndsWith(".ipt", StringComparison.OrdinalIgnoreCase) Then
+            PartName = PartName.Substring(0, PartName.Length - 4)
+        End If
 
         ' Extract properties
         ExtractMaterialProperties()
@@ -137,13 +149,15 @@ Public Class SheetMetalPart
 
     Public ReadOnly Property FormattedFileName As String
         Get
+            ' Use F1 format for consistency (1 decimal place)
             Return $"{PartName}_{Thickness:F1}mm"
         End Get
     End Property
 
     Public ReadOnly Property MaterialInfo As String
         Get
-            Return $"{Material} - {Thickness:F2}mm"
+            ' Use F1 format for consistency (1 decimal place)
+            Return $"{Material} - {Thickness:F1}mm"
         End Get
     End Property
 End Class
