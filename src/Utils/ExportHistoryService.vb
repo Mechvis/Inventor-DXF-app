@@ -159,7 +159,7 @@ Public Class ExportHistoryService
                     cmd.Parameters.AddWithValue("@ExportDate", entry.ExportDate.ToString("yyyy-MM-dd HH:mm:ss"))
                     cmd.Parameters.AddWithValue("@IsArchived", If(entry.IsArchived, 1, 0))
                     cmd.Parameters.AddWithValue("@ArchivePath", If(entry.ArchivePath, ""))
-                    cmd.Parameters.AddWithValue("@ExportedBy", If(entry.ExportedBy, Environment.UserName))
+                    cmd.Parameters.AddWithValue("@ExportedBy", If(entry.ExportedBy, System.Environment.UserName))
                     cmd.Parameters.AddWithValue("@FileHash", If(entry.FileHash, ""))
                     
                     Return CLng(cmd.ExecuteScalar())
