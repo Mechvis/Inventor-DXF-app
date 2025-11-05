@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!-- Configure F5 debugging for the class library by launching Inventor.exe -->
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <StartAction>Program</StartAction>
+    <StartProgram>C:\Program Files\Autodesk\Inventor 2026\Bin\Inventor.exe</StartProgram>
+    <StartWorkingDirectory>C:\Program Files\Autodesk\Inventor 2026\Bin</StartWorkingDirectory>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <StartAction>Program</StartAction>
+    <StartProgram>C:\Program Files\Autodesk\Inventor 2026\Bin\Inventor.exe</StartProgram>
+    <StartWorkingDirectory>C:\Program Files\Autodesk\Inventor 2026\Bin</StartWorkingDirectory>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+</Project>

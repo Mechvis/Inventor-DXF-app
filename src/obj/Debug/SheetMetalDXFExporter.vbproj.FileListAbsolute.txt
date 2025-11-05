@@ -1,0 +1,30 @@
+F:\DEV\projects\Inventor rename\Inventor-DXF-app\src\bin\Debug\SheetMetalDXFExporter.dll
+F:\DEV\projects\Inventor rename\Inventor-DXF-app\src\bin\Debug\SheetMetalDXFExporter.pdb
+F:\DEV\projects\Inventor rename\Inventor-DXF-app\src\bin\Debug\SheetMetalDXFExporter.xml
+F:\DEV\projects\Inventor rename\Inventor-DXF-app\src\bin\Debug\Autodesk.Inventor.Interop.dll
+F:\DEV\projects\Inventor rename\Inventor-DXF-app\src\bin\Debug\stdole.dll
+F:\DEV\projects\Inventor rename\Inventor-DXF-app\src\bin\Debug\Microsoft.VisualStudio.Interop.dll
+F:\DEV\projects\Inventor rename\Inventor-DXF-app\src\bin\Debug\Microsoft.VisualStudio.Imaging.Interop.14.0.DesignTime.dll
+F:\DEV\projects\Inventor rename\Inventor-DXF-app\src\bin\Debug\Autodesk.Inventor.Interop.xml
+F:\DEV\projects\Inventor rename\Inventor-DXF-app\src\obj\Debug\SheetMetalDXFExporter.vbproj.AssemblyReference.cache
+F:\DEV\projects\Inventor rename\Inventor-DXF-app\src\obj\Debug\SheetMetalDXFExporter.ExportOptionsDialog.resources
+F:\DEV\projects\Inventor rename\Inventor-DXF-app\src\obj\Debug\SheetMetalDXFExporter.vbproj.GenerateResource.cache
+F:\DEV\projects\Inventor rename\Inventor-DXF-app\src\obj\Debug\SheetMetalDXFExporter.vbproj.CoreCompileInputs.cache
+F:\DEV\projects\Inventor rename\Inventor-DXF-app\src\obj\Debug\SheetMet.E062C01A.Up2Date
+F:\DEV\projects\Inventor rename\Inventor-DXF-app\src\obj\Debug\SheetMetalDXFExporter.dll
+F:\DEV\projects\Inventor rename\Inventor-DXF-app\src\obj\Debug\SheetMetalDXFExporter.xml
+F:\DEV\projects\Inventor rename\Inventor-DXF-app\src\obj\Debug\SheetMetalDXFExporter.pdb
+F:\DEV\projects\DXF export with options\src\obj\Debug\SheetMetalDXFExporter.vbproj.AssemblyReference.cache
+F:\DEV\projects\DXF export with options\src\obj\Debug\SheetMetalDXFExporter.ExportOptionsDialog.resources
+F:\DEV\projects\DXF export with options\src\obj\Debug\SheetMetalDXFExporter.vbproj.GenerateResource.cache
+F:\DEV\projects\DXF export with options\src\obj\Debug\SheetMetalDXFExporter.vbproj.CoreCompileInputs.cache
+F:\DEV\projects\DXF export with options\src\bin\Debug\SheetMetalDXFExporter.dll
+F:\DEV\projects\DXF export with options\src\bin\Debug\SheetMetalDXFExporter.pdb
+F:\DEV\projects\DXF export with options\src\bin\Debug\SheetMetalDXFExporter.xml
+F:\DEV\projects\DXF export with options\src\bin\Debug\Autodesk.Inventor.Interop.dll
+F:\DEV\projects\DXF export with options\src\bin\Debug\stdole.dll
+F:\DEV\projects\DXF export with options\src\bin\Debug\Autodesk.Inventor.Interop.xml
+F:\DEV\projects\DXF export with options\src\obj\Debug\SheetMet.E062C01A.Up2Date
+F:\DEV\projects\DXF export with options\src\obj\Debug\SheetMetalDXFExporter.dll
+F:\DEV\projects\DXF export with options\src\obj\Debug\SheetMetalDXFExporter.xml
+F:\DEV\projects\DXF export with options\src\obj\Debug\SheetMetalDXFExporter.pdb

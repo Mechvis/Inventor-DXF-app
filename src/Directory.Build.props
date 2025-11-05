@@ -1,0 +1,6 @@
+<Project>
+  <PropertyGroup>
+    <!-- Prevent Visual Studio/MSBuild from attempting COM registration on build (we deploy via .addin) -->
+    <RegisterForComInterop>false</RegisterForComInterop>
+  </PropertyGroup>
+</Project>

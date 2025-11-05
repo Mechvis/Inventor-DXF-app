@@ -15,21 +15,23 @@ Public Class InventorAddIn
     Private _inventorApplication As Inventor.Application
     Private WithEvents _addInButtonDefinition As ButtonDefinition
     Private _exportCommand As DXFExportCommand
-    
+    Private _previewWindow As DockableWindow
+    Private _previewPane As DxfPreviewPane
+
     Public Sub Activate(ByVal addInSiteObject As ApplicationAddInSite, ByVal firstTime As Boolean) _
         Implements ApplicationAddInServer.Activate
-        
+
         ' Store reference to Inventor Application
         _inventorApplication = addInSiteObject.Application
-        
+
         If firstTime Then
             ' Create the ribbon interface and commands
             CreateUserInterface()
         End If
-        
+
         ' Initialize the export command handler
         _exportCommand = New DXFExportCommand(_inventorApplication)
-        
+
         System.Diagnostics.Debug.WriteLine("Sheet Metal DXF Exporter Add-in activated successfully")
     End Sub
 
@@ -52,7 +54,7 @@ Public Class InventorAddIn
             Return Nothing
         End Get
     End Property
-    
+
     Public Sub ExecuteCommand(ByVal CommandID As Integer) Implements ApplicationAddInServer.ExecuteCommand
         ' Handle command execution (legacy)
         Select Case CommandID
@@ -61,13 +63,13 @@ Public Class InventorAddIn
                 _exportCommand.Execute()
         End Select
     End Sub
-    
+
     Private Sub CreateUserInterface()
         Try
             ' Get the Part and Assembly environment ribbon tabs
             Dim partRibbon As RibbonTab = _inventorApplication.UserInterfaceManager.Ribbons("Part").RibbonTabs("id_TabTools")
             Dim assemblyRibbon As RibbonTab = _inventorApplication.UserInterfaceManager.Ribbons("Assembly").RibbonTabs("id_TabTools")
-            
+
             ' Create button definition
             Dim controlDefs As ControlDefinitions = _inventorApplication.CommandManager.ControlDefinitions
             _addInButtonDefinition = controlDefs.AddButtonDefinition(
@@ -79,32 +81,66 @@ Public Class InventorAddIn
                 "Export sheet metal parts to DXF with configurable layers and features",
                 Nothing,
                 Nothing)
-            
-            ' Add to both Part and Assembly ribbon panels
-            AddToRibbonPanel(partRibbon, "Sheet Metal DXF Export")
-            AddToRibbonPanel(assemblyRibbon, "Sheet Metal DXF Export")
-            
+
+            ' Add export button to both Part and Assembly ribbon panels
+            Dim panelPart = AddOrGetRibbonPanel(partRibbon, "Sheet Metal DXF Export")
+            panelPart.CommandControls.AddButton(_addInButtonDefinition)
+            Dim panelAsm = AddOrGetRibbonPanel(assemblyRibbon, "Sheet Metal DXF Export")
+            panelAsm.CommandControls.AddButton(_addInButtonDefinition)
+
+            ' Add a second button for Preview pane
+            Dim btnPreview = controlDefs.AddButtonDefinition(
+                "DXF Preview",
+                "SheetMetalDXFPreview",
+                CommandTypesEnum.kShapeEditCmdType,
+                "{12345678-1234-1234-1234-123456789ABC}",
+                "Preview and validate DXF before export",
+                "Open the DXF preview pane",
+                Nothing,
+                Nothing)
+
+            AddHandler btnPreview.OnExecute, Sub(ctx)
+                                                 ShowPreviewPane()
+                                             End Sub
+
+            ' Add preview button to same panels
+            panelPart.CommandControls.AddButton(btnPreview)
+            panelAsm.CommandControls.AddButton(btnPreview)
         Catch ex As Exception
             System.Windows.Forms.MessageBox.Show("Error creating user interface: " & ex.Message)
         End Try
     End Sub
-    
-    Private Sub AddToRibbonPanel(ribbon As RibbonTab, panelName As String)
+
+    Private Function AddOrGetRibbonPanel(ribbon As RibbonTab, panelName As String) As RibbonPanel
+        Dim panel As RibbonPanel = Nothing
         Try
-            Dim panel As RibbonPanel = Nothing
-            
-            ' Try to find existing panel or create new one
             Try
                 panel = ribbon.RibbonPanels(panelName)
             Catch
                 panel = ribbon.RibbonPanels.Add(panelName, panelName & "_Panel", "{12345678-1234-1234-1234-123456789ABC}")
             End Try
-            
-            ' Add the button to the panel
-            panel.CommandControls.AddButton(_addInButtonDefinition)
-            
+        Catch
+        End Try
+        Return panel
+    End Function
+
+    Public Sub ShowPreviewPane()
+        Try
+            Dim uiMgr = _inventorApplication.UserInterfaceManager
+            If _previewWindow Is Nothing Then
+                _previewWindow = uiMgr.DockableWindows.Add(
+                    "{12345678-1234-1234-1234-123456789ABC}",
+                    "DXFPreviewPane",
+                    "DXF Preview")
+                _previewPane = New DxfPreviewPane()
+                _previewPane.Initialize(_inventorApplication, New ExportSettings())
+                _previewWindow.AddChild(_previewPane.Handle)
+                _previewWindow.DockingState = DockingStateEnum.kDockLeft
+                _previewWindow.ShowVisibilityCheckBox = True
+            End If
+            _previewWindow.Visible = True
         Catch ex As Exception
-            System.Diagnostics.Debug.WriteLine("Error adding ribbon panel: " & ex.Message)
+            System.Windows.Forms.MessageBox.Show("Failed to show preview pane: " & ex.Message)
         End Try
     End Sub
 

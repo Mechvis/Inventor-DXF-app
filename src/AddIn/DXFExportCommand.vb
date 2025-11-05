@@ -44,10 +44,32 @@ Public Class DXFExportCommand
             If _exportDialog.ShowDialog() = System.Windows.Forms.DialogResult.OK Then
                 ' Execute the export with selected options
                 Dim exporter As New DXFExporter(_inventorApp, _exportDialog.ExportSettings)
-                exporter.ExportParts(sheetMetalParts)
+                Dim result = exporter.ExportParts(sheetMetalParts)
 
-                System.Windows.Forms.MessageBox.Show($"Successfully exported {sheetMetalParts.Count} sheet metal parts.",
-                    "Export Complete", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information)
+                ' Build result message
+                Dim selectedCount = sheetMetalParts.FindAll(Function(x) x.IsSelected).Count
+                Dim msg As String
+                If result IsNot Nothing Then
+                    If result.Failed = 0 Then
+                        msg = $"Exported {result.Succeeded} of {selectedCount} selected part(s)."
+                    Else
+                        Dim maxErr = Math.Min(5, result.Failures.Count)
+                        Dim sb As New System.Text.StringBuilder()
+                        For i As Integer = 0 To maxErr - 1
+                            Dim t = result.Failures(i)
+                            sb.AppendLine("  • " & t.Item1 & ": " & t.Item2)
+                        Next
+                        Dim details = sb.ToString()
+                        msg = "Export completed with errors." & vbCrLf &
+                              $"Succeeded: {result.Succeeded}  Failed: {result.Failed}  (of {selectedCount} selected)" & vbCrLf & vbCrLf &
+                              "First errors:" & vbCrLf & details & vbCrLf &
+                              "See DXF_Export.log in the export folder for full details."
+                    End If
+                Else
+                    msg = "Export finished."
+                End If
+
+                System.Windows.Forms.MessageBox.Show(msg, "DXF Export", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information)
             End If
 
         Catch ex As Exception
