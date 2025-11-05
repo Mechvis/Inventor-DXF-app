@@ -40,3 +40,8 @@ Thumbs.db
 
 ## Local tooling
 .env
+
+## Export History Database and Archives
+ExportHistory.db
+ExportHistory.db-journal
+_Archive/

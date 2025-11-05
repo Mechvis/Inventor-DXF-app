@@ -9,10 +9,21 @@ Partial Public Class DXFExporter
 
     Private ReadOnly _inventorApp As Inventor.Application
     Private ReadOnly _settings As ExportSettings
+    Private _historyService As ExportHistoryService
 
     Public Sub New(inventorApp As Inventor.Application, settings As ExportSettings)
         _inventorApp = inventorApp
         _settings = settings
+        
+        ' Initialize history service if enabled
+        If _settings.EnableExportHistory AndAlso Not String.IsNullOrWhiteSpace(_settings.ExportPath) Then
+            Try
+                _historyService = New ExportHistoryService(_settings.ExportPath)
+            Catch ex As Exception
+                System.Diagnostics.Debug.WriteLine($"Failed to initialize export history service: {ex.Message}")
+                Log($"Export history disabled: {ex.Message}")
+            End Try
+        End If
     End Sub
 
     ''' <summary>
@@ -69,6 +80,11 @@ Partial Public Class DXFExporter
             Throw New Exception("Cannot create export folder for '" & outputPath & "': " & ex.Message)
         End Try
 
+        ' Check for duplicate and archive if needed
+        If _settings.ArchiveDuplicates AndAlso _historyService IsNot Nothing Then
+            ArchiveExistingFile(part, outputPath)
+        End If
+
         ' Route based on read-only and flat pattern state
         If part.IsReadOnly AndAlso (Not part.HasFlatPattern OrElse part.NeedsUpdate) Then
             If Not ExportViaTempCopy(part.Document, outputPath, exportString) Then
@@ -76,6 +92,9 @@ Partial Public Class DXFExporter
             End If
             ' Post steps
             PostProcess(part, outputPath)
+            
+            ' Record export in history
+            RecordExport(part, outputPath)
             Return
         End If
 
@@ -90,6 +109,9 @@ Partial Public Class DXFExporter
 
         ' Post steps
         PostProcess(part, outputPath)
+        
+        ' Record export in history
+        RecordExport(part, outputPath)
     End Sub
 
     Private Sub PostProcess(part As SheetMetalPart, outputPath As String)
@@ -309,6 +331,11 @@ Partial Public Class DXFExporter
 
         Dim rev As String = GetRevisionValue(part.Document)
 
+        ' New tokens: PartNumber and StockNumber
+        result = result.Replace("{PartNumber}", part.PartNumber)
+        result = result.Replace("{StockNumber}", part.StockNumber)
+        
+        ' Legacy tokens (still supported)
         result = result.Replace("{PartName}", part.PartName)
         result = result.Replace("{FileName}", part.FileName)
         result = result.Replace("{Thickness}", part.Thickness.ToString("F1"))
@@ -363,6 +390,98 @@ Partial Public Class DXFExporter
             metadataGen.AddMetadataToFile(part, dxfFilePath)
         Catch ex As Exception
             System.Diagnostics.Debug.WriteLine("Could not add metadata block: " & ex.Message)
+        End Try
+    End Sub
+
+    ''' <summary>
+    ''' Archive existing file if it exists and is a duplicate
+    ''' </summary>
+    Private Sub ArchiveExistingFile(part As SheetMetalPart, currentPath As String)
+        Try
+            ' Check if file exists
+            If Not Global.System.IO.File.Exists(currentPath) Then
+                Return
+            End If
+            
+            ' Get revision value
+            Dim rev As String = GetRevisionValue(part.Document)
+            
+            ' Check if we have a previous export record - use PartNumber instead of PartName
+            Dim previousExport = _historyService.FindPreviousExport(part.PartNumber, part.Thickness, rev)
+            
+            If previousExport IsNot Nothing Then
+                ' Create archive folder
+                Dim archiveFolder = Global.System.IO.Path.Combine(_settings.ExportPath, _settings.ArchiveFolderName)
+                Global.System.IO.Directory.CreateDirectory(archiveFolder)
+                
+                ' Generate archive filename with timestamp
+                Dim timestamp = DateTime.Now.ToString("yyyy-MM-dd_HHmmss")
+                Dim originalFileName = Global.System.IO.Path.GetFileNameWithoutExtension(currentPath)
+                Dim archiveFileName = $"{originalFileName}_{timestamp}.dxf"
+                Dim archivePath = Global.System.IO.Path.Combine(archiveFolder, archiveFileName)
+                
+                ' Move existing file to archive
+                Global.System.IO.File.Move(currentPath, archivePath)
+                Log($"Archived existing file: {archivePath}")
+                
+                ' Update database record
+                _historyService.MarkAsArchived(previousExport.Id, archivePath)
+            ElseIf Global.System.IO.File.Exists(currentPath) Then
+                ' File exists but not in database - archive it anyway
+                Dim archiveFolder = Global.System.IO.Path.Combine(_settings.ExportPath, _settings.ArchiveFolderName)
+                Global.System.IO.Directory.CreateDirectory(archiveFolder)
+                
+                Dim timestamp = DateTime.Now.ToString("yyyy-MM-dd_HHmmss")
+                Dim originalFileName = Global.System.IO.Path.GetFileNameWithoutExtension(currentPath)
+                Dim archiveFileName = $"{originalFileName}_{timestamp}.dxf"
+                Dim archivePath = Global.System.IO.Path.Combine(archiveFolder, archiveFileName)
+                
+                Global.System.IO.File.Move(currentPath, archivePath)
+                Log($"Archived untracked file: {archivePath}")
+            End If
+            
+        Catch ex As Exception
+            System.Diagnostics.Debug.WriteLine($"Failed to archive existing file: {ex.Message}")
+            Log($"Archive warning: {ex.Message}")
+            ' Don't throw - allow export to continue even if archival fails
+        End Try
+    End Sub
+    
+    ''' <summary>
+    ''' Record export in history database
+    ''' </summary>
+    Private Sub RecordExport(part As SheetMetalPart, filePath As String)
+        If _historyService Is Nothing OrElse Not _settings.EnableExportHistory Then
+            Return
+        End If
+        
+        Try
+            ' Compute file hash
+            Dim fileHash = ExportHistoryService.ComputeFileHash(filePath)
+            
+            ' Get revision
+            Dim rev As String = GetRevisionValue(part.Document)
+            
+            ' Create history entry - use PartNumber instead of PartName
+            Dim entry As New ExportHistoryEntry() With {
+                .PartName = part.PartNumber,
+                .Material = part.Material,
+                .Thickness = part.Thickness,
+                .Revision = rev,
+                .FilePath = filePath,
+                .ExportDate = DateTime.Now,
+                .IsArchived = False,
+                .FileHash = fileHash,
+                .ExportedBy = Environment.UserName
+            }
+            
+            Dim exportId = _historyService.AddExport(entry)
+            Log($"Export recorded with ID {exportId}: {part.PartNumber} ({part.StockNumber})")
+            
+        Catch ex As Exception
+            System.Diagnostics.Debug.WriteLine($"Failed to record export: {ex.Message}")
+            Log($"History recording failed: {ex.Message}")
+            ' Don't throw - export succeeded even if recording failed
         End Try
     End Sub
 

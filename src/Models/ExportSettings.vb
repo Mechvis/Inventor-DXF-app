@@ -21,9 +21,14 @@ Public Class ExportSettings
     Public Property MergeProfilesIntoPolyline As Boolean = True
     Public Property ExportPath As String = ""
     Public Property CustomFileNaming As Boolean = True
-    Public Property FileNameTemplate As String = "{PartName}_{Thickness}mm_{Rev}_{Date}"
+    Public Property FileNameTemplate As String = "{PartNumber}_{StockNumber}_{Rev}"
     ' New: ensure flat pattern exists before export
     Public Property EnsureFlatPatternBeforeExport As Boolean = True
+    
+    ' Export history and archival options
+    Public Property EnableExportHistory As Boolean = True
+    Public Property ArchiveDuplicates As Boolean = True
+    Public Property ArchiveFolderName As String = "_Archive"
 
     ' CAM-optimized DXF output: R12 ASCII, geometry-only, no annotations
     Public Property CamOptimizedOutput As Boolean = True
