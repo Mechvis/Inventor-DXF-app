@@ -331,6 +331,11 @@ Partial Public Class DXFExporter
 
         Dim rev As String = GetRevisionValue(part.Document)
 
+        ' New tokens: PartNumber and StockNumber
+        result = result.Replace("{PartNumber}", part.PartNumber)
+        result = result.Replace("{StockNumber}", part.StockNumber)
+        
+        ' Legacy tokens (still supported)
         result = result.Replace("{PartName}", part.PartName)
         result = result.Replace("{FileName}", part.FileName)
         result = result.Replace("{Thickness}", part.Thickness.ToString("F1"))
@@ -401,8 +406,8 @@ Partial Public Class DXFExporter
             ' Get revision value
             Dim rev As String = GetRevisionValue(part.Document)
             
-            ' Check if we have a previous export record
-            Dim previousExport = _historyService.FindPreviousExport(part.PartName, part.Thickness, rev)
+            ' Check if we have a previous export record - use PartNumber instead of PartName
+            Dim previousExport = _historyService.FindPreviousExport(part.PartNumber, part.Thickness, rev)
             
             If previousExport IsNot Nothing Then
                 ' Create archive folder
@@ -457,9 +462,9 @@ Partial Public Class DXFExporter
             ' Get revision
             Dim rev As String = GetRevisionValue(part.Document)
             
-            ' Create history entry
+            ' Create history entry - use PartNumber instead of PartName
             Dim entry As New ExportHistoryEntry() With {
-                .PartName = part.PartName,
+                .PartName = part.PartNumber,
                 .Material = part.Material,
                 .Thickness = part.Thickness,
                 .Revision = rev,
@@ -471,7 +476,7 @@ Partial Public Class DXFExporter
             }
             
             Dim exportId = _historyService.AddExport(entry)
-            Log($"Export recorded with ID {exportId}: {part.PartName}")
+            Log($"Export recorded with ID {exportId}: {part.PartNumber} ({part.StockNumber})")
             
         Catch ex As Exception
             System.Diagnostics.Debug.WriteLine($"Failed to record export: {ex.Message}")

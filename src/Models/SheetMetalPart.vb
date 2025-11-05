@@ -9,6 +9,8 @@ Public Class SheetMetalPart
     Public Property ComponentDefinition As SheetMetalComponentDefinition
     Public Property FileName As String
     Public Property PartName As String
+    Public Property PartNumber As String = ""
+    Public Property StockNumber As String = ""
     
     ' Material Properties
     Public Property Material As String = ""
@@ -53,11 +55,79 @@ Public Class SheetMetalPart
             PartName = PartName.Substring(0, PartName.Length - 4)
         End If
 
+        ' Extract part number and stock number from iProperties
+        ExtractPartNumberAndStockNumber()
+        
         ' Extract properties
         ExtractMaterialProperties()
         ExtractGeometricProperties()
         ExtractCustomProperties()
         ExtractSourceFlags()
+    End Sub
+    
+    ''' <summary>
+    ''' Extract Part Number and Stock Number from iProperties
+    ''' </summary>
+    Private Sub ExtractPartNumberAndStockNumber()
+        Try
+            ' Try to get Part Number from Design Tracking Properties
+            Dim designProps As PropertySet = Document.PropertySets("Design Tracking Properties")
+            For Each p As Inventor.Property In designProps
+                If String.Equals(p.Name, "Part Number", StringComparison.OrdinalIgnoreCase) AndAlso Not IsNothing(p.Value) Then
+                    PartNumber = p.Value.ToString().Trim()
+                    Exit For
+                End If
+            Next
+            
+            ' If Part Number not found in design tracking, try custom properties
+            If String.IsNullOrWhiteSpace(PartNumber) Then
+                Dim userProps As PropertySet = Document.PropertySets("Inventor User Defined Properties")
+                For Each p As Inventor.Property In userProps
+                    If String.Equals(p.Name, "Part Number", StringComparison.OrdinalIgnoreCase) AndAlso Not IsNothing(p.Value) Then
+                        PartNumber = p.Value.ToString().Trim()
+                        Exit For
+                    End If
+                Next
+            End If
+            
+            ' Fallback to filename if Part Number not found
+            If String.IsNullOrWhiteSpace(PartNumber) Then
+                PartNumber = FileName
+            End If
+            
+            ' Try to get Stock Number from User Defined Properties
+            Dim customProps As PropertySet = Document.PropertySets("Inventor User Defined Properties")
+            For Each p As Inventor.Property In customProps
+                If String.Equals(p.Name, "Stock Number", StringComparison.OrdinalIgnoreCase) AndAlso Not IsNothing(p.Value) Then
+                    StockNumber = p.Value.ToString().Trim()
+                    Exit For
+                End If
+            Next
+            
+            ' Also check for common variations: "Stock No", "Stock", "Material Stock"
+            If String.IsNullOrWhiteSpace(StockNumber) Then
+                For Each p As Inventor.Property In customProps
+                    Dim propName = p.Name.ToLowerInvariant()
+                    If (propName = "stock no" OrElse propName = "stock" OrElse propName = "stockno" OrElse propName = "material stock") AndAlso Not IsNothing(p.Value) Then
+                        StockNumber = p.Value.ToString().Trim()
+                        Exit For
+                    End If
+                Next
+            End If
+            
+            ' Fallback to thickness if Stock Number not found
+            If String.IsNullOrWhiteSpace(StockNumber) Then
+                ' Will be set after ExtractMaterialProperties is called
+                StockNumber = ""
+            End If
+            
+        Catch ex As Exception
+            System.Diagnostics.Debug.WriteLine($"Could not extract Part Number or Stock Number: {ex.Message}")
+            ' Use fallbacks
+            If String.IsNullOrWhiteSpace(PartNumber) Then
+                PartNumber = FileName
+            End If
+        End Try
     End Sub
 
     Private Sub ExtractMaterialProperties()
@@ -69,6 +139,11 @@ Public Class SheetMetalPart
             ' Get thickness from sheet metal definition
             If ComponentDefinition.Thickness IsNot Nothing Then
                 Thickness = ComponentDefinition.Thickness.Value
+                
+                ' If Stock Number wasn't found in properties, use thickness as fallback
+                If String.IsNullOrWhiteSpace(StockNumber) Then
+                    StockNumber = $"{Thickness:F1}mm"
+                End If
             End If
 
             ' Calculate weight if mass properties available
@@ -149,15 +224,16 @@ Public Class SheetMetalPart
 
     Public ReadOnly Property FormattedFileName As String
         Get
-            ' Use F1 format for consistency (1 decimal place)
-            Return $"{PartName}_{Thickness:F1}mm"
+            ' Use Part Number and Stock Number for filename
+            ' Format: PartNumber_StockNumber_Revision
+            Return $"{PartNumber}_{StockNumber}"
         End Get
     End Property
 
     Public ReadOnly Property MaterialInfo As String
         Get
-            ' Use F1 format for consistency (1 decimal place)
-            Return $"{Material} - {Thickness:F1}mm"
+            ' Display material and stock number in UI
+            Return $"{Material} - {StockNumber}"
         End Get
     End Property
 End Class
