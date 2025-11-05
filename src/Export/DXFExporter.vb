@@ -472,7 +472,7 @@ Partial Public Class DXFExporter
                 .ExportDate = DateTime.Now,
                 .IsArchived = False,
                 .FileHash = fileHash,
-                .ExportedBy = Environment.UserName
+                .ExportedBy = System.Environment.UserName
             }
             
             Dim exportId = _historyService.AddExport(entry)

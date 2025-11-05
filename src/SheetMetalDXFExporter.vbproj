@@ -79,9 +79,9 @@
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Net.Http" />
-    <Reference Include="System.Data.SQLite">
-      <HintPath>..\packages\System.Data.SQLite.Core.1.0.118.0\lib\net46\System.Data.SQLite.dll</HintPath>
-    </Reference>
+    <PackageReference Include="System.Data.SQLite.Core">
+      <Version>1.0.118.0</Version>
+    </PackageReference>
     <Reference Include="Autodesk.Inventor.Interop">
       <HintPath>C:\Program Files\Autodesk\Inventor 2026\Bin\Public Assemblies\Autodesk.Inventor.Interop.dll</HintPath>
       <EmbedInteropTypes>False</EmbedInteropTypes>
