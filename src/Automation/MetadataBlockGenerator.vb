@@ -89,7 +89,7 @@ Public Class MetadataBlockGenerator
         
         ' Export information
         lines.Add($"EXPORTED: {DateTime.Now:yyyy-MM-dd HH:mm}")
-        lines.Add($"BY: {Environment.UserName}")
+        lines.Add($"BY: {System.Environment.UserName}")
         
         If _settings.IncludeCustomProperties Then
             ' Add important custom properties

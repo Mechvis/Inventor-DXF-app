@@ -63,7 +63,7 @@ Public Class ExportHistoryEntry
     Public Sub New()
         ExportDate = DateTime.Now
         IsArchived = False
-        ExportedBy = Environment.UserName
+        ExportedBy = System.Environment.UserName
     End Sub
     
 End Class
