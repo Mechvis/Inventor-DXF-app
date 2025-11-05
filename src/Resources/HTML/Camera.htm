@@ -1,0 +1,190 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/Camera.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="Camera">
+    <meta name="description" content="Camera Object">
+    <meta name="topicid" content="GUID-Camera">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>Camera Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">Camera Object
+			</h1><br><h2 class="api">
+          Description
+        </h2>The Camera defines the view of the model shown within the window.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Camera_Apply.htm">Apply</a></td>
+        <td class="api-list">Method that causes the changes made to the Camera object to be applied to the actual camera of the view. This will also cause the view to update.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Camera_ApplyWithoutTransition.htm">ApplyWithoutTransition</a></td>
+        <td class="api-list">Method that applies the current camera to the View without transition.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Camera_ComputeWithMouseInput.htm">ComputeWithMouseInput</a></td>
+        <td class="api-list">Method that changes the view according mouse movement and view operation.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Camera_CreateImage.htm">CreateImage</a></td>
+        <td class="api-list">Creates an image based on the current camera view.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Camera_CreateImageWithOptions.htm">CreateImageWithOptions</a></td>
+        <td class="api-list">Creates an image based on the current camera view with options.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Camera_Fit.htm">Fit</a></td>
+        <td class="api-list">Method that fits all the contents of the Document into the view.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Camera_GetExtents.htm">GetExtents</a></td>
+        <td class="api-list">Method that gets the current extents of the camera. The camera extents define the area within the model that is visible in the view.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Camera_ModelToViewSpace.htm">ModelToViewSpace</a></td>
+        <td class="api-list">Method that converts a point in model space to the equivalent point on the view.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Camera_SaveAsBitmap.htm">SaveAsBitmap</a></td>
+        <td class="api-list"><p>Method that saves the current camera view to the specified file.&nbsp;The width and height arguments define the aspect ratio and the number of pixels in the output image.</p>
+<p>The CreateImage method is similar to this but instead of writing the image to a file it creates it in memory, which is more efficient than writing and reading if from disk if you need to use the image immediately.</p></td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Camera_SaveAsBitmapWithOptions.htm">SaveAsBitmapWithOptions</a></td>
+        <td class="api-list">Method that saves the view as a bitmap with more options.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Camera_SetExtents.htm">SetExtents</a></td>
+        <td class="api-list">Method that sets the current extents of the camera. The camera extents define the area within the model that is visible in the view. Setting the extents results in the camera zooming in or out. The Apply method of the camera must be called before any changes are shown in the view.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Camera_ViewToModelSpace.htm">ViewToModelSpace</a></td>
+        <td class="api-list">Method that converts a point in view space to the equivalent point in the model.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Camera_Eye.htm">Eye</a></td>
+        <td class="api-list">Specifies the position of the observer's 'Eye' (View's center).</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Camera_ModelToViewTransformation.htm">ModelToViewTransformation</a></td>
+        <td class="api-list">Read-only property that returns the transformation matrix from model space to view space.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Camera_Parent.htm">Parent</a></td>
+        <td class="api-list">Property that returns the parent object of the camera.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Camera_Perspective.htm">Perspective</a></td>
+        <td class="api-list">Gets/Sets a boolean flag indicating whether Perpspective viewing is on/off.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Camera_PerspectiveAngle.htm">PerspectiveAngle</a></td>
+        <td class="api-list">Gets/Sets the Perspective Angle.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Camera_SceneObject.htm">SceneObject</a></td>
+        <td class="api-list">Get/Set the contents of the scene for a camera. This is applicable only when the Camera is created from the TransientObjects.CreateCamera. Valid objects that can be set to this property are: ComponentDefinition, Sheet, and PresentationScene.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Camera_Target.htm">Target</a></td>
+        <td class="api-list">Specifies the position of the Target point the observer's viewing in the scene (View's Z-axis).</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Camera_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Camera_UpVector.htm">UpVector</a></td>
+        <td class="api-list">Specifies the vector defining what is 'up' for the observer.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Camera_ViewOrientationType.htm">ViewOrientationType</a></td>
+        <td class="api-list">Gets/Sets the type of orientation of the camera (Top, Iso, etc. or arbitrary).</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="ClientView_Camera.htm">ClientView.Camera</a>, <a href="DesignViewRepresentation_Camera.htm">DesignViewRepresentation.Camera</a>, <a href="DetailDrawingView_Camera.htm">DetailDrawingView.Camera</a>, <a href="DrawingView_Camera.htm">DrawingView.Camera</a>, <a href="PresentationSequence_Camera.htm">PresentationSequence.Camera</a>, <a href="PresentationSnapshotView_SavedCamera.htm">PresentationSnapshotView.SavedCamera</a>, <a href="Publication_InitialCamera.htm">Publication.InitialCamera</a>, <a href="PublicationMarkedView_Camera.htm">PublicationMarkedView.Camera</a>, <a href="SectionDrawingView_Camera.htm">SectionDrawingView.Camera</a>, <a href="TransientObjects_CreateCamera.htm">TransientObjects.CreateCamera</a>, <a href="View_Camera.htm">View.Camera</a><h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DriveCamera_Sample.htm">Drive the camera</a></td>
+        <td class="api-list">This sample will fly the camera around the model.  To simplify the code, the target is hard coded at the origin and the up vector is the positive Z.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UserInputEventsSink_OnDrag_Sample.htm">OnDrag Event - dragging a WorkPoint</a></td>
+        <td class="api-list">This sample demonstrates the use of the OnDrag event to drag fixed work points when no command is active. This sample only allows drags parallel to the X-Y plane. This sample is dependent on events and VB only supports events within a class module.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 4<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(Camera%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,156 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/TransientBRep_ImprintBodies.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="TransientBRep_ImprintBodies">
+    <meta name="description" content="TransientBRep.ImprintBodies Method">
+    <meta name="topicid" content="TransientBRep_ImprintBodies">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>TransientBRep.ImprintBodies Method</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">TransientBRep.ImprintBodies Method</h1>
+
+          Parent Object: <a href="TransientBRep.htm">TransientBRep</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Method that finds regions of faces on two bodies which overlap and creates new bodies where the faces are split at the edges of the overlaps. This does not modify the original bodies but creates new transient bodies that contain the imprints.</p>
+    <h2 class="api">
+            Remarks
+          </h2><p>The picture below shows an example of imprinting. The picture on the left shows the initial two bodies that are positioned so there are coincident faces. The picture on the right shows the two bodies individually so you can see the result of the imprint and how the coincident faces were split. </p>
+<CENTER><IMG src="../Images/ImprintBodies.png"></CENTER>
+<p>The ability to imprint solids can be important to applications that need to mesh models. By creating edges at the poins where solids connect, it guarantees that there will be mesh nodes along those boundaries.</p><h2 class="api">
+          Syntax
+        </h2>
+        
+            TransientBRep.<b>ImprintBodies</b>( <b><i>InputBodyOne</i></b> As <a href="SurfaceBody.htm">SurfaceBody</a>, <b><i>InputBodyTwo</i></b> As <a href="SurfaceBody.htm">SurfaceBody</a>, <b><i>ImprintCoincidentEdges</i></b> As Boolean, <b><i>OutputBodyOne</i></b> As <a href="SurfaceBody.htm">SurfaceBody</a>, <b><i>OutputBodyTwo</i></b> As <a href="SurfaceBody.htm">SurfaceBody</a>, <b><i>BodyOneOverlappingFaces</i></b> As <a href="Faces.htm">Faces</a>, <b><i>BodyTwoOverlappingFaces</i></b> As <a href="Faces.htm">Faces</a>, <b><i>BodyOneOverlappingEdges</i></b> As <a href="Edges.htm">Edges</a>, <b><i>BodyTwoOverlappingEdges</i></b> As <a href="Edges.htm">Edges</a>, [<b><i>Tolerance</i></b>] As Double )
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">InputBodyOne</td>
+        <td class="api-list"><a href="SurfaceBody.htm">SurfaceBody</a></td>
+        <td class="api-list">Input SurfaceBody that will participate in the imprint operation.&nbsp;This body can be either a parametric or transient body.</td>
+      </tr>
+      <tr>
+        <td class="api-list">InputBodyTwo</td>
+        <td class="api-list"><a href="SurfaceBody.htm">SurfaceBody</a></td>
+        <td class="api-list">Input SurfaceBody that will participate in the imprint operation.&nbsp;This body can be either a parametric or transient body.</td>
+      </tr>
+      <tr>
+        <td class="api-list">ImprintCoincidentEdges</td>
+        <td class="api-list">Boolean</td>
+        <td class="api-list"><p>Input Boolean that indicates if overlapping edges should be included in the result.&nbsp;The picture below shows an example of when this argument will make a difference.&nbsp;The two bodies have overlapping faces and there is also an overlapping edge.&nbsp;If this argument is True, then the edge shown in red below will be included in the output as an overlapping edge.&nbsp;If False it will not be included and only the edges of the overlapping faces will be in the overlapping faces collections.</p>
+<CENTER><IMG src="../Images/ImprintOverlappingEdges.png"></CENTER></td>
+      </tr>
+      <tr>
+        <td class="api-list">OutputBodyOne</td>
+        <td class="api-list"><a href="SurfaceBody.htm">SurfaceBody</a></td>
+        <td class="api-list">Output transient SurfaceBody that contains the imprinted body that corresponds to the body provided through InputBodyOne argument.</td>
+      </tr>
+      <tr>
+        <td class="api-list">OutputBodyTwo</td>
+        <td class="api-list"><a href="SurfaceBody.htm">SurfaceBody</a></td>
+        <td class="api-list">Output transient SurfaceBody that contains the imprinted body that corresponds to the body provided through InputBodyTwo argument.</td>
+      </tr>
+      <tr>
+        <td class="api-list">BodyOneOverlappingFaces</td>
+        <td class="api-list"><a href="Faces.htm">Faces</a></td>
+        <td class="api-list">Output Faces collection that contains the overlapping faces that are part of OutputBodyOne.&nbsp;The faces from OutputBodyTwo are returned in the BodyTwoOverlappingFaces argument.&nbsp;Faces at the same index within the two collections are overlapping.</td>
+      </tr>
+      <tr>
+        <td class="api-list">BodyTwoOverlappingFaces</td>
+        <td class="api-list"><a href="Faces.htm">Faces</a></td>
+        <td class="api-list">Output Faces collection that contains the overlapping faces that are part of OutputBodyTwo.&nbsp;The faces from OutputBodyOne are returned in the BodyOneOverlappingFaces argument.&nbsp;Faces at the same index within the two collections are overlapping.</td>
+      </tr>
+      <tr>
+        <td class="api-list">BodyOneOverlappingEdges</td>
+        <td class="api-list"><a href="Edges.htm">Edges</a></td>
+        <td class="api-list">Output Edges collection that returns edges in body one that overlap with edges in body two, which are returned in the BodyTwoOverlappingEdges argument.&nbsp;Edges as the same index within the two collection are overlapping.</td>
+      </tr>
+      <tr>
+        <td class="api-list">BodyTwoOverlappingEdges</td>
+        <td class="api-list"><a href="Edges.htm">Edges</a></td>
+        <td class="api-list">Output Edges collection that returns edges in body two that overlap with edges in body one, which are returned in the BodyOneOverlappingEdges argument.&nbsp;Edges as the same index within the two collection are overlapping.</td>
+      </tr>
+      <tr>
+        <td class="api-list">Tolerance</td>
+        <td class="api-list">Double</td>
+        <td class="api-list">Optional Input Double that specifies the tolerance to use when comparing the bodies.&nbsp;If not specified, or a value of zero is specified, the internal modeling tolerance will be used.<br /><br /> This is an optional argument whose default value is 0.0.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ImprintingAndMatching_Sample.htm">Body Imprinting and matching the results</a></td>
+        <td class="api-list">This sample is intended to demonstrate a technique of finding the matching surfaces between the original input bodies and output imprinted bodies.&nbsp;This relies on transient keys, which is a unique ID associated with each B-Rep entity.&nbsp;A transient key is only good as long as the model is not recomputed.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ImprintUsingOccurrences_Sample.htm">Imprint bodies within an assembly.</a></td>
+        <td class="api-list">This sample demonstrates creating imprinted bodies from two selected occurrences in an assembly.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2014<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(TransientBRep.ImprintBodies%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

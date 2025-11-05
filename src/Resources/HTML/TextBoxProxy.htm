@@ -1,0 +1,228 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/TextBoxProxy.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="TextBoxProxy">
+    <meta name="description" content="TextBoxProxy Object">
+    <meta name="topicid" content="GUID-TextBoxProxy">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>TextBoxProxy Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">TextBoxProxy Object
+			</h1>
+              Derived from: <a href="TextBox.htm">TextBox</a> Object
+            <br><h2 class="api">
+          Description
+        </h2>This is an assembly-context proxy object derived from its native definition-context object.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextBoxProxy_ConvertToGeometry.htm">ConvertToGeometry</a></td>
+        <td class="api-list">Method that converts the text box to sketch geometries.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextBoxProxy_Delete.htm">Delete</a></td>
+        <td class="api-list">Method that deletes the text box.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextBoxProxy_GetFacetsInfo.htm">GetFacetsInfo</a></td>
+        <td class="api-list">Returns facets’ coordinates of the text box.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextBoxProxy_GetReferenceKey.htm">GetReferenceKey</a></td>
+        <td class="api-list">Method that generates and returns the reference key for this entity.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextBoxProxy_Application.htm">Application</a></td>
+        <td class="api-list">Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextBoxProxy_AttributeSets.htm">AttributeSets</a></td>
+        <td class="api-list">Property that returns the AttributeSets collection object associated with this object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextBoxProxy_BackgroundColor.htm">BackgroundColor</a></td>
+        <td class="api-list">Gets/Sets the BackgroundColor associated with the TextBox.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextBoxProxy_BoundaryGeometry.htm">BoundaryGeometry</a></td>
+        <td class="api-list">Property that returns the four construction sketch lines that form the boundary of the text box.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextBoxProxy_Color.htm">Color</a></td>
+        <td class="api-list">Gets/Sets the color of the text box.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextBoxProxy_ContainingOccurrence.htm">ContainingOccurrence</a></td>
+        <td class="api-list">Property that returns the ComponentOccurrence that the native object is being referenced through. The returned occurrence is the containing occurrence.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextBoxProxy_ContainingSketchBlock.htm">ContainingSketchBlock</a></td>
+        <td class="api-list">Property that returns the sketch block that contains this object. This is the same SketchBlock returned as the last item in the SketchBlockPath property. This property returns Nothing if this object does not belong to a sketch block and lives directly under a sketch.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextBoxProxy_Fitted.htm">Fitted</a></td>
+        <td class="api-list">Property that returns if the text box remains tightly fitted to the text within the box. True indicates the text box just encloses the text.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextBoxProxy_FittedTextHeight.htm">FittedTextHeight</a></td>
+        <td class="api-list">Property that returns the actual height of the text within the text box. This does not necessarily represent the current height of the text box, but only the text within the box. If the Fitted property is True then this value is the same as the height of the text box.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextBoxProxy_FittedTextWidth.htm">FittedTextWidth</a></td>
+        <td class="api-list">Property that returns the actual width of the text within the text box. This does not necessarily represent the current width of the text box, but only the text within the box. If the Fitted property is True then this value is the same as the width of the text box.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextBoxProxy_FormattedText.htm">FormattedText</a></td>
+        <td class="api-list">Gets and sets the fully formatted string that defines the contents of the text box.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextBoxProxy_Height.htm">Height</a></td>
+        <td class="api-list">Gets and sets the height of the text box.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextBoxProxy_HorizontalJustification.htm">HorizontalJustification</a></td>
+        <td class="api-list">Gets and sets the horizontal justification override of the text box.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextBoxProxy_Layer.htm">Layer</a></td>
+        <td class="api-list">Gets and sets the layer applied to this text box.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextBoxProxy_LineSpacing.htm">LineSpacing</a></td>
+        <td class="api-list">Gets and sets the line spacing of the text box.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextBoxProxy_LineSpacingType.htm">LineSpacingType</a></td>
+        <td class="api-list">Gets and sets the method used to define the line spacing.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextBoxProxy_NativeObject.htm">NativeObject</a></td>
+        <td class="api-list">Gets the object in the context of the definition instead of the containing assembly.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextBoxProxy_Origin.htm">Origin</a></td>
+        <td class="api-list">Gets and sets the position of upper-left corner of the text box.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextBoxProxy_OriginSketchPoint.htm">OriginSketchPoint</a></td>
+        <td class="api-list">Gets the SketchPoint on the origin of this TextBox. This will be Nothing in the case that the boundaries are displayed</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextBoxProxy_Parent.htm">Parent</a></td>
+        <td class="api-list">Property that returns the parent object from whom this object can logically be reached.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextBoxProxy_RangeBox.htm">RangeBox</a></td>
+        <td class="api-list">Property that returns a Box2D object which contains the lower-left and upper-right corners of a rectangle that is guaranteed to enclose this object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextBoxProxy_Rotation.htm">Rotation</a></td>
+        <td class="api-list">Gets and sets the override rotation of the text box.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextBoxProxy_ShowBoundaries.htm">ShowBoundaries</a></td>
+        <td class="api-list">Gets and sets whether boundary geometry is displayed for the text box.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextBoxProxy_SingleLineText.htm">SingleLineText</a></td>
+        <td class="api-list">Gets/Sets the single line text option.&nbsp;If True, all line breaks are removed from multi-line text.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextBoxProxy_SketchBlockPath.htm">SketchBlockPath</a></td>
+        <td class="api-list">Property that returns the path of sketch blocks at the leaf of which this sketch object is found. The enumerator returns a count of 0 if the object lives directly under a sketch.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextBoxProxy_StackedTextPosition.htm">StackedTextPosition</a></td>
+        <td class="api-list">Gets and sets the position (alignment) of the stacked text with respect to regular text.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextBoxProxy_Style.htm">Style</a></td>
+        <td class="api-list">Gets/Sets the text style associated with the text box.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextBoxProxy_Text.htm">Text</a></td>
+        <td class="api-list">Gets and sets the string that defines the contents of the text box.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextBoxProxy_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextBoxProxy_UseBackgroundColor.htm">UseBackgroundColor</a></td>
+        <td class="api-list">Gets/Sets the UseBackgroundColor associated with the TextBox.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextBoxProxy_VerticalJustification.htm">VerticalJustification</a></td>
+        <td class="api-list">Gets and sets the vertical justification override of the text box.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextBoxProxy_Width.htm">Width</a></td>
+        <td class="api-list">Gets and sets the width of the text box.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextBoxProxy_WidthScale.htm">WidthScale</a></td>
+        <td class="api-list">Gets and sets override stretch factor for the text box.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 10<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(TextBoxProxy%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,206 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU">
+    <link rel="canonical" href="http://help.autodesk.com/cloudhelp/2026/ENU/Inventor-API/files/DrawingDimensions_Overview.htm">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="27/4/2016">
+    <meta name="user-comments" content="enable">
+    <meta name="description" content="">
+    <meta name="topicid" content="GUID-968D16DA-408E-4ED8-A87A-EE8972C644F5">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>Drawing Dimensions</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"/>
+    <script type="text/javascript" src="/view/clientframework/client.js"><!--filler--></script>
+	<script>
+	  // This turns on the display of the copyright notice which is not visible by default.
+	  // Because the head is removed when used in the web help, this function will only exists
+	  // when the chm help is being created.
+	  window.onload = function() {
+		copyrightElement = document.getElementById('CopyrightNotice');
+		copyrightElement.style.display = 'block';
+	  };
+	</script>
+</head>
+<body>
+<link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+	
+<h1>Drawing Dimensions</h1>
+	
+<h3>Introduction to Drawing Dimensions</h3>
+
+<p Class="Normal">Autodesk Inventor has two different types of dimensions - model and drawing. These can be thought of as 
+controlling and documenting, respectively. Model dimensions are typically parametric constraints intended to 
+control part or feature size. Sketch dimensions are included in this category since they directly affect 
+model size and constraints.</p>
+
+<p Class="Normal">Drawing dimensions simply document a given dimension on a drawing sheet, and 
+have no effect on model size or constraints. However, drawing dimensions can be promoted from a draft view 
+to an underlying sketch, or can be retrieved from a sketch or model.</p>
+
+<p Class="Normal"> Drawing dimensions are associative, but not parametric. There are various types of drawing dimensions 
+supported, including general, linear, ordinate, radius, diameter, and angular. Options controlling the 
+appearance of dimensions are specified through dimension styles, enabling support of common dimension 
+standards. Individual settings may be overridden to suite.</p>
+
+<br> 
+<h3>A look at the Drawing Dimensions API</h3>
+
+<p Class="Normal">The Drawing Dimensions API provides access to all drawing dimensions on a sheet. Objects corresponding 
+to the available dimension types are derived from a common object named DrawingDimension which contains 
+common methods and properties, such as tolerance, precision, text and so on.</p>
+
+<p Class="Normal">Ordinate dimensions differ 
+from other types in that a given sequence of dimension values will reference the same single point of 
+origin.  Figure 1 shows the object model diagram.</p>
+
+ <br>
+<div align="center"> <img src="../images/dim_diag.png" border=0 ><p Class="Normal">Figure 1</p></div>
+ <br>
+
+ <br>
+<h3>Geometry Intent</h3>
+
+<p Class="Normal">Drawing dimension creation methods expect geometry points to be supplied in the form of GeometryIntent 
+objects. To better understand such objects, imagine a leader line and arrow pointing to a user-selected 
+point on a drawing line. Leader line associativity to the selected spot on the drawing line needs to be maintained, but there is no 
+point geometry midway on the drawing line to reference. In this case, a GeometryIntent object 
+encapsulates the intent to reference a location on the drawing line, a certain distance from a particular 
+end.</p>
+
+<p Class="Normal">Similarly, dimensions require GeometryIntent objects because, unlike the Autodesk Inventor modeling 
+environment, the drawing environment contains only 2D lines, arcs and circles - no points. So, a GeometryIntent 
+object for a dimension might reference a particular end of a line or arc, or the center of a circle or arc.</p>
+
+<br>
+<h3>Sample</h3>
+
+<p Class="Normal">This sample VBA code listing may be cut and pasted into a module in the Autodesk Inventor VBA editor. Make 
+sure all grayed sections are present. Immediately before each grayed section is text describing that section's 
+purpose and operation - do not copy this text into the editor. The code omits error checking for the sake of 
+clarity and brevity. In your code, always check that return values are of the expected type. Ensure that the 
+Autodesk Inventor Object Library is available in your project; in the Visual Basic Editor, pick 
+Tools > References, and check the appropriate reference.</p>
+
+<br>
+<h3>Creating a Linear Dimension</h3>
+
+<p Class="Normal">This code creates a simple linear dimension of a curve on a drawing sheet. It assumes the curve is 
+selected before the code is run. Figure 2 shows two lines selected in the sample Vertical Plate.idw.</p>
+
+ <br>
+<div align="center"> <img src="../images/dim_select_curves.png" border=0 ><p Class="Normal">Figure 2</p></div>
+ <br>
+
+<p Class="Normal">Select the highlighted lines, then run the VBA code. The code first obtains the active sheet from the active document.</p>
+
+ 
+<br>
+<table Class="Code">
+<tr valign="middle">
+	<td Class="Code">
+	<pre>
+Sub CreateDimension()
+        
+    Dim oDoc As DrawingDocument
+    Set oDoc = ThisApplication.ActiveDocument
+    
+    Dim oSheet As Sheet
+    Set oSheet = oDoc.ActiveSheet
+</pre></td></tr>
+</table>
+<br><br>
+
+<p Class="Normal">Next, obtain DrawingCurve objects from the selected lines. DrawingCurve objects are acceptable for creation of GeometryIntent objects.</p>
+
+<br>
+<table Class="Code">
+<tr valign="middle">
+	<td Class="Code">
+	<pre>
+    Dim oCurve1 As DrawingCurve
+    Set oCurve1 = oDoc.SelectSet(1).Parent
+    
+    Dim oCurve2 As DrawingCurve
+    Set oCurve2 = oDoc.SelectSet(2).Parent
+</pre></td></tr>
+</table>
+<br><br>
+
+<p Class="Normal">Now we're ready to create the GeometryIntent objects. Since we're using the DrawingCurve end points, there 
+is no need to specify a point on the geometry, which would be provided by the optional second argument 
+for CreateGeometryIntent.</p>
+
+<br>
+<table Class="Code">
+<tr valign="middle">
+	<td Class="Code">
+	<pre>
+    Dim oIntent1 As GeometryIntent
+    Set oIntent1 = oSheet.CreateGeometryIntent(oCurve1)
+        
+    Dim oIntent2 As GeometryIntent
+    Set oIntent2 = oSheet.CreateGeometryIntent(oCurve2)
+</pre></td></tr>
+</table>
+<br><br>
+
+<p Class="Normal">Create a 2D point for the location of the dimension line.</p>
+
+<br>
+<table Class="Code">
+<tr valign="middle">
+	<td Class="Code">
+	<pre>
+    Dim oPt As Point2d
+    Set oPt = ThisApplication.TransientGeometry.CreatePoint2d(15, 15)
+</pre></td></tr>
+</table>
+<br><br>
+
+<p Class="Normal">Create a linear dimension on the sheet, using the two GeometryIntent objects as 
+dimension extension line origin points, and the 2D point for the dimension line location.</p>
+
+<br>
+<table Class="Code">
+<tr valign="middle">
+	<td Class="Code">
+	<pre>
+    Dim oLinDim As LinearGeneralDimension
+    Set oLinDim = oSheet.DrawingDimensions.GeneralDimensions.AddLinear(oPt, oIntent1, oIntent2)
+    
+End Sub
+</pre></td></tr>
+</table>
+<br><br>
+
+<p Class="Normal">The sample code will produce a result similar to that shown in Figure 3.</p>
+
+ <br><br>
+<div align="center"> <img src="../images/dim_create.png" border=0 ><p Class="Normal">Figure 3</p></div>
+
+<br />
+<br />
+<div id="CopyrightNotice" style="display:none;">
+  <hr />
+  <table width="100%" style="font-size:15">
+	<tr>
+	  <td align="left">
+		&copy; Copyright 2025 Autodesk, Inc.
+	  </td>
+	  <td align="right">
+		<a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(DrawingDimensions_Overview)">Comment on this page.</a>
+	  </td>
+	</tr>
+  </table>
+</div>
+
+</body>
+</html>

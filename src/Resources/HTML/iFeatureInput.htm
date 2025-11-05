@@ -1,0 +1,114 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/iFeatureInput.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="iFeatureInput">
+    <meta name="description" content="iFeatureInput Object">
+    <meta name="topicid" content="GUID-iFeatureInput">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>iFeatureInput Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">iFeatureInput Object
+			</h1><br><h2 class="api">
+          Description
+        </h2>The iFeatureInput object is the base class for iFeatureParameterInput, iFeatureEntityInput, iFeatureSketchPlaneInput, iFeatureWorkPlaneInput and iFeatureVectorInput.<h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="iFeatureInput_Application.htm">Application</a></td>
+        <td class="api-list">Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="iFeatureInput_EntityType.htm">EntityType</a></td>
+        <td class="api-list">Property that returns the type of geometry that are valid. The value returned is the sum of values specifying the valid entity types.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="iFeatureInput_Name.htm">Name</a></td>
+        <td class="api-list">Property that gets the name associated with this input. When placing an iFeature using the API you can use the name to identify each input when assigning the desired values and entities.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="iFeatureInput_Prompt.htm">Prompt</a></td>
+        <td class="api-list">Property that gets the prompt that is used for this input during the placement of the iFeature.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="iFeatureInput_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="iFeatureInputs_Item.htm">iFeatureInputs.Item</a><h2 class="api">
+            Derived Classes
+          </h2><a href="iFeatureEntityInput.htm">iFeatureEntityInput</a>, <a href="iFeatureParameterInput.htm">iFeatureParameterInput</a>, <a href="iFeatureSketchPlaneInput.htm">iFeatureSketchPlaneInput</a>, <a href="iFeatureVectorInput.htm">iFeatureVectorInput</a>, <a href="iFeatureWorkPlaneInput.htm">iFeatureWorkPlaneInput</a><h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="iFeatures_Sample.htm">Placement of a standard iFeature</a></td>
+        <td class="api-list">This program demonstrates the placement of a standard iFeature in a part.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="iFeatureTable_Sample.htm">Place table driven iFeature</a></td>
+        <td class="api-list">This program demonstrates the placement of a table driven iFeature in a part.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PunchToolFeatures_Add_Sample.htm">Add a punch tool feature</a></td>
+        <td class="api-list">This program demonstrates the creation of a punch tool feature. It uses one of the punch features that's delivered with Inventor. It assumes you already have an existing sheet metal part and have selected a face to place the punch feature on. The selected face should be large so there is room for the punch features.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 6<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(iFeatureInput%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

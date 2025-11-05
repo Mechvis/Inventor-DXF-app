@@ -1,0 +1,211 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/TextStyle.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="TextStyle">
+    <meta name="description" content="TextStyle Object">
+    <meta name="topicid" content="GUID-TextStyle">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>TextStyle Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">TextStyle Object
+			</h1>
+              Derived from: <a href="Style.htm">Style</a> Object
+            <br><h2 class="api">
+          Description
+        </h2>The TextStyle object represents a text style in a drawing.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextStyle_ConvertToLocal.htm">ConvertToLocal</a></td>
+        <td class="api-list">Method that creates a local cached copy of a global style and returns the local style.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextStyle_Copy.htm">Copy</a></td>
+        <td class="api-list">Method that creates a new local Style object. The newly created style is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextStyle_Delete.htm">Delete</a></td>
+        <td class="api-list">Method that deletes the Style/Layer/UnfoldMethod.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextStyle_GetReferenceKey.htm">GetReferenceKey</a></td>
+        <td class="api-list">Method that generates and returns the reference key for this entity.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextStyle_SaveToGlobal.htm">SaveToGlobal</a></td>
+        <td class="api-list">Method that saves this style to the global repository. If a style with the same name is found in the repository, that style is updated.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextStyle_UpdateFromGlobal.htm">UpdateFromGlobal</a></td>
+        <td class="api-list">Method that updates this style from the global repository.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextStyle_Application.htm">Application</a></td>
+        <td class="api-list">Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextStyle_Bold.htm">Bold</a></td>
+        <td class="api-list">Gets and sets whether the text style has bold formatting or not.&nbsp;True if the text style has bold formatting.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextStyle_Color.htm">Color</a></td>
+        <td class="api-list">Gets and sets the current color of the text.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextStyle_Comments.htm">Comments</a></td>
+        <td class="api-list">Gets and sets comments associated with the style.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextStyle_Font.htm">Font</a></td>
+        <td class="api-list">Gets and sets the font used for the text style.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextStyle_FontSize.htm">FontSize</a></td>
+        <td class="api-list">Gets and sets the size of the font.&nbsp;The size is specified in centimeters.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextStyle_HorizontalJustification.htm">HorizontalJustification</a></td>
+        <td class="api-list">Gets and sets the horizontal justification of the text style.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextStyle_InternalName.htm">InternalName</a></td>
+        <td class="api-list">Property that returns the internal name of the style. The name is the internal English name of the standard style. This name will remain constant and is not affected by locale. This name is never displayed to the user. Note that this name is not guaranteed to be unique.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextStyle_InUse.htm">InUse</a></td>
+        <td class="api-list">Property that indicates if this style is in use.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextStyle_Italic.htm">Italic</a></td>
+        <td class="api-list">Gets and sets whether the text style has italic formatting or not.&nbsp;True if the text style has italic formatting.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextStyle_LineSpacing.htm">LineSpacing</a></td>
+        <td class="api-list">Gets and sets the line spacing of the text style.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextStyle_LineSpacingType.htm">LineSpacingType</a></td>
+        <td class="api-list">Gets and sets the method used to define the line spacing.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextStyle_Name.htm">Name</a></td>
+        <td class="api-list">Gets/Sets the name of the Style.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextStyle_Parent.htm">Parent</a></td>
+        <td class="api-list">Property returning the parent of this object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextStyle_Rotation.htm">Rotation</a></td>
+        <td class="api-list">Gets and sets the rotation of the text style.&nbsp;The units used to define the rotation angle are radians.&nbsp;Currently text rotation is limited to 90 degree increments so valid values for this property are 0, pi/2, pi, and 1.5pi.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextStyle_StyleLocation.htm">StyleLocation</a></td>
+        <td class="api-list">Property that returns the location of this style, i.e. local to the document, cached locally in the document, exists in the library. Styles that exist in the library cannot be edited.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextStyle_StyleType.htm">StyleType</a></td>
+        <td class="api-list">Gets the type of the style.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextStyle_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextStyle_Underline.htm">Underline</a></td>
+        <td class="api-list">Gets and sets whether the text style has underline formatting or not.&nbsp;True if the text style has underline formatting.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextStyle_UpToDate.htm">UpToDate</a></td>
+        <td class="api-list">Property that gets the up-to-date status of the style against the global repository.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextStyle_VerticalJustification.htm">VerticalJustification</a></td>
+        <td class="api-list">Gets and sets the vertical justification of the text style.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextStyle_WidthScale.htm">WidthScale</a></td>
+        <td class="api-list">Gets and sets the width scale factor for the text style.&nbsp;This is also referred to as the 'stretch factor'. A value of 1.0 will display the text as designed; a value of 0.5 will decrease the width of the text by 50%.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="BalloonStyle_TextStyle.htm">BalloonStyle.TextStyle</a>, <a href="CustomTable_ColumnHeaderTextStyle.htm">CustomTable.ColumnHeaderTextStyle</a>, <a href="CustomTable_DataTextStyle.htm">CustomTable.DataTextStyle</a>, <a href="CustomTable_TitleTextStyle.htm">CustomTable.TitleTextStyle</a>, <a href="DimensionStyle_TextStyle.htm">DimensionStyle.TextStyle</a>, <a href="DimensionStyle_ToleranceTextStyle.htm">DimensionStyle.ToleranceTextStyle</a>, <a href="DrawingViewLabel_TextStyle.htm">DrawingViewLabel.TextStyle</a>, <a href="EdgeSymbolStyle_TextStyle.htm">EdgeSymbolStyle.TextStyle</a>, <a href="FeatureControlFrameStyle_TextStyle.htm">FeatureControlFrameStyle.TextStyle</a>, <a href="GeneralNote_TextStyle.htm">GeneralNote.TextStyle</a>, <a href="HoleTable_ColumnHeaderTextStyle.htm">HoleTable.ColumnHeaderTextStyle</a>, <a href="HoleTable_DataTextStyle.htm">HoleTable.DataTextStyle</a>, <a href="HoleTable_TitleTextStyle.htm">HoleTable.TitleTextStyle</a>, <a href="HoleTableStyle_ColumnHeaderTextStyle.htm">HoleTableStyle.ColumnHeaderTextStyle</a>, <a href="HoleTableStyle_DataTextStyle.htm">HoleTableStyle.DataTextStyle</a>, <a href="HoleTableStyle_TitleTextStyle.htm">HoleTableStyle.TitleTextStyle</a>, <a href="ObjectDefaultsStyle_BorderTextStyle.htm">ObjectDefaultsStyle.BorderTextStyle</a>, <a href="ObjectDefaultsStyle_GeneralNoteStyle.htm">ObjectDefaultsStyle.GeneralNoteStyle</a>, <a href="ObjectDefaultsStyle_SketchedSymbolTextStyle.htm">ObjectDefaultsStyle.SketchedSymbolTextStyle</a>, <a href="ObjectDefaultsStyle_SketchTextStyle.htm">ObjectDefaultsStyle.SketchTextStyle</a>, <a href="ObjectDefaultsStyle_TitleBlockTextStyle.htm">ObjectDefaultsStyle.TitleBlockTextStyle</a>, <a href="ObjectDefaultsStyle_ViewLabelStyle.htm">ObjectDefaultsStyle.ViewLabelStyle</a>, <a href="PartsList_ColumnHeaderTextStyle.htm">PartsList.ColumnHeaderTextStyle</a>, <a href="PartsList_DataTextStyle.htm">PartsList.DataTextStyle</a>, <a href="PartsList_TitleTextStyle.htm">PartsList.TitleTextStyle</a>, <a href="PartsListStyle_ColumnHeaderTextStyle.htm">PartsListStyle.ColumnHeaderTextStyle</a>, <a href="PartsListStyle_DataTextStyle.htm">PartsListStyle.DataTextStyle</a>, <a href="PartsListStyle_TitleTextStyle.htm">PartsListStyle.TitleTextStyle</a>, <a href="RevisionTable_ColumnHeaderTextStyle.htm">RevisionTable.ColumnHeaderTextStyle</a>, <a href="RevisionTable_DataTextStyle.htm">RevisionTable.DataTextStyle</a>, <a href="RevisionTable_TitleTextStyle.htm">RevisionTable.TitleTextStyle</a>, <a href="RevisionTableStyle_ColumnHeaderTextStyle.htm">RevisionTableStyle.ColumnHeaderTextStyle</a>, <a href="RevisionTableStyle_DataTextStyle.htm">RevisionTableStyle.DataTextStyle</a>, <a href="RevisionTableStyle_RevisionTagTextStyle.htm">RevisionTableStyle.RevisionTagTextStyle</a>, <a href="RevisionTableStyle_TitleTextStyle.htm">RevisionTableStyle.TitleTextStyle</a>, <a href="SurfaceTextureStyle_TextStyle.htm">SurfaceTextureStyle.TextStyle</a>, <a href="TableFormat_TextStyle.htm">TableFormat.TextStyle</a>, <a href="TableStyle_ColumnHeaderTextStyle.htm">TableStyle.ColumnHeaderTextStyle</a>, <a href="TableStyle_DataTextStyle.htm">TableStyle.DataTextStyle</a>, <a href="TableStyle_TitleTextStyle.htm">TableStyle.TitleTextStyle</a>, <a href="TextBox_Style.htm">TextBox.Style</a>, <a href="TextBoxProxy_Style.htm">TextBoxProxy.Style</a>, <a href="TextStyles_Item.htm">TextStyles.Item</a>, <a href="TextStylesEnumerator_Item.htm">TextStylesEnumerator.Item</a>, <a href="TransitionSymbolStyle_TextStyle.htm">TransitionSymbolStyle.TextStyle</a>, <a href="WeldSymbolStyle_TextStyle.htm">WeldSymbolStyle.TextStyle</a><h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextBoxes_Sample.htm">Sketch Text Add</a></td>
+        <td class="api-list">This sample illustrates creating text in a sketch.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 5.3<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(TextStyle%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

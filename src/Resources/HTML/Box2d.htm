@@ -1,0 +1,133 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/Box2d.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="Box2d">
+    <meta name="description" content="Box2d Object">
+    <meta name="topicid" content="GUID-Box2d">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>Box2d Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">Box2d Object
+			</h1><br><h2 class="api">
+          Description
+        </h2>The Box2d object is a mathematical utility object that represents a rectangle whose edges are always parallel to the x-y axes. A common use of the Box2d object is as a means of passing the range box information of a 2d entity and interacting with that range box.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Box2d_Contains.htm">Contains</a></td>
+        <td class="api-list">Determines whether the specified point is contained within this Box.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Box2d_Copy.htm">Copy</a></td>
+        <td class="api-list">Creates a copy of this Box2d object.&nbsp;The result is entirely independent and can be edited without affecting the original Box2d object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Box2d_Expand.htm">Expand</a></td>
+        <td class="api-list">Expands the Box on all sides by the specified distance.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Box2d_Extend.htm">Extend</a></td>
+        <td class="api-list">Extends the Box to include the specified point.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Box2d_GetBoxData.htm">GetBoxData</a></td>
+        <td class="api-list">Get the data defining this Box.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Box2d_IsDisjoint.htm">IsDisjoint</a></td>
+        <td class="api-list">Determines whether this Box intersects the specified Box.&nbsp;A return value of True indicates that the box do not intersect.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Box2d_PutBoxData.htm">PutBoxData</a></td>
+        <td class="api-list">Method that sets the data defining this Box.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Box2d_MaxPoint.htm">MaxPoint</a></td>
+        <td class="api-list">Property that gets and sets the maximum corner of the box.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Box2d_MinPoint.htm">MinPoint</a></td>
+        <td class="api-list">Property that gets and sets the minimum corner of the box.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="BendNote_RangeBox.htm">BendNote.RangeBox</a>, <a href="Border_RangeBox.htm">Border.RangeBox</a>, <a href="Box2d_Copy.htm">Box2d.Copy</a>, <a href="ChamferNote_RangeBox.htm">ChamferNote.RangeBox</a>, <a href="Curve2dEvaluator_RangeBox.htm">Curve2dEvaluator.RangeBox</a>, <a href="CustomTable_RangeBox.htm">CustomTable.RangeBox</a>, <a href="DefaultBorder_RangeBox.htm">DefaultBorder.RangeBox</a>, <a href="DimensionText_RangeBox.htm">DimensionText.RangeBox</a>, <a href="DrawingNote_RangeBox.htm">DrawingNote.RangeBox</a>, <a href="DrawingViewHatchArea_RangeBox.htm">DrawingViewHatchArea.RangeBox</a>, <a href="DrawingViewHatchRegion_RangeBox.htm">DrawingViewHatchRegion.RangeBox</a>, <a href="DrawingViewLabel_RangeBox.htm">DrawingViewLabel.RangeBox</a>, <a href="GeneralNote_RangeBox.htm">GeneralNote.RangeBox</a>, <a href="HoleTable_RangeBox.htm">HoleTable.RangeBox</a>, <a href="HoleTag_RangeBox.htm">HoleTag.RangeBox</a>, <a href="ImportedDWGComponent_Crop.htm">ImportedDWGComponent.Crop</a>, <a href="ImportedDWGComponentProxy_Crop.htm">ImportedDWGComponentProxy.Crop</a>, <a href="LeaderNote_RangeBox.htm">LeaderNote.RangeBox</a>, <a href="PartsList_RangeBox.htm">PartsList.RangeBox</a>, <a href="PunchNote_RangeBox.htm">PunchNote.RangeBox</a>, <a href="RevisionCloud_RangeBox.htm">RevisionCloud.RangeBox</a>, <a href="RevisionTable_RangeBox.htm">RevisionTable.RangeBox</a>, <a href="SketchArc_RangeBox.htm">SketchArc.RangeBox</a>, <a href="SketchArcProxy_RangeBox.htm">SketchArcProxy.RangeBox</a>, <a href="SketchCircle_RangeBox.htm">SketchCircle.RangeBox</a>, <a href="SketchCircleProxy_RangeBox.htm">SketchCircleProxy.RangeBox</a>, <a href="SketchCircularPattern_RangeBox.htm">SketchCircularPattern.RangeBox</a>, <a href="SketchControlPointSpline_RangeBox.htm">SketchControlPointSpline.RangeBox</a>, <a href="SketchControlPointSplineProxy_RangeBox.htm">SketchControlPointSplineProxy.RangeBox</a>, <a href="SketchEllipse_RangeBox.htm">SketchEllipse.RangeBox</a>, <a href="SketchEllipseProxy_RangeBox.htm">SketchEllipseProxy.RangeBox</a>, <a href="SketchEllipticalArc_RangeBox.htm">SketchEllipticalArc.RangeBox</a>, <a href="SketchEllipticalArcProxy_RangeBox.htm">SketchEllipticalArcProxy.RangeBox</a>, <a href="SketchEntity_RangeBox.htm">SketchEntity.RangeBox</a>, <a href="SketchEquationCurve_RangeBox.htm">SketchEquationCurve.RangeBox</a>, <a href="SketchEquationCurveProxy_RangeBox.htm">SketchEquationCurveProxy.RangeBox</a>, <a href="SketchFixedSpline_RangeBox.htm">SketchFixedSpline.RangeBox</a>, <a href="SketchFixedSplineProxy_RangeBox.htm">SketchFixedSplineProxy.RangeBox</a>, <a href="SketchLine_RangeBox.htm">SketchLine.RangeBox</a>, <a href="SketchLineProxy_RangeBox.htm">SketchLineProxy.RangeBox</a>, <a href="SketchOffsetSpline_RangeBox.htm">SketchOffsetSpline.RangeBox</a>, <a href="SketchOffsetSplineProxy_RangeBox.htm">SketchOffsetSplineProxy.RangeBox</a>, <a href="SketchPoint_RangeBox.htm">SketchPoint.RangeBox</a>, <a href="SketchPointProxy_RangeBox.htm">SketchPointProxy.RangeBox</a>, <a href="SketchRectangularPattern_RangeBox.htm">SketchRectangularPattern.RangeBox</a>, <a href="SketchSpline_RangeBox.htm">SketchSpline.RangeBox</a>, <a href="SketchSplineHandle_RangeBox.htm">SketchSplineHandle.RangeBox</a>, <a href="SketchSplineHandleProxy_RangeBox.htm">SketchSplineHandleProxy.RangeBox</a>, <a href="SketchSplineProxy_RangeBox.htm">SketchSplineProxy.RangeBox</a>, <a href="SurfaceEvaluator_ParamRangeRect.htm">SurfaceEvaluator.ParamRangeRect</a>, <a href="TextBox_RangeBox.htm">TextBox.RangeBox</a>, <a href="TextBoxProxy_RangeBox.htm">TextBoxProxy.RangeBox</a>, <a href="TitleBlock_RangeBox.htm">TitleBlock.RangeBox</a>, <a href="TransientGeometry_CreateBox2d.htm">TransientGeometry.CreateBox2d</a><h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ParameterCurveTo3D_Sample.htm">3D Curve from Parametric Curve</a></td>
+        <td class="api-list">Demonstrates the conversion of a 2d parameteric space curve into the equivalent 3d model space curve.  To use this sample you must have a part open.  You can select any face and 3D curves will be drawn on the face using client graphics.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 4<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(Box2d%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

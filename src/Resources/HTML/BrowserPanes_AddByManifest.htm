@@ -1,0 +1,130 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/BrowserPanes_AddByManifest.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="BrowserPanes_AddByManifest">
+    <meta name="description" content="BrowserPanes.AddByManifest Method">
+    <meta name="topicid" content="BrowserPanes_AddByManifest">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>BrowserPanes.AddByManifest Method</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">BrowserPanes.AddByManifest Method</h1>
+
+          Parent Object: <a href="BrowserPanes.htm">BrowserPanes</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Method that creates and returns a new BrowserPane object. The BrowserPane created is one that is explicitly used to house un-registered ActiveX Controls.</p>
+    <h2 class="api">
+          Syntax
+        </h2>
+        
+            BrowserPanes.<b>AddByManifest</b>( <b><i>Name</i></b> As String, <b><i>InternalName</i></b> As String, <b><i>ManifestFileName</i></b> As String ) As <a href="BrowserPane.htm">BrowserPane</a>
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">Name</td>
+        <td class="api-list">String</td>
+        <td class="api-list">Input string that specifies the name of the browser pane.&nbsp;This is the name that will be displayed to the user.&nbsp;And thus is expected to be localized. The name must be unique with respect to the other browser panes currently created for the document. It can be changed, programmatically, at any time. It may also be used to index into the BrowserPanes collection.</td>
+      </tr>
+      <tr>
+        <td class="api-list">InternalName</td>
+        <td class="api-list">String</td>
+        <td class="api-list">Input string that uniquely identifies the application. Suggestions are to use the 'ProgID' of the Add-In creating the pane or its CLSID in a string form, e.g. "{C9A6C580-3817-11D0-BE4E-080036E87B02}", although any unique string is valid. If the Add-In is going to create more than one such pane, you would want to further qualify the string by appending a suffix to the CLSID, say "{}:0" and "{}:1", etc.</td>
+      </tr>
+      <tr>
+        <td class="api-list">ManifestFileName</td>
+        <td class="api-list">String</td>
+        <td class="api-list">Input the full filename of the manifest which defines the information of an un-registered ActiveX control.
+<P>
+Sample manifest can be like below:
+<style type="text/css">
+p.ridge {border-style: ridge}
+</style>
+<P class="ridge"><table><tr><td>
+
+
+&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;<Br/>
+&lt;assembly xmlns="urn:schemas-microsoft-com:asm.v1" manifestVersion="1.0"&gt;<Br/>
+&lt;file name = "x64\SimpleMFCControl.ocx"&gt;<Br/>
+	&lt;typelib 
+		tlbid="{E230D8E9-C189-49AA-A932-01B5F43507EB}"
+		version="1.0" 
+		helpdir=""/&gt;<Br/>
+	&lt;comClass 
+		progid = "SIMPLEMFCCONTROL.SIMPLEMFCCONTROLCtrl.1"
+		clsid="{50CCD357-FA53-42B6-8B06-C5D6AB37CDBF}"
+		threadingModel = "Apartment"/&gt;<Br/>
+&lt;/file&gt;<Br/>
+&nbsp;&lt;comInterfaceExternalProxyStub 
+	name="_DSIMPLEMFCCONTROLEvents" 
+	iid="{B1A2EFBE-A44E-4A40-A4CA-801685A6A624}"
+	tlbid="{E230D8E9-C189-49AA-A932-01B5F43507EB}"
+	proxyStubClsid32="{00020420-0000-0000-C000-000000000046}"/&gt;<Br/>
+&nbsp;&lt;comInterfaceExternalProxyStub
+	name="_DSIMPLEMFCCONTROL"
+	iid="{EA9F39CD-0356-4F7C-8DA8-DE913DB64D99}"
+	tlbid="{E230D8E9-C189-49AA-A932-01B5F43507EB}"
+	proxyStubClsid32="{00020420-0000-0000-C000-000000000046}"/&gt;<Br/>
+&lt;/assembly&gt;
+
+
+
+</td></tr></table></P></td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2017<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(BrowserPanes.AddByManifest%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

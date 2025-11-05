@@ -1,0 +1,100 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/RevolveFeature_SetToFaceExtent.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="RevolveFeature_SetToFaceExtent">
+    <meta name="description" content="RevolveFeature.SetToFaceExtent Method">
+    <meta name="topicid" content="RevolveFeature_SetToFaceExtent">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>RevolveFeature.SetToFaceExtent Method</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">RevolveFeature.SetToFaceExtent Method</h1>
+
+          Parent Object: <a href="RevolveFeature.htm">RevolveFeature</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Method that changes the extents to be 'to face' extents.</p>
+    <h2 class="api">
+          Syntax
+        </h2>
+        
+            RevolveFeature.<b>SetToFaceExtent</b>( <b><i>ToFace</i></b> As Object, <b><i>ExtendToFace</i></b> As Boolean, <b><i>ExtentDirection</i></b> As <a href="PartFeatureExtentDirectionEnum.htm">PartFeatureExtentDirectionEnum</a>, <b><i>MinimumSolution</i></b> As Boolean )
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">ToFace</td>
+        <td class="api-list">Object</td>
+        <td class="api-list">Input Object that defines the 'to face'. This can be either a Face or WorkPlane object.</td>
+      </tr>
+      <tr>
+        <td class="api-list">ExtendToFace</td>
+        <td class="api-list">Boolean</td>
+        <td class="api-list">Input Boolean that defines whether the 'to face' should be extended to contain the extents of the profile.</td>
+      </tr>
+      <tr>
+        <td class="api-list">ExtentDirection</td>
+        <td class="api-list"><a href="PartFeatureExtentDirectionEnum.htm">PartFeatureExtentDirectionEnum</a></td>
+        <td class="api-list">Input constant that indicates which side of the sketch plane to extrude towards. Valid input is kPositiveExtentDirection, kNegativeExtentDirection or kSymmetricExtentDirection. kPositiveExtentDirection defines the offset direction to be in the same direction as the normal of the sketch plane.</td>
+      </tr>
+      <tr>
+        <td class="api-list">MinimumSolution</td>
+        <td class="api-list">Boolean</td>
+        <td class="api-list">Input Boolean that defines whether the feature terminates on the nearest valid face when there are multiple options for valid termination faces.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2008<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(RevolveFeature.SetToFaceExtent%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

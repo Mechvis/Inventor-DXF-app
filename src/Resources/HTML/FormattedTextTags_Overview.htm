@@ -1,0 +1,845 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU">
+    <link rel="canonical" href="http://help.autodesk.com/cloudhelp/2026/ENU/Inventor-API/files/FormattedTextTags_Overview.htm">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="27/4/2016">
+    <meta name="user-comments" content="enable">
+    <meta name="description" content="">
+    <meta name="topicid" content="GUID-915B75BA-4696-4fc7-A2C6-54B2BACDE7E1">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>XML Tags for FormattedText</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+       <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"/>
+       <script type="text/javascript" src="/view/clientframework/client.js"><!--filler--></script>
+	<script>
+	  // This turns on the display of the copyright notice which is not visible by default.
+	  // Because the head is removed when used in the web help, this function will only exists
+	  // when the chm help is being created.
+	  window.onload = function() {
+		copyrightElement = document.getElementById('CopyrightNotice');
+		copyrightElement.style.display = 'block';
+	  };
+	</script>
+</head>
+<body>
+<link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+
+<h1>XML Tags for FormattedText</h1>
+<br>
+<p Class="Normal">This table and the tag list below indicates which text formatting tags are supported by the listed API 
+calls.  For example, the table shows that the HoleTag.FormattedText property supports style overrides, line breaks, fractions 
+and super/subscripts. Details of these XML tags are can accessed by clicking on the relevant table column title, or just 
+scroll down to the appropriate section.</p>
+
+<br>
+<table border="1">
+<tbody>
+<tr bgcolor="Yellow">
+<td align="center">API</td>	
+<td><a href="#StyleOverride">Style Override</a></td>	
+<td><a href="#Br">Line Break</a></td>	
+<td><a href="#Stack">Fraction, Sub/Superscript</a></td>	
+<td><a href="#DerivedProperty">Derived Properties</a></td>	
+<td><a href="#Property">Document Properties</a></td>	
+<td><a href="#PhysicalProperty">Physical Properties</a></td>	
+<td><a href="#Parameter">Parameter</a></td>	
+<td><a href="#Prompt">Prompted Text</a></td>	
+<td><a href="#DimensionValue">Dimension Placeholder</a></td>	
+<td><a href="#DrawingViewName">DrawingView Name</a></td>	
+<td><a href="#DrawingViewName">DrawingView Scale</a></td>
+<td><a href="#DrawingViewName">DrawingViewSheet Index/Name/zone</a></td>
+<td><a href="#DrawingViewName">DrawingViewParentSheet Index/Name/zone</a></td>	
+<td><a href="#Delimiter">Delimiter</a></td>	
+<td><a href="#HoleProperty">Hole Properties</a></td>
+<td><a href="#ModelState">Model State</a></td>
+<td><a href="#Bullet">Bullet/Numbering</a></td></tr>
+<tr>
+<td>DimensionText.FormattedText&nbsp;</td>	
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>	
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>	
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>	
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>	
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>	
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>	
+<td>&nbsp;</td>	
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>	
+<td>&nbsp;</td>	
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>	
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>DrawingNote.FormattedText</td>	
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>	
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>	
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>	
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>	
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>	
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>	
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>	
+<td>&nbsp;</td>	
+<td>&nbsp;</td>	
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>	
+<td>&nbsp;</td>	
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>
+</tr>
+<tr>
+<td>DrawingViewLabel.FormattedText</td>	
+<td align="center"><font face="Wingdings 2">P<font size="+1"></font></td>	
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>	
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>	
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>	
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>	
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>	
+<td>&nbsp;</td>	
+<td>&nbsp;</td>	
+<td>&nbsp;</td>	
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>	
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>	
+<td>&nbsp;</td>
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>
+</tr>
+<tr><td>GeneralNote.FormattedText</td>	
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>	
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>	
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>	
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>	
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>	
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>	
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>	
+<td>&nbsp;</td>	
+<td>&nbsp;</td>	
+<td>&nbsp;</td>	
+<td>&nbsp;</td>	
+<td>&nbsp;</td>
+<td>&nbsp;</td>	
+<td>&nbsp;</td>	
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>
+</tr>
+<tr><td>GeneralNotes.AddByRectangle FormattedText arg</td>	
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>	
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>	
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>	
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>	
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>	
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>	
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>	
+<td>&nbsp;</td>	
+<td>&nbsp;</td>	
+<td>&nbsp;</td>	
+<td>&nbsp;</td>	
+<td>&nbsp;</td>	
+<td>&nbsp;</td>	
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>
+</tr>
+<tr><td>GeneralNotes.AddFitted FormattedText arg</td>	
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>	
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>	
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>	
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>	
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>	
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>	
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>	
+<td>&nbsp;</td>	
+<td>&nbsp;</td>	
+<td>&nbsp;</td>	
+<td>&nbsp;</td>	
+<td>&nbsp;</td>	
+<td>&nbsp;</td>
+<td>&nbsp;</td>	
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>
+</tr>
+<tr><td>HoleTableCell.FormattedText</td>	
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>	
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>	
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>	
+<td>&nbsp;</td>	
+<td>&nbsp;</td>	
+<td>&nbsp;</td>	
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>	
+<td>&nbsp;</td>	
+<td>&nbsp;</td>	
+<td>&nbsp;</td>	
+<td>&nbsp;</td>	
+<td>&nbsp;</td>	
+<td>&nbsp;</td>
+<td>&nbsp;</td>	
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>
+<td>&nbsp;</td>
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>
+</tr>
+<tr><td>HoleTag.FormattedText</td>	
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>	
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>	
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>	
+<td>&nbsp;</td>	
+<td>&nbsp;</td>	
+<td>&nbsp;</td>	
+<td>&nbsp;</td>	
+<td>&nbsp;</td>	
+<td>&nbsp;</td>	
+<td>&nbsp;</td>	
+<td>&nbsp;</td>	
+<td>&nbsp;</td>
+<td>&nbsp;</td>	
+<td>&nbsp;</td>	
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>
+</tr>
+<tr><td>LeaderNote.FormattedText</td>	
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>	
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>	
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>	
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>	
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>	
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>	
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>	
+<td>&nbsp;</td>	
+<td>&nbsp;</td>	
+<td>&nbsp;</td>	
+<td>&nbsp;</td>	
+<td>&nbsp;</td>	
+<td>&nbsp;</td>
+<td>&nbsp;</td>	
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>
+</tr>
+<tr><td>LeaderNotes.Add FormattedText arg</td>	
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>	
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>	
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>	
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>	
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>	
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>	
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>	
+<td>&nbsp;</td>	
+<td>&nbsp;</td>	
+<td>&nbsp;</td>	
+<td>&nbsp;</td>
+<td>&nbsp;</td>	
+<td>&nbsp;</td>	
+<td>&nbsp;</td>	
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>
+</tr>
+<tr><td>RevisionTableCell.FormattedText</td>	
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>	
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>	
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>	
+<td>&nbsp;</td>	
+<td>&nbsp;</td>	
+<td>&nbsp;</td>	
+<td>&nbsp;</td>	
+<td>&nbsp;</td>	
+<td>&nbsp;</td>
+<td>&nbsp;</td>	
+<td>&nbsp;</td>	
+<td>&nbsp;</td>	
+<td>&nbsp;</td>	
+<td>&nbsp;</td>	
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>
+</tr>
+<tr><td>TextBox.FormattedText</td>	
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>	
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>	
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>	
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>	
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>	
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>	
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>	
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>	
+<td>&nbsp;</td>	
+<td>&nbsp;</td>
+<td>&nbsp;</td>	
+<td>&nbsp;</td>	
+<td>&nbsp;</td>	
+<td>&nbsp;</td>	
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>
+</tr>
+<tr><td>TextBoxes.AddByRectangle FormattedText arg</td>	
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>	
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>	
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>	
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>	
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>	
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>	
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>	
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>	
+<td>&nbsp;</td>	
+<td>&nbsp;</td>	
+<td>&nbsp;</td>	
+<td>&nbsp;</td>	
+<td>&nbsp;</td>
+<td>&nbsp;</td>	
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>
+</tr>
+<tr><td>TextBoxes.AddFitted FormattedText arg</td>	
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>	
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>	
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>	
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>	
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>	
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>	
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>	
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>	
+<td>&nbsp;</td>	
+<td>&nbsp;</td>	
+<td>&nbsp;</td>	
+<td>&nbsp;</td>	
+<td>&nbsp;</td>	
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>
+</tr>
+<tr>
+<td>DrawingStandardStyle.SetViewLabelDefaults</td>
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>DrawingStandardStyle.GetViewLabelDefaults</td>
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>DrawingStandardStyle.GetViewAnnotationDefaults</td>
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>
+<td>&nbsp;</td>
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>
+</tr><tr><td>DrawingStandardStyle.SetViewAnnotationDefaults</td>
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>
+<td>&nbsp;</td>
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>
+</tr><tr><td>DrawingViewAnnotation.FormattedText</td>
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>
+<td>&nbsp;</td>
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>
+</tr><tr><td>DrawingViewAnnotation.SecondFormattedText</td>
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>
+<td>&nbsp;</td>
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td align="center"><font face="Wingdings 2"><font size="+1">P</font></td>
+</tr>
+</tbody></table>
+
+<br><br><br>
+<br><br>
+
+<a name="StyleOverride"></a>
+<p Class="Normal"><b><font size="+0">Style Override</font></b> &lt;StyleOverride&gt;  </p>
+<br>
+
+<p Class="Normal">The StyleOverride tag defines all text style information.  The various style
+options are defined within the tag using attributes.  These attributes are
+described below.</p>
+<br>
+
+<p Class="Normal"><b>Font</b> &#8211; Sets which font to use.  The input to this attribute is the name of the
+font.</p>
+
+<p Class="Normal"><b>FontSize</b> &#8211; Sets the size of the font.  The input to this attribute is the size
+in centimeters.</p>
+
+<p Class="Normal"><b>Bold</b> &#8211; Allows you to turn bolding on or off.  The input to this attribute is
+the String "True" or "False".</p>
+
+<p Class="Normal"><b>Italic</b> &#8211; Allows you to turn italics on or off.  The input to this attribute is
+the String "True" or "False".</p>
+
+<p Class="Normal"><b>Underline</b> &#8211; Allows you to turn underlining on or off.  The input to this
+attribute is the String "True" or "False".</p>
+
+<p Class="Normal"><b>Strikethrough</b> &#8211; Allows you to turn strikethrough on or off.  The input to this
+attribute is the String "True" or "False".</p>
+    <p Class="Normal">&nbsp;</p>
+
+<br>
+<p Class="Normal"><b>Example:</b>    </p>
+<br>
+
+<p Class="Normal">"&lt;StyleOverride Font='Arial'
+Bold='True'&gt;Notice&lt;/StyleOverride&gt;: All holes larger than
+0.500 &lt;StyleOverride Font='AIGDT'&gt;n&lt;/StyleOverride&gt; are to
+be checked."</p>
+<br>
+
+<p Class="Normal">This results in the following text:&nbsp;&nbsp;<font face="Arial"><b>Notice</b></font>: All holes larger than 0.500 <font face="AIGDT">n</font>are to be checked.</p>
+<br>
+
+<p Class="Normal">The first StyleOverride tag defines the font to be Arial and Bold.  This is
+applied to the text &#8220;Notice&#8221; since that is what is between the opening and
+closing tags for this style override.  The second StyleOverride just changes
+the font, but uses the font AIGDT which contains some common mechanical
+drafting symbols.  In this example it uses the character &#8220;n&#8221; which corresponds
+to the diameter symbol in this font.</p>
+<br><br><hr>
+
+<a name="Br"></a>
+<p Class="Normal"><b><font size="+0">Line Break</font></b> &lt;Br&gt;  </p>
+<br>
+
+<p Class="Normal">This is the equivalent of a carriage return.  Well-formed XML requires opening
+and closing tags, i.e. &lt;Br&gt;&lt;/Br&gt;.  In the case of the line break
+there will never be text between the tags (this is call an &#8220;empty tag&#8221;) so you
+can simplify the definition and combine the opening and closing tags into a
+single tag using &lt;Br/&gt;.</p>
+
+<br>
+<p Class="Normal"><b>Example:</b>    </p>
+<br>
+
+<p Class="Normal">"Line 1:&lt;Br/&gt;Line 2:&lt;Br/&gt;Line3:"&nbsp;&nbsp;&nbsp;results in the following text: </p>
+
+<p Class="Normal">Line1:    </p>
+
+<p Class="Normal">Line2:    </p>
+
+<p Class="Normal">Line3:  </p>
+<br><br><hr>
+
+<a name="DerivedProperty"></a>
+<p Class="Normal"><b><font size="+0">Derived Properties</font></b> &lt;DerivedProperty&gt;  </p>
+<br>
+
+<p Class="Normal">The DerivedProperty tag specifies that information derived from the document
+will be used in the text string.  Derived properties are different from
+standard document properties in that they are created "on the fly" from
+information associated with the document. Currently, if a derived property 
+is used it must be the only text input for the
+formatted string.  The StyleOverride tag can be used to control the style but
+no other text can be mixed with the derived property text. In order to define 
+which derived property is to be used the following attribute is used:</p>
+<br>
+
+<p Class="Normal"><b>DerivedID</b>   &#8211; The ID value that corresponds to a particular derived property.
+These ID&#8217;s are defined in the DerivedPropertyEnum enum list.  Derived
+properties that are associated with a model will be extracted from the model
+associated with the first view placed on the sheet.</p>
+<br>
+
+<ul>
+	<li>kDerivedModelFilename &#8211; Filename of the model.     
+	</li><li>kDerivedModelFilenameAndPath &#8211; Full path of the model.     
+	</li><li>kDerivedModelVersion &#8211; Internal version number of the model.     
+	</li><li>kDerivedDrawingFilename &#8211; Filename of the drawing.     
+	</li><li>kDerivedDrawingFilenameAndPath &#8211; Full path of the drawing.     
+	</li><li>kDerivedDrawingVersion &#8211; Internal version number of the drawing.     
+	</li><li>kDerivedNumberOfSheets &#8211; The number of sheets in the drawing.     
+	</li><li>kDerivedSheetNumber &#8211; The number of this sheet.     
+	</li><li>kDerivedSheetSize &#8211; The size of this sheet.     
+	</li><li>kDerivedSheetRevision &#8211; The revision number of this sheet.   
+</li>
+    <li>kDerivedSheetName – The name of this sheet.</li></ul>
+<br><br><hr>
+
+<a name="Property"></a>
+<p Class="Normal"><b><font size="+0">Document Properties</font></b> &lt;Property&gt;  </p>
+<br>
+
+<p Class="Normal">The Property tag specifies that the value of a document property is to be used
+in the text string.  Currently, if a document property is used it must be the
+only text input for the formatted string.  The StyleOverride tag can be used to
+control the style but no other text can be mixed with the property text. In order to 
+define which property is to be used the following attributes are used:</p>
+
+<p Class="Normal"><b>Document</b> &#8211; The Document attribute is optional and used to specify which
+document the property value is to be extracted from.  If this attribute is not
+specified, it uses the properties from the model document referenced by the
+first view placed on the sheet.  Valid values for this attribute are "model" or
+"drawing".  If "drawing" is used, the properties from the drawing document are
+used.</p>
+
+<p Class="Normal"><b>ModelFileName</b> &#8211; The ModelFileName attribute is optional and used to specify which model document the property value is to be extracted from.  If Document attribute is specified as “model”, this attribute can be used to specify the attached leaf part file name or any level of assembly file name, if this is not specified it uses the properties from the attached leaf part model document.  If the Document attribute is specified as “drawing”, this attribute is ignored.<br>Notice: This attribute is appliable to FormattedText argument for LeaderNotes.Add, LeaderNote.FormattedText and DimensionText.FormattedText only.</p>
+
+<p Class="Normal"><b>FormatID</b> &#8211; The FormatID attribute specifies which property set the property
+is within.  This is specified as a GUID in string form.  The "Document
+Properties" topic in the API Overview discusses how to obtain the format ID&#8217;s
+for specific property sets.</p>
+
+<p Class="Normal"><b>PropertyID</b> &#8211; The PropertyID is a numeric value, which uniquely identifies a
+property within the property set.</p>
+<br>
+
+<p Class="Normal">The "Document Properties" topic in the API Overview discusses how to obtain the
+property ID&#8217;s for specific properties.  The Id of a property is the same as the
+value of the associated enum.</p>
+
+<br>
+<p Class="Normal"><b>Example:</b>    </p>
+<br>
+
+<p Class="Normal">The example below will display the string associated with the description
+property of the design tracking properties associated with the document
+containing the model referenced by the first view on the sheet.  The backslash
+at the end of the tag definition denotes that the opening and closing tags have
+been combined.  This is useful in this case since a property tag does not
+require any additional information besides what&#8217;s provided by the attributes.</p>
+
+<p Class="Normal">&lt;Property Document="model" FormatID="{32853F0F-3444-11d1-9E93-0060B03C1CA6}" PropertyID="29" /&gt;</p>
+<br><br><hr>
+
+<a name="Prompt"></a>
+<p Class="Normal"><b><font size="+0">Prompted Text</font></b> &lt;Prompt&gt;    </p>
+<br>
+
+<p Class="Normal">The prompt tag defines text that will prompt the user for the associated
+string.  This type of text can only be placed within a sketch that is used for
+the definition of a title block, border, or sketched symbol.  Currently, if
+prompted text is used no other text or tags can be used within the formatted
+text string.  The StyleOverride tag can be used to control the style but no
+other text can be mixed with the prompted text.  The override will be applied
+to the text entered by the user.</p>
+
+<br>
+<p Class="Normal"><b>Examples:</b>    </p>
+<br>
+
+<p Class="Normal">The text between the opening and closing tags is used as the prompt string.
+The example below will create a string that will cause a dialog to be displayed
+with the prompt "Enter designers name:".</p>
+
+<p Class="Normal">"&lt;Prompt&gt;Enter designers name:&lt;/Prompt&gt;"   </p>
+<br>
+
+<p Class="Normal">The text below will result in the same prompted string but the resulting text will
+have the style override applied.</p>
+
+<p Class="Normal">"&lt;StyleOverride Font='Courier New' Italic='True'&gt;&lt;Prompt&gt;Enter
+designers name:&lt;/Prompt&gt;&lt;/StyleOverride&gt;"</p>
+<br><br><hr>
+
+<a name="Parameter"></a>
+<p Class="Normal"><b><font size="+0">Parameter</font></b> &lt;Parameter&gt;  </p>      
+<br>
+
+<p Class="Normal">The parameter tag defines that the value of a parameter is to be used in the
+text string.</p>
+<br>
+<p Class="Normal"><b>Example:</b>    </p>
+<br>
+
+<p Class="Normal">Here is a sample (this assumes that "C:\temp\test.ipt" is a document referenced
+by the drawing and contains a model parameter named "d0").  The
+ComponentIdentifier tag is not required if working within part sketches.</p>
+
+<p Class="Normal">"&lt;Parameter ComponentIdentifier='C:\temp\test.ipt' Name='d0' Precision='2' &gt;&lt;/Parameter&gt;"</p>
+<br><br><hr>
+
+<a name="PhysicalProperty"></a>
+<p Class="Normal"><b><font size="+0">Physical Properties From Model</font></b>  &lt;PhysicalProperty&gt;  </p>
+<br>
+
+<p Class="Normal">The PhysicalProperty tag specifies that physical properties information derived
+from the model will be used in the text string. In order to define which physical property is to be used the following
+attribute is used:</p>
+
+<p Class="Normal"><b>PhysicalPropertyID</b>  - The ID value that corresponds to a particular physical
+property.  These IDs are defined in the PhysicalPropertyEnum enum list.
+Physical properties that are associated with a model will be extracted from the
+model.</p>
+<br>
+
+<ul>
+	<li>kPhysicalModelMass - Mass of the model.    
+	</li><li>kPhysicalModelArea - Area of the model.    
+	</li><li>kPhysicalModelVolume - Volume of the model.    
+	</li><li>kPhysicalModelDensity - Density of the model.    
+</li></ul>
+<br>
+
+<p Class="Normal"><b>Example:</b>    </p>
+<br>
+
+<p Class="Normal">&lt;PhysicalProperty PhysicalPropertyID='72449' Precision='3'&gt;&lt;/PhysicalProperty&gt;</p>
+
+<p Class="Normal">where '72449' represents the integer enum value representing the Mass property.
+If Precision is not specified, it defaults to 0.</p>
+
+<br><br><hr>
+<a name="DimensionValue"></a>
+<p Class="Normal"><b><font size="+0">Dimension Placeholder</font></b> &lt;DimensionValue&gt;       </p>
+<br>
+
+<p Class="Normal">This tag defines where the dimension value will be placed. If not specified, the 
+tag will be placed at the beginning of the text.</p>
+
+
+<br><br><hr>
+<a name="DrawingViewName"></a>
+<p Class="Normal"><b><font size="+0">DrawingView Name</font></b> &lt;DrawingViewName/&gt; </p>
+<p Class="Normal"><b><font size="+0">DrawingView Scale</font></b> &lt;DrawingViewScale/&gt; </p>
+<p Class="Normal"><b><font size="+0">DrawingViewSheet Index/Name/Zone</font></b> &lt;DrawingViewSheetIndex/&gt; , &lt;DrawingViewSheetName/&gt; and &lt;DrawingViewSheetZone/&gt;</p>
+<p Class="Normal"><b><font size="+0">DrawingViewParentSheet Index/Name/Zone</font></b> &lt;DrawingViewParentSheetIndex/&gt;, &lt;DrawingViewParentSheetName/&gt; and &lt;DrawingViewParentSheetZone/&gt;</p>
+<br>
+
+<p Class="Normal">These tags define where the drawing view name, scale and sheet's index, name and zone will be placed, respectively. If not specified, the 
+tag will be placed at the default location.</p>
+
+<br><br><hr>
+<a name="Delimiter"></a>
+<p Class="Normal"><b><font size="+0">Delimiter</font></b> &lt;Delimiter&gt;       </p>
+<br>
+
+<p Class="Normal">This tag defines where the delimiter will be placed.</p>
+
+<br><br><hr>
+<a name="HoleProperty"></a>
+<p Class="Normal"><b><font size="+0">Hole Properties</font></b> &lt;HoleProperty&gt;       </p>
+<br>
+
+<p Class="Normal">The HoleProperty tag specifies that hole properties from the model will be used in the text string. In order 
+to define which hole property is to be used, the following attribute is used: </p>
+<br>
+
+<p Class="Normal"><b>HolePropertyID</b> - The ID value that corresponds to a particular hole property.</p>
+<p Class="Normal">These IDs are defined in the HolePropertyEnum list.</p>
+
+<br>
+<p Class="Normal"><b>Example:</b>    </p>
+<br>
+
+<p Class="Normal">&lt;HoleProperty HolePropertyID='77581' Precision='2'&gt;&lt;/HoleProperty&gt;</p>
+<br>
+
+<p Class="Normal">where '77581' represents the long enum value of the hole diameter
+property (kHoleDiameterHoleProperty). If Precision is not specified, it
+defaults to 2.</p>
+
+
+
+<br><br><hr>
+<a name="Stack"></a>
+<p Class="Normal"><b><font size="+0">Stacked Fraction, Superscript and Subscript</font></b> &lt;Stack&gt;       </p>
+<br>
+
+<p Class="Normal">The stack tag defines the stacking of sub-strings in the text string.   </p>
+<br>
+
+<ul>
+	<li>"/" character within the substring specifies horizontal stacking.   
+	</li><li>"#" character within the substring specifies diagonal stacking.   
+	</li><li>"^" character prefix within the substring specifies a subscript.   
+	</li><li>"^" character suffix within the substring specifies a superscript.   
+	</li><li>An optional &#8220;FractionalTextScale&#8221; value can be specified.   
+</li></ul>
+<br>
+
+<p Class="Normal"><b>Examples:</b></p>
+
+<p Class="Normal">&#8220;1&lt;Stack FractionalTextScale=&#8217;0.7&#8217;&gt;1/2&lt;/Stack&gt;&#8221;   will result in <img src="../images/OneAndOneHalfFraction.png"></p>
+
+<p Class="Normal">&#8220;1&lt;Stack FractionalTextScale=&#8217;0.7&#8217;&gt;1#2&lt;/Stack&gt;&#8221;    will result in <img src="../images/OneAndOneHalfFraction1.png"></p>
+
+<p Class="Normal">&#8220;1&lt;Stack&gt;1#2&lt;/Stack&gt;&#8221;    will result in <img src="../images/OneAndOneHalfFraction1.png"></p>
+
+<p Class="Normal">&#8220;H&lt;Stack&gt;^2&lt;/Stack&gt;SO&lt;Stack&gt;^4&lt;/Stack&gt;&#8221;    will result in H<sub>2</sub>SO<sub>4</sub></p>
+
+<p Class="Normal">&#8220;x&lt;Stack&gt;2^&lt;/Stack&gt; + y&lt;Stack&gt;2^&lt;/Stack&gt; = z&lt;Stack&gt;2^&lt;/Stack&gt;&#8221;    will result in x<sup>2</sup> + y<sup>2</sup> = z<sup>2</sup></p>
+	
+<br>
+<br><br><hr>
+<a name="ModelState"></a>
+<p Class="Normal"><b><font size="+0">Model State</font></b> &lt;ModelState&gt;       </p>
+<br>
+
+<p Class="Normal">The ModelState tag specifies model state name in the text string. </p>
+<br>
+<hr>
+<a name="Bullet"></a>
+<p Class="Normal"><b><font size="+0">Bullet</font></b> &lt;Bullet&gt;       </p>
+<p Class="Normal">The Bullet tag specifies the bullet list in the text string. </p>
+<p Class="Normal"><b>Examples:</b></p>
+"&lt;Bullet&gt;line one&lt;/Bullet&gt;&lt;Bullet&gt;line two&lt;/Bullet&gt;&lt;Bullet&gt;line three&lt;/Bullet&gt;" will result in: 
+<ul>
+	<li>line one   
+	</li>
+	<li>line two  
+	</li>
+	<li>line three   
+	</li> </ul>
+<br>
+<p Class="Normal"><b><font size="+0">Numbering</font></b> &lt;Numbering&gt;       </p>
+<p Class="Normal">The Numbering tag specifies the numbering list in the text string. Below Format attribute can be used to specify format type for numbering list:</p>
+<p Class="Normal"><b>Format</b> - This attribute specifies the format type. Valid format types include:1,a,A,i and I.</p>
+
+<p Class="Normal"><b>Examples:</b></p>
+"&lt;Numbering Format='1'&gt;line one&lt;/Numbering&gt;&lt;Numbering Format='1'&gt;line two&lt;/Numbering&gt;&lt;Numbering Format='1'&gt;line three&lt;/Numbering&gt;" will result in: 
+<ol>
+	<li>line one   
+	</li>
+	<li>line two  
+	</li>
+	<li>line three   
+	</li> </ol>
+
+	<br>
+<hr ="">
+<p Class="Normal">
+<strong>Note</strong> - remember when using XML that certain characters must be represented by codes. The following table gives examples. 
+<br><br>	
+</p><p Class="Normal">
+<table border="1" cellpadding="3">
+<tbody>
+<tr bgcolor="yellow">
+<td><strong>Code</strong></td>
+<td><strong>Result</strong></td>
+<td><strong>Description</strong></td></tr>
+<tr>
+<td>&amp;lt;</td>
+<td>&lt;</td>
+<td>Less than</td></tr>
+<tr>
+<td>&amp;gt;</td>
+<td>&gt;</td>
+<td>Greater than</td></tr>
+<tr>
+<td>&amp;amp;</td>
+<td>&amp;</td>
+<td>Ampersand</td></tr>
+<tr>
+<td>&amp;apos;</td>
+<td>'</td>
+<td>Apostrophe</td></tr>
+<tr>
+<td>&amp;quot;</td>
+<td>"</td>
+<td>Quotation mark</td></tr></tbody></table></p>
+<br />
+<br />
+<div id="CopyrightNotice" style="display:none;">
+  <hr />
+  <table width="100%" style="font-size:15">
+	<tr>
+	  <td align="left">
+		&copy; Copyright 2025 Autodesk, Inc.
+	  </td>
+	  <td align="right">
+		<a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(FormattedTextTags_Overview)">Comment on this page.</a>
+	  </td>
+	</tr>
+  </table>
+</div>
+</body>
+</html>

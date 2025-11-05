@@ -1,0 +1,257 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU">
+    <link rel="canonical" href="http://help.autodesk.com/cloudhelp/2026/ENU/Inventor-API/files/Apprentice_Overview.htm">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="27/4/2016">
+    <meta name="user-comments" content="enable">
+    <meta name="description" content="">
+    <meta name="topicid" content="GUID-F2A12822-98DE-4638-B1C7-6BEEF821D50A">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>Apprentice Server</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"/>
+    <script type="text/javascript" src="/view/clientframework/client.js"><!--filler--></script>
+	<script>
+	  // This turns on the display of the copyright notice which is not visible by default.
+	  // Because the head is removed when used in the web help, this function will only exists
+	  // when the chm help is being created.
+	  window.onload = function() {
+		copyrightElement = document.getElementById('CopyrightNotice');
+		copyrightElement.style.display = 'block';
+	  };
+	</script>
+</head>
+<body>
+<link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+
+<h1 class="dxH1">Apprentice Server</h1>
+
+<h2>Using Apprentice Server</h2>
+
+<p Class="Normal">The simple way to think of Apprentice is that it's a smaller version
+of Autodesk Inventor that does not have a user interface. Without a
+user interface the only way to access its functionality is by using its
+API. Apprentice is actually an ActiveX component. It runs within the
+process space of the client that's using it. For example, if you write
+a Visual Basic program that displays information about the contents of
+an assembly, Apprentice will be running within your VB program's
+process space. Apprentice can be very efficient for certain
+applications because it's smaller than the complete Autodesk Inventor
+application and because it runs in the same process as your application.</p>
+
+<b><p style="color:red">Note: Apprentice is not supported within Inventor itself. Do not run it in an Inventor addin nor in a VBA macro.</p></b>
+
+<p Class="Normal">The API exposed by Apprentice is a subset of the complete Autodesk
+Inventor API. Apprentice provides access to file references, assembly
+structure, B-Rep, geometry, render styles, and document
+properties. Access to the assembly structure, B-Rep, geometry and render 
+    styles is read-only. Access to file references and
+file properties is read and write. In past releases of the product,
+a type library specifically for Apprentice was delivered with both
+Autodesk Inventor and Apprentice. This type library contained the
+limited set of objects supported only by Apprentice. Now, however,
+since the Autodesk Inventor type library contains all of the Apprentice
+functionality, this should be used in an Apprentice context. A version
+of the old Apprentice type library is still supplied for legacy
+reasons, but this will likely be discontinued in future releases.
+</p>
+
+<p Class="Normal">Some common types of applications that will make use of Apprentice
+are larger standalone applications that want to be able to use Autodesk
+Inventor files. For example, an existing NC application could use
+Apprentice to directly read in an Autodesk Inventor part or assembly.
+If it were to use Autodesk Inventor for this it would need to start
+Autodesk Inventor first, use Autodesk Inventor's API to open the
+desired document, and then use Autodesk Inventor's API to query for
+necessary information. There's a lot of unnecessary overhead in having
+to start Autodesk Inventor and a significant performance penalty caused
+by all of the API calls going between two processes. These problems are
+solved with Apprentice since it is very lightweight and runs in the
+process space of the application.</p>
+
+<p Class="Normal">Another feature of Apprentice is the cost. Apprentice is freely
+available and is distributed as part of Design Tracking, which is
+available for download from the Autodesk website. Much of Design
+Tracking actually uses Apprentice.</p>
+
+<p Class="Normal">A simpler example of the use of Apprentice is a small application
+that updates the cost property of an Autodesk Inventor part document
+based on the current cost that is stored in a business database. In
+this case Apprentice is being used to write the file properties of
+a part. The utility can quickly go through a set of Autodesk Inventor
+part documents and set the cost property with a value it obtained from
+a database.</p>
+
+<p Class="Normal">Most of the features that Apprentice supports are identical to those
+in Autodesk Inventor. For example, to traverse an assembly you would
+perform the traversal the same way in Apprentice as you would in
+Autodesk Inventor. The basic traversal function can be written to be
+used for both cases. Because most of the API supported by Apprentice is
+the same as Autodesk Inventor's, this section on Apprentice will focus
+on the differences between the two.</p>
+
+<p Class="Normal">The primary differences between Autodesk Inventor and Apprentice are
+in the Application and Document objects. The objects that represent the
+Application and Document are completely different in Autodesk Inventor
+and Apprentice. The Apprentice Application object is called
+ApprenticeServerComponent. It supports a much more limited API than the
+Inventor Application object. In Apprentice there isn't a Documents
+collection.</p>
+When ApprenticeServer.Open opens a document, a reference to that
+document is held by the ApprenticeServer component in order to be
+returned from the ApprenticeServer.Document. This &#8216;active top/last
+opened&#8217; document is also considered the document used as the root of
+the save for the FileSaveAs object. A document is closed when either
+ApprenticeServerDocument.Close is called, or the document&#8217;s reference
+count fully drops to zero. Keep in mind that the reference held by the
+ApprenticeServer (if it was the last document to be opened) also counts
+as a reference. This ApprenticeServer reference will be released either
+when a different document is opened, or ApprenticeServer.Close is
+called, or when the ApprenticeServer&#8217;s reference count fully drops to
+zero and it is destroyed.
+<p Class="Normal">The ApprenticeServerComponent supports a few methods and properties
+that are unique to Apprentice. These are the Open and Close methods,
+which are used to open and close documents within Apprentice;
+DisplayAffinity, which is used to optimize the behavior of Apprentice
+for viewer applications; MinimizeFileSize, which compresses files by
+removing versions, and FileSaveAs, which we'll discuss in more detail
+later in this section.</p>
+
+<p Class="Normal">The document objects used within Apprentice are different from the
+document objects used in Autodesk Inventor. In Inventor there are the
+PartDocument, AssemblyDocument, DrawingDocument, and
+PresentationDocument objects. In Apprentice, the
+ApprenticeServerDocument object represents the part, assembly, and
+presentation documents and the ApprenticeServerDrawingDocument
+represents the drawing document. The code below illustrates using
+Apprentice to open a document.</p>
+<br>
+<table Class="Code">
+<tbody><tr valign="center">
+	<td Class="Code">
+<pre>Private Sub TestApprentice()<br>    ' Create a new instance of Apprentice.<br>    Dim oApprentice As New ApprenticeServerComponent<br>    <br>    ' Open a document.<br>    Dim oDoc As ApprenticeServerDocument<br>    Set oDoc = oApprentice.Open("C:\Temp\Assembly1.iam")    <br>End Sub<br></pre>
+</td></tr>  </tbody></table>
+<br>
+
+
+<p Class="Normal">The "New" keyword is used in the declaration of the variable for the
+ApprenticeServerComponent. This creates a new instance of an object of
+ApprenticeServerComponent type. Apprentice isn't actually loaded at
+this point, but is loaded the first time the variable is used--in this
+case, when the Open method of Apprentice is called.</p>
+
+<p Class="Normal">Even though there are differences between the application and
+document objects of Autodesk Inventor and Apprentice, once you get past
+these top-level objects, the objects below them in the hierarchy are
+the same. For example, a function that extracts information from the
+B-Rep or from an assembly can be used with Autodesk Inventor or
+Apprentice without any changes. The function below will display an
+assembly tree given a ComponentOccurrences object regardless of whether
+it is used in Apprentice or Autodesk Inventor.</p>
+<br>
+<table Class="Code">
+<tbody><tr valign="center">
+	<td Class="Code">
+<pre>Private Sub GetComponents(InCollection As ComponentOccurrences, _<br>Level As Long)<br>    ' Iterate through the components in the current collection.<br>    Dim oCompOccurrence As ComponentOccurrence<br>    For Each oCompOccurrence In InCollection<br>        ' Display information about the current component.<br>        Debug.Print Space(Level * 3) &amp; oCompOccurrence.Name<br>    <br>        ' Recursively call this function for the suboccurrences <br>        ' of the current component.<br>        Call GetComponents(oCompOccurrence.SubOccurrences, Level + 1)<br>    Next<br>End Sub<br></pre>
+</td></tr>  </tbody></table>
+<br>
+
+<p Class="Normal">Here's a modified version of the earlier sample that connects to
+Apprentice and opens a document. It's been updated to check for the
+document type and then call the GetComponents function above.</p>
+<br>
+<table Class="Code">
+<tbody><tr valign="center">
+	<td Class="Code">
+<pre>Private Sub TestApprentice()<br>    ' Create a new instance of Apprentice.<br>    Dim oApprentice As New ApprenticeServerComponent<br>    <br>    ' Open a document.<br>    Dim oDoc As ApprenticeServerDocument<br>    Set oDoc = oApprentice.Open("C:\Temp\Assembly1.iam")<br>    <br>    ' Display this document's name.<br>    Debug.Print oDoc.DisplayName<br>    <br>    ' Check to make sure the document is an assembly.<br>    If oDoc.DocumentType = kAssemblyDocument Then<br>        ' Show the occurrence tree.<br>        Call GetComponents(oDoc.ComponentDefinition.Occurrences, 1)<br>    End If<br>End Sub<br></pre>
+</td></tr>  </tbody></table>
+<br>
+
+<p Class="Normal">Because Apprentice provides read-only access to some of the
+information in an Autodesk Inventor document, some of the properties on
+objects may fail when you attempt to set them. For example, the Name
+property of the ComponentOccurrence object behaves as read-only in
+Apprentice, whereas in Autodesk Inventor it is read-write. The B-Rep
+portion of the API behaves identically in Autodesk Inventor and
+Apprentice since it provides query-only access in both cases.</p>
+
+<p Class="Normal">There are a few things that can only be done using Apprentice. These
+are all things that cause problems when the file is open in Inventor
+but can be easily accomplished when accessed through Apprentice. One of
+the most important of these is the ability to change file references.
+This is a critical part of Apprentice that Design Assistant uses. For
+example, let's say you have an assembly that contains Part1 and Part2.
+Part1 needs to be revised so you make a copy of the file, give it a new
+name, make the changes to the part, and save it. When you open the
+assembly it's still referencing the old file. The file reference
+portion of the API allows you to change the reference within the
+assembly so that it's pointing to the file that represents the revised
+version of Part1.</p>
+
+<p Class="Normal">The FileSaveAs object, which is only available in Apprentice,
+provides functionality that lets you save components of an assembly to
+different filenames and update the assembly's references to point to
+the new files.</p>
+
+<p Class="Normal">Using the FileSaveAs object you can save the document you currently
+have open. If you make any changes to the document you must use the
+FileSaveAs object to save those changes, otherwise it's equivalent to
+exiting the file without saving. The sample below opens an assembly,
+looks for a reference to a specific file, changes the reference to
+point to another file, and then saves the change.</p>
+<br>
+<table Class="Code">
+<tbody><tr valign="center">
+	<td Class="Code">
+<pre>Private Sub ChangeReferenceSample()<br>    Dim oApprentice As New ApprenticeServerComponent<br>    <br>    ' Open a document.<br>    Dim oDoc As ApprenticeServerDocument<br>    Set oDoc = oApprentice.Open("C:\Temp\Assembly1.iam")<br>    <br>    ' Iterate through the references looking for a<br>    ' reference to a specific file.<br>    Dim oRefFileDesc As ReferencedFileDescriptor<br>    For Each oRefFileDesc In oDoc.ReferencedFileDescriptors<br>        If oRefFileDesc.FullFileName = "C:\Temp\OldPart.ipt" Then<br>            ' Replace the reference.<br>            Call oRefFileDesc.PutLogicalFileNameUsingFull( _<br>                                             "C:\Temp\NewPart.ipt")<br>            Exit For<br>        End If<br>    Next<br>    <br>    ' Set a reference to the FileSaveAs object.<br>    Dim oFileSaveAs As FileSaveAs<br>    Set oFileSaveAs = oApprentice.FileSaveAs<br>    <br>    ' Save the assembly.<br>    Call oFileSaveAs.AddFileToSave(oDoc, oDoc.FullFileName)<br>    Call oFileSaveAs.ExecuteSave<br>End Sub<br></pre>
+</td></tr>  </tbody></table>
+<br>
+<p Class="Normal">If you're using Apprentice to access the file properties, and
+that's the only edit you've made to the document, you don't need to use
+the FileSaveAs object to save the file, but can use the FlushToFile
+method of the PropertySets object to save the property changes. This is
+much more efficient because it only writes the properties to the
+document and doesn't write the entire document.</p>
+
+<p Class="Normal"><span class="bold">Please note:</span> Saving of files in Apprentice
+is not allowed on files that require migration (any file that has not
+already been migrated to the same version of the Apprentice server).
+The current document's NeedsMigrating property must return False before
+the <span class="code">FileSaveAs</span> object can successfully be returned.</p>
+
+<h3>How to get Apprentice Server installed on machine?</h3>
+<p Class="Normal"> To access Apprentice API you should have Apprentice Server installed on your machine, before Inventor 2026 the Apprentice Server is installed along with Inventor build, but since Inventor 2026 build the Apprentice Server is not accessible from Inventor build, you should install Apprentice Server standalone installer on your machine:
+
+<p>
+To install Apprentice Server standlone installer(this is supported since Inventor Apprentice Server 2022), the search box on top of <a href="https://knowledge.autodesk.com/support/inventor/downloads" target="_blank">Autodesk website</a> can be used to search download link for Inventor Apprentice Server standlone installer since <a href="https://www.autodesk.com/support/technical/article/caas/tsarticles/ts/1mEGM3fEESw2c0dNlXzkAU.html" target="_blank">Inventor Apprentice Server 2022</a>.</p>
+</ol>
+    <p>
+        &nbsp;</p>
+</p>
+
+<br />
+<br />
+<div id="CopyrightNotice" style="display:none;">
+  <hr />
+  <table width="100%" style="font-size:15">
+	<tr>
+	  <td align="left">
+		&copy; Copyright 2025 Autodesk, Inc.
+	  </td>
+	  <td align="right">
+		<a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(Apprentice_Overview)">Comment on this page.</a>
+	  </td>
+	</tr>
+  </table>
+</div>
+
+</body>
+</html>

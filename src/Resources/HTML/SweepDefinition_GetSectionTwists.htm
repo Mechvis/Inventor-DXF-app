@@ -1,0 +1,92 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/SweepDefinition_GetSectionTwists.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="SweepDefinition_GetSectionTwists">
+    <meta name="description" content="SweepDefinition.GetSectionTwists Method">
+    <meta name="topicid" content="SweepDefinition_GetSectionTwists">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>SweepDefinition.GetSectionTwists Method</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">SweepDefinition.GetSectionTwists Method</h1>
+
+          Parent Object: <a href="SweepDefinition.htm">SweepDefinition</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Method that gets the twisted sweep sections and the twist conditions at these sections. This method is applicable when the SweepType is kPathAndSectionTwistSweepType.</p>
+    <h2 class="api">
+            Remarks
+          </h2>This method returns the sweep path points at which section twists have been specified in the SectionTwistPoints object collection and the corresponding twists for these sweep sections in the SectionTwistVectors object collection. If no twist conditions have been specified for any of the sweep sections, then both the arguments will return Nothing.<h2 class="api">
+          Syntax
+        </h2>
+        
+            SweepDefinition.<b>GetSectionTwists</b>( <b><i>SectionTwistPoints</i></b> As <a href="ObjectCollection.htm">ObjectCollection</a>, <b><i>SectionTwistVectors</i></b> As <a href="ObjectCollection.htm">ObjectCollection</a> )
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">SectionTwistPoints</td>
+        <td class="api-list"><a href="ObjectCollection.htm">ObjectCollection</a></td>
+        <td class="api-list">Output ObjectCollection that contains the points along the sweep path at which the sweep twists have been specified. The sweep path points define the positions of the sweep cross-sections at which the twists have been specified. Since the sweep feature is created by sweeping a profile cross-section along a sweep path, the twist of the sweep can theoretically be controlled at all points along the sweep path. But for practical purposes, the creation of a twisted sweep feature is limited to sweep features that are swept along a spline path and the twist can only be specified for cross-sections at fit points of the spline path. Since the sweep feature can only be twisted at fit points of the spline that defines the sweep path, the objects returned in the collection will correspond to those fit points at which the twists have been specified. The objects returned in the collection will be either SketchPoint objects that correspond to one of the fit points of the sweep path if it is a 2D spline or SketchPoint3D objects that correspond to one of the fit points of the sweep path if it is a 3D spline. Since this argument together with the SectionTwistVectors argument defines the twist conditions at the cross-sections of the sweep at which the twists have been specified, the order of the sweep path points in the collection returned by this argument will correspond to the order of the twist unit-vectors in the collection returned by the SectionTwistVectors argument. Therefore, if a particular item number in the collection returned by this argument corresponds to a particular sweep path point at which the sweep section has been twisted, the same item number in the collection returned by the SectionTwistVectors argument will correspond to the twist vector for that sweep section. For example, if a twist condition has been applied for the sweep cross-section at the first fit point of the sweep path and if the first item in the collection returned by this argument is the first fit point of the sweep path, then the first item in the collection returned by the SectionTwistVectors argument will be the twist vector for the cross-section at the first fit point of the sweep path. If no twist conditions have been specified for any of the sweep sections, then this argument will return Nothing.</td>
+      </tr>
+      <tr>
+        <td class="api-list">SectionTwistVectors</td>
+        <td class="api-list"><a href="ObjectCollection.htm">ObjectCollection</a></td>
+        <td class="api-list">Output ObjectCollection object that contains the unit-vectors that define the twists for the sweep sections. The sweep twist vectors define the twists for the sweep cross-sections returned in the SectionTwistPoints argument. The twist vectors are unit-vectors specified in the model space coordinate system. Also, each vector lies on the plane of the sweep cross-section for which it defines the twist. The objects returned in the collection will be UnitVector objects that specify the twist vector directions for the sweep sections. Since this argument together with the SectionTwistPoints argument defines the twist conditions at the cross-sections of the sweep at which the twists have been specified, the order of the twist unit-vectors in the collection returned by this argument will correspond to the order of the sweep path points in the collection returned by the SectionTwistPoints argument. Therefore, if a particular item number in the collection returned by the SectionTwistPoints argument corresponds to a particular sweep path point at which the sweep section has been twisted, the same item number in the collection returned by this argument will correspond to the twist vector for that sweep section. For example, if a twist condition has been applied for the sweep cross-section at the first fit point of the sweep path and if the first item in the collection returned by the SectionTwistPoints argument is the first fit point of the sweep path, then the first item in the collection returned by this argument will be the twist vector for the cross-section at the first fit point of the sweep path.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2015<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(SweepDefinition.GetSectionTwists%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,135 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/FaceCollection.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="FaceCollection">
+    <meta name="description" content="FaceCollection Object">
+    <meta name="topicid" content="GUID-FaceCollection">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>FaceCollection Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">FaceCollection Object
+			</h1>
+              Derived from: <a href="ObjectCollection.htm">ObjectCollection</a> Object
+            <br><h2 class="api">
+          Description
+        </h2>The FaceCollection object is a transient object created by the CreateFaceCollection method of the TransientObjects object. Typically used when creating a ShellFeature, FaceDraftFeature, etc.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FaceCollection_Add.htm">Add</a></td>
+        <td class="api-list">Adds an object to the generic collection.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FaceCollection_Clear.htm">Clear</a></td>
+        <td class="api-list">Removes all objects from the generic collection.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FaceCollection_Remove.htm">Remove</a></td>
+        <td class="api-list">Method that removes the specified object from the generic collection.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FaceCollection_RemoveByObject.htm">RemoveByObject</a></td>
+        <td class="api-list">Method that removes the specified object from the generic object collection.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FaceCollection_CollectionType.htm">CollectionType</a></td>
+        <td class="api-list">Property returning a constant indicating the Face Collection type.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FaceCollection_Count.htm">Count</a></td>
+        <td class="api-list">Property that returns the number of items in this collection.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FaceCollection_Item.htm">Item</a></td>
+        <td class="api-list">Allows integer-indexed access to items in the collection.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FaceCollection_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="AssemblyJointDefinition_OriginOneReferencedFaces.htm">AssemblyJointDefinition.OriginOneReferencedFaces</a>, <a href="AssemblyJointDefinition_OriginTwoReferencedFaces.htm">AssemblyJointDefinition.OriginTwoReferencedFaces</a>, <a href="Face_TangentiallyConnectedFaces.htm">Face.TangentiallyConnectedFaces</a>, <a href="FaceDraftDefinition_InputFaces.htm">FaceDraftDefinition.InputFaces</a>, <a href="FaceProxy_TangentiallyConnectedFaces.htm">FaceProxy.TangentiallyConnectedFaces</a>, <a href="FilletConstantRadiusFaceSet_FacesOne.htm">FilletConstantRadiusFaceSet.FacesOne</a>, <a href="FilletConstantRadiusFaceSet_FacesTwo.htm">FilletConstantRadiusFaceSet.FacesTwo</a>, <a href="FilletFullRoundSet_CenterFaces.htm">FilletFullRoundSet.CenterFaces</a>, <a href="FilletFullRoundSet_SideFacesOne.htm">FilletFullRoundSet.SideFacesOne</a>, <a href="FilletFullRoundSet_SideFacesTwo.htm">FilletFullRoundSet.SideFacesTwo</a>, <a href="ModelSurfaceTextureSymbolDefinition_Faces.htm">ModelSurfaceTextureSymbolDefinition.Faces</a>, <a href="ModelToleranceFeature_AllFaces.htm">ModelToleranceFeature.AllFaces</a>, <a href="ModelToleranceFeatureDefinition_Faces.htm">ModelToleranceFeatureDefinition.Faces</a>, <a href="ModelToleranceFeatureProxy_AllFaces.htm">ModelToleranceFeatureProxy.AllFaces</a>, <a href="MoveFaceDefinition_Faces.htm">MoveFaceDefinition.Faces</a>, <a href="ReplaceFaceDefinition_ExistingFaces.htm">ReplaceFaceDefinition.ExistingFaces</a>, <a href="ShellDefinition_InputFaces.htm">ShellDefinition.InputFaces</a>, <a href="ShellThicknessFaceSet_Faces.htm">ShellThicknessFaceSet.Faces</a>, <a href="SilhouetteCurve_ExcludedFaces.htm">SilhouetteCurve.ExcludedFaces</a>, <a href="SilhouetteCurveProxy_ExcludedFaces.htm">SilhouetteCurveProxy.ExcludedFaces</a>, <a href="SketchDrivenPatternDefinition_ReferenceFaces.htm">SketchDrivenPatternDefinition.ReferenceFaces</a>, <a href="TransientObjects_CreateFaceCollection.htm">TransientObjects.CreateFaceCollection</a>, <a href="UnwrapDefinition_InputFaces.htm">UnwrapDefinition.InputFaces</a><h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BoundaryPatchFeatures_Add_Sample.htm">Delete Face, Boundary Patch and Stitch features</a></td>
+        <td class="api-list">Demonstrates creating Face, Boundary Patch and Stitch features.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FinishFeatureCreation_Sample.htm">Finish Feature Creation</a></td>
+        <td class="api-list">This sample demonstrates how to create a finish feature.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 9<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(FaceCollection%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

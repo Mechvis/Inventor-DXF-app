@@ -1,0 +1,89 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/BoundaryPatchLoop_GetBoundaryCondition.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="BoundaryPatchLoop_GetBoundaryCondition">
+    <meta name="description" content="BoundaryPatchLoop.GetBoundaryCondition Method">
+    <meta name="topicid" content="BoundaryPatchLoop_GetBoundaryCondition">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>BoundaryPatchLoop.GetBoundaryCondition Method</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">BoundaryPatchLoop.GetBoundaryCondition Method</h1>
+
+          Parent Object: <a href="BoundaryPatchLoop.htm">BoundaryPatchLoop</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Method that gets the boundary condition for the specified boundary path loop entity.</p>
+    <h2 class="api">
+            Remarks
+          </h2>The method returns a constant that indicates the boundary condition that has been applied. The constant is one of the values in BoundaryPatchConditionEnum: kFreeBoundaryPatchCondition or kTangentBoundaryPatchCondition.<h2 class="api">
+          Syntax
+        </h2>
+        
+            BoundaryPatchLoop.<b>GetBoundaryCondition</b>( <b><i>BoundaryPathEntity</i></b> As Object ) As <a href="BoundaryPatchConditionEnum.htm">BoundaryPatchConditionEnum</a>
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">BoundaryPathEntity</td>
+        <td class="api-list">Object</td>
+        <td class="api-list">Input object that specifies the boundary path loop entity for which the boundary condition needs to be returned. If a boundary condition is not applicable to the boundary path entity, then this method will fail. The valid objects for the boundary path entity depend on the type of the boundary path object, i.e. the object returned by the BoundaryPath property. The following list shows the valid BoundaryPathEntity objects for the corresponding BoundaryPath object: * If BoundaryPath object is Profile3D, then the BoundaryPathEntity object can be one of the sketch 3D entities that constitute the Profile3D. * If BoundaryPath object is Path, then the BoundaryPathEntity object can be one of the sketch 2D or 3D entities that constitute the Path. * If BoundaryPath object is EdgeLoop, then the BoundaryPathEntity object can be one of the edges that constitute the EdgeLoop. * If BoundaryPath object is EdgeCollection, then the BoundaryPathEntity object can be one of the edges that belong to the EdgeCollection. * If BoundaryPath object is an ObjectCollection that contains SketchEntity, SketchEntity3D or Edge objects, then the BoundaryPathEntity object can be one of the entities that belong to the ObjectCollection.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Notes
+          </h2>If the boundary path object, i.e. the object returned by the BoundaryPath property is a Profile then the boundary condition does not apply. If the Profile object or one of the sketch 2D entities that constitute the profile is specified for the BoundaryPathEntity argument then, this method will fail.<h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2008<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(BoundaryPatchLoop.GetBoundaryCondition%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

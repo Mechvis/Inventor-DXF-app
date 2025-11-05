@@ -1,0 +1,311 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/TranslatorAddIn.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="TranslatorAddIn">
+    <meta name="description" content="TranslatorAddIn Object">
+    <meta name="topicid" content="GUID-TranslatorAddIn">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>TranslatorAddIn Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">TranslatorAddIn Object
+			</h1>
+              Derived from: <a href="ApplicationAddIn.htm">ApplicationAddIn</a> Object
+            <br><h2 class="api">
+          Description
+        </h2>Object that represents an Translator AddIn inside Autodesk Inventor.<h2 class="api">
+		    Remarks
+		  </h2>See the <a href="TranslatorSettings.htm">Translator Options</a> page for details about the supported options for each of the translators. The samples below are also very useful in understanding the steps required to use a translator add-in.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TranslatorAddIn_Activate.htm">Activate</a></td>
+        <td class="api-list">Creates and initializes the AddIn. No effect if AddIn already active.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TranslatorAddIn_Deactivate.htm">Deactivate</a></td>
+        <td class="api-list">Invokes the shutdown sequence on the AddIn. No effect if AddIn inactive.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TranslatorAddIn_GetThumbnail.htm">GetThumbnail</a></td>
+        <td class="api-list">Obtains the thumbnail, if any, for the given data-source. Could be a metafile handle (long) or the interface to a StdPicture object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TranslatorAddIn_Open.htm">Open</a></td>
+        <td class="api-list">Open the data specified by the data-source.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TranslatorAddIn_SaveCopyAs.htm">SaveCopyAs</a></td>
+        <td class="api-list">Save the document to the specified data-source.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TranslatorAddIn_ShowOpenOptions.htm">ShowOpenOptions</a></td>
+        <td class="api-list">Show the open options for the specified data-source. This method is only called if True was returned from HasOpenOptions.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TranslatorAddIn_ShowSaveCopyAsOptions.htm">ShowSaveCopyAsOptions</a></td>
+        <td class="api-list">Show the save options for the specified data-source. This method is only called if True was returned from HasSaveCopyAsOptions.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TranslatorAddIn_Activated.htm">Activated</a></td>
+        <td class="api-list">Gets a Boolean flag indicating whether this AddIn is currently active in the session.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TranslatorAddIn_AddInType.htm">AddInType</a></td>
+        <td class="api-list">Gets the constant that indicates the type of this AddIn.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TranslatorAddIn_Application.htm">Application</a></td>
+        <td class="api-list">Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TranslatorAddIn_Automation.htm">Automation</a></td>
+        <td class="api-list">Property that returns the Add-in's automation interface (if any). Fails if the Add-in is currently inactive.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TranslatorAddIn_ClassIdString.htm">ClassIdString</a></td>
+        <td class="api-list">Gets the CLSID of the AddIn as the string used in the class moniker.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TranslatorAddIn_ClientId.htm">ClientId</a></td>
+        <td class="api-list">Property that returns a GUID in string format that uniquely identifies this Add-in. This GUID is used as an identifier when creating Add-in specific objects such as user interface elements, client features, etc.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TranslatorAddIn_DataVersion.htm">DataVersion</a></td>
+        <td class="api-list">Gets and sets the current data version of the AddIn.&nbsp;This value corresponds to the 'Data Version' registry entry in the AddIn's registry hive.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TranslatorAddIn_Description.htm">Description</a></td>
+        <td class="api-list">Gets the description of the AddIn.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TranslatorAddIn_DisplayName.htm">DisplayName</a></td>
+        <td class="api-list">Gets the displayable name of the AddIn.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TranslatorAddIn_FileExtensions.htm">FileExtensions</a></td>
+        <td class="api-list">Property that gets the semicolon-separated list of the native file extensions that this translator reads from and/or writes to.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TranslatorAddIn_FilterText.htm">FilterText</a></td>
+        <td class="api-list">Property that gets the filter text string to be displayed in the file dialog for this translator.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TranslatorAddIn_HasOpenOptions.htm">HasOpenOptions</a></td>
+        <td class="api-list">Gets whether the translator has options available for opening the specified data-source.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TranslatorAddIn_HasSaveCopyAsOptions.htm">HasSaveCopyAsOptions</a></td>
+        <td class="api-list">Gets whether the translator has options available for saving the specified data-source.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TranslatorAddIn_Hidden.htm">Hidden</a></td>
+        <td class="api-list">Gets and sets whether the AddIn is hidden or not.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TranslatorAddIn_LicenseStatus.htm">LicenseStatus</a></td>
+        <td class="api-list">Gets the license status of the AddIn.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TranslatorAddIn_LoadAutomatically.htm">LoadAutomatically</a></td>
+        <td class="api-list">Gets/Sets whether the add-in loads automatically based on the load behavior specified for the add-in.&nbsp;If set to False, the add-in needs to be manually loaded by the user.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TranslatorAddIn_LoadBehavior.htm">LoadBehavior</a></td>
+        <td class="api-list">Gets a constant indicating the load behavior (load time) of the add-in. This applies only if the LoadAutomatically property is set to True.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TranslatorAddIn_Location.htm">Location</a></td>
+        <td class="api-list">Property that returns the full file name of the dll associated with this Add-in.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TranslatorAddIn_Parent.htm">Parent</a></td>
+        <td class="api-list">Property that returns the parent Application object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TranslatorAddIn_ProgId.htm">ProgId</a></td>
+        <td class="api-list">Gets the ProgID of the AddIn.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TranslatorAddIn_ShortDisplayName.htm">ShortDisplayName</a></td>
+        <td class="api-list">Property that returns the short display name of the Add-in. Used in places to succinctly identify the AddIn inside Inventor's UI.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TranslatorAddIn_SupportsImportInto.htm">SupportsImportInto</a></td>
+        <td class="api-list">Property that returns semicolon-separated Inventor file types that this translator supports importing into. Example: ".iam;.ipt."</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TranslatorAddIn_SupportsOpen.htm">SupportsOpen</a></td>
+        <td class="api-list">Property that gets whether this translator supports opening files.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TranslatorAddIn_SupportsOpenInto.htm">SupportsOpenInto</a></td>
+        <td class="api-list">Property that returns semicolon-separated Inventor file types that this translator supports opening into. Example: ".iam;.ipt."</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TranslatorAddIn_SupportsSaveCopyAs.htm">SupportsSaveCopyAs</a></td>
+        <td class="api-list">Property that gets whether this translator supports saving data to a file.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TranslatorAddIn_SupportsSaveCopyAsFrom.htm">SupportsSaveCopyAsFrom</a></td>
+        <td class="api-list">Property that returns semicolon-separated Inventor file types that this translator supports saving from. Example: ".iam;.ipt."</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TranslatorAddIn_TranslatorAvailable.htm">TranslatorAvailable</a></td>
+        <td class="api-list">Gets/Sets a Boolean flag indicating whether this Translator is available to Inventor, regardless of whether it is loaded or not.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TranslatorAddIn_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TranslatorAddIn_UserInterfaceVersion.htm">UserInterfaceVersion</a></td>
+        <td class="api-list">Property that returns the version of the user interface of the add-in. Incrementing this version results in all of the add-in"s UI getting cleaned up during Inventor start-up.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TranslatorAddIn_UserUnloadable.htm">UserUnloadable</a></td>
+        <td class="api-list">Gets and sets whether the AddIn is allowed to be unloaded by the user.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ExportFlatPatternToSAT_Sample.htm">Publish FlatPattern to SAT</a></td>
+        <td class="api-list">This sample demonstrates how to save a FlatPattern file using the SAT translator add-in.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ImportCatiaTranslator_Sample.htm">Open a Catia file using the Catia Translator Sample</a></td>
+        <td class="api-list">This sample demonstrates how open an Catia file using the Catia translator add-in.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ImportNXTranslator_Sample.htm">Open an NX file suing the NX Translator Sample</a></td>
+        <td class="api-list">This sample demonstrates how open an NX file using the NX translator add-in.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ImportRhinoTranslator_Sample.htm">Open Rhino Translator Sample</a></td>
+        <td class="api-list">This sample demonstrates how to opening a Rhino file using the Rhino translator add-in.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ImportSTLslator_Sample.htm">Open an STL file using the STL Translator Sample</a></td>
+        <td class="api-list">This sample demonstrates how open an STL file using the STL translator add-in.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SaveAsDWFTranslator_Sample.htm">Save as DWF Translator Sample</a></td>
+        <td class="api-list">This sample demonstrates how to save a DWF file using the DWF translator add-in.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SaveAsDWGTranslator_Sample.htm">Save as DWG Translator Sample</a></td>
+        <td class="api-list">This sample demonstrates how to save a DWG file using the DWG translator add-in.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SaveAsDXFTranslator_Sample.htm">Save as DXF Translator Sample</a></td>
+        <td class="api-list">This sample demonstrates how to save a DXF file using the DXF translator add-in.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SaveAsIGESTranslator_Sample.htm">Save as IGES Translator Sample</a></td>
+        <td class="api-list">This sample demonstrates how to save a IGES file using the IGES translator add-in.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SaveAsPDFTranslator_Sample.htm">Save as PDF Translator Sample</a></td>
+        <td class="api-list">This sample demonstrates how to save a PDF file using the PDF translator add-in.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SaveAsSTEPTranslator_Sample.htm">Save as STEP Translator Sample</a></td>
+        <td class="api-list">This sample demonstrates how to save a STEP file using the STEP translator add-in.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TranslatorAddIn_Sample.htm">Export to DWF</a></td>
+        <td class="api-list">This sample demonstrates publishing of Inventor files in DWF format.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TranslatorAddIn2_Sample.htm">Export to DWG</a></td>
+        <td class="api-list">This sample uses the DWG Translator Addin to publish to DWG.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TranslatorAddIn3_Sample.htm">Export to DXF</a></td>
+        <td class="api-list">This sample uses the DXF Translator Addin to publish to DXF.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TranslatorAddIn4_Sample.htm">Export to IGES</a></td>
+        <td class="api-list">This sample demonstrates exporting of Inventor files in IGES format.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TranslatorAddIn5_Sample.htm">Export to STEP</a></td>
+        <td class="api-list">This sample demonstrates exporting of Inventor files in STEP format.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TranslatorAddIn6_Sample.htm">Export to PDF</a></td>
+        <td class="api-list">This sample demonstrates exporting of Inventor files in PDF format.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 4<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(TranslatorAddIn%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

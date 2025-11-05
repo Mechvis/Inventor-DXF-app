@@ -1,0 +1,185 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/Features.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="Features">
+    <meta name="description" content="Features Object">
+    <meta name="topicid" content="GUID-Features">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>Features Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">Features Object
+			</h1><br><h2 class="api">
+          Description
+        </h2>Represents the collection of features in the assembly context. The API does not yet support addition of assembly features.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Features_CreatePath.htm">CreatePath</a></td>
+        <td class="api-list">Method that creates a path used to define the shape of several part features such as Sweep, RectangularPattern, Split, etc. All other 2D and 3D curves that are connected to the input curve are obtained and used to create a Path object. The new Path is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Features_CreateSpecifiedPath.htm">CreateSpecifiedPath</a></td>
+        <td class="api-list">Method that creates a path used to define the shape of several part features such as Sweep, RectangularPattern, Split, etc. The new Path is returned. This method will fail if the input curves are not connected end to end.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Features_Application.htm">Application</a></td>
+        <td class="api-list">Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Features_ChamferFeatures.htm">ChamferFeatures</a></td>
+        <td class="api-list">Property that returns the ChamferFeatures collection object. This collection provides access to existing ChamferFeature objects.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Features_CircularPatternFeatures.htm">CircularPatternFeatures</a></td>
+        <td class="api-list">Property that returns the CircularPatternFeatures collection object. This collection provides access to existing CircularPatternFeature objects.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Features_ClientFeatures.htm">ClientFeatures</a></td>
+        <td class="api-list">Gets the Client Features collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Features_Count.htm">Count</a></td>
+        <td class="api-list"></td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Features_ExtrudeFeatures.htm">ExtrudeFeatures</a></td>
+        <td class="api-list">Property that returns the collection object. This collection provides access to existing ExtrudeFeature objects.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Features_FilletFeatures.htm">FilletFeatures</a></td>
+        <td class="api-list">Property that returns the FilletFeatures collection object. This collection provides access to existing FilletFeature objects.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Features_FinishFeatures.htm">FinishFeatures</a></td>
+        <td class="api-list">Gets the collection object that besides listing out the subset of features that are FinishFeatures.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Features_HoleFeatures.htm">HoleFeatures</a></td>
+        <td class="api-list">Property that returns the HoleFeatures collection object. This collection provides access to existing HoleFeature objects.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Features_Item.htm">Item</a></td>
+        <td class="api-list">Returns the specified feature from the collection.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Features_MirrorFeatures.htm">MirrorFeatures</a></td>
+        <td class="api-list">Property that returns the MirrorFeatures collection object. This collection provides access to existing MirrorFeature objects.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Features_MoveFaceFeatures.htm">MoveFaceFeatures</a></td>
+        <td class="api-list">Property that returns the MoveFaceFeatures collection object. This collection provides access to existing MoveFaceFeatures objects.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Features_RectangularPatternFeatures.htm">RectangularPatternFeatures</a></td>
+        <td class="api-list">Property that returns the RectangularPatternFeatures collection object. This collection provides access to existing RectangularPatternFeature objects.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Features_RevolveFeatures.htm">RevolveFeatures</a></td>
+        <td class="api-list">Property that returns the RevolveFeatures collection object. This collection provides access to existing RevolveFeature objects.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Features_SketchDrivenPatternFeatures.htm">SketchDrivenPatternFeatures</a></td>
+        <td class="api-list">Gets the collection object that besides listing out the subset of features that are SketchDrivenPatterns, allows the creations of new SketchDrivenPatterns.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Features_SweepFeatures.htm">SweepFeatures</a></td>
+        <td class="api-list">Property that returns the SweepFeatures collection object. This collection provides access to existing SweepFeature objects.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Features_ThreadFeatures.htm">ThreadFeatures</a></td>
+        <td class="api-list">Gets the collection object that besides listing out the subset of features that are Threads, allows the creations of new Threads.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Features_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="AssemblyComponentDefinition_Features.htm">AssemblyComponentDefinition.Features</a>, <a href="WeldmentComponentDefinition_Features.htm">WeldmentComponentDefinition.Features</a><h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DerivedAssemblyComponents_Add_Sample.htm">Derived Parts and Assemblies</a></td>
+        <td class="api-list">This sample demonstrates the use of the API to create derived parts and assemblies.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LoftedFlangeFeatures_Add_Sample.htm">Create sheet metal lofted flange feature</a></td>
+        <td class="api-list">The following sample demonstrates the creation of a sheet metal lofted flange feature.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PartSimplifyFeatureSample_Sample.htm">Part SimplifyFeature Sample</a></td>
+        <td class="api-list">This sample demonstrates how to create a simplify feature in part document.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 10<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(Features%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

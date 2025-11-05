@@ -1,0 +1,92 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/UnitsOfMeasure_GetValueFromExpression.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="UnitsOfMeasure_GetValueFromExpression">
+    <meta name="description" content="UnitsOfMeasure.GetValueFromExpression Method">
+    <meta name="topicid" content="UnitsOfMeasure_GetValueFromExpression">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>UnitsOfMeasure.GetValueFromExpression Method</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">UnitsOfMeasure.GetValueFromExpression Method</h1>
+
+          Parent Object: <a href="UnitsOfMeasure.htm">UnitsOfMeasure</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Method that evaluates the input expression using the units specified and returns a value in database units.</p>
+    <h2 class="api">
+            Remarks
+          </h2>Example: the string "34 in / 2" with a length unit specifier, will return the value 43.1800. The UnitsSpecifier is used to determine the type of unit that is expected, (i.e.. area, volume, velocity, etc.) and is used for values that do not have an explicit type defined. For example the expression "4 * 5" with a units specifier of "mm mm" would be assumed to be "4 mm * 5 mm." An error occurs if the string cannot be evaluated. This method is currently not supported when the UnitsOfMeasure object was obtained using Apprentice. A common use of this method will be to evaluate an expression using the current display units of the document. For example if the expression should define a length you can use kDefaultDisplayLengthUnits as the unit specifier so the expression will be evaluated as a length in the current document units. The enum values that specify to use the document default display units are kDefaultDisplayLengthUnits, kDefaultDisplayAngleUnits, kDefaultDisplayMassUnits, kDefaultDisplayTimeUnits, and kDefaultDisplayTemperatureUnits. The input expression is specified by a string. This string may or may not specify a unit type (for example, "1" versus "1 in"). In the case where the string expression does not specify a unit type, the additional unit-type argument is required to determine the unit type. <b>Note:</b> Up to and including Autodesk Inventor 10, if the string expression does specify a unit type, the UnitsSpecifier type specified will be ignored because the unit type is obtained from the string expression. However, subsequent releases of Autodesk Inventor will return an error condition if the two unit types do not match.<h2 class="api">
+          Syntax
+        </h2>
+        
+            UnitsOfMeasure.<b>GetValueFromExpression</b>( <b><i>Expression</i></b> As String, <b><i>UnitsSpecifier</i></b> As Variant ) As Variant
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">Expression</td>
+        <td class="api-list">String</td>
+        <td class="api-list">Input String value that contains the expression to evaluate. This string is evaluated the same ways a string entered in any of the Autodesk Inventor dialogs are evaluated. For example "3 in / 2 cm" is a valid string for input.</td>
+      </tr>
+      <tr>
+        <td class="api-list">UnitsSpecifier</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Input variant value that specifies the unit type the expression is to be evaluated with. You specify a unit type using a value from UnitsTypeEnum or a string that describes a unit. For example, both of the following are valid unit specifiers for inch: kInchLengthUnits and "in." String specifiers are typically used for units that are not defined in the enum list. For example, the volume measure for cubic inches is not defined in the enum list but you can specify it using the string "in in in."</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 4<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(UnitsOfMeasure.GetValueFromExpression%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

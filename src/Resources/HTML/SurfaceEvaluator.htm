@@ -1,0 +1,177 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/SurfaceEvaluator.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="SurfaceEvaluator">
+    <meta name="description" content="SurfaceEvaluator Object">
+    <meta name="topicid" content="GUID-SurfaceEvaluator">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>SurfaceEvaluator Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">SurfaceEvaluator Object
+			</h1><br><h2 class="api">
+          Description
+        </h2>The SurfaceEvaluator object. See the article in the overviews section.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SurfaceEvaluator_Get3dCurveFrom2dCurve.htm">Get3dCurveFrom2dCurve</a></td>
+        <td class="api-list">Function that calculates the equivalent 3D curve for a 2D curve defined in the parametric space of the surface associated with the evaluator.&nbsp;The resulting transient geometry 3D curve is returned.&nbsp;The type of curve(s) returned is dependent on the shape of the input curve and the surface.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SurfaceEvaluator_GetCurvatures.htm">GetCurvatures</a></td>
+        <td class="api-list">Calculates the curvature direction and magnitude of the curve at the given parameter values.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SurfaceEvaluator_GetFirstDerivatives.htm">GetFirstDerivatives</a></td>
+        <td class="api-list">Calculates the first order derivatives at the given parameter values on the surface.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SurfaceEvaluator_GetIsoCurve.htm">GetIsoCurve</a></td>
+        <td class="api-list">Function that extracts a curve from the surface that follows a constant u or v parameter along the surface.&nbsp;It will have the same properties of the surface in the direction of the extraction.&nbsp;For example, if a curve is extracted from a periodic surface in the direction where it is periodic, the extracted curve will also be periodic.&nbsp;The type of curve returned is dependent on the shape the surface.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SurfaceEvaluator_GetNormal.htm">GetNormal</a></td>
+        <td class="api-list">Method that gets the surface normal.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SurfaceEvaluator_GetNormalAtPoint.htm">GetNormalAtPoint</a></td>
+        <td class="api-list">Function that returns the normal vectors for the specified points.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SurfaceEvaluator_GetParamAnomaly.htm">GetParamAnomaly</a></td>
+        <td class="api-list">Gets general information about the parameterization of the surface, such as whether or not it is periodic, singular, or unbounded in the parameter domain.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SurfaceEvaluator_GetParamAtPoint.htm">GetParamAtPoint</a></td>
+        <td class="api-list">Calculates the parameter value on the surface that is equal to the specified point. The point must lie on the surface.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SurfaceEvaluator_GetPointAtParam.htm">GetPointAtParam</a></td>
+        <td class="api-list">Calculates the coordinate points at the given parameter values on the surface.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SurfaceEvaluator_GetSecondDerivatives.htm">GetSecondDerivatives</a></td>
+        <td class="api-list">Calculates the second order derivatives at the given parameter values on the surface.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SurfaceEvaluator_GetTangents.htm">GetTangents</a></td>
+        <td class="api-list">Calculates the tangency directions at the given parameter values on the curve.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SurfaceEvaluator_GetThirdDerivatives.htm">GetThirdDerivatives</a></td>
+        <td class="api-list">Calculates the third order derivatives at the given parameter values on the surface.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SurfaceEvaluator_Area.htm">Area</a></td>
+        <td class="api-list">Property that returns the area of the entity.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SurfaceEvaluator_Continuity.htm">Continuity</a></td>
+        <td class="api-list">Gets the level of continuity of the curve. The continuity is the largest order of continuity maintained for the entire curve.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SurfaceEvaluator_IsExtrudedShape.htm">IsExtrudedShape</a></td>
+        <td class="api-list">Read-only property that returns whether the surface resulted from an extrusion.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SurfaceEvaluator_IsParamOnFace.htm">IsParamOnFace</a></td>
+        <td class="api-list">Determines if the parameter is on the face.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SurfaceEvaluator_IsRevolvedShape.htm">IsRevolvedShape</a></td>
+        <td class="api-list">Read-only property that returns whether the surface resulted from a revolution.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SurfaceEvaluator_ParamRangeRect.htm">ParamRangeRect</a></td>
+        <td class="api-list">Property that returns a that defines the parameter range for this surface.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SurfaceEvaluator_RangeBox.htm">RangeBox</a></td>
+        <td class="api-list">Property that returns a Box object which contains the opposing points of a rectangular box that is guaranteed to enclose this object.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="BSplineSurface_Evaluator.htm">BSplineSurface.Evaluator</a>, <a href="Cone_Evaluator.htm">Cone.Evaluator</a>, <a href="Cylinder_Evaluator.htm">Cylinder.Evaluator</a>, <a href="EllipticalCone_Evaluator.htm">EllipticalCone.Evaluator</a>, <a href="EllipticalCylinder_Evaluator.htm">EllipticalCylinder.Evaluator</a>, <a href="Face_Evaluator.htm">Face.Evaluator</a>, <a href="FaceProxy_Evaluator.htm">FaceProxy.Evaluator</a>, <a href="MeshFace_Evaluator.htm">MeshFace.Evaluator</a>, <a href="MeshFaceProxy_Evaluator.htm">MeshFaceProxy.Evaluator</a>, <a href="Plane_Evaluator.htm">Plane.Evaluator</a>, <a href="PresentationFace_Evaluator.htm">PresentationFace.Evaluator</a>, <a href="PublicationFace_Evaluator.htm">PublicationFace.Evaluator</a>, <a href="PublicationMeshFace_Evaluator.htm">PublicationMeshFace.Evaluator</a>, <a href="Sphere_Evaluator.htm">Sphere.Evaluator</a>, <a href="Torus_Evaluator.htm">Torus.Evaluator</a><h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Line_IsColinearTo_Sample.htm">Is cylindrical face interior or exterior?</a></td>
+        <td class="api-list">This sample shows how to determine whether the selected cylindircal face is an exterior face or an interior (hollow) face.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TaperFace_Sample.htm">Tapered Surface Using Offset Curve and Ruled Surface</a></td>
+        <td class="api-list">This sample demonstrates much of the wire body creation functionality.  To run the sample you must have a part open and select a planar face.  This sample then creates a trasient wire body using the geometry of the outside of the selected face.  It then transforms and offsets that wire, and finally creates a ruled surface between the original wire and the offset wire.  A base feature is created with the ruled surface.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 4<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(SurfaceEvaluator%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

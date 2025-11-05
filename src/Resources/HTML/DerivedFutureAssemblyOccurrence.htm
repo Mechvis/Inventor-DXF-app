@@ -1,0 +1,96 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/DerivedFutureAssemblyOccurrence.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="DerivedFutureAssemblyOccurrence">
+    <meta name="description" content="DerivedFutureAssemblyOccurrence Object">
+    <meta name="topicid" content="GUID-DerivedFutureAssemblyOccurrence">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>DerivedFutureAssemblyOccurrence Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">DerivedFutureAssemblyOccurrence Object
+			</h1><br><h2 class="api">
+          Description
+        </h2>The DerivedFutureAssemblyOccurrence object defines the behavior of an occurrence within a derived future assembly. This object is derived from the ReferenceComponent object.<h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DerivedFutureAssemblyOccurrence_Application.htm">Application</a></td>
+        <td class="api-list">Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DerivedFutureAssemblyOccurrence_InclusionOption.htm">InclusionOption</a></td>
+        <td class="api-list">Read-write property that defines if this occurrence is included and if it is how it is used in the derived assembly.&nbsp;Valid values for this property are kDerivedIncludeAll, kDerivedExcludeAll and kDerivedIndividualDefined.
+&nbsp;
+If this occurrence represents a subassembly, setting to kDerivedIncludeAll will cause all sub occurrences to add material to the solid body.&nbsp;If setting to kDerivedIndividualDefined, the sub occurrence’s define their behavior.&nbsp;An important distinction between “All” and “IndividualDefined” switches is that as occurrences are added to the subassembly they will automatically be included if any of the “All” switches are used.&nbsp;If the “InidividualDefined” switch is used, new components added to the assembly will be set to kDerivedExludeAll.
+
+If this occurrence represents a leaf part, then valid options are kDerivedIncludeAll or kDerivedExcludeAll.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DerivedFutureAssemblyOccurrence_IsAssembly.htm">IsAssembly</a></td>
+        <td class="api-list">Read-only property that specifies whether this DerivedFutureAssemblyOccurrence object represents a subassembly or a leaf part.&nbsp;This property is True in the case where it represents a subassembly.&nbsp;When it is a subassembly, the SubOccurrences property can be used to access the occurrences within this subassembly.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DerivedFutureAssemblyOccurrence_Name.htm">Name</a></td>
+        <td class="api-list">Gets the name of this DerivedFutureAssemblyOccurrence within the scope of this Document.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DerivedFutureAssemblyOccurrence_SubOccurrences.htm">SubOccurrences</a></td>
+        <td class="api-list">Read-only property that returns the occurrences in the top-level of the assembly this DerivedFutureAssemblyOccurrence object represents.&nbsp;This property is only valid in the case where the IsAssembly property is True.
+.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DerivedFutureAssemblyOccurrence_Type.htm">Type</a></td>
+        <td class="api-list">Gets the constant that indicates the type of this object.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="DerivedFutureAssemblyOccurrences_Item.htm">DerivedFutureAssemblyOccurrences.Item</a><h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2018<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(DerivedFutureAssemblyOccurrence%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,117 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/UserInputEvents_OnDrag.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="UserInputEvents_OnDrag">
+    <meta name="description" content="UserInputEvents.OnDrag Event">
+    <meta name="topicid" content="UserInputEvents_OnDrag">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>UserInputEvents.OnDrag Event</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">UserInputEvents.OnDrag Event</h1>
+
+          Parent Object: <a href="UserInputEvents.htm">UserInputEvents</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">The OnDrag event notifies the client whenever the end-user performs a drag operation in the graphics window. Using this event, the client can override Inventor's standard drag behavior.</p>
+    <h2 class="api">
+            Remarks
+          </h2>The following discusses the principles a client needs to understand in order to take advantage of the full capabilities of this event. The OnDrag event notification is sent whenever the end-user begins to perform a drag operation in the graphics window. When the drag is initiated the DragState argument is equal to kDragStateDragHandlerSelection. The client can determine what object is being dragged by checking the contents of the SelectSet object of the active document. If the client wants to override Inventor's standard drag behavior for the object, they need to set the HandlingCode argument to kEventHandled indicating they will handle the drag. If the HandlingCode is set to kEventNotHandled then Inventor will handle the drag. A handling code of kEventCanceled is not supported and will result in the same thing as kEventNotHandled. If the HandlingCode has been set to kEventHandled then the OnDrag event notification will continue to be sent as the end-user continues the drag operation. The DrageState argument will be equal to kDragStateOnDrag while the end-user continues to drag. When the end-user releases the mouse button to stop the drag operation, the DragState argument will be equal to kDragStateEndDrag. By handling the drag, Inventor expects the client to handle all aspects of the drag. The only thing that Inventor does is change the icon to a drag icon and continues to fire the OnDrag event notification. It is up to the client to provide any dynamic feedback during the drag and to perform whatever the final action of the drag is expected to produce, (typically the repositioning of an entity). Using the ModelPosition and ViewPosition arguments Inventor notifies the client of the current position of the mouse to allow them to create any preview graphics.<h2 class="api">
+          Syntax
+        </h2>
+        
+            UserInputEvents.<b>OnDrag</b>( <b><i>DragState</i></b> As <a href="DragStateEnum.htm">DragStateEnum</a>, <b><i>ShiftKeys</i></b> As <a href="ShiftStateEnum.htm">ShiftStateEnum</a>, <b><i>ModelPosition</i></b> As <a href="Point.htm">Point</a>, <b><i>ViewPosition</i></b> As <a href="Point2d.htm">Point2d</a>, <b><i>View</i></b> As <a href="View.htm">View</a>, <b><i>AdditionalInfo</i></b> As <a href="NameValueMap.htm">NameValueMap</a>, <b><i>HandlingCode</i></b> As <a href="HandlingCodeEnum.htm">HandlingCodeEnum</a> )
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">DragState</td>
+        <td class="api-list"><a href="DragStateEnum.htm">DragStateEnum</a></td>
+        <td class="api-list"><link Inventor::DragStateEnum, DragStateEnum> indicating the current state of the drag operation. When the drag is initially started this value is kDragStateDragHandlerSelection, indicating the selection of an entity to be dragged. During the drag, this value is kDragStateOnDrag. When the mouse button is released to stop the drag operation this value is kDragStateEndDrag.</td>
+      </tr>
+      <tr>
+        <td class="api-list">ShiftKeys</td>
+        <td class="api-list"><a href="ShiftStateEnum.htm">ShiftStateEnum</a></td>
+        <td class="api-list">A value indicating what combinations of the Shift, Control, and Alt keys are currently pressed. This allows you to use combinations of these keys to control options for the command implementing the drag. For example, a Control drag might result in copying the entity.</td>
+      </tr>
+      <tr>
+        <td class="api-list">ModelPosition</td>
+        <td class="api-list"><a href="Point.htm">Point</a></td>
+        <td class="api-list">The current position of the mouse in model space.</td>
+      </tr>
+      <tr>
+        <td class="api-list">ViewPosition</td>
+        <td class="api-list"><a href="Point2d.htm">Point2d</a></td>
+        <td class="api-list">The current position of the mouse in view space. The coordinates are pixels where the upper-left corner of the view is (0,0).</td>
+      </tr>
+      <tr>
+        <td class="api-list">View</td>
+        <td class="api-list"><a href="View.htm">View</a></td>
+        <td class="api-list">The View object the drag is taking place within.</td>
+      </tr>
+      <tr>
+        <td class="api-list">AdditionalInfo</td>
+        <td class="api-list"><a href="NameValueMap.htm">NameValueMap</a></td>
+        <td class="api-list">Input <link Inventor::NameValueMap, NameValueMap> object that contains additional information about why the context menu is being displayed. No additional information is provided for this event.</td>
+      </tr>
+      <tr>
+        <td class="api-list">HandlingCode</td>
+        <td class="api-list"><a href="HandlingCodeEnum.htm">HandlingCodeEnum</a></td>
+        <td class="api-list">Output <link Inventor::HandlingCodeEnum, HandlingCodeEnum> that indicates how you are handling the event. Setting this argument to kEventHandled results in turning off Inventor's standard behavior for the drag operation and causing additional OnDrag event notifications to be sent as the end-user continues the drag operation. By responding to these events the client can define their own behavior for the entity being dragged. Setting this to kEventNotHandled will cause Inventor to use its standard drag behavior for the entity being dragged. kEventCanceled is not supported and will result in the same behavior as kEventNotHandled.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 9<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(UserInputEvents.OnDrag%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,166 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU">
+    <link rel="canonical" href="http://help.autodesk.com/cloudhelp/2026/ENU/Inventor-API/files/FileAndDocReferences_Overview.htm">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="27/4/2016">
+    <meta name="user-comments" content="enable">
+    <meta name="description" content="">
+    <meta name="topicid" content="GUID-0123304B-EC33-4430-B4F1-CBF225CB5B8F">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>File and Document References</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+       <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"/>
+       <script type="text/javascript" src="/view/clientframework/client.js"><!--filler--></script>
+	<script>
+	  // This turns on the display of the copyright notice which is not visible by default.
+	  // Because the head is removed when used in the web help, this function will only exists
+	  // when the chm help is being created.
+	  window.onload = function() {
+		copyrightElement = document.getElementById('CopyrightNotice');
+		copyrightElement.style.display = 'block';
+	  };
+	</script>
+</head>
+<body>
+<link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+
+<H1 class="dxH1">File and Document References</h1>
+
+<h3>Files and Documents</h3>
+
+<p Class="Normal">A <b>File</b> object represents a storage in the file system (i.e. a file on disk).  A <b>Document</b> object represents 
+an instance of a model or drawing in memory.  A Document can only have a single associated File object.  However, since 
+it is possible to have multiple instances (or model states) of a file in memory that are persisted 
+in the same storage on the file system, multiple Document objects may be associated with the same File object.</p>
+
+<h3>File and Document References</h3>
+
+<p Class="Normal">A <b>FileDescriptor</b> object describes the reference from a File to another File. A <b>DocumentDescriptor</b> describes 
+the reference from a Document to another Document.  A descriptor contains all the information needed to find 
+the referenced file/document as well as the state of the reference (healthy, unresolved, replaced, etc.). The 
+File and FileDescriptor objects represent the consolidated view of all of the representations of a Document. The 
+figure below shows the relationships between the FileDescriptor, File, DocumentDescriptor and Document objects.</p>
+ 
+ <br><br>
+<div align="center"> <img src="../images/filedoc_diag.png" border=0 ><p Class="Normal"><br>Figure 1 : The File References API Model</p></div>
+ <br><br>
+
+<h3>Relevant API Properties</h3>
+
+<p Class="Normal"><b>Note</b>: The Document interface is replaced by ApprenticeServerDocument in Apprentice. All the property names remain the same.</p>
+<br><br>
+
+<p Class="Normal"><b>File</b> Object</p>
+
+<table border="1">
+<tr bgcolor="Yellow"><td><b>Property</b></td>	<td><b>Returned objects</b></td>	<td><b>Description</b></td></tr>
+<tr><td>AvailableDocuments</td>	<td>Document objects</td>	<td>Documents currently in memory.</td></tr>
+<tr><td>AllReferencedFiles</td>	<td>File objects</td>	<td>All the files referenced by this file (including recursively nested references).</td></tr>
+<tr><td>ReferencingFiles</td>	<td>File objects</td>	<td>All the files in memory that directly reference this file.</td></tr>
+<tr><td>ReferencedFiles</td>	<td>File objects</td>	<td>All the files directly referenced by this file. Unresolved & suppressed references are skipped.</td></tr>
+<tr><td>ReferencedFileDescriptors</td>	<td>FileDescriptor objects</td>	<td>A collection describing all the direct references held by this file.  This is a consolidated view of all the document references. Includes unresolved and suppressed references. Also includes foreign file references (xls, bmp, etc.)</td></tr>
+</table>
+<br><br>
+
+<p Class="Normal"><b>Document</b> (and <b>ApprenticeServerDocument</b>) Object</p>
+
+<table border="1">
+<tr bgcolor="Yellow"><td><b>Property</b></td>	<td><b>Return type</b></td>	<td><b>Description</b></td></tr>
+<tr><td>File</td>	<td>File object</td>	<td>The associated File object.</td></tr>
+<tr><td>AllReferencedDocuments</td>	<td>Document objects</td>	<td>All the documents referenced by this document (including recursively nested references).</td></tr>
+<tr><td>ReferencingDocuments</td>	<td>Document objects</td>	<td>All the documents in memory that directly reference this document.</td></tr>
+<tr><td>ReferencedDocuments</td>	<td>Document objects</td>	<td>All the documents directly referenced by this document. Unresolved & suppressed references are skipped.</td></tr>
+<tr><td>ReferencedDocumentDescriptors</td>	<td>DocumentDescriptor objects</td>	<td>A collection describing all the direct references held by this document.  Includes unresolved and suppressed references.</td></tr>
+<tr><td>ReferencedOLEFileDescriptors</td>	<td>ReferencedOLEFileDescriptor objects</td>	<td>A collection describing all the direct foreign file references held by this document.  Includes unresolved references.</td></tr><tr><td>ReferencedOpaqueFileDescriptors</td>	<td>ReferencedOpaqueFileDescriptor objects</td>	<td>A collection describing all the in-direct foreign file references held by this document.  Includes missing references.</td></tr>
+</table>
+<br><br>
+
+<p Class="Normal"><b>FileDescriptor</b> Object</p>
+
+<table border="1">
+<tr bgcolor="yellow"><td><b>Property</b></td>	<td><b>Return type</b></td>	<td><b>Description</b></td></tr>
+<tr><td>FullFileName</td>	<td>String</td>	<td>Full path of the referenced file.</td></tr>
+<tr><td>ReferencedFile</td>	<td>File object</td>	<td>The referenced file. Returns Null if reference is missing (unresolved or suppressed).</td></tr>
+<tr><td>ReferenceMissing</td>	<td>Boolean</td>	<td>Whether the reference is missing for any reason and will the ReferencedFile property return a File object.</td></tr>
+</table>
+<br><br>
+
+<p Class="Normal"><b>DocumentDescriptor</b> Object</p>
+
+<table border="1">
+<tr bgcolor="Yellow"><td><b>Property</b></td>	<td><b>Return type</b></td>	<td><b>Description</b></td></tr>
+<tr><td>FullDocumentName</td>	<td>String</td>	<td>Full path of the referenced document.</td></tr>
+<tr><td>ReferencedDocument</td>	<td>Document object</td>	<td>The referenced document. Returns Null if reference is missing (unresolved or suppressed).</td></tr>
+<tr><td>ReferenceMissing</td>	<td>Boolean</td>	<td>Whether the reference is missing for any reason and will the ReferencedDocument property return a File object.</td></tr>
+<tr><td>ReferenceSuppressed</td>	<td>Boolean</td>	<td>Whether the reference is suppressed.</td></tr>
+</table>
+<br><br>
+
+<p Class="Normal">The following code sample demonstrates the file references traversal and prints the file names of all the files referenced by the active document.</p>
+
+ 
+<br>
+<table Class="Code">
+<tr valign="middle">
+	<td Class="Code">
+	<pre>
+Public Sub FileReferenceSample()
+
+  Dim oFile As File
+  Set oFile = ThisApplication.ActiveDocument.File
+    
+  Call ProcessReferences(oFile)
+    
+End Sub
+
+Private Sub ProcessReferences ( ByVal oFile As File )
+    
+  Dim oFileDescriptor As FileDescriptor    
+  For Each oFileDescriptor In oFile.ReferencedFileDescriptors        
+       	
+    Debug.Print oFileDescriptor.FullFileName
+        
+    If Not oFileDescriptor.ReferenceMissing Then
+        
+      ' Since the ReferenceMissing has returned False, the ReferencedFile will return a File
+      ' Recurse unless this is a foreign file reference
+      If Not oFileDescriptor.ReferencedFileType = kForeignFileType Then
+
+        Call ProcessReferences(oFileDescriptor.ReferencedFile)           			 
+      End If            
+    End If        
+  Next    
+End Sub
+</pre></td></tr>
+</table>
+<br><br>
+
+
+<h3>Also consider</h3>
+
+<p Class="Normal">If you are working with very large assemblies, also refer to the Large Assembly Management (LAM) overview.</p>
+<br />
+<br />
+<div id="CopyrightNotice" style="display:none;">
+  <hr />
+  <table width="100%" style="font-size:15">
+	<tr>
+	  <td align="left">
+		&copy; Copyright 2025 Autodesk, Inc.
+	  </td>
+	  <td align="right">
+		<a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(FileAndDocReferences_Overview)">Comment on this page.</a>
+	  </td>
+	</tr>
+  </table>
+</div>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/DrawingDimension_Attached_Sample.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="DrawingDimension_Attached_Sample">
+    <meta name="description" content="Find and remove unattached dimensions Sample">
+    <meta name="topicid" content="DrawingDimension_Attached_Sample">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>Find and remove unattached dimensions</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body><script>
+          function copyCode(language) {
+          // Get the pre element for the specified language.
+          var preElement = document.getElementById(language);
+
+          // Get the text from the element and copy it to the clipboard.
+          var preText = preElement.innerText;
+
+          var isIE = /*@cc_on!@*/false || !!document.documentMode;
+
+          if (isIE)
+          {
+            window.clipboardData.setData('Text', preText);
+          }
+          else
+          {
+            navigator.clipboard.writeText(preText);
+          }
+
+          //alert("Code copied to clipboard");
+          }
+        </script><link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">Find and remove unattached dimensions</h1>
+    <h2 class="api">
+          Description
+        </h2>This sample finds and deletes all unattached drawing dimensions on the active sheet in a drawing.<h2 class="api">
+          Code Samples
+        </h2>
+    <div id="tabs">
+      <ul>
+        <li><a href="#VBA">VBA</a></li>
+        <li><a href="#iLogic">iLogic</a></li>
+      </ul>
+      <div id="VBA" class="api-code">Before you run the sample, have a drawing document open that contains several drawing dimensions including unattached (sick) ones.<table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('VBA_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="VBA_code">Public Sub DeleteUnattachedDimensions()
+    <span style="color:blue">' Set a reference to the active drawing document</span>
+    Dim oDoc As DrawingDocument
+    Set oDoc = ThisApplication.ActiveDocument
+    
+    <span style="color:blue">' Set a reference to the active sheet</span>
+    Dim oSheet As Sheet
+    Set oSheet = oDoc.ActiveSheet
+    
+    Dim oDrawingDim As DrawingDimension
+    
+    <span style="color:blue">' Iterate over all dimensions in the drawing</span>
+    <span style="color:blue">' and delete unattached (sick) dimensions.</span>
+    
+    For Each oDrawingDim In oSheet.DrawingDimensions
+        If oDrawingDim.Attached = False Then
+            Call oDrawingDim.Delete
+        End If
+    Next
+End Sub</pre>
+      </div>
+      <div id="iLogic" class="api-code">Before you run the sample, have a drawing document open that contains several drawing dimensions including unattached (sick) ones.<table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('iLogic_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="iLogic_code">    <span style="color:blue">' Set a reference to the active drawing document</span>
+    Dim oDoc As DrawingDocument
+    oDoc = ThisApplication.ActiveDocument
+    
+    <span style="color:blue">' Set a reference to the active sheet</span>
+    Dim oSheet As Sheet
+    oSheet = oDoc.ActiveSheet
+    
+    Dim oDrawingDim As DrawingDimension
+    
+    <span style="color:blue">' Iterate over all dimensions in the drawing</span>
+    <span style="color:blue">' and delete unattached (sick) dimensions.</span>
+    
+    For Each oDrawingDim In oSheet.DrawingDimensions
+        If oDrawingDim.Attached = False Then
+            Call oDrawingDim.Delete
+        End If
+    Next</pre>
+      </div>
+    </div><br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(DrawingDimension_Attached%20Sample%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

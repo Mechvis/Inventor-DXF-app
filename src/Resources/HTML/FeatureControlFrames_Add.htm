@@ -1,0 +1,132 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/FeatureControlFrames_Add.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="FeatureControlFrames_Add">
+    <meta name="description" content="FeatureControlFrames.Add Method">
+    <meta name="topicid" content="FeatureControlFrames_Add">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>FeatureControlFrames.Add Method</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">FeatureControlFrames.Add Method</h1>
+
+          Parent Object: <a href="FeatureControlFrames.htm">FeatureControlFrames</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Method that creates a feature control frame symbol.</p>
+    <h2 class="api">
+          Syntax
+        </h2>
+        
+            FeatureControlFrames.<b>Add</b>( <b><i>LeaderPoints</i></b> As <a href="ObjectCollection.htm">ObjectCollection</a>, <b><i>FeatureControlFrameRows</i></b> As <a href="FeatureControlFrameRows.htm">FeatureControlFrameRows</a>, [<b><i>AllAroundSymbol</i></b>] As Boolean, [<b><i>DatumIdentifier</i></b>] As String, [<b><i>Notes</i></b>] As String, [<b><i>FeatureControlFrameStyle</i></b>] As Variant, [<b><i>Layer</i></b>] As Variant ) As <a href="FeatureControlFrame.htm">FeatureControlFrame</a>
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">LeaderPoints</td>
+        <td class="api-list"><a href="ObjectCollection.htm">ObjectCollection</a></td>
+        <td class="api-list">Input ObjectCollection containing a series of Point2d objects representing the leader originating at the symbol. The last item in the collection (even if it is the only item) can be a GeometryIntent object indicating a geometry to attach the leader to. A GeometryIntent object can be created using the Sheet.CreateGeometryIntent method. The ObjectCollection must contain at least one item, else the method will fail.</td>
+      </tr>
+      <tr>
+        <td class="api-list">FeatureControlFrameRows</td>
+        <td class="api-list"><a href="FeatureControlFrameRows.htm">FeatureControlFrameRows</a></td>
+        <td class="api-list">Input FeatureControlFrameRows object containing the definition of the rows of the feature control frame. The FeatureControlFrameRows object is created using the CreateFeatureControlFrameRows method on the FeatureControlFrames collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list">AllAroundSymbol</td>
+        <td class="api-list">Boolean</td>
+        <td class="api-list">Optional input Boolean that specifies whether to add the all-around indicator to the symbol. The diameter is specified in the leader style. Defaults to False.<br /><br /> This is an optional argument whose default value is False.</td>
+      </tr>
+      <tr>
+        <td class="api-list">DatumIdentifier</td>
+        <td class="api-list">String</td>
+        <td class="api-list">Optional input String that specifies a datum identifier for the feature control frame. This argument is ignored if the associated style does not allow the specification of a datum identifier. This can be checked using the FeatureControlFrameStyle.AllowDatumIdentifier property. The string can contain symbols specified using the StyleOverride tag. For instance, use '<StyleOverride Font='AIGDT'>m</StyleOverride>' to specify m.<br /><br /> This is an optional argument whose default value is "".</td>
+      </tr>
+      <tr>
+        <td class="api-list">Notes</td>
+        <td class="api-list">String</td>
+        <td class="api-list">Optional input String that specifies notes for the feature control frame symbol. The string can contain symbols specified using the StyleOverride tag. For example, use <code>"&lt;StyleOverride Font='AIGDT'\&gt;m&lt;/StyleOverride>"</code> to specify <img src="../images/styleoverride_aigdt_m.png" />.<br /><br /> This is an optional argument whose default value is "".</td>
+      </tr>
+      <tr>
+        <td class="api-list">FeatureControlFrameStyle</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional input FeatureControlFrameStyle object which specifies the feature control frame style to use for the symbol. If not specified, the style defined by the active standard is used.<br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+      <tr>
+        <td class="api-list">Layer</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional input Layer object that specifies the layer to use for the symbol. If not specified, the layer defined by the active standard is used.<br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FeatureControlFrames_Add_Sample.htm">Create a feature control frame symbol</a></td>
+        <td class="api-list">This sample demonstrates the creation of a feature control frame symbol.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2009<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(FeatureControlFrames.Add%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,112 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/MoveDefinition_AddMoveAlongRay.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="MoveDefinition_AddMoveAlongRay">
+    <meta name="description" content="MoveDefinition.AddMoveAlongRay Method">
+    <meta name="topicid" content="MoveDefinition_AddMoveAlongRay">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>MoveDefinition.AddMoveAlongRay Method</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">MoveDefinition.AddMoveAlongRay Method</h1>
+
+          Parent Object: <a href="MoveDefinition.htm">MoveDefinition</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Method that creates a move along ray operation on the associated move body feature.</p>
+    <h2 class="api">
+          Syntax
+        </h2>
+        
+            MoveDefinition.<b>AddMoveAlongRay</b>( <b><i>DirectionEntity</i></b> As Object, <b><i>UseNaturalEntityDirection</i></b> As Boolean, <b><i>Offset</i></b> As Variant ) As <a href="MoveAlongRayMoveOperation.htm">MoveAlongRayMoveOperation</a>
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">DirectionEntity</td>
+        <td class="api-list">Object</td>
+        <td class="api-list">Input entity that specifies the direction of the move.&nbsp;Valid input includes linear edges, planar faces, work axes, and work planes.</td>
+      </tr>
+      <tr>
+        <td class="api-list">UseNaturalEntityDirection</td>
+        <td class="api-list">Boolean</td>
+        <td class="api-list">Input Boolean that specifies if the movement direction of the bodies uses the natural direction of the direction entity. If True it uses the natural direction.&nbsp;If False the direction is reversed.</td>
+      </tr>
+      <tr>
+        <td class="api-list">Offset</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Input Variant that defines the offset value of the move operation.&nbsp;This can be either a numeric value or a string.&nbsp;A parameter for this value will be created and the supplied string or value is assigned to the parameter.&nbsp;If a value is input, the units are centimeters.&nbsp;If a string is input, the units can be specified as part of the string or it will default to the current length units of the document.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="MoveBodyFeatures_Sample.htm">Move Feature Creation</a></td>
+        <td class="api-list">Demonstrates the creation of a Move feature.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2013<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(MoveDefinition.AddMoveAlongRay%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

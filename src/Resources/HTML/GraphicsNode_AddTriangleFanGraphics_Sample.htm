@@ -1,0 +1,547 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/GraphicsNode_AddTriangleFanGraphics_Sample.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="GraphicsNode_AddTriangleFanGraphics_Sample">
+    <meta name="description" content="Client Graphics - Triangle Sample">
+    <meta name="topicid" content="GraphicsNode_AddTriangleFanGraphics_Sample">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>Client Graphics - Triangle</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body><script>
+          function copyCode(language) {
+          // Get the pre element for the specified language.
+          var preElement = document.getElementById(language);
+
+          // Get the text from the element and copy it to the clipboard.
+          var preText = preElement.innerText;
+
+          var isIE = /*@cc_on!@*/false || !!document.documentMode;
+
+          if (isIE)
+          {
+            window.clipboardData.setData('Text', preText);
+          }
+          else
+          {
+            navigator.clipboard.writeText(preText);
+          }
+
+          //alert("Code copied to clipboard");
+          }
+        </script><link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">Client Graphics - Triangle</h1>
+    <h2 class="api">
+          Description
+        </h2>This sample demonstrates the creation of client graphics triangles using triange fans and strips. It does this by drawing a cylinder. The end caps are triangle fans and the cylinder is made from a triangle strip.<h2 class="api">
+          Code Samples
+        </h2>
+    <div id="tabs">
+      <ul>
+        <li><a href="#VBA">VBA</a></li>
+        <li><a href="#iLogic">iLogic</a></li>
+      </ul>
+      <div id="VBA" class="api-code">To run this sample you need to have an assembly or part document open. The sample code will prompt for the number of sides of the cylinder. This is the number of facets the cylinder will be approximated by.<table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('VBA_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="VBA_code">Public Sub DrawCustomTriangles()
+    Dim oDoc As Document
+    Set oDoc = ThisApplication.ActiveDocument
+
+    <span style="color:blue">' Set a reference to component definition of the active document.</span>
+    <span style="color:blue">' This assumes that a part or assembly document is active.</span>
+    Dim oCompDef As ComponentDefinition
+    Set oCompDef = ThisApplication.ActiveDocument.ComponentDefinition
+    
+    <span style="color:blue">' Check to see if the test graphics data object already exists.</span>
+    <span style="color:blue">' If it does clean up by removing all associated of the client graphics</span>
+    <span style="color:blue">' from the document.  If it doesn't create it and draw a line.</span>
+    On Error Resume Next
+    Dim oGraphicsData As GraphicsDataSets
+    Set oGraphicsData = oDoc.GraphicsDataSetsCollection.Item("SampleGraphicsID")
+    If Err.Number = 0 Then
+        On Error GoTo 0
+        <span style="color:blue">' An existing client graphics object was successfully obtained so clean up.</span>
+        oGraphicsData.Delete
+        oCompDef.ClientGraphicsCollection.Item("SampleGraphicsID").Delete
+    
+        <span style="color:blue">' update the display to see the results.</span>
+        ThisApplication.ActiveView.Update
+    Else
+        Err.Clear
+        On Error GoTo 0
+        
+        <span style="color:blue">' Set a reference to the transient geometry object for user later.</span>
+        Dim oTransGeom As TransientGeometry
+        Set oTransGeom = ThisApplication.TransientGeometry
+        
+        <span style="color:blue">' Create a graphics data set object.  This object contains all of the</span>
+        <span style="color:blue">' information used to define the graphics.</span>
+        Dim oDataSets As GraphicsDataSets
+        Set oDataSets = oDoc.GraphicsDataSetsCollection.Add("SampleGraphicsID")
+        
+        <span style="color:blue">' Create a coordinate set.</span>
+        Dim oCoordSet As GraphicsCoordinateSet
+        Set oCoordSet = oDataSets.CreateCoordinateSet(1)
+
+        <span style="color:blue">' Get the number of sides for the cylinder.</span>
+        Dim iSideCount As Long
+        iSideCount = InputBox("Enter number of sides for the cylinder.  (Must be greater than 2.)", "Cylinder Tolerance", 25)
+        
+        Dim dRadius As Double
+        Dim dHeight As Double
+        dRadius = 3
+        dHeight = 7
+        
+        <span style="color:blue">' Create an array containing points to used in drawing the cylinder.</span>
+        <span style="color:blue">' The points could also be directly defined in a coordinate set, but</span>
+        <span style="color:blue">' defining them in array and then setting the coordinates using the</span>
+        <span style="color:blue">' array is more efficient for a large set of points.</span>
+        Dim adPointCoords() As Double
+        ReDim adPointCoords(1 To ((iSideCount + 1) * 2) * 3) As Double
+        Dim i As Long
+        Dim dAngle As Double
+        
+        <span style="color:blue">' Define the points for the outline of the first end of the cylinder.</span>
+        dAngle = 0
+        For i = 0 To iSideCount - 1
+            adPointCoords(i * 3 + 1) = dRadius * Cos(dAngle)
+            adPointCoords(i * 3 + 2) = dRadius * Sin(dAngle)
+            adPointCoords(i * 3 + 3) = 0
+            
+            <span style="color:blue">' Increment the angle for the next point</span>
+            dAngle = dAngle + ((2 * 3.14159265358979) / iSideCount)
+        Next
+        
+        <span style="color:blue">' Define the points for the outline of the other end of the cylinder.</span>
+        dAngle = 0
+        For i = iSideCount To (iSideCount * 2) - 1
+            adPointCoords(i * 3 + 1) = dRadius * Cos(dAngle)
+            adPointCoords(i * 3 + 2) = dRadius * Sin(dAngle)
+            adPointCoords(i * 3 + 3) = dHeight
+            
+            <span style="color:blue">' Increment the angle for the next point</span>
+            dAngle = dAngle + ((2 * 3.14159265358979) / iSideCount)
+        Next
+        
+        <span style="color:blue">' Define coordinate at the center of the first end of the cylinder.</span>
+        adPointCoords((iSideCount * 2) * 3 + 1) = 0
+        adPointCoords((iSideCount * 2) * 3 + 2) = 0
+        adPointCoords((iSideCount * 2) * 3 + 3) = 0
+        
+        <span style="color:blue">' Define coordinate at the center of the other end of the cylinder.</span>
+        adPointCoords((iSideCount * 2) * 3 + 4) = 0
+        adPointCoords((iSideCount * 2) * 3 + 5) = 0
+        adPointCoords((iSideCount * 2) * 3 + 6) = dHeight
+
+        <span style="color:blue">' Assign the points to the coordinate set.</span>
+        Call oCoordSet.PutCoordinates(adPointCoords)
+        
+        <span style="color:blue">' Create an index set to use for the triangle fan for</span>
+        <span style="color:blue">' cap of the first end of the cylinder.  This will</span>
+        <span style="color:blue">' serve as in index look-up into the coordinate set.</span>
+        Dim oCap1Index As GraphicsIndexSet
+        Set oCap1Index = oDataSets.CreateIndexSet(1)
+        
+        <span style="color:blue">' Set the index values.  This could also be done by setting the</span>
+        <span style="color:blue">' value in an array and then using the array to set the values</span>
+        <span style="color:blue">' of the index set.  Using an array is more efficient, but this</span>
+        <span style="color:blue">' is used to here to demonstrate the IndexSet object's Add method.</span>
+        Call oCap1Index.Add(1, iSideCount * 2 + 1)
+        Call oCap1Index.Add(2, 1)
+        Call oCap1Index.Add(3, 2)
+        For i = 4 To iSideCount + 1
+            Call oCap1Index.Add(i, i - 1)
+        Next
+        Call oCap1Index.Add(iSideCount + 2, 1)
+
+        <span style="color:blue">' Create an index set to use for the triangle fan of the other cylinder cap.</span>
+        Dim oCap2Index As GraphicsIndexSet
+        Set oCap2Index = oDataSets.CreateIndexSet(2)
+        
+        <span style="color:blue">' Set the index values.</span>
+        Call oCap2Index.Add(1, iSideCount * 2 + 2)
+        Call oCap2Index.Add(2, iSideCount + 1)
+        Call oCap2Index.Add(3, iSideCount + 2)
+        For i = 4 To iSideCount + 1
+            Call oCap2Index.Add(i, i + iSideCount - 1)
+        Next
+        Call oCap2Index.Add(iSideCount + 2, iSideCount + 1)
+
+        <span style="color:blue">' Create an index set to use for the triangle strip that will</span>
+        <span style="color:blue">' define the sides of the cylinder.</span>
+        Dim oCylinderIndex As GraphicsIndexSet
+        Set oCylinderIndex = oDataSets.CreateIndexSet(3)
+
+        <span style="color:blue">' Define the index values in an array.</span>
+        Dim iIndexValues() As Long
+        ReDim iIndexValues(1 To (iSideCount + 1) * 2) As Long
+        For i = 0 To iSideCount - 1
+            iIndexValues(i * 2 + 1) = i + 1
+            iIndexValues(i * 2 + 2) = i + iSideCount + 1
+        Next
+        iIndexValues(((iSideCount + 1) * 2) - 1) = 1
+        iIndexValues((iSideCount + 1) * 2) = iSideCount + 1
+
+        <span style="color:blue">' Define the index values in the index set using the array.</span>
+        Call oCylinderIndex.PutIndices(iIndexValues)
+
+        <span style="color:blue">' Create the ClientGraphics object.</span>
+        Dim oClientGraphics As ClientGraphics
+        Set oClientGraphics = oCompDef.ClientGraphicsCollection.Add("SampleGraphicsID")
+       
+        <span style="color:blue">' Create a new graphics node within the client graphics objects.</span>
+        Dim oCylinderNode As GraphicsNode
+        Set oCylinderNode = oClientGraphics.AddNode(1)
+
+        <span style="color:blue">' Create a triangle fan for cap 1 of the cylinder.</span>
+        Dim oCap1TriangleFan As TriangleFanGraphics
+        Set oCap1TriangleFan = oCylinderNode.AddTriangleFanGraphics
+
+        <span style="color:blue">' Set the coordinates and index set for the cap.</span>
+        oCap1TriangleFan.CoordinateSet = oCoordSet
+        oCap1TriangleFan.CoordinateIndexSet = oCap1Index
+
+        <span style="color:blue">' Create a triangle fan for cap 2 of the cylinder.</span>
+        Dim oCap2TriangleFan As TriangleFanGraphics
+        Set oCap2TriangleFan = oCylinderNode.AddTriangleFanGraphics
+
+        <span style="color:blue">' Set the coordinates and index set for the cap.</span>
+        oCap2TriangleFan.CoordinateSet = oCoordSet
+        oCap2TriangleFan.CoordinateIndexSet = oCap2Index
+
+        <span style="color:blue">' Create a triangle string for the sides of the cylinder.</span>
+        Dim oCylinderStrip As TriangleStripGraphics
+        Set oCylinderStrip = oCylinderNode.AddTriangleStripGraphics
+
+        <span style="color:blue">' Set the coordinates and index set for the cap.</span>
+        oCylinderStrip.CoordinateSet = oCoordSet
+        oCylinderStrip.CoordinateIndexSet = oCylinderIndex
+        
+        Dim oAppearance As Asset
+        Set oAppearance = oDoc.AppearanceAssets(1)
+
+        oCylinderNode.Appearance = oAppearance
+
+        <span style="color:blue">' update the display to see the results.</span>
+        ThisApplication.ActiveView.Update
+        
+        <span style="color:blue">' Define a normal for cap 1.</span>
+        Dim oCap1Normals As GraphicsNormalSet
+        Set oCap1Normals = oDataSets.CreateNormalSet(1)
+        Call oCap1Normals.Add(1, oTransGeom.CreateUnitVector(0, 0, -1))
+        
+        <span style="color:blue">' Assign the normals to the cap.</span>
+        oCap1TriangleFan.NormalSet = oCap1Normals
+        
+        <span style="color:blue">' Define a normal for cap 2.</span>
+        Dim oCap2Normals As GraphicsNormalSet
+        Set oCap2Normals = oDataSets.CreateNormalSet(2)
+        Call oCap2Normals.Add(1, oTransGeom.CreateUnitVector(0, 0, 1))
+   
+        <span style="color:blue">' Assign the normals to the cap.</span>
+        oCap2TriangleFan.NormalSet = oCap2Normals
+        
+        <span style="color:blue">' Create an array that contains the normals for each vertex of the cylinder.</span>
+        Dim adNormals() As Double
+        ReDim adNormals(1 To ((iSideCount + 1) * 2) * 3) As Double
+        dAngle = 0
+        For i = 0 To iSideCount
+            Dim dX As Double
+            Dim dY As Double
+            dX = Cos(dAngle)
+            dY = Sin(dAngle)
+            adNormals(i * 6 + 1) = dX
+            adNormals(i * 6 + 2) = dY
+            adNormals(i * 6 + 3) = 0
+            adNormals(i * 6 + 4) = dX
+            adNormals(i * 6 + 5) = dY
+            adNormals(i * 6 + 6) = 0
+
+            <span style="color:blue">' Increment the angle for the next normal.</span>
+            dAngle = dAngle + ((2 * 3.14159265358979) / iSideCount)
+        Next
+        
+        <span style="color:blue">' Create and set the normal set for the cylinder.</span>
+        Dim oCylinderNormals As GraphicsNormalSet
+        Set oCylinderNormals = oDataSets.CreateNormalSet(3)
+        Call oCylinderNormals.PutNormals(adNormals)
+        
+        <span style="color:blue">' Assign the normals to the cylinder.</span>
+        oCylinderStrip.NormalSet = oCylinderNormals
+        
+        <span style="color:blue">' update the display to see the results.</span>
+        ThisApplication.ActiveView.Update
+    End If
+End Sub</pre>
+      </div>
+      <div id="iLogic" class="api-code">To run this sample you need to have an assembly or part document open. The sample code will prompt for the number of sides of the cylinder. This is the number of facets the cylinder will be approximated by.<table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('iLogic_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="iLogic_code">    Dim oDoc As Document
+    oDoc = ThisApplication.ActiveDocument
+
+    <span style="color:blue">' Set a reference to component definition of the active document.</span>
+    <span style="color:blue">' This assumes that a part or assembly document is active.</span>
+    Dim oCompDef As ComponentDefinition
+    oCompDef = ThisApplication.ActiveDocument.ComponentDefinition
+    
+    <span style="color:blue">' Check to see if the test graphics data object already exists.</span>
+    <span style="color:blue">' If it does clean up by removing all associated of the client graphics</span>
+    <span style="color:blue">' from the document.  If it doesn't create it and draw a line.</span>
+    On Error Resume Next
+    Dim oGraphicsData As GraphicsDataSets
+    oGraphicsData = oDoc.GraphicsDataSetsCollection.Item("SampleGraphicsID")
+    If Err.Number = 0 Then
+        On Error GoTo 0
+        <span style="color:blue">' An existing client graphics object was successfully obtained so clean up.</span>
+        oGraphicsData.Delete
+        oCompDef.ClientGraphicsCollection.Item("SampleGraphicsID").Delete
+    
+        <span style="color:blue">' update the display to see the results.</span>
+        ThisApplication.ActiveView.Update
+    Else
+        Err.Clear
+        On Error GoTo 0
+        
+        <span style="color:blue">' Set a reference to the transient geometry object for user later.</span>
+        Dim oTransGeom As TransientGeometry
+        oTransGeom = ThisApplication.TransientGeometry
+        
+        <span style="color:blue">' Create a graphics data set object.  This object contains all of the</span>
+        <span style="color:blue">' information used to define the graphics.</span>
+        Dim oDataSets As GraphicsDataSets
+        oDataSets = oDoc.GraphicsDataSetsCollection.Add("SampleGraphicsID")
+        
+        <span style="color:blue">' Create a coordinate set.</span>
+        Dim oCoordSet As GraphicsCoordinateSet
+        oCoordSet = oDataSets.CreateCoordinateSet(1)
+
+        <span style="color:blue">' Get the number of sides for the cylinder.</span>
+        Dim iSideCount As Long
+        iSideCount = InputBox("Enter number of sides for the cylinder.  (Must be greater than 2.)", "Cylinder Tolerance", 25)
+        
+        Dim dRadius As Double
+        Dim dHeight As Double
+        dRadius = 3
+        dHeight = 7
+        
+        <span style="color:blue">' Create an array containing points to used in drawing the cylinder.</span>
+        <span style="color:blue">' The points could also be directly defined in a coordinate set, but</span>
+        <span style="color:blue">' defining them in array and then setting the coordinates using the</span>
+        <span style="color:blue">' array is more efficient for a large set of points.</span>
+        Dim adPointCoords(0 To ((iSideCount + 1) * 2) * 3 - 1) As Double
+        Dim i As Long
+        Dim dAngle As Double
+        
+        <span style="color:blue">' Define the points for the outline of the first end of the cylinder.</span>
+        dAngle = 0
+        For i = 0 To iSideCount - 1
+            adPointCoords(i * 3) = dRadius * Cos(dAngle)
+            adPointCoords(i * 3 + 1) = dRadius * Sin(dAngle)
+            adPointCoords(i * 3 + 2) = 0
+            
+            <span style="color:blue">' Increment the angle for the next point</span>
+            dAngle = dAngle + ((2 * 3.14159265358979) / iSideCount)
+        Next
+        
+        <span style="color:blue">' Define the points for the outline of the other end of the cylinder.</span>
+        dAngle = 0
+        For i = iSideCount To (iSideCount * 2) - 1
+            adPointCoords(i * 3) = dRadius * Cos(dAngle)
+            adPointCoords(i * 3 + 1) = dRadius * Sin(dAngle)
+            adPointCoords(i * 3 + 2) = dHeight
+            
+            <span style="color:blue">' Increment the angle for the next point</span>
+            dAngle = dAngle + ((2 * 3.14159265358979) / iSideCount)
+        Next
+        
+        <span style="color:blue">' Define coordinate at the center of the first end of the cylinder.</span>
+        adPointCoords((iSideCount * 2) * 3) = 0
+        adPointCoords((iSideCount * 2) * 3 + 1) = 0
+        adPointCoords((iSideCount * 2) * 3 + 2) = 0
+        
+        <span style="color:blue">' Define coordinate at the center of the other end of the cylinder.</span>
+        adPointCoords((iSideCount * 2) * 3 + 3) = 0
+        adPointCoords((iSideCount * 2) * 3 + 4) = 0
+        adPointCoords((iSideCount * 2) * 3 + 5) = dHeight
+
+        <span style="color:blue">' Assign the points to the coordinate set.</span>
+        Call oCoordSet.PutCoordinates(adPointCoords)
+        
+        <span style="color:blue">' Create an index set to use for the triangle fan for</span>
+        <span style="color:blue">' cap of the first end of the cylinder.  This will</span>
+        <span style="color:blue">' serve as in index look-up into the coordinate set.</span>
+        Dim oCap1Index As GraphicsIndexSet
+        oCap1Index = oDataSets.CreateIndexSet(1)
+        
+        <span style="color:blue">' Set the index values.  This could also be done by setting the</span>
+        <span style="color:blue">' value in an array and then using the array to set the values</span>
+        <span style="color:blue">' of the index set.  Using an array is more efficient, but this</span>
+        <span style="color:blue">' is used to here to demonstrate the IndexSet object's Add method.</span>
+        Call oCap1Index.Add(1, iSideCount * 2 + 1)
+        Call oCap1Index.Add(2, 1)
+        Call oCap1Index.Add(3, 2)
+        For i = 4 To iSideCount + 1
+            Call oCap1Index.Add(i, i - 1)
+        Next
+        Call oCap1Index.Add(iSideCount + 2, 1)
+
+        <span style="color:blue">' Create an index set to use for the triangle fan of the other cylinder cap.</span>
+        Dim oCap2Index As GraphicsIndexSet
+        oCap2Index = oDataSets.CreateIndexSet(2)
+        
+        <span style="color:blue">' Set the index values.</span>
+        Call oCap2Index.Add(1, iSideCount * 2 + 2)
+        Call oCap2Index.Add(2, iSideCount + 1)
+        Call oCap2Index.Add(3, iSideCount + 2)
+        For i = 4 To iSideCount + 1
+            Call oCap2Index.Add(i, i + iSideCount - 1)
+        Next
+        Call oCap2Index.Add(iSideCount + 2, iSideCount + 1)
+
+        <span style="color:blue">' Create an index set to use for the triangle strip that will</span>
+        <span style="color:blue">' define the sides of the cylinder.</span>
+        Dim oCylinderIndex As GraphicsIndexSet
+        oCylinderIndex = oDataSets.CreateIndexSet(3)
+
+        <span style="color:blue">' Define the index values in an array.</span>
+        Dim iIndexValues(0 To (iSideCount + 1) * 2 - 1) As Integer
+        For i = 0 To iSideCount - 1
+            iIndexValues(i * 2) = i + 1
+            iIndexValues(i * 2 + 1) = i + iSideCount + 1
+        Next
+        iIndexValues(iSideCount * 2) = 1
+        iIndexValues(iSideCount * 2 + 1) = iSideCount + 1
+
+        <span style="color:blue">' Define the index values in the index set using the array.</span>
+        Call oCylinderIndex.PutIndices(iIndexValues)
+
+        <span style="color:blue">' Create the ClientGraphics object.</span>
+        Dim oClientGraphics As ClientGraphics
+        oClientGraphics = oCompDef.ClientGraphicsCollection.Add("SampleGraphicsID")
+       
+        <span style="color:blue">' Create a new graphics node within the client graphics objects.</span>
+        Dim oCylinderNode As GraphicsNode
+        oCylinderNode = oClientGraphics.AddNode(1)
+
+        <span style="color:blue">' Create a triangle fan for cap 1 of the cylinder.</span>
+        Dim oCap1TriangleFan As TriangleFanGraphics
+        oCap1TriangleFan = oCylinderNode.AddTriangleFanGraphics
+
+        <span style="color:blue">' Set the coordinates and index set for the cap.</span>
+        oCap1TriangleFan.CoordinateSet = oCoordSet
+        oCap1TriangleFan.CoordinateIndexSet = oCap1Index
+
+        <span style="color:blue">' Create a triangle fan for cap 2 of the cylinder.</span>
+        Dim oCap2TriangleFan As TriangleFanGraphics
+        oCap2TriangleFan = oCylinderNode.AddTriangleFanGraphics
+
+        <span style="color:blue">' Set the coordinates and index set for the cap.</span>
+        oCap2TriangleFan.CoordinateSet = oCoordSet
+        oCap2TriangleFan.CoordinateIndexSet = oCap2Index
+
+        <span style="color:blue">' Create a triangle string for the sides of the cylinder.</span>
+        Dim oCylinderStrip As TriangleStripGraphics
+        oCylinderStrip = oCylinderNode.AddTriangleStripGraphics
+
+        <span style="color:blue">' Set the coordinates and index set for the cap.</span>
+        oCylinderStrip.CoordinateSet = oCoordSet
+        oCylinderStrip.CoordinateIndexSet = oCylinderIndex
+        
+        Dim oAppearance As Asset
+        oAppearance = oDoc.AppearanceAssets(1)
+
+        oCylinderNode.Appearance = oAppearance
+
+        <span style="color:blue">' update the display to see the results.</span>
+        ThisApplication.ActiveView.Update
+        
+        <span style="color:blue">' Define a normal for cap 1.</span>
+        Dim oCap1Normals As GraphicsNormalSet
+        oCap1Normals = oDataSets.CreateNormalSet(1)
+        Call oCap1Normals.Add(1, oTransGeom.CreateUnitVector(0, 0, -1))
+        
+        <span style="color:blue">' Assign the normals to the cap.</span>
+        oCap1TriangleFan.NormalSet = oCap1Normals
+        
+        <span style="color:blue">' Define a normal for cap 2.</span>
+        Dim oCap2Normals As GraphicsNormalSet
+        oCap2Normals = oDataSets.CreateNormalSet(2)
+        Call oCap2Normals.Add(1, oTransGeom.CreateUnitVector(0, 0, 1))
+   
+        <span style="color:blue">' Assign the normals to the cap.</span>
+        oCap2TriangleFan.NormalSet = oCap2Normals
+        
+        <span style="color:blue">' Create an array that contains the normals for each vertex of the cylinder.</span>
+        Dim adNormals(0 To ((iSideCount + 1) * 2) * 3 - 1) As Double
+        dAngle = 0
+        For i = 0 To iSideCount
+            Dim dX As Double
+            Dim dY As Double
+            dX = Cos(dAngle)
+            dY = Sin(dAngle)
+            adNormals(i * 6 + 0) = dX
+            adNormals(i * 6 + 1) = dY
+            adNormals(i * 6 + 2) = 0
+            adNormals(i * 6 + 3) = dX
+            adNormals(i * 6 + 4) = dY
+            adNormals(i * 6 + 5) = 0
+
+            <span style="color:blue">' Increment the angle for the next normal.</span>
+            dAngle = dAngle + ((2 * 3.14159265358979) / iSideCount)
+        Next
+        
+        <span style="color:blue">' Create and set the normal set for the cylinder.</span>
+        Dim oCylinderNormals As GraphicsNormalSet
+        oCylinderNormals = oDataSets.CreateNormalSet(3)
+        Call oCylinderNormals.PutNormals(adNormals)
+        
+        <span style="color:blue">' Assign the normals to the cylinder.</span>
+        oCylinderStrip.NormalSet = oCylinderNormals
+        
+        <span style="color:blue">' update the display to see the results.</span>
+        ThisApplication.ActiveView.Update
+    End If</pre>
+      </div>
+    </div><br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(GraphicsNode_AddTriangleFanGraphics%20Sample%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

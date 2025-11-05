@@ -1,0 +1,198 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/SketchFixedSpline_Sample.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="SketchFixedSpline_Sample">
+    <meta name="description" content="Spline - create NURBS Sample">
+    <meta name="topicid" content="SketchFixedSpline_Sample">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>Spline - create NURBS</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body><script>
+          function copyCode(language) {
+          // Get the pre element for the specified language.
+          var preElement = document.getElementById(language);
+
+          // Get the text from the element and copy it to the clipboard.
+          var preText = preElement.innerText;
+
+          var isIE = /*@cc_on!@*/false || !!document.documentMode;
+
+          if (isIE)
+          {
+            window.clipboardData.setData('Text', preText);
+          }
+          else
+          {
+            navigator.clipboard.writeText(preText);
+          }
+
+          //alert("Code copied to clipboard");
+          }
+        </script><link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">Spline - create NURBS</h1>
+    <h2 class="api">
+          Description
+        </h2>This sample demonstrates the creation of a sketch spline using a geometry definition (a NURB). The API also supports creation of 3D sketch splines in a similar way.<h2 class="api">
+          Code Samples
+        </h2>
+    <div id="tabs">
+      <ul>
+        <li><a href="#VBA">VBA</a></li>
+        <li><a href="#iLogic">iLogic</a></li>
+      </ul>
+      <div id="VBA" class="api-code">Have a part document open and run the following sample.<table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('VBA_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="VBA_code">Public Sub SplineByDefinition()
+    <span style="color:blue">' Set a reference to the part component definition.</span>
+    <span style="color:blue">' This assumes that a part document is active.</span>
+    Dim oCompDef As PartComponentDefinition
+    Set oCompDef = ThisApplication.ActiveDocument.ComponentDefinition
+    
+    <span style="color:blue">' Set a reference to the transient geometry collection.</span>
+    Dim oTransGeom As TransientGeometry
+    Set oTransGeom = ThisApplication.TransientGeometry
+
+    <span style="color:blue">' Create the collection that will contain the fit points for the regular spline.</span>
+    Dim oFitPoints As ObjectCollection
+    Set oFitPoints = ThisApplication.TransientObjects.CreateObjectCollection
+    
+    <span style="color:blue">' Define the points to fit the spline through. The</span>
+    <span style="color:blue">' points are at (0,0), (2,2), (4,0), (6,4).</span>
+    Dim oPoints(1 To 4) As Point2d
+    Set oPoints(1) = oTransGeom.CreatePoint2d(0, 0)
+    oFitPoints.Add oPoints(1)
+    
+    Set oPoints(2) = oTransGeom.CreatePoint2d(2, 2)
+    oFitPoints.Add oPoints(2)
+    
+    Set oPoints(3) = oTransGeom.CreatePoint2d(4, 0)
+    oFitPoints.Add oPoints(3)
+    
+    Set oPoints(4) = oTransGeom.CreatePoint2d(6, 4)
+    oFitPoints.Add oPoints(4)
+    
+    <span style="color:blue">'Create the first sketch on the X-Y plane</span>
+    Dim oSketch1 As PlanarSketch
+    Set oSketch1 = oCompDef.Sketches.Add(oCompDef.WorkPlanes(3))
+    
+    <span style="color:blue">' Create the spline.</span>
+    Dim oSpline As SketchSpline
+    Set oSpline = oSketch1.SketchSplines.Add(oFitPoints)
+
+    <span style="color:blue">' Create a work plane parallel to X-Y plane.</span>
+    Dim oWorkPlane As WorkPlane
+    Set oWorkPlane = oCompDef.WorkPlanes.AddByPlaneAndOffset(oCompDef.WorkPlanes(3), 2)
+    
+    <span style="color:blue">'Create the second sketch.</span>
+    Dim oSketch2 As PlanarSketch
+    Set oSketch2 = oCompDef.Sketches.Add(oWorkPlane)
+    
+    <span style="color:blue">' Set a reference to the geometry of the spline on the first sketch</span>
+    Dim oBSplineCurve2d As BSplineCurve2d
+    Set oBSplineCurve2d = oSpline.Geometry
+    
+    <span style="color:blue">' Create a fixed spline on the second sketch based</span>
+    <span style="color:blue">' on the geometry of the spline on the first sketch.</span>
+    Dim oFixedSpline As SketchFixedSpline
+    Set oFixedSpline = oSketch2.SketchFixedSplines.Add(oBSplineCurve2d)
+End Sub</pre>
+      </div>
+      <div id="iLogic" class="api-code">Have a part document open and run the following sample.<table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('iLogic_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="iLogic_code">    <span style="color:blue">' Set a reference to the part component definition.</span>
+    <span style="color:blue">' This assumes that a part document is active.</span>
+    Dim oCompDef As PartComponentDefinition
+    oCompDef = ThisApplication.ActiveDocument.ComponentDefinition
+    
+    <span style="color:blue">' Set a reference to the transient geometry collection.</span>
+    Dim oTransGeom As TransientGeometry
+    oTransGeom = ThisApplication.TransientGeometry
+
+    <span style="color:blue">' Create the collection that will contain the fit points for the regular spline.</span>
+    Dim oFitPoints As ObjectCollection
+    oFitPoints = ThisApplication.TransientObjects.CreateObjectCollection
+    
+    <span style="color:blue">' Define the points to fit the spline through. The</span>
+    <span style="color:blue">' points are at (0,0), (2,2), (4,0), (6,4).</span>
+    Dim oPoints(0 To 3) As Point2d
+    oPoints(0) = oTransGeom.CreatePoint2d(0, 0)
+    oFitPoints.Add(oPoints(0))
+    
+    oPoints(1) = oTransGeom.CreatePoint2d(2, 2)
+    oFitPoints.Add(oPoints(1))
+    
+    oPoints(2) = oTransGeom.CreatePoint2d(4, 0)
+    oFitPoints.Add(oPoints(2))
+    
+    oPoints(3) = oTransGeom.CreatePoint2d(6, 4)
+    oFitPoints.Add(oPoints(3))
+    
+    <span style="color:blue">'Create the first sketch on the X-Y plane</span>
+    Dim oSketch1 As PlanarSketch
+    oSketch1 = oCompDef.Sketches.Add(oCompDef.WorkPlanes(3))
+    
+    <span style="color:blue">' Create the spline.</span>
+    Dim oSpline As SketchSpline
+    oSpline = oSketch1.SketchSplines.Add(oFitPoints)
+
+    <span style="color:blue">' Create a work plane parallel to X-Y plane.</span>
+    Dim oWorkPlane As WorkPlane
+    oWorkPlane = oCompDef.WorkPlanes.AddByPlaneAndOffset(oCompDef.WorkPlanes(3), 2)
+    
+    <span style="color:blue">'Create the second sketch.</span>
+    Dim oSketch2 As PlanarSketch
+    oSketch2 = oCompDef.Sketches.Add(oWorkPlane)
+    
+    <span style="color:blue">' Set a reference to the geometry of the spline on the first sketch</span>
+    Dim oBSplineCurve2d As BSplineCurve2d
+    oBSplineCurve2d = oSpline.Geometry
+    
+    <span style="color:blue">' Create a fixed spline on the second sketch based</span>
+    <span style="color:blue">' on the geometry of the spline on the first sketch.</span>
+    Dim oFixedSpline As SketchFixedSpline
+    oFixedSpline = oSketch2.SketchFixedSplines.Add(oBSplineCurve2d)</pre>
+      </div>
+    </div><br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(SketchFixedSpline%20Sample%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

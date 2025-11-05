@@ -1,0 +1,175 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/ComponentOccurrences.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="ComponentOccurrences">
+    <meta name="description" content="ComponentOccurrences Object">
+    <meta name="topicid" content="GUID-ComponentOccurrences">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>ComponentOccurrences Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">ComponentOccurrences Object
+			</h1>
+              Derived from: <a href="ComponentOccurrencesEnumerator.htm">ComponentOccurrencesEnumerator</a> Object
+            <br><h2 class="api">
+          Description
+        </h2>Provides access to the objects within an assembly and supports methods to create new occurrences.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ComponentOccurrences_Add.htm">Add</a></td>
+        <td class="api-list">Method that creates a new for an existing part or subassembly. This method is the equivalent of the 'Place Component' command.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ComponentOccurrences_AddByComponentDefinition.htm">AddByComponentDefinition</a></td>
+        <td class="api-list">Method that creates a new for a new part or subassembly. This method is the equivalent of the 'Create Component' command.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ComponentOccurrences_AddCustomiPartMember.htm">AddCustomiPartMember</a></td>
+        <td class="api-list">Method that creates an of an iPartMember in this AssemblyComponentDefinition. The iPartMember is specified by a custom factory and a row in the factory.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ComponentOccurrences_AddiAssemblyMember.htm">AddiAssemblyMember</a></td>
+        <td class="api-list">Method that creates an occurrence of an iAssemblyMember in an assembly. The iAssemblyMember is specified by a factory and a row in the factory.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ComponentOccurrences_AddiPartMember.htm">AddiPartMember</a></td>
+        <td class="api-list">Method that creates an of an iPartMember in this AssemblyComponentDefinition. The iPartMember is specified by a factory and a row in the factory.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ComponentOccurrences_AddUsingiMates.htm">AddUsingiMates</a></td>
+        <td class="api-list">Method that adds a new occurrence into the assembly. This method is the equivalent of using the Place Component command with the "Use iMate" check box checked. The method returns a failure if no matches are found.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ComponentOccurrences_AddVirtual.htm">AddVirtual</a></td>
+        <td class="api-list">Method that creates a virtual component definition and adds an occurrence based on that definition.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ComponentOccurrences_AddWithOptions.htm">AddWithOptions</a></td>
+        <td class="api-list">Method that creates a new occurrence for an existing part or subassembly. This method is the equivalent of the "Place Component" command.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ComponentOccurrences_AllLeafOccurrences.htm">AllLeafOccurrences</a></td>
+        <td class="api-list">Return all unique leaf occurrences (optionally filtered to the specified definition) relative to this context.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ComponentOccurrences_AllReferencedOccurrences.htm">AllReferencedOccurrences</a></td>
+        <td class="api-list">Property that returns all occurrences that reference the input object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ComponentOccurrences_Count.htm">Count</a></td>
+        <td class="api-list">Property that returns the number of items in this collection.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ComponentOccurrences_Item.htm">Item</a></td>
+        <td class="api-list">Allows integer-indexed access to objects in the collection.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ComponentOccurrences_ItemByName.htm">ItemByName</a></td>
+        <td class="api-list">Allows string-indexed access to items in the collection. (Usually found when this ability has been added to a pre-existing collection).</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ComponentOccurrences_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="AssemblyComponentDefinition_Occurrences.htm">AssemblyComponentDefinition.Occurrences</a>, <a href="ComponentDefinition_Occurrences.htm">ComponentDefinition.Occurrences</a>, <a href="FlatPattern_Occurrences.htm">FlatPattern.Occurrences</a>, <a href="PartComponentDefinition_Occurrences.htm">PartComponentDefinition.Occurrences</a>, <a href="SheetMetalComponentDefinition_Occurrences.htm">SheetMetalComponentDefinition.Occurrences</a>, <a href="VirtualComponentDefinition_Occurrences.htm">VirtualComponentDefinition.Occurrences</a>, <a href="WeldmentComponentDefinition_Occurrences.htm">WeldmentComponentDefinition.Occurrences</a>, <a href="WeldsComponentDefinition_Occurrences.htm">WeldsComponentDefinition.Occurrences</a><h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AddiAssemblyMember_Sample.htm">Adding iAssembly occurrences</a></td>
+        <td class="api-list">This sample demonstrates adding iAssembly occurrences to an assembly.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AddiPartMember_Sample.htm">Adding iPart occurrences to an assembly</a></td>
+        <td class="api-list">This sample demonstrates adding iPart occurrences to an assembly.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AddOccurrence_Sample.htm">Assembly Add Occurrence</a></td>
+        <td class="api-list">This sample demonstrates placing an assembly occurrence.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AddUsingiMates_Sample.htm">iMate Creation During Occurrence Placement</a></td>
+        <td class="api-list">This sample demonstrates creating multiple iMate results when adding an occurrence into an assembly. This uses the AddUsingiMate method which is the equivalent of using the Place Component command and checking the Use iMate check box on the dialog.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="CopyBodyFeature_Sample.htm">SurfaceBody Copy</a></td>
+        <td class="api-list">This sample demonstrates copying a surface body from one part to another. This is equivalent to the Promote command, but the API is much more flexible. In order for the sample to be self-contained, it creates two parts on the fly that will be used to demonstrate copying a body from one part to another. When copying a body into a part, you provide the surface body and a matrix to define its position in the new part. This sample creates a matrix based on the position of these parts within an assembly.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="OccurrenceAddWithOptions_Sample.htm">Create assembly occurrence with representations</a></td>
+        <td class="api-list">This sample demonstrates how to create an assembly occurrence by specifying various representations.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 4<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(ComponentOccurrences%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,251 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/ParameterCurveTo3D_Sample.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="ParameterCurveTo3D_Sample">
+    <meta name="description" content="3D Curve from Parametric Curve Sample">
+    <meta name="topicid" content="ParameterCurveTo3D_Sample">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>3D Curve from Parametric Curve</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body><script>
+          function copyCode(language) {
+          // Get the pre element for the specified language.
+          var preElement = document.getElementById(language);
+
+          // Get the text from the element and copy it to the clipboard.
+          var preText = preElement.innerText;
+
+          var isIE = /*@cc_on!@*/false || !!document.documentMode;
+
+          if (isIE)
+          {
+            window.clipboardData.setData('Text', preText);
+          }
+          else
+          {
+            navigator.clipboard.writeText(preText);
+          }
+
+          //alert("Code copied to clipboard");
+          }
+        </script><link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">3D Curve from Parametric Curve</h1>
+    <h2 class="api">
+          Description
+        </h2>Demonstrates the conversion of a 2d parameteric space curve into the equivalent 3d model space curve.  To use this sample you must have a part open.  You can select any face and 3D curves will be drawn on the face using client graphics.<h2 class="api">
+          Code Samples
+        </h2>
+    <div id="tabs">
+      <ul>
+        <li><a href="#VBA">VBA</a></li>
+        <li><a href="#iLogic">iLogic</a></li>
+      </ul>
+      <div id="VBA" class="api-code">To use this sample a part must be active.<table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('VBA_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="VBA_code">Public Sub ParamCurveto3D()
+    <span style="color:blue">' Have the user select a face whose parametric space will be used.</span>
+    Dim testFace As Face
+    Set testFace = ThisApplication.CommandManager.Pick(kPartFaceFilter, "Select a face")
+    
+    <span style="color:blue">' Get the surface evaluator from the face.</span>
+    Dim surfEval As SurfaceEvaluator
+    Set surfEval = testFace.Evaluator
+    
+    <span style="color:blue">' Get the parametric range of the face.</span>
+    Dim paramRange As Box2d
+    Set paramRange = surfEval.ParamRangeRect
+    
+    <span style="color:blue">' Get the transient geometry object.</span>
+    Dim tg As TransientGeometry
+    Set tg = ThisApplication.TransientGeometry
+    
+    <span style="color:blue">' Get the active document.  This assumes a part is active.</span>
+    Dim partDoc As PartDocument
+    Set partDoc = ThisApplication.ActiveDocument
+    
+    <span style="color:blue">' Create a client graphics object.  If one already exists, give the user</span>
+    <span style="color:blue">' the option of re-using it, or creating a new one.</span>
+    Dim graphics As ClientGraphics
+    On Error Resume Next
+    Set graphics = partDoc.ComponentDefinition.ClientGraphicsCollection.Item("Test")
+    If Err Then
+        Set graphics = partDoc.ComponentDefinition.ClientGraphicsCollection.Add("Test")
+    Else
+        If MsgBox("Yes to add to existing graphics. No to start over.", vbYesNo + vbQuestion) = vbNo Then
+            graphics.Delete
+            
+            Set graphics = partDoc.ComponentDefinition.ClientGraphicsCollection.Add("Test")
+        End If
+    End If
+    
+    <span style="color:blue">' Create a new graphics node.</span>
+    Dim node As GraphicsNode
+    Set node = graphics.AddNode(1)
+
+    <span style="color:blue">' Do a loop that creates 5 lines that go from the minimum range point to</span>
+    <span style="color:blue">' five points along the maximum u parameter.</span>
+    Dim startPnt As Point2d
+    Set startPnt = paramRange.MinPoint
+    Dim endPnt As Point2d
+    Dim i As Integer
+    For i = 1 To 5
+        <span style="color:blue">' Create the 2d line in parametric space.</span>
+        Set endPnt = tg.CreatePoint2d(paramRange.MaxPoint.X, (((paramRange.MaxPoint.y - paramRange.MinPoint.y) / 4) * (i - 1)) + paramRange.MinPoint.y)
+        Dim surfCurve As LineSegment2d
+        Set surfCurve = tg.CreateLineSegment2d(startPnt, endPnt)
+        
+        <span style="color:blue">' Get the equivalent 3d curve in model space.</span>
+        Dim resultCurve As Object
+        Set resultCurve = surfEval.Get3dCurveFrom2dCurve(surfCurve)
+        
+        <span style="color:blue">' Create client graphics for this curve.</span>
+        Dim crvGraphics As CurveGraphics
+        Set crvGraphics = node.AddCurveGraphics(resultCurve)
+        crvGraphics.DepthPriority = 2
+    Next
+    
+    <span style="color:blue">' Create a 2d circle in parametric space.</span>
+    Dim center As Point2d
+    Set center = tg.CreatePoint2d((paramRange.MaxPoint.X + paramRange.MinPoint.X) / 2, (paramRange.MaxPoint.y + paramRange.MinPoint.y) / 2)
+    Dim radius As Double
+    radius = (paramRange.MaxPoint.X - paramRange.MinPoint.X) * 0.25
+    Dim paramCircle As Circle2d
+    Set paramCircle = tg.CreateCircle2d(center, radius)
+    
+    <span style="color:blue">' Get the equivalent 3d curve in model space.</span>
+    Set resultCurve = surfEval.Get3dCurveFrom2dCurve(paramCircle)
+    
+    <span style="color:blue">' Create client graphics for this curve.</span>
+    Set crvGraphics = node.AddCurveGraphics(resultCurve)
+    crvGraphics.DepthPriority = 2
+        
+    ThisApplication.ActiveView.Update
+    ThisApplication.ActiveView.Fit
+End Sub</pre>
+      </div>
+      <div id="iLogic" class="api-code">To use this sample a part must be active.<table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('iLogic_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="iLogic_code">    <span style="color:blue">' Have the user select a face whose parametric space will be used.</span>
+    Dim testFace As Face
+    testFace = ThisApplication.CommandManager.Pick(kPartFaceFilter, "Select a face")
+    
+    <span style="color:blue">' Get the surface evaluator from the face.</span>
+    Dim surfEval As SurfaceEvaluator
+    surfEval = testFace.Evaluator
+    
+    <span style="color:blue">' Get the parametric range of the face.</span>
+    Dim paramRange As Box2d
+    paramRange = surfEval.ParamRangeRect
+    
+    <span style="color:blue">' Get the transient geometry object.</span>
+    Dim tg As TransientGeometry
+    tg = ThisApplication.TransientGeometry
+    
+    <span style="color:blue">' Get the active document.  This assumes a part is active.</span>
+    Dim partDoc As PartDocument
+    partDoc = ThisApplication.ActiveDocument
+    
+    <span style="color:blue">' Create a client graphics object.  If one already exists, give the user</span>
+    <span style="color:blue">' the option of re-using it, or creating a new one.</span>
+    Dim graphics As ClientGraphics
+    On Error Resume Next
+    graphics = partDoc.ComponentDefinition.ClientGraphicsCollection.Item("Test")
+    If Err.Number &gt; 0 Then
+        graphics = partDoc.ComponentDefinition.ClientGraphicsCollection.Add("Test")
+    Else
+        If MsgBox("Yes to add to existing graphics. No to start over.", vbYesNo + vbQuestion) = vbNo Then
+            graphics.Delete
+            
+            graphics = partDoc.ComponentDefinition.ClientGraphicsCollection.Add("Test")
+        End If
+    End If
+    
+    <span style="color:blue">' Create a new graphics node.</span>
+    Dim node As GraphicsNode
+    node = graphics.AddNode(1)
+
+    <span style="color:blue">' Do a loop that creates 5 lines that go from the minimum range point to</span>
+    <span style="color:blue">' five points along the maximum u parameter.</span>
+    Dim startPnt As Point2d
+    startPnt = paramRange.MinPoint
+    Dim endPnt As Point2d
+    Dim i As Integer
+    Dim resultCurve As Object
+    Dim crvGraphics As CurveGraphics
+    
+    For i = 1 To 5
+        <span style="color:blue">' Create the 2d line in parametric space.</span>
+        endPnt = tg.CreatePoint2d(paramRange.MaxPoint.X, (((paramRange.MaxPoint.y - paramRange.MinPoint.y) / 4) * (i - 1)) + paramRange.MinPoint.y)
+        Dim surfCurve As LineSegment2d
+        surfCurve = tg.CreateLineSegment2d(startPnt, endPnt)
+        
+        <span style="color:blue">' Get the equivalent 3d curve in model space.</span>
+        resultCurve = surfEval.Get3dCurveFrom2dCurve(surfCurve)
+        
+        <span style="color:blue">' Create client graphics for this curve.</span>
+        crvGraphics = node.AddCurveGraphics(resultCurve)
+        crvGraphics.DepthPriority = 2
+    Next
+    
+    <span style="color:blue">' Create a 2d circle in parametric space.</span>
+    Dim center As Point2d
+    center = tg.CreatePoint2d((paramRange.MaxPoint.X + paramRange.MinPoint.X) / 2, (paramRange.MaxPoint.y + paramRange.MinPoint.y) / 2)
+    Dim radius As Double
+    radius = (paramRange.MaxPoint.X - paramRange.MinPoint.X) * 0.25
+    Dim paramCircle As Circle2d
+    paramCircle = tg.CreateCircle2d(center, radius)
+    
+    <span style="color:blue">' Get the equivalent 3d curve in model space.</span>
+    resultCurve = surfEval.Get3dCurveFrom2dCurve(paramCircle)
+    
+    <span style="color:blue">' Create client graphics for this curve.</span>
+    crvGraphics = node.AddCurveGraphics(resultCurve)
+    crvGraphics.DepthPriority = 2
+        
+    ThisApplication.ActiveView.Update
+    ThisApplication.ActiveView.Fit</pre>
+      </div>
+    </div><br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(ParameterCurveTo3D%20Sample%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

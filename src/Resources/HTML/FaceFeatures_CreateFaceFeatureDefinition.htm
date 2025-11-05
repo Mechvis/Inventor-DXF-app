@@ -1,0 +1,108 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/FaceFeatures_CreateFaceFeatureDefinition.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="FaceFeatures_CreateFaceFeatureDefinition">
+    <meta name="description" content="FaceFeatures.CreateFaceFeatureDefinition Method">
+    <meta name="topicid" content="FaceFeatures_CreateFaceFeatureDefinition">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>FaceFeatures.CreateFaceFeatureDefinition Method</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">FaceFeatures.CreateFaceFeatureDefinition Method</h1>
+
+          Parent Object: <a href="FaceFeatures.htm">FaceFeatures</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Method that creates a new FaceFeatureDefinition object.</p>
+    <h2 class="api">
+            Remarks
+          </h2>This object is not a face feature but contains the information that defines a face feature and can be used to create a new face feature or edit an existing one. The returned FaceFeatureDefinition can be used as input to the FaceFeatures.Add method to create a new face feature. You can edit the properties of the FaceFeatureDefinition object before creating the face feature to get the desired face feature.<h2 class="api">
+          Syntax
+        </h2>
+        
+            FaceFeatures.<b>CreateFaceFeatureDefinition</b>( <b><i>Profile</i></b> As <a href="Profile.htm">Profile</a> ) As <a href="FaceFeatureDefinition.htm">FaceFeatureDefinition</a>
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">Profile</td>
+        <td class="api-list"><a href="Profile.htm">Profile</a></td>
+        <td class="api-list">Input Profile object that defines the shape of the face. The input profile must consist of one or more closed paths.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalFeatures_Sample.htm">Create sheet metal face and cut features</a></td>
+        <td class="api-list">This sample demonstrates the creation of sheet metal face and cut features.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalFeatures_FlangeFeatures_Sample.htm">Create sheet metal face and flange features</a></td>
+        <td class="api-list">This sample demonstrates the creation of sheet metal face and flange features.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2009<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(FaceFeatures.CreateFaceFeatureDefinition%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

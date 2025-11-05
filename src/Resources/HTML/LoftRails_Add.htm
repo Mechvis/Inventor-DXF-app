@@ -1,0 +1,102 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/LoftRails_Add.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="LoftRails_Add">
+    <meta name="description" content="LoftRails.Add Method">
+    <meta name="topicid" content="LoftRails_Add">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>LoftRails.Add Method</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">LoftRails.Add Method</h1>
+
+          Parent Object: <a href="LoftRails.htm">LoftRails</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Method that creates a new LoftRail that represents a rail for a loft feature.</p>
+    <h2 class="api">
+            Remarks
+          </h2>The Condition and Impact arguments can be used to specify the boundary conditions for a rail only if these conditions can be applied to the rail. Therefore, these arguments are valid only if boundary conditions are applicable to the rail specified using the Rail argument. If boundary conditions cannot be applied to the rail and either one of or both the Condition and Impact arguments are specified, then this method will fail.<h2 class="api">
+          Syntax
+        </h2>
+        
+            LoftRails.<b>Add</b>( <b><i>Value</i></b> As Object, [<b><i>Condition</i></b>] As Variant, [<b><i>Impact</i></b>] As Variant ) As <a href="LoftRail.htm">LoftRail</a>
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">Value</td>
+        <td class="api-list">Object</td>
+        <td class="api-list">Input Object that defines a rail for a loft feature. Valid input objects for rails are Profile, Profile3D, EdgeLoop and EdgeCollection objects. The EdgeCollection object may contain either a single edge or a set of tangentially connected edges. Since all the rails for a loft must be either open or all closed, if the existing rails in the collection are open, then the rail specified using this argument must be open. Similarly, if the existing rails in the collection are closed, then the rail specified using this argument must be closed.<p /></td>
+      </tr>
+      <tr>
+        <td class="api-list">Condition</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional input constant that defines the condition of the loft at the rail. Valid input is one of the following constants in LoftConditionEnum: kFreeLoftCondition, kTangentLoftCondition or kSmoothLoftCondition. If any other constant in LoftConditionEnum is specified, then the creation of the loft rail will fail. Since the condition is only applicable for a rail to which boundary conditions can be applied, the rail condition must not be specified using this argument if boundary conditions cannot be applied to the rail specified by the Rail argument, otherwise the creation of the loft rail will fail. If the rail is a rail to which boundary conditions can be applied and if no value is explicitly specified for this argument, then the default value of kFreeLoftCondition will be assumed.<br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+      <tr>
+        <td class="api-list">Impact</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional input Variant that defines the impact the rail's condition has on the shape of the entire loft. The value can be specified either as a numeric value or a string. A parameter for this value will be created and the supplied string or value is assigned to the parameter. If a value is \input, it is unitless. If a string is input it must resolve to a unitless value. Since the impact is only applicable for a rail to which the tangent or smooth condition can been applied, the impact value should be specified only if both of the following conditions are satisfied:
+<ul>
+<li>The loft rail is a rail to which boundary conditions can be applied.</li>
+<li>The Condition argument is specified to be kTangentLoftCondition or kSmoothLoftCondition to indicate tangent or smooth condition.</li>
+</ul>
+If any one or both of the above conditions are not satisfied and an impact value is specified, then this method will fail to create the loft rail. If both the conditions are satisfied and if no value is explicitly specified for this argument, then the default value of 0 will be assumed.<br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2008<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(LoftRails.Add%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

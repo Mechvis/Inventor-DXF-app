@@ -1,0 +1,166 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/DSLoadDefinition.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="DSLoadDefinition">
+    <meta name="description" content="DSLoadDefinition Object">
+    <meta name="topicid" content="GUID-DSLoadDefinition">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>DSLoadDefinition Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">DSLoadDefinition Object
+			</h1><br><h2 class="api">
+          Description
+        </h2>DSLoadDefinition Object.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DSLoadDefinition_Copy.htm">Copy</a></td>
+        <td class="api-list">Creates a copy of this DSLoadDefinition object. The new DSLoadDefinition object is independent of any load. It can edited and used as input to edit an existing load or to create a new load.&nbsp;Creating a copy of a definition, editing it, and then assigning it back to the load can be a more efficient way of editing multiple inputs because it results in a single recompute.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DSLoadDefinition_SetByMagnitudeAndDirection.htm">SetByMagnitudeAndDirection</a></td>
+        <td class="api-list">Specifies the direction and magnitude of this load to be defined by a magnitude value and a direction defined by an entity.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DSLoadDefinition_SetByVector.htm">SetByVector</a></td>
+        <td class="api-list">Specifies the direction and magnitude of this load to be defined by the x, y, z components of a vector.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DSLoadDefinition_Application.htm">Application</a></td>
+        <td class="api-list">Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DSLoadDefinition_DirectionEntity.htm">DirectionEntity</a></td>
+        <td class="api-list">Gets and sets Entity that defines the direction of the load.&nbsp;Valid geometry includes planar and cylindrical faces, and linear edges.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DSLoadDefinition_GlyphColor.htm">GlyphColor</a></td>
+        <td class="api-list">Gets and sets the color of the force or torque glyph as seen during the playback of the simulation.&nbsp;The IsDisplayed property controls whether the glyph is displayed or not.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DSLoadDefinition_GlyphScale.htm">GlyphScale</a></td>
+        <td class="api-list">Gets and sets the scale of the load glyph. This property is writable when the DSLoadDefinition object has been created using the DSLoads.CreateLoadDefinition or DSLoadDefinition.Copy methods.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DSLoadDefinition_IsAssociativeLoadDirection.htm">IsAssociativeLoadDirection</a></td>
+        <td class="api-list">Gets and sets the how the direction of the force or torque is defined.&nbsp;If True, the direction of the force or torque is defined relative to the coordinate system of the component containing the force or torque.&nbsp;If False, the direction of the force or torque.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DSLoadDefinition_IsDefinedByVectorComponents.htm">IsDefinedByVectorComponents</a></td>
+        <td class="api-list">Gets and sets if the magnitude and direction of this load is defined by vector components or a specified magnitude and direction entity.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DSLoadDefinition_IsDirectionEntityNaturalDirection.htm">IsDirectionEntityNaturalDirection</a></td>
+        <td class="api-list">Gets and sets whether the direction of the load, when defined by an entity, is in the natural direction defined by the entity or reversed.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DSLoadDefinition_IsDisplayed.htm">IsDisplayed</a></td>
+        <td class="api-list">Gets and sets if the arrow for the force or torque is displayed during the playback of the simulation.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DSLoadDefinition_IsSuppressed.htm">IsSuppressed</a></td>
+        <td class="api-list">Gets and sets whether the load is suppressed.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DSLoadDefinition_Location.htm">Location</a></td>
+        <td class="api-list">Gets the location of the load. The location is defined by specifying geometry and the location coordinate is inferred from the selected geometry.&nbsp;This provides that inferred coordinate regardless of the entity that was used to specify the location.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DSLoadDefinition_LocationEntity.htm">LocationEntity</a></td>
+        <td class="api-list">Gets and sets Entity that defines the location of the load.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DSLoadDefinition_Magnitude.htm">Magnitude</a></td>
+        <td class="api-list"><p>Gets the DSValue object that defines the magnitude of the load.&nbsp;The value of the magnitude can be accessed through the returned DSValue object.</p>
+<p>This property returns Nothing in the case where the IsDefinedByVectorComponents is True.&nbsp;To change the definition of the load to be defined by a magnitude and direction use the SetByMagnitudeAndDirection method.</p>
+<p>Setting the magnitude using the SetValueUsingArray method of the DSValue object is currently limited to motion, magnitude, and x,y,z coordinates.</p></td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DSLoadDefinition_Parent.htm">Parent</a></td>
+        <td class="api-list">Gets the parent DSLoad object this definition object is associated with.&nbsp;If this definition is not associated with a load then this property returns Nothing.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DSLoadDefinition_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DSLoadDefinition_Vector.htm">Vector</a></td>
+        <td class="api-list">Gets a Vector indicating the vector of the load.&nbsp;This can be used to get the load vector regardless of whether it has been defined using geometry or the x, y, z, components.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DSLoadDefinition_VectorXComponent.htm">VectorXComponent</a></td>
+        <td class="api-list">Gets the DSValue object that defines the X component of the vector. This property returns Nothing in the case where the IsDefinedByVectorComponents is False.&nbsp;To change the definition of the load to be defined by a vector use the SetByVector method.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DSLoadDefinition_VectorYComponent.htm">VectorYComponent</a></td>
+        <td class="api-list">Gets the DSValue object that defines the Y component of the vector. This property returns Nothing in the case where the IsDefinedByVectorComponents is False.&nbsp;To change the definition of the load to be defined by a vector use the SetByVector method.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DSLoadDefinition_VectorZComponent.htm">VectorZComponent</a></td>
+        <td class="api-list">Gets the DSValue object that defines the Z component of the vector. This property returns Nothing in the case where the IsDefinedByVectorComponents is False.&nbsp;To change the definition of the load to be defined by a vector use the SetByVector method.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="DSLoad_Definition.htm">DSLoad.Definition</a>, <a href="DSLoadDefinition_Copy.htm">DSLoadDefinition.Copy</a><h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2013<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(DSLoadDefinition%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

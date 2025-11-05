@@ -1,0 +1,307 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/LinearGeneralDimension.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="LinearGeneralDimension">
+    <meta name="description" content="LinearGeneralDimension Object">
+    <meta name="topicid" content="GUID-LinearGeneralDimension">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>LinearGeneralDimension Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">LinearGeneralDimension Object
+			</h1>
+              Derived from: <a href="GeneralDimension.htm">GeneralDimension</a> Object
+            <br><h2 class="api">
+          Description
+        </h2>The LinearGeneralDimension object represents a linear general dimension placed on a sheet.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LinearGeneralDimension_CenterText.htm">CenterText</a></td>
+        <td class="api-list">Method that centers the dimension text on the dimension line.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LinearGeneralDimension_Delete.htm">Delete</a></td>
+        <td class="api-list">Method that deletes the DrawingDimension.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LinearGeneralDimension_GetInspectionDimensionData.htm">GetInspectionDimensionData</a></td>
+        <td class="api-list">Method that returns the data associated with an inspection dimension. This method returns an error if the IsInspectionDimension property returns False.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LinearGeneralDimension_GetReferenceKey.htm">GetReferenceKey</a></td>
+        <td class="api-list">Method that generates and returns the reference key for this entity.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LinearGeneralDimension_PromoteToSketch.htm">PromoteToSketch</a></td>
+        <td class="api-list">Method that copies the dimension to the underlying sketch. This method only works for dimensions associated with a draft view.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LinearGeneralDimension_SetInspectionDimensionData.htm">SetInspectionDimensionData</a></td>
+        <td class="api-list">Method that sets the data associated with an inspection dimension. This method automatically sets the IsInspectionDimension property to True, if it isn't already.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LinearGeneralDimension_ShowAllExtensionLines.htm">ShowAllExtensionLines</a></td>
+        <td class="api-list">Method that un-hides all the extension lines associated with this dimension. If there are no hidden extension lines associated with this dimension, this method does nothing and returns a success.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LinearGeneralDimension_AlignmentGeometry.htm">AlignmentGeometry</a></td>
+        <td class="api-list">Read-only property that returns the geometry that defines the direction the linear dimension aligns to.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LinearGeneralDimension_Application.htm">Application</a></td>
+        <td class="api-list">Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LinearGeneralDimension_ArrowheadsInside.htm">ArrowheadsInside</a></td>
+        <td class="api-list">Gets and sets the ArrowheadsInside setting.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LinearGeneralDimension_Attached.htm">Attached</a></td>
+        <td class="api-list">Indicates whether this dimension is attached to anything. If not, it is considered orphaned and can be removed.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LinearGeneralDimension_AttributeSets.htm">AttributeSets</a></td>
+        <td class="api-list">Property that returns the AttributeSets collection object associated with this object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LinearGeneralDimension_BaselineDimensionSet.htm">BaselineDimensionSet</a></td>
+        <td class="api-list">Property that returns the BaselineDimensionSet that owns this dimension.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LinearGeneralDimension_ChainDimensionSet.htm">ChainDimensionSet</a></td>
+        <td class="api-list">Property that returns the ChainDimensionSet that owns this dimension. This property returns nothing if this dimension is not a chain dimension set member. This can be checked using the <i>IsChainSetMember</i> property.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LinearGeneralDimension_DimensionLine.htm">DimensionLine</a></td>
+        <td class="api-list">Property that returns the dimension line geometry of the dimension.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LinearGeneralDimension_DimensionType.htm">DimensionType</a></td>
+        <td class="api-list">Property that returns the dimension type. Possible values are kAlignedDimensionType, kHorizontalDimensionType, kVerticalDimensionType, kArcLengthDimensionType, kSymmetricDimensionType and kDiametricDimensionType.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LinearGeneralDimension_ExtensionLineOne.htm">ExtensionLineOne</a></td>
+        <td class="api-list">Property that returns the first extension line of the dimension.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LinearGeneralDimension_ExtensionLineOneVisible.htm">ExtensionLineOneVisible</a></td>
+        <td class="api-list">Gets and sets whether the first extension line is visible.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LinearGeneralDimension_ExtensionLineTwo.htm">ExtensionLineTwo</a></td>
+        <td class="api-list">Property that returns the second extension line of the dimension.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LinearGeneralDimension_ExtensionLineTwoVisible.htm">ExtensionLineTwoVisible</a></td>
+        <td class="api-list">Gets and sets whether the second extension line is visible.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LinearGeneralDimension_FirstArrowheadInside.htm">FirstArrowheadInside</a></td>
+        <td class="api-list">Read-write property that gets and sets whether the first arrowhead is inside or outside.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LinearGeneralDimension_FirstArrowheadType.htm">FirstArrowheadType</a></td>
+        <td class="api-list">Read-write property that gets and sets the type of the first arrowhead.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LinearGeneralDimension_FullDimensionLine.htm">FullDimensionLine</a></td>
+        <td class="api-list">Gets and sets whether the full dimension line should be displayed for linear diametric dimensions.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LinearGeneralDimension_GeneralDimensionType.htm">GeneralDimensionType</a></td>
+        <td class="api-list">Returns an enum indicating the type of general dimension.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LinearGeneralDimension_HideSecondArrowhead.htm">HideSecondArrowhead</a></td>
+        <td class="api-list">Gets and sets whether hide the second arrowhead of the dimension.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LinearGeneralDimension_HideValue.htm">HideValue</a></td>
+        <td class="api-list">Gets and sets the HideValue setting.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LinearGeneralDimension_IntentOne.htm">IntentOne</a></td>
+        <td class="api-list">Gets the sets first geometry associated with the dimension.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LinearGeneralDimension_IntentThree.htm">IntentThree</a></td>
+        <td class="api-list">Gets the sets the third geometry associated with the dimension.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LinearGeneralDimension_IntentTwo.htm">IntentTwo</a></td>
+        <td class="api-list">Gets the sets second geometry associated with the dimension. This may return Nothing in some cases where a single geometry was used for the dimension creation.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LinearGeneralDimension_IsBaselineSetMember.htm">IsBaselineSetMember</a></td>
+        <td class="api-list">Property that returns whether this dimension is a member of a baseline dimension set. If this property returns True, the BaselineDimensionSet object is returned by the BaselineDimensionSet property.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LinearGeneralDimension_IsChainSetMember.htm">IsChainSetMember</a></td>
+        <td class="api-list">Property that returns whether this dimension is a member of a chain dimension set. If this property returns True, the ChainDimensionSet object is returned by the ChainDimensionSet property.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LinearGeneralDimension_IsInspectionDimension.htm">IsInspectionDimension</a></td>
+        <td class="api-list">Gets and sets whether this is an inspection dimension.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LinearGeneralDimension_Layer.htm">Layer</a></td>
+        <td class="api-list">Gets and sets the layer applied to this dimension.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LinearGeneralDimension_ModelValue.htm">ModelValue</a></td>
+        <td class="api-list">Property that gets the dimension value as defined in the model or as measured in the drawing.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LinearGeneralDimension_ModelValueOverridden.htm">ModelValueOverridden</a></td>
+        <td class="api-list">Read-write property that gets and sets whether the model value is overridden for the dimension.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LinearGeneralDimension_OverrideModelValue.htm">OverrideModelValue</a></td>
+        <td class="api-list">Gets and sets the NominalValue setting.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LinearGeneralDimension_Parent.htm">Parent</a></td>
+        <td class="api-list">Property that returns the parent sheet of the object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LinearGeneralDimension_Precision.htm">Precision</a></td>
+        <td class="api-list">Gets and sets the Precision setting.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LinearGeneralDimension_Retrieved.htm">Retrieved</a></td>
+        <td class="api-list">Property that indicates whether the dimension was created as a result of retrieving it either from the model or a drawing view sketch. If True, the RetrievedFrom property returns the object that the dimension was retrieved from.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LinearGeneralDimension_RetrievedFrom.htm">RetrievedFrom</a></td>
+        <td class="api-list">Property that returns the object that this dimension was retrieved from. Possible return objects include all sketch constraint objects that derive from DimensionConstraint and their proxies, FeatureDimension and FeatureDimensionProxy. The property returns Nothing if the Retrieved property returns False.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LinearGeneralDimension_SecondArrowheadInside.htm">SecondArrowheadInside</a></td>
+        <td class="api-list">Read-write property that gets and sets whether the second arrowhead is inside or outside.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LinearGeneralDimension_SecondArrowheadPosition.htm">SecondArrowheadPosition</a></td>
+        <td class="api-list">Gets and sets the position of the second arrowhead.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LinearGeneralDimension_SecondArrowheadType.htm">SecondArrowheadType</a></td>
+        <td class="api-list">Read-write property that gets and sets the type of the second arrowhead.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LinearGeneralDimension_ShowLeader.htm">ShowLeader</a></td>
+        <td class="api-list">Gets and sets whether to display a leader line for the dimension text.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LinearGeneralDimension_SpacingDimension.htm">SpacingDimension</a></td>
+        <td class="api-list">Gets and sets spacing dimension for the linear sum dimension.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LinearGeneralDimension_Style.htm">Style</a></td>
+        <td class="api-list">Gets and sets the DimensionStyle associated with the dimension.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LinearGeneralDimension_Text.htm">Text</a></td>
+        <td class="api-list">Gets and sets the DimensionText setting.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LinearGeneralDimension_Tolerance.htm">Tolerance</a></td>
+        <td class="api-list">Property that returns the Tolerance object associated with this dimension.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LinearGeneralDimension_TolerancePrecision.htm">TolerancePrecision</a></td>
+        <td class="api-list">Gets and sets the precision of the tolerance text for the dimension.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LinearGeneralDimension_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LinearGeneralDimension_VirtualArcPosition.htm">VirtualArcPosition</a></td>
+        <td class="api-list">Gets and sets the geometry that defines the position of the virtual arc.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="BaselineDimensionSet_AddMember.htm">BaselineDimensionSet.AddMember</a>, <a href="GeneralDimensions_AddArcLengthForeshortened.htm">GeneralDimensions.AddArcLengthForeshortened</a>, <a href="GeneralDimensions_AddLinear.htm">GeneralDimensions.AddLinear</a>, <a href="GeneralDimensions_AddLinear2.htm">GeneralDimensions.AddLinear2</a>, <a href="GeneralDimensions_AddLinearForeshortened.htm">GeneralDimensions.AddLinearForeshortened</a>, <a href="GeneralDimensions_AddLinearSum.htm">GeneralDimensions.AddLinearSum</a>, <a href="LinearGeneralDimension_SpacingDimension.htm">LinearGeneralDimension.SpacingDimension</a><h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AngularGeneralDimension_CenterText_Sample.htm">Center Dimension Text</a></td>
+        <td class="api-list">This sample demonstrates how to center the text of all dimensions on the active sheet in a drawing.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SurfaceTextureSymbols_Add_Sample.htm">Add surface texture symbol to dimension</a></td>
+        <td class="api-list">This sample demonstrates the creation of a surface texture symbol attached to the extension line of a drawing dimension.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 11<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(LinearGeneralDimension%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

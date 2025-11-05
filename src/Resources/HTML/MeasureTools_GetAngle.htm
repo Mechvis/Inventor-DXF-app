@@ -1,0 +1,95 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/MeasureTools_GetAngle.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="MeasureTools_GetAngle">
+    <meta name="description" content="MeasureTools.GetAngle Method">
+    <meta name="topicid" content="MeasureTools_GetAngle">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>MeasureTools.GetAngle Method</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">MeasureTools.GetAngle Method</h1>
+
+          Parent Object: <a href="MeasureTools.htm">MeasureTools</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Method that returns the angle between the input entities. The input entities must all belong to the same document, unless they are transient objects.</p>
+    <h2 class="api">
+          Syntax
+        </h2>
+        
+            MeasureTools.<b>GetAngle</b>( <b><i>EntityOne</i></b> As Object, <b><i>EntityTwo</i></b> As Object, [<b><i>EntityThree</i></b>] As Variant ) As Double
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">EntityOne</td>
+        <td class="api-list">Object</td>
+        <td class="api-list">Object that specifies the first entity. Valid inputs include Face, Edge, Vertex, transient objects (Point, Plane, Cylinder, etc.), work features, 2d and 3d sketch entities, DrawingViewCurve and GeometryIntent objects. Proxy object inputs are supported for assembly documents. For spherical and circular entity inputs, the center is assumed. For cylindrical and conical inputs, the axis is assumed. For toroidal inputs, the axis is assumed, unless the third argument of the method is also supplied in which case the center is assumed. For position inputs (such as Vertex, WorkPoint, Point, etc.) to be valid, all three inputs to the method should be supplied and they must all be position inputs (this implies a 3-point angle measurement).</td>
+      </tr>
+      <tr>
+        <td class="api-list">EntityTwo</td>
+        <td class="api-list">Object</td>
+        <td class="api-list">Input object that specifies the second entity. Valid inputs include Face, Edge, Vertex, transient objects (Point, Plane, Cylinder, etc.), work features, 2d and 3d sketch entities, DrawingViewCurve and GeometryIntent objects. Proxy object inputs are supported for assembly documents. For spherical and circular entity inputs, the center is assumed. For cylindrical and conical inputs, the axis is assumed. For toroidal inputs, the axis is assumed, unless the third argument of the method is also supplied in which case the center is assumed. For position inputs (such as Vertex, WorkPoint, Point, etc.) to be valid, all three inputs to the method should be supplied and they must all be position inputs (this implies a 3-point angle measurement).</td>
+      </tr>
+      <tr>
+        <td class="api-list">EntityThree</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional input object that specifies the third entity for a 3-point angle measurement. Valid inputs include spherical & toroidal Face, Vertex, transient objects defining a position (Point, Sphere, etc.), work points, 2d & 3d sketch points, and GeometryIntent objects. Proxy object inputs are supported for assembly documents.<br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 11<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(MeasureTools.GetAngle%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

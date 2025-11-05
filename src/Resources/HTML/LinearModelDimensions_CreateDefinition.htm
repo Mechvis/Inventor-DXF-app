@@ -1,0 +1,114 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/LinearModelDimensions_CreateDefinition.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="LinearModelDimensions_CreateDefinition">
+    <meta name="description" content="LinearModelDimensions.CreateDefinition Method">
+    <meta name="topicid" content="LinearModelDimensions_CreateDefinition">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>LinearModelDimensions.CreateDefinition Method</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">LinearModelDimensions.CreateDefinition Method</h1>
+
+          Parent Object: <a href="LinearModelDimensions.htm">LinearModelDimensions</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Method that creates a linear dimension definition.&nbsp;This is a not a linear dimension but an object that encapsulates all of the information that defines a dimension.&nbsp;You use the methods an properties of this object to define the dimension you want to create and then provide it as input to the Add method.</p>
+    <h2 class="api">
+          Syntax
+        </h2>
+        
+            LinearModelDimensions.<b>CreateDefinition</b>( <b><i>IntentOne</i></b> As <a href="GeometryIntent.htm">GeometryIntent</a>, <b><i>IntentTwo</i></b> As <a href="GeometryIntent.htm">GeometryIntent</a>, <b><i>AnnotationPlaneDefinition</i></b> As <a href="AnnotationPlaneDefinition.htm">AnnotationPlaneDefinition</a>, <b><i>TextPosition</i></b> As <a href="Point.htm">Point</a>, <b><i>DimensionType</i></b> As <a href="DimensionTypeEnum.htm">DimensionTypeEnum</a> ) As <a href="LinearModelDimensionDefinition.htm">LinearModelDimensionDefinition</a>
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">IntentOne</td>
+        <td class="api-list"><a href="GeometryIntent.htm">GeometryIntent</a></td>
+        <td class="api-list"><p>Input GeometryIntent object that defines the first geometry to dimension to.&nbsp;The GeometryIntent object can be created using the CreateGeometryIntent method on the PartComponentDefinition or AssemblyComponentDefinition object.</p>
+<p>Valid entity combinations for the IntentOne and IntentTwo arguments are:
+<ul>
+<li>Two points.</li>
+<li>Two linear entities.&nbsp;(Non-parallel lines will result in an angular dimension.)</li>
+<li>A linear entity and a point.</li>
+<li>A point and a linear entity.</li>
+<li>One linear entity.</li>
+<li>One circular entity (with DimensionType set to kAlignedDimensionType for chord length and kArcLengthDimensionType for arc length)</li></ul></p></td>
+      </tr>
+      <tr>
+        <td class="api-list">IntentTwo</td>
+        <td class="api-list"><a href="GeometryIntent.htm">GeometryIntent</a></td>
+        <td class="api-list">Input entity that specifies the second geometry to dimension. In the cases where there is only one entity needed this argument should be set to Nothing (null);</td>
+      </tr>
+      <tr>
+        <td class="api-list">AnnotationPlaneDefinition</td>
+        <td class="api-list"><a href="AnnotationPlaneDefinition.htm">AnnotationPlaneDefinition</a></td>
+        <td class="api-list">Input AnnotationPlaneDefinition object that defines the annotation plane the annotation will be created on.&nbsp;An existing annotation plane can be specified by using the AnnotationPlaneDefinition object associated with the existing annotation plane.</td>
+      </tr>
+      <tr>
+        <td class="api-list">TextPosition</td>
+        <td class="api-list"><a href="Point.htm">Point</a></td>
+        <td class="api-list">Input Point object that specifies the position of the dimension text.&nbsp;The point will be projected onto the orientation plane.</td>
+      </tr>
+      <tr>
+        <td class="api-list">DimensionType</td>
+        <td class="api-list"><a href="DimensionTypeEnum.htm">DimensionTypeEnum</a></td>
+        <td class="api-list"><p>Input DimensionTypeEnum that specifies the linear dimension type.&nbsp;Valid values (based on the input intents) are kAlignedDimensionType, kHorizontalDimensionType, kVerticalDimensionType, kArcLengthDimensionType, kSymmetricDimensionType, kDiametricDimensionType, and kArcLengthDimensionType</p>&nbsp;
+<p>An error will occur if the specified type is invalid for the input intents.&nbsp;For instance, kSymmetricDimensionType & kDiametricDimensionType are valid only when two intents are providedone intent is provided as input. the first intent (an edge) is specified.&nbsp;kArcLengthDimensionType is only valid if two intents are supplied and they represent end points of an arc or a single intent is supplied and it represents an arc.</p></td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2018<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(LinearModelDimensions.CreateDefinition%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

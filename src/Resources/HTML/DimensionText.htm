@@ -1,0 +1,144 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/DimensionText.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="DimensionText">
+    <meta name="description" content="DimensionText Object">
+    <meta name="topicid" content="GUID-DimensionText">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>DimensionText Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">DimensionText Object
+			</h1><br><h2 class="api">
+          Description
+        </h2>The DimensionText object represents text in a dimension placed on a sheet.<h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionText_Application.htm">Application</a></td>
+        <td class="api-list">Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionText_BackgroundColor.htm">BackgroundColor</a></td>
+        <td class="api-list">Gets and sets the BackgroundColor associated with the DimensionText.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionText_Color.htm">Color</a></td>
+        <td class="api-list">Gets and sets the Color Object of the text.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionText_FormattedText.htm">FormattedText</a></td>
+        <td class="api-list">Gets and sets the formatted text.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionText_HorizontalJustification.htm">HorizontalJustification</a></td>
+        <td class="api-list">Gets and sets the horizontal justification of the text.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionText_LineSpacing.htm">LineSpacing</a></td>
+        <td class="api-list">Gets and sets the line spacing of the text.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionText_LineSpacingType.htm">LineSpacingType</a></td>
+        <td class="api-list">Gets and sets the line spacing method of the text.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionText_Origin.htm">Origin</a></td>
+        <td class="api-list">Gets and sets the origin position of the text.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionText_Parent.htm">Parent</a></td>
+        <td class="api-list">Property that returns the parent of the object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionText_RangeBox.htm">RangeBox</a></td>
+        <td class="api-list">Property that returns a Box2D object which contains the lower-left and upper-right corners of a rectangle that is guaranteed to enclose this object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionText_Text.htm">Text</a></td>
+        <td class="api-list">Property that indicates the string that defines the dimension text. When getting this property, the returned string has all formatting removed and contains the actual text characters displayed in the text. If this property is used to set the text, all format overrides will be removed and the text will revert to the associated text style. Also, the dimension value will always be placed at the beginning of the text. If you want to control the location of the dimension value, use the FormattedText property. The dimension value can be hidden using the HideValue property.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionText_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionText_UseBackgroundColor.htm">UseBackgroundColor</a></td>
+        <td class="api-list">Gets and sets the UseBackgroundColor associated with the DimensionText.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionText_VerticalJustification.htm">VerticalJustification</a></td>
+        <td class="api-list">Gets and sets the vertical justification of the text.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionText_WidthScale.htm">WidthScale</a></td>
+        <td class="api-list">Gets and sets the width scale factor of the text.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="AngularGeneralDimension_Text.htm">AngularGeneralDimension.Text</a>, <a href="DiameterGeneralDimension_Text.htm">DiameterGeneralDimension.Text</a>, <a href="DrawingDimension_Text.htm">DrawingDimension.Text</a>, <a href="GeneralDimension_Text.htm">GeneralDimension.Text</a>, <a href="HoleThreadNote_Text.htm">HoleThreadNote.Text</a>, <a href="LinearGeneralDimension_Text.htm">LinearGeneralDimension.Text</a>, <a href="OrdinateDimension_Text.htm">OrdinateDimension.Text</a>, <a href="RadiusGeneralDimension_Text.htm">RadiusGeneralDimension.Text</a><h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDimension_Text_Sample.htm">Aligning drawing dimensions</a></td>
+        <td class="api-list">This sample demonstrates aligning the selected drawing dimensions along a horizontal or vertical axis.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 9<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(DimensionText%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

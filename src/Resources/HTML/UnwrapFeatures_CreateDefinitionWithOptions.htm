@@ -1,0 +1,125 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/UnwrapFeatures_CreateDefinitionWithOptions.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="UnwrapFeatures_CreateDefinitionWithOptions">
+    <meta name="description" content="UnwrapFeatures.CreateDefinitionWithOptions Method">
+    <meta name="topicid" content="UnwrapFeatures_CreateDefinitionWithOptions">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>UnwrapFeatures.CreateDefinitionWithOptions Method</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">UnwrapFeatures.CreateDefinitionWithOptions Method</h1>
+
+          Parent Object: <a href="UnwrapFeatures.htm">UnwrapFeatures</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Method that creates the UnwrapDefinition. The object created does not represent a Unwrap feature but instead is a representation of the information that defines a Unwrap feature.&nbsp;You can use this object as input to the UnwrapFeatures.Add method to create the.</p>
+    <h2 class="api">
+          Syntax
+        </h2>
+        
+            UnwrapFeatures.<b>CreateDefinitionWithOptions</b>( <b><i>Faces</i></b> As <a href="FaceCollection.htm">FaceCollection</a>, [<b><i>pOrigin</i></b>] As Variant, [<b><i>Align</i></b>] As <a href="UnwrapResultAlignmentEnum.htm">UnwrapResultAlignmentEnum</a>, [<b><i>LinearResult</i></b>] As Variant, [<b><i>RigidResult</i></b>] As Variant, [<b><i>AutomaticFaceChain</i></b>] As Boolean, [<b><i>MergeResultBody</i></b>] As Boolean, [<b><i>MoreOptions</i></b>] As Variant ) As <a href="UnwrapDefinition.htm">UnwrapDefinition</a>
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">Faces</td>
+        <td class="api-list"><a href="FaceCollection.htm">FaceCollection</a></td>
+        <td class="api-list">Input FaceCollection object that specifies the faces to Unwrap. The faces should be from the same body, otherwise an error would occur.</td>
+      </tr>
+      <tr>
+        <td class="api-list">pOrigin</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional input a Vertex object that specifies the origin.<br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+      <tr>
+        <td class="api-list">Align</td>
+        <td class="api-list"><a href="UnwrapResultAlignmentEnum.htm">UnwrapResultAlignmentEnum</a></td>
+        <td class="api-list">Optional input UnwrapResultAlignmentEnum that specifies the alignment of the deformed result. This defaults to kOriginAlignment if it is not specified.<br /><br /> This is an optional argument whose default value is 116993.</td>
+      </tr>
+      <tr>
+        <td class="api-list">LinearResult</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional input EdgeCollection that specifies a set of consecutive edges to become a single colinear segment in the result. 
+The edges should be from the faces in the InputFaces property and only outer edges that enclose the faces are valid.<br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+      <tr>
+        <td class="api-list">RigidResult</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional input EdgeCollection that specifies a set of 
+consecutive planar edges to remain rigid in the result. The edges should be from the faces in the InputFaces property and only outer edges that enclose the faces are valid.<br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+      <tr>
+        <td class="api-list">AutomaticFaceChain</td>
+        <td class="api-list">Boolean</td>
+        <td class="api-list">Optional input Boolean that defines if automatic face chaining along tangentially connected faces should be performed. The default value is True.<br /><br /> This is an optional argument whose default value is True.</td>
+      </tr>
+      <tr>
+        <td class="api-list">MergeResultBody</td>
+        <td class="api-list">Boolean</td>
+        <td class="api-list">Optional input Boolean that defines if merge result body or not. The default value is True.<br /><br /> This is an optional argument whose default value is True.</td>
+      </tr>
+      <tr>
+        <td class="api-list">MoreOptions</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional input NameValueMap that defines more options for the unwrap definition.
+<Br/><Br/>
+Valid options are:<Br/><Br/>
+Name = SeamEdges. Value = EdgeCollection that specifies the seam edges.<br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2025<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(UnwrapFeatures.CreateDefinitionWithOptions%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

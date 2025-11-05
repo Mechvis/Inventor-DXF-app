@@ -1,0 +1,152 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/PresentationBody.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="PresentationBody">
+    <meta name="description" content="PresentationBody Object">
+    <meta name="topicid" content="GUID-PresentationBody">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>PresentationBody Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">PresentationBody Object
+			</h1><br><h2 class="api">
+          Description
+        </h2>PresentationBody Object.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PresentationBody_CalculateFacets.htm">CalculateFacets</a></td>
+        <td class="api-list">Obtain the facetted representation for the given chord-height tolerance. If stored facets available for this tolerance, then those are returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PresentationBody_CalculateFacetsAndTextureMap.htm">CalculateFacetsAndTextureMap</a></td>
+        <td class="api-list">Obtain the facetted representation for the given chord-height tolerance. If stored facets available for this tolerance, then those are returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PresentationBody_CalculateFacetsWithOptions.htm">CalculateFacetsWithOptions</a></td>
+        <td class="api-list">Method that creates a new set of facets within the specified conditions.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PresentationBody_CalculateStrokes.htm">CalculateStrokes</a></td>
+        <td class="api-list">Obtain the stroked or polygonal representation for the given chord-height tolerance. Client to deallocate pointers with CoTaskMemFree.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PresentationBody_CalculateStrokesWithOptions.htm">CalculateStrokesWithOptions</a></td>
+        <td class="api-list">Method that creates a new set of strokes within the specified conditions.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PresentationBody_GetExistingFacets.htm">GetExistingFacets</a></td>
+        <td class="api-list">Obtain the facetted representation for the given chord-height tolerance as. Fails if the tolerance supplied is not pre-existing.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PresentationBody_GetExistingFacetsAndTextureMap.htm">GetExistingFacetsAndTextureMap</a></td>
+        <td class="api-list">Obtain the facetted representation for the given chord-height tolerance as. Fails if the tolerance supplied is not pre-existing.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PresentationBody_GetExistingFacetTolerances.htm">GetExistingFacetTolerances</a></td>
+        <td class="api-list">Obtain the set of chord-height tolerances for which this object already stores facets.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PresentationBody_GetExistingStrokes.htm">GetExistingStrokes</a></td>
+        <td class="api-list">Obtain the stroked or polygonal representation for the given chord-height tolerance. Fails if the tolerance supplied is not pre-existing.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PresentationBody_GetExistingStrokeTolerances.htm">GetExistingStrokeTolerances</a></td>
+        <td class="api-list">Obtain the set of chord-height tolerances for which this object already stores strokes.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PresentationBody_Application.htm">Application</a></td>
+        <td class="api-list">Gets the root Application object. Where the property is weakly-typed, it can be set to (QueryInterfaced for) 'Application' when running with Inventor whereas, 'ApprenticeServer' when running with the Apprentice Server.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PresentationBody_Edges.htm">Edges</a></td>
+        <td class="api-list">Read-only property that returns all the PresentationEdge objects contained within the Presentation body.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PresentationBody_Faces.htm">Faces</a></td>
+        <td class="api-list">Read-only property that returns all the PresentationFace objects contained within the presentation body.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PresentationBody_Name.htm">Name</a></td>
+        <td class="api-list">Read-only property that gets the presentation body name.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PresentationBody_Parent.htm">Parent</a></td>
+        <td class="api-list">Gets the parent object from whom this object can logically be reached.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PresentationBody_RangeBox.htm">RangeBox</a></td>
+        <td class="api-list">Read-only property that returns the range box that represents the bounds of the presentation body.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PresentationBody_Type.htm">Type</a></td>
+        <td class="api-list">Gets the constant that indicates the type of this object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PresentationBody_Vertices.htm">Vertices</a></td>
+        <td class="api-list">Read-only property that returns all the PresentationVertex objects contained within the presentation body.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="PresentationBodiesEnumerator_Item.htm">PresentationBodiesEnumerator.Item</a>, <a href="PresentationEdge_Parent.htm">PresentationEdge.Parent</a>, <a href="PresentationFace_Parent.htm">PresentationFace.Parent</a>, <a href="PresentationFace_PresentationBody.htm">PresentationFace.PresentationBody</a>, <a href="PresentationVertex_Parent.htm">PresentationVertex.Parent</a><h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2018<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(PresentationBody%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

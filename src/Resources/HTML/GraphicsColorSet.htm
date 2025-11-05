@@ -1,0 +1,143 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/GraphicsColorSet.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="GraphicsColorSet">
+    <meta name="description" content="GraphicsColorSet Object">
+    <meta name="topicid" content="GUID-GraphicsColorSet">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>GraphicsColorSet Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">GraphicsColorSet Object
+			</h1>
+              Derived from: <a href="GraphicsDataSet.htm">GraphicsDataSet</a> Object
+            <br><h2 class="api">
+          Description
+        </h2>The GraphicsColorSet object contains a list of colors. This object can be referenced by any number of graphic primitives to use in defining triangle or vertex specific colors to use when rendering.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="GraphicsColorSet_Add.htm">Add</a></td>
+        <td class="api-list">Method that adds a new color to the set.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="GraphicsColorSet_Delete.htm">Delete</a></td>
+        <td class="api-list">Method that deletes the GraphicsDataSet.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="GraphicsColorSet_GetColors.htm">GetColors</a></td>
+        <td class="api-list">Method that gets all of the colors of the set.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="GraphicsColorSet_PutColors.htm">PutColors</a></td>
+        <td class="api-list">Method that sets all of the colors of the set. This will replace all existing colors currently defined for the set.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="GraphicsColorSet_Remove.htm">Remove</a></td>
+        <td class="api-list">Method that removes a coordinate from the set.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="GraphicsColorSet_Color.htm">Color</a></td>
+        <td class="api-list">Property that gets and sets the color at a given index in the set.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="GraphicsColorSet_Count.htm">Count</a></td>
+        <td class="api-list">Property that returns the number of objects in this collection.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="GraphicsColorSet_Id.htm">Id</a></td>
+        <td class="api-list">Property returning the unique id of this GraphicsDataSet.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="GraphicsColorSet_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="GraphicsDataSets_CreateColorSet.htm">GraphicsDataSets.CreateColorSet</a>, <a href="LineGraphics_ColorSet.htm">LineGraphics.ColorSet</a>, <a href="LineStripGraphics_ColorSet.htm">LineStripGraphics.ColorSet</a>, <a href="MeshFeatureEntity_ColorSet.htm">MeshFeatureEntity.ColorSet</a>, <a href="MeshFeatureEntityProxy_ColorSet.htm">MeshFeatureEntityProxy.ColorSet</a>, <a href="PresentationMeshFeatureEntity_ColorSet.htm">PresentationMeshFeatureEntity.ColorSet</a>, <a href="TriangleFanGraphics_ColorSet.htm">TriangleFanGraphics.ColorSet</a>, <a href="TriangleGraphics_ColorSet.htm">TriangleGraphics.ColorSet</a>, <a href="TriangleStripGraphics_ColorSet.htm">TriangleStripGraphics.ColorSet</a><h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="GraphicsColorMapper_Sample.htm">Client graphics texture-based color mapping</a></td>
+        <td class="api-list">This test applies texture coordinates expressing distance from the origin to 'the triangle mesh of whatever Part you have open. It then creates either a discrete-band or continuous color mapper and allows you to adjust the values of the mapper to change the range of values that map to various colors.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="GraphicsDataSets_CreateColorSet_Sample.htm">Client Graphics - Vertex Color by Z Height</a></td>
+        <td class="api-list">This sample demonstrates using client graphics and some other functions that help to support display control. It uses the currently active part and replaces the part display with a display where the part's color varies from blue to red where blue is assigned to the lowest Z portion of the part and red is assigned to the highest Z portion of the part. Areas in between are represented by a smooth blend of color from blue to red.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="GraphicsNode_AddLineGraphics_Sample.htm">Client Graphics - Line</a></td>
+        <td class="api-list">This sample demonstrates the creation of custom graphics using LineGraphics and LineStripGraphics. The same set of coordinate data is used for both types of graphics. Line graphics use two coordinates to define a line, and then the next two coordinates to define the next line, and so on through the defined coordinates. For the data provided, this results in gaps in the drawn curve. Line strips use the first two coordinates to define the first line and then the last point of the first line becomes the first point of the second line and the next coordinate is used as the end point of the second line. This results in the set of points being connected by a continuous set of lines, drawing a continuous curve. This sample also demonstrates two methods of defining the color for client graphics. In one case it uses an existing appearance asset, and in the other, it explicitly defines a color and assigns it. To use the sample you need to have an assembly or part document open. The program has two behaviors: the first time it is run it will draw the graphics. The second time it is run it deletes the previously drawn graphics.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 5<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(GraphicsColorSet%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

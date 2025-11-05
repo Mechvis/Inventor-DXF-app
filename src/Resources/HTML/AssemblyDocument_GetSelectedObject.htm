@@ -1,0 +1,117 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/AssemblyDocument_GetSelectedObject.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="AssemblyDocument_GetSelectedObject">
+    <meta name="description" content="AssemblyDocument.GetSelectedObject Method">
+    <meta name="topicid" content="AssemblyDocument_GetSelectedObject">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>AssemblyDocument.GetSelectedObject Method</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">AssemblyDocument.GetSelectedObject Method</h1>
+
+          Parent Object: <a href="AssemblyDocument.htm">AssemblyDocument</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">In order to provide better handling of system resources Inventor does not load all of the data when a document is opened but delays loading information until it is needed.&nbsp;A common need in many programs is to have the user select vertices on parts.&nbsp;Instead of loading the part model in order to return the true selected Vertex, Inventor returns a GenericObject.&nbsp;You can use this method to obtain more information about the selected object.&nbsp;If it is a vertex you can get the point coordinates without forcing the entire model to be loaded, or if you do need to do additional processing that requires access to the full model you can also force that by using the "SelectedObject" argument.</p>
+    <h2 class="api">
+          Syntax
+        </h2>
+        
+            AssemblyDocument.<b>GetSelectedObject</b>( <b><i>Selection</i></b> As <a href="GenericObject.htm">GenericObject</a>, <b><i>ObjectType</i></b> As <a href="ObjectTypeEnum.htm">ObjectTypeEnum</a>, <b><i>AdditionalData</i></b> As <a href="NameValueMap.htm">NameValueMap</a>, <b><i>ContainingOccurrence</i></b> As <a href="ComponentOccurrence.htm">ComponentOccurrence</a>, [<b><i>SelectedObject</i></b>] As Variant )
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">Selection</td>
+        <td class="api-list"><a href="GenericObject.htm">GenericObject</a></td>
+        <td class="api-list">Input object of type GenericObject that was obtained through a selection.</td>
+      </tr>
+      <tr>
+        <td class="api-list">ObjectType</td>
+        <td class="api-list"><a href="ObjectTypeEnum.htm">ObjectTypeEnum</a></td>
+        <td class="api-list">Output ObjectTypeEnum value that indicates the type of object selected.</td>
+      </tr>
+      <tr>
+        <td class="api-list">AdditionalData</td>
+        <td class="api-list"><a href="NameValueMap.htm">NameValueMap</a></td>
+        <td class="api-list">Output NameValueMap object that provides any additional information for the entity.&nbsp;&nbsp;The following describes the data currently returned.
+
+<table border="1">
+<tr>
+<th>Object Type</th>
+<th>Name</th>
+<th>Value</th>
+</tr>
+<tr>
+<td>Vertex</td>
+<td>Point</td>
+<td>Point</td>
+</tr></table></td>
+      </tr>
+      <tr>
+        <td class="api-list">ContainingOccurrence</td>
+        <td class="api-list"><a href="ComponentOccurrence.htm">ComponentOccurrence</a></td>
+        <td class="api-list">Output ComponentOccurrence object that contains the entity that was selected.</td>
+      </tr>
+      <tr>
+        <td class="api-list">SelectedObject</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional output that returns the actual entity that was selected.&nbsp;If this argument is provided then Inventor will load whatever additional data is required from the referenced document in order to provide the entity.<br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2011<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(AssemblyDocument.GetSelectedObject%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,197 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/DockableWindow.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="DockableWindow">
+    <meta name="description" content="DockableWindow Object">
+    <meta name="topicid" content="GUID-DockableWindow">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>DockableWindow Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">DockableWindow Object
+			</h1><br><h2 class="api">
+          Description
+        </h2>A DockableWindow object represents a window that can be docked on to the Inventor application window by the user.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DockableWindow_AddChild.htm">AddChild</a></td>
+        <td class="api-list">Method that adds a dialog or a control to the dockable window. Currently, you can only add a single child to a dockable window. So this method returns a failure if the dockable window already has a child. It is the responsibility of the client to destroy the dialog/control as and when appropriate.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DockableWindow_Clear.htm">Clear</a></td>
+        <td class="api-list">Method that empties the contents of the dockable window (i.e. removes any children of the window). This does not destroy the child dialog/controls; it is the responsibility of the client to destroy them.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DockableWindow_Delete.htm">Delete</a></td>
+        <td class="api-list">Method that deletes the DockableWindow. This does not destroy the child dialog/controls; it is the responsibility of the client to destroy them.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DockableWindow_GetDockingState.htm">GetDockingState</a></td>
+        <td class="api-list">Method that gets the docking state of the dockable window.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DockableWindow_Move.htm">Move</a></td>
+        <td class="api-list">Method that repositions and resizes the window. If the window is docked, calling this method automatically undocks the window and honors the input values.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DockableWindow_SetDockingState.htm">SetDockingState</a></td>
+        <td class="api-list">Method that set the docking state of&nbsp;the window.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DockableWindow_SetMinimumSize.htm">SetMinimumSize</a></td>
+        <td class="api-list">Method that sets the minimum size that the user can resize the window to.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DockableWindow_Application.htm">Application</a></td>
+        <td class="api-list">Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DockableWindow_Caption.htm">Caption</a></td>
+        <td class="api-list">Gets and sets the caption of the window.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DockableWindow_ClientId.htm">ClientId</a></td>
+        <td class="api-list">Property that returns the string that uniquely identifies the client. This is the CLSID of the AddIn in a string form, e.g. '{C9A6C580-3817-11D0-BE4E-080036E87B02}'.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DockableWindow_Control.htm">Control</a></td>
+        <td class="api-list">Property that returns the control associated with the pane. This property returns Nothing if the pane contains a dialog and not a control.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DockableWindow_DisableCloseButton.htm">DisableCloseButton</a></td>
+        <td class="api-list">Gets and sets whether to disable close button.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DockableWindow_DisabledDockingStates.htm">DisabledDockingStates</a></td>
+        <td class="api-list">Read-write property that gets and sets the bit-mask that specifies the docking positions to disallow.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DockableWindow_Height.htm">Height</a></td>
+        <td class="api-list">Gets and sets the current height of the window.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DockableWindow_HWND.htm">HWND</a></td>
+        <td class="api-list">Property that returns the handle of the dockable window.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DockableWindow_InternalName.htm">InternalName</a></td>
+        <td class="api-list">Property that returns the unique internal name of the window.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DockableWindow_IsCustomized.htm">IsCustomized</a></td>
+        <td class="api-list">Property that returns whether size, position and docking states of this window have previously been customized and remembered by Inventor. If this property returns True, the size, position and docking states should not be initialized by the creating application so that the last known values are re-applied.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DockableWindow_Left.htm">Left</a></td>
+        <td class="api-list">Property that returns the distance between the left edge of the screen and left edge of the window.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DockableWindow_Parent.htm">Parent</a></td>
+        <td class="api-list">Property that returns the parent UserInterfaceManager object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DockableWindow_ShowVisibilityCheckBox.htm">ShowVisibilityCheckBox</a></td>
+        <td class="api-list">Gets and sets whether to display the visibility check box in the User Interface dropdown in the View tab | Windows panel.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DockableWindow_Top.htm">Top</a></td>
+        <td class="api-list">Property that returns the distance between the top of the screen and top of the window.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DockableWindow_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DockableWindow_VisibilityControl.htm">VisibilityControl</a></td>
+        <td class="api-list">Property that returns the button control automatically created by Inventor to control the visibility of the dockable window.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DockableWindow_Visible.htm">Visible</a></td>
+        <td class="api-list">Read-write property that gets and sets whether the window is currently visible.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DockableWindow_Width.htm">Width</a></td>
+        <td class="api-list">Gets and sets the current width of the window.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="DockableWindows_Add.htm">DockableWindows.Add</a>, <a href="DockableWindows_Item.htm">DockableWindows.Item</a><h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DockableWindows_Add_Sample.htm">Dockable window</a></td>
+        <td class="api-list">This sample demonstrates creating a dockable window and adding a dialog into it.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2011<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(DockableWindow%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

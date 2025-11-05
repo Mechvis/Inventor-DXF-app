@@ -1,0 +1,195 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/ImportedDWGComponentCreation_Sample.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="ImportedDWGComponentCreation_Sample">
+    <meta name="description" content="ImportedDWGComponent Creation Sample">
+    <meta name="topicid" content="ImportedDWGComponentCreation_Sample">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>ImportedDWGComponent Creation</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body><script>
+          function copyCode(language) {
+          // Get the pre element for the specified language.
+          var preElement = document.getElementById(language);
+
+          // Get the text from the element and copy it to the clipboard.
+          var preText = preElement.innerText;
+
+          var isIE = /*@cc_on!@*/false || !!document.documentMode;
+
+          if (isIE)
+          {
+            window.clipboardData.setData('Text', preText);
+          }
+          else
+          {
+            navigator.clipboard.writeText(preText);
+          }
+
+          //alert("Code copied to clipboard");
+          }
+        </script><link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">ImportedDWGComponent Creation</h1>
+    <h2 class="api">
+          Description
+        </h2>This sample demonstrates how to create an imported DWG component into Inventor part document, and project the DWG entities onto Inventor planar sketch.<h2 class="api">
+          Code Samples
+        </h2>
+    <div id="tabs">
+      <ul>
+        <li><a href="#VBA">VBA</a></li>
+        <li><a href="#iLogic">iLogic</a></li>
+      </ul>
+      <div id="VBA" class="api-code">
+        <table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('VBA_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="VBA_code">Sub CreateImportedDWGComponentSample()
+    Dim oDoc As PartDocument
+    Set oDoc = ThisApplication.Documents.Add(kPartDocumentObject)
+    
+    Dim oCompDef As PartComponentDefinition
+    Set oCompDef = oDoc.ComponentDefinition
+    
+    Dim oRefComponents As ReferenceComponents
+    Set oRefComponents = oCompDef.ReferenceComponents
+    
+    <span style="color:blue">' Create a ImportedComponentDefinition based on an AutoCAD file.</span>
+    Dim oImportedCompDef As ImportedComponentDefinition
+    Set oImportedCompDef = oRefComponents.ImportedComponents.CreateDefinition("C:\Temp\ACADDWG.dwg")
+    
+    Dim oImportedDWGDef As ImportedDWGComponentDefinition
+    
+    If oImportedCompDef.Type = kImportedDWGComponentDefinitionObject Then
+        Set oImportedDWGDef = oImportedCompDef
+    Else
+        End
+    End If
+    
+    Dim oMatrix As Matrix
+    Set oMatrix = ThisApplication.TransientGeometry.CreateMatrix
+    oMatrix.SetTranslation ThisApplication.TransientGeometry.CreateVector(0, 0, 10)
+    
+    oImportedDWGDef.Transformation = oMatrix
+    
+    <span style="color:blue">' Create the ImportedComponent</span>
+    Dim oImportedComponent As ImportedComponent
+    Set oImportedComponent = oRefComponents.ImportedComponents.Add(oImportedDWGDef)
+    
+    Dim oImportedDWGComponent As ImportedDWGComponent
+    
+    If oImportedComponent.Type = kImportedDWGComponentObject Then
+        Set oImportedDWGComponent = oImportedComponent
+        
+        Dim oSk As PlanarSketch
+        Set oSk = oCompDef.Sketches.Add(oCompDef.WorkPlanes(3))
+        
+        <span style="color:blue">' Get the DWGBlockDefinition for model space.</span>
+        Dim oDWGModelSpaceDef As DWGBlockDefinition
+        Set oDWGModelSpaceDef = oImportedDWGComponent.ModelSpaceDefinition
+        
+        On Error Resume Next
+        <span style="color:blue">' Project DWG entities to planar sketch.</span>
+        Dim oDWGEntity As DWGEntity
+        For Each oDWGEntity In oDWGModelSpaceDef.Entities
+         
+            Call oSk.AddByProjectingEntity(oDWGEntity)
+        Next
+    End If
+End Sub</pre>
+      </div>
+      <div id="iLogic" class="api-code">
+        <table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('iLogic_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="iLogic_code">    Dim oDoc As PartDocument
+    oDoc = ThisApplication.Documents.Add(kPartDocumentObject)
+    
+    Dim oCompDef As PartComponentDefinition
+    oCompDef = oDoc.ComponentDefinition
+    
+    Dim oRefComponents As ReferenceComponents
+    oRefComponents = oCompDef.ReferenceComponents
+    
+    <span style="color:blue">' Create a ImportedComponentDefinition based on an AutoCAD file.</span>
+    Dim oImportedCompDef As ImportedComponentDefinition
+    oImportedCompDef = oRefComponents.ImportedComponents.CreateDefinition("C:\Temp\ACADDWG.dwg")
+    
+    Dim oImportedDWGDef As ImportedDWGComponentDefinition
+    
+    If oImportedCompDef.Type = kImportedDWGComponentDefinitionObject Then
+        oImportedDWGDef = oImportedCompDef
+    End If
+    
+    Dim oMatrix As Matrix
+    oMatrix = ThisApplication.TransientGeometry.CreateMatrix
+    oMatrix.SetTranslation(ThisApplication.TransientGeometry.CreateVector(0, 0, 10))
+    
+    oImportedDWGDef.Transformation = oMatrix
+    
+    <span style="color:blue">' Create the ImportedComponent</span>
+    Dim oImportedComponent As ImportedComponent
+    oImportedComponent = oRefComponents.ImportedComponents.Add(oImportedDWGDef)
+    
+    Dim oImportedDWGComponent As ImportedDWGComponent
+    
+    If oImportedComponent.Type = kImportedDWGComponentObject Then
+        oImportedDWGComponent = oImportedComponent
+        
+        Dim oSk As PlanarSketch
+        oSk = oCompDef.Sketches.Add(oCompDef.WorkPlanes(3))
+        
+        <span style="color:blue">' Get the DWGBlockDefinition for model space.</span>
+        Dim oDWGModelSpaceDef As DWGBlockDefinition
+        oDWGModelSpaceDef = oImportedDWGComponent.ModelSpaceDefinition
+        
+    On Error Resume Next
+        <span style="color:blue">' Project DWG entities to planar sketch.</span>
+        Dim oDWGEntity As DWGEntity
+        For Each oDWGEntity In oDWGModelSpaceDef.Entities
+            Call oSk.AddByProjectingEntity(oDWGEntity)
+        Next
+    End If</pre>
+      </div>
+    </div><br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(ImportedDWGComponentCreation%20Sample%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

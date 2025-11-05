@@ -1,0 +1,127 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/HoleFeatures_CreateTapInfo.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="HoleFeatures_CreateTapInfo">
+    <meta name="description" content="HoleFeatures.CreateTapInfo Method">
+    <meta name="topicid" content="HoleFeatures_CreateTapInfo">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>HoleFeatures.CreateTapInfo Method</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">HoleFeatures.CreateTapInfo Method</h1>
+
+          Parent Object: <a href="HoleFeatures.htm">HoleFeatures</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Method that creates a new HoleTapInfo object that can be used in creating threads for Hole features. See the Thread.xls file that is delivered with Autodesk Inventor for examples of valid input for these arguments.</p>
+    <h2 class="api">
+          Syntax
+        </h2>
+        
+            HoleFeatures.<b>CreateTapInfo</b>( <b><i>RightHanded</i></b> As Boolean, <b><i>ThreadType</i></b> As String, <b><i>ThreadDesignation</i></b> As String, <b><i>Class</i></b> As String, <b><i>FullTapDepth</i></b> As Boolean, [<b><i>ThreadDepth</i></b>] As Variant ) As <a href="HoleTapInfo.htm">HoleTapInfo</a>
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">RightHanded</td>
+        <td class="api-list">Boolean</td>
+        <td class="api-list">Input Boolean that indicates if the thread is right or left-handed thread. A value of True indicates a right-handed thread.</td>
+      </tr>
+      <tr>
+        <td class="api-list">ThreadType</td>
+        <td class="api-list">String</td>
+        <td class="api-list">Input String that specifies the sheet in the Thread.xls that this thread information should be validated within. Each sheet within the Excel document is typically used for different thread types. The string is the name of the sheet. For example "ANSI Unified Screw Threads" or "ANSI Metric M Profile" are valid for English versions of Autodesk Inventor.</td>
+      </tr>
+      <tr>
+        <td class="api-list">ThreadDesignation</td>
+        <td class="api-list">String</td>
+        <td class="api-list">Input String that contains the thread designation. This is input as the full thread designation that will be used in a drawing for the thread callout. The nominal size and pitch information are extracted from the designation. For example valid inch thread designations are '10-24 UNC' and '7/16-20 UNF'. Examples of valid metric designations are 'M16x1.5' and 'M55x1.5'.</td>
+      </tr>
+      <tr>
+        <td class="api-list">Class</td>
+        <td class="api-list">String</td>
+        <td class="api-list">Input String that defines the thread class. For example a valid class for an inch internal thread is 2B. A valid class for a metric external thread is 6g.</td>
+      </tr>
+      <tr>
+        <td class="api-list">FullTapDepth</td>
+        <td class="api-list">Boolean</td>
+        <td class="api-list">Input Boolean that indicates if the thread extends the full length of the hole or not. A value of True indicates the thread goes the full extent of the hole.</td>
+      </tr>
+      <tr>
+        <td class="api-list">ThreadDepth</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional input Variant that defines the thread depth. This is only applicable when the FullDepth argument is False, otherwise this argument is ignored. This can be either a numeric value or a string. A parameter for this value will be created and the supplied string or value is assigned to the parameter. If a value is input, the units are centimeters. If a string is input, the units can be specified as part of the string or it will default to the current length units of the document.<br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="HoleFeature_Sample.htm">Hole Feature - Through holes (RegularAndTapped)</a></td>
+        <td class="api-list">This sample demonstrates the creation of through holes, both regular and tapped.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 5<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(HoleFeatures.CreateTapInfo%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

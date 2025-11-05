@@ -1,0 +1,169 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/ViewFrame.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="ViewFrame">
+    <meta name="description" content="ViewFrame Object">
+    <meta name="topicid" content="GUID-ViewFrame">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>ViewFrame Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">ViewFrame Object
+			</h1><br><h2 class="api">
+          Description
+        </h2>ViewFrame Object.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ViewFrame_Arrange.htm">Arrange</a></td>
+        <td class="api-list">Method that tiles the views in the view frame window.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ViewFrame_Close.htm">Close</a></td>
+        <td class="api-list">Method that closes this view frame.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ViewFrame_Close2.htm">Close2</a></td>
+        <td class="api-list">Method that closes this view frame. Close a ViewFrame may cause documents to close, use the argument to specify the documents to save if necessary. This does nothing if try to close the default ViewFrame.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ViewFrame_Move.htm">Move</a></td>
+        <td class="api-list">Method that moves the view frame window.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ViewFrame_RestorePreviousLayout.htm">RestorePreviousLayout</a></td>
+        <td class="api-list">Method that restores the previous layout for this view frame window.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ViewFrame_Application.htm">Application</a></td>
+        <td class="api-list">Read-only property that returns the root Application object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ViewFrame_Caption.htm">Caption</a></td>
+        <td class="api-list">Read-only property that returns the caption of this view frame.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ViewFrame_Height.htm">Height</a></td>
+        <td class="api-list">Read-write property that gets and sets the height of the view frame.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ViewFrame_IsDefault.htm">IsDefault</a></td>
+        <td class="api-list">Read-only property that returns whether this view frame is the default one.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ViewFrame_Left.htm">Left</a></td>
+        <td class="api-list">Read-only property that returns the distance between the left edge of the screen and left edge of the view frame.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ViewFrame_Parent.htm">Parent</a></td>
+        <td class="api-list">Gets the parent object from whom this object can logically be reached.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ViewFrame_Top.htm">Top</a></td>
+        <td class="api-list">Read-only property that returns the distance between the top edge of the screen and top edge of the view frame.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ViewFrame_Type.htm">Type</a></td>
+        <td class="api-list">Read-only property returning kViewFrameObject indicating this object’s type.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ViewFrame_ViewTabGroups.htm">ViewTabGroups</a></td>
+        <td class="api-list">Read-only property that returns the ViewTabGroupsEnumerator collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ViewFrame_ViewTabs.htm">ViewTabs</a></td>
+        <td class="api-list">Read-only property that returns the view tabs that are located in this view frame.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ViewFrame_Width.htm">Width</a></td>
+        <td class="api-list">Read-write property that gets and sets the width of the view frame.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ViewFrame_WindowState.htm">WindowState</a></td>
+        <td class="api-list">Read-write property that gets and sets the window state of this view frame.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="Application_ActiveViewFrame.htm">Application.ActiveViewFrame</a>, <a href="View_ViewFrame.htm">View.ViewFrame</a>, <a href="ViewFramesEnumerator_Item.htm">ViewFramesEnumerator.Item</a>, <a href="ViewTab_MoveToNewViewFrame.htm">ViewTab.MoveToNewViewFrame</a>, <a href="ViewTab_ViewFrame.htm">ViewTab.ViewFrame</a>, <a href="ViewTabGroup_MoveToNewViewFrame.htm">ViewTabGroup.MoveToNewViewFrame</a>, <a href="ViewTabGroup_ViewFrame.htm">ViewTabGroup.ViewFrame</a><h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DockBrowserPaneSample_Sample.htm">Dock browser pane to a custom ViewFrame</a></td>
+        <td class="api-list">This sample demonstrates how to dock the browser pane to a custom ViewFrame.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ViewTabMoveSample_Sample.htm">Move view tab between different view frames</a></td>
+        <td class="api-list">This sample demonstrates how to move views using ViewTab between different view frames.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2021<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(ViewFrame%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

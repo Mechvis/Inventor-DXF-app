@@ -1,0 +1,254 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/OrdinateDimensions_Add_Sample.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="OrdinateDimensions_Add_Sample">
+    <meta name="description" content="Create ordinate dimension Sample">
+    <meta name="topicid" content="OrdinateDimensions_Add_Sample">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>Create ordinate dimension</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body><script>
+          function copyCode(language) {
+          // Get the pre element for the specified language.
+          var preElement = document.getElementById(language);
+
+          // Get the text from the element and copy it to the clipboard.
+          var preText = preElement.innerText;
+
+          var isIE = /*@cc_on!@*/false || !!document.documentMode;
+
+          if (isIE)
+          {
+            window.clipboardData.setData('Text', preText);
+          }
+          else
+          {
+            navigator.clipboard.writeText(preText);
+          }
+
+          //alert("Code copied to clipboard");
+          }
+        </script><link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">Create ordinate dimension</h1>
+    <h2 class="api">
+          Description
+        </h2>This sample demonstrates the creation of ordinate dimensions in a drawing document.<h2 class="api">
+          Code Samples
+        </h2>
+    <div id="tabs">
+      <ul>
+        <li><a href="#VBA">VBA</a></li>
+        <li><a href="#iLogic">iLogic</a></li>
+      </ul>
+      <div id="VBA" class="api-code">Before running this sample, select a linear drawing curve on the active drawing document.<table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('VBA_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="VBA_code">Public Sub CreateOrdinateDimensions()
+  <span style="color:blue">' Set a reference to the drawing document.</span>
+  <span style="color:blue">' This assumes a drawing document is active.</span>
+  Dim oDrawDoc As DrawingDocument
+  Set oDrawDoc = ThisApplication.ActiveDocument
+
+  <span style="color:blue">' Set a reference to the active sheet.</span>
+  Dim oActiveSheet As Sheet
+  Set oActiveSheet = oDrawDoc.ActiveSheet
+
+  <span style="color:blue">' Set a reference to the drawing curve segment.</span>
+  <span style="color:blue">' This assumes that a linear drawing curve is selected.</span>
+  Dim oDrawingCurveSegment As DrawingCurveSegment
+  Set oDrawingCurveSegment = oDrawDoc.SelectSet.Item(1)
+
+  <span style="color:blue">' Set a reference to the drawing curve.</span>
+  Dim oDrawingCurve As DrawingCurve
+  Set oDrawingCurve = oDrawingCurveSegment.Parent
+
+  If Not oDrawingCurve.CurveType = kLineSegmentCurve Then
+    MsgBox "A linear curve should be selected for this sample."
+    Exit Sub
+  End If
+
+  <span style="color:blue">' Create point intents to anchor the dimension to.</span>
+  Dim oDimIntent1 As GeometryIntent
+  Set oDimIntent1 = oActiveSheet.CreateGeometryIntent(oDrawingCurve, kStartPointIntent)
+
+  Dim oDimIntent2 As GeometryIntent
+  Set oDimIntent2 = oActiveSheet.CreateGeometryIntent(oDrawingCurve, kEndPointIntent)
+
+  <span style="color:blue">' Set a reference to the view to which the curve belongs.</span>
+  Dim oDrawingView As DrawingView
+  Set oDrawingView = oDrawingCurve.Parent
+
+  <span style="color:blue">' If origin indicator has not been already created, create it first.</span>
+  If Not oDrawingView.HasOriginIndicator Then
+    <span style="color:blue">' The indicator will be located at the start point of the selected curve.</span>
+    oDrawingView.CreateOriginIndicator oDimIntent1
+  End If
+
+  <span style="color:blue">' Set a reference to the ordinate dimensions collection.</span>
+  Dim oOrdinateDimensions As OrdinateDimensions
+  Set oOrdinateDimensions = oActiveSheet.DrawingDimensions.OrdinateDimensions
+
+  <span style="color:blue">' Create the x-axis vector</span>
+  Dim oXAxis As Vector2d
+  Set oXAxis = ThisApplication.TransientGeometry.CreateVector2d(1, 0)
+
+  Dim oCurveVector As Vector2d
+  Set oCurveVector = oDrawingCurve.StartPoint.VectorTo(oDrawingCurve.EndPoint)
+
+  Dim oTextOrigin1 As Point2d
+  Dim oTextOrigin2 As Point2d
+  Dim DimType As DimensionTypeEnum
+
+  If oCurveVector.IsParallelTo(oXAxis) Then
+    <span style="color:blue">' Selected curve is horizontal</span>
+    DimType = kVerticalDimensionType
+
+    <span style="color:blue">' Set the text points for the 2 dimensions.</span>
+    Set oTextOrigin1 = ThisApplication.TransientGeometry.CreatePoint2d(oDrawingCurve.StartPoint.X, oDrawingView.Top + 5)
+    Set oTextOrigin2 = ThisApplication.TransientGeometry.CreatePoint2d(oDrawingCurve.EndPoint.X, oDrawingView.Top + 5)
+
+  Else
+    <span style="color:blue">' Selected curve is vertical or at an angle.</span>
+    DimType = kHorizontalDimensionType
+
+    <span style="color:blue">' Set the text points for the 2 dimensions.</span>
+    Set oTextOrigin1 = ThisApplication.TransientGeometry.CreatePoint2d(oDrawingView.Left - 5, oDrawingCurve.StartPoint.Y)
+    Set oTextOrigin2 = ThisApplication.TransientGeometry.CreatePoint2d(oDrawingView.Left - 5, oDrawingCurve.EndPoint.Y)
+
+  End If
+
+  <span style="color:blue">' Create the first ordinate dimension.</span>
+  Dim oOrdinateDimension1 As OrdinateDimension
+  Set oOrdinateDimension1 = oOrdinateDimensions.Add(oDimIntent1, oTextOrigin1, DimType)
+
+  <span style="color:blue">' Create the second ordinate dimension.</span>
+  Dim oOrdinateDimension2 As OrdinateDimension
+  Set oOrdinateDimension2 = oOrdinateDimensions.Add(oDimIntent2, oTextOrigin2, DimType)
+End Sub</pre>
+      </div>
+      <div id="iLogic" class="api-code">Before running this sample, select a linear drawing curve on the active drawing document.<table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('iLogic_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="iLogic_code">    <span style="color:blue">' Set a reference to the drawing document.</span>
+  <span style="color:blue">' This assumes a drawing document is active.</span>
+  Dim oDrawDoc As DrawingDocument
+  oDrawDoc = ThisApplication.ActiveDocument
+
+  <span style="color:blue">' Set a reference to the active sheet.</span>
+  Dim oActiveSheet As Sheet
+  oActiveSheet = oDrawDoc.ActiveSheet
+
+  <span style="color:blue">' Set a reference to the drawing curve segment.</span>
+  <span style="color:blue">' This assumes that a linear drawing curve is selected.</span>
+  Dim oDrawingCurveSegment As DrawingCurveSegment
+  oDrawingCurveSegment = oDrawDoc.SelectSet.Item(1)
+
+  <span style="color:blue">' Set a reference to the drawing curve.</span>
+  Dim oDrawingCurve As DrawingCurve
+  oDrawingCurve = oDrawingCurveSegment.Parent
+
+  If Not oDrawingCurve.CurveType = kLineSegmentCurve Then
+    MsgBox("A linear curve should be selected for this sample.")
+    Exit Sub
+  End If
+
+  <span style="color:blue">' Create point intents to anchor the dimension to.</span>
+  Dim oDimIntent1 As GeometryIntent
+  oDimIntent1 = oActiveSheet.CreateGeometryIntent(oDrawingCurve, kStartPointIntent)
+
+  Dim oDimIntent2 As GeometryIntent
+  oDimIntent2 = oActiveSheet.CreateGeometryIntent(oDrawingCurve, kEndPointIntent)
+
+  <span style="color:blue">' Set a reference to the view to which the curve belongs.</span>
+  Dim oDrawingView As DrawingView
+  oDrawingView = oDrawingCurve.Parent
+
+  <span style="color:blue">' If origin indicator has not been already created, create it first.</span>
+  If Not oDrawingView.HasOriginIndicator Then
+    <span style="color:blue">' The indicator will be located at the start point of the selected curve.</span>
+    oDrawingView.CreateOriginIndicator(oDimIntent1)
+  End If
+
+  <span style="color:blue">' Set a reference to the ordinate dimensions collection.</span>
+  Dim oOrdinateDimensions As OrdinateDimensions
+  oOrdinateDimensions = oActiveSheet.DrawingDimensions.OrdinateDimensions
+
+  <span style="color:blue">' Create the x-axis vector</span>
+  Dim oXAxis As Vector2d
+  oXAxis = ThisApplication.TransientGeometry.CreateVector2d(1, 0)
+
+  Dim oCurveVector As Vector2d
+  oCurveVector = oDrawingCurve.StartPoint.VectorTo(oDrawingCurve.EndPoint)
+
+  Dim oTextOrigin1 As Point2d
+  Dim oTextOrigin2 As Point2d
+  Dim DimType As DimensionTypeEnum
+
+  If oCurveVector.IsParallelTo(oXAxis) Then
+    <span style="color:blue">' Selected curve is horizontal</span>
+    DimType = kVerticalDimensionType
+
+    <span style="color:blue">' Set the text points for the 2 dimensions.</span>
+    oTextOrigin1 = ThisApplication.TransientGeometry.CreatePoint2d(oDrawingCurve.StartPoint.X, oDrawingView.Top + 5)
+    oTextOrigin2 = ThisApplication.TransientGeometry.CreatePoint2d(oDrawingCurve.EndPoint.X, oDrawingView.Top + 5)
+
+  Else
+    <span style="color:blue">' Selected curve is vertical or at an angle.</span>
+    DimType = kHorizontalDimensionType
+
+    <span style="color:blue">' Set the text points for the 2 dimensions.</span>
+    oTextOrigin1 = ThisApplication.TransientGeometry.CreatePoint2d(oDrawingView.Left - 5, oDrawingCurve.StartPoint.Y)
+    oTextOrigin2 = ThisApplication.TransientGeometry.CreatePoint2d(oDrawingView.Left - 5, oDrawingCurve.EndPoint.Y)
+
+  End If
+
+  <span style="color:blue">' Create the first ordinate dimension.</span>
+  Dim oOrdinateDimension1 As OrdinateDimension
+  oOrdinateDimension1 = oOrdinateDimensions.Add(oDimIntent1, oTextOrigin1, DimType)
+
+  <span style="color:blue">' Create the second ordinate dimension.</span>
+  Dim oOrdinateDimension2 As OrdinateDimension
+  oOrdinateDimension2 = oOrdinateDimensions.Add(oDimIntent2, oTextOrigin2, DimType)</pre>
+      </div>
+    </div><br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(OrdinateDimensions_Add%20Sample%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

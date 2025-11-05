@@ -1,0 +1,107 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/ApplicationEvents_OnInitializeDocument.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="ApplicationEvents_OnInitializeDocument">
+    <meta name="description" content="ApplicationEvents.OnInitializeDocument Event">
+    <meta name="topicid" content="ApplicationEvents_OnInitializeDocument">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>ApplicationEvents.OnInitializeDocument Event</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">ApplicationEvents.OnInitializeDocument Event</h1>
+
+          Parent Object: <a href="ApplicationEvents.htm">ApplicationEvents</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Event that is fired whenever a document is initialized. At the time this event fires, the document is not open yet. Calling methods or properties on the document will force it to open.</p>
+    <h2 class="api">
+            Remarks
+          </h2>The OnInitializeDocument event notifies a client when a document is being initialized. Initialization of a document is essentially a low-level open. A portion of the document is opened to determine other related files but the majority of the data is not opened and loaded. For example, when you open a drawing, the referenced documents are initialized but are not fully loaded. If you perform an action within the drawing that requires access to the data within any of the referenced documents then they are automatically fully opened at that time. API calls on a document that is only initialized will also cause the document to be fully opened. When a document is opened it is always initialized, but a document can be initialized without being opened, if the additional data in the document is not needed.<h2 class="api">
+          Syntax
+        </h2>
+        
+            ApplicationEvents.<b>OnInitializeDocument</b>( <b><i>DocumentObject</i></b> As <a href="Document.htm">Document</a>, <b><i>FullDocumentName</i></b> As String, <b><i>BeforeOrAfter</i></b> As <a href="EventTimingEnum.htm">EventTimingEnum</a>, <b><i>Context</i></b> As <a href="NameValueMap.htm">NameValueMap</a>, <b><i>HandlingCode</i></b> As <a href="HandlingCodeEnum.htm">HandlingCodeEnum</a> )
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">DocumentObject</td>
+        <td class="api-list"><a href="Document.htm">Document</a></td>
+        <td class="api-list">The Document object that is being initialized.</td>
+      </tr>
+      <tr>
+        <td class="api-list">FullDocumentName</td>
+        <td class="api-list">String</td>
+        <td class="api-list">Output string that specifies the fully qualified name of the document being initialized. This is supplied both before and after.</td>
+      </tr>
+      <tr>
+        <td class="api-list">BeforeOrAfter</td>
+        <td class="api-list"><a href="EventTimingEnum.htm">EventTimingEnum</a></td>
+        <td class="api-list">Output EventTimingEnum indicating if the event is being fired before (kBefore) or after (kAfter) the document is initialized. Notification is sent before and after the document is initialized.</td>
+      </tr>
+      <tr>
+        <td class="api-list">Context</td>
+        <td class="api-list"><a href="NameValueMap.htm">NameValueMap</a></td>
+        <td class="api-list">Output NameValueMap object that can be used to determine the context of why the event fired. No context information is provided for this event.</td>
+      </tr>
+      <tr>
+        <td class="api-list">HandlingCode</td>
+        <td class="api-list"><a href="HandlingCodeEnum.htm">HandlingCodeEnum</a></td>
+        <td class="api-list">Output HandlingCodeEnum that indicates how you are handling the event. This argument is ignored for this event.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 11<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(ApplicationEvents.OnInitializeDocument%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

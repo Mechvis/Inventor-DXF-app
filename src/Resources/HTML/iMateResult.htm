@@ -1,0 +1,130 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/iMateResult.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="iMateResult">
+    <meta name="description" content="iMateResult Object">
+    <meta name="topicid" content="GUID-iMateResult">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>iMateResult Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">iMateResult Object
+			</h1><br><h2 class="api">
+          Description
+        </h2>The iMateResult object represents the result of using an iMate in an assembly.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="iMateResult_Delete.htm">Delete</a></td>
+        <td class="api-list">Method that deletes the iMateResult. This method will fail if the iMateResult is a part of a composite iMateResult.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="iMateResult_GetInputs.htm">GetInputs</a></td>
+        <td class="api-list">Method that returns the input entities that were used to create this iMateResult object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="iMateResult_GetReferenceKey.htm">GetReferenceKey</a></td>
+        <td class="api-list">Method that generates and returns the reference key for this entity.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="iMateResult_SetInputs.htm">SetInputs</a></td>
+        <td class="api-list">Method that edits the inputs of an iMate result.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="iMateResult_AttributeSets.htm">AttributeSets</a></td>
+        <td class="api-list">Property that returns the AttributeSets collection object associated with this object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="iMateResult_Constraints.htm">Constraints</a></td>
+        <td class="api-list">Property that returns an AssemblyConstraintstEnumerator containing the constraints associated with this iMate. If the iMate is not a composite iMate this collection will contain one constraint. If it is a composite it can contain any number of constraints.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="iMateResult_IsComposite.htm">IsComposite</a></td>
+        <td class="api-list">Property that indicates if this iMateResult represents a composite iMate result.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="iMateResult_Name.htm">Name</a></td>
+        <td class="api-list">Gets and sets the name of the iMateResult.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="iMateResult_ParentComposite.htm">ParentComposite</a></td>
+        <td class="api-list">Property that returns the parent iMateResult object. This property is only valid in the case when the iMateResult object it is being called from is not a composite. This can be checked for by using the IsComposite property of the iMateResult object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="iMateResult_Results.htm">Results</a></td>
+        <td class="api-list">Property that returns an iMateResultsEnumerator object that provides access to the iMate results object that are part of a composite iMate. This property is only valid in the case when the iMateResult object it is being called from is a composite. This can be checked for by using the IsComposite property of the iMateResult object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="iMateResult_Suppressed.htm">Suppressed</a></td>
+        <td class="api-list">Gets and sets whether the iMateResult is suppressed or not.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="iMateResult_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="AngleConstraint_iMateResult.htm">AngleConstraint.iMateResult</a>, <a href="AngleConstraintProxy_iMateResult.htm">AngleConstraintProxy.iMateResult</a>, <a href="AssemblyConstraint_iMateResult.htm">AssemblyConstraint.iMateResult</a>, <a href="AssemblySymmetryConstraint_iMateResult.htm">AssemblySymmetryConstraint.iMateResult</a>, <a href="AssemblySymmetryConstraintProxy_iMateResult.htm">AssemblySymmetryConstraintProxy.iMateResult</a>, <a href="CustomConstraint_iMateResult.htm">CustomConstraint.iMateResult</a>, <a href="CustomConstraintProxy_iMateResult.htm">CustomConstraintProxy.iMateResult</a>, <a href="FlushConstraint_iMateResult.htm">FlushConstraint.iMateResult</a>, <a href="FlushConstraintProxy_iMateResult.htm">FlushConstraintProxy.iMateResult</a>, <a href="iMateResult_ParentComposite.htm">iMateResult.ParentComposite</a>, <a href="iMateResultProxy_NativeObject.htm">iMateResultProxy.NativeObject</a>, <a href="iMateResultProxy_ParentComposite.htm">iMateResultProxy.ParentComposite</a>, <a href="iMateResults_AddByiMateAndEntity.htm">iMateResults.AddByiMateAndEntity</a>, <a href="iMateResults_AddByTwoiMates.htm">iMateResults.AddByTwoiMates</a>, <a href="iMateResults_Item.htm">iMateResults.Item</a>, <a href="iMateResultsEnumerator_Item.htm">iMateResultsEnumerator.Item</a>, <a href="InsertConstraint_iMateResult.htm">InsertConstraint.iMateResult</a>, <a href="InsertConstraintProxy_iMateResult.htm">InsertConstraintProxy.iMateResult</a>, <a href="MateConstraint_iMateResult.htm">MateConstraint.iMateResult</a>, <a href="MateConstraintProxy_iMateResult.htm">MateConstraintProxy.iMateResult</a>, <a href="RotateRotateConstraint_iMateResult.htm">RotateRotateConstraint.iMateResult</a>, <a href="RotateRotateConstraintProxy_iMateResult.htm">RotateRotateConstraintProxy.iMateResult</a>, <a href="RotateTranslateConstraint_iMateResult.htm">RotateTranslateConstraint.iMateResult</a>, <a href="RotateTranslateConstraintProxy_iMateResult.htm">RotateTranslateConstraintProxy.iMateResult</a>, <a href="TangentConstraint_iMateResult.htm">TangentConstraint.iMateResult</a>, <a href="TangentConstraintProxy_iMateResult.htm">TangentConstraintProxy.iMateResult</a>, <a href="TransitionalConstraint_iMateResult.htm">TransitionalConstraint.iMateResult</a>, <a href="TransitionalConstraintProxy_iMateResult.htm">TransitionalConstraintProxy.iMateResult</a>, <a href="TranslateTranslateConstraint_iMateResult.htm">TranslateTranslateConstraint.iMateResult</a>, <a href="TranslateTranslateConstraintProxy_iMateResult.htm">TranslateTranslateConstraintProxy.iMateResult</a><h2 class="api">
+            Derived Classes
+          </h2><a href="iMateResultProxy.htm">iMateResultProxy</a><h2 class="api">
+            Version
+          </h2>
+        Introduced in version 6<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(iMateResult%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

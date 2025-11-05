@@ -1,0 +1,157 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/AssetLibrary.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="AssetLibrary">
+    <meta name="description" content="AssetLibrary Object">
+    <meta name="topicid" content="GUID-AssetLibrary">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>AssetLibrary Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">AssetLibrary Object
+			</h1><br><h2 class="api">
+          Description
+        </h2>The AssetLibrary object represents a material and appearance library which exists as a .asdklib file.  A library can contain both appearance and physical material information.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AssetLibrary_Remove.htm">Remove</a></td>
+        <td class="api-list">Method that removes the library from the set of loaded libraries. The associated .adsklib file is not affected.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AssetLibrary_AppearanceAssetCategories.htm">AppearanceAssetCategories</a></td>
+        <td class="api-list">Gets the AssetCategories collection which provides access to the appearance related categories defined within this library.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AssetLibrary_AppearanceAssets.htm">AppearanceAssets</a></td>
+        <td class="api-list">Gets an Assets collection which provides access to all of the appearance assets in this library.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AssetLibrary_Application.htm">Application</a></td>
+        <td class="api-list">Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AssetLibrary_DisplayName.htm">DisplayName</a></td>
+        <td class="api-list">Gets and sets the name of this library as seen in the Material or Appearance Browser.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AssetLibrary_FullFileName.htm">FullFileName</a></td>
+        <td class="api-list">Gets the full filename of this library.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AssetLibrary_InternalName.htm">InternalName</a></td>
+        <td class="api-list">Gets the unique internal name of this library.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AssetLibrary_IsReadOnly.htm">IsReadOnly</a></td>
+        <td class="api-list">Gets the boolean flag that indicates if this library is read-only. If True any attempted edits will fail.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AssetLibrary_MaterialAssetCategories.htm">MaterialAssetCategories</a></td>
+        <td class="api-list">Gets the AssetCategories collection which provides access to the material related categories defined within this library.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AssetLibrary_MaterialAssets.htm">MaterialAssets</a></td>
+        <td class="api-list">Gets the Assets collection which provides access to all of the materials in this library.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AssetLibrary_PhysicalAssets.htm">PhysicalAssets</a></td>
+        <td class="api-list">Gets an Assets collection which provides access to all of the physical assets in this library. A physical asset defines the physical properties that are associated with a material.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AssetLibrary_Type.htm">Type</a></td>
+        <td class="api-list">Read-only property returning kAssetLibraryObject indicating this object’s type.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="Application_ActiveAppearanceLibrary.htm">Application.ActiveAppearanceLibrary</a>, <a href="Application_ActiveMaterialLibrary.htm">Application.ActiveMaterialLibrary</a>, <a href="AssetCategory_Parent.htm">AssetCategory.Parent</a>, <a href="AssetLibraries_Add.htm">AssetLibraries.Add</a>, <a href="AssetLibraries_Item.htm">AssetLibraries.Item</a>, <a href="AssetLibraries_Open.htm">AssetLibraries.Open</a>, <a href="InventorServer_ActiveAppearanceLibrary.htm">InventorServer.ActiveAppearanceLibrary</a>, <a href="InventorServer_ActiveMaterialLibrary.htm">InventorServer.ActiveMaterialLibrary</a>, <a href="InventorServerObject_ActiveAppearanceLibrary.htm">InventorServerObject.ActiveAppearanceLibrary</a>, <a href="InventorServerObject_ActiveMaterialLibrary.htm">InventorServerObject.ActiveMaterialLibrary</a><h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DumpAllAppearances_Sample.htm">Write out all appearance information to a file.</a></td>
+        <td class="api-list">This sample writes out information about all of the appearances in all libraries.  This can be useful when trying to use the API to modify existing appearances by allowing to easily see what information is available for an appearance.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DumpAllMaterials_Sample.htm">Write out all materials to a file.</a></td>
+        <td class="api-list">This sample writes out information about all of the materials in all libraries.  This can be useful when trying to use the API to modify existing materials by allowing to easily see what information is available for a material.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DumpAllPhysicalProperties_Sample.htm">Write out all physical properties to a file.</a></td>
+        <td class="api-list">This sample writes out information about all of the physical properties in all libraries.  This can be useful when trying to use the API to modify existing materials by allowing to easily see what information is available for a physical property.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SetOccurrenceAppearance_Sample.htm">Set the appearance of an occurrence.</a></td>
+        <td class="api-list">Sets the appearance of a selected occurrence in an assembly.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2014<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(AssetLibrary%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

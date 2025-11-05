@@ -1,0 +1,240 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/SketchControlPointSpline.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="SketchControlPointSpline">
+    <meta name="description" content="SketchControlPointSpline Object">
+    <meta name="topicid" content="GUID-SketchControlPointSpline">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>SketchControlPointSpline Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">SketchControlPointSpline Object
+			</h1>
+              Derived from: <a href="SketchEntity.htm">SketchEntity</a> Object
+            <br><h2 class="api">
+          Description
+        </h2>The SketchControlPointSpline object represents a control point spline within a sketch.  These splines are created by defining the vertices of a control polygon of a NURBS curve.  The properties and methods listed below are in addition to those supported by the SketchEntity object.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchControlPointSpline_ConvertToSpline.htm">ConvertToSpline</a></td>
+        <td class="api-list">Method that inserts a new control point into the existing control point spline.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchControlPointSpline_Delete.htm">Delete</a></td>
+        <td class="api-list">Method that deletes the sketch entity. This method will fail in the case where this object was created as a result of a derived part. The HasReferenceComponent property can be used to determine when this is the case.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchControlPointSpline_GetCustomLineType.htm">GetCustomLineType</a></td>
+        <td class="api-list">Method that returns information regarding the custom line type in use. The method returns a failure if the return value of the LineType property is not kCustomLineType.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchControlPointSpline_GetReferenceKey.htm">GetReferenceKey</a></td>
+        <td class="api-list">Method that generates and returns the reference key for this entity.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchControlPointSpline_InsertKnot.htm">InsertKnot</a></td>
+        <td class="api-list">Method that inserts a knot into the existing control point spline. The effect of this will be that the shape of the curve is maintained, but the control polygon will change shape and one additional point will be added.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchControlPointSpline_SetCustomLineType.htm">SetCustomLineType</a></td>
+        <td class="api-list">Method that sets a custom line type to the curve from the specified .lin file. The method automatically changes the value of LineType property to kCustomLineType.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchControlPointSpline_Application.htm">Application</a></td>
+        <td class="api-list">Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchControlPointSpline_AttributeSets.htm">AttributeSets</a></td>
+        <td class="api-list">Property that returns the AttributeSets collection object associated with this object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchControlPointSpline_Constraints.htm">Constraints</a></td>
+        <td class="api-list">Property that returns a collection of sketch constraints that are tied directly to this entity. This collection consists of both geometric and dimension constraints.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchControlPointSpline_ConstraintStatus.htm">ConstraintStatus</a></td>
+        <td class="api-list">Read-only property that returns the constraint status of the sketch.&nbsp;Possible return values are kFullyConstrainedConstraintStatus, kOverConstrainedConstraintStatus, kUnderConstrainedConstraintStatus, and kUnknownConstraintStatus.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchControlPointSpline_Construction.htm">Construction</a></td>
+        <td class="api-list">Gets and sets whether the entity behaves as a construction entity or not.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchControlPointSpline_ContainingSketchBlock.htm">ContainingSketchBlock</a></td>
+        <td class="api-list">Property that returns the sketch block that contains this object. This is the same SketchBlock returned as the last item in the SketchBlockPath property. This property returns Nothing if this object does not belong to a sketch block and lives directly under a sketch.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchControlPointSpline_ControlPoint.htm">ControlPoint</a></td>
+        <td class="api-list">Read-only property that returns the SketchPoint at the specified index.&nbsp;The indices correspond to the control points in order from the start to the end of the spline.&nbsp;An Index of 1 returns the first SketchPoint.&nbsp;The ControlPointCount property returns the total number of control points for the spline.&nbsp;Deleting the returned sketch point will delete the control point from the spline.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchControlPointSpline_ControlPointCount.htm">ControlPointCount</a></td>
+        <td class="api-list">Read-only property that returns the number of control points defining the control point spline.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchControlPointSpline_ControlPolygonSide.htm">ControlPolygonSide</a></td>
+        <td class="api-list">Read-only property that returns the SketchLine that represents a side of the control polygon.&nbsp;The indices correspond to the control polygon edges in order from the start to the end of the spline.&nbsp;An Index of 1 returns the first edge, with the last side being ControlPointCount -1 since there is one less side than number of control points.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchControlPointSpline_CurvatureDisplay.htm">CurvatureDisplay</a></td>
+        <td class="api-list">Specifies whether curvature information is displayed for the spline.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchControlPointSpline_DisabledActionTypes.htm">DisabledActionTypes</a></td>
+        <td class="api-list">Gets and sets whether specific user actions are blocked on this sketch geometry.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchControlPointSpline_EndSketchPoint.htm">EndSketchPoint</a></td>
+        <td class="api-list">Read-only property that returns the sketch point that defines the position of the end of the spline.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchControlPointSpline_Geometry.htm">Geometry</a></td>
+        <td class="api-list">Read-only property that returns a BSplineCurve2d geometry object.&nbsp;The object returned represents a 'snapshot' view of the current state of the spline.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchControlPointSpline_Geometry3d.htm">Geometry3d</a></td>
+        <td class="api-list">Read-only property that returns b-spline geometry that represents this spline in model space.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchControlPointSpline_HasReferenceComponent.htm">HasReferenceComponent</a></td>
+        <td class="api-list">Property that specifies if the object was created as the result of a derived part.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchControlPointSpline_IsClosed.htm">IsClosed</a></td>
+        <td class="api-list">Read-only property that returns whether the curve is closed.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchControlPointSpline_Layer.htm">Layer</a></td>
+        <td class="api-list">Gets and sets the layer applied to this sketch entity.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchControlPointSpline_Length.htm">Length</a></td>
+        <td class="api-list">Returns&nbsp;the length of the entity in centimeters.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchControlPointSpline_LineDefinitionSpace.htm">LineDefinitionSpace</a></td>
+        <td class="api-list">Gets and sets the LineDefinitionSpace applied to this sketch spline.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchControlPointSpline_LineScale.htm">LineScale</a></td>
+        <td class="api-list">Gets and sets the LineScale applied to this sketch spline.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchControlPointSpline_LineType.htm">LineType</a></td>
+        <td class="api-list">Gets and sets the LineType applied to this sketch spline.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchControlPointSpline_LineWeight.htm">LineWeight</a></td>
+        <td class="api-list">Gets and sets the LineWeight applied to this entity.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchControlPointSpline_OverrideColor.htm">OverrideColor</a></td>
+        <td class="api-list">Gets and sets the color applied to this sketch spline.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchControlPointSpline_OwnedBy.htm">OwnedBy</a></td>
+        <td class="api-list">Indicates entity or entities that own this object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchControlPointSpline_Parent.htm">Parent</a></td>
+        <td class="api-list">Property that returns the parent sketch of the entity.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchControlPointSpline_RangeBox.htm">RangeBox</a></td>
+        <td class="api-list">Property that returns a Box2D object which contains the lower-left and upper-right corners of a rectangle that is guaranteed to enclose this object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchControlPointSpline_Reference.htm">Reference</a></td>
+        <td class="api-list">Gets and sets whether this entity is a reference entity or not. It is only valid to set this property to False.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchControlPointSpline_ReferenceComponent.htm">ReferenceComponent</a></td>
+        <td class="api-list">Property that returns the ReferenceComponent that resulted in the creation of this feature.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchControlPointSpline_ReferencedEntity.htm">ReferencedEntity</a></td>
+        <td class="api-list">Property that returns the object this entity is dependent on. When sketch entities are created by projecting model edges or intersecting the model, the resulting entities are driven by the original model entities and cannot be modified.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchControlPointSpline_SketchBlockPath.htm">SketchBlockPath</a></td>
+        <td class="api-list">Property that returns the path of sketch blocks at the leaf of which this sketch object is found. The enumerator returns a count of 0 if the object lives directly under a sketch.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchControlPointSpline_SketchOnly.htm">SketchOnly</a></td>
+        <td class="api-list">Gets and sets whether this entity is visible only when editing the sketch.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchControlPointSpline_StartSketchPoint.htm">StartSketchPoint</a></td>
+        <td class="api-list">Read-only property that returns the sketch point that defines the position of the start of the spline.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchControlPointSpline_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="SketchControlPointSplineProxy_NativeObject.htm">SketchControlPointSplineProxy.NativeObject</a>, <a href="SketchControlPointSplines_Add.htm">SketchControlPointSplines.Add</a>, <a href="SketchControlPointSplines_Item.htm">SketchControlPointSplines.Item</a><h2 class="api">
+            Derived Classes
+          </h2><a href="SketchControlPointSplineProxy.htm">SketchControlPointSplineProxy</a><h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2014<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(SketchControlPointSpline%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

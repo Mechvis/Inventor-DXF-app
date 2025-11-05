@@ -1,0 +1,131 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/File.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="File">
+    <meta name="description" content="File Object">
+    <meta name="topicid" content="GUID-File">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>File Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">File Object
+			</h1><br><h2 class="api">
+          Description
+        </h2>The File object represents an Inventor file on disk.<h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="File_AllReferencedFiles.htm">AllReferencedFiles</a></td>
+        <td class="api-list">Property that returns all the file references of this File along with all of the recursively nested references.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="File_Application.htm">Application</a></td>
+        <td class="api-list">Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="File_AvailableDocuments.htm">AvailableDocuments</a></td>
+        <td class="api-list">Property that returns an enumeration of all the documents within this file that are currently available (i.e. have been initialized). The returned documents may or may not be open. The property returns a DocumentsEnumerator object in Inventor and a ApprenticeServerDocuments in Apprentice.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="File_DatabaseRevisionId.htm">DatabaseRevisionId</a></td>
+        <td class="api-list">Gets the GUID that represents the last saved revision of database contained in this file. This revision id tracks modifications to the database (such as reference changes, geometry changes, etc.) but does not track file property changes.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="File_FileSaveCounter.htm">FileSaveCounter</a></td>
+        <td class="api-list">Returns the number that is indicative of the number of times the file has been saved.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="File_FullFileName.htm">FullFileName</a></td>
+        <td class="api-list">Gets and sets the fully qualified name of this file. This property can only be set if this file has never been saved.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="File_HasLoadedDocuments.htm">HasLoadedDocuments</a></td>
+        <td class="api-list">Read-only property that returns whether any documents within this file is loaded or not.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="File_HasReferencingFiles.htm">HasReferencingFiles</a></td>
+        <td class="api-list">Read-only property that returns whether this file is referenced by any other files in memory or not.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="File_InternalName.htm">InternalName</a></td>
+        <td class="api-list">Property that gets the Internal Name (a GUID) for this File.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="File_ReferencedFileDescriptors.htm">ReferencedFileDescriptors</a></td>
+        <td class="api-list">Property that returns an enumeration of descriptors that represent the direct file references held by this file.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="File_ReferencedFiles.htm">ReferencedFiles</a></td>
+        <td class="api-list">Property that returns all the files directly referenced by this file.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="File_ReferencingFiles.htm">ReferencingFiles</a></td>
+        <td class="api-list">Property that returns all the files in memory that reference this file.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="File_RevisionId.htm">RevisionId</a></td>
+        <td class="api-list">Gets the GUID that represents the last saved revision of this file. Works as a stamp of the contents of this file.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="File_SoftwareVersionCreated.htm">SoftwareVersionCreated</a></td>
+        <td class="api-list">Read-only property that returns object that encapsulates version of the software with which this file was created.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="File_SoftwareVersionSaved.htm">SoftwareVersionSaved</a></td>
+        <td class="api-list">Read-only property that returns object that encapsulates version of the software with which this file was last saved.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="File_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="ApprenticeServerDocument_File.htm">ApprenticeServerDocument.File</a>, <a href="ApprenticeServerDrawingDocument_File.htm">ApprenticeServerDrawingDocument.File</a>, <a href="AssemblyDocument_File.htm">AssemblyDocument.File</a>, <a href="Document_File.htm">Document.File</a>, <a href="DrawingDocument_File.htm">DrawingDocument.File</a>, <a href="FileDescriptor_Parent.htm">FileDescriptor.Parent</a>, <a href="FileDescriptor_ReferencedFile.htm">FileDescriptor.ReferencedFile</a>, <a href="FilesEnumerator_Item.htm">FilesEnumerator.Item</a>, <a href="PartDocument_File.htm">PartDocument.File</a>, <a href="PresentationDocument_File.htm">PresentationDocument.File</a><h2 class="api">
+            Version
+          </h2>
+        Introduced in version 11<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(File%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

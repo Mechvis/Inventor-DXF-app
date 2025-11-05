@@ -1,0 +1,579 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/SectionDrawingView.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="SectionDrawingView">
+    <meta name="description" content="SectionDrawingView Object">
+    <meta name="topicid" content="GUID-SectionDrawingView">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>SectionDrawingView Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">SectionDrawingView Object
+			</h1>
+              Derived from: <a href="DrawingView.htm">DrawingView</a> Object
+            <br><h2 class="api">
+          Description
+        </h2>The SectionDrawingView object represents a section view within a drawing. See the article in the overviews section.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_Align.htm">Align</a></td>
+        <td class="api-list">Method that aligns this view with the input drawing view. The method returns a failure if the view is already aligned. Use the Aligned property to check for this condition and to break existing alignment.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_AlignAuxiliary.htm">AlignAuxiliary</a></td>
+        <td class="api-list">Method that re-aligns an auxiliary view. The method fails if the view is not an auxiliary view.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_CopyTo.htm">CopyTo</a></td>
+        <td class="api-list">Method that copies this drawing view into the specified sheet. The new object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_CreateOriginIndicator.htm">CreateOriginIndicator</a></td>
+        <td class="api-list">Method that creates the origin indicator for ordinate dimensions and hole tables. The specified input GeometryIntent object must be associated with this drawing view, otherwise this method will fail.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_Delete.htm">Delete</a></td>
+        <td class="api-list">Method that deletes the DrawingView.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_DrawingViewToModelSpace.htm">DrawingViewToModelSpace</a></td>
+        <td class="api-list">Method that takes a 2d coordinate in drawing view space, and returns a Line in model space. Since this method transforms from 2D space to 3D space, there is insufficient information to obtain a 3D model point. Hence, this method returns a Line in the view direction on which the point lies. You may then use the FindUsingRay method to find the point(s) of interest.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_DrawingViewToSheetSpace.htm">DrawingViewToSheetSpace</a></td>
+        <td class="api-list">Method that takes a 2d coordinate in drawing view space, and returns a Point2d containing the coordinates of the point in sheet space.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_GetAutomatedCenterlineSettings.htm">GetAutomatedCenterlineSettings</a></td>
+        <td class="api-list">Method that returns the settings that define how automatic center lines and center marks are to be calculated for this view.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_GetComponentLineColor.htm">GetComponentLineColor</a></td>
+        <td class="api-list">Method that gets color of a component in drawing view.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_GetHiddenLinesStatus.htm">GetHiddenLinesStatus</a></td>
+        <td class="api-list">Method that gets the hidden lines status of a component in the drawing view.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_GetIncludeStatus.htm">GetIncludeStatus</a></td>
+        <td class="api-list">Method that gets the include status of the input object in the drawing view.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_GetReferenceKey.htm">GetReferenceKey</a></td>
+        <td class="api-list">Method that generates and returns the reference key for this entity.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_GetVisibility.htm">GetVisibility</a></td>
+        <td class="api-list">Method that gets the visibility of the input object in the drawing view. This returns error if the input object has partial visibility status.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_GetWeldmentState.htm">GetWeldmentState</a></td>
+        <td class="api-list">Method that gets the weldment option for the drawing view. The method returns a failure if the referenced model does not contain weldments.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_InsertInModelSpace.htm">InsertInModelSpace</a></td>
+        <td class="api-list">Inserts the view geometry into model space only if the drawing lives in an Inventor DWG file.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_ModelToDrawingViewSpace.htm">ModelToDrawingViewSpace</a></td>
+        <td class="api-list">Method that takes a 3d coordinate in model space, and returns a Point2d object containing the coordinate point in drawing view space.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_ModelToSheetSpace.htm">ModelToSheetSpace</a></td>
+        <td class="api-list">Method that takes a 3d coordinate in model space, and returns a Point2d object containing the coordinate point in sheet space.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_MoveTo.htm">MoveTo</a></td>
+        <td class="api-list">Method that moves this drawing view into the specified sheet. The moved object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_ReverseDirection.htm">ReverseDirection</a></td>
+        <td class="api-list">Method that reverses the section line direction.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_RotateByAngle.htm">RotateByAngle</a></td>
+        <td class="api-list">Method that rotates the drawing view by the specified angle.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_SetActiveModelState.htm">SetActiveModelState</a></td>
+        <td class="api-list">Method that sets the active model state for a drawing view. In this method users can also decide to update the PartsList objects which use the same model state as the drawing view. This method fails for drawing views where the model is unresolved.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_SetAutomatedCenterlineSettings.htm">SetAutomatedCenterlineSettings</a></td>
+        <td class="api-list">Method that sets the automatic centerline and center mark settings for this view and creates the centerlines and center marks defined by the settings. The centerlines and center marks that were created are returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_SetComponentLineColor.htm">SetComponentLineColor</a></td>
+        <td class="api-list">Method that sets color for a component in the drawing view.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_SetDesignViewRepresentation.htm">SetDesignViewRepresentation</a></td>
+        <td class="api-list">Method that sets a design view representation for a drawing view of an assembly. This method fails for drawing views of parts and presentations and in the case where the model (assembly) is unresolved.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_SetHiddenLinesStatus.htm">SetHiddenLinesStatus</a></td>
+        <td class="api-list">Method that sets the hidden lines status of a component in the drawing view.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_SetIncludeStatus.htm">SetIncludeStatus</a></td>
+        <td class="api-list">Method that sets the include status of the input object in the drawing view. This method automatically makes the object visible as well. After an object has been included, its visibility can be controlled using the GetVisibility and SetVisibility methods.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_SetVisibility.htm">SetVisibility</a></td>
+        <td class="api-list">Method that sets the visibility of the input object in the drawing view.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_SetWeldmentState.htm">SetWeldmentState</a></td>
+        <td class="api-list">Method that sets the weldment option for the drawing view. The method returns a failure if the referenced model does not contain weldments.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_SheetToDrawingViewSpace.htm">SheetToDrawingViewSpace</a></td>
+        <td class="api-list">Method that takes a 2d coordinate in sheet space, and returns a Point2d object containing the coordinate point in drawing view space.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_SheetToModelSpace.htm">SheetToModelSpace</a></td>
+        <td class="api-list">Method that takes a 2d coordinate in sheet space, and returns a Line in model space. Since this method transforms from 2D space to 3D space, there is insufficient information to obtain a 3D model point. Hence, this method returns a Line in the view direction on which the point lies. You may then use the FindUsingRay method to find the point(s) of interest.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_ShowHiddenAnnotations.htm">ShowHiddenAnnotations</a></td>
+        <td class="api-list">Method that displays all the annotations hidden by the user.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_ShowHiddenCurves.htm">ShowHiddenCurves</a></td>
+        <td class="api-list">Method that displays all the curves explicitly hidden by the user.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_ActiveMemberName.htm">ActiveMemberName</a></td>
+        <td class="api-list">Gets and sets the name of the active member for a drawing view of an iPart or an iAssembly.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_ActiveModelState.htm">ActiveModelState</a></td>
+        <td class="api-list">Read-only property that gets the name of the active model state for a drawing view. This property returns a null string for drawing views of presentations and in the case where the model is unresolved.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_ActivePositionalRepresentation.htm">ActivePositionalRepresentation</a></td>
+        <td class="api-list">Gets and sets the name of the active Positional Representation for a drawing view of an assembly.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_ActivePresentationView.htm">ActivePresentationView</a></td>
+        <td class="api-list">Property that returns the name of the active Presentation (Exploded) View for a drawing view of a presentation.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_Aligned.htm">Aligned</a></td>
+        <td class="api-list">Gets and sets whether the view is aligned with another view.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_AttributeSets.htm">AttributeSets</a></td>
+        <td class="api-list">Property that returns the AttributeSets collection object associated with this object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_AuxiliaryOrientationEdge.htm">AuxiliaryOrientationEdge</a></td>
+        <td class="api-list">Property that returns drawing curve that the auxiliary view is aligned to. This property returns Nothing if this is not an auxiliary view or if the orientation edge (drawing curve) has been removed from the parent view during a subsequent update.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_BitmapAvailable.htm">BitmapAvailable</a></td>
+        <td class="api-list">Property that returns if this view's graphics are also available as a bitmap as well. If a bitmap exists it can be retrieved using the DataIO object. This is only applicable within Apprentice.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_BreakOperations.htm">BreakOperations</a></td>
+        <td class="api-list">Property that returns the BreakOperations object containing information about all the break operations applied to this view as well as methods to add breaks. Both local as well as inherited break operations are returned in the collection.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_BreakOutOperations.htm">BreakOutOperations</a></td>
+        <td class="api-list">Property that returns the BreakOutOperations object containing information about all the break out operations applied to this view as well as methods to add break outs. Only local break out operations are returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_Camera.htm">Camera</a></td>
+        <td class="api-list">Property that returns a Camera object that defines the orientation of the model within the view.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_Center.htm">Center</a></td>
+        <td class="api-list">Gets and sets the display center point of the drawing view on the owning sheet.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_ClientGraphicsCollection.htm">ClientGraphicsCollection</a></td>
+        <td class="api-list">Property that returns the ClientGraphicsCollection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_CropOperations.htm">CropOperations</a></td>
+        <td class="api-list">Read-only property that returns the CropOperations object containing information about all the crop operations applied to this view as well as methods to add crops.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_DataIO.htm">DataIO</a></td>
+        <td class="api-list">Property that returns the associated DataIO object. This can be used in Apprentice to obtain an associated bitmap, if it exists.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_DesignViewAssociative.htm">DesignViewAssociative</a></td>
+        <td class="api-list">Read-only property that gets whether the DesignViewRepresentation for a drawing view of a model is associative or not.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_DesignViewRepresentation.htm">DesignViewRepresentation</a></td>
+        <td class="api-list">Read-only property that returns the name of the Design View Representation for a drawing view of a model.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_DisplayBendExtents.htm">DisplayBendExtents</a></td>
+        <td class="api-list">Gets and sets whether to display sheet metal bend extents on the drawing view.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_DisplayDefinitionInBase.htm">DisplayDefinitionInBase</a></td>
+        <td class="api-list">Gets and sets whether to display detail circles, section lines and the associated text in the base view.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_DisplayForeshortenedTangentEdges.htm">DisplayForeshortenedTangentEdges</a></td>
+        <td class="api-list">Gets and sets whether to display shortened tangent edges in order to distinguish them from visible edges.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_DisplayHatching.htm">DisplayHatching</a></td>
+        <td class="api-list">Gets and sets whether to display hatches for section and slice views.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_DisplayInterferenceEdges.htm">DisplayInterferenceEdges</a></td>
+        <td class="api-list">Gets and sets whether to display both hidden edges that are excluded due to an interference condition (press, or interference fit conditions, threaded fasteners in tapped holes where the hole feature is modeled with the minor diameter).</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_DisplayTangentEdges.htm">DisplayTangentEdges</a></td>
+        <td class="api-list">Read-write property that gets and sets whether to display the tangent edges on the drawing view.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_DisplayThreadFeatures.htm">DisplayThreadFeatures</a></td>
+        <td class="api-list">Gets and sets whether to display thread features on the drawing view.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_DisplayTrails.htm">DisplayTrails</a></td>
+        <td class="api-list">Gets and sets whether to display trails.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_DrawingCurves.htm">DrawingCurves</a></td>
+        <td class="api-list">Property that returns all the drawing curves within the drawing view optionally filtered to the input model object. This property returns Nothing for draft views.iew object represents a drawing view on a sheet.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_DrawingViewEvents.htm">DrawingViewEvents</a></td>
+        <td class="api-list">Property that returns the object, which provides event notifcation. For example, view updates.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_DrawingViewToModelTransform.htm">DrawingViewToModelTransform</a></td>
+        <td class="api-list">Property that returns the transformation from drawing view coordinate space to the model space.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_DrawingViewToSheetTransform.htm">DrawingViewToSheetTransform</a></td>
+        <td class="api-list">Property that returns the transformation from drawing view coordinate space to the sheet space.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_FullSectionDepth.htm">FullSectionDepth</a></td>
+        <td class="api-list">Property that gets and sets whether to section all geometry beyond the cutting line. If set to False, the SectionDepth property specifies a distance of viewing beginning from the cutting line. Setting the SectionDepth property automatically toggles this property to False. This property does not apply (and setting it returns an error) if the SliceAllParts property is set to True.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_GeneralDimensionType.htm">GeneralDimensionType</a></td>
+        <td class="api-list">Read-write property that indicates the type of dimension.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_GraphicsDataSetsCollection.htm">GraphicsDataSetsCollection</a></td>
+        <td class="api-list">Property that returns the object for the drawing view.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_HasOriginIndicator.htm">HasOriginIndicator</a></td>
+        <td class="api-list">Property that specifies whether the origin indicator for ordinate dimensions and hole tables has been created.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_HatchRegions.htm">HatchRegions</a></td>
+        <td class="api-list">Read-only property that returns the DrawingViewHatchRegions collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_Height.htm">Height</a></td>
+        <td class="api-list">Property that specifies the height of the drawing view. The view height cannot be set but is defined by the contents of the view</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_HiddenLineCalculationForAllBodies.htm">HiddenLineCalculationForAllBodies</a></td>
+        <td class="api-list">Read-write property that gets and sets whether the hidden line are calculated for all bodies or reference data separately.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_Include3DAnnotations.htm">Include3DAnnotations</a></td>
+        <td class="api-list">Read-write property that gets and sets whether to include the 3D annotations.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_IncludeMeshBodies.htm">IncludeMeshBodies</a></td>
+        <td class="api-list">Read-write property that gets and sets whether to include the mesh bodies.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_IncludeSlice.htm">IncludeSlice</a></td>
+        <td class="api-list">Property that gets and sets whether some components are sliced and some components are sectioned, depending on their individual settings.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_IncludeSurfaceBodies.htm">IncludeSurfaceBodies</a></td>
+        <td class="api-list">Read-write property that gets and sets whether to include the work surfaces.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_InheritBreak.htm">InheritBreak</a></td>
+        <td class="api-list">Gets and sets whether the view should inherit the corresponding break from the parent view.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_InheritBreakOut.htm">InheritBreakOut</a></td>
+        <td class="api-list">Gets and sets whether the view should inherit the corresponding break out from the parent view.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_InheritSection.htm">InheritSection</a></td>
+        <td class="api-list">Gets and sets whether the view should inherit the corresponding section cut from the parent view.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_InheritSlice.htm">InheritSlice</a></td>
+        <td class="api-list">Gets and sets whether the view should inherit the corresponding slice cut from the parent view.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_IsBreakLineSmooth.htm">IsBreakLineSmooth</a></td>
+        <td class="api-list">Read-write property that gets and sets whether the cut edges are smooth or jogged.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_IsFlatPatternView.htm">IsFlatPatternView</a></td>
+        <td class="api-list">Gets whether the drawing view is of a sheet metal flat pattern.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_IsRasterView.htm">IsRasterView</a></td>
+        <td class="api-list">Read-write property that gets and sets whether the drawing view is raster view or not.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_IsTextPropertySource.htm">IsTextPropertySource</a></td>
+        <td class="api-list">Read-write property that gets and sets whether the drawing view is specified as the text property source.This is applicable only when the drawing view is a base view.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_IsUpdateComplete.htm">IsUpdateComplete</a></td>
+        <td class="api-list">Indicates if the view has finished updating.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_Label.htm">Label</a></td>
+        <td class="api-list">Property that returns the DrawingViewLabel object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_Left.htm">Left</a></td>
+        <td class="api-list">Property that returns the position of the left edge of the drawing view.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_Margin.htm">Margin</a></td>
+        <td class="api-list">Read-write property that gets and sets the amount of area outside the normal view boundary that the view boundary extends.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_ModelToDrawingViewTransform.htm">ModelToDrawingViewTransform</a></td>
+        <td class="api-list">Property that returns the transformation from model space to the drawing view coordinate space.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_ModelToSheetTransform.htm">ModelToSheetTransform</a></td>
+        <td class="api-list">Property that returns the transformation from model space to the sheet coordinate space.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_Name.htm">Name</a></td>
+        <td class="api-list">Gets or sets the name of this View.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_OriginIndicator.htm">OriginIndicator</a></td>
+        <td class="api-list">Property that gets the origin indicator for ordinate dimensions and hole tables.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_Parent.htm">Parent</a></td>
+        <td class="api-list">Property returning the parent Sheet object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_ParentView.htm">ParentView</a></td>
+        <td class="api-list">Property that returns the parent . This property returns Nothing in the case where no parent view exists.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_Position.htm">Position</a></td>
+        <td class="api-list">Gets and sets the point used to position the drawing view on the sheet.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_PresentationViewAssociative.htm">PresentationViewAssociative</a></td>
+        <td class="api-list">Gets and sets whether to associate the drawing view to the referenced presentation view.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_ReferenceDataDisplayStyle.htm">ReferenceDataDisplayStyle</a></td>
+        <td class="api-list">Read-write property that gets and sets the reference data display style.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_ReferencedDocumentDescriptor.htm">ReferencedDocumentDescriptor</a></td>
+        <td class="api-list">Property that returns the model document referenced by this view.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_RevisionClouds.htm">RevisionClouds</a></td>
+        <td class="api-list">Returns the collection of revision clouds on this drawing view.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_Rotation.htm">Rotation</a></td>
+        <td class="api-list">Read-write property that gets and sets the absolute rotation angle of the drawing view in radians. The value can either be positive (counter-clockwise rotation) or negative (clockwise rotation).</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_Scale.htm">Scale</a></td>
+        <td class="api-list">Gets or sets the Model-to-PaperSpace scale of this particular Drawing View.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_ScaleFromBase.htm">ScaleFromBase</a></td>
+        <td class="api-list">Gets and sets whether the scale of the view derives from the parent view or not.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_ScaleString.htm">ScaleString</a></td>
+        <td class="api-list">Gets or sets the Model-to-PaperSpace scale in string format of this particular Drawing View.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_SectionDepth.htm">SectionDepth</a></td>
+        <td class="api-list">Property that gets and sets the section depth in centimeters. Setting this property automatically toggles the FullSectionDepth property to False. Setting the property to a value between 0 and 0.00003 sets the depth to the smallest available section depth value of 0.00003. This property does not apply (and setting it returns an error) if the SliceAllParts property is set to True.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_SectionLineSketch.htm">SectionLineSketch</a></td>
+        <td class="api-list">Gets the object that contains the profile used to define the section line of the view.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_SheetToDrawingViewTransform.htm">SheetToDrawingViewTransform</a></td>
+        <td class="api-list">Property that returns the transformation from sheet space to the drawing view coordinate space.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_SheetToModelTransform.htm">SheetToModelTransform</a></td>
+        <td class="api-list">Property that returns the transformation from sheet coordinate space to the model space.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_ShowEntireLine.htm">ShowEntireLine</a></td>
+        <td class="api-list">Property that indicates whether to show the entire section line or hide parts of it.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_ShowLabel.htm">ShowLabel</a></td>
+        <td class="api-list">Gets and sets whether to show the label of the drawing view on the sheet.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_ShowTrails.htm">ShowTrails</a></td>
+        <td class="api-list">Gets and set whether to show the trails or not for a drawing view of a presentation.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_Sketches.htm">Sketches</a></td>
+        <td class="api-list">Property that returns the DrawingSketches collection object for the sheet. This object provides access to all of the sketches that have been created on the sheet and provides functionality to create new sketches.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_SliceAllParts.htm">SliceAllParts</a></td>
+        <td class="api-list">Property that gets and sets whether to override all individual settings and slice all components in the view according to the Section Line geometry. Components that are not crossed by the Section Line will not participate in the resulting view. Setting this property to True automatically toggles the IncludeSlice property to True. This property does not apply (and setting it returns an error) for drawing views of a part.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_StandardPartsSectionBehavior.htm">StandardPartsSectionBehavior</a></td>
+        <td class="api-list">Gets and sets the sectioning behavior for standard parts in drawing views of assemblies.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_Suppressed.htm">Suppressed</a></td>
+        <td class="api-list">Gets and sets whether this drawing view is suppressed or not.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_Top.htm">Top</a></td>
+        <td class="api-list">Property that specifies the position of the top edge of the drawing view.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_UpToDate.htm">UpToDate</a></td>
+        <td class="api-list">Property that returns whether the drawing view is up to date with respect to the model.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_UseAlignedMethod.htm">UseAlignedMethod</a></td>
+        <td class="api-list">Property that gets and sets whether to use the projected or the aligned method.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_ViewAnnotation.htm">ViewAnnotation</a></td>
+        <td class="api-list">Read-only property that returns the drawing view annotation object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_ViewJustification.htm">ViewJustification</a></td>
+        <td class="api-list">Gets and sets the view justification.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_ViewOrientationFromBase.htm">ViewOrientationFromBase</a></td>
+        <td class="api-list">Gets and sets whether the view should inherit the orientation from the base view.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_ViewStyle.htm">ViewStyle</a></td>
+        <td class="api-list">Gets and sets the drawing view style.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_ViewType.htm">ViewType</a></td>
+        <td class="api-list">Property returning an DrawingViewTypeEnum constant indicating the type of view.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_Width.htm">Width</a></td>
+        <td class="api-list">Property that specifies the width of the drawing view. The view width cannot be set but is defined by the contents of the view.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="DrawingViews_AddSectionView.htm">DrawingViews.AddSectionView</a>, <a href="DrawingViews_AddSectionView2.htm">DrawingViews.AddSectionView2</a><h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_Sample.htm">Break alignment of a section view</a></td>
+        <td class="api-list">Sample showing how to break the alignment of a drawing section view by calling the DrawingBreakViewAlignment command.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 9<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(SectionDrawingView%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

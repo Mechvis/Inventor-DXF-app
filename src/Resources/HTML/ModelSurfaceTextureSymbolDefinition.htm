@@ -1,0 +1,220 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/ModelSurfaceTextureSymbolDefinition.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="ModelSurfaceTextureSymbolDefinition">
+    <meta name="description" content="ModelSurfaceTextureSymbolDefinition Object">
+    <meta name="topicid" content="GUID-ModelSurfaceTextureSymbolDefinition">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>ModelSurfaceTextureSymbolDefinition Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">ModelSurfaceTextureSymbolDefinition Object
+			</h1><br><h2 class="api">
+          Description
+        </h2>ModelSurfaceTextureSymbolDefinition Object.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelSurfaceTextureSymbolDefinition_AddLeader.htm">AddLeader</a></td>
+        <td class="api-list">Method that adds a leader branch with the input points. This is the equivalent of the 'Add Leader' command in the user interface. This method will succeed only if the HasRootNode property returns False (i.e. there are no existing leader segments). If there are existing leader segments, you should use the ModelLeaderNode.AddLeader method instead.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelSurfaceTextureSymbolDefinition_Copy.htm">Copy</a></td>
+        <td class="api-list">Method that creates a copy of this ModelSurfaceTextureSymbolDefinition object. The new ModelSurfaceTextureSymbolDefinition object is independent of any surface texture symbols. It can edited and used as input to edit an existing surface texture symbol or to create a new surface texture symbol.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelSurfaceTextureSymbolDefinition_AdditionalProductionMethod.htm">AdditionalProductionMethod</a></td>
+        <td class="api-list">Read-write property that gets and sets an additional tail for the production method if the drafting standard is based on ISO or DIN. Setting this property will return an error if the ProductionMethod property is not specified.&nbsp;Denoted by B' in the surface tex.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelSurfaceTextureSymbolDefinition_AdditionalRoughness.htm">AdditionalRoughness</a></td>
+        <td class="api-list">Read-write property that gets and sets the roughness value other than Ra or the parameter value other than Ra. For ANSI, this property can also be used to specify the waviness height. Denoted by F in the surface texture symbol dialog.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelSurfaceTextureSymbolDefinition_AdditionalSamplingLength.htm">AdditionalSamplingLength</a></td>
+        <td class="api-list">Read-write property that gets and sets the following: (1)the roughness cutoff or sampling length for additional roughness value for ANSI (2)the sampling length for additional roughness value for ISO or DIN (3)the reference length and evaluation length for JIS.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelSurfaceTextureSymbolDefinition_AllAroundSymbol.htm">AllAroundSymbol</a></td>
+        <td class="api-list">Read-write property that gets and sets whether to add the all-around indicator to the symbol.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelSurfaceTextureSymbolDefinition_AllLeafNodes.htm">AllLeafNodes</a></td>
+        <td class="api-list">Read-only that returns a flat collection of all the leaf nodes in the leader tree. This property will return Nothing if the HasRootNode property returns False.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelSurfaceTextureSymbolDefinition_AllNodes.htm">AllNodes</a></td>
+        <td class="api-list">Read-only that returns a flat collection of all the nodes in the leader tree. This property will return Nothing if the HasRootNode property returns False.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelSurfaceTextureSymbolDefinition_AnnotationPlane.htm">AnnotationPlane</a></td>
+        <td class="api-list">Read-write property that gets and sets the annotation plane for the symbol.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelSurfaceTextureSymbolDefinition_AnnotationPlaneDefinition.htm">AnnotationPlaneDefinition</a></td>
+        <td class="api-list">Read-write property that gets and sets the annotation plane definition for the symbol.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelSurfaceTextureSymbolDefinition_Application.htm">Application</a></td>
+        <td class="api-list">Gets the root Application object. Where the property is weakly-typed, it can be set to (QueryInterfaced for) 'Application' when running with Inventor whereas, 'ApprenticeServer' when running with the Apprentice Server.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelSurfaceTextureSymbolDefinition_Faces.htm">Faces</a></td>
+        <td class="api-list">Gets or sets the faces the surface texture symbol is associative with.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelSurfaceTextureSymbolDefinition_HasRootNode.htm">HasRootNode</a></td>
+        <td class="api-list">Read-only property that returns if a root node exists for this leader. If False, there are no leader segments associated with this leader and the RootNode property will return Nothing.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelSurfaceTextureSymbolDefinition_Intent.htm">Intent</a></td>
+        <td class="api-list">Read-write property that gets and sets the geometric entity the note is attached to.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelSurfaceTextureSymbolDefinition_IsForceTailShown.htm">IsForceTailShown</a></td>
+        <td class="api-list">Read-write property that gets and sets whether a tail is added to the symbol.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelSurfaceTextureSymbolDefinition_IsMajority.htm">IsMajority</a></td>
+        <td class="api-list">Read-write property that gets and sets whether this symbol specifies the standard surface characteristics for the component.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelSurfaceTextureSymbolDefinition_LayDirection.htm">LayDirection</a></td>
+        <td class="api-list">Read-write property that gets and sets the direction of lay. Setting this property will return an error if the SurfaceTextureType is specified to be kMaterialRemovalProhibitedSurfaceType. Denoted by D in the surface texture symbol dialog.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelSurfaceTextureSymbolDefinition_Leader.htm">Leader</a></td>
+        <td class="api-list">Read-only property that returns the leader associated with the leader note.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelSurfaceTextureSymbolDefinition_MachiningAllowance.htm">MachiningAllowance</a></td>
+        <td class="api-list">Read-write property that gets and sets the machining allowance. Setting this property will return an error if the SurfaceTextureType is not kMaterialRemovalRequiredSurfaceType. Denoted by E in the surface texture symbol dialog.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelSurfaceTextureSymbolDefinition_ManufacturingProcess.htm">ManufacturingProcess</a></td>
+        <td class="api-list">Gets and sets the manufacturing process.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelSurfaceTextureSymbolDefinition_MaximumRoughness.htm">MaximumRoughness</a></td>
+        <td class="api-list">Read-write property that gets and sets the roughness value, roughness value Ra maximum, maximum roughness value, or grade number. Denoted by A' in the surface texture symbol dialog.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelSurfaceTextureSymbolDefinition_MinimumRoughness.htm">MinimumRoughness</a></td>
+        <td class="api-list">Read-write property that gets and sets the roughness value, roughness value Ra minimum, minimum roughness value, or grade number. Setting this property will return an error if the MaximumRoughness property is not specified. Denoted by A in the surface texture.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelSurfaceTextureSymbolDefinition_NumberOfFeatureElements.htm">NumberOfFeatureElements</a></td>
+        <td class="api-list">Gets and sets the number of feature elements.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelSurfaceTextureSymbolDefinition_Parent.htm">Parent</a></td>
+        <td class="api-list">Gets the parent object from whom this object can logically be reached.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelSurfaceTextureSymbolDefinition_Position.htm">Position</a></td>
+        <td class="api-list">Gets and sets the position of the symbol on the model.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelSurfaceTextureSymbolDefinition_ProductionMethod.htm">ProductionMethod</a></td>
+        <td class="api-list">Read-write property that gets and sets the production method, treatment, or coating. If the active drafting standard is based on ANSI, this property can be used to specify a note callout. Denoted by B in the surface texture symbol dialog.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelSurfaceTextureSymbolDefinition_ProfileDirection.htm">ProfileDirection</a></td>
+        <td class="api-list">Gets and sets the profile direction relative to primary surface lay direction.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelSurfaceTextureSymbolDefinition_RootNode.htm">RootNode</a></td>
+        <td class="api-list">Read-only property that returns the root node of this leader. This property will return Nothing if the HasRootNode property returns False.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelSurfaceTextureSymbolDefinition_SamplingLength.htm">SamplingLength</a></td>
+        <td class="api-list">Read-write property that gets and sets the following: (1)the roughness cutoff or sampling length for roughness average for ANSI (2)the waviness height or sampling length for ISO or DIN (3)the cutoff value and evaluation length for JIS.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelSurfaceTextureSymbolDefinition_StandardReference.htm">StandardReference</a></td>
+        <td class="api-list">Returns the standard reference type.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelSurfaceTextureSymbolDefinition_SurfaceProfileLowerTolerance.htm">SurfaceProfileLowerTolerance</a></td>
+        <td class="api-list">Gets and sets the surface profile lower tolerance.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelSurfaceTextureSymbolDefinition_SurfaceProfileUpperTolerance.htm">SurfaceProfileUpperTolerance</a></td>
+        <td class="api-list">Gets and sets the surface profile upper tolerance.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelSurfaceTextureSymbolDefinition_SurfaceTextureType.htm">SurfaceTextureType</a></td>
+        <td class="api-list">Read-write property that gets and sets the surface type for the symbol.&nbsp;Possible values kBasicSurfaceType, kMaterialRemovalRequiredSurfaceType and kMaterialRemovalProhibitedSurfaceType.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelSurfaceTextureSymbolDefinition_SurfaceWaviness.htm">SurfaceWaviness</a></td>
+        <td class="api-list">Read-write property that gets and sets the surface waviness for JIS, or general comments for BSI. This property is ignored for ANSI, ISO, or DIN standards. Denoted by F' or G in the surface texture symbol dialog.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelSurfaceTextureSymbolDefinition_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="ModelGeneralNotes_CreateEmbeddedSurfaceTextureSymbolDefinition.htm">ModelGeneralNotes.CreateEmbeddedSurfaceTextureSymbolDefinition</a>, <a href="ModelSurfaceTextureSymbol_Definition.htm">ModelSurfaceTextureSymbol.Definition</a>, <a href="ModelSurfaceTextureSymbolDefinition_Copy.htm">ModelSurfaceTextureSymbolDefinition.Copy</a>, <a href="ModelSurfaceTextureSymbolProxy_Definition.htm">ModelSurfaceTextureSymbolProxy.Definition</a>, <a href="ModelSurfaceTextureSymbols_CreateDefinition.htm">ModelSurfaceTextureSymbols.CreateDefinition</a><h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2018<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(ModelSurfaceTextureSymbolDefinition%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,466 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/TaperFace_Sample.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="TaperFace_Sample">
+    <meta name="description" content="Tapered Surface Using Offset Curve and Ruled Surface Sample">
+    <meta name="topicid" content="TaperFace_Sample">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>Tapered Surface Using Offset Curve and Ruled Surface</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body><script>
+          function copyCode(language) {
+          // Get the pre element for the specified language.
+          var preElement = document.getElementById(language);
+
+          // Get the text from the element and copy it to the clipboard.
+          var preText = preElement.innerText;
+
+          var isIE = /*@cc_on!@*/false || !!document.documentMode;
+
+          if (isIE)
+          {
+            window.clipboardData.setData('Text', preText);
+          }
+          else
+          {
+            navigator.clipboard.writeText(preText);
+          }
+
+          //alert("Code copied to clipboard");
+          }
+        </script><link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">Tapered Surface Using Offset Curve and Ruled Surface</h1>
+    <h2 class="api">
+          Description
+        </h2>This sample demonstrates much of the wire body creation functionality.  To run the sample you must have a part open and select a planar face.  This sample then creates a trasient wire body using the geometry of the outside of the selected face.  It then transforms and offsets that wire, and finally creates a ruled surface between the original wire and the offset wire.  A base feature is created with the ruled surface.<h2 class="api">
+          Code Samples
+        </h2>
+    <div id="tabs">
+      <ul>
+        <li><a href="#VBA">VBA</a></li>
+        <li><a href="#iLogic">iLogic</a></li>
+      </ul>
+      <div id="VBA" class="api-code">To use this sample a part must be active.<table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('VBA_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="VBA_code">Public Sub TaperFace()
+    Dim testFace As Face
+    Set testFace = ThisApplication.CommandManager.Pick(kPartFacePlanarFilter, "Select a planar face")
+    
+    <span style="color:blue">' Get the transient B-Rep and geometry objects.</span>
+    Dim tBRep As TransientBRep
+    Set tBRep = ThisApplication.TransientBRep
+    Dim tg As TransientGeometry
+    Set tg = ThisApplication.TransientGeometry
+    
+    <span style="color:blue">' Create the top-level objects needed to construct a wire.</span>
+    Dim bodyDef As SurfaceBodyDefinition
+    Set bodyDef = tBRep.CreateSurfaceBodyDefinition
+    
+    Dim lumpDef As LumpDefinition
+    Set lumpDef = bodyDef.LumpDefinitions.Add
+    
+    Dim shellDef As FaceShellDefinition
+    Set shellDef = lumpDef.FaceShellDefinitions.Add
+    
+    Dim wireDef As WireDefinition
+    Set wireDef = shellDef.WireDefinitions.Add
+
+    <span style="color:blue">' ** Create a wire based on the outside loops of the selected face.</span>
+    
+    <span style="color:blue">' Get the outer loop of the face.</span>
+    Dim outerLoop As EdgeLoop
+    For Each outerLoop In testFace.EdgeLoops
+        If outerLoop.IsOuterEdgeLoop Then
+            Exit For
+        End If
+    Next
+    
+    <span style="color:blue">' Use the edge uses to step around the face.</span>
+    Dim lastVertexDef As VertexDefinition
+    Set lastVertexDef = Nothing
+    Dim coEdge As EdgeUse
+    For Each coEdge In outerLoop.EdgeUses
+        If lastVertexDef Is Nothing Then
+            <span style="color:blue">' This is the first time through so get the starting vertex of the current edge use.</span>
+            If coEdge.IsOpposedToEdge Then
+                Set lastVertexDef = bodyDef.VertexDefinitions.Add(coEdge.Edge.StopVertex.Point)
+            Else
+                Set lastVertexDef = bodyDef.VertexDefinitions.Add(coEdge.Edge.StartVertex.Point)
+            End If
+        End If
+        
+        <span style="color:blue">' Get the end vertex of the current edge use.</span>
+        Dim currentVertexDef As VertexDefinition
+        If coEdge.IsOpposedToEdge Then
+            Set currentVertexDef = bodyDef.VertexDefinitions.Add(coEdge.Edge.StartVertex.Point)
+        Else
+            Set currentVertexDef = bodyDef.VertexDefinitions.Add(coEdge.Edge.StopVertex.Point)
+        End If
+        
+        <span style="color:blue">' If the geometry is an arc and the co-edge is opposed to the edge,</span>
+        <span style="color:blue">' the arc needs to be massaged so the start and end points are reversed.</span>
+        Dim geom As Object
+        If coEdge.Edge.GeometryType = kCircularArcCurve And coEdge.IsOpposedToEdge Then
+            Dim arc As Arc3d
+            Set arc = coEdge.Edge.Geometry
+            
+            Dim center() As Double
+            Dim axisVector() As Double
+            Dim refVector() As Double
+            Dim radius As Double
+            Dim startAngle As Double
+            Dim sweepAngle As Double
+            Call arc.GetArcData(center, axisVector, refVector, radius, startAngle, sweepAngle)
+            
+            Set arc = tg.CreateArc3d(tg.CreatePoint(center(0), center(1), center(2)), _
+                                     tg.CreateUnitVector(-axisVector(0), -axisVector(1), -axisVector(2)), _
+                                     tg.CreateUnitVector(refVector(0), refVector(1), refVector(2)), _
+                                     radius, startAngle + sweepAngle, sweepAngle)
+            
+            Set geom = arc
+        Else
+            Set geom = coEdge.Edge.Geometry
+        End If
+        
+        
+        <span style="color:blue">' Create a wire edge definition for the current edge.</span>
+        Call wireDef.WireEdgeDefinitions.Add(lastVertexDef, currentVertexDef, geom)
+        
+        <span style="color:blue">' Reset the last vertex to be the current vertex.</span>
+        Set lastVertexDef = currentVertexDef
+    Next
+    
+    <span style="color:blue">' Create the wire body.</span>
+    Dim errors As NameValueMap
+    Set errors = ThisApplication.TransientObjects.CreateNameValueMap
+    Dim faceBody As SurfaceBody
+    Set faceBody = bodyDef.CreateTransientSurfaceBody(errors)
+
+    <span style="color:blue">' Draw the wire as client graphics to be able to visualize what's been calculated so far.</span>
+    <span style="color:blue">' This wire should overlay the selected face.</span>
+    Call DrawWire(ThisApplication.ActiveDocument.ComponentDefinition, faceBody.Wires.Item(1), True)
+    MsgBox "Wire created for outer boundary of selected face."
+
+    <span style="color:blue">' Copy the wire body and translate it along the normal of the face.</span>
+    Dim transBody As SurfaceBody
+    Set transBody = tBRep.Copy(faceBody)
+
+    Dim transMatrix As Matrix
+    Set transMatrix = tg.CreateMatrix
+    Dim faceNormal As Vector
+    Set faceNormal = GetFaceNormal(testFace).AsVector
+    Call faceNormal.ScaleBy(0.5)
+    Call transMatrix.SetTranslation(faceNormal)
+    Call tBRep.Transform(transBody, transMatrix)
+    
+    <span style="color:blue">' Draw the translated wire as client graphics to be able to visualize what's been calculated so far.</span>
+    Call DrawWire(ThisApplication.ActiveDocument.ComponentDefinition, transBody.Wires.Item(1), False)
+    MsgBox "Copied and transformed wire created."
+    
+    <span style="color:blue">' Offset the transformed wire.</span>
+    Dim offsetWires As Wires
+    Dim offsetDirection As UnitVector
+    Set offsetWires = transBody.Wires.Item(1).OffsetPlanarWire(faceNormal.AsUnitVector, 0.25, kExtendCornerClosure)
+
+    <span style="color:blue">' Draw the offset wire as client graphics to be able to visualize what's been calculated so far.</span>
+    Call DrawWire(ThisApplication.ActiveDocument.ComponentDefinition, offsetWires.Item(1), False)
+    MsgBox "Offset of wire created."
+
+    <span style="color:blue">' Creat a ruled surface between the original wire and the offset.</span>
+    Dim ruled As SurfaceBody
+    Set ruled = tBRep.CreateRuledSurface(faceBody.Wires.Item(1), offsetWires.Item(1))
+    
+    <span style="color:blue">' Create a base body feature of the ruled surface.</span>
+    Dim partDef As PartComponentDefinition
+    Set partDef = ThisApplication.ActiveDocument.ComponentDefinition
+    Dim baseBody As NonParametricBaseFeature
+    Set baseBody = partDef.Features.NonParametricBaseFeatures.Add(ruled)
+
+    <span style="color:blue">' Change the result work surface so it's not translucent.</span>
+    baseBody.SurfaceBodies.Item(1).Parent.Translucent = False
+    MsgBox "Ruled surface between wires created and base body created."
+    
+End Sub
+
+<span style="color:blue">' Utility function that given a face returns a normal.  This is only useful</span>
+<span style="color:blue">' for planar faces, since they have a consistent normal anywhere on the face.</span>
+Private Function GetFaceNormal(InputFace As Face) As UnitVector
+    Dim eval As SurfaceEvaluator
+    Set eval = InputFace.Evaluator
+    
+    <span style="color:blue">' Get the center of the parametric range.</span>
+    Dim center(1) As Double
+    center(0) = (eval.ParamRangeRect.MinPoint.X + eval.ParamRangeRect.MaxPoint.X) / 2
+    center(1) = (eval.ParamRangeRect.MinPoint.y + eval.ParamRangeRect.MaxPoint.y) / 2
+    
+    <span style="color:blue">' Calculate the normal.</span>
+    Dim normal() As Double
+    Call eval.GetNormal(center, normal)
+    
+    <span style="color:blue">' Create a unit vector to pass back the result.</span>
+    Set GetFaceNormal = ThisApplication.TransientGeometry.CreateUnitVector(normal(0), normal(1), normal(2))
+End Function
+
+<span style="color:blue">' Utility function that draws a Wire as client graphics.</span>
+Private Sub DrawWire(partDef As PartComponentDefinition, WireToDisplay As Wire, ClearExisting As Boolean)
+    Dim trans As Transaction
+    Set trans = ThisApplication.TransactionManager.StartTransaction(partDef.Document, "Wire display")
+    
+    Dim graphics As ClientGraphics
+    On Error Resume Next
+    Set graphics = partDef.ClientGraphicsCollection.Item("WireTest")
+    If Err Then
+        Set graphics = partDef.ClientGraphicsCollection.Add("WireTest")
+    Else
+        If ClearExisting Then
+            graphics.Delete
+            Set graphics = partDef.ClientGraphicsCollection.Add("WireTest")
+        End If
+    End If
+    
+    Dim node As GraphicsNode
+    Set node = graphics.AddNode(1)
+    
+    Dim e As Edge
+    For Each e In WireToDisplay.Edges
+        Call node.AddCurveGraphics(e.Geometry)
+    Next
+    ThisApplication.ActiveView.Update
+    
+    trans.End
+End Sub</pre>
+      </div>
+      <div id="iLogic" class="api-code">To use this sample a part must be active.<table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('iLogic_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="iLogic_code">Sub Main
+    Dim testFace As Face
+    testFace = ThisApplication.CommandManager.Pick(kPartFacePlanarFilter, "Select a planar face")
+    
+    <span style="color:blue">' Get the transient B-Rep and geometry objects.</span>
+    Dim tBRep As TransientBRep
+    tBRep = ThisApplication.TransientBRep
+    Dim tg As TransientGeometry
+    tg = ThisApplication.TransientGeometry
+    
+    <span style="color:blue">' Create the top-level objects needed to construct a wire.</span>
+    Dim bodyDef As SurfaceBodyDefinition
+    bodyDef = tBRep.CreateSurfaceBodyDefinition
+    
+    Dim lumpDef As LumpDefinition
+    lumpDef = bodyDef.LumpDefinitions.Add
+    
+    Dim shellDef As FaceShellDefinition
+    shellDef = lumpDef.FaceShellDefinitions.Add
+    
+    Dim wireDef As WireDefinition
+    wireDef = shellDef.WireDefinitions.Add
+
+    <span style="color:blue">' ** Create a wire based on the outside loops of the selected face.</span>
+    
+    <span style="color:blue">' Get the outer loop of the face.</span>
+    Dim outerLoop As EdgeLoop
+    For Each outerLoop In testFace.EdgeLoops
+        If outerLoop.IsOuterEdgeLoop Then
+            Exit For
+        End If
+    Next
+    
+    <span style="color:blue">' Use the edge uses to step around the face.</span>
+    Dim lastVertexDef As VertexDefinition
+    lastVertexDef = Nothing
+    Dim coEdge As EdgeUse
+    For Each coEdge In outerLoop.EdgeUses
+        If lastVertexDef Is Nothing Then
+            <span style="color:blue">' This is the first time through so get the starting vertex of the current edge use.</span>
+            If coEdge.IsOpposedToEdge Then
+                lastVertexDef = bodyDef.VertexDefinitions.Add(coEdge.Edge.StopVertex.Point)
+            Else
+                lastVertexDef = bodyDef.VertexDefinitions.Add(coEdge.Edge.StartVertex.Point)
+            End If
+        End If
+        
+        <span style="color:blue">' Get the end vertex of the current edge use.</span>
+        Dim currentVertexDef As VertexDefinition
+        If coEdge.IsOpposedToEdge Then
+            currentVertexDef = bodyDef.VertexDefinitions.Add(coEdge.Edge.StartVertex.Point)
+        Else
+            currentVertexDef = bodyDef.VertexDefinitions.Add(coEdge.Edge.StopVertex.Point)
+        End If
+        
+        <span style="color:blue">' If the geometry is an arc and the co-edge is opposed to the edge,</span>
+        <span style="color:blue">' the arc needs to be massaged so the start and end points are reversed.</span>
+        Dim geom As Object
+        If coEdge.Edge.GeometryType = kCircularArcCurve And coEdge.IsOpposedToEdge Then
+            Dim arc As Arc3d
+            arc = coEdge.Edge.Geometry
+            
+            Dim center() As Double
+            Dim axisVector() As Double
+            Dim refVector() As Double
+            Dim radius As Double
+            Dim startAngle As Double
+            Dim sweepAngle As Double
+            Call arc.GetArcData(center, axisVector, refVector, radius, startAngle, sweepAngle)
+            
+            arc = tg.CreateArc3d(tg.CreatePoint(center(0), center(1), center(2)), _
+                                     tg.CreateUnitVector(-axisVector(0), -axisVector(1), -axisVector(2)), _
+                                     tg.CreateUnitVector(refVector(0), refVector(1), refVector(2)), _
+                                     radius, startAngle + sweepAngle, sweepAngle)
+            
+            geom = arc
+        Else
+            geom = coEdge.Edge.Geometry
+        End If
+        
+        
+        <span style="color:blue">' Create a wire edge definition for the current edge.</span>
+        Call wireDef.WireEdgeDefinitions.Add(lastVertexDef, currentVertexDef, geom)
+        
+        <span style="color:blue">' Reset the last vertex to be the current vertex.</span>
+        lastVertexDef = currentVertexDef
+    Next
+    
+    <span style="color:blue">' Create the wire body.</span>
+    Dim errors As NameValueMap
+    errors = ThisApplication.TransientObjects.CreateNameValueMap
+    Dim faceBody As SurfaceBody
+    faceBody = bodyDef.CreateTransientSurfaceBody(errors)
+
+    <span style="color:blue">' Draw the wire as client graphics to be able to visualize what's been calculated so far.</span>
+    <span style="color:blue">' This wire should overlay the selected face.</span>
+    Call DrawWire(ThisApplication.ActiveDocument.ComponentDefinition, faceBody.Wires.Item(1), True)
+    MsgBox("Wire created for outer boundary of selected face.")
+
+    <span style="color:blue">' Copy the wire body and translate it along the normal of the face.</span>
+    Dim transBody As SurfaceBody
+    transBody = tBRep.Copy(faceBody)
+
+    Dim transMatrix As Matrix
+    transMatrix = tg.CreateMatrix
+    Dim faceNormal As Vector
+    faceNormal = GetFaceNormal(testFace).AsVector
+    Call faceNormal.ScaleBy(0.5)
+    Call transMatrix.SetTranslation(faceNormal)
+    Call tBRep.Transform(transBody, transMatrix)
+    
+    <span style="color:blue">' Draw the translated wire as client graphics to be able to visualize what's been calculated so far.</span>
+    Call DrawWire(ThisApplication.ActiveDocument.ComponentDefinition, transBody.Wires.Item(1), False)
+    MsgBox("Copied and transformed wire created.")
+    
+    <span style="color:blue">' Offset the transformed wire.</span>
+    Dim offsetWires As Wires
+    Dim offsetDirection As UnitVector
+    offsetWires = transBody.Wires.Item(1).OffsetPlanarWire(faceNormal.AsUnitVector, 0.25, kExtendCornerClosure)
+
+    <span style="color:blue">' Draw the offset wire as client graphics to be able to visualize what's been calculated so far.</span>
+    Call DrawWire(ThisApplication.ActiveDocument.ComponentDefinition, offsetWires.Item(1), False)
+    MsgBox("Offset of wire created.")
+
+    <span style="color:blue">' Creat a ruled surface between the original wire and the offset.</span>
+    Dim ruled As SurfaceBody
+    ruled = tBRep.CreateRuledSurface(faceBody.Wires.Item(1), offsetWires.Item(1))
+    
+    <span style="color:blue">' Create a base body feature of the ruled surface.</span>
+    Dim partDef As PartComponentDefinition
+    partDef = ThisApplication.ActiveDocument.ComponentDefinition
+    Dim baseBody As NonParametricBaseFeature
+    baseBody = partDef.Features.NonParametricBaseFeatures.Add(ruled)
+
+    <span style="color:blue">' Change the result work surface so it's not translucent.</span>
+    baseBody.SurfaceBodies.Item(1).Parent.Translucent = False
+    MsgBox("Ruled surface between wires created and base body created.")
+    
+End Sub
+
+<span style="color:blue">' Utility function that given a face returns a normal.  This is only useful</span>
+<span style="color:blue">' for planar faces, since they have a consistent normal anywhere on the face.</span>
+Private Function GetFaceNormal(InputFace As Face) As UnitVector
+    Dim eval As SurfaceEvaluator
+    eval = InputFace.Evaluator
+    
+    <span style="color:blue">' Get the center of the parametric range.</span>
+    Dim center(1) As Double
+    center(0) = (eval.ParamRangeRect.MinPoint.X + eval.ParamRangeRect.MaxPoint.X) / 2
+    center(1) = (eval.ParamRangeRect.MinPoint.y + eval.ParamRangeRect.MaxPoint.y) / 2
+    
+    <span style="color:blue">' Calculate the normal.</span>
+    Dim normal() As Double = New Double() {} 
+    Call eval.GetNormal(center, normal)
+    
+    <span style="color:blue">' Create a unit vector to pass back the result.</span>
+    GetFaceNormal = ThisApplication.TransientGeometry.CreateUnitVector(normal(0), normal(1), normal(2))
+End Function
+
+<span style="color:blue">' Utility function that draws a Wire as client graphics.</span>
+Private Sub DrawWire(partDef As PartComponentDefinition, WireToDisplay As Wire, ClearExisting As Boolean)
+    Dim trans As Transaction
+    trans = ThisApplication.TransactionManager.StartTransaction(partDef.Document, "Wire display")
+    
+    Dim graphics As ClientGraphics
+    On Error Resume Next
+    graphics = partDef.ClientGraphicsCollection.Item("WireTest")
+    If Err.Number &gt; 0 Then
+        graphics = partDef.ClientGraphicsCollection.Add("WireTest")
+    Else
+        If ClearExisting Then
+            graphics.Delete
+            graphics = partDef.ClientGraphicsCollection.Add("WireTest")
+        End If
+    End If
+    
+    Dim node As GraphicsNode
+    node = graphics.AddNode(1)
+    
+    Dim e As Edge
+    For Each e In WireToDisplay.Edges
+        Call node.AddCurveGraphics(e.Geometry)
+    Next
+    ThisApplication.ActiveView.Update
+    
+    trans.End
+End Sub</pre>
+      </div>
+    </div><br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(TaperFace%20Sample%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

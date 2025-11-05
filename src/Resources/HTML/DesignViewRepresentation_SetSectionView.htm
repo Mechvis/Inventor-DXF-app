@@ -1,0 +1,95 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/DesignViewRepresentation_SetSectionView.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="DesignViewRepresentation_SetSectionView">
+    <meta name="description" content="DesignViewRepresentation.SetSectionView Method">
+    <meta name="topicid" content="DesignViewRepresentation_SetSectionView">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>DesignViewRepresentation.SetSectionView Method</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">DesignViewRepresentation.SetSectionView Method</h1>
+
+          Parent Object: <a href="DesignViewRepresentation.htm">DesignViewRepresentation</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Sets a section view in the design view.</p>
+    <h2 class="api">
+          Syntax
+        </h2>
+        
+            DesignViewRepresentation.<b>SetSectionView</b>( <b><i>SectionViewType</i></b> As <a href="SectionViewTypeEnum.htm">SectionViewTypeEnum</a>, [<b><i>FirstSectionPlane</i></b>] As Variant, [<b><i>SecondSectionPlane</i></b>] As Variant )
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">SectionViewType</td>
+        <td class="api-list"><a href="SectionViewTypeEnum.htm">SectionViewTypeEnum</a></td>
+        <td class="api-list">Input SectionViewTypeEnum that specifies the section view type you want to set.</td>
+      </tr>
+      <tr>
+        <td class="api-list">FirstSectionPlane</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optinoal input a Plane object that specifies the first section plane for quarter or three quarter section view and the section plane for the half section view. The normal of the section plane defines the section direction.<br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+      <tr>
+        <td class="api-list">SecondSectionPlane</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optinoal input a Plane object that specifies the second section plane for quarter or three quarter section view. The normal of the section plane defines the section direction. If the SectionViewType is not equal to the kQuarterSectionViewType or kThreeQuarterSectionViewType this argument will be ignored.<br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2017<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(DesignViewRepresentation.SetSectionView%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,197 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/PackAndGoCreation_Sample.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="PackAndGoCreation_Sample">
+    <meta name="description" content="Pack and go Sample">
+    <meta name="topicid" content="PackAndGoCreation_Sample">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>Pack and go</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body><script>
+          function copyCode(language) {
+          // Get the pre element for the specified language.
+          var preElement = document.getElementById(language);
+
+          // Get the text from the element and copy it to the clipboard.
+          var preText = preElement.innerText;
+
+          var isIE = /*@cc_on!@*/false || !!document.documentMode;
+
+          if (isIE)
+          {
+            window.clipboardData.setData('Text', preText);
+          }
+          else
+          {
+            navigator.clipboard.writeText(preText);
+          }
+
+          //alert("Code copied to clipboard");
+          }
+        </script><link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">Pack and go</h1>
+    <h2 class="api">
+          Description
+        </h2>This sample demonstrates using pack and go interop to create a package.<h2 class="api">
+          Code Samples
+        </h2>
+    <div id="tabs">
+      <ul>
+        <li><a href="#VB.Net">VB.Net</a></li>
+        <li><a href="#C#">C#</a></li>
+        <li><a href="#C++">C++</a></li>
+      </ul>
+      <div id="VB.Net" class="api-code">Create a VB.Net project and add the reference to the pack and go type interop binary Autodesk.PackAndGo.Interop.dll which is in the Bin folder of Inventor installation folder.<table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('VB.Net_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="VB.Net_code">Public Sub PackAndGoSample()
+    Dim oPacknGoComp As New PackAndGoLib.PackAndGoComponent
+
+    Dim oPacknGo As PackAndGoLib.PackAndGo
+    oPacknGo = oPacknGoComp.CreatePackAndGo("C:\Temp\Source\Assembly1.iam", "C:\Temp\Destination")
+
+    <span style="color:blue">' Set the design project. This defaults to the current active project.</span>
+    oPacknGo.ProjectFile = "C:\Temp\Source\Test.ipj"
+
+    Dim sRefFiles = New String() {}
+    Dim sMissFiles = New Object
+
+    <span style="color:blue">' Set the options</span>
+    oPacknGo.IsSkippingLibraries = True
+    oPacknGo.IsSkippingStyles = True
+    oPacknGo.IsSkippingTemplates = True
+    oPacknGo.IsCollectingWorkgroups = False
+    oPacknGo.IsKeepingFolderHierarchy = True
+    oPacknGo.IncludeLinkedFiles = True
+
+    <span style="color:blue">' Get the referenced files</span>
+    oPacknGo.SearchForReferencedFiles(sRefFiles, sMissFiles)
+
+    <span style="color:blue">' Add the referenced files for package</span>
+    oPacknGo.AddFilesToPackage (sRefFiles)
+
+    <span style="color:blue">' Start the pack and go to create the package</span>
+    oPacknGo.CreatePackage()
+End Sub</pre>
+      </div>
+      <div id="C#" class="api-code">Create a C#.Net project and add the reference to the pack and go type interop binary Autodesk.PackAndGo.Interop.dll which is in the Bin folder of Inventor installation folder.<table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('C#_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="C#_code">public void PackAndGoSample()
+{
+    PackAndGoComponent packAndGoComp = new PackAndGoComponent();
+    PackAndGo packAndGo=packAndGoComp.CreatePackAndGo("C:\\Temp\\Source\\Assembly1.iam","C:\\Temp\\Destination");
+
+    <span style="color:blue">// Set the design project. This defaults to the current active project.</span>
+    packAndGo.ProjectFile = "C:\\Temp\\Source\\Test.ipj";
+
+    string[] refFiles = new string[]{};
+    object refMissFiles = new object();
+
+    <span style="color:blue">// Set the options</span>
+    packAndGo.IsSkippingLibraries = true;
+    packAndGo.IsSkippingStyles = true;
+    packAndGo.IsSkippingTemplates = true;
+    packAndGo.IsCollectingWorkgroups = false;
+    packAndGo.IsKeepingFolderHierarchy = true;
+    packAndGo.IncludeLinkedFiles = true;
+
+    <span style="color:blue">// Get the referenced files</span>
+    packAndGo.SearchForReferencedFiles(out refFiles,out refMissFiles);
+    
+    <span style="color:blue">// Add the referenced files for package</span>
+    packAndGo.AddFilesToPackage(refFiles);
+
+    <span style="color:blue">// Start the pack and go to create the package</span>
+    packAndGo.CreatePackage();
+}</pre>
+      </div>
+      <div id="C++" class="api-code">Create a C++ project and add the include the Bin folder of Inventor installation folder where the DTPackAndGo.tlb is located.<table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('C++_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="C++_code">#import "DTPackAndGo.tlb" no_namespace named_guids \ 
+     raw_dispinterfaces raw_method_prefix("") \ 
+     high_method_prefix("Method") 
+
+void PackAndGoSample()
+{
+  HRESULT Result = NOERROR;
+    
+  CComPtr&lt;IPackAndGoComponent&gt; packAndGoComp;
+  Result = packAndGoComp.CoCreateInstance(CLSID_PackAndGoComponent);
+
+  CComPtr&lt;IPackAndGo&gt; packAndGo = 
+    packAndGoComp-&gt;MethodCreatePackAndGo(
+      L"C:\\Temp\\Source\\Assembly1.iam", L"C:\\Temp\\Destination");
+
+  <span style="color:blue">// Set the design project. This defaults to the </span>
+  <span style="color:blue">// current active project.</span>
+  packAndGo-&gt;ProjectFile = L"C:\\Temp\\Source\\Test.ipj";
+
+  <span style="color:blue">// Set the options</span>
+  packAndGo-&gt;SkipLibraries = true;
+  packAndGo-&gt;SkipStyles = true;
+  packAndGo-&gt;SkipTemplates = true;
+  packAndGo-&gt;CollectWorkgroups = false;
+  packAndGo-&gt;KeepFolderHierarchy = true;
+  packAndGo-&gt;IncludeLinkedFiles = true;
+
+  SAFEARRAY * refFiles = NULL;
+  VARIANT refMissFiles;
+
+  <span style="color:blue">// Get the referenced files</span>
+  packAndGo-&gt;MethodSearchForReferencedFiles(
+    &refFiles, &refMissFiles);
+    
+  <span style="color:blue">// Add the referenced files for package</span>
+  packAndGo-&gt;MethodAddFilesToPackage(&refFiles);
+
+  <span style="color:blue">// Start the pack and go to create the package</span>
+  <span style="color:blue">// OverrideExistingFiles = TRUE</span>
+  packAndGo-&gt;MethodCreatePackage(VARIANT_TRUE);
+}</pre>
+      </div>
+    </div><br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(PackAndGoCreation%20Sample%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

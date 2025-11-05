@@ -1,0 +1,102 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/UnitsOfMeasure_CompatibleUnits.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="UnitsOfMeasure_CompatibleUnits">
+    <meta name="description" content="UnitsOfMeasure.CompatibleUnits Method">
+    <meta name="topicid" content="UnitsOfMeasure_CompatibleUnits">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>UnitsOfMeasure.CompatibleUnits Method</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">UnitsOfMeasure.CompatibleUnits Method</h1>
+
+          Parent Object: <a href="UnitsOfMeasure.htm">UnitsOfMeasure</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Method that evaluates the two input expressions and determines if the result in units that have the same base unit type.</p>
+    <h2 class="api">
+            Remarks
+          </h2>For example comparing the two expressions '3.45 in + 3 cm' and '1 ft' will return True because both expressions result in values that defined lengths. The two expression '3 cm * 5 cm' and '1 ft' will return False because the first expression results in an area and the second is a length. This method will also return False in the case where either Expression1 or Expression2 is not valid and cannot be evaluated.<h2 class="api">
+          Syntax
+        </h2>
+        
+            UnitsOfMeasure.<b>CompatibleUnits</b>( <b><i>Expression1</i></b> As String, <b><i>UnitsSpecifier1</i></b> As Variant, <b><i>Expression2</i></b> As String, <b><i>UnitsSpecifier2</i></b> As Variant ) As Boolean
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">Expression1</td>
+        <td class="api-list">String</td>
+        <td class="api-list">The first expression to be used in the comparison.<p /></td>
+      </tr>
+      <tr>
+        <td class="api-list">UnitsSpecifier1</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Input variant value that specifies the unit type the first expression is to be evaluated with. You specify a unit type using a value from UnitsTypeEnum or a string that describes a unit. For example, both of the following are valid unit specifiers for inch\: kInchLengthUnits and "in". String specifiers are typically used for units that are not defined in the enum list. For example, the volume measure for cubic inches is not defined in the enum list but you can specify it using the string "in in in". A common use of this method will be to evaluate an expression using the current display units of the document. For example if the expression should define a length you can use kDefaultDisplayLengthUnit as the unit specifier so the expression will be evaluated as a length in the current document units. The enum values that specify to use the document default display units are kDefaultDisplayLengthUnit, kDefaultDisplayAngleUnit, kDefaultDisplayMassUnit, kDefaultDisplayTimeUnit, and kDefaultDisplayTemperatureUnit.<p /></td>
+      </tr>
+      <tr>
+        <td class="api-list">Expression2</td>
+        <td class="api-list">String</td>
+        <td class="api-list">The second expression to be used in the comparison.<p /></td>
+      </tr>
+      <tr>
+        <td class="api-list">UnitsSpecifier2</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Input variant value that specifies the unit type the second expression is to be evaluated with. You specify a unit type using a value from UnitsTypeEnum or a string that describes a unit. For example, both of the following are valid unit specifiers for inch\: kInchLengthUnits and "in". String specifiers are typically used for units that are not defined in the enum list. For example, the volume measure for cubic inches is not defined in the enum list but you can specify it using the string "in in in". A common use of this method will be to evaluate an expression using the current display units of the document. For example if the expression should define a length you can use kDefaultDisplayLengthUnit as the unit specifier so the expression will be evaluated as a length in the current document units. The enum values that specify to use the document default display units are kDefaultDisplayLengthUnit, kDefaultDisplayAngleUnit, kDefaultDisplayMassUnit, kDefaultDisplayTimeUnit, and kDefaultDisplayTemperatureUnit.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 8<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(UnitsOfMeasure.CompatibleUnits%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

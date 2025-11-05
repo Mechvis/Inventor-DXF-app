@@ -1,0 +1,132 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/AnnotationPlaneDefinition.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="AnnotationPlaneDefinition">
+    <meta name="description" content="AnnotationPlaneDefinition Object">
+    <meta name="topicid" content="GUID-AnnotationPlaneDefinition">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>AnnotationPlaneDefinition Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">AnnotationPlaneDefinition Object
+			</h1><br><h2 class="api">
+          Description
+        </h2>The AnnotationPlaneDefinition object represents the information used to define an annotation plane.  It’s not the actual annotation plane, but only the definition of a plane.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AnnotationPlaneDefinition_AnnotationPlaneToModel.htm">AnnotationPlaneToModel</a></td>
+        <td class="api-list">Method that takes a 2d coordinate in annotation plane space, and returns a Point3d containing the coordinates of the point in model space.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AnnotationPlaneDefinition_Copy.htm">Copy</a></td>
+        <td class="api-list">Method that creates a copy of this AnnotationPlaneDefinition object. The new AnnotationPlaneDefinition object is independent any annotation plane. It can edited and used as input to edit an existing annotation plane or to create a new annotation plane.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AnnotationPlaneDefinition_ModelToAnnotationPlane.htm">ModelToAnnotationPlane</a></td>
+        <td class="api-list">Method that takes a 3d coordinate in model space, projects it onto the annotation plane along the normal of the plane and returns a Point2d object containing the resulting coordinate point in annotation plane space.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AnnotationPlaneDefinition_Application.htm">Application</a></td>
+        <td class="api-list">Gets the root Application object. Where the property is weakly-typed, it can be set to (QueryInterfaced for) 'Application' when running with Inventor whereas, 'ApprenticeServer' when running with the Apprentice Server.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AnnotationPlaneDefinition_Origin.htm">Origin</a></td>
+        <td class="api-list">Read-only property that returns origin of the annotation plane in model space.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AnnotationPlaneDefinition_Parent.htm">Parent</a></td>
+        <td class="api-list">Read-only property that returns the parent annotation plane this definition is associated with.&nbsp;This property can be Nothing in the case the definition was created using either the CreateAnnotationPlaneDefinitionUsingIntents or CreateAnnotationPlaneDefinitionUsingPlane methods of the ModelAnnotations object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AnnotationPlaneDefinition_PlanarEntity.htm">PlanarEntity</a></td>
+        <td class="api-list">Read-only property that returns the planar entity the annotation plane is associated with.&nbsp;This property can return Nothing in the case it’s not associated with a planar entity.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AnnotationPlaneDefinition_Plane.htm">Plane</a></td>
+        <td class="api-list">Read-only property that returns the plane geometry indicating the position and orientation of the annotation plane in model space.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AnnotationPlaneDefinition_Transformation.htm">Transformation</a></td>
+        <td class="api-list">Read-only property that returns a matrix indicating the position and orientation of the annotation plane in model space.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AnnotationPlaneDefinition_Type.htm">Type</a></td>
+        <td class="api-list">Read-only property returning kAnnotationPlaneDefinitionObject indicating this object’s type.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AnnotationPlaneDefinition_XAxis.htm">XAxis</a></td>
+        <td class="api-list">Read-only property that returns the orientation of the x axis of the annotation plane in model space.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AnnotationPlaneDefinition_XAxisEntity.htm">XAxisEntity</a></td>
+        <td class="api-list">Read-write property that sets and gets the entity that defines the x axis of the annotation plane.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AnnotationPlaneDefinition_XAxisRotation.htm">XAxisRotation</a></td>
+        <td class="api-list">Read-write property that gets and sets the rotation of the x-axis in radians against the XAxisEntity. Valid value is in (-Pi, Pi].</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="AngularModelDimensionDefinition_AnnotationPlaneDefinition.htm">AngularModelDimensionDefinition.AnnotationPlaneDefinition</a>, <a href="AnnotationPlane_Definition.htm">AnnotationPlane.Definition</a>, <a href="AnnotationPlaneDefinition_Copy.htm">AnnotationPlaneDefinition.Copy</a>, <a href="AnnotationPlaneDefinitionsEnumerator_Item.htm">AnnotationPlaneDefinitionsEnumerator.Item</a>, <a href="AnnotationPlaneProxy_Definition.htm">AnnotationPlaneProxy.Definition</a>, <a href="DiameterModelDimensionDefinition_AnnotationPlaneDefinition.htm">DiameterModelDimensionDefinition.AnnotationPlaneDefinition</a>, <a href="LinearModelDimensionDefinition_AnnotationPlaneDefinition.htm">LinearModelDimensionDefinition.AnnotationPlaneDefinition</a>, <a href="ModelAnnotations_CreateAnnotationPlaneDefinitionUsingPlane.htm">ModelAnnotations.CreateAnnotationPlaneDefinitionUsingPlane</a>, <a href="ModelDatumIdentifierDefinition_AnnotationPlaneDefinition.htm">ModelDatumIdentifierDefinition.AnnotationPlaneDefinition</a>, <a href="ModelDimensionDefinition_AnnotationPlaneDefinition.htm">ModelDimensionDefinition.AnnotationPlaneDefinition</a>, <a href="ModelFeatureControlFrameDefinition_AnnotationPlaneDefinition.htm">ModelFeatureControlFrameDefinition.AnnotationPlaneDefinition</a>, <a href="ModelGeneralNoteDefinition_AnnotationPlaneDefinition.htm">ModelGeneralNoteDefinition.AnnotationPlaneDefinition</a>, <a href="ModelHoleThreadNoteDefinition_AnnotationPlaneDefinition.htm">ModelHoleThreadNoteDefinition.AnnotationPlaneDefinition</a>, <a href="ModelLeaderNoteDefinition_AnnotationPlaneDefinition.htm">ModelLeaderNoteDefinition.AnnotationPlaneDefinition</a>, <a href="ModelSurfaceTextureSymbolDefinition_AnnotationPlaneDefinition.htm">ModelSurfaceTextureSymbolDefinition.AnnotationPlaneDefinition</a>, <a href="ModelWeldingSymbolDefinitions_AnnotationPlaneDefinition.htm">ModelWeldingSymbolDefinitions.AnnotationPlaneDefinition</a>, <a href="RadiusModelDimensionDefinition_AnnotationPlaneDefinition.htm">RadiusModelDimensionDefinition.AnnotationPlaneDefinition</a><h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2018<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(AnnotationPlaneDefinition%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

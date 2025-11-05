@@ -1,0 +1,118 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/SurfaceBodyProxy_CalculateFacets.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="SurfaceBodyProxy_CalculateFacets">
+    <meta name="description" content="SurfaceBodyProxy.CalculateFacets Method">
+    <meta name="topicid" content="SurfaceBodyProxy_CalculateFacets">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>SurfaceBodyProxy.CalculateFacets Method</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">SurfaceBodyProxy.CalculateFacets Method</h1>
+
+          Parent Object: <a href="SurfaceBodyProxy.htm">SurfaceBodyProxy</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Obtain the facetted representation for the given chord-height tolerance. If stored facets available for this tolerance, then those are returned.</p>
+    <h2 class="api">
+          Syntax
+        </h2>
+        
+            SurfaceBodyProxy.<b>CalculateFacets</b>( <b><i>Tolerance</i></b> As Double, <b><i>VertexCount</i></b> As Long, <b><i>FacetCount</i></b> As Long, <b><i>VertexCoordinates</i></b>() As Double, <b><i>NormalVectors</i></b>() As Double, <b><i>VertexIndices</i></b>() As Long )
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">Tolerance</td>
+        <td class="api-list">Double</td>
+        <td class="api-list"><p>Input Double that specifies the maximum distance that the facet can deviate from the smooth surface.&nbsp;This value is in centimeters.&nbsp;Smaller values can result in a much greater number of facets being returned and will require more processing time to calculate.<p>
+
+<p>The picture below illustrates how the chordal tolerance is used when creating a stroked version of a curve.&nbsp;The chordal tolerance defines the maximum distance a line can be from the actual curve.&nbsp;When calculating facets the same concept applies but it defines the maximum distance between a triangle facet and the smooth surface.</p>
+
+<center><img src="../Images/ChordHeight.png"></center>
+
+<p>The pictures below illustrate the difference obtained when calculating facets for a model using different chordal tolerances.&nbsp;The overall size of this model is approx. 6x6x4 cm’s.&nbsp;The picture on the left used a chordal tolerance of 0.1 cm and the one on the right used a tolerance of 0.01 cm.</p>
+
+<center><img src="../Images/ChordHeightFacetExample.png"></center></td>
+      </tr>
+      <tr>
+        <td class="api-list">VertexCount</td>
+        <td class="api-list">Long</td>
+        <td class="api-list">Output Long that returns the number of vertices that were generated. This is the number of vertices that will be returned by the VertexCoordinates argument.</td>
+      </tr>
+      <tr>
+        <td class="api-list">FacetCount</td>
+        <td class="api-list">Long</td>
+        <td class="api-list">Output Long that returns the number of facets that were generated.</td>
+      </tr>
+      <tr>
+        <td class="api-list">VertexCoordinates</td>
+        <td class="api-list">Double</td>
+        <td class="api-list">Output array of Doubles that contains the coordinate locations of the vertices.&nbsp;The values are defined in x, y, z order within the array and represent coordinates within the model space of the faceted object.</td>
+      </tr>
+      <tr>
+        <td class="api-list">NormalVectors</td>
+        <td class="api-list">Double</td>
+        <td class="api-list">Output array of Doubles that defines the normal for each vertex in the facet mesh.&nbsp;The values are defined in x, y, z order within the array and represent vector components within the model space of the faceted object.</td>
+      </tr>
+      <tr>
+        <td class="api-list">VertexIndices</td>
+        <td class="api-list">Long</td>
+        <td class="api-list">Output array of Longs that are used as index values to index into the vertex coordinate list.&nbsp;The first coordinate in the vertex coordinate list is index 1.&nbsp;Using vertex indices allows vertex coordinates to be reused by more than one triangle, thus reducing the overall resources required to define the entire mesh.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 5.3<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(SurfaceBodyProxy.CalculateFacets%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

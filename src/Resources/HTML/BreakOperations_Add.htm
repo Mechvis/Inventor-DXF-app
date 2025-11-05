@@ -1,0 +1,137 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/BreakOperations_Add.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="BreakOperations_Add">
+    <meta name="description" content="BreakOperations.Add Method">
+    <meta name="topicid" content="BreakOperations_Add">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>BreakOperations.Add Method</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">BreakOperations.Add Method</h1>
+
+          Parent Object: <a href="BreakOperations.htm">BreakOperations</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Method that adds a break to a drawing view. The newly created BreakOperation object is returned.</p>
+    <h2 class="api">
+          Syntax
+        </h2>
+        
+            BreakOperations.<b>Add</b>( <b><i>Orientation</i></b> As <a href="BreakOrientationEnum.htm">BreakOrientationEnum</a>, <b><i>StartPoint</i></b> As <a href="Point2d.htm">Point2d</a>, <b><i>EndPoint</i></b> As <a href="Point2d.htm">Point2d</a>, [<b><i>BreakStyle</i></b>] As <a href="BreakStyleEnum.htm">BreakStyleEnum</a>, [<b><i>DisplayLevel</i></b>] As Long, [<b><i>Gap</i></b>] As Double, [<b><i>NumberOfSymbols</i></b>] As Long, [<b><i>PropagateToParentView</i></b>] As Boolean ) As <a href="BreakOperation.htm">BreakOperation</a>
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">Orientation</td>
+        <td class="api-list"><a href="BreakOrientationEnum.htm">BreakOrientationEnum</a></td>
+        <td class="api-list">Input BreakOrientationEnum that specifies whether the orientation of the break is horizontal or vertical. Valid values are kHorizontalBreakOrientation and kVerticalBreakOrientation.</td>
+      </tr>
+      <tr>
+        <td class="api-list">StartPoint</td>
+        <td class="api-list"><a href="Point2d.htm">Point2d</a></td>
+        <td class="api-list">Input Point2d object that specifies the start point of the break in sheet space. For a horizontal break orientation, only the 'x' component of the point is used and the 'y' component is ignored. For a vertical break, only the 'y' component of the point is used and the 'x' component is ignored.</td>
+      </tr>
+      <tr>
+        <td class="api-list">EndPoint</td>
+        <td class="api-list"><a href="Point2d.htm">Point2d</a></td>
+        <td class="api-list">Input Point2d object that specifies the end point of the break in sheet space. For a horizontal break orientation, only the 'x' component of the point is used and the 'y' component is ignored. For a vertical break, only the 'y' component of the point is used and the 'x' component is ignored.</td>
+      </tr>
+      <tr>
+        <td class="api-list">BreakStyle</td>
+        <td class="api-list"><a href="BreakStyleEnum.htm">BreakStyleEnum</a></td>
+        <td class="api-list">Optional input BreakStyleEnum that specifies the break style. Valid values are kRectangularBreakStyle and kStructuralBreakStyle. If not specified, a rectangular style break is created.<br /><br /> This is an optional argument whose default value is 84481.</td>
+      </tr>
+      <tr>
+        <td class="api-list">DisplayLevel</td>
+        <td class="api-list">Long</td>
+        <td class="api-list">Optional input Long that specifies the appearance of the break lines. Valid range of values is 1 through10. For rectangular break style, this value controls the quantity or pitch of break edges displayed. For structural break style, this value controls amplitude of break line. If not specified, a value of 5 is used.<br /><br /> This is an optional argument whose default value is 5.</td>
+      </tr>
+      <tr>
+        <td class="api-list">Gap</td>
+        <td class="api-list">Double</td>
+        <td class="api-list">Optional input Double that specifies the gap (in centimeters) between the break lines. If not specified, a gap value is automatically calculated based on the view size.<br /><br /> This is an optional argument whose default value is 0.0.</td>
+      </tr>
+      <tr>
+        <td class="api-list">NumberOfSymbols</td>
+        <td class="api-list">Long</td>
+        <td class="api-list">Optional input Long that specifies the number of break symbols to use for a structural style break. Valid values are 1, 2 and 3. This argument is not applicable and is ignored for rectangular style breaks. If not specified, a value of 1 is assumed.<br /><br /> This is an optional argument whose default value is 1.</td>
+      </tr>
+      <tr>
+        <td class="api-list">PropagateToParentView</td>
+        <td class="api-list">Boolean</td>
+        <td class="api-list">Optional input Boolean that specifies whether to apply this break to the parent view as well. This is not applicable in all situations and is ignored if not applicable. The default value is False.<br /><br /> This is an optional argument whose default value is False.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BreakOperations_Add_Sample.htm">Creation of a break operation in a drawing view</a></td>
+        <td class="api-list">Demonstrates the creation of a break operation.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2010<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(BreakOperations.Add%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

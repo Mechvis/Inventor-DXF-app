@@ -1,0 +1,128 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/FaceFeatureDefinition.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="FaceFeatureDefinition">
+    <meta name="description" content="FaceFeatureDefinition Object">
+    <meta name="topicid" content="GUID-FaceFeatureDefinition">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>FaceFeatureDefinition Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">FaceFeatureDefinition Object
+			</h1><br><h2 class="api">
+          Description
+        </h2>The FaceFeatureDefinition object represents all of the information that defines a face feature.<h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FaceFeatureDefinition_AffectedBodies.htm">AffectedBodies</a></td>
+        <td class="api-list">Gets and sets the collection of bodies affected by this feature.&nbsp;If this property is not set for multi-body parts, the default solid body is used as the affected body.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FaceFeatureDefinition_Application.htm">Application</a></td>
+        <td class="api-list">Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FaceFeatureDefinition_BendDefinition.htm">BendDefinition</a></td>
+        <td class="api-list">Get and sets the BendDefinition object that defines the bend information for this face feature.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FaceFeatureDefinition_Direction.htm">Direction</a></td>
+        <td class="api-list">Gets and sets the extent direction which indicates which side of the sketch the projection of the face is in.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FaceFeatureDefinition_Operation.htm">Operation</a></td>
+        <td class="api-list">Gets and sets the type of operation used to add the feature to the model.&nbsp;Valid inputs are kNewBodyOperation, kJoinOperation.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FaceFeatureDefinition_Parent.htm">Parent</a></td>
+        <td class="api-list">Property that returns the parent FaceFeature object of this FaceFeatureDefinition object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FaceFeatureDefinition_Profile.htm">Profile</a></td>
+        <td class="api-list">Gets and sets the Profile object that defines the shape of the face feature.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FaceFeatureDefinition_SheetMetalRule.htm">SheetMetalRule</a></td>
+        <td class="api-list">Read-write property that gets and sets the sheet metal style for the body the feature is in. Set this property is applicable only when the feature is the first feature in a solid body. When set this property the default sheet metal rule will be overridden and.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FaceFeatureDefinition_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FaceFeatureDefinition_UseDefaultSheetMetalRule.htm">UseDefaultSheetMetalRule</a></td>
+        <td class="api-list">Read-write property that gets and sets whether to use the document active sheet metal style for the body the feature is in. Set this property is applicable only when the feature is the first feature in a solid body and this can only be set to True from False.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="FaceFeature_Definition.htm">FaceFeature.Definition</a>, <a href="FaceFeatureProxy_Definition.htm">FaceFeatureProxy.Definition</a>, <a href="FaceFeatures_CreateFaceFeatureDefinition.htm">FaceFeatures.CreateFaceFeatureDefinition</a><h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalFeatures_Sample.htm">Create sheet metal face and cut features</a></td>
+        <td class="api-list">This sample demonstrates the creation of sheet metal face and cut features.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalFeatures_FlangeFeatures_Sample.htm">Create sheet metal face and flange features</a></td>
+        <td class="api-list">This sample demonstrates the creation of sheet metal face and flange features.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2009<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(FaceFeatureDefinition%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

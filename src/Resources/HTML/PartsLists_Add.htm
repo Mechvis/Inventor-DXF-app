@@ -1,0 +1,127 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/PartsLists_Add.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="PartsLists_Add">
+    <meta name="description" content="PartsLists.Add Method">
+    <meta name="topicid" content="PartsLists_Add">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>PartsLists.Add Method</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">PartsLists.Add Method</h1>
+
+          Parent Object: <a href="PartsLists.htm">PartsLists</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Method that creates a new PartsList. The newly created PartsList is returned. Currently, this method will fail if the sheet from which this collection was obtained is not active.</p>
+    <h2 class="api">
+          Syntax
+        </h2>
+        
+            PartsLists.<b>Add</b>( <b><i>ViewOrModel</i></b> As Object, <b><i>PlacementPoint</i></b> As <a href="Point2d.htm">Point2d</a>, [<b><i>Level</i></b>] As <a href="PartsListLevelEnum.htm">PartsListLevelEnum</a>, [<b><i>NumberingScheme</i></b>] As Variant, [<b><i>NumberOfSections</i></b>] As Long, [<b><i>WrapLeft</i></b>] As Boolean ) As <a href="PartsList.htm">PartsList</a>
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">ViewOrModel</td>
+        <td class="api-list">Object</td>
+        <td class="api-list">Input object that specifies the source for the parts list. This can either be a DrawingView object or a Document object. Valid document types include part files and assembly files. Use the Documents.Open method to open the file if not already open and obtain a Document object. Typically you'll want to set the OpenVisible argument of the Open method to False so the open is invisible to the user.</td>
+      </tr>
+      <tr>
+        <td class="api-list">PlacementPoint</td>
+        <td class="api-list"><a href="Point2d.htm">Point2d</a></td>
+        <td class="api-list">Input Point2d that specifies the placement point of the parts list on the sheet.</td>
+      </tr>
+      <tr>
+        <td class="api-list">Level</td>
+        <td class="api-list"><a href="PartsListLevelEnum.htm">PartsListLevelEnum</a></td>
+        <td class="api-list">Optional input enum that sets the type of numbering for the parts list. If supplied, this input is only used in the case where the ParentView references an assembly file. If this value was previously set on the parent drawing view as a result of creating a parts list or a balloon based on the view, this argument is ignored. Valid enums are: kFirstLevelComponents, that creates a parts list in which subassemblies are assigned nested numbering (for example, 1, 1.1, 1.1.1) and the nested number extends as many levels as needed for the assembly levels in the model and kPartsOnly, that creates a parts list that sequentially numbers all parts in the top level assembly, even if they are contained in subassemblies.<br /><br /> This is an optional argument whose default value is 46593.</td>
+      </tr>
+      <tr>
+        <td class="api-list">NumberingScheme</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional input NameValueMap object that specifies the numbering scheme to use for the parts list. The NameValueMap can contain the following entries based on the input 'Level' argument: 	*	For kStructured: MinimumDigits As Long 	*	For kStructuredAllLevels: Delimiter As String 	*	For kPartsOnly: NumberingScheme As NumberingSchemeEnum and MinimumDigits As Long Valid values for NumberingSchemeEnum are kNumericNumbering, kLowercaseAlphaNumbering and kUppercaseAlphaNumbering. This input should be supplied only if the input argument Level is specified to be kPartsOnly. If this argument is not supplied for a 'parts only' parts list, a default value of kNumericNumbering is assumed.<br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+      <tr>
+        <td class="api-list">NumberOfSections</td>
+        <td class="api-list">Long</td>
+        <td class="api-list">Optional input long that specifies the number of sections desired in the parts list. If supplied, this input is only used in the case where the ParentView references an assembly file. The default value is 1.<br /><br /> This is an optional argument whose default value is 1.</td>
+      </tr>
+      <tr>
+        <td class="api-list">WrapLeft</td>
+        <td class="api-list">Boolean</td>
+        <td class="api-list">Optional input Boolean that specifies whether to move the sections to the left or the right when the number of rows increase. If supplied, this input is only used in the case where the ParentView references an assembly file. The default value is true, indicating that sections will be moved to the left.<br /><br /> This is an optional argument whose default value is True.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PartsLists_Add_Sample.htm">Creating a parts list</a></td>
+        <td class="api-list">This sample demonstrates the creation of a parts list. The parts list is placed at the top right corner of the border if one exists, else it is placed at the top right corner of the sheet.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 9<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(PartsLists.Add%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

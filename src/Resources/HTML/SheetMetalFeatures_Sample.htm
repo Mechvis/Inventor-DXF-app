@@ -1,0 +1,232 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/SheetMetalFeatures_Sample.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="SheetMetalFeatures_Sample">
+    <meta name="description" content="Create sheet metal face and cut features Sample">
+    <meta name="topicid" content="SheetMetalFeatures_Sample">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>Create sheet metal face and cut features</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body><script>
+          function copyCode(language) {
+          // Get the pre element for the specified language.
+          var preElement = document.getElementById(language);
+
+          // Get the text from the element and copy it to the clipboard.
+          var preText = preElement.innerText;
+
+          var isIE = /*@cc_on!@*/false || !!document.documentMode;
+
+          if (isIE)
+          {
+            window.clipboardData.setData('Text', preText);
+          }
+          else
+          {
+            navigator.clipboard.writeText(preText);
+          }
+
+          //alert("Code copied to clipboard");
+          }
+        </script><link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">Create sheet metal face and cut features</h1>
+    <h2 class="api">
+          Description
+        </h2>This sample demonstrates the creation of sheet metal face and cut features.<h2 class="api">
+          Code Samples
+        </h2>
+    <div id="tabs">
+      <ul>
+        <li><a href="#VBA">VBA</a></li>
+        <li><a href="#iLogic">iLogic</a></li>
+      </ul>
+      <div id="VBA" class="api-code">
+        <table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('VBA_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="VBA_code">Public Sub FaceAndCutFeatureCreation()
+    <span style="color:blue">' Create a new sheet metal document, using the default sheet metal template.</span>
+    Dim oSheetMetalDoc As PartDocument
+    Set oSheetMetalDoc = ThisApplication.Documents.Add(kPartDocumentObject, _
+                 ThisApplication.FileManager.GetTemplateFile(kPartDocumentObject, , , "{9C464203-9BAE-11D3-8BAD-0060B0CE6BB4}"))
+
+    <span style="color:blue">' Set a reference to the component definition.</span>
+    Dim oCompDef As SheetMetalComponentDefinition
+    Set oCompDef = oSheetMetalDoc.ComponentDefinition
+    
+    <span style="color:blue">' Set a reference to the sheet metal features collection.</span>
+    Dim oSheetMetalFeatures As SheetMetalFeatures
+    Set oSheetMetalFeatures = oCompDef.Features
+    
+    <span style="color:blue">' Create a new sketch on the X-Y work plane.</span>
+    Dim oSketch As PlanarSketch
+    Set oSketch = oCompDef.Sketches.Add(oCompDef.WorkPlanes.Item(3))
+
+    <span style="color:blue">' Set a reference to the transient geometry object.</span>
+    Dim oTransGeom As TransientGeometry
+    Set oTransGeom = ThisApplication.TransientGeometry
+
+    <span style="color:blue">' Draw a 4cm x 3cm rectangle with the corner at (0,0)</span>
+    Call oSketch.SketchLines.AddAsTwoPointRectangle( _
+                                oTransGeom.CreatePoint2d(0, 0), _
+                                oTransGeom.CreatePoint2d(4, 3))
+
+    <span style="color:blue">' Create a profile.</span>
+    Dim oProfile As Profile
+    Set oProfile = oSketch.Profiles.AddForSolid
+    
+    Dim oFaceFeatureDefinition As FaceFeatureDefinition
+    Set oFaceFeatureDefinition = oSheetMetalFeatures.FaceFeatures.CreateFaceFeatureDefinition(oProfile)
+    
+    <span style="color:blue">' Create a face feature.</span>
+    Dim oFaceFeature As FaceFeature
+    Set oFaceFeature = oSheetMetalFeatures.FaceFeatures.Add(oFaceFeatureDefinition)
+    
+    <span style="color:blue">' Get the top face for creating the new sketch.</span>
+    <span style="color:blue">' We'll assume that the 6th face is the top face.</span>
+    Dim oFrontFace As Face
+    Set oFrontFace = oFaceFeature.Faces.Item(6)
+    
+    <span style="color:blue">' Create a new sketch on this face, but use the method that allows you to</span>
+    <span style="color:blue">' control the orientation and orgin of the new sketch.</span>
+    Set oSketch = oCompDef.Sketches.AddWithOrientation(oFrontFace, _
+                    oCompDef.WorkAxes.Item(1), True, True, oCompDef.WorkPoints(1))
+
+    <span style="color:blue">' Determine where in sketch space the point (1,0.75,0) is.</span>
+    Dim oCorner As Point2d
+    Set oCorner = oSketch.ModelToSketchSpace(oTransGeom.CreatePoint(1, 0.75, 0))
+
+    <span style="color:blue">' Create the interior 3cm x 2cm rectangle for the cut.</span>
+    Call oSketch.SketchLines.AddAsTwoPointRectangle( _
+                oCorner, oTransGeom.CreatePoint2d(oCorner.X + 2, oCorner.Y + 1.5))
+
+    <span style="color:blue">' Create a profile.</span>
+    Set oProfile = oSketch.Profiles.AddForSolid
+    
+    <span style="color:blue">' Create a cut definition object</span>
+    Dim oCutDefinition As CutDefinition
+    Set oCutDefinition = oSheetMetalFeatures.CutFeatures.CreateCutDefinition(oProfile)
+    
+    <span style="color:blue">' Set extents to 'Through All'</span>
+    Call oCutDefinition.SetThroughAllExtent(kNegativeExtentDirection)
+    
+    <span style="color:blue">' Create the cut feature</span>
+    Dim oCutFeature As CutFeature
+    Set oCutFeature = oSheetMetalFeatures.CutFeatures.Add(oCutDefinition)
+End Sub</pre>
+      </div>
+      <div id="iLogic" class="api-code">
+        <table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('iLogic_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="iLogic_code">    <span style="color:blue">' Create a new sheet metal document, using the default sheet metal template.</span>
+    Dim oSheetMetalDoc As PartDocument
+    oSheetMetalDoc = ThisApplication.Documents.Add(kPartDocumentObject, _
+                 ThisApplication.FileManager.GetTemplateFile(kPartDocumentObject, , , "{9C464203-9BAE-11D3-8BAD-0060B0CE6BB4}"))
+
+    <span style="color:blue">' Set a reference to the component definition.</span>
+    Dim oCompDef As SheetMetalComponentDefinition
+    oCompDef = oSheetMetalDoc.ComponentDefinition
+    
+    <span style="color:blue">' Set a reference to the sheet metal features collection.</span>
+    Dim oSheetMetalFeatures As SheetMetalFeatures
+    oSheetMetalFeatures = oCompDef.Features
+    
+    <span style="color:blue">' Create a new sketch on the X-Y work plane.</span>
+    Dim oSketch As PlanarSketch
+    oSketch = oCompDef.Sketches.Add(oCompDef.WorkPlanes.Item(3))
+
+    <span style="color:blue">' Set a reference to the transient geometry object.</span>
+    Dim oTransGeom As TransientGeometry
+    oTransGeom = ThisApplication.TransientGeometry
+
+    <span style="color:blue">' Draw a 4cm x 3cm rectangle with the corner at (0,0)</span>
+    Call oSketch.SketchLines.AddAsTwoPointRectangle( _
+                                oTransGeom.CreatePoint2d(0, 0), _
+                                oTransGeom.CreatePoint2d(4, 3))
+
+    <span style="color:blue">' Create a profile.</span>
+    Dim oProfile As Profile
+    oProfile = oSketch.Profiles.AddForSolid
+    
+    Dim oFaceFeatureDefinition As FaceFeatureDefinition
+    oFaceFeatureDefinition = oSheetMetalFeatures.FaceFeatures.CreateFaceFeatureDefinition(oProfile)
+    
+    <span style="color:blue">' Create a face feature.</span>
+    Dim oFaceFeature As FaceFeature
+    oFaceFeature = oSheetMetalFeatures.FaceFeatures.Add(oFaceFeatureDefinition)
+    
+    <span style="color:blue">' Get the top face for creating the new sketch.</span>
+    <span style="color:blue">' We'll assume that the 6th face is the top face.</span>
+    Dim oFrontFace As Face
+    oFrontFace = oFaceFeature.Faces.Item(6)
+    
+    <span style="color:blue">' Create a new sketch on this face, but use the method that allows you to</span>
+    <span style="color:blue">' control the orientation and orgin of the new sketch.</span>
+    oSketch = oCompDef.Sketches.AddWithOrientation(oFrontFace, _
+                    oCompDef.WorkAxes.Item(1), True, True, oCompDef.WorkPoints(1))
+
+    <span style="color:blue">' Determine where in sketch space the point (1,0.75,0) is.</span>
+    Dim oCorner As Point2d
+    oCorner = oSketch.ModelToSketchSpace(oTransGeom.CreatePoint(1, 0.75, 0))
+
+    <span style="color:blue">' Create the interior 3cm x 2cm rectangle for the cut.</span>
+    Call oSketch.SketchLines.AddAsTwoPointRectangle( _
+                oCorner, oTransGeom.CreatePoint2d(oCorner.X + 2, oCorner.Y + 1.5))
+
+    <span style="color:blue">' Create a profile.</span>
+    oProfile = oSketch.Profiles.AddForSolid
+    
+    <span style="color:blue">' Create a cut definition object</span>
+    Dim oCutDefinition As CutDefinition
+    oCutDefinition = oSheetMetalFeatures.CutFeatures.CreateCutDefinition(oProfile)
+    
+    <span style="color:blue">' Set extents to 'Through All'</span>
+    Call oCutDefinition.SetThroughAllExtent(kNegativeExtentDirection)
+    
+    <span style="color:blue">' Create the cut feature</span>
+    Dim oCutFeature As CutFeature
+    oCutFeature = oSheetMetalFeatures.CutFeatures.Add(oCutDefinition)</pre>
+      </div>
+    </div><br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(SheetMetalFeatures%20Sample%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

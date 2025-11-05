@@ -1,0 +1,163 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/RibDefinition.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="RibDefinition">
+    <meta name="description" content="RibDefinition Object">
+    <meta name="topicid" content="GUID-RibDefinition">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>RibDefinition Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">RibDefinition Object
+			</h1><br><h2 class="api">
+          Description
+        </h2>RibDefinition Object.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="RibDefinition_Copy.htm">Copy</a></td>
+        <td class="api-list"><p>Method that creates a copy of this RibDefinition object.&nbsp;The new RibDefinition object is independent of any feature.&nbsp;It can be edited and used as input to edit an existing feature or to create a new Rib feature.</p>
+<p>One typical use of this method is when you need to make several changes to an existing Rib feature.&nbsp;If you edit the RibDefinition object associated with the Rib feature, the feature will recompute after each edit.&nbsp;It’s more efficient to make a copy, edit the copy, and then assign the copy to the feature.&nbsp;This will result in a single recompute.</p>&nbsp;
+<p>The RibFeatures.CreateDefinition method can also be used to create an independent RibDefinition object.&nbsp;The difference is that one created with the Copy method will have the same initial values as the object is was copied from.&nbsp;One that’s created with the CreateDefinition method will be initialized to predefined default values.
+</p></td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="RibDefinition_GetThicknessPlane.htm">GetThicknessPlane</a></td>
+        <td class="api-list">Method that gets the plane at which the input thickness is held.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="RibDefinition_SetFiniteExtent.htm">SetFiniteExtent</a></td>
+        <td class="api-list">Method that sets the extent type to be a finite distance.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="RibDefinition_SetThicknessPlane.htm">SetThicknessPlane</a></td>
+        <td class="api-list">Method that sets the plane at which the input thickness is held.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="RibDefinition_SetToNextExtent.htm">SetToNextExtent</a></td>
+        <td class="api-list">Method that sets the extent type to be ‘to next’ (i.e. it terminates on the next face).</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="RibDefinition_AffectedBody.htm">AffectedBody</a></td>
+        <td class="api-list">Read-write property that gets and sets the solid body affected by the creation of this rib feature.&nbsp;For parts containing multiple solid bodies, this property defaults to the primary solid body of the part, and can be set to any of the other solid bodies.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="RibDefinition_Application.htm">Application</a></td>
+        <td class="api-list">Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="RibDefinition_BossSets.htm">BossSets</a></td>
+        <td class="api-list">Read-only property that returns the BossSets collection object containing boss definitions of the rib feature.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="RibDefinition_DirectionReversed.htm">DirectionReversed</a></td>
+        <td class="api-list">Read-write property that gets and sets whether the direction of the profile projection should be reversed. If the profile is projected normal to the sketch plane, setting this property to True causes the profile to be projected in the reverse direction of the.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="RibDefinition_DraftAngle.htm">DraftAngle</a></td>
+        <td class="api-list">Read-write property that provides access to the taper angle of a rib feature.&nbsp;This property is writable when the RibDefinition object has been created using the RibFeatures.CreateDefinition or RibDefinition.Copy methods.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="RibDefinition_DraftProfileEnds.htm">DraftProfileEnds</a></td>
+        <td class="api-list">Read-write property that gets and sets the draft profile ends value.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="RibDefinition_ExtendProfile.htm">ExtendProfile</a></td>
+        <td class="api-list">Read-write property that gets and sets whether the rib profile should be extended/trimmed to intersect faces, if necessary.&nbsp;This property defaults to True for a newly created RibDefinition object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="RibDefinition_ExtentDistance.htm">ExtentDistance</a></td>
+        <td class="api-list">Read-only property that returns the parameter that corresponds to the distance value for rib feature defined with a finite extent.&nbsp;This property returns a parameter only if the ExtentType is kFiniteRibExtent, else this property returns Nothing. Also, in the case where this is a newly created RibDefinition object or it has been copied from an existing RibDefinition object, this property returns Nothing since there isn’t a parameter created yet.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="RibDefinition_ExtentType.htm">ExtentType</a></td>
+        <td class="api-list">Read-only property that returns the extent type of the rib feature.&nbsp;The possible return values are kFiniteRibExtent and kToNextRibExtent.&nbsp;When the RibDefinition object is initially created, this defaults to kToNextRibExtent.&nbsp;If this property returns kFiniteRibExtent, the ExtentDistance property returns the correspond parameter.&nbsp;Use the SetFiniteExtent and Set ToNextExtent methods to edit the extent type.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="RibDefinition_IsRib.htm">IsRib</a></td>
+        <td class="api-list">Read-write property that gets and sets whether the sketch profile is projected lateral to the sketch plane (rib) or normal to the sketch plane (web) to create the feature.&nbsp;A value of True indicates that the profile is projected lateral to the sketch plane.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="RibDefinition_Parent.htm">Parent</a></td>
+        <td class="api-list">Read-only property that returns the parent RibFeature of this RibDefinition object.&nbsp;In the case where this is a newly created RibDefinition object or it has been copied from an existing RibDefinition object, this property will return Nothing because there is not a logical parent for the object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="RibDefinition_ProfileCurves.htm">ProfileCurves</a></td>
+        <td class="api-list">Read-write property that gets and sets the collection of sketch entities used as the profile for feature creation.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="RibDefinition_Thickness.htm">Thickness</a></td>
+        <td class="api-list">Read-write property that provides access to the thickness of the feature.&nbsp;This property is writable when the RibDefinition object has been created using the RibFeatures.CreateDefinition or RibDefinition.Copy methods.&nbsp;The value can be set using either a doubl.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="RibDefinition_ThicknessDirection.htm">ThicknessDirection</a></td>
+        <td class="api-list">Read-write property that gets and sets the side of the profile on which to apply the thickness.&nbsp;This property defaults to kSymmetricExtentDirection for a newly created RibDefinition object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="RibDefinition_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="BossSet_Parent.htm">BossSet.Parent</a>, <a href="RibDefinition_Copy.htm">RibDefinition.Copy</a>, <a href="RibFeature_Definition.htm">RibFeature.Definition</a>, <a href="RibFeatureProxy_Definition.htm">RibFeatureProxy.Definition</a>, <a href="RibFeatures_CreateDefinition.htm">RibFeatures.CreateDefinition</a><h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2012<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(RibDefinition%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

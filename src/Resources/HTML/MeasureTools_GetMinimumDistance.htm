@@ -1,0 +1,143 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/MeasureTools_GetMinimumDistance.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="MeasureTools_GetMinimumDistance">
+    <meta name="description" content="MeasureTools.GetMinimumDistance Method">
+    <meta name="topicid" content="MeasureTools_GetMinimumDistance">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>MeasureTools.GetMinimumDistance Method</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">MeasureTools.GetMinimumDistance Method</h1>
+
+          Parent Object: <a href="MeasureTools.htm">MeasureTools</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Method that returns the minimum distance between the two input entities and also returns the closest points associated with both entities (not necessarily on the entity).</p>
+    <h2 class="api">
+            Remarks
+          </h2>The two input entities must belong to the same document, unless they are transient objects. A value of 0 is returned if an intersection is found. The following are the valid entities for minimum distance measure based on the document type: <table border="1"> <tr><th>Document </th><th>Valid entities type</th></tr> <tr><td> All (and with no documents open)</td><td> Transient objects ( Point, Line, Plane, Cylinder, BSplineSurface, etc.)&nbsp;</td></tr><tr><td>Part</td><td>Face, Edge, Vertex, work features, 2d and 3d sketch entities </td></tr><tr><td>Assembly</td><td>FaceProxy, EdgeProxy, VertexProxy, work features and their proxies, 2d and 3d sketch entities and their proxies, ComponentOccurrences and their proxies </td></tr><tr><td>Drawing</td><td> DrawingViewCurve, GeometryIntent, 2d sketch entities </td></tr></table><h2 class="api">
+          Syntax
+        </h2>
+        
+            MeasureTools.<b>GetMinimumDistance</b>( <b><i>EntityOne</i></b> As Object, <b><i>EntityTwo</i></b> As Object, [<b><i>EntityOneInferredType</i></b>] As <a href="InferredTypeEnum.htm">InferredTypeEnum</a>, [<b><i>EntityTwoInferredType</i></b>] As <a href="InferredTypeEnum.htm">InferredTypeEnum</a>, [<b><i>Context</i></b>] As Variant ) As Double
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">EntityOne</td>
+        <td class="api-list">Object</td>
+        <td class="api-list">Object that specifies the first entity.<p /></td>
+      </tr>
+      <tr>
+        <td class="api-list">EntityTwo</td>
+        <td class="api-list">Object</td>
+        <td class="api-list">Object that specifies the second entity.<p /></td>
+      </tr>
+      <tr>
+        <td class="api-list">EntityOneInferredType</td>
+        <td class="api-list"><a href="InferredTypeEnum.htm">InferredTypeEnum</a></td>
+        <td class="api-list">Optional input InferredTypeEnum that specifies how the geometry of entity one is to be interpreted. Depending on the geometry of the entity one, different options are possible. 
+<ul>
+<li>If entity one is a cylinder this can be either kNoInference (cylindrical surface) or kInferredLine (axis). </li>
+<li>If entity one is a sphere this can be either kNoInference (spherical surface) or kInferredPoint (center). </li>
+<li>If entity one is a cone this can be either kNoInference (conical surface) or kInferredLine (axis). </li>
+<li>If entity one is a torus this can be either kInferredLine (axis) or kInferredPoint (center). </li>
+<li>If entity one is a circular or elliptical curve this can be either kNoInference (the curve) or kInferredPoint (center). </li>
+<li>For all other inputs, only kNoInference is valid.</li>
+</ul><br /><br /> This is an optional argument whose default value is 24833.</td>
+      </tr>
+      <tr>
+        <td class="api-list">EntityTwoInferredType</td>
+        <td class="api-list"><a href="InferredTypeEnum.htm">InferredTypeEnum</a></td>
+        <td class="api-list">Optional input InferredTypeEnum that specifies how the geometry of entity two is to be interpreted. Depending on the geometry of the entity two, different options are possible. 
+<ul>
+<li>If entity two is a cylinder this can be either kNoInference (cylindrical surface) or kInferredLine (axis). </li>
+<li>If entity two is a sphere this can be either kNoInference (spherical surface) or kInferredPoint (center). </li>
+<li>If entity two is a cone this can be either kNoInference (conical surface) or kInferredLine (axis). </li>
+<li>If entity two is a torus this can be either kInferredLine (axis) or kInferredPoint (center). </li>
+<li>If entity two is a circular or elliptical curve this can be either kNoInference (the curve) or kInferredPoint (center). </li>
+<li>For all other inputs, only kNoInference is valid. </li>
+</ul><br /><br /> This is an optional argument whose default value is 24833.</td>
+      </tr>
+      <tr>
+        <td class="api-list">Context</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional output NameValueMap object that returns additional information regarding the measurement. Following are the possible return values (descriptions are below the table):
+<table border=2><tr><th>Name</th><th>Value Type</th></tr>
+<tr><td>ClosestPointOne</td><td>Point object that returns a transient point closest to entity one in the minimum distance measure. This point may or may not lie on entity one (but will lie on the plane or axis of entity one). If entity one is a position input (Point, Vertex, WorkPoint, etc.), the position of the input entity is returned.</td></tr><tr><td>ClosestPointTwo</td><td>Point object that returns a transient point closest to entity two in the minimum distance measure. This point may or may not lie on entity two (but will lie on the plane or axis of entity two). If entity two is a position input (Point, Vertex, WorkPoint, etc.), the position of the input entity is returned.</td></tr><tr><td>ClosestEntityOne</td><td>Object type that returns the entity on which the returned ClosestPointOne lies. This is applicable only in the case where the input EntityOne is a ComponentOccurrence (or itG's proxy).</td></tr><tr><td>ClosestEntityTwo</td><td>Object type that returns the entity on which the returned ClosestPointTwo lies. This is applicable only in the case where the input EntityTwo is a ComponentOccurrence (or itG's proxy).</td></tr><tr><td>IntersectionFound</td><td> Boolean that indicates whether an intersection was found between entities one and two. If True, the method returns a value of 0.</td></tr>
+</table><br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FlatPattern_GetEdgesOfType_Sample.htm">Finding Bend Extent (Tangent) Edges</a></td>
+        <td class="api-list">This sample demonstrates how to retrieve the bend extent edges (a.k.a. tangent edges) associated with the selected bend edge on a flat pattern.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 11<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(MeasureTools.GetMinimumDistance%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

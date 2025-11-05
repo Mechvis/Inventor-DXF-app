@@ -1,0 +1,487 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU">
+    <link rel="canonical" href="http://help.autodesk.com/cloudhelp/2026/ENU/Inventor-API/files/MoreRefKeyInfo_Overview.htm">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="27/4/2016">
+    <meta name="user-comments" content="enable">
+    <meta name="description" content="">
+    <meta name="topicid" content="GUID-2BFBB80C-601C-4b7e-8311-E1D1A986A56D">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>More Reference Key Information</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+       <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"/>
+       <script type="text/javascript" src="/view/clientframework/client.js"><!--filler--></script>
+	<script>
+	  // This turns on the display of the copyright notice which is not visible by default.
+	  // Because the head is removed when used in the web help, this function will only exists
+	  // when the chm help is being created.
+	  window.onload = function() {
+		copyrightElement = document.getElementById('CopyrightNotice');
+		copyrightElement.style.display = 'block';
+	  };
+	</script>
+</head>
+<body>
+<link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+<H1>More Reference Key Information</h1>
+<p Class="Normal">The following table details how the API determines primary and multiple matches for specific objects.</p>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0 width=613
+ style='width:459.9pt;margin-left:5.4pt;border-collapse:collapse;border:none;
+ mso-border-alt:solid windowtext .5pt;mso-padding-alt:0pt 5.4pt 0pt 5.4pt;
+ mso-border-insideh:.5pt solid windowtext;mso-border-insidev:.5pt solid windowtext'>
+ <tr style='mso-yfti-irow:0;page-break-inside:avoid;height:12.75pt'>
+  <td width=84 rowspan=2 valign=top style='width:63.0pt;border:solid windowtext 1.0pt;
+  mso-border-alt:solid windowtext .5pt;padding:0pt 5.4pt 0pt 5.4pt;height:12.75pt'>
+  <p class=MsoNormal><b>Category<o:p></o:p></b></p>
+  </td>
+  <td width=77 rowspan=2 valign=top style='width:57.7pt;border:solid windowtext 1.0pt;
+  border-left:none;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:
+  solid windowtext .5pt;padding:0pt 5.4pt 0pt 5.4pt;height:12.75pt'>
+  <p class=MsoNormal><b>Object<o:p></o:p></b></p>
+  </td>
+  <td width=123 rowspan=2 valign=top style='width:92.0pt;border:solid windowtext 1.0pt;
+  border-left:none;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:
+  solid windowtext .5pt;padding:0pt 5.4pt 0pt 5.4pt;height:12.75pt'>
+  <p class=MsoNormal><b>Cause of splits <o:p></o:p></b></p>
+  </td>
+  <td width=330 colspan=2 valign=top style='width:247.2pt;border:solid windowtext 1.0pt;
+  border-left:none;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:
+  solid windowtext .5pt;padding:0pt 5.4pt 0pt 5.4pt;height:12.75pt'>
+  <h4>Expected behavior</h4>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:1;page-break-inside:avoid;height:14.25pt'>
+  <td width=165 valign=top style='width:123.6pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0pt 5.4pt 0pt 5.4pt;height:14.25pt'>
+  <p class=MsoNormal><b>Primary match<o:p></o:p></b></p>
+  </td>
+  <td width=165 valign=top style='width:123.6pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0pt 5.4pt 0pt 5.4pt;height:14.25pt'>
+  <p class=MsoNormal><b>Multiple matches<o:p></o:p></b></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:2;page-break-inside:avoid;height:12.0pt'>
+  <td width=84 rowspan=13 valign=top style='width:63.0pt;border:solid windowtext 1.0pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0pt 5.4pt 0pt 5.4pt;height:12.0pt'>
+  <p class=MsoNormal><b>Brep<o:p></o:p></b></p>
+  </td>
+  <td width=77 rowspan=4 valign=top style='width:57.7pt;border-top:none;
+  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0pt 5.4pt 0pt 5.4pt;height:12.0pt'>
+  <p class=MsoNormal><st1:place><b>Face</b></st1:place><b><o:p></o:p></b></p>
+  </td>
+  <td width=123 valign=top style='width:92.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0pt 5.4pt 0pt 5.4pt;height:12.0pt'>
+  <p class=MsoNormal>Feature operations</p>
+  </td>
+  <td width=165 valign=top style='width:123.6pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0pt 5.4pt 0pt 5.4pt;height:12.0pt'>
+  <p class=MsoNormal>BoundedFace algorithm will select that face which has maximum %
+  of edges. </p>
+  </td>
+  <td width=165 valign=top style='width:123.6pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0pt 5.4pt 0pt 5.4pt;height:12.0pt'>
+  <p class=MsoNormal>All other faces that share at least one edge with the
+  original face.</p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:3;page-break-inside:avoid;height:22.5pt'>
+  <td width=123 valign=top style='width:92.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0pt 5.4pt 0pt 5.4pt;height:22.5pt'>
+  <p class=MsoNormal>Sketch splits</p>
+  </td>
+  <td width=165 valign=top style='width:123.6pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0pt 5.4pt 0pt 5.4pt;height:22.5pt'>
+  <p class=MsoNormal>One of the resulting faces, Not deterministic</p>
+  </td>
+  <td width=165 valign=top style='width:123.6pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0pt 5.4pt 0pt 5.4pt;height:22.5pt'>
+  <p class=MsoNormal>Not supported<o:p></o:p></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:4;page-break-inside:avoid;height:18.0pt'>
+  <td width=123 valign=top style='width:92.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0pt 5.4pt 0pt 5.4pt;height:18.0pt'>
+  <p class=MsoNormal>Profile editing</p>
+  </td>
+  <td width=165 valign=top style='width:123.6pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0pt 5.4pt 0pt 5.4pt;height:18.0pt'>
+  <p class=MsoNormal>One of the resulting faces, Not deterministic</p>
+  </td>
+  <td width=165 valign=top style='width:123.6pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0pt 5.4pt 0pt 5.4pt;height:18.0pt'>
+  <p class=MsoNormal>Rest of the resulting faces, Not deterministic<span
+  style='color:red'><o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:5;page-break-inside:avoid;height:12.0pt'>
+  <td width=123 valign=top style='width:92.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0pt 5.4pt 0pt 5.4pt;height:12.0pt'>
+  <p class=MsoNormal>Face merges &amp; splits</p>
+  </td>
+  <td width=165 valign=top style='width:123.6pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0pt 5.4pt 0pt 5.4pt;height:12.0pt'>
+  <p class=MsoNormal>Face with the earliest feature</p>
+  </td>
+  <td width=165 valign=top style='width:123.6pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0pt 5.4pt 0pt 5.4pt;height:12.0pt'>
+  <p class=MsoNormal>Not supported<o:p></o:p></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:6;page-break-inside:avoid;height:12.0pt'>
+  <td width=77 rowspan=3 valign=top style='width:57.7pt;border-top:none;
+  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0pt 5.4pt 0pt 5.4pt;height:12.0pt'>
+  <p class=MsoNormal><b>Edge<o:p></o:p></b></p>
+  </td>
+  <td width=123 valign=top style='width:92.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0pt 5.4pt 0pt 5.4pt;height:12.0pt'>
+  <p class=MsoNormal>Feature operations</p>
+  </td>
+  <td width=165 valign=top style='width:123.6pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0pt 5.4pt 0pt 5.4pt;height:12.0pt'>
+  <p class=MsoNormal>One of the resulting edges. Not deterministic</p>
+  </td>
+  <td width=165 valign=top style='width:123.6pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0pt 5.4pt 0pt 5.4pt;height:12.0pt'>
+  <p class=MsoNormal>Rest of the split edges</p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:7;page-break-inside:avoid;height:15.75pt'>
+  <td width=123 valign=top style='width:92.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0pt 5.4pt 0pt 5.4pt;height:15.75pt'>
+  <p class=MsoNormal>Sketch splits</p>
+  </td>
+  <td width=165 valign=top style='width:123.6pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0pt 5.4pt 0pt 5.4pt;height:15.75pt'>
+  <p class=MsoNormal>One of the resulting edges. Not deterministic<o:p></o:p></p>
+  </td>
+  <td width=165 valign=top style='width:123.6pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0pt 5.4pt 0pt 5.4pt;height:15.75pt'>
+  <p class=MsoNormal>One of the resulting edges. Not deterministic<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:8;page-break-inside:avoid;height:12.0pt'>
+  <td width=123 valign=top style='width:92.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0pt 5.4pt 0pt 5.4pt;height:12.0pt'>
+  <p class=MsoNormal>Face merges &amp; splits</p>
+  </td>
+  <td width=165 valign=top style='width:123.6pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0pt 5.4pt 0pt 5.4pt;height:12.0pt'>
+  <p class=MsoNormal>Edge with the earliest feature</p>
+  </td>
+  <td width=165 valign=top style='width:123.6pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0pt 5.4pt 0pt 5.4pt;height:12.0pt'>
+  <p class=MsoNormal>Not supported<o:p></o:p></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:9;page-break-inside:avoid;height:12.75pt'>
+  <td width=77 rowspan=3 valign=top style='width:57.7pt;border-top:none;
+  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0pt 5.4pt 0pt 5.4pt;height:12.75pt'>
+  <p class=MsoNormal><st1:place><b>Loop</b></st1:place><b><o:p></o:p></b></p>
+  </td>
+  <td width=123 valign=top style='width:92.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0pt 5.4pt 0pt 5.4pt;height:12.75pt'>
+  <p class=MsoNormal>Feature operations</p>
+  </td>
+  <td width=165 valign=top style='width:123.6pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0pt 5.4pt 0pt 5.4pt;height:12.75pt'>
+  <p class=MsoNormal>Match loop algorithm will select the primary match.</p>
+  </td>
+  <td width=165 valign=top style='width:123.6pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0pt 5.4pt 0pt 5.4pt;height:12.75pt'>
+  <p class=MsoNormal>All other loops that share at least one edge with the
+  original loop.</p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:10;page-break-inside:avoid;height:15.75pt'>
+  <td width=123 valign=top style='width:92.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0pt 5.4pt 0pt 5.4pt;height:15.75pt'>
+  <p class=MsoNormal>Sketch splits</p>
+  </td>
+  <td width=165 valign=top style='width:123.6pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0pt 5.4pt 0pt 5.4pt;height:15.75pt'>
+  <p class=MsoNormal>One of the resulting loops, Not deterministic</p>
+  </td>
+  <td width=165 valign=top style='width:123.6pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0pt 5.4pt 0pt 5.4pt;height:15.75pt'>
+  <p class=MsoNormal><o:p>Not supported</o:p></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:11;page-break-inside:avoid;height:11.25pt'>
+  <td width=123 valign=top style='width:92.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0pt 5.4pt 0pt 5.4pt;height:11.25pt'>
+  <p class=MsoNormal>Face merges &amp; splits</p>
+  </td>
+  <td width=165 valign=top style='width:123.6pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0pt 5.4pt 0pt 5.4pt;height:11.25pt'>
+  <p class=MsoNormal>Loop with the earliest feature</p>
+  </td>
+  <td width=165 valign=top style='width:123.6pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0pt 5.4pt 0pt 5.4pt;height:11.25pt'>
+  <p class=MsoNormal>Not supported</p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:12;page-break-inside:avoid;height:12.75pt'>
+  <td width=77 rowspan=3 valign=top style='width:57.7pt;border-top:none;
+  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0pt 5.4pt 0pt 5.4pt;height:12.75pt'>
+  <p class=MsoNormal><b>Shell<o:p></o:p></b></p>
+  </td>
+  <td width=123 valign=top style='width:92.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0pt 5.4pt 0pt 5.4pt;height:12.75pt'>
+  <p class=MsoNormal>Feature operations</p>
+  </td>
+  <td width=165 valign=top style='width:123.6pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0pt 5.4pt 0pt 5.4pt;height:12.75pt'>
+  <p class=MsoNormal>Match shell algorithm will select the primary match.</p>
+  </td>
+  <td width=165 valign=top style='width:123.6pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0pt 5.4pt 0pt 5.4pt;height:12.75pt'>
+  <p class=MsoNormal>All other shells that share at least one face with the
+  original shell.</p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:13;page-break-inside:avoid;height:16.5pt'>
+  <td width=123 valign=top style='width:92.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0pt 5.4pt 0pt 5.4pt;height:16.5pt'>
+  <p class=MsoNormal>Sketch splits</p>
+  </td>
+  <td width=165 valign=top style='width:123.6pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0pt 5.4pt 0pt 5.4pt;height:16.5pt'>
+  <p class=MsoNormal>One of the resulting shells, Not deterministic</p>
+  </td>
+  <td width=165 valign=top style='width:123.6pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0pt 5.4pt 0pt 5.4pt;height:16.5pt'>
+  <p class=MsoNormal>Not supported</p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:14;page-break-inside:avoid;height:10.5pt'>
+  <td width=123 valign=top style='width:92.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0pt 5.4pt 0pt 5.4pt;height:10.5pt'>
+  <p class=MsoNormal>Face merges &amp; splits</p>
+  </td>
+  <td width=165 valign=top style='width:123.6pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0pt 5.4pt 0pt 5.4pt;height:10.5pt'>
+  <p class=MsoNormal>Not supported</p>
+  </td>
+  <td width=165 valign=top style='width:123.6pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0pt 5.4pt 0pt 5.4pt;height:10.5pt'>
+  <p class=MsoNormal>Not supported</p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:15;page-break-inside:avoid;height:15.75pt'>
+  <td width=84 rowspan=3 valign=top style='width:63.0pt;border:solid windowtext 1.0pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0pt 5.4pt 0pt 5.4pt;height:15.75pt'>
+  <p class=MsoNormal><b>Sketch lines<o:p></o:p></b></p>
+  </td>
+  <td width=77 valign=top style='width:57.7pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0pt 5.4pt 0pt 5.4pt;height:15.75pt'>
+  <p class=MsoNormal><b>Arcs<o:p></o:p></b></p>
+  </td>
+  <td width=123 valign=top style='width:92.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0pt 5.4pt 0pt 5.4pt;height:15.75pt'>
+  <p class=MsoNormal>Trim</p>
+  </td>
+  <td width=165 valign=top style='width:123.6pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0pt 5.4pt 0pt 5.4pt;height:15.75pt'>
+  <p class=MsoNormal>One of the resulting arcs</p>
+  </td>
+  <td width=165 valign=top style='width:123.6pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0pt 5.4pt 0pt 5.4pt;height:15.75pt'>
+  <p class=MsoNormal>Not supported</p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:16;page-break-inside:avoid;height:18.0pt'>
+  <td width=77 valign=top style='width:57.7pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0pt 5.4pt 0pt 5.4pt;height:18.0pt'>
+  <p class=MsoNormal><b>Lines<o:p></o:p></b></p>
+  </td>
+  <td width=123 valign=top style='width:92.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0pt 5.4pt 0pt 5.4pt;height:18.0pt'>
+  <p class=MsoNormal>Trim</p>
+  </td>
+  <td width=165 valign=top style='width:123.6pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0pt 5.4pt 0pt 5.4pt;height:18.0pt'>
+  <p class=MsoNormal>One of the resulting lines</span></p>
+  </td>
+  <td width=165 valign=top style='width:123.6pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0pt 5.4pt 0pt 5.4pt;height:18.0pt'>
+  <p class=MsoNormal>Not supported</p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:17;mso-yfti-lastrow:yes;page-break-inside:avoid;
+  height:12.0pt'>
+  <td width=77 valign=top style='width:57.7pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0pt 5.4pt 0pt 5.4pt;height:12.0pt'>
+  <p class=MsoNormal><b>Splines</b></p>
+  </td>
+  <td width=123 valign=top style='width:92.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0pt 5.4pt 0pt 5.4pt;height:12.0pt'>
+  <p class=MsoNormal>Trim</p>
+  </td>
+  <td width=165 valign=top style='width:123.6pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0pt 5.4pt 0pt 5.4pt;height:12.0pt'>
+  <p class=MsoNormal>One of the resulting splines</span></p>
+  </td>
+  <td width=165 valign=top style='width:123.6pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0pt 5.4pt 0pt 5.4pt;height:12.0pt'>
+  <p class=MsoNormal>Not supported</p>
+  </td>
+ </tr>
+</table>
+
+<h2>Exceptional Cases</h2>
+
+<b>Profile Editing</b>
+<p Class="Normal">You can edit a profile for a feature to include additional
+intersecting sketch entities so that a face or an edge gets split. In such a
+case<span class=GramE>, one</span> of
+the resulting face/edge will the primary match. However the choice is not
+deterministic. The other faces/edges will not be returned. </p>
+<p Class="Normal">
+<b>Face Draft/ Face Splits</b>
+<p Class="Normal">In some special cases, new faces get generated when you add
+face drafts or face splits. You could argue that these new faces are also
+candidates for the purpose of multiple matches. However these new faces will
+not be returned.</p>
+
+<br />
+<br />
+<div id="CopyrightNotice" style="display:none;">
+  <hr />
+  <table width="100%" style="font-size:15">
+	<tr>
+	  <td align="left">
+		&copy; Copyright 2025 Autodesk, Inc.
+	  </td>
+	  <td align="right">
+		<a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(MoreRefKeyInfo_Overview)">Comment on this page.</a>
+	  </td>
+	</tr>
+  </table>
+</div>
+</body>
+</html>

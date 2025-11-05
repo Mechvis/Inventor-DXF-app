@@ -1,0 +1,314 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU">
+    <link rel="canonical" href="http://help.autodesk.com/cloudhelp/2026/ENU/Inventor-API/files/Environments_Overview.htm">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="27/4/2016">
+    <meta name="user-comments" content="enable">
+    <meta name="description" content="">
+    <meta name="topicid" content="GUID-22E77A47-9258-4FCF-9BBE-4D717FD75F6F">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>Environments</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"/>
+    <script type="text/javascript" src="/view/clientframework/client.js"><!--filler--></script>
+	<script>
+	  // This turns on the display of the copyright notice which is not visible by default.
+	  // Because the head is removed when used in the web help, this function will only exists
+	  // when the chm help is being created.
+	  window.onload = function() {
+		copyrightElement = document.getElementById('CopyrightNotice');
+		copyrightElement.style.display = 'block';
+	  };
+	</script>
+</head>
+<body>
+<link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+
+<h1>Environments</h1>
+
+<h3>Introduction to Environments</h3>
+
+<p Class="Normal">To the Autodesk Inventor user, an environment, such as the assembly environment or the sketch environment, simply means that tools are made available to accomplish the task at hand.  Menus and panel bars appropriate to the workflow are presented to the user.  For example, the sketch environment provides commands to create sketch lines, circles and so on, but not commands for placing or copying components which are actions specific to the assembly environment.</p>
+
+<h3>The purpose of  Environments</h3>
+
+<p Class="Normal">If all Autodesk Inventor commands were present and available on the menus and panel bar all the time, the user interface would be very cluttered and confusing. Environments provide a means to present a focused subset of commands. Taking this a step further, a client application may define custom environments in addition to Autodesk Inventor's set of built-in environments. The application may define the environment as transient, or it may be persistent across sessions. Additionally, a given environment may have a number of edit-targets, any of which may have focus. For example, an application may define an FEA environment. The results of FEA computation models may result in a number of different solution results, each represented by a node on the browser.</p>
+
+<h3>Environments Object Model Diagram</h3>
+
+<br>
+<div align="center"> <img src="../images/ov.environments_diag.png" border=0 width="200"></div>
+ <br>
+
+<h3>Working with Environments through the API</h3>
+
+<h3>Creating an environment </h3>
+
+<p Class="Normal">Every document has a built-in base environment. A client application may create a new custom environment by  adding to the Environments collection, and will typically copy some components used in another environment, such as command bars, to the new one. Command bars can inherit their properties from the parent environment if the InheritAll property of the CommandBarList is set to true.</p>
+
+<p Class="Normal">The samples that follow show how to add new environments to Autodesk Inventor. The figure below shows the initial view of the Applications menu and the panel bar, with no additional environments or edit targets added. The example code will add three new environments. Lastly, it will create an edit target within one of these environments.</p>
+
+<br>
+<div align="center"> <img src="../images/ov.env_01.png" border=0></div>
+<br>
+ 
+<p Class="Normal">The first step is to get the Environments collection from the UserInterfaceManager. From this, obtain a built-in environment to use as the basis for the new environment. This sample and the following code omit error checking for the sake of clarity and brevity.  Always check that return values are of the expected type. </p>
+ 
+<table Class="Code">
+<tr valign="middle">
+	<td Class="Code">
+	<pre>
+Sub AddParallelEnv1()
+    Dim oEnvs As Environments
+    Set oEnvs = ThisApplication.UserInterfaceManager.Environments
+    
+    Dim oEnv As Environment
+    Set oEnv = oEnvs("MBxSheetMetalEnvironment")
+</pre></td></tr>
+</table>
+<br>
+
+<p Class="Normal">Next, add a new environment to the environments collection. Here, we use a display name of "FEA" - this is the name that will be displayed in the Applications menu. The string "FEA Env's internal name" is this the internal name for the new environment - its equivalent to the internal names of built-in environments, such as "DLxDrawingEnvironment". (A ClientId is not supplied so this environment is not persisted.)</p>
+
+<table Class="Code">
+<tr valign="middle">
+	<td Class="Code">
+	<pre>
+    Dim oNewEnv As Environment
+    Set oNewEnv = Nothing
+    Set oNewEnv = oEnvs.Add("FEA", "FEA Env's internal name")
+</pre></td></tr>
+</table>
+<br>
+
+<p Class="Normal">This example will use the same default command bar as the source environment, and will populate the new environment's panel bar with some command bars. It will also copy the command bars from the context menu.</p>
+
+<table Class="Code">
+<tr valign="middle">
+	<td Class="Code">
+	<pre>
+    oNewEnv.DefaultRibbonTab = oEnv.DefaultRibbonTab
+    Dim sTabs(0 To 1) As String
+    sTabs(0) = "id_TabSheetMetal"
+    sTabs(1) = "id_TabFlatPattern"
+   
+    
+    oNewEnv.AdditionalVisibleRibbonTabs = sTabs
+    oNewEnv.InheritAllRibbonTabs = True
+</pre></td></tr>
+</table>
+<br>
+
+<p Class="Normal">In this case the new environment will inherit all the command bars from the parent environment.</p>
+
+<table Class="Code">
+<tr valign="middle">
+	<td Class="Code">
+	<pre>
+    oNewEnv.PanelBar.CommandBarList.InheritAll = True
+    oNewEnv.ContextMenuList.InheritAll = True
+</pre></td></tr>
+</table>
+<br>
+
+<p Class="Normal">All that remains is to add the new environment to the list of parallel environments (thus adding the environment to the list of available environments, as indicated by the Applications menu shown in the figure below.</p>
+
+<table Class="Code">
+<tr valign="middle">
+	<td Class="Code">
+	<pre>
+    Dim oParEnvs As EnvironmentList
+    Set oParEnvs = ThisApplication.UserInterfaceManager.ParallelEnvironments
+    Call oParEnvs.Add(oNewEnv)
+End Sub
+</pre></td></tr>
+</table>
+<br>
+
+<br>
+<div align="center"> <img src="../images/ov.env_02.png" border=0></div>
+<br>
+
+<p Class="Normal">Next, add another two environments named "Rendering" and "Aerofoil", based on the assembly and weldment environments respectively. This code is much the same as that in the previous section.</p>
+
+<table Class="Code">
+<tr valign="middle">
+	<td Class="Code">
+	<pre>
+Sub AddParallelEnv2()
+    Dim oEnvs As Environments
+    Set oEnvs = ThisApplication.UserInterfaceManager.Environments
+    
+    Dim oEnv As Environment
+    Set oEnv = oEnvs("AMxAssemblyEnvironment")
+      
+    Dim oNewEnv As Environment
+    Set oNewEnv = Nothing
+    
+    Set oNewEnv = oEnvs.Add("Rendering", "Rendering Env's internal name")
+    
+    Dim sTabs(0 To 1) As String
+    sTabs(0) = "id_TabAssemble"
+    sTabs(1) = "id_TabDesign"
+    
+    oNewEnv.DefaultRibbonTab = oEnv.DefaultRibbonTab
+    oNewEnv.InheritAllRibbonTabs = False
+    
+    Dim oParEnvs As EnvironmentList
+    Set oParEnvs = ThisApplication.UserInterfaceManager.ParallelEnvironments
+    
+    Call oParEnvs.Add(oNewEnv)    
+End Sub
+
+
+Sub AddParallelEnv3()
+    Dim oEnvs As Environments
+    Set oEnvs = ThisApplication.UserInterfaceManager.Environments
+    
+    Dim oEnv As Environment
+    Set oEnv = oEnvs("AMxWeldmentEnvironment")
+    
+    Dim oNewEnv As Environment
+    Set oNewEnv = oEnvs.Add("Aerofoil", "Aerofoil Env's internal name")
+     
+    oNewEnv.DefaultRibbonTab = oEnv.DefaultRibbonTab
+    oNewEnv.InheritAllRibbonTabs = True
+    
+    Dim oParEnvs As EnvironmentList
+    Set oParEnvs = ThisApplication.UserInterfaceManager.ParallelEnvironments
+    
+    Call oParEnvs.Add(oNewEnv)    
+End Sub
+</pre></td></tr>
+</table>
+<br>
+
+<p Class="Normal">The preceding code will add the new FEA, Rendering and Aerofoil environments to Autodesk Inventor's Applications menu, as shown below. Each environment has its own set of command bars, but so far none has a specific edit target defined.</p>
+
+<br>
+<div align="center"> <img src="../images/ov.env_04.png" border=0></div>
+<br>
+
+<p Class="Normal">Now to add an edit target to one of these new environments.  This indicates a specific editing requirement. An example in Autodesk Inventor is the sketch editing facility within the Part environment.  The code is much the same as previously  except now the SetCurrentEnvironment method of the EnvironmentManager object is used - this sets the environment for this document but it is not persisted.</p>
+
+<table Class="Code">
+<tr valign="middle">
+	<td Class="Code">
+	<pre>
+Sub ActivateET()
+    Dim oEnvs As Environments
+    Set oEnvs = ThisApplication.UserInterfaceManager.Environments
+    
+    Dim oEnv As Environment
+    Set oEnv = oEnvs("MBxSheetMetalEnvironment")
+  
+    Dim oPartDoc As PartDocument
+    Set oPartDoc = ThisApplication.ActiveDocument
+    
+    Dim oNewEnv As Environment
+    Set oNewEnv = oEnvs.Add("Aerofoil-ET", "ET Env's internal name")
+    
+    oNewEnv.DefaultRibbonTab = oEnv.DefaultRibbonTab
+    oNewEnv.InheritAllRibbonTabs = True
+     
+    Call oPartDoc.EnvironmentManager.SetCurrentEnvironment(oNewEnv, "ET's Cookie")   
+End Sub
+</pre></td></tr>
+</table>
+<br>
+
+<p Class="Normal">The result of this code is indicated in the following figure. Note that the Applications menu now has the new Aerofoil-ET edit target checked instead of the Part edit target.  Note too the change to the panel bar.</p>
+
+<br>
+<div align="center"> <img src="../images/ov.env_05.png" border=0></div>
+<br>
+
+<p Class="Normal">Although the previous edit target is not persisted in the sense that it will not be active when the document is next loaded, you can return to this edit target by calling the SetCurrentEnvironment method again.</p>
+
+<table Class="Code">
+<tr valign="middle">
+	<td Class="Code">
+	<pre>
+Sub ActivateETAgain()
+    Dim oEnvs As Environments
+    Set oEnvs = ThisApplication.UserInterfaceManager.Environments
+    
+    Dim oPartDoc As PartDocument
+    Set oPartDoc = ThisApplication.ActiveDocument
+    
+    Dim oNewEnv As Environment
+    Set oNewEnv = Nothing
+    
+    Set oNewEnv = oEnvs("ET Env's internal name")
+    
+    Call oPartDoc.EnvironmentManager.SetCurrentEnvironment(oNewEnv, "ET's Cookie")
+End Sub
+</pre></td></tr>
+</table>
+<br>
+
+<p Class="Normal">However, an edit target can be made persistent by setting the OverrideEnvironment property of the EnvironmentManager object.  Thus, when a document is loaded, the specified edit target will be present.</p>
+
+<table Class="Code">
+<tr valign="middle">
+	<td Class="Code">
+	<pre>
+Sub TestOverrideEnv()
+    Dim oEnvs As Environments
+    Set oEnvs = ThisApplication.UserInterfaceManager.Environments
+    
+    Dim oEnv As Environment
+    Set oEnv = oEnvs("MBxSheetMetalEnvironment")
+    
+    Dim oPartDoc As PartDocument
+    Set oPartDoc = ThisApplication.ActiveDocument
+    
+    Dim oNewEnv As Environment
+    Set oNewEnv = oEnvs.Add("OverrideTmp", "OverrideTmp Env's internal name")
+    
+    oNewEnv.DefaultRibbonTab = oEnv.DefaultRibbonTab
+    oNewEnv.InheritAllRibbonTabs = True
+    
+    Dim oEnvMgr As EnvironmentManager
+    Set oEnvMgr = oPartDoc.EnvironmentManager
+
+    oEnvMgr.OverrideEnvironment = oNewEnv
+End Sub
+</pre></td></tr>
+</table>
+<br>
+
+<h3>Summary</h3>
+
+<p Class="Normal">The combination of custom environments, and the ability to define transient or overridden edit targets within those environments, allows client applications to define a user interface specific to their purpose, with full control over what is presented to the user. They can behave in the same manner as built-in Autodesk Inventor environments, with environments and edit targets pushed onto the environment stack, and with Autodesk Inventor's Return button traversing back through the stack as expected.</p>
+
+<h3>Also consider</h3>
+
+<p Class="Normal">For additional control over what buttons are enabled in specific scenarios, use the DisabledCommandList object.  This is available both at the document and environment level, and is complementary to the Enabled property of the ControlDefinition object.  Commands placed in the DisabledCommandList object at the environment level will be grayed-out within that environment.</p>
+
+<br />
+<br />
+<div id="CopyrightNotice" style="display:none;">
+  <hr />
+  <table width="100%" style="font-size:15">
+	<tr>
+	  <td align="left">
+		&copy; Copyright 2025 Autodesk, Inc.
+	  </td>
+	  <td align="right">
+		<a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(Environments_Overview)">Comment on this page.</a>
+	  </td>
+	</tr>
+  </table>
+</div>
+
+</body>
+</html>

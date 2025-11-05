@@ -1,0 +1,92 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/FaceShellProxy_IsPointInside.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="FaceShellProxy_IsPointInside">
+    <meta name="description" content="FaceShellProxy.IsPointInside Property">
+    <meta name="topicid" content="FaceShellProxy_IsPointInside">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>FaceShellProxy.IsPointInside Property</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">FaceShellProxy.IsPointInside Property</h1>
+
+          Parent Object: <a href="FaceShellProxy.htm">FaceShellProxy</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Property that returns a constant indicating whether the specified point is inside, on or outside the body.</p>
+    <h2 class="api">
+          Syntax
+        </h2>
+        
+            FaceShellProxy.<b>IsPointInside</b>( <b><i>Point</i></b>() As Double, [<b><i>UseBox</i></b>] As Boolean ) As <a href="ContainmentEnum.htm">ContainmentEnum</a>
+        
+    <h2 class="api">
+            Property Value
+          </h2>This is a read only property whose value is a <a href="ContainmentEnum.htm">ContainmentEnum</a>.<h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">Point</td>
+        <td class="api-list">Double</td>
+        <td class="api-list">Point whose location to determine.</td>
+      </tr>
+      <tr>
+        <td class="api-list">UseBox</td>
+        <td class="api-list">Boolean</td>
+        <td class="api-list">Optional input Boolean that specifies whether to use a box to determine if the point is inside, on or outside of the body. Sometimes one wants to avoid the creation of bounding boxes during intermediate steps of a construction because the creation of bounding boxes can be costly. If you're applying multiple operations to a body then the bounding box of some of the shells would be invalid after each operation. You wouldn't want to use the bounding box during these intermediate stages because you might spend more time computing the bounding box than you'd save by using it for trivial rejection. On the other hand, if you have a stable body and a high likelihood that the bounding box is up-to-date, then it might save some time to set the use_box parameter to true.<br /><br /> This is an optional argument whose default value is True.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 4<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(FaceShellProxy.IsPointInside%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

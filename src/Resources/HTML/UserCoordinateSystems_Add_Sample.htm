@@ -1,0 +1,158 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/UserCoordinateSystems_Add_Sample.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="UserCoordinateSystems_Add_Sample">
+    <meta name="description" content="UCS by three points Sample">
+    <meta name="topicid" content="UserCoordinateSystems_Add_Sample">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>UCS by three points</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body><script>
+          function copyCode(language) {
+          // Get the pre element for the specified language.
+          var preElement = document.getElementById(language);
+
+          // Get the text from the element and copy it to the clipboard.
+          var preText = preElement.innerText;
+
+          var isIE = /*@cc_on!@*/false || !!document.documentMode;
+
+          if (isIE)
+          {
+            window.clipboardData.setData('Text', preText);
+          }
+          else
+          {
+            navigator.clipboard.writeText(preText);
+          }
+
+          //alert("Code copied to clipboard");
+          }
+        </script><link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">UCS by three points</h1>
+    <h2 class="api">
+          Description
+        </h2>This sample demonstrates the creation of a User Coordinate System (UCS) based on 3 points that define the origin, x-direction and y-direction for the UCS.<h2 class="api">
+          Code Samples
+        </h2>
+    <div id="tabs">
+      <ul>
+        <li><a href="#VBA">VBA</a></li>
+        <li><a href="#iLogic">iLogic</a></li>
+      </ul>
+      <div id="VBA" class="api-code">
+        <table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('VBA_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="VBA_code">Sub CreateUCSBy3Points()
+    <span style="color:blue">' Create a new part document</span>
+    Dim oDoc As PartDocument
+    Set oDoc = ThisApplication.Documents.Add(DocumentTypeEnum.kPartDocumentObject)
+
+    <span style="color:blue">' Set a reference to the PartComponentDefinition object</span>
+    Dim oCompDef As PartComponentDefinition
+    Set oCompDef = oDoc.ComponentDefinition
+
+    Dim oTG As TransientGeometry
+    Set oTG = ThisApplication.TransientGeometry
+
+    <span style="color:blue">' Create 3 workpoints to define the origin, x-direction and y-direction points</span>
+    Dim oWorkPoint1 As WorkPoint
+    Set oWorkPoint1 = oCompDef.WorkPoints.AddFixed(oTG.CreatePoint(2, 0, 0))
+
+    Dim oWorkPoint2 As WorkPoint
+    Set oWorkPoint2 = oCompDef.WorkPoints.AddFixed(oTG.CreatePoint(4, 0, 0))
+
+    Dim oWorkPoint3 As WorkPoint
+    Set oWorkPoint3 = oCompDef.WorkPoints.AddFixed(oTG.CreatePoint(2, 2, 0))
+
+    <span style="color:blue">' Create an empty definition object</span>
+    Dim oUCSDef As UserCoordinateSystemDefinition
+    Set oUCSDef = oCompDef.UserCoordinateSystems.CreateDefinition
+
+    <span style="color:blue">' Set it to be based on the 3 points</span>
+    Call oUCSDef.SetByThreePoints(oWorkPoint1, oWorkPoint2, oWorkPoint3)
+
+    <span style="color:blue">' Create the UCS</span>
+    Dim oUCS As UserCoordinateSystem
+    Set oUCS = oCompDef.UserCoordinateSystems.Add(oUCSDef)
+End Sub</pre>
+      </div>
+      <div id="iLogic" class="api-code">
+        <table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('iLogic_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="iLogic_code">    <span style="color:blue">' Create a new part document</span>
+    Dim oDoc As PartDocument
+    oDoc = ThisApplication.Documents.Add(DocumentTypeEnum.kPartDocumentObject)
+
+    <span style="color:blue">' Set a reference to the PartComponentDefinition object</span>
+    Dim oCompDef As PartComponentDefinition
+    oCompDef = oDoc.ComponentDefinition
+
+    Dim oTG As TransientGeometry
+    oTG = ThisApplication.TransientGeometry
+
+    <span style="color:blue">' Create 3 workpoints to define the origin, x-direction and y-direction points</span>
+    Dim oWorkPoint1 As WorkPoint
+    oWorkPoint1 = oCompDef.WorkPoints.AddFixed(oTG.CreatePoint(2, 0, 0))
+
+    Dim oWorkPoint2 As WorkPoint
+    oWorkPoint2 = oCompDef.WorkPoints.AddFixed(oTG.CreatePoint(4, 0, 0))
+
+    Dim oWorkPoint3 As WorkPoint
+    oWorkPoint3 = oCompDef.WorkPoints.AddFixed(oTG.CreatePoint(2, 2, 0))
+
+    <span style="color:blue">' Create an empty definition object</span>
+    Dim oUCSDef As UserCoordinateSystemDefinition
+    oUCSDef = oCompDef.UserCoordinateSystems.CreateDefinition
+
+    <span style="color:blue">' Set it to be based on the 3 points</span>
+    Call oUCSDef.SetByThreePoints(oWorkPoint1, oWorkPoint2, oWorkPoint3)
+
+    <span style="color:blue">' Create the UCS</span>
+    Dim oUCS As UserCoordinateSystem
+    oUCS = oCompDef.UserCoordinateSystems.Add(oUCSDef)</pre>
+      </div>
+    </div><br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(UserCoordinateSystems_Add%20Sample%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

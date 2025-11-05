@@ -1,0 +1,562 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/MiniToolbarSlotSample_VBA_Sample.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="MiniToolbarSlotSample_VBA_Sample">
+    <meta name="description" content="MiniToolbarsample Sample">
+    <meta name="topicid" content="MiniToolbarSlotSample_VBA_Sample">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>MiniToolbarsample</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body><script>
+          function copyCode(language) {
+          // Get the pre element for the specified language.
+          var preElement = document.getElementById(language);
+
+          // Get the text from the element and copy it to the clipboard.
+          var preText = preElement.innerText;
+
+          var isIE = /*@cc_on!@*/false || !!document.documentMode;
+
+          if (isIE)
+          {
+            window.clipboardData.setData('Text', preText);
+          }
+          else
+          {
+            navigator.clipboard.writeText(preText);
+          }
+
+          //alert("Code copied to clipboard");
+          }
+        </script><link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">MiniToolbarsample</h1>
+    <h2 class="api">
+          Description
+        </h2>This sample demonstrates how to create sketch slot with minitoolbar.<h2 class="api">
+          Code Samples
+        </h2>
+    <div id="tabs">
+      <ul>
+        <li><a href="#VBA">VBA</a></li>
+        <li><a href="#iLogic">iLogic</a></li>
+      </ul>
+      <div id="VBA" class="api-code">Have a sektch in edit mode before running below sample.<table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('VBA_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="VBA_code"><span style="color:blue">' This sample demonstrates creating sketch slot using mini-toolbar</span>
+Sub CreateSketchSlotSample()
+    Dim oActiveEnv As Environment
+    Set oActiveEnv = ThisApplication.UserInterfaceManager.ActiveEnvironment
+    
+    If oActiveEnv.InternalName &lt;&gt; "PMxPartSketchEnvironment" And _
+        oActiveEnv.InternalName &lt;&gt; "AMxAssemblySketchEnvironment" And _
+        oActiveEnv.InternalName &lt;&gt; "DLxDrawingSketchEnvironment" Then
+        MsgBox "Please activate a sketch environment first!"
+        Exit Sub
+    End If
+    
+    Dim oMiniToolbar As MiniToolbar
+    Set oMiniToolbar = ThisApplication.CommandManager.CreateMiniToolbar
+    
+    oMiniToolbar.ShowOK = True
+    oMiniToolbar.ShowApply = True
+    oMiniToolbar.ShowCancel = True
+    
+    Dim oControls As MiniToolbarControls
+    Set oControls = oMiniToolbar.Controls
+    oControls.Item("MTB_Options").Visible = False
+    
+    Dim oDescriptionLabel As MiniToolbarControl
+    Set oDescriptionLabel = oControls.AddLabel("Description", "This toolbar is to create sketch slot:", "MiniToolbar sample to show how to create sketch slot.")
+    oControls.AddNewLine
+    
+    <span style="color:blue">' Define the first center position.</span>
+    Dim oEndCenterOne As MiniToolbarButton
+    Set oEndCenterOne = oControls.AddButton("FirstCenter: ", "First Center:     ", "Specify the first center of sketch slot")
+  
+    
+    Dim oEndCenterOneX As MiniToolbarValueEditor
+    Set oEndCenterOneX = oControls.AddValueEditor("FirstCenterX", "", kLengthUnits, "", "X:")
+    oEndCenterOneX.Expression = "0"
+    oEndCenterOneX.SetFocus
+    
+    Dim oEndCenterOneY As MiniToolbarValueEditor
+    Set oEndCenterOneY = oControls.AddValueEditor("FirstCenterY", "", kLengthUnits, "", "Y:")
+    oEndCenterOneY.Expression = "0"
+    oControls.AddNewLine
+    
+    <span style="color:blue">' Define the second center position.</span>
+    Dim oEndCenterTwo As MiniToolbarButton
+    Set oEndCenterTwo = oControls.AddButton("SecondCenter:", "Second Center:", "Specify the second center of sketch slot")
+    
+    Dim oEndCenterTwoX As MiniToolbarValueEditor
+    Set oEndCenterTwoX = oControls.AddValueEditor("SecondCenterX", "", kLengthUnits, "", "X:")
+    oEndCenterTwoX.Expression = "3"
+    
+    Dim oEndCenterTwoY As MiniToolbarValueEditor
+    Set oEndCenterTwoY = oControls.AddValueEditor("SecondCenterY", "", kLengthUnits, "", "Y:")
+    oEndCenterTwoY.Expression = "0"
+    
+    oControls.AddNewLine
+    
+    <span style="color:blue">' Define the width of sketch slot.</span>
+    Dim oWidthValue As MiniToolbarValueEditor
+    Set oWidthValue = oControls.AddValueEditor("WidthValue", "", kLengthUnits, "", "Width:")
+    oWidthValue.Expression = "1"
+    
+    <span style="color:blue">' Define if display the center line of sketch slot.</span>
+    Dim oDisplayCenterline As MiniToolbarCheckBox
+    Set oDisplayCenterline = oControls.AddCheckBox("DisplayCenterline", "Display center line", "Check this to display center line of slot", True)
+    
+    <span style="color:blue">' Set the position of mini-toolbar</span>
+    Dim oPosition As Point2d
+    Set oPosition = ThisApplication.TransientGeometry.CreatePoint2d(ThisApplication.ActiveView.Left, ThisApplication.ActiveView.Top)
+    oMiniToolbar.Position = oPosition
+    
+    oMiniToolbar.Visible = True
+    
+    Dim oMiniToolbarEvents As New clsMiniToolbarEvents
+    
+    Call oMiniToolbarEvents.Init(oMiniToolbar)
+
+End Sub
+
+
+<span style="color:blue">'*************************************************************</span>
+<span style="color:blue">' The declarations and functions below need to be copied into</span>
+<span style="color:blue">' a class module whose name is "clsMiniToolbarEvents". The name can be</span>
+<span style="color:blue">' changed but you'll need to change the declaration in the</span>
+<span style="color:blue">' calling function "CreateSketchSlotSample" to use the new name.</span>
+Private WithEvents m_EndCenterOneX As MiniToolbarValueEditor
+Private WithEvents m_EndCenterOneY As MiniToolbarValueEditor
+Private WithEvents m_EndCenterSecondX As MiniToolbarValueEditor
+Private WithEvents m_EndCenterSecondY As MiniToolbarValueEditor
+Private WithEvents m_Width As MiniToolbarValueEditor
+Private WithEvents m_MiniToolbar As MiniToolbar
+Private oDisplayCenterline As MiniToolbarCheckBox
+Private m_Sketch As Sketch
+Private bCenterline As Boolean
+Private bStop As Boolean
+
+Public Sub Init(oMiniToolbar As MiniToolbar)
+    Set m_MiniToolbar = oMiniToolbar
+    
+    
+    Set m_EndCenterOneX = m_MiniToolbar.Controls.Item("FirstCenterX")
+    Set m_EndCenterOneY = m_MiniToolbar.Controls.Item("FirstCenterY")
+    Set m_EndCenterSecondX = m_MiniToolbar.Controls.Item("SecondCenterX")
+    Set m_EndCenterSecondY = m_MiniToolbar.Controls.Item("SecondCenterY")
+    Set m_Width = m_MiniToolbar.Controls.Item("WidthValue")
+    
+    Set oDisplayCenterline = m_MiniToolbar.Controls.Item("DisplayCenterline")
+    
+    
+    Set m_Sketch = ThisApplication.ActiveEditObject
+    bStop = False
+    
+    Do
+        ThisApplication.UserInterfaceManager.DoEvents
+
+    Loop Until bStop
+    
+End Sub
+
+
+Private Sub m_MiniToolbar_OnApply()
+    CreateSlot
+End Sub
+
+Private Sub m_MiniToolbar_OnCancel()
+    bStop = True
+    
+End Sub
+
+ 
+Private Sub m_MiniToolbar_OnOK()
+    bStop = True
+    
+    CreateSlot
+
+End Sub
+
+Private Sub CreateSlot()
+    If Not (m_EndCenterOneX.IsExpressionValid And m_EndCenterOneY.IsExpressionValid And m_EndCenterSecondX.IsExpressionValid And m_EndCenterSecondY.IsExpressionValid) Then
+        MsgBox "Invalid values for end center positions!"
+        Exit Sub
+    End If
+    
+    bCenterline = oDisplayCenterline.Checked
+    
+    Dim oTG As TransientGeometry
+    Set oTG = ThisApplication.TransientGeometry
+    
+    Dim oEndCenterOne As Point2d
+    Dim oEndCenterTwo As Point2d
+   
+    <span style="color:blue">' Start transaction for creating slot.</span>
+    Dim oTransaction As Transaction
+    Set oTransaction = ThisApplication.TransactionManager.StartTransaction(ThisApplication.ActiveDocument, "Create slot")
+                   
+        <span style="color:blue">' If the two centers are vertical</span>
+        If Abs(m_EndCenterOneX.Value - m_EndCenterSecondX.Value) &lt; 0.000001 Then
+            If (m_EndCenterOneY.Value &gt; m_EndCenterSecondY.Value) Then
+                Set oEndCenterOne = oTG.CreatePoint2d(m_EndCenterOneX.Value, m_EndCenterOneY.Value)
+                Set oEndCenterTwo = oTG.CreatePoint2d(m_EndCenterSecondX.Value, m_EndCenterSecondY.Value)
+            Else
+                Set oEndCenterOne = oTG.CreatePoint2d(m_EndCenterSecondX.Value, m_EndCenterSecondY.Value)
+                Set oEndCenterTwo = oTG.CreatePoint2d(m_EndCenterOneX.Value, m_EndCenterOneY.Value)
+            End If
+            
+            If oEndCenterOne.IsEqualTo(oEndCenterTwo, 0.000001) Then
+                MsgBox "The two centers are coincident!"
+                Exit Sub
+            End If
+             
+            <span style="color:blue">' Create the top arc</span>
+            Set oEndArcOne = m_Sketch.SketchArcs.AddByCenterStartEndPoint(oEndCenterOne, oTG.CreatePoint2d(oEndCenterOne.X + 0.1, oEndCenterOne.Y), oTG.CreatePoint2d(oEndCenterOne.X - 0.1, oEndCenterOne.Y))
+            <span style="color:blue">' Create the bottom arc</span>
+            Set oEndArcTwo = m_Sketch.SketchArcs.AddByCenterStartEndPoint(oEndCenterTwo, oTG.CreatePoint2d(oEndCenterTwo.X - 0.1, oEndCenterTwo.Y), oTG.CreatePoint2d(oEndCenterTwo.X + 0.1, oEndCenterTwo.Y))
+        <span style="color:blue">'If the two centers are not vertical</span>
+        Else
+            If m_EndCenterOneX.Value &lt; m_EndCenterSecondX.Value Then
+                Set oEndCenterOne = oTG.CreatePoint2d(m_EndCenterOneX.Value, m_EndCenterOneY.Value)
+                Set oEndCenterTwo = oTG.CreatePoint2d(m_EndCenterSecondX.Value, m_EndCenterSecondY.Value)
+            ElseIf m_EndCenterOneX.Value &gt; m_EndCenterSecondX.Value Then
+                Set oEndCenterOne = oTG.CreatePoint2d(m_EndCenterSecondX.Value, m_EndCenterSecondY.Value)
+                Set oEndCenterTwo = oTG.CreatePoint2d(m_EndCenterOneX.Value, m_EndCenterOneY.Value)
+            End If
+            
+            If oEndCenterOne.IsEqualTo(oEndCenterTwo, 0.000001) Then
+                MsgBox "The two centers are coincident!"
+                Exit Sub
+            End If
+            
+            Set oEndArcOne = m_Sketch.SketchArcs.AddByCenterStartEndPoint(oEndCenterOne, oTG.CreatePoint2d(m_EndCenterOneX.Value, m_EndCenterOneY.Value + 0.1), oTG.CreatePoint2d(m_EndCenterOneX.Value, m_EndCenterOneY.Value - 0.1))
+            Set oEndArcTwo = m_Sketch.SketchArcs.AddByCenterStartEndPoint(oEndCenterTwo, oTG.CreatePoint2d(m_EndCenterSecondX.Value, m_EndCenterSecondY.Value + 0.1), oTG.CreatePoint2d(m_EndCenterSecondX.Value, m_EndCenterSecondY.Value - 0.1), False)
+               
+        
+        End If
+    
+        Dim dWidth As Double
+        dWidth = m_Width.Value
+    
+    
+        <span style="color:blue">' Create center line if required</span>
+        If bCenterline Then
+            Dim oCenterline As SketchLine
+            Set oCenterline = m_Sketch.SketchLines.AddByTwoPoints(oEndArcOne.CenterSketchPoint, oEndArcTwo.CenterSketchPoint)
+         
+            oCenterline.Construction = True
+        End If
+        
+        
+        Dim oGround1 As GroundConstraint
+        Dim oGround2 As GroundConstraint
+        Set oGround1 = m_Sketch.GeometricConstraints.AddGround(oEndArcOne.CenterSketchPoint)
+        Set oGround2 = m_Sketch.GeometricConstraints.AddGround(oEndArcTwo.CenterSketchPoint)
+        
+        <span style="color:blue">' Create sketch lines of slot</span>
+        Dim oLine1 As SketchLine
+        Dim oLine2 As SketchLine
+        Set oLine1 = m_Sketch.SketchLines.AddByTwoPoints(oEndArcOne.StartSketchPoint, oEndArcTwo.EndSketchPoint)
+        Set oLine2 = m_Sketch.SketchLines.AddByTwoPoints(oEndArcOne.EndSketchPoint, oEndArcTwo.StartSketchPoint)
+        
+        <span style="color:blue">' Add geometric constraints to the sketch entities</span>
+        Call m_Sketch.GeometricConstraints.AddEqualRadius(oEndArcOne, oEndArcTwo)
+        Call m_Sketch.GeometricConstraints.AddTangent(oLine1, oEndArcOne)
+        Call m_Sketch.GeometricConstraints.AddTangent(oLine1, oEndArcTwo)
+        Call m_Sketch.GeometricConstraints.AddTangent(oLine2, oEndArcOne)
+        Call m_Sketch.GeometricConstraints.AddTangent(oLine2, oEndArcTwo)
+        
+        <span style="color:blue">' Add dimensional constraints to the sketch entities</span>
+        Dim oDiameter As DiameterDimConstraint
+        Set oDiameter = m_Sketch.DimensionConstraints.AddDiameter(oEndArcOne, oEndArcOne.CenterSketchPoint.Geometry)
+        oDiameter.Parameter.Value = dWidth
+        
+        ThisApplication.ActiveDocument.Update
+        oDiameter.Delete
+        oGround1.Delete
+        oGround2.Delete
+        
+    oTransaction.End
+    
+End Sub</pre>
+      </div>
+      <div id="iLogic" class="api-code">Have a sektch in edit mode before running below sample.<table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('iLogic_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="iLogic_code"><span style="color:blue">' This sample demonstrates creating sketch slot using mini-toolbar</span>
+Sub Main
+    Dim oActiveEnv As Environment
+    oActiveEnv = ThisApplication.UserInterfaceManager.ActiveEnvironment
+    
+    If oActiveEnv.InternalName &lt;&gt; "PMxPartSketchEnvironment" And _
+        oActiveEnv.InternalName &lt;&gt; "AMxAssemblySketchEnvironment" And _
+        oActiveEnv.InternalName &lt;&gt; "DLxDrawingSketchEnvironment" Then
+        MsgBox("Please activate a sketch environment first!")
+        Exit Sub
+    End If
+    
+    Dim oMiniToolbar As MiniToolbar
+    oMiniToolbar = ThisApplication.CommandManager.CreateMiniToolbar
+    
+    oMiniToolbar.ShowOK = True
+    oMiniToolbar.ShowApply = True
+    oMiniToolbar.ShowCancel = True
+    
+    Dim oControls As MiniToolbarControls
+    oControls = oMiniToolbar.Controls
+    oControls.Item("MTB_Options").Visible = False
+    
+    Dim oDescriptionLabel As MiniToolbarControl
+    oDescriptionLabel = oControls.AddLabel("Description", "This toolbar is to create sketch slot:", "MiniToolbar sample to show how to create sketch slot.")
+    oControls.AddNewLine
+    
+    <span style="color:blue">' Define the first center position.</span>
+    Dim oEndCenterOne As MiniToolbarButton
+    oEndCenterOne = oControls.AddButton("FirstCenter: ", "First Center:     ", "Specify the first center of sketch slot")
+  
+    
+    Dim oEndCenterOneX As MiniToolbarValueEditor
+    oEndCenterOneX = oControls.AddValueEditor("FirstCenterX", "", kLengthUnits, "", "X:")
+    oEndCenterOneX.Expression = "0"
+    oEndCenterOneX.SetFocus
+    
+    Dim oEndCenterOneY As MiniToolbarValueEditor
+    oEndCenterOneY = oControls.AddValueEditor("FirstCenterY", "", kLengthUnits, "", "Y:")
+    oEndCenterOneY.Expression = "0"
+    oControls.AddNewLine
+    
+    <span style="color:blue">' Define the second center position.</span>
+    Dim oEndCenterTwo As MiniToolbarButton
+    oEndCenterTwo = oControls.AddButton("SecondCenter:", "Second Center:", "Specify the second center of sketch slot")
+    
+    Dim oEndCenterTwoX As MiniToolbarValueEditor
+    oEndCenterTwoX = oControls.AddValueEditor("SecondCenterX", "", kLengthUnits, "", "X:")
+    oEndCenterTwoX.Expression = "3"
+    
+    Dim oEndCenterTwoY As MiniToolbarValueEditor
+    oEndCenterTwoY = oControls.AddValueEditor("SecondCenterY", "", kLengthUnits, "", "Y:")
+    oEndCenterTwoY.Expression = "0"
+    
+    oControls.AddNewLine
+    
+    <span style="color:blue">' Define the width of sketch slot.</span>
+    Dim oWidthValue As MiniToolbarValueEditor
+    oWidthValue = oControls.AddValueEditor("WidthValue", "", kLengthUnits, "", "Width:")
+    oWidthValue.Expression = "1"
+    
+    <span style="color:blue">' Define if display the center line of sketch slot.</span>
+    Dim oDisplayCenterline As MiniToolbarCheckBox
+    oDisplayCenterline = oControls.AddCheckBox("DisplayCenterline", "Display center line", "Check this to display center line of slot", True)
+    
+    <span style="color:blue">' Set the position of mini-toolbar</span>
+    Dim oPosition As Point2d
+    oPosition = ThisApplication.TransientGeometry.CreatePoint2d(ThisApplication.ActiveView.Left, ThisApplication.ActiveView.Top)
+    oMiniToolbar.Position = oPosition
+    
+    oMiniToolbar.Visible = True
+    
+    Dim oMiniToolbarEvents As New clsMiniToolbarEvents
+    
+    Call oMiniToolbarEvents.Init(oMiniToolbar, ThisApplication)
+
+End Sub
+
+Class clsMiniToolbarEvents
+	Private ThisApplication As Inventor.Application
+	Private WithEvents m_EndCenterOneX As MiniToolbarValueEditor
+	Private WithEvents m_EndCenterOneY As MiniToolbarValueEditor
+	Private WithEvents m_EndCenterSecondX As MiniToolbarValueEditor
+	Private WithEvents m_EndCenterSecondY As MiniToolbarValueEditor
+	Private WithEvents m_Width As MiniToolbarValueEditor
+	Private WithEvents m_MiniToolbar As MiniToolbar
+	Private oDisplayCenterline As MiniToolbarCheckBox
+	Private m_Sketch As Sketch
+	Private bCenterline As Boolean
+	Private bStop As Boolean
+	
+	Public Sub Init(oMiniToolbar As MiniToolbar, oApp As Inventor.Application)
+	    ThisApplication = oApp
+		m_MiniToolbar = oMiniToolbar
+	    
+	    m_EndCenterOneX = m_MiniToolbar.Controls.Item("FirstCenterX")
+	    m_EndCenterOneY = m_MiniToolbar.Controls.Item("FirstCenterY")
+	    m_EndCenterSecondX = m_MiniToolbar.Controls.Item("SecondCenterX")
+	    m_EndCenterSecondY = m_MiniToolbar.Controls.Item("SecondCenterY")
+	    m_Width = m_MiniToolbar.Controls.Item("WidthValue")
+	    
+	    oDisplayCenterline = m_MiniToolbar.Controls.Item("DisplayCenterline")
+	    
+	    
+	    m_Sketch = ThisApplication.ActiveEditObject
+	    bStop = False
+	    
+	    Do
+	        ThisApplication.UserInterfaceManager.DoEvents
+	
+	    Loop Until bStop
+	    
+	End Sub
+	
+	
+	Private Sub m_MiniToolbar_OnApply() Handles m_MiniToolbar.OnApply
+	    CreateSlot
+	End Sub
+	
+	Private Sub m_MiniToolbar_OnCancel() Handles m_MiniToolbar.OnCancel
+	    bStop = True
+	End Sub
+	
+	 
+	Private Sub m_MiniToolbar_OnOK() Handles m_MiniToolbar.OnOK 
+	    bStop = True
+	    CreateSlot()
+	End Sub
+	
+	Private Sub CreateSlot()
+	    If Not (m_EndCenterOneX.IsExpressionValid And m_EndCenterOneY.IsExpressionValid And m_EndCenterSecondX.IsExpressionValid And m_EndCenterSecondY.IsExpressionValid) Then
+	        MsgBox("Invalid values for end center positions!")
+	        Exit Sub
+	    End If
+	    
+	    bCenterline = oDisplayCenterline.Checked
+	    
+	    Dim oTG As TransientGeometry
+	    oTG = ThisApplication.TransientGeometry
+	    
+	    Dim oEndCenterOne As Point2d
+	    Dim oEndCenterTwo As Point2d
+	   
+	    <span style="color:blue">' Start transaction for creating slot.</span>
+	    Dim oTransaction As Transaction
+	    oTransaction = ThisApplication.TransactionManager.StartTransaction(ThisApplication.ActiveDocument, "Create slot")
+	                   
+	        <span style="color:blue">' If the two centers are vertical</span>
+	        If Abs(m_EndCenterOneX.Value - m_EndCenterSecondX.Value) &lt; 0.000001 Then
+	            If (m_EndCenterOneY.Value &gt; m_EndCenterSecondY.Value) Then
+	                oEndCenterOne = oTG.CreatePoint2d(m_EndCenterOneX.Value, m_EndCenterOneY.Value)
+	                oEndCenterTwo = oTG.CreatePoint2d(m_EndCenterSecondX.Value, m_EndCenterSecondY.Value)
+	            Else
+	                oEndCenterOne = oTG.CreatePoint2d(m_EndCenterSecondX.Value, m_EndCenterSecondY.Value)
+	                oEndCenterTwo = oTG.CreatePoint2d(m_EndCenterOneX.Value, m_EndCenterOneY.Value)
+	            End If
+	            
+	            If oEndCenterOne.IsEqualTo(oEndCenterTwo, 0.000001) Then
+	                MsgBox("The two centers are coincident!")
+	                Exit Sub
+	            End If
+	             
+	            <span style="color:blue">' Create the top arc</span>
+	            oEndArcOne = m_Sketch.SketchArcs.AddByCenterStartEndPoint(oEndCenterOne, oTG.CreatePoint2d(oEndCenterOne.X + 0.1, oEndCenterOne.Y), oTG.CreatePoint2d(oEndCenterOne.X - 0.1, oEndCenterOne.Y))
+	            <span style="color:blue">' Create the bottom arc</span>
+	            oEndArcTwo = m_Sketch.SketchArcs.AddByCenterStartEndPoint(oEndCenterTwo, oTG.CreatePoint2d(oEndCenterTwo.X - 0.1, oEndCenterTwo.Y), oTG.CreatePoint2d(oEndCenterTwo.X + 0.1, oEndCenterTwo.Y))
+	        <span style="color:blue">'If the two centers are not vertical</span>
+	        Else
+	            If m_EndCenterOneX.Value &lt; m_EndCenterSecondX.Value Then
+	                oEndCenterOne = oTG.CreatePoint2d(m_EndCenterOneX.Value, m_EndCenterOneY.Value)
+	                oEndCenterTwo = oTG.CreatePoint2d(m_EndCenterSecondX.Value, m_EndCenterSecondY.Value)
+	            ElseIf m_EndCenterOneX.Value &gt; m_EndCenterSecondX.Value Then
+	                oEndCenterOne = oTG.CreatePoint2d(m_EndCenterSecondX.Value, m_EndCenterSecondY.Value)
+	                oEndCenterTwo = oTG.CreatePoint2d(m_EndCenterOneX.Value, m_EndCenterOneY.Value)
+	            End If
+	            
+	            If oEndCenterOne.IsEqualTo(oEndCenterTwo, 0.000001) Then
+	                MsgBox("The two centers are coincident!")
+	                Exit Sub
+	            End If
+	            
+	            oEndArcOne = m_Sketch.SketchArcs.AddByCenterStartEndPoint(oEndCenterOne, oTG.CreatePoint2d(m_EndCenterOneX.Value, m_EndCenterOneY.Value + 0.1), oTG.CreatePoint2d(m_EndCenterOneX.Value, m_EndCenterOneY.Value - 0.1))
+	            oEndArcTwo = m_Sketch.SketchArcs.AddByCenterStartEndPoint(oEndCenterTwo, oTG.CreatePoint2d(m_EndCenterSecondX.Value, m_EndCenterSecondY.Value + 0.1), oTG.CreatePoint2d(m_EndCenterSecondX.Value, m_EndCenterSecondY.Value - 0.1), False)
+	               
+	        
+	        End If
+	    
+	        Dim dWidth As Double
+	        dWidth = m_Width.Value
+	    
+	    
+	        <span style="color:blue">' Create center line if required</span>
+	        If bCenterline Then
+	            Dim oCenterline As SketchLine
+	            oCenterline = m_Sketch.SketchLines.AddByTwoPoints(oEndArcOne.CenterSketchPoint, oEndArcTwo.CenterSketchPoint)
+	         
+	            oCenterline.Construction = True
+	        End If
+	        
+	        
+	        Dim oGround1 As GroundConstraint
+	        Dim oGround2 As GroundConstraint
+	        oGround1 = m_Sketch.GeometricConstraints.AddGround(oEndArcOne.CenterSketchPoint)
+	        oGround2 = m_Sketch.GeometricConstraints.AddGround(oEndArcTwo.CenterSketchPoint)
+	        
+	        <span style="color:blue">' Create sketch lines of slot</span>
+	        Dim oLine1 As SketchLine
+	        Dim oLine2 As SketchLine
+	        oLine1 = m_Sketch.SketchLines.AddByTwoPoints(oEndArcOne.StartSketchPoint, oEndArcTwo.EndSketchPoint)
+	        oLine2 = m_Sketch.SketchLines.AddByTwoPoints(oEndArcOne.EndSketchPoint, oEndArcTwo.StartSketchPoint)
+	        
+	        <span style="color:blue">' Add geometric constraints to the sketch entities</span>
+	        Call m_Sketch.GeometricConstraints.AddEqualRadius(oEndArcOne, oEndArcTwo)
+	        Call m_Sketch.GeometricConstraints.AddTangent(oLine1, oEndArcOne)
+	        Call m_Sketch.GeometricConstraints.AddTangent(oLine1, oEndArcTwo)
+	        Call m_Sketch.GeometricConstraints.AddTangent(oLine2, oEndArcOne)
+	        Call m_Sketch.GeometricConstraints.AddTangent(oLine2, oEndArcTwo)
+	        
+	        <span style="color:blue">' Add dimensional constraints to the sketch entities</span>
+	        Dim oDiameter As DiameterDimConstraint
+	        oDiameter = m_Sketch.DimensionConstraints.AddDiameter(oEndArcOne, oEndArcOne.CenterSketchPoint.Geometry)
+	        oDiameter.Parameter.Value = dWidth
+	        
+	        ThisApplication.ActiveDocument.Update
+	        oDiameter.Delete
+	        oGround1.Delete
+	        oGround2.Delete
+	        
+	    oTransaction.End
+	    
+	End Sub
+End Class</pre>
+      </div>
+    </div><br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(MiniToolbarSlotSample_VBA%20Sample%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,115 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/RevisionTableStyle_AddColumn.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="RevisionTableStyle_AddColumn">
+    <meta name="description" content="RevisionTableStyle.AddColumn Method">
+    <meta name="topicid" content="RevisionTableStyle_AddColumn">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>RevisionTableStyle.AddColumn Method</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">RevisionTableStyle.AddColumn Method</h1>
+
+          Parent Object: <a href="RevisionTableStyle.htm">RevisionTableStyle</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Method that adds a column to the list of default columns in the style.</p>
+    <h2 class="api">
+          Syntax
+        </h2>
+        
+            RevisionTableStyle.<b>AddColumn</b>( <b><i>PropertyType</i></b> As <a href="RevisionTablePropertyEnum.htm">RevisionTablePropertyEnum</a>, [<b><i>PropertySetId</i></b>] As String, [<b><i>PropertyIdentifier</i></b>] As Variant, [<b><i>Title</i></b>] As String, [<b><i>Width</i></b>] As Double, [<b><i>TitleHorizontalJustification</i></b>] As <a href="HorizontalTextAlignmentEnum.htm">HorizontalTextAlignmentEnum</a>, [<b><i>ValueHorizontalJustification</i></b>] As <a href="HorizontalTextAlignmentEnum.htm">HorizontalTextAlignmentEnum</a> )
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">PropertyType</td>
+        <td class="api-list"><a href="RevisionTablePropertyEnum.htm">RevisionTablePropertyEnum</a></td>
+        <td class="api-list">Input RevisionTablePropertyEnum that specifies the property type to associate with the column. Valid values are\:<p />kRevisionTableFileProperty, kRevisionTableCustomProperty, kRevisionTableDateProperty, kRevisionTableSheetProperty, kRevisionTableZoneProperty, kRevisionTableZoneSheetProperty and kRevisionTableLtrProperty.<p />If kRevisionTableFileProperty is specified, the PropertySetId and PropertyIdentifier \arguments are required. If kRevisionTableCustomProperty is specified, the PropertyIdentifier argument is required.</td>
+      </tr>
+      <tr>
+        <td class="api-list">PropertySetId</td>
+        <td class="api-list">String</td>
+        <td class="api-list">Optional input String that specifies the internal name of the property set that contains the property. This is the FMTID associated with the property set. This argument is ignored if the input PropertyType is not kRevisionTableFileProperty.<br /><br /> This is an optional argument whose default value is "".</td>
+      </tr>
+      <tr>
+        <td class="api-list">PropertyIdentifier</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional input Variant that identifies a property. This could either be a Long value that specifies the PropId of a property within the specified property set or the name of a property. Typically, a PropId should be specified when the \input PropertyType is kRevisionTableFileProperty and a name should be specified when the input PropertyType is kRevisionTableCustomProperty.<br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+      <tr>
+        <td class="api-list">Title</td>
+        <td class="api-list">String</td>
+        <td class="api-list">Optional input String that specifies the column title. If not specified, the property name is used.<br /><br /> This is an optional argument whose default value is "".</td>
+      </tr>
+      <tr>
+        <td class="api-list">Width</td>
+        <td class="api-list">Double</td>
+        <td class="api-list">Optional input Double that specifies the width of the column. If not specified, the default width value is used. A value of 0 indicates the default width value.<br /><br /> This is an optional argument whose default value is 0.0.</td>
+      </tr>
+      <tr>
+        <td class="api-list">TitleHorizontalJustification</td>
+        <td class="api-list"><a href="HorizontalTextAlignmentEnum.htm">HorizontalTextAlignmentEnum</a></td>
+        <td class="api-list">Optional input HorizontalTextAlignmentEnum that specifies the text justification for the column title.<br /><br /> This is an optional argument whose default value is 19969.</td>
+      </tr>
+      <tr>
+        <td class="api-list">ValueHorizontalJustification</td>
+        <td class="api-list"><a href="HorizontalTextAlignmentEnum.htm">HorizontalTextAlignmentEnum</a></td>
+        <td class="api-list">Optional input HorizontalTextAlignmentEnum that specifies the text justification for the column values.<br /><br /> This is an optional argument whose default value is 19969.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2011<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(RevisionTableStyle.AddColumn%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

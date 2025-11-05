@@ -1,0 +1,115 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/FileAccessEvents_FireOnFileResolution.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="FileAccessEvents_FireOnFileResolution">
+    <meta name="description" content="FileAccessEvents.FireOnFileResolution Method">
+    <meta name="topicid" content="FileAccessEvents_FireOnFileResolution">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>FileAccessEvents.FireOnFileResolution Method</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">FileAccessEvents.FireOnFileResolution Method</h1>
+
+          Parent Object: <a href="FileAccessEvents.htm">FileAccessEvents</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Method that fires the OnFileResolution event.</p>
+    <h2 class="api">
+          Syntax
+        </h2>
+        
+            FileAccessEvents.<b>FireOnFileResolution</b>( <b><i>RelativeFileName</i></b> As String, <b><i>LibraryName</i></b> As String, <b><i>CustomLogicalName</i></b>() As Byte, <b><i>BeforeOrAfter</i></b> As <a href="EventTimingEnum.htm">EventTimingEnum</a>, <b><i>Context</i></b> As <a href="NameValueMap.htm">NameValueMap</a>, <b><i>FullFileName</i></b> As String, <b><i>HandlingCode</i></b> As <a href="HandlingCodeEnum.htm">HandlingCodeEnum</a> )
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">RelativeFileName</td>
+        <td class="api-list">String</td>
+        <td class="api-list">Input the relative filename of the document. This is typically just the filename but may also include relative path information. Inventor uses this in combination with the paths defined by the active project to resolve the location of the file.</td>
+      </tr>
+      <tr>
+        <td class="api-list">LibraryName</td>
+        <td class="api-list">String</td>
+        <td class="api-list">Input string value that indicates the library name if necessary.</td>
+      </tr>
+      <tr>
+        <td class="api-list">CustomLogicalName</td>
+        <td class="api-list">Byte</td>
+        <td class="api-list">Input an array of Bytes that is used by data management systems as a way to associate additional information with a file reference. In the case where a custom logical name was assigned to a reference and the associated document, this argument will return that value. The data management application that originally defined the custom logical name can use this information to help look up the file within the data management system.</td>
+      </tr>
+      <tr>
+        <td class="api-list">BeforeOrAfter</td>
+        <td class="api-list"><a href="EventTimingEnum.htm">EventTimingEnum</a></td>
+        <td class="api-list">Input EventTimingEnum indicating when the event is being fired. This notification is currently only provided before the document is resolved.</td>
+      </tr>
+      <tr>
+        <td class="api-list">Context</td>
+        <td class="api-list"><a href="NameValueMap.htm">NameValueMap</a></td>
+        <td class="api-list">Input NameValueMap object that can be used to determine the context of why the event fired. Additional information is provided through this argument to help in understanding the context of the notification. Name = "DatabaseRevisionId". Value = This value should be ignored. Name = "InternalName". Value = The internal name of the document that was last resolved for this reference. This is the same value returned by the InternalName property of the document that was last used for this reference. Name = "DirectReferencingFileName". Value = This value and the value for TopLevelFilename are related. Looking at a simple example helps to explain the information they provide: In this example there is Part.ipt that's referenced by subassembly Sub.iam, which is referenced by the assembly Top.iam. When you open Top.iam, the other files also need to be resolved and loaded. When Top.iam is opened, an OnFileResolution notification is sent for Sub.iam. For Sub.iam, DirectReferencingFileName will be the full filename of Top.iam because Sub.iam is being loaded because of the direct reference from Top.iam. TopLevelFilename will also be the full filename of Top.iam since that is the top level document that was opened. An OnFileResolution notification is also sent for Part.ipt. In this case, DirectReferencingFileName will be the full filename of Sub.iam since Part.ipt is being loaded because of the direct reference from Sub.iam. TopLevelFilename will be the full filename of Top.iam, since is it the top-level document that caused the loading. Name = "TopLevelFilename". Value = See the description for DirectReferencingFileName.</td>
+      </tr>
+      <tr>
+        <td class="api-list">FullFileName</td>
+        <td class="api-list">String</td>
+        <td class="api-list">Input string that indicates the full filename of the document you want Inventor to load.</td>
+      </tr>
+      <tr>
+        <td class="api-list">HandlingCode</td>
+        <td class="api-list"><a href="HandlingCodeEnum.htm">HandlingCodeEnum</a></td>
+        <td class="api-list">Input HandlingCodeEnum that indicates how you want the client to hande the event. To handle this event and you need to set this argument to kEventHandled. This will cause Inventor to skip its standard resolution and load the file you spescified in the FullFileName argument. Setting the value of this argument to kEventNotHandled (the default) will cause Inventor to use its standard file resolution. Canceling this event is not supported and setting this argument to kEventCanceled has the same effect as kEventNotHandled.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2010<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(FileAccessEvents.FireOnFileResolution%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

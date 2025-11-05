@@ -1,0 +1,129 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/Sheets_AddUsingSheetFormat.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="Sheets_AddUsingSheetFormat">
+    <meta name="description" content="Sheets.AddUsingSheetFormat Method">
+    <meta name="topicid" content="Sheets_AddUsingSheetFormat">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>Sheets.AddUsingSheetFormat Method</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">Sheets.AddUsingSheetFormat Method</h1>
+
+          Parent Object: <a href="Sheets.htm">Sheets</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Method that creates a new Sheet based on the input format. The newly created Sheet is returned.</p>
+    <h2 class="api">
+            Remarks
+          </h2>Supported values for the Options parameter: <table border=1> <tr><th>Name</th> <th>Value Type</th> <th>Valid document type</th></tr> <tr><td>WeldmentFeatureGroup </td><td>WeldmentFeatureGroupEnum </td><td>Weldment</td></tr> <tr><td>SheetMetalFoldedModel </td><td>Boolean </td><td>Sheet Metal</td></tr> <tr><td>DesignViewRepresentation </td><td>String </td><td>Assembly</td> </tr><tr><td>DesignViewAssociative </td><td>Boolean </td><td>Assembly</td></tr> <tr><td>PositionalRepresentation</td><td>String</td><td>Assembly</td></tr> <tr><td>MemberName</td><td> String </td><td>Part, Assembly</td></tr> </table><h2 class="api">
+          Syntax
+        </h2>
+        
+            Sheets.<b>AddUsingSheetFormat</b>( <b><i>SheetFormat</i></b> As <a href="SheetFormat.htm">SheetFormat</a>, [<b><i>Model</i></b>] As Variant, [<b><i>SheetName</i></b>] As String, [<b><i>AdditionalOptions</i></b>] As Variant, [<b><i>TitleBlockPromptStrings</i></b>] As Variant, [<b><i>BorderPromptStrings</i></b>] As Variant ) As <a href="Sheet.htm">Sheet</a>
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">SheetFormat</td>
+        <td class="api-list"><a href="SheetFormat.htm">SheetFormat</a></td>
+        <td class="api-list">Input Sheet object that specifies the sheet to be used as the template for creating the sheet format.</td>
+      </tr>
+      <tr>
+        <td class="api-list">Model</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional input that specifies the model to create drawings views of. This can either be the model Document object or a string that specifies the FullDocumentName of the model. This is a required input if the input SheetFormat defines at least one drawing view.<br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+      <tr>
+        <td class="api-list">SheetName</td>
+        <td class="api-list">String</td>
+        <td class="api-list">Optional input String that defines the editable portion of the name that is displayed within the browser. If not specified, a default name is assigned to the sheet.<br /><br /> This is an optional argument whose default value is "".</td>
+      </tr>
+      <tr>
+        <td class="api-list">AdditionalOptions</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional input NameValueMap object that specifies additional or advanced options for drawing view creation. See Remarks for supported values.<br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+      <tr>
+        <td class="api-list">TitleBlockPromptStrings</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional input array of Strings that specifies the input strings to use as input for prompted text fields that my be present in the title block definition referenced by the sheet format.&nbsp;The prompt strings and their order are obtained by querying the TextBox objects in the TitleBlockDefinition.&nbsp;The order they’re returned by the TextBoxes collection is the same order the input strings need to be supplied in the TitleBlockPromptStrings array.<br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+      <tr>
+        <td class="api-list">BorderPromptStrings</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional input array of Strings that specifies the input strings to use as input for prompted text fields that my be present in the border definition.&nbsp;The prompt strings and their order are obtained by querying the TextBox objects in the BorderDefinition.&nbsp;The order they’re returned by the TextBoxes collection is the same order the input strings need to be supplied in the BorderPromptStrings array.<br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetFormat_Sample.htm">Create sheet with multiple views</a></td>
+        <td class="api-list">This sample demonstrates the creation of a drawing sheet based on a particular sheet format containing the definition for multiple views.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2009<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(Sheets.AddUsingSheetFormat%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

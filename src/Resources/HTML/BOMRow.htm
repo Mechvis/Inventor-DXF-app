@@ -1,0 +1,173 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/BOMRow.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="BOMRow">
+    <meta name="description" content="BOMRow Object">
+    <meta name="topicid" content="GUID-BOMRow">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>BOMRow Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">BOMRow Object
+			</h1><br><h2 class="api">
+          Description
+        </h2>The BOMRow object represents an item in the BOM based on the parent BOMView.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BOMRow_GetReferenceKey.htm">GetReferenceKey</a></td>
+        <td class="api-list">Method that generates and returns the reference key for this entity.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BOMRow_Application.htm">Application</a></td>
+        <td class="api-list">Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BOMRow_AttributeSets.htm">AttributeSets</a></td>
+        <td class="api-list">Property that returns the AttributeSets collection object associated with this object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BOMRow_BOMStructure.htm">BOMStructure</a></td>
+        <td class="api-list">Gets and sets how the BOM item represented by this row is used/viewed relating to design.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BOMRow_ChildRows.htm">ChildRows</a></td>
+        <td class="api-list">Property that gets the BOMRowsEnumerator object containing the locally-stored rows under this BOMRow. This property will return Nothing for BOMRows in a parts-only view and if there are no sub-rows for this BOMRow.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BOMRow_ComponentDefinitions.htm">ComponentDefinitions</a></td>
+        <td class="api-list">Property that returns the ComponentDefinitions associated with this row in the BOM. These could be part, sheet metal, assembly, weldment or a virtual component definitions. This enumerator will return just one component definition unless this row is a merged one, in which case all associated component definitions are returned. The first component definition in the enumerator is always the primary component definition.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BOMRow_ComponentOccurrences.htm">ComponentOccurrences</a></td>
+        <td class="api-list">Gets the ComponentOccurrences associated with this row in the BOM.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BOMRow_ItemNumber.htm">ItemNumber</a></td>
+        <td class="api-list">Gets and sets the item number of the BOM item.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BOMRow_ItemNumberLocked.htm">ItemNumberLocked</a></td>
+        <td class="api-list">Gets and sets whether the item identifier can be edited.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BOMRow_ItemQuantity.htm">ItemQuantity</a></td>
+        <td class="api-list">Property that gets the number of instances not marked as phantom or reference represented by this BOM row.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BOMRow_Merged.htm">Merged</a></td>
+        <td class="api-list">Property that returns whether this row is a result of a merging multiple rows. If true, the ComponentDefinitions property returns all the associated component definitions. This property will return False for all rows in the data BOMView.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BOMRow_OccurrencePropertySets.htm">OccurrencePropertySets</a></td>
+        <td class="api-list">Read-only property that returns a PropertySets object associated with this BOMRow. This only applies to non merged component rows with Instance Properties.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BOMRow_Parent.htm">Parent</a></td>
+        <td class="api-list">Property that returns the parent BOMView or the BOMRow object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BOMRow_Promoted.htm">Promoted</a></td>
+        <td class="api-list">Property that returns whether this row was promoted (for instance, as a result of the parent subassembly being marked phantom). This property will return False for all rows in the data BOMView.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BOMRow_ReferencedFileDescriptor.htm">ReferencedFileDescriptor</a></td>
+        <td class="api-list">Gets the FileDescriptor for the component referenced by this row. This only applies to non merged component rows and non local components and immediately referenced components. Therefore this would only be useful in the data view.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BOMRow_RolledUp.htm">RolledUp</a></td>
+        <td class="api-list">Indicates whether this row is a result of rolling up multiple promoted rows of the same ComponentDefinition.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BOMRow_TotalQuantity.htm">TotalQuantity</a></td>
+        <td class="api-list">Gets and sets the total quantity of the BOM item.&nbsp;Overrides cannot be set for parts only views.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BOMRow_TotalQuantityOverridden.htm">TotalQuantityOverridden</a></td>
+        <td class="api-list">Gets and sets whether the TotalQuantity property has been overridden.&nbsp;This property can only be set to False, in which case the override on the value will be removed.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BOMRow_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="BOMRowsEnumerator_Item.htm">BOMRowsEnumerator.Item</a>, <a href="DrawingBOMRow_BOMRow.htm">DrawingBOMRow.BOMRow</a><h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BOM_Sample.htm">Using the BOM APIs</a></td>
+        <td class="api-list">This sample demonstrates the Bill of Materials API functionality in assemblies.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 10<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(BOMRow%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

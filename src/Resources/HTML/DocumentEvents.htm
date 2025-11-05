@@ -1,0 +1,120 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/DocumentEvents.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="DocumentEvents">
+    <meta name="description" content="DocumentEvents Object">
+    <meta name="topicid" content="GUID-DocumentEvents">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>DocumentEvents Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">DocumentEvents Object
+			</h1><br><h2 class="api">
+          Description
+        </h2>The DocumentEvents object provides notification of events that take place at the document level, such as activating, closing and saving particular documents.<h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DocumentEvents_Application.htm">Application</a></td>
+        <td class="api-list">Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DocumentEvents_Parent.htm">Parent</a></td>
+        <td class="api-list">Gets the parent object from whom this object can logically be reached.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DocumentEvents_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Events
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DocumentEvents_OnActivate.htm">OnActivate</a></td>
+        <td class="api-list">The OnActivate event notifies a client when the document is activated.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DocumentEvents_OnChange.htm">OnChange</a></td>
+        <td class="api-list">Fires when this document changes, supplying the reasons for change and the context in which this action is being taken.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DocumentEvents_OnChangeSelectSet.htm">OnChangeSelectSet</a></td>
+        <td class="api-list">The OnChangeSelectSet event notifies a client when the contents of the select set have changed.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DocumentEvents_OnClose.htm">OnClose</a></td>
+        <td class="api-list">The Onclose event notifies a client when the document is closed.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DocumentEvents_OnDeactivate.htm">OnDeactivate</a></td>
+        <td class="api-list">The OnDeactivate event notifies a client when the document is being deactivated.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DocumentEvents_OnDelete.htm">OnDelete</a></td>
+        <td class="api-list">The OnDelete event notifies a client when an entity is deleted.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DocumentEvents_OnSave.htm">OnSave</a></td>
+        <td class="api-list">The OnSave event notifies a client whenever the document is saved.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="AssemblyDocument_DocumentEvents.htm">AssemblyDocument.DocumentEvents</a>, <a href="Document_DocumentEvents.htm">Document.DocumentEvents</a>, <a href="DrawingDocument_DocumentEvents.htm">DrawingDocument.DocumentEvents</a>, <a href="PartDocument_DocumentEvents.htm">PartDocument.DocumentEvents</a>, <a href="PresentationDocument_DocumentEvents.htm">PresentationDocument.DocumentEvents</a><h2 class="api">
+            Version
+          </h2>
+        Introduced in version 4<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(DocumentEvents%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

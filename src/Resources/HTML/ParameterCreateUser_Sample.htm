@@ -1,0 +1,134 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/ParameterCreateUser_Sample.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="ParameterCreateUser_Sample">
+    <meta name="description" content="Create user parameters Sample">
+    <meta name="topicid" content="ParameterCreateUser_Sample">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>Create user parameters</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body><script>
+          function copyCode(language) {
+          // Get the pre element for the specified language.
+          var preElement = document.getElementById(language);
+
+          // Get the text from the element and copy it to the clipboard.
+          var preText = preElement.innerText;
+
+          var isIE = /*@cc_on!@*/false || !!document.documentMode;
+
+          if (isIE)
+          {
+            window.clipboardData.setData('Text', preText);
+          }
+          else
+          {
+            navigator.clipboard.writeText(preText);
+          }
+
+          //alert("Code copied to clipboard");
+          }
+        </script><link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">Create user parameters</h1>
+    <h2 class="api">
+          Description
+        </h2>This sample demonstrates creating user parameters using an expression and a value.  A part document must be open and it must not contain user parameters named "NewParam1" and "NewParam2".<h2 class="api">
+          Code Samples
+        </h2>
+    <div id="tabs">
+      <ul>
+        <li><a href="#VBA">VBA</a></li>
+        <li><a href="#iLogic">iLogic</a></li>
+      </ul>
+      <div id="VBA" class="api-code">
+        <table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('VBA_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="VBA_code">Public Sub CreateParameters()
+    <span style="color:blue">' Get the active document.  Assumes a part document is active.</span>
+    Dim partDoc As PartDocument
+    Set partDoc = ThisApplication.ActiveDocument
+    
+    <span style="color:blue">' Get the UserParameters collection</span>
+    Dim userParams As UserParameters
+    Set userParams = partDoc.ComponentDefinition.Parameters.UserParameters
+    
+    <span style="color:blue">' Create a parameter using an expression.  The parameters unit is specified</span>
+    <span style="color:blue">' as millimeters, but the value of the parameter will be 3 inches because</span>
+    <span style="color:blue">' the unit is specified as part of the expression.</span>
+    Dim param As Parameter
+    Set param = userParams.AddByExpression("NewParam1", "3 in", kMillimeterLengthUnits)
+    
+    <span style="color:blue">' Create a parameter using a value.  When setting by value, the value is always</span>
+    <span style="color:blue">' in database units.  In this case it is a length so it will always be in</span>
+    <span style="color:blue">' centimeters.  The units used for the parameter will be the current length units</span>
+    <span style="color:blue">' of the document because it's defined to use the default display length units.</span>
+    Set param = userParams.AddByValue("NewParam2", 3 * 2.54, kDefaultDisplayLengthUnits)
+End Sub</pre>
+      </div>
+      <div id="iLogic" class="api-code">
+        <table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('iLogic_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="iLogic_code">    <span style="color:blue">' Get the active document.  Assumes a part document is active.</span>
+    Dim partDoc As PartDocument
+    partDoc = ThisApplication.ActiveDocument
+    
+    <span style="color:blue">' Get the UserParameters collection</span>
+    Dim userParams As UserParameters
+    userParams = partDoc.ComponentDefinition.Parameters.UserParameters
+    
+    <span style="color:blue">' Create a parameter using an expression.  The parameters unit is specified</span>
+    <span style="color:blue">' as millimeters, but the value of the parameter will be 3 inches because</span>
+    <span style="color:blue">' the unit is specified as part of the expression.</span>
+    Dim param As Parameter
+    param = userParams.AddByExpression("NewParam1", "3 in", kMillimeterLengthUnits)
+    
+    <span style="color:blue">' Create a parameter using a value.  When setting by value, the value is always</span>
+    <span style="color:blue">' in database units.  In this case it is a length so it will always be in</span>
+    <span style="color:blue">' centimeters.  The units used for the parameter will be the current length units</span>
+    <span style="color:blue">' of the document because it's defined to use the default display length units.</span>
+    param = userParams.AddByValue("NewParam2", 3 * 2.54, kDefaultDisplayLengthUnits)</pre>
+      </div>
+    </div><br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(ParameterCreateUser%20Sample%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

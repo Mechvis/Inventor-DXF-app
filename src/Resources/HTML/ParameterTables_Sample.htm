@@ -1,0 +1,182 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/ParameterTables_Sample.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="ParameterTables_Sample">
+    <meta name="description" content="Table Parameters Sample">
+    <meta name="topicid" content="ParameterTables_Sample">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>Table Parameters</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body><script>
+          function copyCode(language) {
+          // Get the pre element for the specified language.
+          var preElement = document.getElementById(language);
+
+          // Get the text from the element and copy it to the clipboard.
+          var preText = preElement.innerText;
+
+          var isIE = /*@cc_on!@*/false || !!document.documentMode;
+
+          if (isIE)
+          {
+            window.clipboardData.setData('Text', preText);
+          }
+          else
+          {
+            navigator.clipboard.writeText(preText);
+          }
+
+          //alert("Code copied to clipboard");
+          }
+        </script><link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">Table Parameters</h1>
+    <h2 class="api">
+          Description
+        </h2>This sample demonstrates how to access the Parameters object, and from it in turn the TableParameters collection that represents the collection of parameters that have been linked/embedded from an external spreadsheet.<h2 class="api">
+          Code Samples
+        </h2>
+    <div id="tabs">
+      <ul>
+        <li><a href="#VBA">VBA</a></li>
+        <li><a href="#iLogic">iLogic</a></li>
+      </ul>
+      <div id="VBA" class="api-code">To run the sample, you need to have a part document open, and the spreadsheet C:\Temp\params.xls must exist. You can also edit the sample to reference another spreadsheet if you prefer. The spreadsheet should contain valid definitions for parameters. For the section of the code that demonstrates changing the reference you also need to create a spreadsheet C:\Temp\newparams.xls, or edit the sample to reference another spreadsheet.<table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('VBA_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="VBA_code">Public Sub TableParameters()
+    Dim oPartDoc As Inventor.PartDocument
+    <span style="color:blue">' Obtain the active document, this assumes that</span>
+    <span style="color:blue">' a part document is active in Inventor</span>
+    Set oPartDoc = ThisApplication.ActiveDocument
+    
+    <span style="color:blue">'Obtain the Parameters collection</span>
+    Dim oParams As Parameters
+    Set oParams = oPartDoc.ComponentDefinition.Parameters
+    
+    <span style="color:blue">' Add a parameter table using an existing spreadsheet.</span>
+    oParams.ParameterTables.AddExcelTable "C:\Temp\params.xls", "A1", True
+    
+    <span style="color:blue">' Accessing a parameters in a linked/embedded file</span>
+    Dim oParamTableFiles As ParameterTables
+    Set oParamTableFiles = oParams.ParameterTables
+    
+    <span style="color:blue">' Traverse through the collection of linked files</span>
+    Dim oParamTableFile As ParameterTable
+    For Each oParamTableFile In oParamTableFiles
+        <span style="color:blue">' Change the linked file to another file</span>
+        If LCase(oParamTableFile.FileName) = "C:\temp\params.xls" Then
+            oParamTableFile.FileName = "C:\Temp\newparams.xls"
+        End If
+
+        <span style="color:blue">' Get the Parameters collection from the file</span>
+        Dim oTableParams As TableParameters
+        Set oTableParams = oParamTableFile.TableParameters
+     
+        <span style="color:blue">' Traverse through the table parameters collection and display them</span>
+        Dim iNumTableParams As Long
+        Debug.Print "TABLE PARAMETER VALUES"
+        For iNumTableParams = 1 To oTableParams.Count
+            <span style="color:blue">' Display the name</span>
+            Debug.Print " Name: " & oTableParams.Item(iNumTableParams).Name
+            
+            <span style="color:blue">' Display the expression</span>
+            Debug.Print " Expression: " & oTableParams.Item(iNumTableParams).Expression
+        
+            <span style="color:blue">' Display the value.  This will be in database units.</span>
+            Debug.Print " Value: " & oTableParams.Item(iNumTableParams).Value
+        Next iNumTableParams
+    Next
+End Sub</pre>
+      </div>
+      <div id="iLogic" class="api-code">To run the sample, you need to have a part document open, and the spreadsheet C:\Temp\params.xls must exist. You can also edit the sample to reference another spreadsheet if you prefer. The spreadsheet should contain valid definitions for parameters. For the section of the code that demonstrates changing the reference you also need to create a spreadsheet C:\Temp\newparams.xls, or edit the sample to reference another spreadsheet.<table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('iLogic_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="iLogic_code">    Dim oPartDoc As Inventor.PartDocument
+    <span style="color:blue">' Obtain the active document, this assumes that</span>
+    <span style="color:blue">' a part document is active in Inventor</span>
+    oPartDoc = ThisApplication.ActiveDocument
+    
+    <span style="color:blue">'Obtain the Parameters collection</span>
+    Dim oParams As Parameters
+    oParams = oPartDoc.ComponentDefinition.Parameters
+    
+    <span style="color:blue">' Add a parameter table using an existing spreadsheet.</span>
+    oParams.ParameterTables.AddExcelTable("C:\Temp\params.xls", "A1", True)
+    
+    <span style="color:blue">' Accessing a parameters in a linked/embedded file</span>
+    Dim oParamTableFiles As ParameterTables
+    oParamTableFiles = oParams.ParameterTables
+    
+    <span style="color:blue">' Traverse through the collection of linked files</span>
+    Dim oParamTableFile As ParameterTable
+    For Each oParamTableFile In oParamTableFiles
+        <span style="color:blue">' Change the linked file to another file</span>
+        If LCase(oParamTableFile.FileName) = "C:\temp\params.xls" Then
+            oParamTableFile.FileName = "C:\Temp\newparams.xls"
+        End If
+
+        <span style="color:blue">' Get the Parameters collection from the file</span>
+        Dim oTableParams As TableParameters
+        oTableParams = oParamTableFile.TableParameters
+     
+        <span style="color:blue">' Traverse through the table parameters collection and display them</span>
+        Dim iNumTableParams As Long
+        Logger.Info("TABLE PARAMETER VALUES")
+
+        For iNumTableParams = 1 To oTableParams.Count
+            <span style="color:blue">' Display the name</span>
+            Logger.Info(" Name: " & oTableParams.Item(iNumTableParams).Name)
+
+            
+            <span style="color:blue">' Display the expression</span>
+            Logger.Info(" Expression: " & oTableParams.Item(iNumTableParams).Expression)
+
+        
+            <span style="color:blue">' Display the value.  This will be in database units.</span>
+            Logger.Info(" Value: " & oTableParams.Item(iNumTableParams).Value)
+
+        Next iNumTableParams
+    Next</pre>
+      </div>
+    </div><br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(ParameterTables%20Sample%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

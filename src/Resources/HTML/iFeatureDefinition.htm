@@ -1,0 +1,124 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/iFeatureDefinition.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="iFeatureDefinition">
+    <meta name="description" content="iFeatureDefinition Object">
+    <meta name="topicid" content="GUID-iFeatureDefinition">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>iFeatureDefinition Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">iFeatureDefinition Object
+			</h1><br><h2 class="api">
+          Description
+        </h2>The iFeatureDefinition object represents the positional and parameter information of an iFeature.<h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="iFeatureDefinition_ActiveTableRow.htm">ActiveTableRow</a></td>
+        <td class="api-list">Gets and sets the row from the table that should be used to specify the sizes for the iFeature instances.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="iFeatureDefinition_Application.htm">Application</a></td>
+        <td class="api-list">Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="iFeatureDefinition_iFeatureInputs.htm">iFeatureInputs</a></td>
+        <td class="api-list">Property that indicates the input information of the iFeature.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="iFeatureDefinition_iFeatureTable.htm">iFeatureTable</a></td>
+        <td class="api-list">Property that returns the table information associated with this iFeature.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="iFeatureDefinition_IsPunchTool.htm">IsPunchTool</a></td>
+        <td class="api-list">Property that specifies if this iFeature has been defined to be used as a punch tool.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="iFeatureDefinition_IsTableDriven.htm">IsTableDriven</a></td>
+        <td class="api-list">Property that specifies if this iFeature is driven by a table.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="iFeatureDefinition_PunchId.htm">PunchId</a></td>
+        <td class="api-list">Property that returns the PunchID associated with this iFeature.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="iFeatureDefinition_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="iFeature_iFeatureDefinition.htm">iFeature.iFeatureDefinition</a>, <a href="iFeatureProxy_iFeatureDefinition.htm">iFeatureProxy.iFeatureDefinition</a>, <a href="iFeatures_CreateiFeatureDefinition.htm">iFeatures.CreateiFeatureDefinition</a>, <a href="PunchToolFeature_iFeatureDefinition.htm">PunchToolFeature.iFeatureDefinition</a>, <a href="PunchToolFeatureProxy_iFeatureDefinition.htm">PunchToolFeatureProxy.iFeatureDefinition</a>, <a href="PunchToolFeatures_CreateiFeatureDefinition.htm">PunchToolFeatures.CreateiFeatureDefinition</a><h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="iFeatures_Sample.htm">Placement of a standard iFeature</a></td>
+        <td class="api-list">This program demonstrates the placement of a standard iFeature in a part.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="iFeatureTable_Sample.htm">Place table driven iFeature</a></td>
+        <td class="api-list">This program demonstrates the placement of a table driven iFeature in a part.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PunchToolFeatures_Add_Sample.htm">Add a punch tool feature</a></td>
+        <td class="api-list">This program demonstrates the creation of a punch tool feature. It uses one of the punch features that's delivered with Inventor. It assumes you already have an existing sheet metal part and have selected a face to place the punch feature on. The selected face should be large so there is room for the punch features.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 6<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(iFeatureDefinition%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,232 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/TranslatorAddIn_Sample.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="TranslatorAddIn_Sample">
+    <meta name="description" content="Export to DWF Sample">
+    <meta name="topicid" content="TranslatorAddIn_Sample">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>Export to DWF</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body><script>
+          function copyCode(language) {
+          // Get the pre element for the specified language.
+          var preElement = document.getElementById(language);
+
+          // Get the text from the element and copy it to the clipboard.
+          var preText = preElement.innerText;
+
+          var isIE = /*@cc_on!@*/false || !!document.documentMode;
+
+          if (isIE)
+          {
+            window.clipboardData.setData('Text', preText);
+          }
+          else
+          {
+            navigator.clipboard.writeText(preText);
+          }
+
+          //alert("Code copied to clipboard");
+          }
+        </script><link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">Export to DWF</h1>
+    <h2 class="api">
+          Description
+        </h2>This sample demonstrates publishing of Inventor files in DWF format.<h2 class="api">
+          Code Samples
+        </h2>
+    <div id="tabs">
+      <ul>
+        <li><a href="#VBA">VBA</a></li>
+        <li><a href="#iLogic">iLogic</a></li>
+      </ul>
+      <div id="VBA" class="api-code">To run this sample, the document to be published must be active. The DWF file is created as C:\temptest.DWF (this can be changed in the code below).<table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('VBA_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="VBA_code">Public Sub PublishDWF()
+    <span style="color:blue">' Get the DWF translator Add-In.</span>
+    Dim DWFAddIn As TranslatorAddIn
+    Set DWFAddIn = ThisApplication.ApplicationAddIns.ItemById("{0AC6FD95-2F4D-42CE-8BE0-8AEA580399E4}")
+
+    <span style="color:blue">'Set a reference to the active document (the document to be published).</span>
+    Dim oDocument As Document
+    Set oDocument = ThisApplication.ActiveDocument
+
+    Dim oContext As TranslationContext
+    Set oContext = ThisApplication.TransientObjects.CreateTranslationContext
+    oContext.Type = kFileBrowseIOMechanism
+
+    <span style="color:blue">' Create a NameValueMap object</span>
+    Dim oOptions As NameValueMap
+    Set oOptions = ThisApplication.TransientObjects.CreateNameValueMap
+
+    <span style="color:blue">' Create a DataMedium object</span>
+    Dim oDataMedium As DataMedium
+    Set oDataMedium = ThisApplication.TransientObjects.CreateDataMedium
+
+    <span style="color:blue">' Check whether the translator has 'SaveCopyAs' options</span>
+    If DWFAddIn.HasSaveCopyAsOptions(oDocument, oContext, oOptions) Then
+
+        oOptions.Value("Launch_Viewer") = 1
+
+        <span style="color:blue">' Other options...</span>
+        <span style="color:blue">'oOptions.Value("Publish_All_Component_Props") = 1</span>
+        <span style="color:blue">'oOptions.Value("Publish_All_Physical_Props") = 1</span>
+        <span style="color:blue">'oOptions.Value("Password") = 0</span>
+
+        If Typeof oDocument Is DrawingDocument Then
+
+            <span style="color:blue">' Drawing options</span>
+            oOptions.Value("Publish_Mode") = kCustomDWFPublish
+            oOptions.Value("Publish_All_Sheets") = 0
+
+            <span style="color:blue">' The specified sheets will be ignored if</span>
+            <span style="color:blue">' the option "Publish_All_Sheets" is True (1)</span>
+            Dim oSheets As NameValueMap
+            Set oSheets = ThisApplication.TransientObjects.CreateNameValueMap
+
+            <span style="color:blue">' Publish the first sheet AND its 3D model</span>
+            Dim oSheet1Options As NameValueMap
+            Set oSheet1Options = ThisApplication.TransientObjects.CreateNameValueMap
+
+            oSheet1Options.Add "Name", "Sheet:1"
+            oSheet1Options.Add "3DModel", True
+            oSheets.Value("Sheet1") = oSheet1Options
+
+            <span style="color:blue">' Publish the third sheet but NOT its 3D model</span>
+            Dim oSheet3Options As NameValueMap
+            Set oSheet3Options = ThisApplication.TransientObjects.CreateNameValueMap
+
+            oSheet3Options.Add "Name", "Sheet3:3"
+            oSheet3Options.Add "3DModel", False
+
+            oSheets.Value("Sheet2") = oSheet3Options
+
+            <span style="color:blue">'Set the sheet options object in the oOptions NameValueMap</span>
+            oOptions.Value("Sheets") = oSheets
+        End If
+
+    End If
+
+    <span style="color:blue">'Set the destination file name</span>
+    oDataMedium.FileName = "c:\temp\test.dwf"
+
+    <span style="color:blue">'Publish document.</span>
+    Call DWFAddIn.SaveCopyAs(oDocument, oContext, oOptions, oDataMedium)
+End Sub</pre>
+      </div>
+      <div id="iLogic" class="api-code">To run this sample, the document to be published must be active. The DWF file is created as C:\temptest.DWF (this can be changed in the code below).<table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('iLogic_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="iLogic_code">    <span style="color:blue">' Get the DWF translator Add-In.</span>
+    Dim DWFAddIn As TranslatorAddIn
+    DWFAddIn = ThisApplication.ApplicationAddIns.ItemById("{0AC6FD95-2F4D-42CE-8BE0-8AEA580399E4}")
+
+    <span style="color:blue">'Set a reference to the active document (the document to be published).</span>
+    Dim oDocument As Document
+    oDocument = ThisApplication.ActiveDocument
+
+    Dim oContext As TranslationContext
+    oContext = ThisApplication.TransientObjects.CreateTranslationContext
+    oContext.Type = kFileBrowseIOMechanism
+
+    <span style="color:blue">' Create a NameValueMap object</span>
+    Dim oOptions As NameValueMap
+    oOptions = ThisApplication.TransientObjects.CreateNameValueMap
+
+    <span style="color:blue">' Create a DataMedium object</span>
+    Dim oDataMedium As DataMedium
+    oDataMedium = ThisApplication.TransientObjects.CreateDataMedium
+
+    <span style="color:blue">' Check whether the translator has 'SaveCopyAs' options</span>
+    If DWFAddIn.HasSaveCopyAsOptions(oDocument, oContext, oOptions) Then
+
+        oOptions.Value("Launch_Viewer") = 1
+
+        <span style="color:blue">' Other options...</span>
+        <span style="color:blue">'oOptions.Value("Publish_All_Component_Props") = 1</span>
+        <span style="color:blue">'oOptions.Value("Publish_All_Physical_Props") = 1</span>
+        <span style="color:blue">'oOptions.Value("Password") = 0</span>
+
+        If Typeof oDocument Is DrawingDocument Then
+
+            <span style="color:blue">' Drawing options</span>
+            oOptions.Value("Publish_Mode") = kCustomDWFPublish
+            oOptions.Value("Publish_All_Sheets") = 0
+
+            <span style="color:blue">' The specified sheets will be ignored if</span>
+            <span style="color:blue">' the option "Publish_All_Sheets" is True (1)</span>
+            Dim oSheets As NameValueMap
+            oSheets = ThisApplication.TransientObjects.CreateNameValueMap
+
+            <span style="color:blue">' Publish the first sheet AND its 3D model</span>
+            Dim oSheet1Options As NameValueMap
+            oSheet1Options = ThisApplication.TransientObjects.CreateNameValueMap
+
+            oSheet1Options.Add("Name", "Sheet:1")
+            oSheet1Options.Add("3DModel", True)
+            oSheets.Value("Sheet1") = oSheet1Options
+
+            <span style="color:blue">' Publish the third sheet but NOT its 3D model</span>
+            Dim oSheet3Options As NameValueMap
+            oSheet3Options = ThisApplication.TransientObjects.CreateNameValueMap
+
+            oSheet3Options.Add("Name", "Sheet3:3")
+            oSheet3Options.Add("3DModel", False)
+
+            oSheets.Value("Sheet2") = oSheet3Options
+
+            <span style="color:blue">'Set the sheet options object in the oOptions NameValueMap</span>
+            oOptions.Value("Sheets") = oSheets
+        End If
+
+    End If
+
+    <span style="color:blue">'Set the destination file name</span>
+    oDataMedium.FileName = "c:\temp\test.dwf"
+
+    <span style="color:blue">'Publish document.</span>
+    Call DWFAddIn.SaveCopyAs(oDocument, oContext, oOptions, oDataMedium)</pre>
+      </div>
+    </div><br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(TranslatorAddIn%20Sample%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

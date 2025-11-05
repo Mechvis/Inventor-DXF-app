@@ -1,0 +1,100 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/DrawingViews_AddProjectedView.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="DrawingViews_AddProjectedView">
+    <meta name="description" content="DrawingViews.AddProjectedView Method">
+    <meta name="topicid" content="DrawingViews_AddProjectedView">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>DrawingViews.AddProjectedView Method</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">DrawingViews.AddProjectedView Method</h1>
+
+          Parent Object: <a href="DrawingViews.htm">DrawingViews</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Method that creates a projected .</p>
+    <h2 class="api">
+          Syntax
+        </h2>
+        
+            DrawingViews.<b>AddProjectedView</b>( <b><i>ParentView</i></b> As <a href="DrawingView.htm">DrawingView</a>, <b><i>Position</i></b> As <a href="Point2d.htm">Point2d</a>, <b><i>ViewStyle</i></b> As <a href="DrawingViewStyleEnum.htm">DrawingViewStyleEnum</a>, [<b><i>Scale</i></b>] As Variant ) As <a href="DrawingView.htm">DrawingView</a>
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">ParentView</td>
+        <td class="api-list"><a href="DrawingView.htm">DrawingView</a></td>
+        <td class="api-list">Input object that specifies the base parent view of the projected view.</td>
+      </tr>
+      <tr>
+        <td class="api-list">Position</td>
+        <td class="api-list"><a href="Point2d.htm">Point2d</a></td>
+        <td class="api-list">Input Point2d that specifies the placement point of the view on the sheet.</td>
+      </tr>
+      <tr>
+        <td class="api-list">ViewStyle</td>
+        <td class="api-list"><a href="DrawingViewStyleEnum.htm">DrawingViewStyleEnum</a></td>
+        <td class="api-list">Input DrawingViewStyleEnum the specifies the display style of the geometry within the view.</td>
+      </tr>
+      <tr>
+        <td class="api-list">Scale</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional input Variant that specifies the drawing view scale factor. If this argument is not specified, the scale is derived from the ParentView.<br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 6<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(DrawingViews.AddProjectedView%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,114 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/SketchLines_AddAsThreePointRectangle.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="SketchLines_AddAsThreePointRectangle">
+    <meta name="description" content="SketchLines.AddAsThreePointRectangle Method">
+    <meta name="topicid" content="SketchLines_AddAsThreePointRectangle">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>SketchLines.AddAsThreePointRectangle Method</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">SketchLines.AddAsThreePointRectangle Method</h1>
+
+          Parent Object: <a href="SketchLines.htm">SketchLines</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Method that creates four lines to represent a rectangle where the base of the rectangle is defined by two points and the height is defined by a third point. The input points for the base can be either Point2d objects defining an X-Y point in space, or an existing SketchPoint object.</p>
+    <h2 class="api">
+            Remarks
+          </h2>If an existing sketch point is input, the lines will become connected to that point. The two base points define the start and end points of the base the line of the rectangle. This base line defines the length and orientation of the rectangle. The height point is always input as a Point2d object and defines the height of the rectangle. The created sketch lines are returned in an SketchEntitiesEnumerator object.<h2 class="api">
+          Syntax
+        </h2>
+        
+            SketchLines.<b>AddAsThreePointRectangle</b>( <b><i>BasePointOne</i></b> As Object, <b><i>BasePointTwo</i></b> As Object, <b><i>HeightPoint</i></b> As <a href="Point2d.htm">Point2d</a> ) As <a href="SketchEntitiesEnumerator.htm">SketchEntitiesEnumerator</a>
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">BasePointOne</td>
+        <td class="api-list">Object</td>
+        <td class="api-list">Input object that defines the first base point of the rectangle. Either a SketchPoint or Point2d object can be used. If an existing sketch point is input, that lines become connected to the point.<p /></td>
+      </tr>
+      <tr>
+        <td class="api-list">BasePointTwo</td>
+        <td class="api-list">Object</td>
+        <td class="api-list">Input object that defines the second base point of the rectangle. Either a SketchPoint or Point2d object can be used. If an existing sketch point is input, the lines become connected to the point.<p /></td>
+      </tr>
+      <tr>
+        <td class="api-list">HeightPoint</td>
+        <td class="api-list"><a href="Point2d.htm">Point2d</a></td>
+        <td class="api-list">Input Point2d object that defines the height of the rectangle. The point can be anywhere in space and the height of the rectangle is computed by finding the shortest distance of this point to an infinite line defined by the two base points.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch_SketchLines_Sample.htm">Sketch Lines</a></td>
+        <td class="api-list">This sample demonstrates creating lines. It uses all of the various methods to create lines, both singly and as rectangles.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 5<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(SketchLines.AddAsThreePointRectangle%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,225 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/SketchPoint.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="SketchPoint">
+    <meta name="description" content="SketchPoint Object">
+    <meta name="topicid" content="GUID-SketchPoint">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>SketchPoint Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">SketchPoint Object
+			</h1>
+              Derived from: <a href="SketchEntity.htm">SketchEntity</a> Object
+            <br><h2 class="api">
+          Description
+        </h2>The SketchPoint object represents a point within a sketch. See the article in the overviews section.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchPoint_Delete.htm">Delete</a></td>
+        <td class="api-list">Method that deletes the sketch entity. This method will fail in the case where this object was created as a result of a derived part. The HasReferenceComponent property can be used to determine when this is the case.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchPoint_GetReferenceKey.htm">GetReferenceKey</a></td>
+        <td class="api-list">Method that generates and returns the reference key for this entity.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchPoint_Merge.htm">Merge</a></td>
+        <td class="api-list">Method that merges this sketch point with the input sketch point. Any objects dependent on this sketch point will change their dependency to the new sketch point.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchPoint_MoveBy.htm">MoveBy</a></td>
+        <td class="api-list">Method that moves the sketch point a delta distance from its current location. Movement of a sketch point is limited by the constraints currently defined on the sketch. If a sketch is partially constrained it will perform the move within the range allowed by the constraints. Because of this, the result of a move may not always be exactly what was specified.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchPoint_MoveTo.htm">MoveTo</a></td>
+        <td class="api-list">Method that moves the sketch point to an explicit X-Y location. Movement of a sketch point is limited by the constraints currently defined on the sketch. If a sketch is partially constrained it will perform the move within the range allowed by the constraints. Because of this, the result of a move may not always be exactly what was specified.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchPoint_Application.htm">Application</a></td>
+        <td class="api-list">Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchPoint_AttachedEntities.htm">AttachedEntities</a></td>
+        <td class="api-list">Property that returns the collection of objects that are connected to this point.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchPoint_AttributeSets.htm">AttributeSets</a></td>
+        <td class="api-list">Property that returns the AttributeSets collection object associated with this object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchPoint_ConnectionPoint.htm">ConnectionPoint</a></td>
+        <td class="api-list">Gets and sets whether the point behaves as a connection point or not.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchPoint_Constraints.htm">Constraints</a></td>
+        <td class="api-list">Property that returns a collection of sketch constraints that are tied directly to this entity. This collection consists of both geometric and dimension constraints.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchPoint_ConstraintStatus.htm">ConstraintStatus</a></td>
+        <td class="api-list">Read-only property that returns the constraint status of the sketch.&nbsp;Possible return values are kFullyConstrainedConstraintStatus, kOverConstrainedConstraintStatus, kUnderConstrainedConstraintStatus, and kUnknownConstraintStatus.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchPoint_Construction.htm">Construction</a></td>
+        <td class="api-list">Gets and sets whether the entity behaves as a construction entity or not.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchPoint_ContainingSketchBlock.htm">ContainingSketchBlock</a></td>
+        <td class="api-list">Property that returns the sketch block that contains this object. This is the same SketchBlock returned as the last item in the SketchBlockPath property. This property returns Nothing if this object does not belong to a sketch block and lives directly under a sketch.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchPoint_DisabledActionTypes.htm">DisabledActionTypes</a></td>
+        <td class="api-list">Gets and sets whether specific user actions are blocked on this sketch geometry.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchPoint_Geometry.htm">Geometry</a></td>
+        <td class="api-list">Property that returns a Point2d geometry object. The object returned represents a snapshot view of the current state of the sketch point.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchPoint_Geometry3d.htm">Geometry3d</a></td>
+        <td class="api-list">Read-only property that returns point geometry that represents this point in model space.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchPoint_HasReferenceComponent.htm">HasReferenceComponent</a></td>
+        <td class="api-list">Property that specifies if the object was created as the result of a derived part.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchPoint_HoleCenter.htm">HoleCenter</a></td>
+        <td class="api-list">Gets and sets whether the point behaves as a hole center or not.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchPoint_InsertionPoint.htm">InsertionPoint</a></td>
+        <td class="api-list">Gets and sets whether the point behaves as an insertion point or not.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchPoint_Layer.htm">Layer</a></td>
+        <td class="api-list">Gets and sets the layer applied to this sketch entity.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchPoint_OwnedBy.htm">OwnedBy</a></td>
+        <td class="api-list">Indicates entity or entities that own this object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchPoint_Parent.htm">Parent</a></td>
+        <td class="api-list">Property that returns the parent sketch of the entity.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchPoint_RangeBox.htm">RangeBox</a></td>
+        <td class="api-list">Property that returns a Box2D object which contains the lower-left and upper-right corners of a rectangle that is guaranteed to enclose this object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchPoint_Reference.htm">Reference</a></td>
+        <td class="api-list">Gets and sets whether this entity is a reference entity or not. It is only valid to set this property to False.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchPoint_ReferenceComponent.htm">ReferenceComponent</a></td>
+        <td class="api-list">Property that returns the ReferenceComponent that resulted in the creation of this feature.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchPoint_ReferencedEntity.htm">ReferencedEntity</a></td>
+        <td class="api-list">Property that returns the object this entity is dependent on. When sketch entities are created by projecting model edges or intersecting the model, the resulting entities are driven by the original model entities and cannot be modified.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchPoint_SketchBlockPath.htm">SketchBlockPath</a></td>
+        <td class="api-list">Property that returns the path of sketch blocks at the leaf of which this sketch object is found. The enumerator returns a count of 0 if the object lives directly under a sketch.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchPoint_SketchOnly.htm">SketchOnly</a></td>
+        <td class="api-list">Gets and sets whether this entity is visible only when editing the sketch.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchPoint_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="HorizontalAlignConstraint_PointOne.htm">HorizontalAlignConstraint.PointOne</a>, <a href="HorizontalAlignConstraint_PointTwo.htm">HorizontalAlignConstraint.PointTwo</a>, <a href="HorizontalAlignConstraintProxy_PointOne.htm">HorizontalAlignConstraintProxy.PointOne</a>, <a href="HorizontalAlignConstraintProxy_PointTwo.htm">HorizontalAlignConstraintProxy.PointTwo</a>, <a href="MidpointConstraint_Point.htm">MidpointConstraint.Point</a>, <a href="MidpointConstraintProxy_Point.htm">MidpointConstraintProxy.Point</a>, <a href="ProfileEntity_EndSketchPoint.htm">ProfileEntity.EndSketchPoint</a>, <a href="ProfileEntity_StartSketchPoint.htm">ProfileEntity.StartSketchPoint</a>, <a href="ProfileEntityProxy_EndSketchPoint.htm">ProfileEntityProxy.EndSketchPoint</a>, <a href="ProfileEntityProxy_StartSketchPoint.htm">ProfileEntityProxy.StartSketchPoint</a>, <a href="SketchArc_CenterSketchPoint.htm">SketchArc.CenterSketchPoint</a>, <a href="SketchArc_EndSketchPoint.htm">SketchArc.EndSketchPoint</a>, <a href="SketchArc_StartSketchPoint.htm">SketchArc.StartSketchPoint</a>, <a href="SketchArcProxy_CenterSketchPoint.htm">SketchArcProxy.CenterSketchPoint</a>, <a href="SketchArcProxy_EndSketchPoint.htm">SketchArcProxy.EndSketchPoint</a>, <a href="SketchArcProxy_StartSketchPoint.htm">SketchArcProxy.StartSketchPoint</a>, <a href="SketchBlockDefinition_InsertionPoint.htm">SketchBlockDefinition.InsertionPoint</a>, <a href="SketchBlockDefinitionProxy_InsertionPoint.htm">SketchBlockDefinitionProxy.InsertionPoint</a>, <a href="SketchCircle_CenterSketchPoint.htm">SketchCircle.CenterSketchPoint</a>, <a href="SketchCircleProxy_CenterSketchPoint.htm">SketchCircleProxy.CenterSketchPoint</a>, <a href="SketchControlPointSpline_ControlPoint.htm">SketchControlPointSpline.ControlPoint</a>, <a href="SketchControlPointSpline_EndSketchPoint.htm">SketchControlPointSpline.EndSketchPoint</a>, <a href="SketchControlPointSpline_StartSketchPoint.htm">SketchControlPointSpline.StartSketchPoint</a>, <a href="SketchControlPointSplineProxy_ControlPoint.htm">SketchControlPointSplineProxy.ControlPoint</a>, <a href="SketchControlPointSplineProxy_EndSketchPoint.htm">SketchControlPointSplineProxy.EndSketchPoint</a>, <a href="SketchControlPointSplineProxy_StartSketchPoint.htm">SketchControlPointSplineProxy.StartSketchPoint</a>, <a href="SketchEllipse_CenterSketchPoint.htm">SketchEllipse.CenterSketchPoint</a>, <a href="SketchEllipseProxy_CenterSketchPoint.htm">SketchEllipseProxy.CenterSketchPoint</a>, <a href="SketchEllipticalArc_CenterSketchPoint.htm">SketchEllipticalArc.CenterSketchPoint</a>, <a href="SketchEllipticalArc_EndSketchPoint.htm">SketchEllipticalArc.EndSketchPoint</a>, <a href="SketchEllipticalArc_StartSketchPoint.htm">SketchEllipticalArc.StartSketchPoint</a>, <a href="SketchEllipticalArcProxy_CenterSketchPoint.htm">SketchEllipticalArcProxy.CenterSketchPoint</a>, <a href="SketchEllipticalArcProxy_EndSketchPoint.htm">SketchEllipticalArcProxy.EndSketchPoint</a>, <a href="SketchEllipticalArcProxy_StartSketchPoint.htm">SketchEllipticalArcProxy.StartSketchPoint</a>, <a href="SketchEquationCurve_EndSketchPoint.htm">SketchEquationCurve.EndSketchPoint</a>, <a href="SketchEquationCurve_StartSketchPoint.htm">SketchEquationCurve.StartSketchPoint</a>, <a href="SketchEquationCurveProxy_EndSketchPoint.htm">SketchEquationCurveProxy.EndSketchPoint</a>, <a href="SketchEquationCurveProxy_StartSketchPoint.htm">SketchEquationCurveProxy.StartSketchPoint</a>, <a href="SketchFixedSpline_EndSketchPoint.htm">SketchFixedSpline.EndSketchPoint</a>, <a href="SketchFixedSpline_StartSketchPoint.htm">SketchFixedSpline.StartSketchPoint</a>, <a href="SketchFixedSplineProxy_EndSketchPoint.htm">SketchFixedSplineProxy.EndSketchPoint</a>, <a href="SketchFixedSplineProxy_StartSketchPoint.htm">SketchFixedSplineProxy.StartSketchPoint</a>, <a href="SketchLine_EndSketchPoint.htm">SketchLine.EndSketchPoint</a>, <a href="SketchLine_StartSketchPoint.htm">SketchLine.StartSketchPoint</a>, <a href="SketchLineProxy_EndSketchPoint.htm">SketchLineProxy.EndSketchPoint</a>, <a href="SketchLineProxy_StartSketchPoint.htm">SketchLineProxy.StartSketchPoint</a>, <a href="SketchOffsetSpline_EndSketchPoint.htm">SketchOffsetSpline.EndSketchPoint</a>, <a href="SketchOffsetSpline_StartSketchPoint.htm">SketchOffsetSpline.StartSketchPoint</a>, <a href="SketchOffsetSplineProxy_EndSketchPoint.htm">SketchOffsetSplineProxy.EndSketchPoint</a>, <a href="SketchOffsetSplineProxy_StartSketchPoint.htm">SketchOffsetSplineProxy.StartSketchPoint</a>, <a href="SketchPointProxy_NativeObject.htm">SketchPointProxy.NativeObject</a>, <a href="SketchPoints_Add.htm">SketchPoints.Add</a>, <a href="SketchPoints_Item.htm">SketchPoints.Item</a>, <a href="SketchSpline_EndSketchPoint.htm">SketchSpline.EndSketchPoint</a>, <a href="SketchSpline_FitPoint.htm">SketchSpline.FitPoint</a>, <a href="SketchSpline_InsertFitPoint.htm">SketchSpline.InsertFitPoint</a>, <a href="SketchSpline_StartSketchPoint.htm">SketchSpline.StartSketchPoint</a>, <a href="SketchSplineHandle_EndSketchPoint.htm">SketchSplineHandle.EndSketchPoint</a>, <a href="SketchSplineHandle_FitPoint.htm">SketchSplineHandle.FitPoint</a>, <a href="SketchSplineHandle_StartSketchPoint.htm">SketchSplineHandle.StartSketchPoint</a>, <a href="SketchSplineHandleProxy_EndSketchPoint.htm">SketchSplineHandleProxy.EndSketchPoint</a>, <a href="SketchSplineHandleProxy_FitPoint.htm">SketchSplineHandleProxy.FitPoint</a>, <a href="SketchSplineHandleProxy_StartSketchPoint.htm">SketchSplineHandleProxy.StartSketchPoint</a>, <a href="SketchSplineProxy_EndSketchPoint.htm">SketchSplineProxy.EndSketchPoint</a>, <a href="SketchSplineProxy_FitPoint.htm">SketchSplineProxy.FitPoint</a>, <a href="SketchSplineProxy_InsertFitPoint.htm">SketchSplineProxy.InsertFitPoint</a>, <a href="SketchSplineProxy_StartSketchPoint.htm">SketchSplineProxy.StartSketchPoint</a>, <a href="SplineFitPointConstraint_Point.htm">SplineFitPointConstraint.Point</a>, <a href="SplineFitPointConstraintProxy_Point.htm">SplineFitPointConstraintProxy.Point</a>, <a href="TextBox_OriginSketchPoint.htm">TextBox.OriginSketchPoint</a>, <a href="TextBoxProxy_OriginSketchPoint.htm">TextBoxProxy.OriginSketchPoint</a>, <a href="ThreePointAngleDimConstraint_PointOne.htm">ThreePointAngleDimConstraint.PointOne</a>, <a href="ThreePointAngleDimConstraint_PointThree.htm">ThreePointAngleDimConstraint.PointThree</a>, <a href="ThreePointAngleDimConstraint_PointTwo.htm">ThreePointAngleDimConstraint.PointTwo</a>, <a href="ThreePointAngleDimConstraintProxy_PointOne.htm">ThreePointAngleDimConstraintProxy.PointOne</a>, <a href="ThreePointAngleDimConstraintProxy_PointThree.htm">ThreePointAngleDimConstraintProxy.PointThree</a>, <a href="ThreePointAngleDimConstraintProxy_PointTwo.htm">ThreePointAngleDimConstraintProxy.PointTwo</a>, <a href="TwoPointDistanceDimConstraint_PointOne.htm">TwoPointDistanceDimConstraint.PointOne</a>, <a href="TwoPointDistanceDimConstraint_PointTwo.htm">TwoPointDistanceDimConstraint.PointTwo</a>, <a href="TwoPointDistanceDimConstraintProxy_PointOne.htm">TwoPointDistanceDimConstraintProxy.PointOne</a>, <a href="TwoPointDistanceDimConstraintProxy_PointTwo.htm">TwoPointDistanceDimConstraintProxy.PointTwo</a>, <a href="VerticalAlignConstraint_PointOne.htm">VerticalAlignConstraint.PointOne</a>, <a href="VerticalAlignConstraint_PointTwo.htm">VerticalAlignConstraint.PointTwo</a>, <a href="VerticalAlignConstraintProxy_PointOne.htm">VerticalAlignConstraintProxy.PointOne</a>, <a href="VerticalAlignConstraintProxy_PointTwo.htm">VerticalAlignConstraintProxy.PointTwo</a><h2 class="api">
+            Derived Classes
+          </h2><a href="SketchPointProxy.htm">SketchPointProxy</a><h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PunchToolFeatures_Add_Sample.htm">Add a punch tool feature</a></td>
+        <td class="api-list">This program demonstrates the creation of a punch tool feature. It uses one of the punch features that's delivered with Inventor. It assumes you already have an existing sheet metal part and have selected a face to place the punch feature on. The selected face should be large so there is room for the punch features.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchedSymbolDefinition_Sample.htm">Create SketchedSymbol Definition</a></td>
+        <td class="api-list">This sample illustrates creating a new sketched symbol definition object and inserting it into the active sheet.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchEntity_Sample.htm">Sketch Display Entities</a></td>
+        <td class="api-list">This sample demonstrates the query functionality available for sketch entities.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 5<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(SketchPoint%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

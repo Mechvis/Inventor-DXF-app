@@ -1,0 +1,178 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/AddOccurrence_Sample.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="AddOccurrence_Sample">
+    <meta name="description" content="Assembly Add Occurrence Sample">
+    <meta name="topicid" content="AddOccurrence_Sample">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>Assembly Add Occurrence</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body><script>
+          function copyCode(language) {
+          // Get the pre element for the specified language.
+          var preElement = document.getElementById(language);
+
+          // Get the text from the element and copy it to the clipboard.
+          var preText = preElement.innerText;
+
+          var isIE = /*@cc_on!@*/false || !!document.documentMode;
+
+          if (isIE)
+          {
+            window.clipboardData.setData('Text', preText);
+          }
+          else
+          {
+            navigator.clipboard.writeText(preText);
+          }
+
+          //alert("Code copied to clipboard");
+          }
+        </script><link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">Assembly Add Occurrence</h1>
+    <h2 class="api">
+          Description
+        </h2>This sample demonstrates placing an assembly occurrence.<h2 class="api">
+          Code Samples
+        </h2>
+    <div id="tabs">
+      <ul>
+        <li><a href="#VBA">VBA</a></li>
+        <li><a href="#iLogic">iLogic</a></li>
+        <li><a href="#C#">C#</a></li>
+      </ul>
+      <div id="VBA" class="api-code">Before running the sample, you need to open an assembly and create a part file called C:\Temp\Part1.ipt, or edit the sample code to point to another part file if desired.<table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('VBA_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="VBA_code">Public Sub AddOccurrence()
+    <span style="color:blue">' Set a reference to the assembly component definintion.</span>
+    <span style="color:blue">' This assumes an assembly document is open.</span>
+    Dim oAsmCompDef As AssemblyComponentDefinition
+    Set oAsmCompDef = ThisApplication.ActiveDocument.ComponentDefinition
+
+    <span style="color:blue">' Set a reference to the transient geometry object.</span>
+    Dim oTG As TransientGeometry
+    Set oTG = ThisApplication.TransientGeometry
+
+    <span style="color:blue">' Create a matrix.  A new matrix is initialized with an identity matrix.</span>
+    Dim oMatrix As Matrix
+    Set oMatrix = oTG.CreateMatrix
+
+    <span style="color:blue">' Set the rotation of the matrix for a 45 degree rotation about the Z axis.</span>
+    Call oMatrix.SetToRotation(3.14159265358979 / 4, _
+                            oTG.CreateVector(0, 0, 1), oTG.CreatePoint(0, 0, 0))
+
+    <span style="color:blue">' Set the translation portion of the matrix so the part will be positioned</span>
+    <span style="color:blue">' at (3,2,1).</span>
+    Call oMatrix.SetTranslation(oTG.CreateVector(3, 2, 1))
+
+    <span style="color:blue">' Add the occurrence.</span>
+    Dim oOcc As ComponentOccurrence
+    Set oOcc = oAsmCompDef.Occurrences.Add("C:\Temp\Part1.ipt", oMatrix)
+End Sub</pre>
+      </div>
+      <div id="iLogic" class="api-code">Before running the sample, you need to open an assembly and create a part file called C:\Temp\Part1.ipt, or edit the sample code to point to another part file if desired.<table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('iLogic_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="iLogic_code">    <span style="color:blue">' Set a reference to the assembly component definintion.</span>
+    <span style="color:blue">' This assumes an assembly document is open.</span>
+    Dim oAsmCompDef As AssemblyComponentDefinition
+    oAsmCompDef = ThisApplication.ActiveDocument.ComponentDefinition
+
+    <span style="color:blue">' Set a reference to the transient geometry object.</span>
+    Dim oTG As TransientGeometry
+    oTG = ThisApplication.TransientGeometry
+
+    <span style="color:blue">' Create a matrix.  A new matrix is initialized with an identity matrix.</span>
+    Dim oMatrix As Matrix
+    oMatrix = oTG.CreateMatrix
+
+    <span style="color:blue">' Set the rotation of the matrix for a 45 degree rotation about the Z axis.</span>
+    Call oMatrix.SetToRotation(3.14159265358979 / 4, _
+                            oTG.CreateVector(0, 0, 1), oTG.CreatePoint(0, 0, 0))
+
+    <span style="color:blue">' Set the translation portion of the matrix so the part will be positioned</span>
+    <span style="color:blue">' at (3,2,1).</span>
+    Call oMatrix.SetTranslation(oTG.CreateVector(3, 2, 1))
+
+    <span style="color:blue">' Add the occurrence.</span>
+    Dim oOcc As ComponentOccurrence
+    oOcc = oAsmCompDef.Occurrences.Add("C:\Temp\Part1.ipt", oMatrix)</pre>
+      </div>
+      <div id="C#" class="api-code">Before running the sample, you need to open an assembly and create a part file called C:/Temp/Part1.ipt, or edit the sample code to point to another part file if desired. The first line of the C# sample sets the oApp variable to ThisApplication - this should be appropriately changed.<table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('C#_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="C#_code">public void AddOccurrence()
+{
+    Application oApp = ThisApplication;
+
+    <span style="color:blue">// Set a reference to the active assembly document.</span>
+    <span style="color:blue">// This assumes an assembly document is open.</span>
+    AssemblyDocument oDoc = (AssemblyDocument)oApp.ActiveDocument;
+
+    <span style="color:blue">// Set a reference to the assembly component definition.</span>
+    AssemblyComponentDefinition oAsmCompDef = oDoc.ComponentDefinition;
+
+    <span style="color:blue">// Set a reference to the transient geometry object.</span>
+    TransientGeometry oTG = oApp.TransientGeometry;
+
+    <span style="color:blue">// Create a matrix.  A new matrix is initialized with an identity matrix.</span>
+    Matrix oMatrix = oTG.CreateMatrix();
+
+    <span style="color:blue">// Set the rotation of the matrix for a 45 degree rotation about the Z axis.</span>
+    oMatrix.SetToRotation(3.14159265358979 / 4,
+        oTG.CreateVector(0, 0, 1), oTG.CreatePoint(0, 0, 0));
+
+    <span style="color:blue">// Set the translation portion of the matrix so the part will be positioned</span>
+    <span style="color:blue">// at (3,2,1).</span>
+    oMatrix.SetTranslation(oTG.CreateVector(3, 2, 1), true);
+
+    <span style="color:blue">// Add the occurrence.</span>
+    ComponentOccurrence oOcc = oAsmCompDef.Occurrences.Add("C:/Temp/Part1.ipt", oMatrix);
+
+}</pre>
+      </div>
+    </div><br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(AddOccurrence%20Sample%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

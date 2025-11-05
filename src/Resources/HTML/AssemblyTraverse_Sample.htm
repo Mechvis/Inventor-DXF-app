@@ -1,0 +1,217 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/AssemblyTraverse_Sample.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="AssemblyTraverse_Sample">
+    <meta name="description" content="Traverse an Assembly Sample">
+    <meta name="topicid" content="AssemblyTraverse_Sample">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>Traverse an Assembly</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body><script>
+          function copyCode(language) {
+          // Get the pre element for the specified language.
+          var preElement = document.getElementById(language);
+
+          // Get the text from the element and copy it to the clipboard.
+          var preText = preElement.innerText;
+
+          var isIE = /*@cc_on!@*/false || !!document.documentMode;
+
+          if (isIE)
+          {
+            window.clipboardData.setData('Text', preText);
+          }
+          else
+          {
+            navigator.clipboard.writeText(preText);
+          }
+
+          //alert("Code copied to clipboard");
+          }
+        </script><link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">Traverse an Assembly</h1>
+    <h2 class="api">
+          Description
+        </h2>This sample shows how to recursively traverse an assembly and get the count of leaf node components and subassemblies.<h2 class="api">
+          Code Samples
+        </h2>
+    <div id="tabs">
+      <ul>
+        <li><a href="#VBA">VBA</a></li>
+        <li><a href="#iLogic">iLogic</a></li>
+      </ul>
+      <div id="VBA" class="api-code">
+        <table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('VBA_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="VBA_code">Public Sub AssemblyCount()
+    <span style="color:blue">' Set reference to active document.</span>
+    <span style="color:blue">' This assumes the active document is an assembly</span>
+    Dim oDoc As Inventor.AssemblyDocument
+    Set oDoc = ThisApplication.ActiveDocument
+    
+    <span style="color:blue">' Get assembly component definition</span>
+    Dim oCompDef As Inventor.ComponentDefinition
+    Set oCompDef = oDoc.ComponentDefinition
+
+    Dim sMsg As String
+    Dim iLeafNodes As Long
+    Dim iSubAssemblies As Long
+    
+    <span style="color:blue">' Get all occurrences from component definition for Assembly document</span>
+    Dim oCompOcc As ComponentOccurrence
+    For Each oCompOcc In oCompDef.Occurrences
+        <span style="color:blue">' Check if it's child occurrence (leaf node)</span>
+        If oCompOcc.SubOccurrences.Count = 0 Then
+            Debug.Print oCompOcc.Name
+            iLeafNodes = iLeafNodes + 1
+        Else
+            Debug.Print oCompOcc.Name
+            iSubAssemblies = iSubAssemblies + 1
+            Call processAllSubOcc(oCompOcc, _
+                                sMsg, _
+                                iLeafNodes, _
+                                iSubAssemblies) <span style="color:blue">' subassembly</span>
+        End If
+    Next
+    
+    Debug.Print "No of leaf nodes    : " + CStr(iLeafNodes)
+    Debug.Print "No of sub assemblies: " + CStr(iSubAssemblies)
+End Sub
+
+<span style="color:blue">' This function is called for processing sub assembly.  It is called recursively</span>
+<span style="color:blue">' to iterate through the entire assembly tree.</span>
+Private Sub processAllSubOcc(ByVal oCompOcc As ComponentOccurrence, _
+                             ByRef sMsg As String, _
+                             ByRef iLeafNodes As Long, _
+                             ByRef iSubAssemblies As Long)
+    
+    Dim oSubCompOcc As ComponentOccurrence
+    For Each oSubCompOcc In oCompOcc.SubOccurrences
+        <span style="color:blue">' Check if it's child occurrence (leaf node)</span>
+        If oSubCompOcc.SubOccurrences.Count = 0 Then
+            Debug.Print oSubCompOcc.Name
+            iLeafNodes = iLeafNodes + 1
+        Else
+            sMsg = sMsg + oSubCompOcc.Name + vbCr
+            iSubAssemblies = iSubAssemblies + 1
+
+            Call processAllSubOcc(oSubCompOcc, _
+                                  sMsg, _
+                                  iLeafNodes, _
+                                  iSubAssemblies)
+        End If
+    Next
+End Sub</pre>
+      </div>
+      <div id="iLogic" class="api-code">
+        <table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('iLogic_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="iLogic_code">Sub Main
+    <span style="color:blue">' Set reference to active document.</span>
+    <span style="color:blue">' This assumes the active document is an assembly</span>
+    Dim oDoc As Inventor.AssemblyDocument
+    oDoc = ThisApplication.ActiveDocument
+    
+    <span style="color:blue">' Get assembly component definition</span>
+    Dim oCompDef As Inventor.ComponentDefinition
+    oCompDef = oDoc.ComponentDefinition
+
+    Dim sMsg As String
+    Dim iLeafNodes As Long
+    Dim iSubAssemblies As Long
+    
+    <span style="color:blue">' Get all occurrences from component definition for Assembly document</span>
+    Dim oCompOcc As ComponentOccurrence
+    For Each oCompOcc In oCompDef.Occurrences
+        <span style="color:blue">' Check if it's child occurrence (leaf node)</span>
+        If oCompOcc.SubOccurrences.Count = 0 Then
+            Logger.Info(oCompOcc.Name)
+
+            iLeafNodes = iLeafNodes + 1
+        Else
+            Logger.Info(oCompOcc.Name)
+
+            iSubAssemblies = iSubAssemblies + 1
+            Call processAllSubOcc(oCompOcc, _
+                                sMsg, _
+                                iLeafNodes, _
+                                iSubAssemblies) <span style="color:blue">' subassembly</span>
+        End If
+    Next
+    
+    Logger.Info("No of leaf nodes    : " + CStr(iLeafNodes))
+
+    Logger.Info("No of sub assemblies: " + CStr(iSubAssemblies))
+
+End Sub
+
+<span style="color:blue">' This function is called for processing sub assembly.  It is called recursively</span>
+<span style="color:blue">' to iterate through the entire assembly tree.</span>
+Private Sub processAllSubOcc(ByVal oCompOcc As ComponentOccurrence, _
+                             ByRef sMsg As String, _
+                             ByRef iLeafNodes As Long, _
+                             ByRef iSubAssemblies As Long)
+    
+    Dim oSubCompOcc As ComponentOccurrence
+    For Each oSubCompOcc In oCompOcc.SubOccurrences
+        <span style="color:blue">' Check if it's child occurrence (leaf node)</span>
+        If oSubCompOcc.SubOccurrences.Count = 0 Then
+            Logger.Info(oSubCompOcc.Name)
+
+            iLeafNodes = iLeafNodes + 1
+        Else
+            sMsg = sMsg + oSubCompOcc.Name + vbCr
+            iSubAssemblies = iSubAssemblies + 1
+
+            Call processAllSubOcc(oSubCompOcc, _
+                                  sMsg, _
+                                  iLeafNodes, _
+                                  iSubAssemblies)
+        End If
+    Next
+End Sub</pre>
+      </div>
+    </div><br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(AssemblyTraverse%20Sample%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

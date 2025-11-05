@@ -1,0 +1,137 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/DraftAnalyses_Add.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="DraftAnalyses_Add">
+    <meta name="description" content="DraftAnalyses.Add Method">
+    <meta name="topicid" content="DraftAnalyses_Add">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>DraftAnalyses.Add Method</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">DraftAnalyses.Add Method</h1>
+
+          Parent Object: <a href="DraftAnalyses.htm">DraftAnalyses</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Method that creates a new draft analysis. If the draft analysis is created successfully, a DraftAnalysis object corresponding to the newly created draft analysis is returned from this method.</p>
+    <h2 class="api">
+          Syntax
+        </h2>
+        
+            DraftAnalyses.<b>Add</b>( <b><i>StartAngle</i></b> As Double, <b><i>EndAngle</i></b> As Double, <b><i>PullDirection</i></b> As Object, [<b><i>Reversed</i></b>] As Boolean, [<b><i>Faces</i></b>] As Variant, [<b><i>GradientDisplay</i></b>] As Boolean, [<b><i>DisplayQuality</i></b>] As Long, [<b><i>Name</i></b>] As String ) As <a href="DraftAnalysis.htm">DraftAnalysis</a>
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">StartAngle</td>
+        <td class="api-list">Double</td>
+        <td class="api-list">Input Double that defines the start angle for the draft analysis. The units for the input value will be assumed to be radians. If a value in another units (e.g. degrees) or a string expression needs to be used, the methods of the UnitsOfMeasure object can be used to first convert that value to the corresponding double value in radians units. The converted double value in radians units can then be specified as the input value for this argument.</td>
+      </tr>
+      <tr>
+        <td class="api-list">EndAngle</td>
+        <td class="api-list">Double</td>
+        <td class="api-list">Input Double that defines the end angle for the draft analysis. The units for the input value will be assumed to be radians. If a value in another units (e.g. degrees) or a string expression needs to be used, the methods of the UnitsOfMeasure object can be used to first convert that value to the corresponding double value in radians units. The converted double value in radians units can then be specified as the input value for this argument.</td>
+      </tr>
+      <tr>
+        <td class="api-list">PullDirection</td>
+        <td class="api-list">Object</td>
+        <td class="api-list">Input Object that defines the direction in which the draft is applied. This can be any one of the following: * Face &#45; planar, cylindrical, conical or torus <p />For a planar face, the normal direction of the face will be used as the pull direction. For a cylindrical, conical or torus face, the axis direction of the face will be used as the pull direction. * Edge * WorkPlane * WorkAxis <p />Face and edges that belong to surfaces can also be used to specify the pull direction for the draft analysis. The same limitations that apply for the pull direction when creating a draft analysis interactively through the command also apply when creating a draft analysis using the API. <todo /></td>
+      </tr>
+      <tr>
+        <td class="api-list">Reversed</td>
+        <td class="api-list">Boolean</td>
+        <td class="api-list">Optional input Boolean that specifies whether the pull direction of the draft should be reversed. If no value is explicitly specified, then a default value of False will be assumed to indicate that the pull direction will not be reversed.<p /><br /><br /> This is an optional argument whose default value is False.</td>
+      </tr>
+      <tr>
+        <td class="api-list">Faces</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional input Variant that specifies an ObjectCollection containing the faces for the draft analysis. If no value is specified for this argument, then all faces in the part will be used for the draft analysis. If only a specific set of faces need to be used for the draft analysis, then they have to be specified as an ObjectCollection. The input collection can contain a combination of Face and WorkSurface objects. If WorkSurface objects are specified, then all faces of the WorkSurface will be used for the draft analysis.<p /><br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+      <tr>
+        <td class="api-list">GradientDisplay</td>
+        <td class="api-list">Boolean</td>
+        <td class="api-list">Optional input Boolean that specifies whether the draft analysis results should be displayed as a color gradient. If a value of True is specified, then the draft analysis results will be displayed as a color gradient. If a value of False is specified, then the draft analysis results will be displayed as discrete color bands. If no value is explicitly specified, then a default value of False will be assumed to indicate that the draft analysis results should be displayed as discrete color bands.<br /><br /> This is an optional argument whose default value is False.</td>
+      </tr>
+      <tr>
+        <td class="api-list">DisplayQuality</td>
+        <td class="api-list">Long</td>
+        <td class="api-list">Optional input Long that specifies the resolution or surface quality for the color gradient or color bands that represent the draft analysis results. The value indicates a scale, the valid values are in the range of 0 and 10. The specified value will then be interpreted in terms of the percentage value which is the type of value that is specified interactively through the command. For example, if a value of 1 is specified for this argument, this will be indicate a value of 10 percentage.<br /><br /> This is an optional argument whose default value is 0.</td>
+      </tr>
+      <tr>
+        <td class="api-list">Name</td>
+        <td class="api-list">String</td>
+        <td class="api-list">Optional input String that specifies the name of the draft analysis. If not specified, Inventor assigns a name to the draft analysis.<br /><br /> This is an optional argument whose default value is "".</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DraftAnalyses_Add_Sample.htm">Create a Draft Analysis</a></td>
+        <td class="api-list">This sample demonstrates the creation of a draft analysis in a part.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2009<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(DraftAnalyses.Add%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

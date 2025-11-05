@@ -1,0 +1,122 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/FileAccessEvents_OnFileDirty.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="FileAccessEvents_OnFileDirty">
+    <meta name="description" content="FileAccessEvents.OnFileDirty Event">
+    <meta name="topicid" content="FileAccessEvents_OnFileDirty">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>FileAccessEvents.OnFileDirty Event</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">FileAccessEvents.OnFileDirty Event</h1>
+
+          Parent Object: <a href="FileAccessEvents.htm">FileAccessEvents</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">The OnFileDirty event notifies a client when a document is about to become to dirty.</p>
+    <h2 class="api">
+            Remarks
+          </h2>A document becomes dirty when a change is made to a clean document. A clean document is defined as a document that has not changed since it was last saved. Examples of clean documents are documents that have just been opened and documents that have just been saved. In both cases, a save operation is not needed because the file on disk is the same as the open document. Any change to the open document causes it to be different than the version on disk. When the document changes state of going from clean to dirty this notification is sent. Any subsequent changes to the document do not result in the OnFileDirty notification being sent because the document is already dirty. If the document is saved it will become clean, (the in-memory version of the document matches the version on disk), and the next change will again cause the OnFileDirty event notification to be made. Some of the actions that cause a document to become dirty can be controlled through the Save tab of the Application Options dialog and will impact when this notification is sent.<h2 class="api">
+          Syntax
+        </h2>
+        
+            FileAccessEvents.<b>OnFileDirty</b>( <b><i>RelativeFileName</i></b> As String, <b><i>LibraryName</i></b> As String, <b><i>CustomLogicalName</i></b>() As Byte, <b><i>FullFileName</i></b> As String, <b><i>DocumentObject</i></b> As <a href="Document.htm">Document</a>, <b><i>BeforeOrAfter</i></b> As <a href="EventTimingEnum.htm">EventTimingEnum</a>, <b><i>Context</i></b> As <a href="NameValueMap.htm">NameValueMap</a>, <b><i>HandlingCode</i></b> As <a href="HandlingCodeEnum.htm">HandlingCodeEnum</a> )
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">RelativeFileName</td>
+        <td class="api-list">String</td>
+        <td class="api-list">The relative filename of the document. This is typically just the filename but may also include relative path information.</td>
+      </tr>
+      <tr>
+        <td class="api-list">LibraryName</td>
+        <td class="api-list">String</td>
+        <td class="api-list">If the document is a library part, this argument provides the name of the library as defined in the active project. If it is not a library part this will be an empty string.</td>
+      </tr>
+      <tr>
+        <td class="api-list">CustomLogicalName</td>
+        <td class="api-list">Byte</td>
+        <td class="api-list">An array of Bytes that is used by data management systems as a way to associated additional information with a file reference. In the case where a custom logical name was assigned to a reference and the associated document, this argument will return that value.</td>
+      </tr>
+      <tr>
+        <td class="api-list">FullFileName</td>
+        <td class="api-list">String</td>
+        <td class="api-list">The full filename of the document.</td>
+      </tr>
+      <tr>
+        <td class="api-list">DocumentObject</td>
+        <td class="api-list"><a href="Document.htm">Document</a></td>
+        <td class="api-list">Input object being dirtied.</td>
+      </tr>
+      <tr>
+        <td class="api-list">BeforeOrAfter</td>
+        <td class="api-list"><a href="EventTimingEnum.htm">EventTimingEnum</a></td>
+        <td class="api-list">Input EventTimingEnum indicating when the event is being fired. This notification is currently only provided before the document is dirtied so this is always kBefore.</td>
+      </tr>
+      <tr>
+        <td class="api-list">Context</td>
+        <td class="api-list"><a href="NameValueMap.htm">NameValueMap</a></td>
+        <td class="api-list">Input NameValueMap object that can be used to determine the context of why the event fired. Additional information is provided through this argument to help in understanding the context of the notification.<p /> Name = "AffectedFiles". Value = An array of Strings that contains a list of full filenames of the files being dirtied. Typically this will contain a single filename, but in the case of referenced files, changing one document can also cause others to become dirty. For example, editing a part in the context of the assembly can cause other parts to reposition within other assemblies and in the case of adaptivity can cause parts to update. Each of these documents becomes dirty as a result of editing the single part. This list returns the filenames of the files affected. An OnFileDirty event notification is also made for each document as it is dirtied. <p />Name = "ReasonsForChange". Value = A value from the CommandTypesEnum list, which represents the different categories of changes that can be made. Typically this will be a single value from the list but it can represent multiple values that have been combined together so you need to use bitwise operations to check for a specific change. <p />Name = "Reason". Value = Returns "Update" or "FilesOpened" indicating the dirty reason.&nbsp;<p />Name = "DirtyByRecompute". Value = A Boolean value indicates if the dirty is caused by recompute only.</td>
+      </tr>
+      <tr>
+        <td class="api-list">HandlingCode</td>
+        <td class="api-list"><a href="HandlingCodeEnum.htm">HandlingCodeEnum</a></td>
+        <td class="api-list">Output HandlingCodeEnum that indicates how you are handling the event. This event supports the ability to cancel the dirty by aborting the actions that caused the change. By setting this argument to kEventCanceled Inventor will abort the change.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 4<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(FileAccessEvents.OnFileDirty%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

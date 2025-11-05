@@ -1,0 +1,166 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/InteractionEvents_SetCursor.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="InteractionEvents_SetCursor">
+    <meta name="description" content="InteractionEvents.SetCursor Method">
+    <meta name="topicid" content="InteractionEvents_SetCursor">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>InteractionEvents.SetCursor Method</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">InteractionEvents.SetCursor Method</h1>
+
+          Parent Object: <a href="InteractionEvents.htm">InteractionEvents</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Sets the cursor for the command in which this interaction takes place.</p>
+    <h2 class="api">
+          Syntax
+        </h2>
+        
+            InteractionEvents.<b>SetCursor</b>( <b><i>CursorType</i></b> As <a href="CursorTypeEnum.htm">CursorTypeEnum</a>, [<b><i>Cursor</i></b>] As Variant, [<b><i>CursorHotSpot</i></b>] As Variant )
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">CursorType</td>
+        <td class="api-list"><a href="CursorTypeEnum.htm">CursorTypeEnum</a></td>
+        <td class="api-list">Specify the CursorTypeEnum indicating the cursor type.</td>
+      </tr>
+      <tr>
+        <td class="api-list">Cursor</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Input the cursor.&nbsp;</br></br>
+When the CursorType is specified as kCursorTypeCustom, this is required to be set as String indicating a cursor file(.cur, .ani) name or IPictureDisp object(32x32 pixels). If the CursorType is specified as kCursorTypeWindows, this is required to be set as Long indicating the Windows cursor ID, below table shows the map between the Long value and Windows cursor ID:
+<table border="1">
+&nbsp;<tr>
+&nbsp;&nbsp;&nbsp;<th>Long value</th>
+&nbsp;&nbsp;&nbsp;<th>Windows Cursor Id</th>
+&nbsp;</tr>
+&nbsp;<tr>
+&nbsp;&nbsp;&nbsp;<td>0</td>
+&nbsp;&nbsp;&nbsp;<td>IDC_ARROW</td>
+&nbsp;</tr> <tr>
+&nbsp;&nbsp;&nbsp;<td>1</td>
+&nbsp;&nbsp;&nbsp;<td>IDC_ARROW</td>
+&nbsp;</tr>
+ <tr>
+&nbsp;&nbsp;&nbsp;<td>2</td>
+&nbsp;&nbsp;&nbsp;<td>IDC_CROSS</td>
+&nbsp;</tr>
+ <tr>
+&nbsp;&nbsp;&nbsp;<td>3</td>
+&nbsp;&nbsp;&nbsp;<td>IDC_IBEAM</td>
+&nbsp;</tr>
+ <tr>
+&nbsp;&nbsp;&nbsp;<td>4</td>
+&nbsp;&nbsp;&nbsp;<td>IDC_ARROW</td>
+&nbsp;</tr>
+ <tr>
+&nbsp;&nbsp;&nbsp;<td>5</td>
+&nbsp;&nbsp;&nbsp;<td>IDC_SIZEALL</td>
+&nbsp;</tr>
+ <tr>
+&nbsp;&nbsp;&nbsp;<td>6</td>
+&nbsp;&nbsp;&nbsp;<td>IDC_SIZENESW</td>
+&nbsp;</tr>
+ <tr>
+&nbsp;&nbsp;&nbsp;<td>7</td>
+&nbsp;&nbsp;&nbsp;<td>IDC_SIZENS</td>
+&nbsp;</tr>
+ <tr>
+&nbsp;&nbsp;&nbsp;<td>8</td>
+&nbsp;&nbsp;&nbsp;<td>IDC_SIZENWSE</td>
+&nbsp;</tr>
+ <tr>
+&nbsp;&nbsp;&nbsp;<td>9</td>
+&nbsp;&nbsp;&nbsp;<td>IDC_SIZEWE</td>
+&nbsp;</tr>
+ <tr>
+&nbsp;&nbsp;&nbsp;<td>10</td>
+&nbsp;&nbsp;&nbsp;<td>IDC_UPARROW</td>
+&nbsp;</tr>
+ <tr>
+&nbsp;&nbsp;&nbsp;<td>11</td>
+&nbsp;&nbsp;&nbsp;<td>IDC_WAIT</td>
+&nbsp;</tr>
+<tr>
+&nbsp;&nbsp;&nbsp;<td>12</td>
+&nbsp;&nbsp;&nbsp;<td>IDC_NO</td>
+&nbsp;</tr>
+<tr>
+&nbsp;&nbsp;&nbsp;<td>13</td>
+&nbsp;&nbsp;&nbsp;<td>IDC_WAIT</td>
+&nbsp;</tr>
+<tr>
+&nbsp;&nbsp;&nbsp;<td>14</td>
+&nbsp;&nbsp;&nbsp;<td>IDC_HELP</td>
+&nbsp;</tr>
+<tr>
+&nbsp;&nbsp;&nbsp;<td>15</td>
+&nbsp;&nbsp;&nbsp;<td>IDC_SIZEALL</td>
+&nbsp;</tr>
+
+</table><br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+      <tr>
+        <td class="api-list">CursorHotSpot</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Specify the CursorHotSpotEnum indicating the hotspot location relative to the cursor.<br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 9<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(InteractionEvents.SetCursor%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

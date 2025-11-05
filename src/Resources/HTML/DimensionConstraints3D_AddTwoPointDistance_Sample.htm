@@ -1,0 +1,218 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/DimensionConstraints3D_AddTwoPointDistance_Sample.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="DimensionConstraints3D_AddTwoPointDistance_Sample">
+    <meta name="description" content="Create a 3D sketch dimension Sample">
+    <meta name="topicid" content="DimensionConstraints3D_AddTwoPointDistance_Sample">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>Create a 3D sketch dimension</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body><script>
+          function copyCode(language) {
+          // Get the pre element for the specified language.
+          var preElement = document.getElementById(language);
+
+          // Get the text from the element and copy it to the clipboard.
+          var preText = preElement.innerText;
+
+          var isIE = /*@cc_on!@*/false || !!document.documentMode;
+
+          if (isIE)
+          {
+            window.clipboardData.setData('Text', preText);
+          }
+          else
+          {
+            navigator.clipboard.writeText(preText);
+          }
+
+          //alert("Code copied to clipboard");
+          }
+        </script><link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">Create a 3D sketch dimension</h1>
+    <h2 class="api">
+          Description
+        </h2>This sample demonstrates the creation of a 3d sketch line and a dimension between the start and the end points of the line.<h2 class="api">
+          Code Samples
+        </h2>
+    <div id="tabs">
+      <ul>
+        <li><a href="#VBA">VBA</a></li>
+        <li><a href="#iLogic">iLogic</a></li>
+      </ul>
+      <div id="VBA" class="api-code">To run this sample you must have a 3D sketch active.<table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('VBA_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="VBA_code">Public Sub Create3DSketchDimension()
+    <span style="color:blue">' Check to make sure a 3d sketch is open.</span>
+    If Not Typeof ThisApplication.ActiveEditObject Is Sketch3D Then
+        MsgBox "A 3d sketch must be active."
+        Exit Sub
+    End If
+
+    <span style="color:blue">' Set a reference to the active sketch.</span>
+    Dim oSketch As Sketch3D
+    Set oSketch = ThisApplication.ActiveEditObject
+
+    <span style="color:blue">' Set a reference to the transient geometry collection.</span>
+    Dim oTransGeom As TransientGeometry
+    Set oTransGeom = ThisApplication.TransientGeometry
+
+    <span style="color:blue">' Create a sketch line</span>
+    Dim oSketchLine As SketchLine3D
+    Set oSketchLine = oSketch.SketchLines3D.AddByTwoPoints(oTransGeom.CreatePoint(5, 5, 0), oTransGeom.CreatePoint(10, 10, 20))
+    
+    <span style="color:blue">' Create an object collection and add the end points.</span>
+    Dim oColl As ObjectCollection
+    Set oColl = ThisApplication.TransientObjects.CreateObjectCollection
+   
+    oColl.Add oSketchLine.StartSketchPoint
+    oColl.Add oSketchLine.EndSketchPoint
+    
+    <span style="color:blue">' The text point for the dimension needs to be on a plane</span>
+    <span style="color:blue">' that Inventor internally computes based on the sketch</span>
+    <span style="color:blue">' entities being dimensioned. Get this plane.</span>
+    Dim oDimPlane As Plane
+    Set oDimPlane = oSketch.DimensionConstraints3D.GetDimensionPlane(oColl)
+    
+    <span style="color:blue">' Get the normal of the plane</span>
+    Dim oPlaneNormal As UnitVector
+    Set oPlaneNormal = oDimPlane.Normal
+    
+    <span style="color:blue">' Get the sketch line direction</span>
+    Dim oLineDir As UnitVector
+    Set oLineDir = oSketchLine.Geometry.Direction
+    
+    <span style="color:blue">' Get the direction in which to offset the text point.</span>
+    <span style="color:blue">' (This should be perpendicular to the plane normal</span>
+    <span style="color:blue">' and the line direction).</span>
+    Dim oOffsetDir As UnitVector
+    Set oOffsetDir = oPlaneNormal.CrossProduct(oLineDir)
+    
+    <span style="color:blue">' Get the midpoint of the sketch line</span>
+    Dim oMidPoint As Point
+    Set oMidPoint = oSketchLine.Geometry.MidPoint
+    
+    <span style="color:blue">' Offset the midpoint from the line by a distance.</span>
+    Dim oOffsetPoint As Point
+    Set oOffsetPoint = oMidPoint
+    Call oOffsetPoint.TranslateBy(oOffsetDir.AsVector)
+        
+    <span style="color:blue">' Create the dimension.</span>
+    Dim oTwoPointDim As TwoPointDistanceDimConstraint3D
+    Set oTwoPointDim = oSketch.DimensionConstraints3D.AddTwoPointDistance(oSketchLine.StartSketchPoint, oSketchLine.EndSketchPoint, oOffsetPoint)
+    
+    <span style="color:blue">' Make sure that the dimension text was placed at the specified point.</span>
+    If oOffsetPoint.IsEqualTo(oTwoPointDim.TextPoint) Then
+        MsgBox "Dimension text placed at specified point."
+    End If
+End Sub</pre>
+      </div>
+      <div id="iLogic" class="api-code">To run this sample you must have a 3D sketch active.<table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('iLogic_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="iLogic_code">    <span style="color:blue">' Check to make sure a 3d sketch is open.</span>
+    If Not Typeof ThisApplication.ActiveEditObject Is Sketch3D Then
+        MsgBox("A 3d sketch must be active.")
+        Exit Sub
+    End If
+
+    <span style="color:blue">' Set a reference to the active sketch.</span>
+    Dim oSketch As Sketch3D
+    oSketch = ThisApplication.ActiveEditObject
+
+    <span style="color:blue">' Set a reference to the transient geometry collection.</span>
+    Dim oTransGeom As TransientGeometry
+    oTransGeom = ThisApplication.TransientGeometry
+
+    <span style="color:blue">' Create a sketch line</span>
+    Dim oSketchLine As SketchLine3D
+    oSketchLine = oSketch.SketchLines3D.AddByTwoPoints(oTransGeom.CreatePoint(5, 5, 0), oTransGeom.CreatePoint(10, 10, 20))
+    
+    <span style="color:blue">' Create an object collection and add the end points.</span>
+    Dim oColl As ObjectCollection
+    oColl = ThisApplication.TransientObjects.CreateObjectCollection
+   
+    oColl.Add(oSketchLine.StartSketchPoint)
+    oColl.Add(oSketchLine.EndSketchPoint)
+    
+    <span style="color:blue">' The text point for the dimension needs to be on a plane</span>
+    <span style="color:blue">' that Inventor internally computes based on the sketch</span>
+    <span style="color:blue">' entities being dimensioned. Get this plane.</span>
+    Dim oDimPlane As Plane
+    oDimPlane = oSketch.DimensionConstraints3D.GetDimensionPlane(oColl)
+    
+    <span style="color:blue">' Get the normal of the plane</span>
+    Dim oPlaneNormal As UnitVector
+    oPlaneNormal = oDimPlane.Normal
+    
+    <span style="color:blue">' Get the sketch line direction</span>
+    Dim oLineDir As UnitVector
+    oLineDir = oSketchLine.Geometry.Direction
+    
+    <span style="color:blue">' Get the direction in which to offset the text point.</span>
+    <span style="color:blue">' (This should be perpendicular to the plane normal</span>
+    <span style="color:blue">' and the line direction).</span>
+    Dim oOffsetDir As UnitVector
+    oOffsetDir = oPlaneNormal.CrossProduct(oLineDir)
+    
+    <span style="color:blue">' Get the midpoint of the sketch line</span>
+    Dim oMidPoint As Point
+    oMidPoint = oSketchLine.Geometry.MidPoint
+    
+    <span style="color:blue">' Offset the midpoint from the line by a distance.</span>
+    Dim oOffsetPoint As Point
+    oOffsetPoint = oMidPoint
+    Call oOffsetPoint.TranslateBy(oOffsetDir.AsVector)
+        
+    <span style="color:blue">' Create the dimension.</span>
+    Dim oTwoPointDim As TwoPointDistanceDimConstraint3D
+    oTwoPointDim = oSketch.DimensionConstraints3D.AddTwoPointDistance(oSketchLine.StartSketchPoint, oSketchLine.EndSketchPoint, oOffsetPoint)
+    
+    <span style="color:blue">' Make sure that the dimension text was placed at the specified point.</span>
+    If oOffsetPoint.IsEqualTo(oTwoPointDim.TextPoint) Then
+        MsgBox("Dimension text placed at specified point.")
+    End If</pre>
+      </div>
+    </div><br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(DimensionConstraints3D_AddTwoPointDistance%20Sample%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

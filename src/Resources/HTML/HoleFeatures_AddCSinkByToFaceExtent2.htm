@@ -1,0 +1,121 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/HoleFeatures_AddCSinkByToFaceExtent2.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="HoleFeatures_AddCSinkByToFaceExtent2">
+    <meta name="description" content="HoleFeatures.AddCSinkByToFaceExtent2 Method">
+    <meta name="topicid" content="HoleFeatures_AddCSinkByToFaceExtent2">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>HoleFeatures.AddCSinkByToFaceExtent2 Method</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">HoleFeatures.AddCSinkByToFaceExtent2 Method</h1>
+
+          Parent Object: <a href="HoleFeatures.htm">HoleFeatures</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Method that creates a new countersink HoleFeature using 'to face' extents. The new HoleFeature is returned.</p>
+    <h2 class="api">
+          Syntax
+        </h2>
+        
+            HoleFeatures.<b>AddCSinkByToFaceExtent2</b>( <b><i>PlacementDefinition</i></b> As Object, <b><i>DiameterOrTapInfo</i></b> As Variant, <b><i>ToFace</i></b> As Object, <b><i>ExtendToFace</i></b> As Boolean, <b><i>CSinkDiameter</i></b> As Variant, <b><i>CSinkAngle</i></b> As Variant, [<b><i>DrillPointType</i></b>] As Variant, [<b><i>BottomTipAngle</i></b>] As Variant ) As <a href="HoleFeature.htm">HoleFeature</a>
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">PlacementDefinition</td>
+        <td class="api-list">Object</td>
+        <td class="api-list">Object that defines the centerpoint(s) of the hole feature. This object can be one of the following four objects that derive from the HolePlacementDefinition object: SketchHolePlacementDefinition, LinearHolePlacementDefinition, ConcentricHolePlacementDefinition, PointHolePlacementDefinition. These objects can be created using methods provided on this HoleFeatures object. This argument also supports an ObjectCollection of SketchPoints for compatibility with the older version of this method.</td>
+      </tr>
+      <tr>
+        <td class="api-list">DiameterOrTapInfo</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Defines either the diameter of the hole or the tap information (using a HoleTapInfo object). In the case of a tapped hole, the tap information defines the diameter of the hole. When the diameter is supplied, this can be either a numeric value or a string. A parameter for this value will be created and the supplied string or value is assigned to the parameter. If a value is input, the units are centimeters. If a string is input, the units can be specified as part of the string or it will default to the current length units of the document.</td>
+      </tr>
+      <tr>
+        <td class="api-list">ToFace</td>
+        <td class="api-list">Object</td>
+        <td class="api-list">Input Object that defines the 'to face.' This can be either a or WorkPlane object.</td>
+      </tr>
+      <tr>
+        <td class="api-list">ExtendToFace</td>
+        <td class="api-list">Boolean</td>
+        <td class="api-list">Input Boolean that defines whether the 'to face' should be extended to contain the extents of the hole.</td>
+      </tr>
+      <tr>
+        <td class="api-list">CSinkDiameter</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Input Variant that defines the diameter of the countersink. This can be either a numeric value or a string. A parameter for this value will be created and the supplied string or value is assigned to the parameter. If a value is input, the units are centimeters. If a string is input, the units can be specified as part of the string or it will default to the current length units of the document.</td>
+      </tr>
+      <tr>
+        <td class="api-list">CSinkAngle</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Input Variant that defines the angle of the countersink. This can be either a numeric value or a string. A parameter for this value will be created and the supplied string or value is assigned to the parameter. If a value is input, the units are radians. If a string is input, the units can be specified as part of the string or it will default to the current angle units of the document.</td>
+      </tr>
+      <tr>
+        <td class="api-list">DrillPointType</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional input HoleDrillPointTypeEnum that specifies the drill point of the hole.&nbsp;If specifies an angled drill point then the BottomTipAngle argument needs to be provided to specify the angle.&nbsp;The default value is kFlatDrillPointType.<br /><br /> This is an optional argument whose default value is 126977.</td>
+      </tr>
+      <tr>
+        <td class="api-list">BottomTipAngle</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional input Variant that defines the angle of the tip at the bottom of a hole. This argument is only used when the DrillPointType argument is kAngledDrillPointType, kAngledVDrillPointType or kAngledYDrillPointType.&nbsp;If this argument is not supplied a default value of 118 degrees is assigned.&nbsp;<Br/><Br/>
+This can be either a numeric value or a string.&nbsp;A parameter for this value will be created and the supplied string or value is assigned to the parameter.&nbsp;If a value is input, the units are radians.&nbsp;If a string is input, the units can be specified as part of the string or it will default to the current angle units of the document.<br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2025<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(HoleFeatures.AddCSinkByToFaceExtent2%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

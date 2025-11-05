@@ -1,0 +1,175 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU">
+    <link rel="canonical" href="http://help.autodesk.com/cloudhelp/2026/ENU/Inventor-API/files/Browser_Overview.htm">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="27/4/2016">
+    <meta name="user-comments" content="enable">
+    <meta name="description" content="">
+    <meta name="topicid" content="GUID-C8B15062-86C6-4C62-B87B-679B2729F0FC">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>Browser</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"/>
+    <script type="text/javascript" src="/view/clientframework/client.js"><!--filler--></script>
+	<script>
+	  // This turns on the display of the copyright notice which is not visible by default.
+	  // Because the head is removed when used in the web help, this function will only exists
+	  // when the chm help is being created.
+	  window.onload = function() {
+		copyrightElement = document.getElementById('CopyrightNotice');
+		copyrightElement.style.display = 'block';
+	  };
+	</script>
+</head>
+<body>
+<link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+	
+			<H1 class="dxH1">Browser</h1>
+		
+<h3>Browser Integration</h3>
+
+<p Class="Normal">The browser in Autodesk Inventor is a critical element of the user interface.  Autodesk Inventor uses it to display a hierarchical representation of the contents of the current document.  While this information is useful, there are cases when it is desirable to use this portion of the screen to display other types of information.  For example, a finite element application might choose to show a representation of the constraints and loads currently defined on the model.  </p>
+
+<p Class="Normal">The Autodesk Inventor API allows you to define and interact with the contents of the browser window.  The API supports the ability to create additional panes within the browser. You can also add a tree hierarchy of iconic nodes - see the <A HREF="BrowserNodes_Overview.htm" data-topic-id="GUID-86959D78-4AF2-49A4-861E-D4897CADFD8B">browser nodes</a> overview.</p>
+
+</p>Only one pane is visible at a time, but the user can switch between panes and you can activate different panes using the API.  To create new panes, Autodesk Inventor uses an approach that is both very simple and extremely powerful.  The additional panes that you can add are just ActiveX control containers.  From the API you create a new pane and specify which ActiveX control to display within the pane.  What makes this powerful is the fact that an ActiveX control can contain any type of information and can even consist of other ActiveX controls.  There are a huge number of existing ActiveX controls and it is relatively easy to construct new custom ActiveX controls.</p>
+
+<p Class="Normal">Below is some sample code that illustrates the process of creating and interacting with a new browser pane.  This sample creates a new pane and places Microsoft's ActiveX calendar control within it. (This control was chosen for the sample because it's relatively simple and should already be available on your system.)  It responds to events from the control by displaying the current date as the user clicks on new days within the control.  The picture below displays the result after the pane has been created.</p>
+
+<br>
+<div align="center"> <img src="../images/Browser.png" width=625 height=688 border=0 alt="Browser pane created via API"></div>
+<br>
+<p Class="Normal">For this sample, all of the following code is contained within a form module.  This is not intended to show the only approach to creating a browser pane.  Often this would be done in a class module so you can have a single object that handles all of the browser pane information that is unique to each document.  This sample was written this way to make it easier to focus on the browser pane portion of the code without the complication of other issues.  To make the sample, create a new ActiveX EXE project and copy this code into the form module.</p>
+
+<table Class="Code">
+<tr valign="middle">
+	<td Class="Code">
+	<pre>
+' Declare variable for the calendar control.
+Private WithEvents oCal As MSACAL.Calendar
+
+' Declare global variables for the Inventor document and Application.
+Private WithEvents oDocEvents As DocumentEvents
+Private oPane As BrowserPane
+Private oApp As Inventor.Application
+
+Private Sub Form_Load()
+    ' Set a reference to a running instance of Inventor.
+    ' This expects Inventor to be running.
+    Set oApp = GetObject(, "Inventor.Application")
+    
+    ' Get the active document.  This assumes a document is open.
+    Dim oDoc As Inventor.Document
+    Set oDoc = oApp.ActiveDocument
+    
+    ' Connect to the documents events.  Used to
+    ' listen for when the document is closed.
+    Set oDocEvents = oDoc.DocumentEvents
+
+    ' Create a new browser pane using the Microsoft calendar control.
+    Set oPane = oDoc.BrowserPanes.Add("Calendar", "MSCAL.Calendar")
+    
+    ' Set a reference to the calendar control
+    ' that was created on the pane.
+    Set oCal = oPane.Control
+    
+    ' Set the calendar to today's date.
+    oCal.Today
+    
+    ' Make the new pane the active pane.
+    oPane.Activate
+End Sub</pre></td></tr>
+</table>
+
+<p Class="Normal">The first line is declaring a variable to be the type of the control.  This is declared using the WithEvents keyword, so you'll be able to capture events from the control.  There's one thing to be aware of at this point: in order to declare a variable of this type you must reference the control into your project.  You typically think of referencing controls using the Components command within Visual Basic.  However, because of what appears to be a bug in Visual Basic, if you reference the control this way, you'll get a "Run-time error 13: Type mismatch" error on the line:</p>
+<pre>
+Set oCal = oPane.Control
+</pre>
+<p Class="Normal">To reference the control so you can use it in a browser pane you must use the References command.  The control won't be displayed in the list so you need to click the Browse?button on the References dialog.  The control used in this sample is found in the System32 directory.  By default, .ocx files are not displayed in the file list, so you need to select "ActiveX Controls (*.ocx)" in the "Files of type" list.  This control is "MSCAL.OCX."</p>
+<br>
+<div align="center"> <img src="../images/References.png" width=634 height=364 border=0 ></div>
+<br>
+<p Class="Normal">Let's look at some of the more interesting portions of the code.  The first few lines handle connecting to Autodesk Inventor, getting the active document, and connecting to the document's events.  None of this is specific to creating a new browser pane.  The next few lines are where it gets interesting.  The BrowserPanes.Add method creates the new pane.  It only has two arguments.  The first is the name of the pane.  This is the name that the user sees in the list when selecting panes and what is displayed at the top of the browser when that pane is active.  You can see in the previous picture that "Calendar" is displayed as the browser's title.  The second argument specifies which ActiveX control to place into the new pane.  The control can be specified using either the ProgID, as is done in this sample, or the GUID of the control.  If a GUID is specified it is as a string with the enclosing braces.  For example, "{8E27C92B-1264-101C-8A2F-040224009C02}" would also work in this case. </p>
+
+<p Class="Normal">Just creating the pane and adding the ActiveX control is usually not enough.  Typically you'll need to interact with the control to populate data within it and keep the information up-to-date.  The next line uses the Control property of the BrowserPane object to set a reference to the ActiveX control that was added to the pane.  You now have complete access to the control through whatever methods, properties, and events it exposes.  In the sample it calls the Today method of the control to set the calendar to today's date.  Finally, it activates that pane to make it visible to the user.</p>
+
+<p Class="Normal">The variable that is used to reference the control was declared using the WithEvents keyword to enable receiving events from the control.  The code below is executed whenever the user clicks a date on the calendar.  If the user selects January 1, 2000, it will cause the form to be unloaded.  The code for the Form_Unload event is listed later.</p>
+
+<table Class="Code">
+<tr valign="middle">
+	<td Class="Code">
+	<pre>
+' Event fired when the calendar is clicked
+Private Sub oCal_Click()
+    ' Display the new date in the Inventor status bar.
+    oApp.StatusBarText = "Selected new date: " & _
+                        Format(oCal.Value, "mmmm dd, yyyy")
+                                    
+    ' Check for January 1, 2000 and unload the form.
+    If oCal.Value = #1/1/2000# Then
+        Unload Me
+    End If
+End Sub
+</pre></td></tr>
+</table>
+
+<p Class="Normal">The code below is executed when the document is closed.  It causes the form to be unloaded.</p>
+
+<table Class="Code">
+<tr valign="middle">
+	<td Class="Code">
+	<pre>
+Private Sub oDocEvents_OnClose( _
+                          ByVal BeforeOrAfter As Inventor.EventTimingEnum, _
+                          ByVal Context As Inventor.NameValueMap, _
+                          HandlingCode As Inventor.HandlingCodeEnum)
+    If BeforeOrAfter = kBefore Then
+        Unload Me
+    End If
+End Sub
+</pre></td></tr>
+</table>
+
+<p Class="Normal">The code below is executed when the form is unloaded.  It releases all references and deletes the pane.</p>
+
+<table Class="Code">
+<tr valign="middle">
+	<td Class="Code">
+	<pre>
+Private Sub Form_Unload(Cancel As Integer)
+    Set oCal = Nothing
+    Set oDocEvents = Nothing
+    Set oApp = Nothing
+    oPane.Delete
+End Sub
+</pre></td></tr>
+</table>
+
+<p Class="Normal">The browser is a document-centric object.  The contents of the browser are unique for each document.  When adding panes, they must be added to each document you want the pane to be visible within.  Each pane will have its own instance of the ActiveX control, so each one must be managed independently.  The browser information is not persisted between sessions by Autodesk Inventor.  If you need the data between sessions you'll need to persist the data yourself, create a new pane, and restore the data the next time the document is opened.</p>
+
+<br />
+<br />
+<div id="CopyrightNotice" style="display:none;">
+  <hr />
+  <table width="100%" style="font-size:15">
+	<tr>
+	  <td align="left">
+		&copy; Copyright 2025 Autodesk, Inc.
+	  </td>
+	  <td align="right">
+		<a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(Browser_Overview)">Comment on this page.</a>
+	  </td>
+	</tr>
+  </table>
+</div>
+
+</body>
+</html>

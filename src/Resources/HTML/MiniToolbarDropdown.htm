@@ -1,0 +1,222 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/MiniToolbarDropdown.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="MiniToolbarDropdown">
+    <meta name="description" content="MiniToolbarDropdown Object">
+    <meta name="topicid" content="GUID-MiniToolbarDropdown">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>MiniToolbarDropdown Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">MiniToolbarDropdown Object
+			</h1><br><h2 class="api">
+          Description
+        </h2>The MiniToolbarDropdown object represents a dropdown control within a MiniToolbar.  The pictures below illustrate various types of drop downs.
+<p><center><img src="../images/MiniToolbarDropdown.png" /></center></p><h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="MiniToolbarDropdown_AddItem.htm">AddItem</a></td>
+        <td class="api-list">Method that adds an item to the control.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="MiniToolbarDropdown_AddSeparator.htm">AddSeparator</a></td>
+        <td class="api-list">Method that adds a separator to the control.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="MiniToolbarDropdown_Clear.htm">Clear</a></td>
+        <td class="api-list">Method that removes all the items from the control.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="MiniToolbarDropdown_Delete.htm">Delete</a></td>
+        <td class="api-list">Method that deletes the control.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="MiniToolbarDropdown_RemoveItem.htm">RemoveItem</a></td>
+        <td class="api-list">Method that removes the specified item from the control.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="MiniToolbarDropdown_Application.htm">Application</a></td>
+        <td class="api-list">Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="MiniToolbarDropdown_AutoHide.htm">AutoHide</a></td>
+        <td class="api-list">Read-write property that gets and sets whether the control should be automatically hidden when the user moves the cursor away from the MiniToolbar.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="MiniToolbarDropdown_ControlType.htm">ControlType</a></td>
+        <td class="api-list">Read-only property that returns the control type.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="MiniToolbarDropdown_Count.htm">Count</a></td>
+        <td class="api-list">Read-only property that returns the number of items in the dropdown.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="MiniToolbarDropdown_DisplayName.htm">DisplayName</a></td>
+        <td class="api-list">Read-write property that gets and sets the display name for the control.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="MiniToolbarDropdown_Enabled.htm">Enabled</a></td>
+        <td class="api-list">Read-write property that gets and sets whether the control is enabled.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="MiniToolbarDropdown_HasMRUBehavior.htm">HasMRUBehavior</a></td>
+        <td class="api-list">Read-write property that specifies if this button displays the most recently selected item from the list.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="MiniToolbarDropdown_Index.htm">Index</a></td>
+        <td class="api-list">Read-only property that returns the index this control is currently positioned at within the mini toolbar.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="MiniToolbarDropdown_InternalName.htm">InternalName</a></td>
+        <td class="api-list">Read-only property that returns a string uniquely identifying this control within the toolbar.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="MiniToolbarDropdown_IsSplitButton.htm">IsSplitButton</a></td>
+        <td class="api-list">Read-write property that specifies if this is a split button dropdown control.&nbsp;If True, clicking the button will result in an OnClick event.&nbsp;If this property if False, clicking the button will cause the pop-up to be displayed where the user can click on an item in the list.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="MiniToolbarDropdown_Item.htm">Item</a></td>
+        <td class="api-list">Returns the display name of the specified item from the dropdown.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="MiniToolbarDropdown_LargeIcon.htm">LargeIcon</a></td>
+        <td class="api-list">Read-write property that gets and sets the large icon for the control.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="MiniToolbarDropdown_Parent.htm">Parent</a></td>
+        <td class="api-list">Gets the parent object from whom this object can logically be reached.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="MiniToolbarDropdown_Pressed.htm">Pressed</a></td>
+        <td class="api-list">Read-write property that gets and sets whether the currently selected item is active.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="MiniToolbarDropdown_SelectedIndex.htm">SelectedIndex</a></td>
+        <td class="api-list">Read-write property that gets and sets the index of the item currently selected.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="MiniToolbarDropdown_SelectedItem.htm">SelectedItem</a></td>
+        <td class="api-list">Returns the item currently selected.&nbsp;This can return Nothing in the case where nothing is selected and will always return Nothing in the case where HasMRUBehavior is False.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="MiniToolbarDropdown_ShowIcon.htm">ShowIcon</a></td>
+        <td class="api-list">Read-write property that gets and sets whether the icon associated with the currently selected.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="MiniToolbarDropdown_ShowText.htm">ShowText</a></td>
+        <td class="api-list">Read-write property that gets and sets whether the display name associated with the currently selected item should be displayed on the face of the control.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="MiniToolbarDropdown_StandardIcon.htm">StandardIcon</a></td>
+        <td class="api-list">Read-write property that gets and sets the standard (small) icon for the control.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="MiniToolbarDropdown_ToolTipText.htm">ToolTipText</a></td>
+        <td class="api-list">Read-write property that gets and sets the tooltip text for the control.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="MiniToolbarDropdown_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="MiniToolbarDropdown_Visible.htm">Visible</a></td>
+        <td class="api-list">Read-write property that gets and sets whether the control is visible.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Events
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="MiniToolbarDropdown_OnItemHoverEnd.htm">OnItemHoverEnd</a></td>
+        <td class="api-list">Event that is fired when the user stops hovering over an item in the drop down in the expanded state.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="MiniToolbarDropdown_OnItemHoverStart.htm">OnItemHoverStart</a></td>
+        <td class="api-list">Event that is fired when the user starts to hover over an item in the drop down in the expanded state.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="MiniToolbarDropdown_OnItemRemove.htm">OnItemRemove</a></td>
+        <td class="api-list">Event that is fired when the user removes an item from the dropdown.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="MiniToolbarDropdown_OnPreMenuDisplay.htm">OnPreMenuDisplay</a></td>
+        <td class="api-list">Event that is fired when the user clicks the dropdown in a way where the drop down menu will be displayed.&nbsp;The event is fired just before the contents of the drop down list are shown to the user, so you can dynamically modify the contents of the list.&nbsp;If the IsSplitButton property is True, then clicking on the arrow to the right of the button will cause this event to be fired and display the drop-down list.&nbsp;Clicking the button itself is result in the OnSelect event to be fired.&nbsp;If the IsSplitbutton property is False, clicking the button will cause this event to be fired and display the drop-down list.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="MiniToolbarDropdown_OnSelect.htm">OnSelect</a></td>
+        <td class="api-list">Event that is fired soon after the user changes the currently selected item using the drop down.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="MiniToolbarControls_AddDropdown.htm">MiniToolbarControls.AddDropdown</a><h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2012<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(MiniToolbarDropdown%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

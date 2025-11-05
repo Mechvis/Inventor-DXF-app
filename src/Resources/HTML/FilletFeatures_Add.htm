@@ -1,0 +1,127 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/FilletFeatures_Add.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="FilletFeatures_Add">
+    <meta name="description" content="FilletFeatures.Add Method">
+    <meta name="topicid" content="FilletFeatures_Add">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>FilletFeatures.Add Method</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">FilletFeatures.Add Method</h1>
+
+          Parent Object: <a href="FilletFeatures.htm">FilletFeatures</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Method that creates a new FilletFeature. This method may be used to create fillet features of constant radius, variable radius or a combination of constant and variable radius. Setbacks may also be specified. The new FilletFeature is returned.</p>
+    <h2 class="api">
+          Syntax
+        </h2>
+        
+            FilletFeatures.<b>Add</b>( <b><i>FilletDefinition</i></b> As <a href="FilletDefinition.htm">FilletDefinition</a>, [<b><i>AutomaticEdgeChain</i></b>] As Boolean, [<b><i>SmoothRadiusTransition</i></b>] As Boolean, [<b><i>RollAlongSharpEdges</i></b>] As Boolean, [<b><i>RollingBallWherePossible</i></b>] As Boolean, [<b><i>PreserveAllFeatures</i></b>] As Boolean ) As <a href="FilletFeature.htm">FilletFeature</a>
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">FilletDefinition</td>
+        <td class="api-list"><a href="FilletDefinition.htm">FilletDefinition</a></td>
+        <td class="api-list">Input object that defines the input definition for the fillet feature. The object defines the edges, radii, and setbacks.</td>
+      </tr>
+      <tr>
+        <td class="api-list">AutomaticEdgeChain</td>
+        <td class="api-list">Boolean</td>
+        <td class="api-list">Optional input Boolean that defines if automatic edge chaining along tangentially connected edges should be performed. The default is True.<br /><br /> This is an optional argument whose default value is True.</td>
+      </tr>
+      <tr>
+        <td class="api-list">SmoothRadiusTransition</td>
+        <td class="api-list">Boolean</td>
+        <td class="api-list">Optional input Boolean that applies only to variable radius fillets and defines whether the transition between different radii is to be smooth. For a smooth transition there is a gradual blending transition between the defined radius points and the transitions are tangent. Without a smooth transition, a linear transition is used between radius points. The default is True for a smooth transition.<br /><br /> This is an optional argument whose default value is True.</td>
+      </tr>
+      <tr>
+        <td class="api-list">RollAlongSharpEdges</td>
+        <td class="api-list">Boolean</td>
+        <td class="api-list">Optional input Boolean that sets the solution method for fillets when the specified radius would cause adjacent faces to be extended. When True, the radius will be varied when necessary to preserve the edges of adjacent faces. When False, a constant radius will be maintained and adjacent faces extended as needed. The default is False.<br /><br /> This is an optional argument whose default value is False.</td>
+      </tr>
+      <tr>
+        <td class="api-list">RollingBallWherePossible</td>
+        <td class="api-list">Boolean</td>
+        <td class="api-list">Optional input Boolean that sets the corner style for the fillet. When True, the fillet will be defined as if a ball had been rolled along the edge and around the corners. When False, a continuous tangent transition between fillets in sharp corners is created. The default is True.<br /><br /> This is an optional argument whose default value is True.</td>
+      </tr>
+      <tr>
+        <td class="api-list">PreserveAllFeatures</td>
+        <td class="api-list">Boolean</td>
+        <td class="api-list">Optional input Boolean that specifies if all features that intersect with the fillet are checked and their intersections calculated during the fillet operation. If False, only the edges that are part of the fillet operation are calculated during the operation. The default is False.<br /><br /> This is an optional argument whose default value is False.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FilletFeature2_Sample.htm">Fillet Feature (Complex)</a></td>
+        <td class="api-list">This sample demonstrates creating a complex fillet. The result in this case has several different constant radii fillets and two edges that use variable radius, with one of these having a different radius defined along the edge.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 5.3<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(FilletFeatures.Add%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

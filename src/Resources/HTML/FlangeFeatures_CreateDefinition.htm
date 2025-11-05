@@ -1,0 +1,116 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/FlangeFeatures_CreateDefinition.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="FlangeFeatures_CreateDefinition">
+    <meta name="description" content="FlangeFeatures.CreateDefinition Method">
+    <meta name="topicid" content="FlangeFeatures_CreateDefinition">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>FlangeFeatures.CreateDefinition Method</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">FlangeFeatures.CreateDefinition Method</h1>
+
+          Parent Object: <a href="FlangeFeatures.htm">FlangeFeatures</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Method that creates a new FlangeDefinition object. The object created does not represent a flange feature but instead is a representation of the information that defines a flange feature.&nbsp;You can use this object as input to the FlangeFeatures.Add method to cr.</p>
+    <h2 class="api">
+          Syntax
+        </h2>
+        
+            FlangeFeatures.<b>CreateDefinition</b>( <b><i>Edges</i></b> As <a href="EdgeCollection.htm">EdgeCollection</a>, <b><i>FlangeAngleReferenceType</i></b> As <a href="FlangeReferenceTypeEnum.htm">FlangeReferenceTypeEnum</a>, <b><i>FlangeAngleOrFlangeAngleReferencePlane</i></b> As Variant, [<b><i>FlangePlacementType</i></b>] As Variant, [<b><i>Distance</i></b>] As Variant, [<b><i>Options</i></b>] As Variant ) As <a href="FlangeDefinition.htm">FlangeDefinition</a>
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">Edges</td>
+        <td class="api-list"><a href="EdgeCollection.htm">EdgeCollection</a></td>
+        <td class="api-list">Input EdgeCollection containing Edge objects used to create the flange feature. These Edge objects are in the first edge set for flange feature, the newly created FlangeDefinition can be used to add more FlangeEdgeSet objects. The FlangeEdgeSet object provides functions to set the width extent type, if not changed default kWidthEdgeExtent will be applied for it.</td>
+      </tr>
+      <tr>
+        <td class="api-list">FlangeAngleReferenceType</td>
+        <td class="api-list"><a href="FlangeReferenceTypeEnum.htm">FlangeReferenceTypeEnum</a></td>
+        <td class="api-list">Input FlangeReferenceTypeEnum that defines the flange angle reference type.</td>
+      </tr>
+      <tr>
+        <td class="api-list">FlangeAngleOrFlangeAngleReferencePlane</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Input Variant that defines the angle of the flange. When the FlangeAngleReferenceType is set to kReferencePlaneThroughPartnerEdge, 
+kReferencePlaneThroughSelectedEdge or
+kReferencePlaneAtSideFace, 
+this can be a numeric value or a string to specify the flange angle value. When the FlangeAngleReferenceType is set to kReferenceSelectedFaceOrWorkPlane, this can be a WorkPlane or a Face to specify the flange angle reference plane. If a string or a numeric value is input, a parameter for this value will be created and the supplied string or numeric value is assigned to the parameter. If a numeric value is input, the units are radians. If a string is input, the units can be specified as part of the string or it will default to the current angle units of the document. If a WorkPlane or Face is input, the WorkPlane or Face should be parallel to the flange edge.</td>
+      </tr>
+      <tr>
+        <td class="api-list">FlangePlacementType</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional input DirectionEnum that defines the flange placement type. If not provided the default kOutwardDirection is used.<br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+      <tr>
+        <td class="api-list">Distance</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional input Variant that defines the distance used for the height extent of the flange.&nbsp;When the FlangeDefinition object is created it defaults to a distance height extent.&nbsp;This value is used to define that distance.&nbsp;If you want to define the height using a “to” extent instead you can edit the definition and change it, but to initially create the definition you must still supply an value for the distance.&nbsp;<Br/>
+<Br/>
+
+This can be either a numeric value or a string. A parameter for this value will be created and the supplied string or value is assigned to the parameter. If a value is input, the units are centimeters. If a string is input, the units can be specified as part of the string or it will default to the current length units of the document. If not provided a default value will be used.<br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+      <tr>
+        <td class="api-list">Options</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional input NameValueMap to specify more options. This is reserved for future use.<br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2025<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(FlangeFeatures.CreateDefinition%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

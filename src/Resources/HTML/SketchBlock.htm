@@ -1,0 +1,198 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/SketchBlock.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="SketchBlock">
+    <meta name="description" content="SketchBlock Object">
+    <meta name="topicid" content="GUID-SketchBlock">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>SketchBlock Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">SketchBlock Object
+			</h1><br><h2 class="api">
+          Description
+        </h2>The SketchBlock object represents a sketch block instance within a sketch.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlock_Delete.htm">Delete</a></td>
+        <td class="api-list">Method that deletes the sketch block.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlock_Edit.htm">Edit</a></td>
+        <td class="api-list">Method that activates the sketch block for editing by the user.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlock_ExitEdit.htm">ExitEdit</a></td>
+        <td class="api-list">Method that causes the sketch block to return from the edit mode and into the environment specified by the input argument. If the sketch block is not currently active (i.e. this is not the same block as returned by Application.ActiveEditObject property), then this method does nothing.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlock_Explode.htm">Explode</a></td>
+        <td class="api-list">Method that explodes the contents of the block and deletes the block instance. Note that the contents of the block are retained.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlock_GetCustomLineType.htm">GetCustomLineType</a></td>
+        <td class="api-list">Method that returns information regarding the custom line type in use. The method returns a failure if the return value of the LineType property is not kCustomLineType.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlock_GetObject.htm">GetObject</a></td>
+        <td class="api-list">Method that returns the corresponding object in the sketch block for the given object from it's definition.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlock_GetReferenceKey.htm">GetReferenceKey</a></td>
+        <td class="api-list">Method that generates and returns the reference key for this entity.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlock_SetCustomLineType.htm">SetCustomLineType</a></td>
+        <td class="api-list">Method that sets a custom line type to the curve from the specified .lin file. The method automatically changes the value of LineType property to kCustomLineType.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlock_Application.htm">Application</a></td>
+        <td class="api-list">Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlock_AttributeSets.htm">AttributeSets</a></td>
+        <td class="api-list">Property that returns the AttributeSets collection object associated with this object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlock_ChildBlocks.htm">ChildBlocks</a></td>
+        <td class="api-list">Property that returns an enumerator of SketchBlocks objects found directly under this sketch block.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlock_Color.htm">Color</a></td>
+        <td class="api-list">Gets and sets the color for the sketch block.&nbsp;Setting the property to Nothing restores the sketch block to the default color.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlock_ConstraintStatus.htm">ConstraintStatus</a></td>
+        <td class="api-list">Property that returns the constraint status of the sketch block. Possible return values are kFullyConstrainedConstraintStatus, kOverConstrainedConstraintStatus, kUnderConstrainedConstraintStatus and kUnknownConstraintStatus.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlock_ContainingSketchBlock.htm">ContainingSketchBlock</a></td>
+        <td class="api-list">Property that returns the sketch block that in turn contains this sketch block. This is the same SketchBlock returned as the last item in the SketchBlockPath property. This property \returns Nothing if this sketch block does not belong to another sketch block and lives directly under a sketch.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlock_Definition.htm">Definition</a></td>
+        <td class="api-list">Property that returns the referenced sketch block definition.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlock_Exported.htm">Exported</a></td>
+        <td class="api-list">Read-write property that gets and sets whether the object is exported. Objects must be marked for export in order for them to be derived.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlock_Flexible.htm">Flexible</a></td>
+        <td class="api-list">Gets and sets whether this sketch block is flexible.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlock_HasReferenceComponent.htm">HasReferenceComponent</a></td>
+        <td class="api-list">Property that specifies if the object was created as the result of a derived part.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlock_LineType.htm">LineType</a></td>
+        <td class="api-list">Gets and sets the line type override for the sketch block.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlock_LineWeight.htm">LineWeight</a></td>
+        <td class="api-list">Gets and sets the line weight override for the sketch block.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlock_Name.htm">Name</a></td>
+        <td class="api-list">Gets and sets name of the sketch block.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlock_Parent.htm">Parent</a></td>
+        <td class="api-list">Property that returns the parent sketch of the object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlock_Position.htm">Position</a></td>
+        <td class="api-list">Gets and sets the position of the sketch block.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlock_ReferenceComponent.htm">ReferenceComponent</a></td>
+        <td class="api-list">Property that returns the ReferenceComponent that resulted in the creation of this feature.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlock_ReferencedEntity.htm">ReferencedEntity</a></td>
+        <td class="api-list">Property that returns the referenced sketch block, if there is one. Else, the property returns Nothing.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlock_SketchBlockPath.htm">SketchBlockPath</a></td>
+        <td class="api-list">Property that returns the path of sketch blocks at the leaf of which this sketch block is found. The enumerator returns a count of 0 if the block lives directly under a sketch. The path does not include this sketch block itself.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlock_Transformation.htm">Transformation</a></td>
+        <td class="api-list">Gets and sets the transformation matrix for the sketch block.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlock_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlock_Visible.htm">Visible</a></td>
+        <td class="api-list">Gets and sets whether this sketch block is visible.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="SketchArc_ContainingSketchBlock.htm">SketchArc.ContainingSketchBlock</a>, <a href="SketchArcProxy_ContainingSketchBlock.htm">SketchArcProxy.ContainingSketchBlock</a>, <a href="SketchBlock_ContainingSketchBlock.htm">SketchBlock.ContainingSketchBlock</a>, <a href="SketchBlock_ReferencedEntity.htm">SketchBlock.ReferencedEntity</a>, <a href="SketchBlockProxy_ContainingSketchBlock.htm">SketchBlockProxy.ContainingSketchBlock</a>, <a href="SketchBlockProxy_NativeObject.htm">SketchBlockProxy.NativeObject</a>, <a href="SketchBlockProxy_ReferencedEntity.htm">SketchBlockProxy.ReferencedEntity</a>, <a href="SketchBlocks_Add.htm">SketchBlocks.Add</a>, <a href="SketchBlocks_AddByDefinition.htm">SketchBlocks.AddByDefinition</a>, <a href="SketchBlocks_Item.htm">SketchBlocks.Item</a>, <a href="SketchBlocksEnumerator_Item.htm">SketchBlocksEnumerator.Item</a>, <a href="SketchCircle_ContainingSketchBlock.htm">SketchCircle.ContainingSketchBlock</a>, <a href="SketchCircleProxy_ContainingSketchBlock.htm">SketchCircleProxy.ContainingSketchBlock</a>, <a href="SketchControlPointSpline_ContainingSketchBlock.htm">SketchControlPointSpline.ContainingSketchBlock</a>, <a href="SketchControlPointSplineProxy_ContainingSketchBlock.htm">SketchControlPointSplineProxy.ContainingSketchBlock</a>, <a href="SketchEllipse_ContainingSketchBlock.htm">SketchEllipse.ContainingSketchBlock</a>, <a href="SketchEllipseProxy_ContainingSketchBlock.htm">SketchEllipseProxy.ContainingSketchBlock</a>, <a href="SketchEllipticalArc_ContainingSketchBlock.htm">SketchEllipticalArc.ContainingSketchBlock</a>, <a href="SketchEllipticalArcProxy_ContainingSketchBlock.htm">SketchEllipticalArcProxy.ContainingSketchBlock</a>, <a href="SketchEntity_ContainingSketchBlock.htm">SketchEntity.ContainingSketchBlock</a>, <a href="SketchEquationCurve_ContainingSketchBlock.htm">SketchEquationCurve.ContainingSketchBlock</a>, <a href="SketchEquationCurveProxy_ContainingSketchBlock.htm">SketchEquationCurveProxy.ContainingSketchBlock</a>, <a href="SketchFixedSpline_ContainingSketchBlock.htm">SketchFixedSpline.ContainingSketchBlock</a>, <a href="SketchFixedSplineProxy_ContainingSketchBlock.htm">SketchFixedSplineProxy.ContainingSketchBlock</a>, <a href="SketchImage_ContainingSketchBlock.htm">SketchImage.ContainingSketchBlock</a>, <a href="SketchImageProxy_ContainingSketchBlock.htm">SketchImageProxy.ContainingSketchBlock</a>, <a href="SketchLine_ContainingSketchBlock.htm">SketchLine.ContainingSketchBlock</a>, <a href="SketchLineProxy_ContainingSketchBlock.htm">SketchLineProxy.ContainingSketchBlock</a>, <a href="SketchOffsetSpline_ContainingSketchBlock.htm">SketchOffsetSpline.ContainingSketchBlock</a>, <a href="SketchOffsetSplineProxy_ContainingSketchBlock.htm">SketchOffsetSplineProxy.ContainingSketchBlock</a>, <a href="SketchPoint_ContainingSketchBlock.htm">SketchPoint.ContainingSketchBlock</a>, <a href="SketchPointProxy_ContainingSketchBlock.htm">SketchPointProxy.ContainingSketchBlock</a>, <a href="SketchSpline_ContainingSketchBlock.htm">SketchSpline.ContainingSketchBlock</a>, <a href="SketchSplineHandle_ContainingSketchBlock.htm">SketchSplineHandle.ContainingSketchBlock</a>, <a href="SketchSplineHandleProxy_ContainingSketchBlock.htm">SketchSplineHandleProxy.ContainingSketchBlock</a>, <a href="SketchSplineProxy_ContainingSketchBlock.htm">SketchSplineProxy.ContainingSketchBlock</a>, <a href="TextBox_ContainingSketchBlock.htm">TextBox.ContainingSketchBlock</a>, <a href="TextBoxProxy_ContainingSketchBlock.htm">TextBoxProxy.ContainingSketchBlock</a><h2 class="api">
+            Derived Classes
+          </h2><a href="SketchBlockProxy.htm">SketchBlockProxy</a><h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2010<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(SketchBlock%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

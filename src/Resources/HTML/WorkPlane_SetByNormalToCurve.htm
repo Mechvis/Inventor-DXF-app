@@ -1,0 +1,92 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/WorkPlane_SetByNormalToCurve.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="WorkPlane_SetByNormalToCurve">
+    <meta name="description" content="WorkPlane.SetByNormalToCurve Method">
+    <meta name="topicid" content="WorkPlane_SetByNormalToCurve">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>WorkPlane.SetByNormalToCurve Method</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">WorkPlane.SetByNormalToCurve Method</h1>
+
+          Parent Object: <a href="WorkPlane.htm">WorkPlane</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Method that redefines the work plane to pass through the input point and normal to the input curve.</p>
+    <h2 class="api">
+            Remarks
+          </h2>This method is not valid when the work plane exists in an Assembly component definition.<h2 class="api">
+          Syntax
+        </h2>
+        
+            WorkPlane.<b>SetByNormalToCurve</b>( <b><i>CurveEntity</i></b> As Object, <b><i>Point</i></b> As Object )
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">CurveEntity</td>
+        <td class="api-list">Object</td>
+        <td class="api-list">Input object that represents a curve entity. This object can be an Edge, 3D sketch entity, 2D sketch entity or a WorkAxis. For an Edge or 3D sketch entity the geometry must be a Spline, Arc, Circle, EllipticalArc, or Ellipse. For a 2D sketch entity, the geometry must be a Spline2d, Arc2d, Circle2d, EllipticalArc2d, or Ellipse2d.<p /></td>
+      </tr>
+      <tr>
+        <td class="api-list">Point</td>
+        <td class="api-list">Object</td>
+        <td class="api-list">Input object that represents a point, The point must lie on the curve, as described below. This object can be a WorkPoint, Vertex, SketchPoint, or SketchPoint3D object. If the input curve is a 2D sketch entity, the point must be a SketchPoint that meets one of the following conditions: start or end point of the curve, one of the fit points of a spline, or constrained to the curve with a coincident constraint. If the input curve is a 3D curve, the point must be related to the curve. For a 3D point to be related to a 3D curve, it can be the start, mid, or end point of the curve.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2008<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(WorkPlane.SetByNormalToCurve%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

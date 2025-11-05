@@ -1,0 +1,147 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU">
+    <link rel="canonical" href="http://help.autodesk.com/cloudhelp/2026/ENU/Inventor-API/files/ConsistentMaterials_Overview.htm">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="27/4/2016">
+    <meta name="user-comments" content="enable">
+    <meta name="description" content="">
+    <meta name="topicid" content="GUID-2912C0FB-885F-47ED-81C3-AF19584EA9C1">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>Consistent Materials (Materials and Appearances)</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"/>
+    <script type="text/javascript" src="/view/clientframework/client.js"><!--filler--></script>
+	<script>
+	  // This turns on the display of the copyright notice which is not visible by default.
+	  // Because the head is removed when used in the web help, this function will only exists
+	  // when the chm help is being created.
+	  window.onload = function() {
+		copyrightElement = document.getElementById('CopyrightNotice');
+		copyrightElement.style.display = 'block';
+	  };
+	</script>
+</head>
+<body>
+<link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+<H1 class="dxH1">Consistent Materials (Materials and Appearances)</h1>
+<h2>A Big Change from Materials and Render Styles</h2>
+<p Class="Normal">If you’ve used the Material and RenderStyle API objects in the past to work with materials and colors in Inventor there has been a large change in Inventor that has introduced completely new API objects for materials and colors.</p>
+
+<p Class="Normal">Previous to Inventor 2013, Inventor had its own system for defining materials and colors, which was exposed through the API as the Material and RenderStyle objects.  Recently Autodesk has introduced a common way of defining materials and colors that allows a single set of materials and colors to be used by all Autodesk applications.  This way models transferred from one application to another will carry their material and will appear the same.  This new Autodesk component is referred to as Consistent Materials.</p>
+
+<p Class="Normal">Inventor 2013 was updated to use Consistent Materials, but the API was not.  Instead, the existing Material and RenderStyle objects were re-plumbed to work on top of Consistent Materials.  This works in most cases but since they’re not a complete 1-for-1 match there are some things that don’t work and other things you don’t have access to.  Most existing programs that still use the Material and RenderStyle objects should continue to work.  Inventor 2014 introduces new API functionality specifically for Consistent Materials and new programs should begin to use the new API and existing programs that use the Material and RenderStyle objects can be upgraded as-needed.  The Material and RenderStyle objects are now hidden and are no longer officially supported.</p>
+
+<p Class="Normal">The new API functionality provides full access to consistent material information and provides support for using, editing, and creating new materials and colors and for working with the libraries that contain them.  Consistent materials provides better integration between Autodesk applications and also supports additional capabilities relative to materials and colors.  However, as a result of the additional capabilities and flexibility the API is not as easy to use as the previous Material and RenderStyle objects.  The new consistent material API is discussed below.</p>
+
+<h2>Introduction to Consistent Materials</h2>
+<p Class="Normal">For those of you familiar with the Material and RenderStyle objects a brief comparison between with consistent materials will be useful.  For those of you not familiar with the old API objects this will still be useful in introducing some of the concepts used in the consistent materials portion of the API.</p>
+  
+<p Class="Normal">With the old Material and RenderStyle API there were distinct objects with properties that defined all of the information associated with that particular object.  For example, the Material object had properties like Density, PoissonsRatio, SpecificHeat, etc.  This made it simple to use from an API developer’s standpoint because it was easy to see what the object supported and you could easily get and set the values associated with the object.</p>
+
+<p Class="Normal">Consistent materials takes a different approach.  Rather than having specific objects for each class of data and a unique property for each value, consistent materials takes a very general approach.  The primary object in consistent materials is an Asset object, where Asset objects represent materials, physical properties, and colors (which are now referred to as appearances).  An asset is essentially a collection of values.  The set of values associated with an asset is not pre-defined by the API definition like it was with the Material and RenderStyle objects.  You now have to determine, from either examining existing objects or using documentation, what values to expect for asset objects that represent certain types of materials, physical properties, or appearances.  There are six API samples that make examining existing assets relatively easy by writing out all of the information associated with the material, appearance, and physical property assets.</p>
+
+<p Class="Normal"><a href="/HTML/DumpAllAppearances_Sample.htm" data-topic-id="DumpAllAppearances_Sample">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Write out all appearances</a><br />
+<a href="/HTML/DumpDocumentAppearances_Sample.htm" data-topic-id="DumpDocumentAppearances_Sample">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Write out document appearances</a><br />
+<a href="/HTML/DumpAllMaterials_Sample.htm" data-topic-id="DumpAllMaterials_Sample">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Write out all materials</a><br />
+<a href="/HTML/DumpDocumentMaterials_Sample.htm" data-topic-id="DumpDocumentMaterials_Sample">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Write out document materials</a><br />
+<a href="/HTML/DumpAllPhysicalProperties_Sample.htm" data-topic-id="DumpAllPhysicalProperties_Sample">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Write out all physical properties</a><br />
+<a href="/HTML/DumpDocumentPhysicalProperties_Sample.htm" data-topic-id="DumpDocumentPhysicalProperties_Sample">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Write out document physical properties</a></p>
+
+
+<h2>Asset Libraries</h2>
+<p Class="Normal">Assets exist within libraries.  A single library can contain multiple assets of different types.  For example it’s common to have a single library that contains material, physical property, and appearance assets.  Libraries are represented by .adsk files.  The Appearance Browser and Material Browser provide the user-interface to these libraries and the assets they contain.  The Appearance Browser is shown below along with the portion of the API object model that provides access to these libraries and their assets.</p>
+
+<br>
+<div align="center"><img src="../images/Appearances1.png" border=0 alt="Appearances" width="600"></div>
+<br>
+<p Class="Normal">Assets are categorized within a library.  The API also provides access to these categories and the assets within each category.</p>
+
+<p Class="Normal">Libraries can be locked which means they’re read-only and as a result any of the properties that edit a library will fail.  Even in the case where a library is not locked, the types of edits you can do are limited; you can delete and rename assets but not create or modify them.  Creation or editing of assets is only done on assets contained within a document.  There is functionality to easily copy assets from one library to another or between libraries and documents.  Using this you can copy and asset to a document, edit it, and copy it back to the library.  To create a new asset you create it in a document and then copy it to a library.</p>
+
+<h2>Assets</h2>
+<p Class="Normal">As discussed above, an asset is a generic object that contains a collection of values.  In Inventor there are three primary types of assets; materials, physical properties, and appearances.  Material assets are the simplest.  They primarily serve to group a physical asset and appearance together.  Conceptually a material can be described by its physical properties (density, Poisson’s ratio, yield strength, etc.) and how it looks or its appearance.  A material property has some basic information that identifies it, (name, description, type, etc.), and it references a physical properties asset and an appearance asset.  You can see this when using the user-interface too, as shown below.  After selecting a material in the Material Browser, the attributes of the material are represented on three tabs in the Material Editor; Identity, Appearance, and Physical.  The Appearance and Physical tabs allow you to view and edit the associated appearance and physical property assets.</p>
+<br>
+<div align="center"><img src="../images/MaterialEditor.png" border=0 alt="Material Editor"></div>
+<br>
+
+<p Class="Normal">As already discussed, an asset is a collection of values.  These values can be of different types.  They can be simple types like floats, integers, strings, and Booleans, but they can also be more complex types like color, filename, reference to other assets, textures, and choices.  When editing an asset you need to be aware of what values to expect and their types.  For example, choice asset values always need to be set with one of the pre-defined choices.  The picture below shows the user-interface for editing an asset and the API objects that provide the equivalent functionality.</p>
+<br>
+<div align="center"><img src="../images/DocumentAssets.png" border=0 alt="Document Assets" width="700"></div>
+<br>
+
+<h2>Using Assets</h2>
+<p Class="Normal">Consistent materials are more complicated to use than the previous Material and RenderStyle objects but for the most common operations there isn’t too much difference.  The most common use is to assign an existing material to a part or an appearance to an occurrence, part, body, feature, or face.  It is possible to create new assets and edit existing ones but it’s not that common to use the API to do that.</p>
+
+<p Class="Normal">Below is an example that illustrates assigning an existing appearance to an assembly occurrence.  This sample demonstrates the issue discussed earlier where an asset has to exist in the document before it can be used.  This checks to see if the asset is already local and if it is uses it, and if not, copies it into the document from a library.</p>
+	<p Class="Normal">The principles demonstrated in the sample below also apply when working with materials. The only differences being that you'll use the MaterialAssets collection on the library and you'll set the ActiveMaterial property of the PartDocument instead of the appearance property.</p>
+    <table class="code">
+      <td class="code">
+        <pre>Public Sub SetOccurrenceAppearance()
+    Dim asmDoc As AssemblyDocument
+    Set asmDoc = ThisApplication.ActiveDocument
+    
+    <span style="color:blue">' Get an appearance from the document.  To assign an appearance is must</span>
+    <span style="color:blue">' exist in the document.  This looks for a local appearance and if that</span>
+    <span style="color:blue">' fails it copies the appearance from a library to the document.</span>
+    Dim localAsset As Asset
+    On Error Resume Next
+    Set localAsset = asmDoc.Assets.Item("Bamboo")
+    If Err Then
+        On Error GoTo 0
+        
+        <span style="color:blue">' Failed to get the appearance in the document, so import it.</span>
+        
+        <span style="color:blue">' Get an asset library by name.  Either the displayed name (which</span>
+        <span style="color:blue">' can changed based on the current language) or the internal name</span>
+        <span style="color:blue">' (which is always the same) can be used.</span>
+        Dim assetLib As AssetLibrary
+        Set assetLib = ThisApplication.AssetLibraries.Item("Autodesk Appearance Library")
+        <span style="color:blue">'Set assetLib = ThisApplication.AssetLibraries.Item("314DE259-5443-4621-BFBD-1730C6CC9AE9")</span>
+        
+        <span style="color:blue">' Get an asset in the library.  Again, either the displayed name or the internal</span>
+        <span style="color:blue">' name can be used.</span>
+        Dim libAsset As Asset
+        Set libAsset = assetLib.AppearanceAssets.Item("Bamboo")
+        <span style="color:blue">'Set libAsset = assetLib.AppearanceAssets.Item("ACADGen-082")</span>
+        
+        <span style="color:blue">' Copy the asset locally.</span>
+        Set localAsset = libAsset.CopyTo(asmDoc)
+    End If
+    On Error GoTo 0
+           
+    <span style="color:blue">' Have an occurrence selected.</span>
+    Dim occ As ComponentOccurrence
+    Set occ = ThisApplication.CommandManager.Pick(kAssemblyOccurrenceFilter, "Select an occurrence.")
+    
+    <span style="color:blue">' Assign the asset to the occurrence.</span>
+    occ.appearance = localAsset
+End Sub</pre>
+      </td>
+    </table>
+
+<br />
+<br />
+<div id="CopyrightNotice" style="display:none;">
+  <hr />
+  <table width="100%" style="font-size:15">
+	<tr>
+	  <td align="left">
+		&copy; Copyright 2025 Autodesk, Inc.
+	  </td>
+	  <td align="right">
+		<a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(ConsistentMaterials_Overview)">Comment on this page.</a>
+	  </td>
+	</tr>
+  </table>
+</div>
+
+</body>
+</html>

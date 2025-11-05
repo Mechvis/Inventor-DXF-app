@@ -1,0 +1,100 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/LoftSectionDimensions_AddDrivingSection.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="LoftSectionDimensions_AddDrivingSection">
+    <meta name="description" content="LoftSectionDimensions.AddDrivingSection Method">
+    <meta name="topicid" content="LoftSectionDimensions_AddDrivingSection">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>LoftSectionDimensions.AddDrivingSection Method</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">LoftSectionDimensions.AddDrivingSection Method</h1>
+
+          Parent Object: <a href="LoftSectionDimensions.htm">LoftSectionDimensions</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Method that creates a new LoftSectionDimension that represents a driving placed section for an area-graph type loft feature.</p>
+    <h2 class="api">
+          Syntax
+        </h2>
+        
+            LoftSectionDimensions.<b>AddDrivingSection</b>( <b><i>Position</i></b> As Double, <b><i>Size</i></b> As Double, [<b><i>PositionAsAbsoluteDistance</i></b>] As Boolean, [<b><i>SizeAsScaleFactor</i></b>] As Boolean ) As <a href="LoftSectionDimension.htm">LoftSectionDimension</a>
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">Position</td>
+        <td class="api-list">Double</td>
+        <td class="api-list">Specifies the positional distance (from the starting section) of the placed section for an area-graph type loft feature. The valid range of values for this argument depends on the value of the PositionAsAbsoluteDistance argument. If the PositionAsAbsoluteDistance argument is True, then the value specified by this argument represents an absolute distance value (measured along the centerline of the loft from the starting section) and any Double value that represents this absolute distance can be specified. If the PositionAsAbsoluteDistance argument is False, then the value specified by this argument represents a proportional distance value (relative to the starting section). The valid range of values for the proportional distance is 0.0 to 1.0 (including 0.0 and 1.0). This proportional distance is defined as the absolute distance of the placed section from the starting section divided by the absolute distance of the ending section from the starting section where both the distances are measured along the centerline of the loft. For example, for a placed section that coincides with the starting section the value of the proportional distance will be 0.0 and for a placed section that coincides with the ending section the value of the proportional distance will be 1.0. For intermediate placed sections, the value of the proportional distance will be between 0.0 and 1.0.</td>
+      </tr>
+      <tr>
+        <td class="api-list">Size</td>
+        <td class="api-list">Double</td>
+        <td class="api-list">Specifies the size of the placed section for an area-graph type loft feature. The specified value will either represent an absolute area value or a scale factor value depending on the value of the SizeAsScaleFactor argument. If the SizeAsScaleFactor argument is True, then the value specified by this argument represents a scale factor for the size of the placed section (i.e. by what scale factor should the placed section be re-sized from its default size). For example, for a placed section whose area needs to be the same as its default size, the value of the scale factor will be 1.0 and for a placed section whose area needs to be half the default size, the value of the scale factor will be 0.5. If the SizeAsScaleFactor argument is False, then the value specified by this argument represents the absolute area of the placed section.</td>
+      </tr>
+      <tr>
+        <td class="api-list">PositionAsAbsoluteDistance</td>
+        <td class="api-list">Boolean</td>
+        <td class="api-list">Indicates whether the positional distance of the placed section for an area-graph type loft feature is specified as an absolute distance value. A value of True indicates that the positional distance (specified by the Position argument) of the placed section is specified as an absolute distance value (measured along the centerline of the loft from the starting section). A value of False indicates that the positional distance (specified by the Position argument) of the placed section is specified as a proportional distance value (relative to the starting section). This proportional distance is defined as the absolute distance of the placed section from the starting section divided by the absolute distance of the ending section from the starting section where both the distances are measured along the centerline of the loft. For example, for a placed section that coincides with the starting section the value of the proportional distance will be 0.0 and for a placed section that coincides with the ending section the value of the proportional distance will be 1.0. For intermediate placed sections, the value of the proportional distance will be between 0.0 and 1.0. If no value is explicitly specified, a default value of False will be assumed to indicate that positional distance is specified as a proportional distance value.<br /><br /> This is an optional argument whose default value is False.</td>
+      </tr>
+      <tr>
+        <td class="api-list">SizeAsScaleFactor</td>
+        <td class="api-list">Boolean</td>
+        <td class="api-list">Indicates whether the size of the placed section for an area-graph type loft feature is specified as a scale factor with respect to its default size. A value of True indicates that the size (specified by the Size argument) of the placed section is specified in terms of a scale factor with respect to its default size. For example, for a placed section whose area needs to be the same as its default size, the value of the scale factor will be 1.0 and for a placed section whose area needs to be half the default size, the value of the scale factor will be 0.5. A value of False indicates that the size (specified by the Size argument) of the placed section is specified as an absolute area value. If no value is explicitly specified, a default value of False will be assumed to indicate that that the size of the placed section is specified as an absolute area value.<br /><br /> This is an optional argument whose default value is False.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2008<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(LoftSectionDimensions.AddDrivingSection%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

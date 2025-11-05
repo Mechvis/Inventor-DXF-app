@@ -1,0 +1,155 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/Documents.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="Documents">
+    <meta name="description" content="Documents Object">
+    <meta name="topicid" content="GUID-Documents">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>Documents Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">Documents Object
+			</h1>
+              Derived from: <a href="DocumentsEnumerator.htm">DocumentsEnumerator</a> Object
+            <br><h2 class="api">
+          Description
+        </h2>The Document collection object contains all in-memory Inventor documents.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Documents_Add.htm">Add</a></td>
+        <td class="api-list">Creates a new of the specified type. Optionally, a template file can be specified instead.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Documents_AddWithOptions.htm">AddWithOptions</a></td>
+        <td class="api-list">Creates a new Document of the specified type.The options are passed in as a NameValueMap object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Documents_CloseAll.htm">CloseAll</a></td>
+        <td class="api-list">Method that closes all the documents in the current Inventor session. Changes are not saved to any of the documents. In other words, if there are dirty documents in the collection, changes made to them will be lost.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Documents_Open.htm">Open</a></td>
+        <td class="api-list">Method that opens the specified Inventor document.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Documents_OpenWithOptions.htm">OpenWithOptions</a></td>
+        <td class="api-list">Method that opens the specified Inventor document.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Documents_Count.htm">Count</a></td>
+        <td class="api-list">Property that returns the number of items in this collection.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Documents_Item.htm">Item</a></td>
+        <td class="api-list">Returns the specified object from the collection. This is the default property of the DocumentsEnumerator object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Documents_ItemByName.htm">ItemByName</a></td>
+        <td class="api-list">Returns the specified Document object from the collection.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Documents_LoadedCount.htm">LoadedCount</a></td>
+        <td class="api-list">Query Loaded documents.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Documents_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Documents_VisibleDocuments.htm">VisibleDocuments</a></td>
+        <td class="api-list">Gets the collection of visible documents.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="Application_Documents.htm">Application.Documents</a>, <a href="InventorServer_Documents.htm">InventorServer.Documents</a>, <a href="InventorServerObject_Documents.htm">InventorServerObject.Documents</a><h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AddiAssemblyMember_Sample.htm">Adding iAssembly occurrences</a></td>
+        <td class="api-list">This sample demonstrates adding iAssembly occurrences to an assembly.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AddiPartMember_Sample.htm">Adding iPart occurrences to an assembly</a></td>
+        <td class="api-list">This sample demonstrates adding iPart occurrences to an assembly.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="CustomParameterGroup_Add_Sample.htm">Creating a new parameter group</a></td>
+        <td class="api-list">This sample demonstrates the creation of model, reference and user parameters and copying these parameters to a newly created group.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="CustomTables_AddConfigurationTable_Sample.htm">Create a Configuration Table</a></td>
+        <td class="api-list">This sample demonstrates the creation of a configuration (iPart/iAssembly) table in a drawing from a factory document.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 4<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(Documents%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

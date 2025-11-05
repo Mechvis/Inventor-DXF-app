@@ -1,0 +1,146 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/PropertySets.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="PropertySets">
+    <meta name="description" content="PropertySets Object">
+    <meta name="topicid" content="GUID-PropertySets">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>PropertySets Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">PropertySets Object
+			</h1><br><h2 class="api">
+          Description
+        </h2>Object that manages the collection of objects and provides the ability to add new property sets to the collection. See the article in the overviews section.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PropertySets_Add.htm">Add</a></td>
+        <td class="api-list">Adds a new PropertySet. The new set's FMTID can be optionally provided (as a string).</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PropertySets_FlushToFile.htm">FlushToFile</a></td>
+        <td class="api-list">Flush all of the Properties in each of the PropertySets onto the file. The 'dirty' flags are reset. Please note that this method is available in Apprentice only.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PropertySets_PropertySetExists.htm">PropertySetExists</a></td>
+        <td class="api-list">Function that returns a Boolean to indicate whether a PropertySet with the specified name exists in the PropertySets collection.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PropertySets_RefreshFromFile.htm">RefreshFromFile</a></td>
+        <td class="api-list">Refresh all of the Properties in each of the PropertySets from the File. The 'dirty' flags are reset and any edits are lost. Please note that this method is available in Apprentice only.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PropertySets_Count.htm">Count</a></td>
+        <td class="api-list">Property that returns the number of items in this collection.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PropertySets_Dirty.htm">Dirty</a></td>
+        <td class="api-list">Property that returns a Boolean flag that indicates whether any of the Properties have been edited, deleted or created.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PropertySets_Item.htm">Item</a></td>
+        <td class="api-list">Gets the set in this collection in a sequences fashion; by index, or by its name -- Display or Internal.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PropertySets_Parent.htm">Parent</a></td>
+        <td class="api-list">Property that returns the parent object from whom this object can logically be reached.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PropertySets_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="ApprenticeServerDocument_FilePropertySets.htm">ApprenticeServerDocument.FilePropertySets</a>, <a href="ApprenticeServerDocument_PropertySets.htm">ApprenticeServerDocument.PropertySets</a>, <a href="ApprenticeServerDrawingDocument_FilePropertySets.htm">ApprenticeServerDrawingDocument.FilePropertySets</a>, <a href="ApprenticeServerDrawingDocument_PropertySets.htm">ApprenticeServerDrawingDocument.PropertySets</a>, <a href="AssemblyDocument_FilePropertySets.htm">AssemblyDocument.FilePropertySets</a>, <a href="AssemblyDocument_PropertySets.htm">AssemblyDocument.PropertySets</a>, <a href="BOMRow_OccurrencePropertySets.htm">BOMRow.OccurrencePropertySets</a>, <a href="ComponentOccurrence_OccurrencePropertySets.htm">ComponentOccurrence.OccurrencePropertySets</a>, <a href="ComponentOccurrenceProxy_OccurrencePropertySets.htm">ComponentOccurrenceProxy.OccurrencePropertySets</a>, <a href="Document_FilePropertySets.htm">Document.FilePropertySets</a>, <a href="Document_PropertySets.htm">Document.PropertySets</a>, <a href="DrawingDocument_FilePropertySets.htm">DrawingDocument.FilePropertySets</a>, <a href="DrawingDocument_PropertySets.htm">DrawingDocument.PropertySets</a>, <a href="PartDocument_FilePropertySets.htm">PartDocument.FilePropertySets</a>, <a href="PartDocument_PropertySets.htm">PartDocument.PropertySets</a>, <a href="PresentationDocument_FilePropertySets.htm">PresentationDocument.FilePropertySets</a>, <a href="PresentationDocument_PropertySets.htm">PresentationDocument.PropertySets</a>, <a href="PropertySet_Parent.htm">PropertySet.Parent</a>, <a href="VirtualComponentDefinition_PropertySets.htm">VirtualComponentDefinition.PropertySets</a><h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BOM_Sample.htm">Using the BOM APIs</a></td>
+        <td class="api-list">This sample demonstrates the Bill of Materials API functionality in assemblies.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="iPropertyApprentice_Sample.htm">Update iProperty values using Apprentice</a></td>
+        <td class="api-list">Updates some iProperty values using Apprentice.  The document specified in the code for the Open method must exist.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="iPropertyCreateCustom_Sample.htm">Create custom iProperties</a></td>
+        <td class="api-list">Creates custom iProperties of various types. A document must be open when this sample is run.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="iPropertyGetValue_Sample.htm">Get value of iProperty</a></td>
+        <td class="api-list"><p>Demonstrates getting the values of the "Part Number" iProperty.  Any property can be retrieved by accesing the correct property set and property.</p>
+<p>A document must be open when this sample is run.</p></td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 4<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(PropertySets%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

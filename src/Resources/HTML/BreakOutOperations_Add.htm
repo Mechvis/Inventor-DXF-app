@@ -1,0 +1,107 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/BreakOutOperations_Add.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="BreakOutOperations_Add">
+    <meta name="description" content="BreakOutOperations.Add Method">
+    <meta name="topicid" content="BreakOutOperations_Add">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>BreakOutOperations.Add Method</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">BreakOutOperations.Add Method</h1>
+
+          Parent Object: <a href="BreakOutOperations.htm">BreakOutOperations</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Method that adds a break out to a drawing view. The newly created BreakOutOperation object is returned.</p>
+    <h2 class="api">
+          Syntax
+        </h2>
+        
+            BreakOutOperations.<b>Add</b>( <b><i>Profile</i></b> As <a href="Profile.htm">Profile</a>, <b><i>DepthSource</i></b> As Object, [<b><i>DepthValue</i></b>] As Double, [<b><i>SectionAllParts</i></b>] As Boolean ) As <a href="BreakOutOperation.htm">BreakOutOperation</a>
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">Profile</td>
+        <td class="api-list"><a href="Profile.htm">Profile</a></td>
+        <td class="api-list">Input Profile object that specifies the sketch profile for the break out. This profile must be closed so it should be created using the AddForSolid method of the Profiles object.</td>
+      </tr>
+      <tr>
+        <td class="api-list">DepthSource</td>
+        <td class="api-list">Object</td>
+        <td class="api-list">Input object that specifies the source for the break out depth. Valid input objects are:
+<ol>
+<li>A <b>GeometryIntent</b> object that represents a point. This specifies the starting point of the break out area. In this case, the DepthValue argument must be specified to indicate the depth of the break out area from the specified point.</li>
+<li>A <b>DrawingSketch</b> object which is associated with a dependant projected view.</li>
+<li>A <b>DrawingCurve</b> object that is used to specify a 'hole'. A hole in this case is any geometry from a HoleFeature object or any cylinder or cone in the model. The axis of the hole, cylinder, or cone must be parallel to the sheet plane. The axis defines the depth of the hole.</li>
+<li>A <b>PartComponentDefinition</b> object to indicate that the entire part is to be cut. This is only applicable when the drawing view contains a part. The PartComponentDefinition supplied must be the component definition of the part in the view.</li>
+<li>A <b>ComponentOccurrence</b> (or a ComponentOccurrenceProxy) object in the context of the parent drawing view. The depth is defined by the depth of the associated part. This is only applicable when the drawing view contains an assembly.</li>
+<li>An <b>ObjectCollection</b> containing multiple ComponentOccurrence (or ComponentOccurrenceProxy) objects. The depth is defined by the depths of the associated parts. This is only applicable when the drawing view contains an assembly.</li></td>
+      </tr>
+      <tr>
+        <td class="api-list">DepthValue</td>
+        <td class="api-list">Double</td>
+        <td class="api-list">Optional input Double that specifies the depth value for the break out if the input DepthSource is a point. This argument is ignored if the input source is not a point.<br /><br /> This is an optional argument whose default value is 0.0.</td>
+      </tr>
+      <tr>
+        <td class="api-list">SectionAllParts</td>
+        <td class="api-list">Boolean</td>
+        <td class="api-list">Optional input Boolean that specifies whether to section all parts in the break out area. The default value is False indicating that all parts will not be sectioned.<br /><br /> This is an optional argument whose default value is False.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2010<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(BreakOutOperations.Add%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

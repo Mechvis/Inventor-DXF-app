@@ -1,0 +1,112 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/ParameterTables_AddExcelTable.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="ParameterTables_AddExcelTable">
+    <meta name="description" content="ParameterTables.AddExcelTable Method">
+    <meta name="topicid" content="ParameterTables_AddExcelTable">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>ParameterTables.AddExcelTable Method</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">ParameterTables.AddExcelTable Method</h1>
+
+          Parent Object: <a href="ParameterTables.htm">ParameterTables</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Method that creates a new ParameterTable object, given an existing Excel document as input. Returns the resulting ParameterTable object. The first sheet in the Excel document is used.</p>
+    <h2 class="api">
+          Syntax
+        </h2>
+        
+            ParameterTables.<b>AddExcelTable</b>( <b><i>ExcelDocument</i></b> As String, <b><i>StartCell</i></b> As String, <b><i>Link</i></b> As Boolean ) As <a href="ParameterTable.htm">ParameterTable</a>
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">ExcelDocument</td>
+        <td class="api-list">String</td>
+        <td class="api-list">Input String value that contains the full path to the Excel document.</td>
+      </tr>
+      <tr>
+        <td class="api-list">StartCell</td>
+        <td class="api-list">String</td>
+        <td class="api-list">Input String value that specifies the beginning cell to begin importing from, for example "A1".</td>
+      </tr>
+      <tr>
+        <td class="api-list">Link</td>
+        <td class="api-list">Boolean</td>
+        <td class="api-list">Input Boolean value that specifies whether the Excel document is to be embedded or linked. True indicates it should be linked.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ParameterTables_Sample.htm">Table Parameters</a></td>
+        <td class="api-list">This sample demonstrates how to access the Parameters object, and from it in turn the TableParameters collection that represents the collection of parameters that have been linked/embedded from an external spreadsheet.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 4<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(ParameterTables.AddExcelTable%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,124 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/ModelingEvents.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="ModelingEvents">
+    <meta name="description" content="ModelingEvents Object">
+    <meta name="topicid" content="GUID-ModelingEvents">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>ModelingEvents Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">ModelingEvents Object
+			</h1><br><h2 class="api">
+          Description
+        </h2>The ModelingEvents object provides notification of modeling events including new feature, feature delete, changed feature, client feature or new/changed parameters.<h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelingEvents_Application.htm">Application</a></td>
+        <td class="api-list">Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelingEvents_Parent.htm">Parent</a></td>
+        <td class="api-list">Gets the parent object from whom this object can logically be reached.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelingEvents_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Events
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelingEvents_OnClientFeatureDoubleClick.htm">OnClientFeatureDoubleClick</a></td>
+        <td class="api-list">Event that fires when the user double-clicks a client feature.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelingEvents_OnDelete.htm">OnDelete</a></td>
+        <td class="api-list">The OnDelete event notifies the client when a modeling entity is deleted.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelingEvents_OnFeatureChange.htm">OnFeatureChange</a></td>
+        <td class="api-list">Event that is fired whenever a feature changes.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelingEvents_OnGenerateMember.htm">OnGenerateMember</a></td>
+        <td class="api-list">Event that fires before and after an iPart or an iAssembly member is being generated or regenerated.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelingEvents_OnGenerateModelStateMember.htm">OnGenerateModelStateMember</a></td>
+        <td class="api-list">Event that fires before and after an model state member document is being generated or regenerated.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelingEvents_OnNewFeature.htm">OnNewFeature</a></td>
+        <td class="api-list">Event that is fired whenever a feature is created.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelingEvents_OnNewParameter.htm">OnNewParameter</a></td>
+        <td class="api-list">The OnNewParameter event notifies the client when a new parameter is created.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelingEvents_OnParameterChange.htm">OnParameterChange</a></td>
+        <td class="api-list">The OnParameterChange event notifies the client when a parameter is changed.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="Application_ModelingEvents.htm">Application.ModelingEvents</a>, <a href="InventorServer_ModelingEvents.htm">InventorServer.ModelingEvents</a>, <a href="InventorServerObject_ModelingEvents.htm">InventorServerObject.ModelingEvents</a><h2 class="api">
+            Version
+          </h2>
+        Introduced in version 11<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(ModelingEvents%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

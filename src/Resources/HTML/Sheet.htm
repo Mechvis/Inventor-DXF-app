@@ -1,0 +1,405 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/Sheet.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="Sheet">
+    <meta name="description" content="Sheet Object">
+    <meta name="topicid" content="GUID-Sheet">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>Sheet Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">Sheet Object
+			</h1><br><h2 class="api">
+          Description
+        </h2>The Sheet object represents a sheet in a drawing document. See here for an overview on drawing views.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sheet_Activate.htm">Activate</a></td>
+        <td class="api-list">Method that causes this sheet to become the active sheet.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sheet_AddBorder.htm">AddBorder</a></td>
+        <td class="api-list">Method that adds the specified border definition to the sheet. This method will fail in the case where a border instance already exists on the sheet. In this case, use the Delete method of the Border object to remove the existing one first.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sheet_AddDefaultBorder.htm">AddDefaultBorder</a></td>
+        <td class="api-list">Method that adds an instance of the default border to the sheet. This method is the equivalent of inserting the 'Default Border' border. A border created using the default border is created 'on the fly' by Autodesk Inventor using the supplied input. It is not based on an existing border definition.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sheet_AddTitleBlock.htm">AddTitleBlock</a></td>
+        <td class="api-list">Method that adds the specified title block definition to the sheet. Since a sheet can only have one title block at a time, calling this method will remove the existing title block.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sheet_ChangeLayer.htm">ChangeLayer</a></td>
+        <td class="api-list">Method that changes the associated layer for all the input objects.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sheet_CopyTo.htm">CopyTo</a></td>
+        <td class="api-list">Method that copies this sheet into the specified drawing document. The new sheet is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sheet_CreateGeometryIntent.htm">CreateGeometryIntent</a></td>
+        <td class="api-list">Method that creates a GeometryIntent object for use in various annotation and view creations.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sheet_Delete.htm">Delete</a></td>
+        <td class="api-list">Method that deletes this sheet.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sheet_FindUsingPoint.htm">FindUsingPoint</a></td>
+        <td class="api-list">Method that finds drawing curve segments, entities on a sheet sketch, centerlines and centermarks that the given point lies on.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sheet_GetAvailableDesignViewsToRetrieve3DAnnotations.htm">GetAvailableDesignViewsToRetrieve3DAnnotations</a></td>
+        <td class="api-list">Gets an array of strings containing names of the design views of model document that the 3D annotations can be retrieved from.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sheet_GetReferenceKey.htm">GetReferenceKey</a></td>
+        <td class="api-list">Method that generates and returns the reference key for this entity.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sheet_GetRetrievableAnnotations2.htm">GetRetrievableAnnotations2</a></td>
+        <td class="api-list">Returns a collection of objects that represent the valid set of model dimensions that can be retrieved into the input drawing view.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sheet_RetrieveAnnotations2.htm">RetrieveAnnotations2</a></td>
+        <td class="api-list">Retrieves sketch and/or model annotations into the drawing.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sheet_Update.htm">Update</a></td>
+        <td class="api-list">Method that updates the sheet.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sheet_Application.htm">Application</a></td>
+        <td class="api-list">Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sheet_AttributeSets.htm">AttributeSets</a></td>
+        <td class="api-list">Property that returns the AttributeSets collection object associated with this object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sheet_AutoCADBlocks.htm">AutoCADBlocks</a></td>
+        <td class="api-list">Property that returns the AutoCADBlocks collection object. This object provides access to all instances of AutoCAD blocks on a sheet. This property returns Nothing for sheets on an Inventor IDW document.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sheet_Balloons.htm">Balloons</a></td>
+        <td class="api-list">Property that returns the collection of on this sheet.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sheet_Border.htm">Border</a></td>
+        <td class="api-list">Property that returns the Border or DefaultBorder object associated with the sheet. This property will return Nothing in the case where the sheet doesn't have a border.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sheet_Centerlines.htm">Centerlines</a></td>
+        <td class="api-list">Property that returns the Centerlines collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sheet_Centermarks.htm">Centermarks</a></td>
+        <td class="api-list">Property that returns the Centermarks collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sheet_ClientGraphicsCollection.htm">ClientGraphicsCollection</a></td>
+        <td class="api-list">Gets the ClientGraphicsCollection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sheet_ClientViews.htm">ClientViews</a></td>
+        <td class="api-list">Property that returns the collection for the drawing sheet.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sheet_CustomTables.htm">CustomTables</a></td>
+        <td class="api-list">Property that returns the CustomTables collection object for this sheet.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sheet_DataIO.htm">DataIO</a></td>
+        <td class="api-list">Property that returns a DataIO object. The DataIO object can be used to write out the sheet data in various formats. The Sheet currently only supports</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sheet_DrawingDimensions.htm">DrawingDimensions</a></td>
+        <td class="api-list">Property that returns the DrawingDimensions collection object. This object provides access to all of the dimensions on the sheet.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sheet_DrawingNotes.htm">DrawingNotes</a></td>
+        <td class="api-list">Property that returns the DrawingNotes collection object consisting of all drawing notes.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sheet_DrawingViews.htm">DrawingViews</a></td>
+        <td class="api-list">Property that returns the collection object. This provides access to the existing drawing views on the sheet.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sheet_EdgeSymbols.htm">EdgeSymbols</a></td>
+        <td class="api-list">Read-only property that returns the collection of edge symbols on this sheet.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sheet_ExcludeFromCount.htm">ExcludeFromCount</a></td>
+        <td class="api-list">Gets or sets whether to exclude the sheet in the count of sheets in the drawing.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sheet_ExcludeFromPrinting.htm">ExcludeFromPrinting</a></td>
+        <td class="api-list">Gets or sets whether to exclude the sheet when printing the drawing.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sheet_FeatureControlFrames.htm">FeatureControlFrames</a></td>
+        <td class="api-list">Property that returns the FeatureControlFrames collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sheet_GraphicsDataSetsCollection.htm">GraphicsDataSetsCollection</a></td>
+        <td class="api-list">Gets the GraphicsDataSetsCollection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sheet_Height.htm">Height</a></td>
+        <td class="api-list">Gets or sets the height of the sheet.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sheet_HoleTables.htm">HoleTables</a></td>
+        <td class="api-list">Property that returns the HoleTables collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sheet_IsModelSpaceSheet.htm">IsModelSpaceSheet</a></td>
+        <td class="api-list">Property that returns whether this is a model space sheet created automatically when opening (rather than importing) AutoCAD dwg files.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sheet_Name.htm">Name</a></td>
+        <td class="api-list">Gets or sets the user-friendly name of the Sheet.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sheet_Orientation.htm">Orientation</a></td>
+        <td class="api-list">Gets or sets the orientation of the sheet as it is viewed or printed.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sheet_Parent.htm">Parent</a></td>
+        <td class="api-list">Property returning the parent document. When used within Autodesk Inventor the DrawingDocument object will be returned. When used within Apprentice the ApprenticeServerDrawingDocument object will be returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sheet_PartsLists.htm">PartsLists</a></td>
+        <td class="api-list">Property that returns the PartsLists collection object associated with this sheet. This provides access to the existing parts lists on the sheet.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sheet_Revision.htm">Revision</a></td>
+        <td class="api-list">Gets or sets the revision number of the sheet.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sheet_RevisionClouds.htm">RevisionClouds</a></td>
+        <td class="api-list">Get the RevisionClouds collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sheet_RevisionTables.htm">RevisionTables</a></td>
+        <td class="api-list">Property that returns the RevisionTables collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sheet_Size.htm">Size</a></td>
+        <td class="api-list">Gets or sets the size of the Sheet as value in an enumeration of standard sheet sizes.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sheet_SketchedSymbols.htm">SketchedSymbols</a></td>
+        <td class="api-list">Property that returns the SketchedSymbols collection object. This object provides access to all sketched symbols on a sheet.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sheet_Sketches.htm">Sketches</a></td>
+        <td class="api-list">Property that returns the DrawingSketches collection object for the sheet. This object provides access to all of the sketches that have been created on the sheet and provides functionality to create new sketches.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sheet_Status.htm">Status</a></td>
+        <td class="api-list">Property that returns the current status of the sheet and its contents. If the value is equal to kUpToDateDrawingSheet then the drawing sheet is up to date. Any other value means some portion of the sheet is out of date. The returned value can contain status information about several things about the sheet. You can use bitwise operators to determine the status for a particular item. For example the following can be used to see if the precise display for views on sheet are up to date. If (oSheet.Status And kProcessingPreciseDisplayDrawingSheet) = kProcessingPreciseDisplayDrawingSheet Then MsgBox "Processing precise display." End If This is useful when an operation requires the sheet to be up to date. For example, when plotting the sheet.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sheet_SurfaceTextureSymbols.htm">SurfaceTextureSymbols</a></td>
+        <td class="api-list">Property that returns the SurfaceTextureSymbols collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sheet_TextPropertySource.htm">TextPropertySource</a></td>
+        <td class="api-list">Read-write property that gets and sets the text property source model. This is the name of a drawing view.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sheet_TitleBlock.htm">TitleBlock</a></td>
+        <td class="api-list">Property that returns the TitleBlock object associated with the sheet. This property will return Nothing in the case where the sheet doesn't have a title block.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sheet_TransitionSymbols.htm">TransitionSymbols</a></td>
+        <td class="api-list">Returns the collection of edge symbols on this sheet.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sheet_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sheet_WeldingSymbols.htm">WeldingSymbols</a></td>
+        <td class="api-list">Get the DrawingWeldingSymbols collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sheet_Width.htm">Width</a></td>
+        <td class="api-list">Gets or sets the width of the sheet.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="AngularGeneralDimension_Parent.htm">AngularGeneralDimension.Parent</a>, <a href="AutoCADBlock_Parent.htm">AutoCADBlock.Parent</a>, <a href="Balloon_Parent.htm">Balloon.Parent</a>, <a href="BaselineDimensionSet_Parent.htm">BaselineDimensionSet.Parent</a>, <a href="BendNote_Parent.htm">BendNote.Parent</a>, <a href="Border_Parent.htm">Border.Parent</a>, <a href="Centerline_Parent.htm">Centerline.Parent</a>, <a href="Centermark_Parent.htm">Centermark.Parent</a>, <a href="ChainDimensionSet_Parent.htm">ChainDimensionSet.Parent</a>, <a href="ChamferNote_Parent.htm">ChamferNote.Parent</a>, <a href="DefaultBorder_Parent.htm">DefaultBorder.Parent</a>, <a href="DetailDrawingView_Parent.htm">DetailDrawingView.Parent</a>, <a href="DiameterGeneralDimension_Parent.htm">DiameterGeneralDimension.Parent</a>, <a href="DrawingDimension_Parent.htm">DrawingDimension.Parent</a>, <a href="DrawingDocument_ActiveSheet.htm">DrawingDocument.ActiveSheet</a>, <a href="DrawingNote_Parent.htm">DrawingNote.Parent</a>, <a href="DrawingView_Parent.htm">DrawingView.Parent</a>, <a href="DrawingWeldingSymbol_Parent.htm">DrawingWeldingSymbol.Parent</a>, <a href="EdgeSymbol_Parent.htm">EdgeSymbol.Parent</a>, <a href="FeatureControlFrame_Parent.htm">FeatureControlFrame.Parent</a>, <a href="GeneralDimension_Parent.htm">GeneralDimension.Parent</a>, <a href="GeneralNote_Parent.htm">GeneralNote.Parent</a>, <a href="HoleTable_Parent.htm">HoleTable.Parent</a>, <a href="HoleThreadNote_Parent.htm">HoleThreadNote.Parent</a>, <a href="LeaderNote_Parent.htm">LeaderNote.Parent</a>, <a href="LinearGeneralDimension_Parent.htm">LinearGeneralDimension.Parent</a>, <a href="OrdinateDimension_Parent.htm">OrdinateDimension.Parent</a>, <a href="OrdinateDimensionSet_Parent.htm">OrdinateDimensionSet.Parent</a>, <a href="PartsList_Parent.htm">PartsList.Parent</a>, <a href="PunchNote_Parent.htm">PunchNote.Parent</a>, <a href="RadiusGeneralDimension_Parent.htm">RadiusGeneralDimension.Parent</a>, <a href="RevisionTable_Parent.htm">RevisionTable.Parent</a>, <a href="SectionDrawingView_Parent.htm">SectionDrawingView.Parent</a>, <a href="Sheet_CopyTo.htm">Sheet.CopyTo</a>, <a href="Sheets_Add.htm">Sheets.Add</a>, <a href="Sheets_AddUsingSheetFormat.htm">Sheets.AddUsingSheetFormat</a>, <a href="Sheets_Item.htm">Sheets.Item</a>, <a href="SketchedSymbol_Parent.htm">SketchedSymbol.Parent</a>, <a href="SurfaceTextureANSIDefinition_Parent.htm">SurfaceTextureANSIDefinition.Parent</a>, <a href="SurfaceTextureBSIDefinition_Parent.htm">SurfaceTextureBSIDefinition.Parent</a>, <a href="SurfaceTextureDINDefinition_Parent.htm">SurfaceTextureDINDefinition.Parent</a>, <a href="SurfaceTextureGBDefinition_Parent.htm">SurfaceTextureGBDefinition.Parent</a>, <a href="SurfaceTextureGOSTDefinition_Parent.htm">SurfaceTextureGOSTDefinition.Parent</a>, <a href="SurfaceTextureISODefinition_Parent.htm">SurfaceTextureISODefinition.Parent</a>, <a href="SurfaceTextureJISDefinition_Parent.htm">SurfaceTextureJISDefinition.Parent</a>, <a href="SurfaceTextureSymbol_Parent.htm">SurfaceTextureSymbol.Parent</a>, <a href="SurfaceTextureSymbolDefinition_Parent.htm">SurfaceTextureSymbolDefinition.Parent</a>, <a href="TitleBlock_Parent.htm">TitleBlock.Parent</a>, <a href="TransitionSymbol_Parent.htm">TransitionSymbol.Parent</a><h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AutoCADBlocks_Add_Sample.htm">AutoCAD block insertion</a></td>
+        <td class="api-list">Demonstrates inserting an AutoCAD block.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Balloons_Sample.htm">Balloons - edit</a></td>
+        <td class="api-list">This sample demonstrates the editing of balloons in a drawing.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Balloons_Add_Sample.htm">Creation a balloon</a></td>
+        <td class="api-list">This sample demonstrates the creation of a balloon.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BaselineDimensionSets_Add_Sample.htm">Baseline dimension sets</a></td>
+        <td class="api-list">This sample demonstrates the creation of a baseline set dimension in a drawing.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BendNotes_Add_Sample.htm">Create bend note</a></td>
+        <td class="api-list">This sample demonstrates the creation of a bend note on the drawing view of a flat pattern.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BreakOperations_Add_Sample.htm">Creation of a break operation in a drawing view</a></td>
+        <td class="api-list">Demonstrates the creation of a break operation.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ChainDimensionSets_Add_Sample.htm">Chain dimensions sets</a></td>
+        <td class="api-list">This sample demonstrates the creation of a chain dimension set in a drawing.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="CustomTables_Sample.htm">Custom Table - create</a></td>
+        <td class="api-list">This sample demonstrates how to create a custom table.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="CustomTables_AddBendTable_Sample.htm">Create a Bend Table</a></td>
+        <td class="api-list">This sample demonstrates the creation of a bend table in a drawing from a sheet metal part.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="CustomTables_AddConfigurationTable_Sample.htm">Create a Configuration Table</a></td>
+        <td class="api-list">This sample demonstrates the creation of a configuration (iPart/iAssembly) table in a drawing from a factory document.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="CustomTables_AddExcelTable_Sample.htm">Create a drawing Excel Table</a></td>
+        <td class="api-list">This sample demonstrates the creation of a table based on an Excel file in a drawing.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FeatureControlFrame_FeatureControlFrameRows_Sample.htm">Adding and editing a feature control frame</a></td>
+        <td class="api-list">These samples demonstrate editing an existing feature control frame symbol. The first sample adds a row to an existing symbol. The second sample replaces all rows of an existing symbol.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="HoleThreadNotes_Add_Sample.htm">Create thread note</a></td>
+        <td class="api-list">This sample demonstrates the creation of a thread note on a drawing view.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PartsLists_Add_Sample.htm">Creating a parts list</a></td>
+        <td class="api-list">This sample demonstrates the creation of a parts list. The parts list is placed at the top right corner of the border if one exists, else it is placed at the top right corner of the sheet.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PunchNotes_Add_Sample.htm">create punch note</a></td>
+        <td class="api-list">This sample demonstrates the creation of a punch note on the drawing view of a flat pattern.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sheet_AddDefaultBorder_Sample.htm">Border Insert</a></td>
+        <td class="api-list">This sample illustrates inserting a default border.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sheet_AddDefaultBorder2_Sample.htm">Border Insert Default</a></td>
+        <td class="api-list">This sample illustrates inserting a default border using the default values.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetFormat_Sample.htm">Create sheet with multiple views</a></td>
+        <td class="api-list">This sample demonstrates the creation of a drawing sheet based on a particular sheet format containing the definition for multiple views.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchedSymbolDefinition_Sample.htm">Create SketchedSymbol Definition</a></td>
+        <td class="api-list">This sample illustrates creating a new sketched symbol definition object and inserting it into the active sheet.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchedSymbols_AddWithLeader_Sample.htm">Create sketched symbol and leader</a></td>
+        <td class="api-list">This sample illustrates creating sketched symbol with a leader.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SurfaceTextureSymbols_Add_Sample.htm">Add surface texture symbol to dimension</a></td>
+        <td class="api-list">This sample demonstrates the creation of a surface texture symbol attached to the extension line of a drawing dimension.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextBoxes_Sample.htm">Sketch Text Add</a></td>
+        <td class="api-list">This sample illustrates creating text in a sketch.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TitleBlockDefinition_Sample.htm">Title Block Definition Create and Insert</a></td>
+        <td class="api-list">This sample illustrates creating a new title block definition object and inserting it into the active sheet. This sample consists of two subs. The first demonstrates the creation of a title block definition and the second inserts it into the active sheet.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TitleBlockDefinition_CopyTo_Sample.htm">Copying a title block definition</a></td>
+        <td class="api-list">This sample demonstrates copying a title block definition from one drawing to another and replacing the existing title blocks in the drawing with the new title block.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 4<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(Sheet%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

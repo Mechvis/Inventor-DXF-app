@@ -1,0 +1,287 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/ApprenticeServerDocument.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="ApprenticeServerDocument">
+    <meta name="description" content="ApprenticeServerDocument Object">
+    <meta name="topicid" content="GUID-ApprenticeServerDocument">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>ApprenticeServerDocument Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">ApprenticeServerDocument Object
+			</h1><br><h2 class="api">
+          Description
+        </h2>The ApprenticeServerDocument object represents an in-memory Inventor document.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ApprenticeServerDocument_Close.htm">Close</a></td>
+        <td class="api-list">Closes this document.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ApprenticeServerDocument_CreateHighlightSet.htm">CreateHighlightSet</a></td>
+        <td class="api-list">Method that creates a new highlight set.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ApprenticeServerDocument_FindWhereUsed.htm">FindWhereUsed</a></td>
+        <td class="api-list">Method that obtains the set of documents that reference the given file within this document.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ApprenticeServerDocument_GetLocationFoundIn.htm">GetLocationFoundIn</a></td>
+        <td class="api-list">Obtains the name of the location this file was found in.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ApprenticeServerDocument_RevertReservedForWriteByMe.htm">RevertReservedForWriteByMe</a></td>
+        <td class="api-list">Method that reverts the file checked out by the caller.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ApprenticeServerDocument_AllReferencedDocuments.htm">AllReferencedDocuments</a></td>
+        <td class="api-list">Property that returns all the document references of this document along with all of the recursively nested references.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ApprenticeServerDocument_AttributeManager.htm">AttributeManager</a></td>
+        <td class="api-list">Returns the AttributeManager object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ApprenticeServerDocument_AttributeSets.htm">AttributeSets</a></td>
+        <td class="api-list">Property that returns the AttributeSets collection object associated with this object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ApprenticeServerDocument_ClientViews.htm">ClientViews</a></td>
+        <td class="api-list">Property that returns the document's .</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ApprenticeServerDocument_Compacted.htm">Compacted</a></td>
+        <td class="api-list">Gets the Boolean that states whether this file has been processed for compaction since the last save.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ApprenticeServerDocument_ComponentDefinition.htm">ComponentDefinition</a></td>
+        <td class="api-list">Gets the primary that resides in this file.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ApprenticeServerDocument_DatabaseRevisionId.htm">DatabaseRevisionId</a></td>
+        <td class="api-list">Gets the GUID that represents the last saved revision of database contained in this document. This revision id tracks modifications to the database (such as reference changes, geometry changes, etc.) but does not track file property changes.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ApprenticeServerDocument_Dirty.htm">Dirty</a></td>
+        <td class="api-list">Gets/Sets a Boolean flag indicating if the Document has been written into, since opened.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ApprenticeServerDocument_DisplayName.htm">DisplayName</a></td>
+        <td class="api-list">Gets/Sets the user-displayable name of this Document. Defaults to file-name.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ApprenticeServerDocument_DocumentInterests.htm">DocumentInterests</a></td>
+        <td class="api-list">Property that returns the DocumentInterests collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ApprenticeServerDocument_DocumentType.htm">DocumentType</a></td>
+        <td class="api-list">Gets the constant that indicates the type of this document.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ApprenticeServerDocument_File.htm">File</a></td>
+        <td class="api-list">Property that returns the file (storage) on disk that contains this document.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ApprenticeServerDocument_FilePropertySets.htm">FilePropertySets</a></td>
+        <td class="api-list">Read-only property that returns the file PropertySets. This is equivalent to the iProperties that got from Shell Extension.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ApprenticeServerDocument_FileSaveCounter.htm">FileSaveCounter</a></td>
+        <td class="api-list">Gets the number that indicates the number of times the file has been saved.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ApprenticeServerDocument_FullDocumentName.htm">FullDocumentName</a></td>
+        <td class="api-list">Property that returns the fully qualified name of the document. The string is the full file name concatenated with the document name and is a unique identifier for the document. The document name is returned by the Name property on the Document object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ApprenticeServerDocument_FullFileName.htm">FullFileName</a></td>
+        <td class="api-list">Gets the fully qualified file-name of this document.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ApprenticeServerDocument_HealthStatus.htm">HealthStatus</a></td>
+        <td class="api-list">Property that returns an enum indicating the current state of the object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ApprenticeServerDocument_InternalName.htm">InternalName</a></td>
+        <td class="api-list">Gets the Internal Name (a GUID) for this document.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ApprenticeServerDocument_IsModifiable.htm">IsModifiable</a></td>
+        <td class="api-list">Property that returns whether this document can be currently modified. One of the reasons a document may be non-modifiable is if any other document belonging to the file containing this document is currently being edited.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ApprenticeServerDocument_IsSubstitutePart.htm">IsSubstitutePart</a></td>
+        <td class="api-list">Read-only property that returns whether this part is intended to be used as a substitute part. (applies only to part documents).</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ApprenticeServerDocument_NeedsMigrating.htm">NeedsMigrating</a></td>
+        <td class="api-list">Gets the Boolean indicating whether this file needs to be migrated first, using Autodesk Inventor (opened and saved using Autodesk Inventor), before any edits can be performed to the Autodesk Inventor-specific data within this file.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ApprenticeServerDocument_Open.htm">Open</a></td>
+        <td class="api-list">Property that returns whether this document is currently open. If False, the document has only been initialized and calling methods or properties on the document could cause it to open.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ApprenticeServerDocument_PrintManager.htm">PrintManager</a></td>
+        <td class="api-list">Property that returns the object for this document.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ApprenticeServerDocument_PropertySets.htm">PropertySets</a></td>
+        <td class="api-list">Gets the object that manages the File Properties.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ApprenticeServerDocument_ReferencedDocumentDescriptors.htm">ReferencedDocumentDescriptors</a></td>
+        <td class="api-list">Property that returns an enumeration of descriptors that represent the native document references held by this document.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ApprenticeServerDocument_ReferencedDocuments.htm">ReferencedDocuments</a></td>
+        <td class="api-list">Property that returns all the documents referenced by this document.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ApprenticeServerDocument_ReferencedOLEFileDescriptors.htm">ReferencedOLEFileDescriptors</a></td>
+        <td class="api-list">Property that returns the collection of linked files in the document. Embeddings are not accessible in Apprentice.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ApprenticeServerDocument_ReferencedOpaqueFileDescriptors.htm">ReferencedOpaqueFileDescriptors</a></td>
+        <td class="api-list">Gets the collection of descriptor objects, presenting (editable) information about opaque references held.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ApprenticeServerDocument_ReferenceKeyManager.htm">ReferenceKeyManager</a></td>
+        <td class="api-list">Gets this Document's ReferenceKeyManager object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ApprenticeServerDocument_ReferencingDocuments.htm">ReferencingDocuments</a></td>
+        <td class="api-list">Property that returns all the documents in memory that reference this document.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ApprenticeServerDocument_RequiresUpdate.htm">RequiresUpdate</a></td>
+        <td class="api-list">Property that returns whether the document requires an update. Note that the document cannot be updated in Apprentice.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ApprenticeServerDocument_ReservedForWrite.htm">ReservedForWrite</a></td>
+        <td class="api-list">Gets the Boolean flag indicating whether this file has been reserved for write by someone.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ApprenticeServerDocument_ReservedForWriteByMe.htm">ReservedForWriteByMe</a></td>
+        <td class="api-list">Gets/Sets the Boolean flag indicating whether this file has been reserved for write by the caller.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ApprenticeServerDocument_ReservedForWriteLogin.htm">ReservedForWriteLogin</a></td>
+        <td class="api-list">Gets the login of the person who currently holds the reservation to write.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ApprenticeServerDocument_ReservedForWriteName.htm">ReservedForWriteName</a></td>
+        <td class="api-list">Gets the name of the person who currently holds the reservation to write.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ApprenticeServerDocument_ReservedForWriteTime.htm">ReservedForWriteTime</a></td>
+        <td class="api-list">Gets the time at which the reservation was made.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ApprenticeServerDocument_ReservedForWriteVersion.htm">ReservedForWriteVersion</a></td>
+        <td class="api-list">Gets the version within this file that has been reserved for write.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ApprenticeServerDocument_SoftwareVersionCreated.htm">SoftwareVersionCreated</a></td>
+        <td class="api-list">Gets the object that encapsulates the version of the software with which this document was first created.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ApprenticeServerDocument_SoftwareVersionSaved.htm">SoftwareVersionSaved</a></td>
+        <td class="api-list">Gets the object that encapsulates the version of the software with which this document was last saved.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ApprenticeServerDocument_Thumbnail.htm">Thumbnail</a></td>
+        <td class="api-list">Property that returns a bitmap picture of the document.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ApprenticeServerDocument_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ApprenticeServerDocument_UnitsOfMeasure.htm">UnitsOfMeasure</a></td>
+        <td class="api-list">Property that returns the UnitsOfMeasure object.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="ApprenticeServerComponent_Document.htm">ApprenticeServerComponent.Document</a>, <a href="ApprenticeServerComponent_Open.htm">ApprenticeServerComponent.Open</a>, <a href="ApprenticeServerComponent_OpenWithOptions.htm">ApprenticeServerComponent.OpenWithOptions</a>, <a href="ApprenticeServerDocuments_Item.htm">ApprenticeServerDocuments.Item</a><h2 class="api">
+            Derived Classes
+          </h2><a href="ApprenticeServerDrawingDocument.htm">ApprenticeServerDrawingDocument</a><h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="iPropertyApprentice_Sample.htm">Update iProperty values using Apprentice</a></td>
+        <td class="api-list">Updates some iProperty values using Apprentice.  The document specified in the code for the Open method must exist.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 4<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(ApprenticeServerDocument%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

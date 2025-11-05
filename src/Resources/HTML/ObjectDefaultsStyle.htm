@@ -1,0 +1,558 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/ObjectDefaultsStyle.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="ObjectDefaultsStyle">
+    <meta name="description" content="ObjectDefaultsStyle Object">
+    <meta name="topicid" content="GUID-ObjectDefaultsStyle">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>ObjectDefaultsStyle Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">ObjectDefaultsStyle Object
+			</h1>
+              Derived from: <a href="Style.htm">Style</a> Object
+            <br><h2 class="api">
+          Description
+        </h2>The Object Defaults style is a sub-style of the active standard style. In a drawing document, after a standard is selected, the active Object Default style specifies which layer and object style provides the format definition for a particular object.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_ConvertToLocal.htm">ConvertToLocal</a></td>
+        <td class="api-list">Method that creates a local cached copy of a global style and returns the local style.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_Copy.htm">Copy</a></td>
+        <td class="api-list">Method that creates a new local Style object. The newly created style is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_Delete.htm">Delete</a></td>
+        <td class="api-list">Method that deletes the Style/Layer/UnfoldMethod.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_GetReferenceKey.htm">GetReferenceKey</a></td>
+        <td class="api-list">Method that generates and returns the reference key for this entity.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_SaveToGlobal.htm">SaveToGlobal</a></td>
+        <td class="api-list">Method that saves this style to the global repository. If a style with the same name is found in the repository, that style is updated.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_UpdateFromGlobal.htm">UpdateFromGlobal</a></td>
+        <td class="api-list">Method that updates this style from the global repository.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_AngularDimensionLayer.htm">AngularDimensionLayer</a></td>
+        <td class="api-list">Gets and sets the default layer for angular dimensions.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_AngularDimensionStyle.htm">AngularDimensionStyle</a></td>
+        <td class="api-list">Gets and sets the default dimension style for angular dimensions.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_Application.htm">Application</a></td>
+        <td class="api-list">Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_AuxiliaryViewLineLayer.htm">AuxiliaryViewLineLayer</a></td>
+        <td class="api-list">Read-write property that gets and sets the default layer for auxiliary view line.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_AuxiliaryViewLineStyle.htm">AuxiliaryViewLineStyle</a></td>
+        <td class="api-list">Read-write property that gets and sets the default style for auxiliary view line.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_BalloonLayer.htm">BalloonLayer</a></td>
+        <td class="api-list">Gets and sets the default layer for balloons.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_BalloonStyle.htm">BalloonStyle</a></td>
+        <td class="api-list">Gets and sets the default style for balloons.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_BaselineDimensionLayer.htm">BaselineDimensionLayer</a></td>
+        <td class="api-list">Gets and sets the default layer for baseline dimensions.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_BaselineDimensionStyle.htm">BaselineDimensionStyle</a></td>
+        <td class="api-list">Gets and sets the default dimension style for baseline dimensions.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_BendNoteLayer.htm">BendNoteLayer</a></td>
+        <td class="api-list">Gets and sets the default layer for bend notes.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_BendNoteStyle.htm">BendNoteStyle</a></td>
+        <td class="api-list">Gets and sets the default dimension style for bend notes.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_BendTableLayer.htm">BendTableLayer</a></td>
+        <td class="api-list">Gets and sets the default layer for bend tables.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_BendTableStyle.htm">BendTableStyle</a></td>
+        <td class="api-list">Gets and sets the default style for bend tables.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_BendTagLayer.htm">BendTagLayer</a></td>
+        <td class="api-list">Gets and sets the default layer for bend tags.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_BendTagStyle.htm">BendTagStyle</a></td>
+        <td class="api-list">Gets and sets the default style for bend tags.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_BorderGeometryLayer.htm">BorderGeometryLayer</a></td>
+        <td class="api-list">Gets and sets the default layer for border geometries.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_BorderTextLayer.htm">BorderTextLayer</a></td>
+        <td class="api-list">Gets and sets the default layer for border texts.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_BorderTextStyle.htm">BorderTextStyle</a></td>
+        <td class="api-list">Gets and sets the default text style for border texts.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_CenterlineLayer.htm">CenterlineLayer</a></td>
+        <td class="api-list">Gets and sets the default layer for center lines.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_CenterlineStyle.htm">CenterlineStyle</a></td>
+        <td class="api-list">Gets and sets the default style for center lines.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_CentermarkLayer.htm">CentermarkLayer</a></td>
+        <td class="api-list">Gets and sets the default layer for center marks.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_CentermarkStyle.htm">CentermarkStyle</a></td>
+        <td class="api-list">Gets and sets the default style for center marks.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_CenterOfGravityLayer.htm">CenterOfGravityLayer</a></td>
+        <td class="api-list">Gets and sets the default layer for center mark identifying the center of gravity.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_CenterOfGravityStyle.htm">CenterOfGravityStyle</a></td>
+        <td class="api-list">Gets and sets the default style for center mark identifying the center of gravity.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_ChainDimensionLayer.htm">ChainDimensionLayer</a></td>
+        <td class="api-list">Read-write property that gets and sets the default layer for chain dimension sets.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_ChainDimensionStyle.htm">ChainDimensionStyle</a></td>
+        <td class="api-list">Read-write property that gets and sets the default style for chain dimension sets.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_ChamferNoteLayer.htm">ChamferNoteLayer</a></td>
+        <td class="api-list">Gets and sets the default layer for chamfer notes.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_ChamferNoteStyle.htm">ChamferNoteStyle</a></td>
+        <td class="api-list">Gets and sets the default dimension style for chamfer notes.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_Comments.htm">Comments</a></td>
+        <td class="api-list">Gets and sets comments associated with the style.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_ConfigurationTableLayer.htm">ConfigurationTableLayer</a></td>
+        <td class="api-list">Gets and sets the default layer for configuration tables.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_ConfigurationTableStyle.htm">ConfigurationTableStyle</a></td>
+        <td class="api-list">Gets and sets the default style for configuration tables.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_CropCutLineLayer.htm">CropCutLineLayer</a></td>
+        <td class="api-list">Read-write property that gets and sets the default layer for crop cut line.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_CropCutLineStyle.htm">CropCutLineStyle</a></td>
+        <td class="api-list">Read-write property that gets and sets the default style for crop cut line.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_DetailCutLineLayer.htm">DetailCutLineLayer</a></td>
+        <td class="api-list">Read-write property that gets and sets the default layer for detail cut line.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_DetailViewCalloutLayer.htm">DetailViewCalloutLayer</a></td>
+        <td class="api-list">Read-write property that gets and sets the default layer for detail view callout.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_DetailViewCalloutStyle.htm">DetailViewCalloutStyle</a></td>
+        <td class="api-list">Read-write property that gets and sets the default style for detail view callout.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_DiameterDimensionLayer.htm">DiameterDimensionLayer</a></td>
+        <td class="api-list">Gets and sets the default layer for diameter dimensions.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_DiameterDimensionStyle.htm">DiameterDimensionStyle</a></td>
+        <td class="api-list">Gets and sets the default dimension style for diameter dimensions.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_EdgeSymbolLayer.htm">EdgeSymbolLayer</a></td>
+        <td class="api-list">Read-write property that gets and sets the default layer for edge symbols.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_EdgeSymbolStyle.htm">EdgeSymbolStyle</a></td>
+        <td class="api-list">Read-write property that gets and sets the default style for edge symbols.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_FeatureControlFrameLayer.htm">FeatureControlFrameLayer</a></td>
+        <td class="api-list">Gets and sets the default layer for feature control frames.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_FeatureControlFrameStyle.htm">FeatureControlFrameStyle</a></td>
+        <td class="api-list">Gets and sets the default style for feature control frames.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_GeneralNoteLayer.htm">GeneralNoteLayer</a></td>
+        <td class="api-list">Gets and sets the default layer for general notes.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_GeneralNoteStyle.htm">GeneralNoteStyle</a></td>
+        <td class="api-list">Gets and sets the default text style for general notes.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_HoleNoteLayer.htm">HoleNoteLayer</a></td>
+        <td class="api-list">Gets and sets the default layer for hole notes.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_HoleNoteStyle.htm">HoleNoteStyle</a></td>
+        <td class="api-list">Gets and sets the default dimension style for hole notes.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_HoleTableLayer.htm">HoleTableLayer</a></td>
+        <td class="api-list">Gets and sets the default layer for hole tables.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_HoleTableStyle.htm">HoleTableStyle</a></td>
+        <td class="api-list">Gets and sets the default style for hole tables.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_HoleTagLayer.htm">HoleTagLayer</a></td>
+        <td class="api-list">Gets and sets the default layer for hole tags.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_HoleTagStyle.htm">HoleTagStyle</a></td>
+        <td class="api-list">Gets and sets the default dimension style for hole tags.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_InternalName.htm">InternalName</a></td>
+        <td class="api-list">Property that returns the internal name of the style. The name is the internal English name of the standard style. This name will remain constant and is not affected by locale. This name is never displayed to the user. Note that this name is not guaranteed to be unique.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_InUse.htm">InUse</a></td>
+        <td class="api-list">Property that indicates if this style is in use.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_LeaderTextLayer.htm">LeaderTextLayer</a></td>
+        <td class="api-list">Gets and sets the default layer for leader texts.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_LeaderTextStyle.htm">LeaderTextStyle</a></td>
+        <td class="api-list">Gets and sets the default text style for leader text.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_LinearDimensionLayer.htm">LinearDimensionLayer</a></td>
+        <td class="api-list">Gets and sets the default layer for linear dimensions.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_LinearDimensionStyle.htm">LinearDimensionStyle</a></td>
+        <td class="api-list">Gets and sets the default dimension style for linear dimensions.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_Name.htm">Name</a></td>
+        <td class="api-list">Gets/Sets the name of the Style.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_OrdinateDimensionLayer.htm">OrdinateDimensionLayer</a></td>
+        <td class="api-list">Gets and sets the default layer for ordinate dimensions.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_OrdinateDimensionSetLayer.htm">OrdinateDimensionSetLayer</a></td>
+        <td class="api-list">Gets and sets the default layer for ordinate dimension sets.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_OrdinateDimensionStyle.htm">OrdinateDimensionStyle</a></td>
+        <td class="api-list">Gets and sets the default dimension style for ordinate dimensions.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_OrdinateSetDimensionStyle.htm">OrdinateSetDimensionStyle</a></td>
+        <td class="api-list">Gets and sets the default dimension style for ordinate set dimensions.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_OriginIndicatorLayer.htm">OriginIndicatorLayer</a></td>
+        <td class="api-list">Gets and sets the default layer for origin indicators.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_OriginIndicatorStyle.htm">OriginIndicatorStyle</a></td>
+        <td class="api-list">Gets and sets the default leader style for origin indicators.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_Parent.htm">Parent</a></td>
+        <td class="api-list">Property returning the parent of this object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_PartsListLayer.htm">PartsListLayer</a></td>
+        <td class="api-list">Gets and sets the default layer for parts lists.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_PartsListStyle.htm">PartsListStyle</a></td>
+        <td class="api-list">Gets and sets the default style for parts lists.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_PunchNoteLayer.htm">PunchNoteLayer</a></td>
+        <td class="api-list">Gets and sets the default layer for punch notes.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_PunchNoteStyle.htm">PunchNoteStyle</a></td>
+        <td class="api-list">Gets and sets the default dimension style for punch notes.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_RadialDimensionLayer.htm">RadialDimensionLayer</a></td>
+        <td class="api-list">Gets and sets the default layer for radial dimensions.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_RadialDimensionStyle.htm">RadialDimensionStyle</a></td>
+        <td class="api-list">Gets and sets the default dimension style for radial dimensions.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_RevisionTableLayer.htm">RevisionTableLayer</a></td>
+        <td class="api-list">Gets and sets the default layer for revision tables.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_RevisionTableStyle.htm">RevisionTableStyle</a></td>
+        <td class="api-list">Gets and sets the default style for revision tables.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_RevisionTagLayer.htm">RevisionTagLayer</a></td>
+        <td class="api-list">Gets and sets the default layer for revision tags.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_RevisionTagStyle.htm">RevisionTagStyle</a></td>
+        <td class="api-list">Gets and sets the default style for revision tags.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_SectionBreakLineLayer.htm">SectionBreakLineLayer</a></td>
+        <td class="api-list">Read-write property that gets and sets the default layer for section break line.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_SectionViewLineLayer.htm">SectionViewLineLayer</a></td>
+        <td class="api-list">Read-write property that gets and sets the default layer for section view line.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_SectionViewLineStyle.htm">SectionViewLineStyle</a></td>
+        <td class="api-list">Read-write property that gets and sets the default style for section view line.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_SheetMetalPunchLayer.htm">SheetMetalPunchLayer</a></td>
+        <td class="api-list">Gets and sets the default layer for a center mark identifying a sheet metal punch origin.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_SheetMetalPunchStyle.htm">SheetMetalPunchStyle</a></td>
+        <td class="api-list">Gets and sets the default style for a center mark identifying a sheet metal punch origin.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_Sketch3DGeometryLayer.htm">Sketch3DGeometryLayer</a></td>
+        <td class="api-list">Gets and sets the default layer for 3D sketch geometries.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_SketchedSymbolGeometryLayer.htm">SketchedSymbolGeometryLayer</a></td>
+        <td class="api-list">Gets and sets the default layer for user defined symbol sketch geometries.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_SketchedSymbolLeaderLayer.htm">SketchedSymbolLeaderLayer</a></td>
+        <td class="api-list">Gets and sets the default layer for user defined symbols.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_SketchedSymbolLeaderStyle.htm">SketchedSymbolLeaderStyle</a></td>
+        <td class="api-list">Gets and sets the default leader style for user defined symbols.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_SketchedSymbolTextLayer.htm">SketchedSymbolTextLayer</a></td>
+        <td class="api-list">Gets and sets the default layer for user defined symbol sketch texts.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_SketchedSymbolTextStyle.htm">SketchedSymbolTextStyle</a></td>
+        <td class="api-list">Gets and sets the default text style for user defined symbol sketch texts.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_SketchGeometryLayer.htm">SketchGeometryLayer</a></td>
+        <td class="api-list">Gets and sets the default layer for sketch geometries.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_SketchTextLayer.htm">SketchTextLayer</a></td>
+        <td class="api-list">Gets and sets the default layer for sketch texts.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_SketchTextStyle.htm">SketchTextStyle</a></td>
+        <td class="api-list">Gets and sets the default text style for sketches.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_StyleLocation.htm">StyleLocation</a></td>
+        <td class="api-list">Property that returns the location of this style, i.e. local to the document, cached locally in the document, exists in the library. Styles that exist in the library cannot be edited.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_StyleType.htm">StyleType</a></td>
+        <td class="api-list">Gets the type of the style.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_SurfaceTextureLayer.htm">SurfaceTextureLayer</a></td>
+        <td class="api-list">Gets and sets the default layer for surface textures.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_SurfaceTextureStyle.htm">SurfaceTextureStyle</a></td>
+        <td class="api-list">Gets and sets the default style for surface textures.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_TableLayer.htm">TableLayer</a></td>
+        <td class="api-list">Gets and sets the default layer for general (custom) tables.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_TableStyle.htm">TableStyle</a></td>
+        <td class="api-list">Gets and sets the default style for general (custom) tables.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_ThreadNoteLayer.htm">ThreadNoteLayer</a></td>
+        <td class="api-list">Gets and sets the default layer for thread notes.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_ThreadNoteStyle.htm">ThreadNoteStyle</a></td>
+        <td class="api-list">Gets and sets the default dimension style for thread notes.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_TitleBlockGeometryLayer.htm">TitleBlockGeometryLayer</a></td>
+        <td class="api-list">Gets and sets the default layer for title block geometries.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_TitleBlockTextLayer.htm">TitleBlockTextLayer</a></td>
+        <td class="api-list">Gets and sets the default layer for title block texts.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_TitleBlockTextStyle.htm">TitleBlockTextStyle</a></td>
+        <td class="api-list">Gets and sets the default text style for title block texts.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_TransitionSymbolLayer.htm">TransitionSymbolLayer</a></td>
+        <td class="api-list">Gets and sets the default layer for transition symbols.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_TransitionSymbolStyle.htm">TransitionSymbolStyle</a></td>
+        <td class="api-list">Gets and sets the default style for transition symbols.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_UpToDate.htm">UpToDate</a></td>
+        <td class="api-list">Property that gets the up-to-date status of the style against the global repository.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_ViewLabelLayer.htm">ViewLabelLayer</a></td>
+        <td class="api-list">Gets and sets the default layer for view labels.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_ViewLabelStyle.htm">ViewLabelStyle</a></td>
+        <td class="api-list">Gets and sets the default text style for view labels.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_WeldSymbolLayer.htm">WeldSymbolLayer</a></td>
+        <td class="api-list">Gets and sets the default layer for weld symbols.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_WeldSymbolStyle.htm">WeldSymbolStyle</a></td>
+        <td class="api-list">Gets and sets the default style for weld symbols.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_WorkAxisLayer.htm">WorkAxisLayer</a></td>
+        <td class="api-list">Gets and sets the default layer for a centerline or center mark identifying a work axis.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_WorkAxisStyle.htm">WorkAxisStyle</a></td>
+        <td class="api-list">Gets and sets the default style for a centerline or center mark identifying a work axis.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_WorkPlaneLayer.htm">WorkPlaneLayer</a></td>
+        <td class="api-list">Gets and sets the default layer for a centerline identifying a work plane.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_WorkPlaneStyle.htm">WorkPlaneStyle</a></td>
+        <td class="api-list">Gets and sets the default style for a centerline identifying a work plane.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_WorkPointLayer.htm">WorkPointLayer</a></td>
+        <td class="api-list">Gets and sets the default layer for a center mark identifying a work point.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ObjectDefaultsStyle_WorkPointStyle.htm">WorkPointStyle</a></td>
+        <td class="api-list">Gets and sets the default style for a center mark identifying a work point.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="DrawingStandardStyle_ActiveObjectDefaults.htm">DrawingStandardStyle.ActiveObjectDefaults</a>, <a href="ObjectDefaultsStylesEnumerator_Item.htm">ObjectDefaultsStylesEnumerator.Item</a><h2 class="api">
+            Version
+          </h2>
+        Introduced in version 9<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(ObjectDefaultsStyle%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

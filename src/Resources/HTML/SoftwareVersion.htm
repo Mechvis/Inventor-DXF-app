@@ -1,0 +1,119 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/SoftwareVersion.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="SoftwareVersion">
+    <meta name="description" content="SoftwareVersion Object">
+    <meta name="topicid" content="GUID-SoftwareVersion">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>SoftwareVersion Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">SoftwareVersion Object
+			</h1><br><h2 class="api">
+          Description
+        </h2>Object that encapsulates a given software version. Used in various contexts.<h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SoftwareVersion_BetaVersion.htm">BetaVersion</a></td>
+        <td class="api-list">Gets the Beta version. If this is not a Beta version software, this value will be zero.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SoftwareVersion_BuildIdentifier.htm">BuildIdentifier</a></td>
+        <td class="api-list">Gets the number that completely identifies a particular build of Autodesk Inventor.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SoftwareVersion_DisplayName.htm">DisplayName</a></td>
+        <td class="api-list">Gets the human-readable, displayable name designating this particular version (e.g.: 'Autodesk Inventor (tm) Release 2.5 Service Pack 3').</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SoftwareVersion_DisplayVersion.htm">DisplayVersion</a></td>
+        <td class="api-list">Returns the release version displayed to users. (e.g.: '2009' for Major version 13 or '2010' for Major version 14)</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SoftwareVersion_Is64BitVersion.htm">Is64BitVersion</a></td>
+        <td class="api-list">Always false in 32-bit Inventor. Use this property to find out whether your code is connected to a 64-bit version of Inventor.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SoftwareVersion_IsEducationVersion.htm">IsEducationVersion</a></td>
+        <td class="api-list">Returns whether this is an educational versions of Inventor.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SoftwareVersion_Major.htm">Major</a></td>
+        <td class="api-list">Gets the Major release number (e.g.: Release '1', '2', ...).</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SoftwareVersion_Minor.htm">Minor</a></td>
+        <td class="api-list">Gets the Minor release number. If none, a zero is returned. (e.g.: the '5' in release 1.5).</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SoftwareVersion_NotProduction.htm">NotProduction</a></td>
+        <td class="api-list">Gets a Boolean flag indicating whether this software is intended for purely internal purposes or not. Beta is considered external.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SoftwareVersion_ProductEdition.htm">ProductEdition</a></td>
+        <td class="api-list">Gets the product edition. Only valid when SoftwareVersion is obtained from the Application.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SoftwareVersion_ProductName.htm">ProductName</a></td>
+        <td class="api-list">Gets the product name.&nbsp;Only valid when SoftwareVersion is obtained from the Application.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SoftwareVersion_ServicePack.htm">ServicePack</a></td>
+        <td class="api-list">Gets the number of the Service Pack if this software has been updated with such. If none, a zero is returned. (e.g.: the '3' in Release 2.5 Service Pack 3).</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SoftwareVersion_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="Application_SoftwareVersion.htm">Application.SoftwareVersion</a>, <a href="ApprenticeServerComponent_SoftwareVersion.htm">ApprenticeServerComponent.SoftwareVersion</a>, <a href="ApprenticeServerDocument_SoftwareVersionCreated.htm">ApprenticeServerDocument.SoftwareVersionCreated</a>, <a href="ApprenticeServerDocument_SoftwareVersionSaved.htm">ApprenticeServerDocument.SoftwareVersionSaved</a>, <a href="ApprenticeServerDrawingDocument_SoftwareVersionCreated.htm">ApprenticeServerDrawingDocument.SoftwareVersionCreated</a>, <a href="ApprenticeServerDrawingDocument_SoftwareVersionSaved.htm">ApprenticeServerDrawingDocument.SoftwareVersionSaved</a>, <a href="AssemblyDocument_SoftwareVersionCreated.htm">AssemblyDocument.SoftwareVersionCreated</a>, <a href="AssemblyDocument_SoftwareVersionSaved.htm">AssemblyDocument.SoftwareVersionSaved</a>, <a href="Document_SoftwareVersionCreated.htm">Document.SoftwareVersionCreated</a>, <a href="Document_SoftwareVersionSaved.htm">Document.SoftwareVersionSaved</a>, <a href="DrawingDocument_SoftwareVersionCreated.htm">DrawingDocument.SoftwareVersionCreated</a>, <a href="DrawingDocument_SoftwareVersionSaved.htm">DrawingDocument.SoftwareVersionSaved</a>, <a href="File_SoftwareVersionCreated.htm">File.SoftwareVersionCreated</a>, <a href="File_SoftwareVersionSaved.htm">File.SoftwareVersionSaved</a>, <a href="FileManager_SoftwareVersionSaved.htm">FileManager.SoftwareVersionSaved</a>, <a href="InventorServer_SoftwareVersion.htm">InventorServer.SoftwareVersion</a>, <a href="InventorServerObject_SoftwareVersion.htm">InventorServerObject.SoftwareVersion</a>, <a href="PartDocument_SoftwareVersionCreated.htm">PartDocument.SoftwareVersionCreated</a>, <a href="PartDocument_SoftwareVersionSaved.htm">PartDocument.SoftwareVersionSaved</a>, <a href="PresentationDocument_SoftwareVersionCreated.htm">PresentationDocument.SoftwareVersionCreated</a>, <a href="PresentationDocument_SoftwareVersionSaved.htm">PresentationDocument.SoftwareVersionSaved</a><h2 class="api">
+            Version
+          </h2>
+        Introduced in version 4<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(SoftwareVersion%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

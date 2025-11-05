@@ -1,0 +1,137 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/SketchHatchRegions_Add.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="SketchHatchRegions_Add">
+    <meta name="description" content="SketchHatchRegions.Add Method">
+    <meta name="topicid" content="SketchHatchRegions_Add">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>SketchHatchRegions.Add Method</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">SketchHatchRegions.Add Method</h1>
+
+          Parent Object: <a href="SketchHatchRegions.htm">SketchHatchRegions</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Method that creates a new SketchHatchRegion.&nbsp;The new created SketchHatchRegion is returned.</p>
+    <h2 class="api">
+          Syntax
+        </h2>
+        
+            SketchHatchRegions.<b>Add</b>( <b><i>Profile</i></b> As <a href="Profile.htm">Profile</a>, [<b><i>DrawingHatchPattern</i></b>] As Variant, [<b><i>Angle</i></b>] As Variant, [<b><i>Scale</i></b>] As Variant, [<b><i>Shift</i></b>] As Variant, [<b><i>LineWeight</i></b>] As Variant, [<b><i>DoublePattern</i></b>] As Variant, [<b><i>Color</i></b>] As Variant ) As <a href="SketchHatchRegion.htm">SketchHatchRegion</a>
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">Profile</td>
+        <td class="api-list"><a href="Profile.htm">Profile</a></td>
+        <td class="api-list">Input Profile object that being hatched.</td>
+      </tr>
+      <tr>
+        <td class="api-list">DrawingHatchPattern</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional input DrawingHatchPattern that specifies the hatch pattern. If this is left empty, the default pattern will be used for the sketch hatch region. If not provided the “ANSI 31” will be used. The “Solid” pattern can be used to set the color fill region.<br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+      <tr>
+        <td class="api-list">Angle</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional input Double that defines the rotation angle of the hatch pattern in radians.<br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+      <tr>
+        <td class="api-list">Scale</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional input Double that indicates the scale factor when applying the pattern.<br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+      <tr>
+        <td class="api-list">Shift</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional input Double that specifies the distance to offset the hatch original hatch pattern position.<br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+      <tr>
+        <td class="api-list">LineWeight</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional input Double that specifies the line weight in centimeters. A value of 0 indicates By Layer.<br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+      <tr>
+        <td class="api-list">DoublePattern</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional input Boolean that specifies if a duplicate hatch pattern should be created that is perpendicular to the hatch pattern assigned to the sketch hatch region.<br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+      <tr>
+        <td class="api-list">Color</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional input Color object that specifies the color for hatch pattern.&nbsp;A value of Nothing indicates that the layer color should be used.<br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingSketchHatchRegionSample_Sample.htm">Drawing Sketch Hatch Region Sample</a></td>
+        <td class="api-list">This sample demonstrates how to create a sketch hatch region in drawing.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2021<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(SketchHatchRegions.Add%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

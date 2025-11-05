@@ -1,0 +1,83 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/DriveSettings_GoToStart.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="DriveSettings_GoToStart">
+    <meta name="description" content="DriveSettings.GoToStart Method">
+    <meta name="topicid" content="DriveSettings_GoToStart">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>DriveSettings.GoToStart Method</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">DriveSettings.GoToStart Method</h1>
+
+          Parent Object: <a href="DriveSettings.htm">DriveSettings</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Method that got to the starting frame of the animation.</p>
+    <h2 class="api">
+          Syntax
+        </h2>
+        
+            DriveSettings.<b>GoToStart</b>()
+        
+    <h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AssemblyRotationalJoint_Sample.htm">Create rotational assembly joint</a></td>
+        <td class="api-list"><p>This sample demonstrates creating an assembly joint. It connects the midpoints of the edges of two faces using a rotational joint. To do this it first creates a geometry intent object of the midpoint of the edge and then creates another intent using the face and the midpoint intent.&nbsp;It does this to create to midpoint intents which it then uses to create the rotational connection.</p>
+
+<p>The sample uses and existing part that must be set up to allow it to work correctly.&nbsp;To create the sample part you can use any part that has a planar face and a linear edge connected to that planar face.&nbsp;A simple box is sufficient.&nbsp;In this part Add a mate iMate to the planar face and rename the iMate to "Face1".&nbsp;Also add a mate iMate to a linear edge that is on the face previously named and rename this iMate to "Edge1".&nbsp;Save the part to "C:\Temp\SamplePart.ipt" or any other name and edit the code below to reference the file.&nbsp;You can then run the sample code which will create a new assembly, insert two instances of the part and create a rotational connection between them.&nbsp;Then it will animation the rotation by driving the connection.</p></td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2014<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(DriveSettings.GoToStart%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

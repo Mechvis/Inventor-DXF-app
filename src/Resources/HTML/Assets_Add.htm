@@ -1,0 +1,123 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/Assets_Add.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="Assets_Add">
+    <meta name="description" content="Assets.Add Method">
+    <meta name="topicid" content="Assets_Add">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>Assets.Add Method</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">Assets.Add Method</h1>
+
+          Parent Object: <a href="Assets.htm">Assets</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Method that creates a new asset. The new created Asset object is returned. Currently only material and appearance assets can be created. When a material asset is created a physical asset is automatically created that is associated with it that you can edit.</p>
+    <h2 class="api">
+          Syntax
+        </h2>
+        
+            Assets.<b>Add</b>( <b><i>AssetType</i></b> As <a href="AssetTypeEnum.htm">AssetTypeEnum</a>, <b><i>LocalType</i></b> As String, [<b><i>Reserved</i></b>] As Variant, [<b><i>DisplayName</i></b>] As Variant ) As <a href="Asset.htm">Asset</a>
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">AssetType</td>
+        <td class="api-list"><a href="AssetTypeEnum.htm">AssetTypeEnum</a></td>
+        <td class="api-list">The type of asset to be created, either an appearance or material asset.</td>
+      </tr>
+      <tr>
+        <td class="api-list">LocalType</td>
+        <td class="api-list">String</td>
+        <td class="api-list">If the AssetType argument is kAssetAppearanceType, then you can specify the type of appearance asset you want to create. If a material asset is being created, this argument is ignored. If an appearance argument is being created and this argument is not provided it will default to creating a Generic type of appearance asset.
+
+The valid types of assets that can be created are: “Ceramic”, “Concrete”, “Generic”, “Glazing”, “Masonry”, “Metal”, “Metallic Paint”, “Mirror”, “Plastic”, “Solid Glass”, “Stone”, “Wall Paint”, “Water” and “Wood”.</td>
+      </tr>
+      <tr>
+        <td class="api-list">Reserved</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Reserved for future use.<br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+      <tr>
+        <td class="api-list">DisplayName</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Displayed name of the asset as shown to the user in the browser. If no name is specified, Inventor creates a default name.<br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ChangeAppearanceUsingMiniToolbar_Sample.htm">Change color of part, features or faces</a></td>
+        <td class="api-list">This sample demonstrates how to use MiniToolBar to change appearance color of part or features or faces.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="CreateSimpleAppearance_Sample.htm">Create a simple appearance.</a></td>
+        <td class="api-list">Creates a sample appearance in the active part or assembly document.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2014<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(Assets.Add%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,157 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/WriteFlatPatternAsDXF_Sample.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="WriteFlatPatternAsDXF_Sample">
+    <meta name="description" content="Translate - Sheet Metal to DXF Sample">
+    <meta name="topicid" content="WriteFlatPatternAsDXF_Sample">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>Translate - Sheet Metal to DXF</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body><script>
+          function copyCode(language) {
+          // Get the pre element for the specified language.
+          var preElement = document.getElementById(language);
+
+          // Get the text from the element and copy it to the clipboard.
+          var preText = preElement.innerText;
+
+          var isIE = /*@cc_on!@*/false || !!document.documentMode;
+
+          if (isIE)
+          {
+            window.clipboardData.setData('Text', preText);
+          }
+          else
+          {
+            navigator.clipboard.writeText(preText);
+          }
+
+          //alert("Code copied to clipboard");
+          }
+        </script><link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">Translate - Sheet Metal to DXF</h1>
+    <h2 class="api">
+          Description
+        </h2>The sample code below writes a sheet metal file out as DXF. DWG is also supported. Use either the FLAT PATTERN DWG or FLAT PATTERN DXF formats.There are several optional arguments that can be specified as part of the format string. E.g. 'FLAT PATTERN DXF?TangentLayer=Tangents&amp;SimplifySplines=True'). Below are the names of these arguments and relevant default values. The output will use these values unless you override them as part of the input string.
+<table>
+<tr><td><b>Argument</b></td><td><b>Type</b></td><td><b>Default Value</b></td><td><b>Note</b></td></tr>
+<tr><td>TangentLayer</td><td>String</td><td>IV_TANGENT</td><td></td></tr>
+<tr><td>OuterProfileLayer</td><td>String</td><td>IV_OUTER_PROFILE</td><td></td></tr>
+<tr><td>ArcCentersLayer</td><td>String</td><td>IV_ARC_CENTERS</td><td></td></tr>
+<tr><td>InteriorProfilesLayer</td><td>String</td><td>IV_INTERIOR_PROFILES</td><td></td></tr>
+<tr><td>BendLayer</td><td>String</td><td>IV_BEND</td><td>BendUpLayer + BendDownLayer (legacy support)</td></tr>
+<tr><td>BendUpLayer</td><td>String</td><td>IV_BEND</td><td></td></tr>
+<tr><td>BendDownLayer</td><td>String</td><td>IV_BEND_DOWN</td><td></td></tr>
+<tr><td>ToolCenterLayer</td><td>String</td><td>IV_TOOL_CENTER</td><td>ToolCenterUpLayer + ToolCenterDownLayer (legacy support)</td></tr>
+<tr><td>ToolCenterUpLayer</td><td>String</td><td>IV_TOOL_CENTER</td><td></td></tr>
+<tr><td>ToolCenterDownLayer</td><td>String</td><td>IV_TOOL_CENTER_DOWN</td><td></td></tr>
+<tr><td>FeatureProfilesLayer</td><td>String</td><td>IV_FEATURE_PROFILES</td><td>FeatureProfilesUpLayer + FeatureProfilesDownLayer (legacy support)</td></tr>
+<tr><td>FeatureProfilesUpLayer</td><td>String</td><td>IV_FEATURE_PROFILES</td><td></td></tr>
+<tr><td>FeatureProfilesDownLayer</td><td>String</td><td>IV_FEATURE_PROFILES_DOWN</td><td></td></tr>
+<tr><td>AltRepFrontLayer</td><td>String</td><td>IV_ALTREP_FRONT</td><td></td></tr>
+<tr><td>AltRepBackLayer</td><td>String</td><td>IV_ALTREP_BACK</td><td></td></tr>
+<tr><td>UnconsumedSketchesLayer</td><td>String</td><td>IV_UNCONSUMED_SKETCHES</td><td></td></tr>
+<tr><td>UnconsumedSketchConstructionLayer</td><td>String</td><td>IV_UNCONSUMED_SKETCH_CONSTRUCTION</td><td></td></tr>
+<tr><td>TangentRollLinesLayer</td><td>String</td><td>IV_ROLL_TANGENT</td><td></td></tr>
+<tr><td>RollLinesLayer</td><td>String</td><td>IV_ROLL</td><td></td></tr>
+<tr><td>***Color</td><td>String</td><td></td><td>*** indicates name of layer from the argument column. RGB values separated by ;. Example: TangentLayerColor=255;0;0</td></tr>
+<tr><td>***LineType</td><td>Long</td><td></td><td>*** indicates name of layer from the argument column. Long value from LineTypeEnum. Example: TangentLayerLineType=37644</td></tr>
+<tr><td>***LineWeight</td><td>Double</td><td></td><td>*** indicates name of layer from the argument column. Value in centimeters. Example: TangentLayerLineWeight=.1016</td></tr>
+<tr><td>CustomizeFilename</td><td>String</td><td></td><td></td></tr>
+<tr><td>AcadVersion</td><td>String</td><td></td><td>2018, 2013, 2010, 2007, 2004, 2000, or R12 (for DXF only)</td></tr>
+<tr><td>SimplifySplines</td><td>Boolean</td><td>True</td><td>Enable spline replacement(by linear segments or arcs).</td></tr>
+<tr><td>SplineTolerance</td><td>Double</td><td>0.01</td><td>Chord tolerance for spline replacement</td></tr>
+<tr><td>AdvancedLegacyExport</td><td>Boolean</td><td>True</td><td></td></tr>
+<tr><td>MergeProfilesIntoPolyline</td><td>Boolean</td><td>False</td><td>Build a polyline of the exterior profiles</td></tr>
+<tr><td>RebaseGeometry</td><td>Boolean</td><td>False</td><td>Move geometry to 1st quadrant</td></tr>
+<tr><td>InvisibleLayers</td><td>String</td><td></td><td>List of layer names to make invisible, separated by ;</td></tr>
+<tr><td>TrimCenterlinesAtContour</td><td>Boolean</td><td>False</td><td>Trim the centerlines at contour.</td></tr>
+<tr><td>SimplifyAsTangentArcs</td><td>Boolean</td><td>False</td><td>True: Replace splines by tangent arcs. False: Replace splines by line segments. The SimplifySplines should be specified to True otherwise this option is ignored.</td></tr>
+</table><h2 class="api">
+          Code Samples
+        </h2>
+    <div id="tabs">
+      <ul>
+        <li><a href="#VBA">VBA</a></li>
+        <li><a href="#iLogic">iLogic</a></li>
+      </ul>
+      <div id="VBA" class="api-code">The following sample demonstrates creating an R12 DXF file that will have a layer called Outer where the the curves for the outer shape will be created.<table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('VBA_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="VBA_code">Public Sub WriteSheetMetalDXF()
+    <span style="color:blue">' Get the active document.  This assumes it is a part document.</span>
+    Dim oDoc As PartDocument
+    Set oDoc = ThisApplication.ActiveDocument
+
+    <span style="color:blue">' Get the DataIO object.</span>
+    Dim oDataIO As DataIO
+    Set oDataIO = oDoc.ComponentDefinition.DataIO
+
+    <span style="color:blue">' Build the string that defines the format of the DXF file.</span>
+    Dim sOut As String
+    sOut = "FLAT PATTERN DXF?AcadVersion=R12&amp;OuterProfileLayer=Outer&amp;TrimCenterlinesAtContour=True&InvisibleLayers=IV_UNCONSUMED_SKETCH_CONSTRUCTION"
+
+    <span style="color:blue">' Create the DXF file.</span>
+    oDataIO.WriteDataToFile sOut, "C:\temp\flat2.dxf"
+End Sub</pre>
+      </div>
+      <div id="iLogic" class="api-code">The following sample demonstrates creating an R12 DXF file that will have a layer called Outer where the the curves for the outer shape will be created.<table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('iLogic_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="iLogic_code">    <span style="color:blue">' Get the active document.  This assumes it is a part document.</span>
+    Dim oDoc As PartDocument
+    oDoc = ThisApplication.ActiveDocument
+
+    <span style="color:blue">' Get the DataIO object.</span>
+    Dim oDataIO As DataIO
+    oDataIO = oDoc.ComponentDefinition.DataIO
+
+    <span style="color:blue">' Build the string that defines the format of the DXF file.</span>
+    Dim sOut As String
+    sOut = "FLAT PATTERN DXF?AcadVersion=R12&amp;OuterProfileLayer=Outer&amp;TrimCenterlinesAtContour=True&InvisibleLayers=IV_UNCONSUMED_SKETCH_CONSTRUCTION"
+
+    <span style="color:blue">' Create the DXF file.</span>
+    oDataIO.WriteDataToFile(sOut, "C:\temp\flat2.dxf")</pre>
+      </div>
+    </div><br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(WriteFlatPatternAsDXF%20Sample%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

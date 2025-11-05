@@ -1,0 +1,121 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/HoleThreadNotes_Add.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="HoleThreadNotes_Add">
+    <meta name="description" content="HoleThreadNotes.Add Method">
+    <meta name="topicid" content="HoleThreadNotes_Add">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>HoleThreadNotes.Add Method</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">HoleThreadNotes.Add Method</h1>
+
+          Parent Object: <a href="HoleThreadNotes.htm">HoleThreadNotes</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Method that creates a hole or thread note on the sheet. Different results are possible depending on the input provided, as discussed below.</p>
+    <h2 class="api">
+            Remarks
+          </h2>In the example below there are three holes created using various modeling techniques. The top one was created using an extrude feature and a subsequent thread feature was added to it. The middle feature is a counter bore hole feature that is also tapped. The bottom feature is a standard hole. 
+<p><center><img src="../images/HoleThreadNotes_Add.png" /></center></p>
+To get any of the four notes shown on the left-hand view the only required input is the Position to define the text position and a DrawingCurve defining which curve the note should point to. The text position is enough to determine where the note points to the circle. Notice that in the case of the thread feature you get a thread note if the input drawing curve is for the thread and you get a hole note if the drawing curve is for the hole. The right view demonstrates some other possibilities. The three circled notes can be created by defining the text position point, the geometry to point to and a point along that geometry. The geometry and point on the geometry are defined by providing a GeometryIntent object as input to the HoleOrThreadEdge argument. The other two notes in the right view require the input of the text position and one of the lines that represents the diameter of the thread. In addition, the LinearDiameterType argument must be set to True.<h2 class="api">
+          Syntax
+        </h2>
+        
+            HoleThreadNotes.<b>Add</b>( <b><i>Position</i></b> As <a href="Point2d.htm">Point2d</a>, <b><i>HoleOrThreadEdge</i></b> As Object, [<b><i>LinearDiameterType</i></b>] As Boolean, [<b><i>DimensionStyle</i></b>] As Variant ) As <a href="HoleThreadNote.htm">HoleThreadNote</a>
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">Position</td>
+        <td class="api-list"><a href="Point2d.htm">Point2d</a></td>
+        <td class="api-list">Input Point2d that specifies the position of the hole/thread note on the sheet.</td>
+      </tr>
+      <tr>
+        <td class="api-list">HoleOrThreadEdge</td>
+        <td class="api-list">Object</td>
+        <td class="api-list">Input DrawingCurve or GeometryIntent object that specifies the edge to create the note for and the location along the edge the note points to. If the drawing curve or geometry intent does not represent a hole or thread edge, the method returns an error. See the discussion above for more information about how to get different results by providing different inputs for this argument.</td>
+      </tr>
+      <tr>
+        <td class="api-list">LinearDiameterType</td>
+        <td class="api-list">Boolean</td>
+        <td class="api-list">Optional Input Boolean that specifies whether to create a leader type of note or a linear diameter type of note. There are two examples of linear diameter types in the figure above. These are the uncircled notes in the right view. The three circled notes illustrate a leader type of note.<br /><br /> This is an optional argument whose default value is False.</td>
+      </tr>
+      <tr>
+        <td class="api-list">DimensionStyle</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional input Variant that specifies which dimension style to use for the note. The dimension style can be specified by providing the name of an existing style or by supplying a DimensionStyle object.<br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="HoleThreadNotes_Add_Sample.htm">Create thread note</a></td>
+        <td class="api-list">This sample demonstrates the creation of a thread note on a drawing view.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2010<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(HoleThreadNotes.Add%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

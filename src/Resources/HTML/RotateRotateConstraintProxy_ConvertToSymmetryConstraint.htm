@@ -1,0 +1,111 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/RotateRotateConstraintProxy_ConvertToSymmetryConstraint.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="RotateRotateConstraintProxy_ConvertToSymmetryConstraint">
+    <meta name="description" content="RotateRotateConstraintProxy.ConvertToSymmetryConstraint Method">
+    <meta name="topicid" content="RotateRotateConstraintProxy_ConvertToSymmetryConstraint">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>RotateRotateConstraintProxy.ConvertToSymmetryConstraint Method</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">RotateRotateConstraintProxy.ConvertToSymmetryConstraint Method</h1>
+
+          Parent Object: <a href="RotateRotateConstraintProxy.htm">RotateRotateConstraintProxy</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Converts the constraint to a symmetry constraint, and returns the AssemblySymmetryConstraint object.</p>
+    <h2 class="api">
+          Syntax
+        </h2>
+        
+            RotateRotateConstraintProxy.<b>ConvertToSymmetryConstraint</b>( <b><i>EntityOne</i></b> As Object, <b><i>EntityTwo</i></b> As Object, <b><i>SymmetryPlane</i></b> As Object, [<b><i>EntityOneInferredType</i></b>] As <a href="InferredTypeEnum.htm">InferredTypeEnum</a>, [<b><i>EntityTwoInferredType</i></b>] As <a href="InferredTypeEnum.htm">InferredTypeEnum</a>, [<b><i>NormalsOpposed</i></b>] As Boolean ) As <a href="AssemblySymmetryConstraint.htm">AssemblySymmetryConstraint</a>
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">EntityOne</td>
+        <td class="api-list">Object</td>
+        <td class="api-list">Input entity that is to be symmetric.</td>
+      </tr>
+      <tr>
+        <td class="api-list">EntityTwo</td>
+        <td class="api-list">Object</td>
+        <td class="api-list">Input entity that is to be symmetric.</td>
+      </tr>
+      <tr>
+        <td class="api-list">SymmetryPlane</td>
+        <td class="api-list">Object</td>
+        <td class="api-list">Input planar entity that defines the symmetry plane. This can either be a planar face or a work plane.</td>
+      </tr>
+      <tr>
+        <td class="api-list">EntityOneInferredType</td>
+        <td class="api-list"><a href="InferredTypeEnum.htm">InferredTypeEnum</a></td>
+        <td class="api-list">Optional input constant that specifies how the geometry of entity one is to be interpreted. Depending on the geometry of the entity one, different options are possible. 
+If entity one is a linear entity this can be either kNoInference or kInferredPoint, for kInferredPoint the mid-point of the linear entity is used for the constraint. If entity one is a circular/elliptical sketch entity, this can be either kInferredPiont or kInferredLine. If entity one is a cylindrical, elliptic-cylindrical, conical face this can be kNoInference or kInferredLine. If entity one is a toroidal face this can be either kInferredLine or kInferredPoint. If entity one is a spherical face this can be kInferredPoint. For a plane, only kNoInference is valid.<br /><br /> This is an optional argument whose default value is 24833.</td>
+      </tr>
+      <tr>
+        <td class="api-list">EntityTwoInferredType</td>
+        <td class="api-list"><a href="InferredTypeEnum.htm">InferredTypeEnum</a></td>
+        <td class="api-list">Optional input enum that specifies how the geometry of entity two is to be interpreted. Depending on the geometry of the entity two, different options are possible. If entity two is a linear entity this can be either kNoInference or kInferredPoint, for kInferredPoint the mid-point of the linear entity is used for the constraint. If entity two is a circular/elliptical sketch entity, this can be either kInferredPiont or kInferredLine. If entity two is a cylindrical, elliptic-cylindrical, conical face this can be kNoInference or kInferredLine. If entity two is a toroidal face this can be either kInferredLine or kInferredPoint. If entity two is a spherical face this can be kInferredPoint. For a plane, only kNoInference is valid.<br /><br /> This is an optional argument whose default value is 24833.</td>
+      </tr>
+      <tr>
+        <td class="api-list">NormalsOpposed</td>
+        <td class="api-list">Boolean</td>
+        <td class="api-list">This argument only applies when the two entities are planar (planar face or work plane) and defines if the normal of the planar entities are oriented so they are opposed or aligned.&nbsp;If the input entities are not planar, this argument is ignored.&nbsp;If they are planar and this argument is not specified they will defined to be opposed.<br /><br /> This is an optional argument whose default value is True.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2014<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(RotateRotateConstraintProxy.ConvertToSymmetryConstraint%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

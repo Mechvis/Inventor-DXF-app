@@ -1,0 +1,120 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/HelicalCurves_CreateConstantShapeDefinition.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="HelicalCurves_CreateConstantShapeDefinition">
+    <meta name="description" content="HelicalCurves.CreateConstantShapeDefinition Method">
+    <meta name="topicid" content="HelicalCurves_CreateConstantShapeDefinition">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>HelicalCurves.CreateConstantShapeDefinition Method</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">HelicalCurves.CreateConstantShapeDefinition Method</h1>
+
+          Parent Object: <a href="HelicalCurves.htm">HelicalCurves</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Creates a helical curve shape definition which can be used to create a helical curve.</p>
+    <h2 class="api">
+          Syntax
+        </h2>
+        
+            HelicalCurves.<b>CreateConstantShapeDefinition</b>( <b><i>ShapeDefinitionType</i></b> As <a href="HelicalShapeDefinitionTypeEnum.htm">HelicalShapeDefinitionTypeEnum</a>, <b><i>AxisStartPoint</i></b> As <a href="Point.htm">Point</a>, <b><i>AxisEndPoint</i></b> As <a href="Point.htm">Point</a>, <b><i>CurveStartPoint</i></b> As <a href="Point.htm">Point</a>, <b><i>Diameter</i></b> As Variant, [<b><i>Pitch</i></b>] As Variant, [<b><i>Revolution</i></b>] As Variant, [<b><i>Height</i></b>] As Variant ) As <a href="HelicalCurveConstantShapeDefinition.htm">HelicalCurveConstantShapeDefinition</a>
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">ShapeDefinitionType</td>
+        <td class="api-list"><a href="HelicalShapeDefinitionTypeEnum.htm">HelicalShapeDefinitionTypeEnum</a></td>
+        <td class="api-list">Input HelicalShapeDefinitionTypeEnum that defines the helical curve shape definition type. Valid value includes: kPitchAndRevolutionShapeType, kPitchAndHeightShapeType, kRevolutionAndHeightShapeType and kSpiralShapeType.</td>
+      </tr>
+      <tr>
+        <td class="api-list">AxisStartPoint</td>
+        <td class="api-list"><a href="Point.htm">Point</a></td>
+        <td class="api-list">Input Point object that defines the axis start point of the helical curve.</td>
+      </tr>
+      <tr>
+        <td class="api-list">AxisEndPoint</td>
+        <td class="api-list"><a href="Point.htm">Point</a></td>
+        <td class="api-list">Input Point object that defines the axis end point of the helical curve.</td>
+      </tr>
+      <tr>
+        <td class="api-list">CurveStartPoint</td>
+        <td class="api-list"><a href="Point.htm">Point</a></td>
+        <td class="api-list">Input Point object that defines the start point of the helical curve. This maybe not the exact position of the start point of the helical curve, but defines the direction of the helical curve start point will be in, the direction is from the AxisStartPoint to CurveStartPoint. If the CurveStartPoint is not on the plane that is perpendicular to the axis and across the AxisStartPoint then it will be projected onto the plane.</td>
+      </tr>
+      <tr>
+        <td class="api-list">Diameter</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Input value that defines the diameter of the helical curve. This can be either a numeric value or a string.&nbsp;A parameter for this value will be created and the supplied string or value is assigned to the parameter.&nbsp;If a value is input, the units are centimeters.&nbsp;If a string is input, the units can be specified as part of the string or it will default to the current length units of the document.</td>
+      </tr>
+      <tr>
+        <td class="api-list">Pitch</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional input value that defines the pitch of the helical curve. This can be either a numeric value or a string.&nbsp;A parameter for this value will be created and the supplied string or value is assigned to the parameter.&nbsp;If a value is input, the units are centimeters.&nbsp;If a string is input, the units can be specified as part of the string or it will default to the current length units of the document. This is required if&nbsp;the ShapeDefinitionType is specified as kPitchAndRevolutionShapeType, kPitchAndHeightShapeType or kSpiralShapeType.<br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+      <tr>
+        <td class="api-list">Revolution</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional input Double value that defines the revolution of the helical curve. This is required if&nbsp;the ShapeDefinitionType is specified as kPitchAndRevolutionShapeType, kRevolutionAndHeightShapeType or kSpiralShapeType.<br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+      <tr>
+        <td class="api-list">Height</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional input value that defines the height of the helical curve. This can be either a numeric value or a string.&nbsp;A parameter for this value will be created and the supplied string or value is assigned to the parameter.&nbsp;If a value is input, the units are centimeters.&nbsp;If a string is input, the units can be specified as part of the string or it will default to the current length units of the document. This is required if&nbsp;the ShapeDefinitionType is specified as kPitchAndHeightShapeType or kRevolutionAndHeightShapeType.<br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2019<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(HelicalCurves.CreateConstantShapeDefinition%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

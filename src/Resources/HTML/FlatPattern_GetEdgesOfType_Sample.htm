@@ -1,0 +1,485 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/FlatPattern_GetEdgesOfType_Sample.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="FlatPattern_GetEdgesOfType_Sample">
+    <meta name="description" content="Finding Bend Extent (Tangent) Edges Sample">
+    <meta name="topicid" content="FlatPattern_GetEdgesOfType_Sample">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>Finding Bend Extent (Tangent) Edges</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body><script>
+          function copyCode(language) {
+          // Get the pre element for the specified language.
+          var preElement = document.getElementById(language);
+
+          // Get the text from the element and copy it to the clipboard.
+          var preText = preElement.innerText;
+
+          var isIE = /*@cc_on!@*/false || !!document.documentMode;
+
+          if (isIE)
+          {
+            window.clipboardData.setData('Text', preText);
+          }
+          else
+          {
+            navigator.clipboard.writeText(preText);
+          }
+
+          //alert("Code copied to clipboard");
+          }
+        </script><link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">Finding Bend Extent (Tangent) Edges</h1>
+    <h2 class="api">
+          Description
+        </h2>This sample demonstrates how to retrieve the bend extent edges (a.k.a. tangent edges) associated with the selected bend edge on a flat pattern.<h2 class="api">
+          Code Samples
+        </h2>
+    <div id="tabs">
+      <ul>
+        <li><a href="#VBA">VBA</a></li>
+        <li><a href="#iLogic">iLogic</a></li>
+      </ul>
+      <div id="VBA" class="api-code">Before running the sample, activate a flat pattern and select a bend edge.<table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('VBA_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="VBA_code">Sub BendExtentEdges()
+    <span style="color:blue">' Check to make sure a flat pattern is open.</span>
+    If Not TypeOf ThisApplication.ActiveEditObject Is FlatPattern Then
+        MsgBox "A flat pattern must be active."
+        Exit Sub
+    End If
+
+    <span style="color:blue">' Set a reference to the active document.</span>
+    Dim oPartDoc As PartDocument
+    Set oPartDoc = ThisApplication.ActiveDocument
+
+    <span style="color:blue">' Set a reference to the active flat pattern.</span>
+    Dim oFlatPattern As FlatPattern
+    Set oFlatPattern = ThisApplication.ActiveEditObject
+
+    <span style="color:blue">' Check to make sure a bend edge is selected.</span>
+    If Not TypeOf oPartDoc.SelectSet(1) Is Edge Then
+        MsgBox "A bend edge must be selected."
+        Exit Sub
+    End If
+
+    Dim oBendEdge As Edge
+    Set oBendEdge = oPartDoc.SelectSet(1)
+
+    If Not IsBendEdge(oBendEdge, oFlatPattern) Then
+        MsgBox "A bend edge must be selected."
+        Exit Sub
+    End If
+
+    Dim oAllTangentEdges As Edges
+    Set oAllTangentEdges = oFlatPattern.GetEdgesOfType(kTangentFlatPatternEdge)
+
+    Dim MinimumDist As Double
+    MinimumDist = 0
+
+    <span style="color:blue">' Collect up tangent edges that are parallel and closest to the bend edge</span>
+    Dim oBendTangentEdges As ObjectCollection
+    Set oBendTangentEdges = ThisApplication.TransientObjects.CreateObjectCollection
+
+    Dim oEdge As Edge
+    For Each oEdge In oAllTangentEdges
+        <span style="color:blue">' Only interested in edges that are parallel to the bend edge</span>
+        If oBendEdge.Geometry.Direction.IsParallelTo(oEdge.Geometry.Direction, 0.0001) Then
+            <span style="color:blue">' Eliminate any bend edges whose midpoint when projected onto</span>
+            <span style="color:blue">' the bend line is not within the length of the bend line.</span>
+            If IsWithinBendEdge(oBendEdge, oEdge) Then
+                Dim dist As Double
+                dist = ThisApplication.MeasureTools.GetMinimumDistance(oBendEdge, oEdge)
+                If MinimumDist = 0 Then
+                    oBendTangentEdges.Add oEdge
+                    MinimumDist = dist
+                ElseIf Abs(dist - MinimumDist) &lt; 0.00001 Then
+                    oBendTangentEdges.Add oEdge
+                    MinimumDist = dist
+                ElseIf dist &lt; MinimumDist Then
+                    <span style="color:blue">' Clear the collection</span>
+                    Dim oObject As Object
+                    For Each oObject In oBendTangentEdges
+                        oBendTangentEdges.RemoveByObject oObject
+                    Next
+
+                    oBendTangentEdges.Add oEdge
+                    MinimumDist = dist
+                End If
+            End If
+        End If
+    Next
+
+    <span style="color:blue">' Highlight tangent edges in blue.</span>
+    Dim oTangentHS As HighlightSet
+    Set oTangentHS = oPartDoc.CreateHighlightSet
+    oTangentHS.Color = ThisApplication.TransientObjects.CreateColor(255, 255, 0)
+
+    Dim oBendTangentEdge As Edge
+    For Each oBendTangentEdge In oBendTangentEdges
+        oTangentHS.AddItem oBendTangentEdge
+    Next
+
+    MsgBox "Bend extent edges highlighted in yellow."
+End Sub
+
+Private Function IsWithinBendEdge(oBendEdge As Edge, TangentEdge As Edge) As Boolean
+    Dim dPi As Double
+    dPi = 4 * Atn(1)
+
+    Dim oTG As TransientGeometry
+    Set oTG = ThisApplication.TransientGeometry
+
+    <span style="color:blue">' Determine the lengths of the sides of the triangle defined by the end points</span>
+    <span style="color:blue">' of the bend edge and the center point of the tangent edge.</span>
+    Dim oStartPoint As Point2d
+    Set oStartPoint = oTG.CreatePoint2d(oBendEdge.StartVertex.Point.x, oBendEdge.StartVertex.Point.Y)
+    Dim oEndPoint As Point2d
+    Set oEndPoint = oTG.CreatePoint2d(oBendEdge.StopVertex.Point.x, oBendEdge.StopVertex.Point.Y)
+    Dim oTangentPoint As Point2d
+    Set oTangentPoint = oTG.CreatePoint2d((TangentEdge.StartVertex.Point.x + TangentEdge.StopVertex.Point.x) / 2, (TangentEdge.StartVertex.Point.Y + TangentEdge.StopVertex.Point.Y) / 2)
+    Dim dBendLength As Double
+    dBendLength = oStartPoint.DistanceTo(oEndPoint)
+    Dim dStartLength As Double
+    dStartLength = oStartPoint.DistanceTo(oTangentPoint)
+    Dim dEndLength As Double
+    dEndLength = oEndPoint.DistanceTo(oTangentPoint)
+
+    <span style="color:blue">' Compute the angle from the start point to the tangent midpoint.</span>
+    Dim dStartAngle As Double
+    dStartAngle = ArcCos((dStartLength ^ 2 + dBendLength ^ 2 - dEndLength ^ 2) / (2 * dStartLength * dBendLength))
+
+    <span style="color:blue">' Check that it is less than 90 deg.</span>
+    If dStartAngle &gt; dPi / 2 Then
+        IsWithinBendEdge = False
+        Exit Function
+    End If
+
+    <span style="color:blue">' Compute the angle from the end point to the tangent midpoint.</span>
+    Dim dEndAngle As Double
+    dEndAngle = ArcCos((dEndLength ^ 2 + dBendLength ^ 2 - dStartLength ^ 2) / (2 * dEndLength * dBendLength))
+
+    <span style="color:blue">' Check that it is less than 90 deg.</span>
+    If dEndAngle &gt; dPi / 2 Then
+        IsWithinBendEdge = False
+        Exit Function
+    End If
+
+    IsWithinBendEdge = True
+End Function
+
+Private Function ArcCos(x As Double) As Double
+    Dim dPi As Double
+    dPi = 4 * Atn(1)
+    
+    If x = 1 Then
+        ArcCos = 0
+    ElseIf Abs((Abs(x) - 1)) &lt; 0.000001 Then
+        ArcCos = dPi
+    Else
+        ArcCos = Atn(-x / Sqr(-x * x + 1)) + 2 * (dPi / 4)
+    End If
+End Function
+
+Private Function IsBendEdge(oEdge As Edge, oFlatPattern As FlatPattern) As Boolean
+    <span style="color:blue">' Return False if the input edge is not a wire edge.</span>
+    Dim oWire As Wire
+    Set oWire = oEdge.Wire
+
+    If oWire Is Nothing Then
+        IsBendEdge = False
+        Exit Function
+    End If
+
+    Dim oAllBendEdges As EdgeCollection
+    Set oAllBendEdges = ThisApplication.TransientObjects.CreateEdgeCollection
+
+    Dim oTempEdge As Edge
+
+    <span style="color:blue">' Get all Bend UP edges on top face</span>
+    Dim oTopFaceBendUpEdges As Edges
+    Set oTopFaceBendUpEdges = oFlatPattern.GetEdgesOfType(kBendUpFlatPatternEdge, True)
+    For Each oTempEdge In oTopFaceBendUpEdges
+        oAllBendEdges.Add oTempEdge
+    Next
+
+    <span style="color:blue">' Get all Bend DOWN edges on top face</span>
+    Dim oTopFaceBendDownEdges As Edges
+    Set oTopFaceBendDownEdges = oFlatPattern.GetEdgesOfType(kBendDownFlatPatternEdge, True)
+    For Each oTempEdge In oTopFaceBendDownEdges
+        oAllBendEdges.Add oTempEdge
+    Next
+
+    <span style="color:blue">' Get all Bend UP edges on bottom face</span>
+    Dim oBottomFaceBendUpEdges As Edges
+    Set oBottomFaceBendUpEdges = oFlatPattern.GetEdgesOfType(kBendUpFlatPatternEdge, False)
+    For Each oTempEdge In oBottomFaceBendUpEdges
+        oAllBendEdges.Add oTempEdge
+    Next
+
+    <span style="color:blue">' Get all Bend DOWN edges on bottom face</span>
+    Dim oBottomFaceBendDownEdges As Edges
+    Set oBottomFaceBendDownEdges = oFlatPattern.GetEdgesOfType(kBendDownFlatPatternEdge, False)
+    For Each oTempEdge In oBottomFaceBendDownEdges
+        oAllBendEdges.Add oTempEdge
+    Next
+
+     <span style="color:blue">' Check if the input edge is a bend edge</span>
+    For Each oTempEdge In oAllBendEdges
+        If oTempEdge Is oEdge Then
+            IsBendEdge = True
+            Exit Function
+        End If
+    Next
+
+    IsBendEdge = False
+End Function</pre>
+      </div>
+      <div id="iLogic" class="api-code">Before running the sample, activate a flat pattern and select a bend edge.<table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('iLogic_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="iLogic_code">Sub Main
+    <span style="color:blue">' Check to make sure a flat pattern is open.</span>
+    If Not TypeOf ThisApplication.ActiveEditObject Is FlatPattern Then
+        MsgBox("A flat pattern must be active.")
+        Exit Sub
+    End If
+
+    <span style="color:blue">' Set a reference to the active document.</span>
+    Dim oPartDoc As PartDocument
+    oPartDoc = ThisApplication.ActiveDocument
+
+    <span style="color:blue">' Set a reference to the active flat pattern.</span>
+    Dim oFlatPattern As FlatPattern
+    oFlatPattern = ThisApplication.ActiveEditObject
+
+    <span style="color:blue">' Check to make sure a bend edge is selected.</span>
+    If Not TypeOf oPartDoc.SelectSet(1) Is Edge Then
+        MsgBox("A bend edge must be selected.")
+        Exit Sub
+    End If
+
+    Dim oBendEdge As Edge
+    oBendEdge = oPartDoc.SelectSet(1)
+
+    If Not IsBendEdge(oBendEdge, oFlatPattern) Then
+        MsgBox("A bend edge must be selected.")
+        Exit Sub
+    End If
+
+    Dim oAllTangentEdges As Edges
+    oAllTangentEdges = oFlatPattern.GetEdgesOfType(kTangentFlatPatternEdge)
+
+    Dim MinimumDist As Double
+    MinimumDist = 0
+
+    <span style="color:blue">' Collect up tangent edges that are parallel and closest to the bend edge</span>
+    Dim oBendTangentEdges As ObjectCollection
+    oBendTangentEdges = ThisApplication.TransientObjects.CreateObjectCollection
+
+    Dim oEdge As Edge
+    For Each oEdge In oAllTangentEdges
+        <span style="color:blue">' Only interested in edges that are parallel to the bend edge</span>
+		Dim oLineSeg As LineSegment
+		oLineSeg = oBendEdge.Geometry 
+		
+		Dim oDirection As UnitVector
+		oDirection = oLineSeg.Direction 
+		
+		Dim oDirection2 As UnitVector
+		oDirection2 = oEdge.Geometry.Direction
+		
+        If oDirection.IsParallelTo(oDirection2, 0.0001) Then  
+            <span style="color:blue">' Eliminate any bend edges whose midpoint when projected onto</span>
+            <span style="color:blue">' the bend line is not within the length of the bend line.</span>
+            If IsWithinBendEdge(oBendEdge, oEdge) Then
+                Dim dist As Double
+                dist = ThisApplication.MeasureTools.GetMinimumDistance(oBendEdge, oEdge)
+                If MinimumDist = 0 Then
+                    oBendTangentEdges.Add(oEdge)
+                    MinimumDist = dist
+                ElseIf Abs(dist - MinimumDist) &lt; 0.00001 Then
+                    oBendTangentEdges.Add(oEdge)
+                    MinimumDist = dist
+                ElseIf dist &lt; MinimumDist Then
+                    <span style="color:blue">' Clear the collection</span>
+                    Dim oObject As Object
+                    For Each oObject In oBendTangentEdges
+                        oBendTangentEdges.RemoveByObject(oObject)
+                    Next
+
+                    oBendTangentEdges.Add(oEdge)
+                    MinimumDist = dist
+                End If
+            End If
+        End If
+    Next
+
+    <span style="color:blue">' Highlight tangent edges in blue.</span>
+    Dim oTangentHS As HighlightSet
+    oTangentHS = oPartDoc.CreateHighlightSet
+    oTangentHS.Color = ThisApplication.TransientObjects.CreateColor(255, 255, 0)
+
+    Dim oBendTangentEdge As Edge
+    For Each oBendTangentEdge In oBendTangentEdges
+        oTangentHS.AddItem(oBendTangentEdge)
+    Next
+
+    MsgBox("Bend extent edges highlighted in yellow.")
+End Sub
+
+Private Function IsWithinBendEdge(oBendEdge As Edge, TangentEdge As Edge) As Boolean
+    Dim dPi As Double
+    dPi = 4 * Math.Atan(1)
+
+    Dim oTG As TransientGeometry
+    oTG = ThisApplication.TransientGeometry
+
+    <span style="color:blue">' Determine the lengths of the sides of the triangle defined by the end points</span>
+    <span style="color:blue">' of the bend edge and the center point of the tangent edge.</span>
+    Dim oStartPoint As Point2d
+    oStartPoint = oTG.CreatePoint2d(oBendEdge.StartVertex.Point.x, oBendEdge.StartVertex.Point.Y)
+    Dim oEndPoint As Point2d
+    oEndPoint = oTG.CreatePoint2d(oBendEdge.StopVertex.Point.x, oBendEdge.StopVertex.Point.Y)
+    Dim oTangentPoint As Point2d
+    oTangentPoint = oTG.CreatePoint2d((TangentEdge.StartVertex.Point.x + TangentEdge.StopVertex.Point.x) / 2, (TangentEdge.StartVertex.Point.Y + TangentEdge.StopVertex.Point.Y) / 2)
+    Dim dBendLength As Double
+    dBendLength = oStartPoint.DistanceTo(oEndPoint)
+    Dim dStartLength As Double
+    dStartLength = oStartPoint.DistanceTo(oTangentPoint)
+    Dim dEndLength As Double
+    dEndLength = oEndPoint.DistanceTo(oTangentPoint)
+
+    <span style="color:blue">' Compute the angle from the start point to the tangent midpoint.</span>
+    Dim dStartAngle As Double
+    dStartAngle = ArcCos((dStartLength ^ 2 + dBendLength ^ 2 - dEndLength ^ 2) / (2 * dStartLength * dBendLength))
+
+    <span style="color:blue">' Check that it is less than 90 deg.</span>
+    If dStartAngle &gt; dPi / 2 Then
+        IsWithinBendEdge = False
+        Exit Function
+    End If
+
+    <span style="color:blue">' Compute the angle from the end point to the tangent midpoint.</span>
+    Dim dEndAngle As Double
+    dEndAngle = ArcCos((dEndLength ^ 2 + dBendLength ^ 2 - dStartLength ^ 2) / (2 * dEndLength * dBendLength))
+
+    <span style="color:blue">' Check that it is less than 90 deg.</span>
+    If dEndAngle &gt; dPi / 2 Then
+        IsWithinBendEdge = False
+        Exit Function
+    End If
+
+    IsWithinBendEdge = True
+End Function
+
+Private Function ArcCos(x As Double) As Double
+    Dim dPi As Double
+    dPi = 4 * Math.Atan(1)
+    
+    If x = 1 Then
+        ArcCos = 0
+    ElseIf Abs((Abs(x) - 1)) &lt; 0.000001 Then
+        ArcCos = dPi
+    Else
+        ArcCos = Math.Atan(-x / Math.Sqrt(-x * x + 1)) + 2 * (dPi / 4)
+    End If
+End Function
+
+Private Function IsBendEdge(oEdge As Edge, oFlatPattern As FlatPattern) As Boolean
+    <span style="color:blue">' Return False if the input edge is not a wire edge.</span>
+    Dim oWire As Wire
+    oWire = oEdge.Wire
+
+    If oWire Is Nothing Then
+        IsBendEdge = False
+        Exit Function
+    End If
+
+    Dim oAllBendEdges As EdgeCollection
+    oAllBendEdges = ThisApplication.TransientObjects.CreateEdgeCollection
+
+    Dim oTempEdge As Edge
+
+    <span style="color:blue">' Get all Bend UP edges on top face</span>
+    Dim oTopFaceBendUpEdges As Edges
+    oTopFaceBendUpEdges = oFlatPattern.GetEdgesOfType(kBendUpFlatPatternEdge, True)
+    For Each oTempEdge In oTopFaceBendUpEdges
+        oAllBendEdges.Add(oTempEdge)
+    Next
+
+    <span style="color:blue">' Get all Bend DOWN edges on top face</span>
+    Dim oTopFaceBendDownEdges As Edges
+    oTopFaceBendDownEdges = oFlatPattern.GetEdgesOfType(kBendDownFlatPatternEdge, True)
+    For Each oTempEdge In oTopFaceBendDownEdges
+        oAllBendEdges.Add(oTempEdge)
+    Next
+
+    <span style="color:blue">' Get all Bend UP edges on bottom face</span>
+    Dim oBottomFaceBendUpEdges As Edges
+    oBottomFaceBendUpEdges = oFlatPattern.GetEdgesOfType(kBendUpFlatPatternEdge, False)
+    For Each oTempEdge In oBottomFaceBendUpEdges
+        oAllBendEdges.Add(oTempEdge)
+    Next
+
+    <span style="color:blue">' Get all Bend DOWN edges on bottom face</span>
+    Dim oBottomFaceBendDownEdges As Edges
+    oBottomFaceBendDownEdges = oFlatPattern.GetEdgesOfType(kBendDownFlatPatternEdge, False)
+    For Each oTempEdge In oBottomFaceBendDownEdges
+        oAllBendEdges.Add(oTempEdge)
+    Next
+
+     <span style="color:blue">' Check if the input edge is a bend edge</span>
+    For Each oTempEdge In oAllBendEdges
+        If oTempEdge Is oEdge Then
+            IsBendEdge = True
+            Exit Function
+        End If
+    Next
+
+    IsBendEdge = False
+End Function</pre>
+      </div>
+    </div><br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(FlatPattern_GetEdgesOfType%20Sample%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

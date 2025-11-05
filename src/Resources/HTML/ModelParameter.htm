@@ -1,0 +1,215 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/ModelParameter.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="ModelParameter">
+    <meta name="description" content="ModelParameter Object">
+    <meta name="topicid" content="GUID-ModelParameter">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>ModelParameter Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">ModelParameter Object
+			</h1>
+              Derived from: <a href="Parameter.htm">Parameter</a> Object
+            <br><h2 class="api">
+          Description
+        </h2>Object that represents a parameter that was created automatically by Autodesk Inventor as the result of creating an object that is dependent on a parameter. For example, when a placing a driving dimension constraint a ModelParameter is automatically created to control the dimension.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelParameter_ConvertToReferenceParameter.htm">ConvertToReferenceParameter</a></td>
+        <td class="api-list">Method that causes the parameter to be converted to a reference parameter. The new ReferenceParameter object is returned. This method will fail if this is a built-in parameter (indicated by the BuiltIn property).</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelParameter_ConvertToUserParameter.htm">ConvertToUserParameter</a></td>
+        <td class="api-list">Method that causes the parameter to be converted to a user parameter. The new UserParameter object is returned. This method will fail if this is a built-in parameter (indicated by the BuiltIn property).</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelParameter_Delete.htm">Delete</a></td>
+        <td class="api-list">Method that deletes this Parameter.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelParameter_GetReferenceKey.htm">GetReferenceKey</a></td>
+        <td class="api-list">Method that generates and returns the reference key for this entity.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelParameter_AttributeSets.htm">AttributeSets</a></td>
+        <td class="api-list">Property that returns the AttributeSets collection object associated with this object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelParameter_BuiltIn.htm">BuiltIn</a></td>
+        <td class="api-list">Property that returns whether this is an Inventor-generated parameter or an API-created one. Returns True if it is Inventor-generated.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelParameter_Comment.htm">Comment</a></td>
+        <td class="api-list">Gets the user comments against this parameter.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelParameter_CustomPropertyFormat.htm">CustomPropertyFormat</a></td>
+        <td class="api-list">Property that returns the CustomPropertyFormat object associated with this parameter. The CustomPropertyFormat provides control over how the parameter value is formatted when it is exposed as a custom iProperty.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelParameter_Dependents.htm">Dependents</a></td>
+        <td class="api-list">Property that returns the collection of objects that have a direct dependency on the parameter.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelParameter_DisabledActionTypes.htm">DisabledActionTypes</a></td>
+        <td class="api-list">Gets and sets the action types valid for this parameter.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelParameter_DisplayFormat.htm">DisplayFormat</a></td>
+        <td class="api-list">Gets and sets the display format for the parameter.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelParameter_DrivenBy.htm">DrivenBy</a></td>
+        <td class="api-list">Method that returns the collection objects that the parameter is dependent on.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelParameter_ExposedAsProperty.htm">ExposedAsProperty</a></td>
+        <td class="api-list">Gets/(Sets) the Boolean indicating if this parameter is exposed as a property of this Document.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelParameter_Expression.htm">Expression</a></td>
+        <td class="api-list">Gets/(Sets) the string that denotes the algebraic expression making up the definition of this parameter. Maybe a constant. 'Set' may not be allowed on some parameter types. When set this for Text parameter, the expression value should be quoted by quotation marks at beginning and ending of a string(like """I am Jack""").</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelParameter_ExpressionList.htm">ExpressionList</a></td>
+        <td class="api-list">Property that returns the expression list associated with this parameter.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelParameter_HealthStatus.htm">HealthStatus</a></td>
+        <td class="api-list">Property that returns an enum indicating the current state of the object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelParameter_InUse.htm">InUse</a></td>
+        <td class="api-list">Property that returns whether whether this parameter is currently in use (by a dimension, feature or by any other parameter).</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelParameter_IsKey.htm">IsKey</a></td>
+        <td class="api-list">Gets and sets whether this parameter is a key parameter or not. Key parameters are typically those that need to be easily accessed and are designated as key to be filtered out from the rest of the parameters.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelParameter_ModelValue.htm">ModelValue</a></td>
+        <td class="api-list">Property that returns the evaluation of this parameter (in database units) that is currently used by the model. This takes into account the value computed from the expression and the tolerance. This method is only valid for numeric unit types and will fail for Text and Boolean unit types.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelParameter_ModelValueType.htm">ModelValueType</a></td>
+        <td class="api-list">Gets/(Sets) the setting which is used for determining the method used to compute the model value.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelParameter_Name.htm">Name</a></td>
+        <td class="api-list">Gets/Sets the name of this parameter.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelParameter_ParameterType.htm">ParameterType</a></td>
+        <td class="api-list">Property that allows you to get the type of the parameter. The parameter type can be either kModelParameterType, kDerivedParameter, kFinishParameter,&nbsp;kReferenceParameterType, kTableParameterType, or kUserParameterType.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelParameter_Parent.htm">Parent</a></td>
+        <td class="api-list">Property that returns the parent Document of this parameter.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelParameter_Precision.htm">Precision</a></td>
+        <td class="api-list">Gets/(Sets) the the number of decimal places displayed for this parameter. Note that the precision is used when applying a standard tolerance to the parameter.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelParameter_Renamed.htm">Renamed</a></td>
+        <td class="api-list">Gets whether the ModelParameter has been renamed by the user.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelParameter_Tolerance.htm">Tolerance</a></td>
+        <td class="api-list">Property that returns the tolerance for this parameter. This property returns Nothing in the case where the unit type of this parameter is kTextUnits or kBooleanUnits.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelParameter_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelParameter_Units.htm">Units</a></td>
+        <td class="api-list">Gets/(Sets) the units of the parameter. Note that the units is always retrieved as a string, but may be set using a constant from UnitsTypeEnum. 'Set' may not be allowed on some parameter types.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelParameter_Value.htm">Value</a></td>
+        <td class="api-list">Gets/(Sets) the value of this parameter. Numeric values are in database units. Setting this is equivalent to setting the 'Expression' with a constant string. 'Set' may not be allowed on some parameter types.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="ModelParameters_AddByExpression.htm">ModelParameters.AddByExpression</a>, <a href="ModelParameters_AddByValue.htm">ModelParameters.AddByValue</a>, <a href="ModelParameters_Item.htm">ModelParameters.Item</a>, <a href="ReferenceParameter_ConvertToModelParameter.htm">ReferenceParameter.ConvertToModelParameter</a>, <a href="UserParameter_ConvertToModelParameter.htm">UserParameter.ConvertToModelParameter</a><h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="CustomParameterGroup_Add_Sample.htm">Creating a new parameter group</a></td>
+        <td class="api-list">This sample demonstrates the creation of model, reference and user parameters and copying these parameters to a newly created group.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 4<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(ModelParameter%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

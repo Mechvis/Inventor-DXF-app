@@ -1,0 +1,267 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/HighlightSet_Sample.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="HighlightSet_Sample">
+    <meta name="description" content="Highlight Feature Faces Sample">
+    <meta name="topicid" content="HighlightSet_Sample">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>Highlight Feature Faces</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body><script>
+          function copyCode(language) {
+          // Get the pre element for the specified language.
+          var preElement = document.getElementById(language);
+
+          // Get the text from the element and copy it to the clipboard.
+          var preText = preElement.innerText;
+
+          var isIE = /*@cc_on!@*/false || !!document.documentMode;
+
+          if (isIE)
+          {
+            window.clipboardData.setData('Text', preText);
+          }
+          else
+          {
+            navigator.clipboard.writeText(preText);
+          }
+
+          //alert("Code copied to clipboard");
+          }
+        </script><link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">Highlight Feature Faces</h1>
+    <h2 class="api">
+          Description
+        </h2>This sample highlights the faces of an extrusion, revolution, or hole feature. It differentiates the faces on the start cap, end cap, and side faces by highlighting them in different colors. The HighlightFeatureFaces sub highlights the feature faces. Since the highlight set objects are declared outside of this sub, the highlighting remains after the sub has finished executing. Use the ClearHighlight sub to clear the highlighting that does so by releasing the HighlightSet objects.<h2 class="api">
+          Code Samples
+        </h2>
+    <div id="tabs">
+      <ul>
+        <li><a href="#VBA">VBA</a></li>
+        <li><a href="#iLogic">iLogic</a></li>
+      </ul>
+      <div id="VBA" class="api-code">
+        <table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('VBA_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="VBA_code">Private oStartHLSet As HighlightSet
+Private oEndHLSet As HighlightSet
+Private oSideHLSet As HighlightSet
+    
+Public Sub HighlightFeatureFaces()
+    <span style="color:blue">' Get the first item in the select set. This assumes it is a feature.</span>
+    If ThisApplication.ActiveDocument.SelectSet.Count &gt; 0 Then
+        Dim oFeature As PartFeature
+        Set oFeature = ThisApplication.ActiveDocument.SelectSet.Item(1)
+    Else
+        MsgBox "You must select a feature."
+        Exit Sub
+    End If
+
+    <span style="color:blue">' Check to see that it's an extrusion, revolution or hole feature.</span>
+    If oFeature.Type &lt;&gt; kExtrudeFeatureObject And _
+       oFeature.Type &lt;&gt; kRevolveFeatureObject And _
+       oFeature.Type &lt;&gt; kHoleFeatureObject Then
+        MsgBox "You must select an extrusion, revolution, or hole."
+        Exit Sub
+    End If
+
+    <span style="color:blue">' Create a new highlight set for the start face(s).</span>
+    Set oStartHLSet = ThisApplication.ActiveDocument.CreateHighlightSet
+
+    <span style="color:blue">' Change the highlight color for the set to red.</span>
+    Dim oRed As Color
+    Set oRed = ThisApplication.TransientObjects.CreateColor(255, 0, 0)
+
+    <span style="color:blue">' Set the opacity</span>
+    oRed.Opacity = 0.8
+
+    oStartHLSet.Color = oRed
+
+    <span style="color:blue">' Add all start faces to the highlightset. Skip holes because</span>
+    <span style="color:blue">' they don't support the StartFaces property.</span>
+    If oFeature.Type &lt;&gt; kHoleFeatureObject Then
+        Dim oFace As Face
+        For Each oFace In oFeature.StartFaces
+            oStartHLSet.AddItem oFace
+        Next
+    End If
+
+    <span style="color:blue">' Create a new highlight set for the end face(s).</span>
+    Set oEndHLSet = ThisApplication.ActiveDocument.CreateHighlightSet
+
+    <span style="color:blue">' Change the highlight color for the set to green.</span>
+    Dim oGreen As Color
+    Set oGreen = ThisApplication.TransientObjects.CreateColor(0, 255, 0)
+
+    oEndHLSet.Color = oGreen
+
+    <span style="color:blue">' Add all end faces to the highlightset.</span>
+    For Each oFace In oFeature.EndFaces
+        oEndHLSet.AddItem oFace
+    Next
+
+    <span style="color:blue">' Create a new highlight set for the side face(s).</span>
+    Set oSideHLSet = ThisApplication.ActiveDocument.CreateHighlightSet
+
+    <span style="color:blue">' Change the highlight color for the set to blue.</span>
+    Dim oBlue As Color
+    Set oBlue = ThisApplication.TransientObjects.CreateColor(0, 0, 255)
+
+    oSideHLSet.Color = oBlue
+
+    <span style="color:blue">' Add all end faces to the highlightset.</span>
+    For Each oFace In oFeature.SideFaces
+        oSideHLSet.AddItem oFace
+    Next
+
+    MsgBox "Start faces are displayed in red." & Chr(13) & _
+            "End faces are displayed in green." & Chr(13) & _
+            "Side faces are displayed in blue.", vbOKOnly + vbInformation
+End Sub
+
+Public Sub ClearHighlight()
+    
+    <span style="color:blue">' Release the highlight set objects to clear highlighting.</span>
+    <span style="color:blue">' Alternatively, HighlightSet.Delete or HighlightSet.Clear</span>
+    <span style="color:blue">' can also be used to clear the highlighting.</span>
+    
+    Set oStartHLSet = Nothing
+    Set oEndHLSet = Nothing
+    Set oSideHLSet = Nothing
+End Sub</pre>
+      </div>
+      <div id="iLogic" class="api-code">
+        <table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('iLogic_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="iLogic_code">Class Test
+	Private oStartHLSet As HighlightSet
+	Private oEndHLSet As HighlightSet
+	Private oSideHLSet As HighlightSet
+	Private oFeature As PartFeature
+	Sub Main
+	    <span style="color:blue">' Get the first item in the select set. This assumes it is a feature.</span>
+	    If ThisApplication.ActiveDocument.SelectSet.Count &gt; 0 Then
+	        oFeature = ThisApplication.ActiveDocument.SelectSet.Item(1)
+	    Else
+	        MsgBox("You must select a feature.")
+	        Exit Sub
+	    End If
+	
+	    <span style="color:blue">' Check to see that it's an extrusion, revolution or hole feature.</span>
+	    If oFeature.Type &lt;&gt; kExtrudeFeatureObject And _
+	       oFeature.Type &lt;&gt; kRevolveFeatureObject And _
+	       oFeature.Type &lt;&gt; kHoleFeatureObject Then
+	        MsgBox("You must select an extrusion, revolution, or hole.")
+	        Exit Sub
+	    End If
+	
+	    <span style="color:blue">' Create a new highlight set for the start face(s).</span>
+	    oStartHLSet = ThisApplication.ActiveDocument.CreateHighlightSet
+	
+	    <span style="color:blue">' Change the highlight color for the set to red.</span>
+	    Dim oRed As Color
+	    oRed = ThisApplication.TransientObjects.CreateColor(255, 0, 0)
+	
+	    <span style="color:blue">' Set the opacity</span>
+	    oRed.Opacity = 0.8
+	
+	    oStartHLSet.Color = oRed
+	
+	    <span style="color:blue">' Add all start faces to the highlightset. Skip holes because</span>
+	    <span style="color:blue">' they don't support the StartFaces property.</span>
+	    If oFeature.Type &lt;&gt;  kHoleFeatureObject Then
+	        Dim oFace As Face
+	        For Each oFace In oFeature.StartFaces
+	            oStartHLSet.AddItem(oFace)
+	        Next
+	    End If
+	
+	    <span style="color:blue">' Create a new highlight set for the end face(s).</span>
+	    oEndHLSet = ThisApplication.ActiveDocument.CreateHighlightSet
+	
+	    <span style="color:blue">' Change the highlight color for the set to green.</span>
+	    Dim oGreen As Color
+	    oGreen = ThisApplication.TransientObjects.CreateColor(0, 255, 0)
+	
+	    oEndHLSet.Color = oGreen
+	
+	    <span style="color:blue">' Add all end faces to the highlightset.</span>
+	    For Each oFace In oFeature.EndFaces
+	        oEndHLSet.AddItem(oFace)
+	    Next
+	
+	    <span style="color:blue">' Create a new highlight set for the side face(s).</span>
+	    oSideHLSet = ThisApplication.ActiveDocument.CreateHighlightSet
+	
+	    <span style="color:blue">' Change the highlight color for the set to blue.</span>
+	    Dim oBlue As Color
+	    oBlue = ThisApplication.TransientObjects.CreateColor(0, 0, 255)
+	
+	    oSideHLSet.Color = oBlue
+	
+	    <span style="color:blue">' Add all end faces to the highlightset.</span>
+	    For Each oFace In oFeature.SideFaces
+	        oSideHLSet.AddItem(oFace)
+	    Next
+	
+	    MsgBox("Start faces are displayed in red." & Chr(13) & _
+	            "End faces are displayed in green." & Chr(13) & _
+	            "Side faces are displayed in blue.", vbOKOnly + vbInformation)
+	End Sub
+	
+	Public Sub ClearHighlight()
+	    
+	    <span style="color:blue">' Release the highlight set objects to clear highlighting.</span>
+	    <span style="color:blue">' Alternatively, HighlightSet.Delete or HighlightSet.Clear</span>
+	    <span style="color:blue">' can also be used to clear the highlighting.</span>
+	    
+	    oStartHLSet = Nothing
+	    oEndHLSet = Nothing
+	    oSideHLSet = Nothing
+	End Sub
+End Class</pre>
+      </div>
+    </div><br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(HighlightSet%20Sample%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

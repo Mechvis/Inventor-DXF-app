@@ -1,0 +1,100 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/WorkPlanes_AddByLineAndTangent.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="WorkPlanes_AddByLineAndTangent">
+    <meta name="description" content="WorkPlanes.AddByLineAndTangent Method">
+    <meta name="topicid" content="WorkPlanes_AddByLineAndTangent">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>WorkPlanes.AddByLineAndTangent Method</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">WorkPlanes.AddByLineAndTangent Method</h1>
+
+          Parent Object: <a href="WorkPlanes.htm">WorkPlanes</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Method that creates a new work plane through the input line and tangent to the input surface.&nbsp;This method is not currently supported when creating a work plane within an assembly.</p>
+    <h2 class="api">
+          Syntax
+        </h2>
+        
+            WorkPlanes.<b>AddByLineAndTangent</b>( <b><i>Line</i></b> As Object, <b><i>Face</i></b> As <a href="Face.htm">Face</a>, <b><i>ProximityPoint</i></b> As <a href="Point.htm">Point</a>, [<b><i>Construction</i></b>] As Boolean ) As <a href="WorkPlane.htm">WorkPlane</a>
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">Line</td>
+        <td class="api-list">Object</td>
+        <td class="api-list">Input object that represents a line. This object can be a linear Edge, WorkAxis, SketchLine, or SketchLine3D object.<p /></td>
+      </tr>
+      <tr>
+        <td class="api-list">Face</td>
+        <td class="api-list"><a href="Face.htm">Face</a></td>
+        <td class="api-list">Input Face object that indicates the tangent surface. This face must either be a cylinder whose axis is parallel to the line, a cone that is positioned such that a valid tangent exists, or a sphere.<p /></td>
+      </tr>
+      <tr>
+        <td class="api-list">ProximityPoint</td>
+        <td class="api-list"><a href="Point.htm">Point</a></td>
+        <td class="api-list">Input Point object that indicates which of the possible two solutions to use. For cylinders and spheres the plane can be on either side of the surface. Which solution to use will be determined by which side the proximity point is closest to. This point is only used for the initial computation. During a recompute of the model the plane will remain on the same side of the tangent surface regardless of its position relative to the originally specified point.<p /></td>
+      </tr>
+      <tr>
+        <td class="api-list">Construction</td>
+        <td class="api-list">Boolean</td>
+        <td class="api-list">Optional Input Boolean that specifies whether to create the work plane as a construction plane or not. The default is False, which indicates to create a standard work plane, not a construction work plane. A construction work plane is hidden from the user and is not displayed graphically or listed in the browser.<br /><br /> This is an optional argument whose default value is False.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 4<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(WorkPlanes.AddByLineAndTangent%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

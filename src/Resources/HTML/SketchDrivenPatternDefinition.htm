@@ -1,0 +1,128 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/SketchDrivenPatternDefinition.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="SketchDrivenPatternDefinition">
+    <meta name="description" content="SketchDrivenPatternDefinition Object">
+    <meta name="topicid" content="GUID-SketchDrivenPatternDefinition">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>SketchDrivenPatternDefinition Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">SketchDrivenPatternDefinition Object
+			</h1><br><h2 class="api">
+          Description
+        </h2>Part Sketch Driven Pattern Feature Definition object.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchDrivenPatternDefinition_Copy.htm">Copy</a></td>
+        <td class="api-list">Method that returns a copy of the SketchDrivenPatternDefinition object.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchDrivenPatternDefinition_AffectedBodies.htm">AffectedBodies</a></td>
+        <td class="api-list">Read-write property that gets and sets the collection of bodies affected by this feature. If this property is not set for multi-body parts, the default solid body is used as the affected body.&nbsp;This property applies only to features in a part.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchDrivenPatternDefinition_AffectedOccurrences.htm">AffectedOccurrences</a></td>
+        <td class="api-list">Read-write property that gets and sets the collection of occurrences that should participate in this feature. If this property is not set, all possible occurrences will participate.&nbsp;This property applies only to features in an assembly.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchDrivenPatternDefinition_Application.htm">Application</a></td>
+        <td class="api-list">Gets the root Application object. Where the property is weakly-typed, it can be set to (QueryInterfaced for) 'Application' when running with Inventor whereas, 'ApprenticeServer' when running with the Apprentice Server.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchDrivenPatternDefinition_BasePoint.htm">BasePoint</a></td>
+        <td class="api-list">Read-write property that gets and sets the geometry that defines the base point. When set this property, it can be a SketchPoint, SketchPoint3D, WorkPoint, GeometryIntent that indicates a point on geometry. If a GeometryIntent is provided, you can specify the mid-point of sketch line, start/end/mid-point of a linear edge, the center of a circular/elliptical edge, planar face center, the start/mid/end point of the axis of a cylindrical/conical face, or the center of torus/spherical face.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchDrivenPatternDefinition_ComputeType.htm">ComputeType</a></td>
+        <td class="api-list">Read-write property that indicates the method of solution for the pattern.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchDrivenPatternDefinition_Operation.htm">Operation</a></td>
+        <td class="api-list">Gets and sets the operation type.&nbsp;Valid values are kNewBodyOperation and kJoinOperation.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchDrivenPatternDefinition_ParentFeatures.htm">ParentFeatures</a></td>
+        <td class="api-list">Read-write property that gets and sets the parent features of the pattern.&nbsp;The ObjectCollection returned by this property is a “tear off” and does not affect the pattern if its contents are modified.&nbsp;To change the which features are the parents of the pattern you need to use this property to set the parent features by providing an ObjectCollection that contains the desired set of parent features.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchDrivenPatternDefinition_PatternOfBody.htm">PatternOfBody</a></td>
+        <td class="api-list">Read-only property that gets whether this pattern resulted from patterning the Surface Body.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchDrivenPatternDefinition_ReferenceFaces.htm">ReferenceFaces</a></td>
+        <td class="api-list">Read-write property that gets and sets FaceCollection object to specify the reference faces.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchDrivenPatternDefinition_Sketch.htm">Sketch</a></td>
+        <td class="api-list">Read-write property that gets and sets PlanarSketch or Sketch3D object that contains the sketch points to locate the pattern occurrences.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchDrivenPatternDefinition_Type.htm">Type</a></td>
+        <td class="api-list">Gets the constant that indicates the type of this object.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="SketchDrivenPatternDefinition_Copy.htm">SketchDrivenPatternDefinition.Copy</a>, <a href="SketchDrivenPatternFeature_Definition.htm">SketchDrivenPatternFeature.Definition</a>, <a href="SketchDrivenPatternFeatureProxy_Definition.htm">SketchDrivenPatternFeatureProxy.Definition</a>, <a href="SketchDrivenPatternFeatures_CreateDefinition.htm">SketchDrivenPatternFeatures.CreateDefinition</a><h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2017<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(SketchDrivenPatternDefinition%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,210 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/DrawingViews_AddBaseView.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="DrawingViews_AddBaseView">
+    <meta name="description" content="DrawingViews.AddBaseView Method">
+    <meta name="topicid" content="DrawingViews_AddBaseView">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>DrawingViews.AddBaseView Method</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">DrawingViews.AddBaseView Method</h1>
+
+          Parent Object: <a href="DrawingViews.htm">DrawingViews</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Method that creates a new base . The newly created DrawingView is returned.</p>
+    <h2 class="api">
+            Remarks
+          </h2><p>Valid values for the NameValue map of the AdditionalOptions argument is shown below:</p>
+
+<table border="1">
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Valid Document Type</th>
+<th>Notes</th>
+</tr>
+<tr>
+<td>WeldmentFeatureGroup</td>
+<td>Value from WeldmentFeatureGroupEnum</td>
+<td>Weldment</td>
+<td>kAssemblyFeatureGroup : General assembly group. kPreperationsFeatureGroup : Preparations group. kWeldsFeatureGroup : Welds group. kMachiningFeatureGroup : Machining group.&nbsp</td>
+</tr>
+<tr>
+<td>SheetMetalFoldedModel</td>
+<td>Boolean</td>
+<td>Sheet metal PartDocument</td>
+<td>The part document must contain a flat pattern if a flat view (False) is specified. If a flat doesn't exist, a folded view will be created.</td>
+</tr>
+<tr>
+<td>DesignViewRepresentation</td>
+<td>String</td>
+<td>Assembly</td>
+<td>The name of the design view representation.</td>
+</tr>
+<tr>
+<td>DesignViewAssociative</td>
+<td>Boolean</td>
+<td>Assembly</td>
+<td>Indicates if the drawing view will be associative to the design view.&nbsp;A design view must be specified.</td>
+</tr>
+<tr>
+<td>PositionalRepresentation</td>
+<td>String</td>
+<td>Assembly</td>
+<td>The name of the positional representation.</td>
+</tr>
+<tr>
+<td>MemberName</td>
+<td>String</td>
+<td>Part, Assembly</td>
+<td>The name of the iPart or iAssembly member.</td>
+</tr>
+<tr>
+<td>PresentationView</td>
+<td>String</td>
+<td>Presentation</td>
+<td>The name of the presentation view.</td>
+</tr>
+<tr>
+<td>PresentationViewAssociative</td>
+<td>Boolean</td>
+<td>Presentation</td>
+<td>Indicates if the view should be associative to the presentation view.&nbsp;A presentation view must be specified</td>
+</tr>
+<tr>
+<td>Include3DAnnotations</td>
+<td>Boolean</td>
+<td>Part, Assembly</td>
+<td>Indicates if the 3D annotations should be included when create the drawing view.</td>
+</tr>
+</table><h2 class="api">
+          Syntax
+        </h2>
+        
+            DrawingViews.<b>AddBaseView</b>( <b><i>Model</i></b> As <a href="Document.htm">Document</a>, <b><i>Position</i></b> As <a href="Point2d.htm">Point2d</a>, <b><i>Scale</i></b> As Double, <b><i>ViewOrientation</i></b> As <a href="ViewOrientationTypeEnum.htm">ViewOrientationTypeEnum</a>, <b><i>ViewStyle</i></b> As <a href="DrawingViewStyleEnum.htm">DrawingViewStyleEnum</a>, [<b><i>ModelViewName</i></b>] As String, [<b><i>ArbitraryCamera</i></b>] As Variant, [<b><i>AdditionalOptions</i></b>] As Variant ) As <a href="DrawingView.htm">DrawingView</a>
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">Model</td>
+        <td class="api-list"><a href="Document.htm">Document</a></td>
+        <td class="api-list">Input Document that specifies the document to create the view of. Valid document types include part file, assembly files, and presentation files. This method uses a Document object as input rather than a filename to allow the insertion of a document into a drawing and avoid the requirement of that document first being saved to a file. If a document already exists as a file on disk you can use the Documents.Open method to open the file and obtain a Document object. Typically, you'll want to set the OpenVisible argument of the Open method to False so the open is invisible to the user.</td>
+      </tr>
+      <tr>
+        <td class="api-list">Position</td>
+        <td class="api-list"><a href="Point2d.htm">Point2d</a></td>
+        <td class="api-list">Input Point2d that specifies the placement point of the view on the sheet.</td>
+      </tr>
+      <tr>
+        <td class="api-list">Scale</td>
+        <td class="api-list">Double</td>
+        <td class="api-list">Input Double that specifies the drawing view scale factor.</td>
+      </tr>
+      <tr>
+        <td class="api-list">ViewOrientation</td>
+        <td class="api-list"><a href="ViewOrientationTypeEnum.htm">ViewOrientationTypeEnum</a></td>
+        <td class="api-list">Input ViewOrientationTypeEnum that specifies the orientation of the model within the view. If this value is kArbitraryViewOrientation the orientation is derived from the Camera specified by the ArbitraryCamera argument.</td>
+      </tr>
+      <tr>
+        <td class="api-list">ViewStyle</td>
+        <td class="api-list"><a href="DrawingViewStyleEnum.htm">DrawingViewStyleEnum</a></td>
+        <td class="api-list">Input DrawingViewStyleEnum the specifies the display style of the geometry within the view. Valid values are kHiddenLineDrawingViewStyle, kHiddenLineRemovedDrawingViewStyle, kShadedDrawingViewStyle, and kShadedHiddenLineDrawingViewStyle. If kFromBaseDrawingViewStyle is specified, an error is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list">ModelViewName</td>
+        <td class="api-list">String</td>
+        <td class="api-list">Optional input String that defines the design view name for assembly files, or the presentation view name for presentation files. This argument is ignored if the document type specified by the Model argument is a part file (.ipt).<br /><br /> This is an optional argument whose default value is "".</td>
+      </tr>
+      <tr>
+        <td class="api-list">ArbitraryCamera</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional input Camera object that specifies the model orientation within the view. This argument is ignored if the ViewOrientation argument is not kArbitraryViewOrientation.<br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+      <tr>
+        <td class="api-list">AdditionalOptions</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional input NameValueMap object that specifies additional or advanced options as described in the remarks section.<br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingViews_AddBaseView_Sample.htm">Adding Representation views</a></td>
+        <td class="api-list">This sample demonstrates how to create a base view by specifying various representations.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingViews_AddBaseView2_Sample.htm">Create flat pattern drawing view</a></td>
+        <td class="api-list">This sample demonstrates the creation of a flat pattern base view in a drawing.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingViews_AddBaseView3_Sample.htm">Create base view with representations</a></td>
+        <td class="api-list">This sample demonstrates how to create a base view by specifying various representations.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 6<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(DrawingViews.AddBaseView%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,207 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/UnfoldMethod.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="UnfoldMethod">
+    <meta name="description" content="UnfoldMethod Object">
+    <meta name="topicid" content="GUID-UnfoldMethod">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>UnfoldMethod Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">UnfoldMethod Object
+			</h1>
+              Derived from: <a href="Style.htm">Style</a> Object
+            <br><h2 class="api">
+          Description
+        </h2>The UnfoldMethod object provides access to the information associated with a specific unfold method. This object derives from the Style object.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UnfoldMethod_ConvertToLocal.htm">ConvertToLocal</a></td>
+        <td class="api-list">Method that creates a local cached copy of a global style and returns the local style.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UnfoldMethod_Copy.htm">Copy</a></td>
+        <td class="api-list">Method that creates a new local Style object. The newly created style is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UnfoldMethod_Delete.htm">Delete</a></td>
+        <td class="api-list">Method that deletes the Style/Layer/UnfoldMethod.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UnfoldMethod_DeleteEquation.htm">DeleteEquation</a></td>
+        <td class="api-list">Method that deletes the specified equation. An equation unfold method always needs to have at least one equation. Deleting the last equation will cause a default equation to be created.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UnfoldMethod_GetEquation.htm">GetEquation</a></td>
+        <td class="api-list">Method that sets this unfold method to be an equation type of unfold method and defines the associated equation and limits.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UnfoldMethod_GetReferenceKey.htm">GetReferenceKey</a></td>
+        <td class="api-list">Method that generates and returns the reference key for this entity.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UnfoldMethod_SaveToGlobal.htm">SaveToGlobal</a></td>
+        <td class="api-list">Method that saves this style to the global repository. If a style with the same name is found in the repository, that style is updated.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UnfoldMethod_SetEquation.htm">SetEquation</a></td>
+        <td class="api-list">Method that creates or edits an equation associated with this unfold method. Creating the first equation will change the unfold method be to a custom equation type of unfold method.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UnfoldMethod_UpdateFromGlobal.htm">UpdateFromGlobal</a></td>
+        <td class="api-list">Method that updates this style from the global repository.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UnfoldMethod_WriteBendTableToFile.htm">WriteBendTableToFile</a></td>
+        <td class="api-list">Method that writes the bend table information of the UnfoldMethod object into an external file. This method is only valid in the case where UnfoldMethodType is kBendTableUnfoldMethod.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UnfoldMethod_Application.htm">Application</a></td>
+        <td class="api-list">Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UnfoldMethod_BendAngleType.htm">BendAngleType</a></td>
+        <td class="api-list">Gets and sets whether the bend or open angle value is to be used for the angle in equations.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UnfoldMethod_Comments.htm">Comments</a></td>
+        <td class="api-list">Gets and sets comments associated with the style.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UnfoldMethod_EquationCount.htm">EquationCount</a></td>
+        <td class="api-list">Property that reports the number of equations currently associated with this unfold method. This property is only used in the case where the UnfoldMethodType property returns kCustomEquationUnfoldMethod and will return 0 for other unfold method types.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UnfoldMethod_EquationType.htm">EquationType</a></td>
+        <td class="api-list">Property that specifies the type of equation defined for the unfold method. This property is only valid in the case where the UnfoldMethodType property returns kCustomEquationUnfoldMethod. In all other cases the value of this property should be ignored.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UnfoldMethod_InternalName.htm">InternalName</a></td>
+        <td class="api-list">Property that returns the internal name of the style. The name is the internal English name of the standard style. This name will remain constant and is not affected by locale. This name is never displayed to the user. Note that this name is not guaranteed to be unique.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UnfoldMethod_InUse.htm">InUse</a></td>
+        <td class="api-list">Property that indicates if this style is in use.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UnfoldMethod_kFactor.htm">kFactor</a></td>
+        <td class="api-list">Gets/sets the kFactor associated with this unfold method.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UnfoldMethod_Name.htm">Name</a></td>
+        <td class="api-list">Gets/Sets the name of the Style.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UnfoldMethod_Parent.htm">Parent</a></td>
+        <td class="api-list">Property returning the parent of this object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UnfoldMethod_SplineFactor.htm">SplineFactor</a></td>
+        <td class="api-list">Gets and sets the factor used when unfolding ruled surfaces defined using ellipses and splines.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UnfoldMethod_StyleLocation.htm">StyleLocation</a></td>
+        <td class="api-list">Property that returns the location of this style, i.e. local to the document, cached locally in the document, exists in the library. Styles that exist in the library cannot be edited.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UnfoldMethod_StyleType.htm">StyleType</a></td>
+        <td class="api-list">Gets the type of the style.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UnfoldMethod_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UnfoldMethod_UnfoldMethodType.htm">UnfoldMethodType</a></td>
+        <td class="api-list">Property that returns the type of unfold method used by this UnfoldMethod object. kLinearUnfoldMethod, kBendTableUnfoldMethod, and kCustomEquationUnfoldMethod are possible return values.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UnfoldMethod_UpToDate.htm">UpToDate</a></td>
+        <td class="api-list">Property that gets the up-to-date status of the style against the global repository.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="BendDefinition_UnfoldMethod.htm">BendDefinition.UnfoldMethod</a>, <a href="ContourFlangeDefinition_UnfoldMethod.htm">ContourFlangeDefinition.UnfoldMethod</a>, <a href="FlangeDefinition_UnfoldMethod.htm">FlangeDefinition.UnfoldMethod</a>, <a href="FoldDefinition_UnfoldMethod.htm">FoldDefinition.UnfoldMethod</a>, <a href="HemDefinition_UnfoldMethod.htm">HemDefinition.UnfoldMethod</a>, <a href="LoftedFlangeDefinition_UnfoldMethod.htm">LoftedFlangeDefinition.UnfoldMethod</a>, <a href="SheetMetalComponentDefinition_UnfoldMethod.htm">SheetMetalComponentDefinition.UnfoldMethod</a>, <a href="SheetMetalStyle_UnfoldMethod.htm">SheetMetalStyle.UnfoldMethod</a>, <a href="UnfoldMethods_AddBendTableFromFile.htm">UnfoldMethods.AddBendTableFromFile</a>, <a href="UnfoldMethods_AddEquationUnfoldMethod.htm">UnfoldMethods.AddEquationUnfoldMethod</a>, <a href="UnfoldMethods_AddLinearUnfoldMethod.htm">UnfoldMethods.AddLinearUnfoldMethod</a>, <a href="UnfoldMethods_Item.htm">UnfoldMethods.Item</a><h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalStyle_Sample.htm">Sheet Metal Style Display</a></td>
+        <td class="api-list">This sample illustrates getting information about sheet metal styles.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalStyles_Sample.htm">Sheet Metal Style Creation</a></td>
+        <td class="api-list">This sample illustrates creating a new sheet metal style. It uses a bend table and assumes the sample bend table delivered with Inventor is available. You can edit the path below to reference any existing bend table. To use the sample make sure a bend table is available at the specified path, open a sheet metal document, and run the sample.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 5.3<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(UnfoldMethod%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

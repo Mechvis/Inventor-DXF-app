@@ -1,0 +1,363 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/FlatPattern.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="FlatPattern">
+    <meta name="description" content="FlatPattern Object">
+    <meta name="topicid" content="GUID-FlatPattern">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>FlatPattern Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">FlatPattern Object
+			</h1>
+              Derived from: <a href="ComponentDefinition.htm">ComponentDefinition</a> Object
+            <br><h2 class="api">
+          Description
+        </h2>The FlatPattern object represents the unfolded model in a sheet metal document.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FlatPattern_CreateGeometryIntent.htm">CreateGeometryIntent</a></td>
+        <td class="api-list">Method that creates a GeometryIntent object.&nbsp;GeometryIntent objects are used as input when creating annotations in the model.&nbsp;They are used to identify geometry and optionally specific locations on that geometry.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FlatPattern_Delete.htm">Delete</a></td>
+        <td class="api-list">Method that deletes the FlatPattern.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FlatPattern_DeleteObjects.htm">DeleteObjects</a></td>
+        <td class="api-list">Method that deletes a collection of objects that belong to the flat pattern.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FlatPattern_Edit.htm">Edit</a></td>
+        <td class="api-list">Method that puts the FlatPattern in edit mode.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FlatPattern_ExitEdit.htm">ExitEdit</a></td>
+        <td class="api-list">Method that causes the FlatPattern editing environment to be closed and the user interface to return to sheet metal editing environment.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FlatPattern_FindUsingPoint.htm">FindUsingPoint</a></td>
+        <td class="api-list">Method that finds all the entities of the specified type at the specified location.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FlatPattern_FindUsingRay.htm">FindUsingRay</a></td>
+        <td class="api-list">Method that fires a ray through the flat pattern and returns the entities intersected by the ray. The objects intersected by the ray are returned in the order in which they are intersected, with the first entities returned being those closest to the clipping plane.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FlatPattern_FindUsingVector.htm">FindUsingVector</a></td>
+        <td class="api-list">Method that finds all the entities of the specified type along the specified vector using either a cylinder or cone that to define the tolerance within the defined vector.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FlatPattern_GetEdgesOfType.htm">GetEdgesOfType</a></td>
+        <td class="api-list">Method that returns edges of the specified type from the flat pattern body.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FlatPattern_GetEndOfPartPosition.htm">GetEndOfPartPosition</a></td>
+        <td class="api-list">Method that returns the current end of part position in the browser in parts and assemblies.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FlatPattern_GetFlatPatternEntity.htm">GetFlatPatternEntity</a></td>
+        <td class="api-list">Method that returns the corresponding BRep entity (face, edge, etc.) in the flat pattern body given a BRep entity in the sheet metal body.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FlatPattern_GetSheetMetalEntity.htm">GetSheetMetalEntity</a></td>
+        <td class="api-list">Returns the corresponding BRep entity (face, edge, etc.) in the sheet metal body given a BRep entity in the flat pattern body. If an entity is not found, the method returns Nothing. If multiple matches are found, an ObjectsEnumerator is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FlatPattern_GetUnusedGeometries.htm">GetUnusedGeometries</a></td>
+        <td class="api-list">Method that gets the unused sketches and work features.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FlatPattern_PurgeUnusedGeometries.htm">PurgeUnusedGeometries</a></td>
+        <td class="api-list">Method that purges unused sketches and work features.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FlatPattern_RepositionObject.htm">RepositionObject</a></td>
+        <td class="api-list">Method that repositions the specifies object(s) to the new position within the collection of the object in the document.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FlatPattern_SetEndOfPartToTopOrBottom.htm">SetEndOfPartToTopOrBottom</a></td>
+        <td class="api-list">Inventor::PartComponentDefinition::SetEndOfPartToTopOrBottom</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FlatPattern_SuppressFeatures.htm">SuppressFeatures</a></td>
+        <td class="api-list">Method that suppresses the specified features. This is limited to the features created in the flat pattern.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FlatPattern_UnsuppressFeatures.htm">UnsuppressFeatures</a></td>
+        <td class="api-list">Method that unsuppresses the specified features. This is limited to the features created in the flat pattern.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FlatPattern_AnnotationPlanes.htm">AnnotationPlanes</a></td>
+        <td class="api-list">Read-only property that returns the AnnotationPlanes collection object.&nbsp;This object provides access to all of the annotation planes in the part.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FlatPattern_Application.htm">Application</a></td>
+        <td class="api-list">Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FlatPattern_ASideFace.htm">ASideFace</a></td>
+        <td class="api-list">Read-only property that returns the ASideFaceDefinition from the folded model that was used to create the flat pattern.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FlatPattern_AttributeSets.htm">AttributeSets</a></td>
+        <td class="api-list">Property that returns the AttributeSets collection object associated with this object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FlatPattern_BaseFace.htm">BaseFace</a></td>
+        <td class="api-list">Property that returns the base face from the folded model that was used to create the flat pattern.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FlatPattern_BendAngleReportType.htm">BendAngleReportType</a></td>
+        <td class="api-list">Gets and sets which angle is reported in the flat pattern.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FlatPattern_Body.htm">Body</a></td>
+        <td class="api-list">Property that returns the corresponding SurfaceBody.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FlatPattern_BOMQuantity.htm">BOMQuantity</a></td>
+        <td class="api-list">Property that returns the BOMQuantity object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FlatPattern_BOMStructure.htm">BOMStructure</a></td>
+        <td class="api-list">Gets and sets how the component is used/viewed in a BOM.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FlatPattern_BottomFace.htm">BottomFace</a></td>
+        <td class="api-list">Property that returns the bottom face of the flat pattern.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FlatPattern_ClientGraphicsCollection.htm">ClientGraphicsCollection</a></td>
+        <td class="api-list">Property that returns the ClientGraphicsCollection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FlatPattern_DataIO.htm">DataIO</a></td>
+        <td class="api-list">Gets the object that directly deals with I/O to and from a storage-medium, including Streams(IStream).</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FlatPattern_Document.htm">Document</a></td>
+        <td class="api-list">Property that returns the containing Document object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FlatPattern_Features.htm">Features</a></td>
+        <td class="api-list">Property that returns the collection object that provides access to the features associated with the flat pattern.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FlatPattern_FlatBendResults.htm">FlatBendResults</a></td>
+        <td class="api-list">Property that returns the FlatBendResults collection object that contains information about all the bends in the flat pattern.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FlatPattern_FlatPatternOrientations.htm">FlatPatternOrientations</a></td>
+        <td class="api-list">Gets the FlatPatternOrientations collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FlatPattern_FlatPunchResults.htm">FlatPunchResults</a></td>
+        <td class="api-list">Property that returns the FlatPunchResults collection object that contains information about all the punches in the flat pattern.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FlatPattern_GraphicsDataSetsCollection.htm">GraphicsDataSetsCollection</a></td>
+        <td class="api-list">Inventor::ComponentDefinition::GraphicsDataSetsCollection</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FlatPattern_IgnorePunchToolFeaturesRepresentationOverrides.htm">IgnorePunchToolFeaturesRepresentationOverrides</a></td>
+        <td class="api-list">Gets and sets whether to ignore the punch tool features representation overrides in flat pattern.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FlatPattern_Length.htm">Length</a></td>
+        <td class="api-list">Property that returns the length of the flat pattern.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FlatPattern_MassProperties.htm">MassProperties</a></td>
+        <td class="api-list">Property that returns the MassProperties object for the flat pattern.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FlatPattern_ModelAnnotations.htm">ModelAnnotations</a></td>
+        <td class="api-list">Read-only property that returns the ModelAnnotations collection object.&nbsp;This object provides access to all of the model annotations in the part.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FlatPattern_ModelGeometryVersion.htm">ModelGeometryVersion</a></td>
+        <td class="api-list">Property that returns a string that can be used to determine if the document has been modified. This version string is changed every time the assembly is modified. By saving a previous version string, you can compare the current version string to see if the assembly has been modified.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FlatPattern_ModelToleranceFeatures.htm">ModelToleranceFeatures</a></td>
+        <td class="api-list">Returns the ModelToleranceFeatures collection object.&nbsp;This object provides access to all of the model annotations in the part.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FlatPattern_Occurrences.htm">Occurrences</a></td>
+        <td class="api-list">Property that returns the collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FlatPattern_OrientedMinimumRangeBox.htm">OrientedMinimumRangeBox</a></td>
+        <td class="api-list">Read-only property that returns the oriented minimum range box for this object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FlatPattern_Parameters.htm">Parameters</a></td>
+        <td class="api-list">Property that returns the set of parameters for the flat pattern.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FlatPattern_Parent.htm">Parent</a></td>
+        <td class="api-list">Property that returns the parent SheetMetalComponentDefinition object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FlatPattern_PartEvents.htm">PartEvents</a></td>
+        <td class="api-list">Property that returns the PartEvents object associated with the flat pattern. This object will fire events for changes that occur to the flat pattern.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FlatPattern_PreciseRangeBox.htm">PreciseRangeBox</a></td>
+        <td class="api-list">Gets a bounding box that tightly encloses all the solid and surface bodies under the ComponentDefinition.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FlatPattern_PunchRepresentationType.htm">PunchRepresentationType</a></td>
+        <td class="api-list">Gets and sets the punch representation to use for the flat pattern.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FlatPattern_RangeBox.htm">RangeBox</a></td>
+        <td class="api-list">Property that returns a Box object which contains the opposing points of a rectangular box that is guaranteed to enclose this object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FlatPattern_RepresentationsManager.htm">RepresentationsManager</a></td>
+        <td class="api-list">Read-only property that returns the RepresentationsManager object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FlatPattern_RolledBackForEdit.htm">RolledBackForEdit</a></td>
+        <td class="api-list">Property that gets whether the flat pattern model is currently rolled back to a previous point in the feature history.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FlatPattern_SketchBlockDefinitions.htm">SketchBlockDefinitions</a></td>
+        <td class="api-list">Inventor::PartComponentDefinition::SketchBlockDefinitions</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FlatPattern_Sketches.htm">Sketches</a></td>
+        <td class="api-list">Inventor::PartComponentDefinition::Sketches</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FlatPattern_Sketches3D.htm">Sketches3D</a></td>
+        <td class="api-list">Inventor::PartComponentDefinition::Sketchs3D</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FlatPattern_SurfaceBodies.htm">SurfaceBodies</a></td>
+        <td class="api-list">Property that returns all of the <i>result</i> SurfaceBody objects contained within this ComponentDefinition.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FlatPattern_TopFace.htm">TopFace</a></td>
+        <td class="api-list">Property that returns top face of the flat pattern.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FlatPattern_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FlatPattern_UserCoordinateSystems.htm">UserCoordinateSystems</a></td>
+        <td class="api-list">Property that returns the UserCoordinateSystems collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FlatPattern_Width.htm">Width</a></td>
+        <td class="api-list">Property that returns the width of the flat pattern.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FlatPattern_WorkAxes.htm">WorkAxes</a></td>
+        <td class="api-list">Property that returns that collection object that provides access to all of the existing work axis objects in the flat pattern and provides the functionality to create new work axis objects.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FlatPattern_WorkPlanes.htm">WorkPlanes</a></td>
+        <td class="api-list">Property that returns that collection object that provides access to all of the existing work plane objects in the flat pattern and provides the functionality to create new work plane objects.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FlatPattern_WorkPoints.htm">WorkPoints</a></td>
+        <td class="api-list">Property that returns that collection object that provides access to all of the existing work point objects in the flat pattern and provides the functionality to create new work point objects.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="FlatBendResult_Parent.htm">FlatBendResult.Parent</a>, <a href="FlatPatternOrientation_Parent.htm">FlatPatternOrientation.Parent</a>, <a href="FlatPatternPlate_Parent.htm">FlatPatternPlate.Parent</a>, <a href="FlatPunchResult_Parent.htm">FlatPunchResult.Parent</a>, <a href="SheetMetalComponentDefinition_FlatPattern.htm">SheetMetalComponentDefinition.FlatPattern</a><h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ExportFlatPatternToSAT_Sample.htm">Publish FlatPattern to SAT</a></td>
+        <td class="api-list">This sample demonstrates how to save a FlatPattern file using the SAT translator add-in.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ExportFlatPatternToSTEP_Sample.htm">Publish FlatPattern to STEP</a></td>
+        <td class="api-list">This sample demonstrates how to save a FlatPattern file using the STEP translator add-in.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FlatPattern_GetEdgesOfType_Sample.htm">Finding Bend Extent (Tangent) Edges</a></td>
+        <td class="api-list">This sample demonstrates how to retrieve the bend extent edges (a.k.a. tangent edges) associated with the selected bend edge on a flat pattern.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PublishFlatPatternToDXF_Sample.htm">Publish FlatPattern to DXF</a></td>
+        <td class="api-list">This sample demonstrates how to save a FlatPattern file using the DXF translator add-in.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 6<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(FlatPattern%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

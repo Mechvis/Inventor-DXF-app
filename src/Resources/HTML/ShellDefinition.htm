@@ -1,0 +1,232 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/ShellDefinition.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="ShellDefinition">
+    <meta name="description" content="ShellDefinition Object">
+    <meta name="topicid" content="GUID-ShellDefinition">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>ShellDefinition Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">ShellDefinition Object
+			</h1><br><h2 class="api">
+          Description
+        </h2><h2 class="api">New Features of Inventor 2026</h2>
+<ol>
+<li>
+<p>Updated the step #11 for Port to .Net 8 process (C# and VB.net projects)
+ in article <a href="PortToNetCore_Overview.htm" data-topic-id="GUID-522FF5BC-7CC5-43D5-99B1-14840CF54A82">Port .Net Framework-based project to .Net</a> to embed manifest with a simpler way.</p>
+</li>
+<li>
+<p>New DrawingViewAnnotation object that allows to access the drawing view annotation information for detail and section drawing view.</p><div align="center">
+<img src="../images/DrawingViewAnnotation.png" width="873" height="660" border="0" align="middle" alt="DrawingViewAnnotation">
+</div>
+</li>
+<li>
+<p>Hide Sketch3dOptions object, move the Sketch3dOptions.AutoBendWithLineCreation to SketchOptions, and exposed SketchOptions.SketchOpacity property.</p><div align="center">
+<img src="../images/SketchOptions.png" width="542" height="393" border="0" align="middle" alt="SketchOptions">
+</div>
+</li>
+<li>
+<p>New SimplifyFeature object allows to create, edit and delete the simplify features in part documents.</p><div align="center">
+<img src="../images/SimplifyFeature.png" width="332" height="764" border="0" align="middle" alt="SimplifyFeature">
+</div>
+</li>
+<li>
+<p>ContourFlangeDefinition is enhanced to make use of edge sets to set the extent, some functions are hidden to keep legacy behavior and new functions are exposed for the enhancement.</p><div align="center">
+<img src="../images/ContourFlangeEdgeSet.png" width="535" height="495" border="0" align="middle" alt="ContourFlangeEdgeSet">
+</div>
+</li>
+<li>
+<p>New ShellFeatures.CreateDefinition method to replace ShellFeatures.CreateShellDefinition method to enhance the ShellDefinition with AffectedBodies and Method functions. </p><div align="center">
+<img src="../images/ShellDefinition.png" width="267" height="386" border="0" align="middle" alt="ShellDefinition">
+</div>
+</li>
+<li>
+<p>New BreakOperation.AddBySketch function allows to create a break operation using an existing drawing sketch. And new BreakOperation.BreakLineSketch property can be used to return the drawing sketch that is used to create the break operation.</p><div align="center">
+<img src="../images/BreakOperationOnSketch.png" width="965" height="664" border="0" align="middle" alt="BreakOperationOnSketch">
+</div>
+</li>
+<li>
+<p>New ClientFeature.ClientGraphicsVisible property allows to get and set the visibility of client graphics in a client feature. </p>
+</li>
+<li>
+<p>Public the ComponentOccurrence.ActiveDesignViewRepresentation property. </p>
+</li>
+<li>
+<p>Public the CosmeticWelds.Add and CreateDefinition methods. </p>
+</li>
+<li>
+<p>New DrawingView.ShowTrails property allows to show or hide the trails for a drawing view of a presentation.</p><div align="center">
+<img src="../images/ShowTrails.png" width="471" height="376" border="0" align="middle" alt="ShowTrails">
+</div>
+</li>
+<li>
+<p>New DimensionStyle.ExtendBeyondTicks property allows to set the extend distance beyond ticks. New DimensionStyle.ExtensionLine property allows to set the extention line distance. New  DimensionStyle.UseCapitalXForEquallySpacedFeatures property allows to set whether to use captical X in equally spaced features or not. </p><div align="center">
+<img src="../images/DimensionStyle2026.png" width="1158" height="519" border="0" align="middle" alt="DimensionStyle2026">
+</div>
+</li>
+<li>
+<p>New DrawingStandardStyle.GetAvailableStyles and SetAvailableStyles allow to get and set the available styles. </p><div align="center">
+<img src="../images/AvailableStyles.png" width="836" height="269" border="0" align="middle" alt="AvailableStyles">
+</div>
+</li>
+<li>
+<p>New DrawingStandardStyle.GetViewAnnotationDefaults and SetViewAnnotationDefaults functions allow to get and set the view annotation defaults for detail and section view. </p><div align="center">
+<img src="../images/ViewAnnotationDefaults.png" width="584" height="540" border="0" align="middle" alt="ViewAnnotationDefaults">
+</div>
+</li>
+<li>
+<p>New FileDialogEvents.OnOptionsReset event allows to notify you when the options requires to be reset(e.g. when change the file types). </p>
+</li>
+<li>
+<p>New FileManager.GetRevitFileVersionCreated method returns the Revit file version when it was created.</p>
+</li>
+<li>
+<p>New ModelStates.ModelStatesInEdit property allows to get and set the model states that are in edit mode, and the MemberEditScope will return kEditMultipleMembers in this case. </p><div align="center">
+<img src="../images/ModelStatesInEdit.png" width="302" height="271" border="0" align="middle" alt="ModelStatesInEdit">
+</div>
+</li>
+<li>
+<p>New Parameters.ExportToXML and ImportFromXML methods allow to import and export parameters. </p><div align="center">
+<img src="../images/ParameterImportExport.png" width="826" height="245" border="0" align="middle" alt="ParameterImportExport">
+</div>
+</li>
+<li>
+<p>New RevitExportDefinition.RevitTemplate property allows to set the template when export to Revit. </p><div align="center">
+<img src="../images/RevitTemplate.png" width="269" height="566" border="0" align="middle" alt="RevitTemplate">
+</div>
+</li>
+<li>
+<p>Change ContourFlangeFeature.Definition and PunchToolFeature.iFeatureDefinition properties as read-write properties so a definition object can be assigned to them to make multple changes with one recomputation. </p>
+</li>
+<li>
+<p>Support new version type(IFC4x3) when export to IFC file using BIMComponet.ExportBuildingComponentWithOptions. </p>
+</li>
+</ol><h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ShellDefinition_AddThicknessFaceSet.htm">AddThicknessFaceSet</a></td>
+        <td class="api-list">Method that creates a new thickness face set. The new ShellThicknessFaceSet is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ShellDefinition_Copy.htm">Copy</a></td>
+        <td class="api-list">Method that returns a copy of the ShellDefinition object.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ShellDefinition_AffectedBodies.htm">AffectedBodies</a></td>
+        <td class="api-list">Read-write property that specifies the solid bodies to be hollowed out.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ShellDefinition_Application.htm">Application</a></td>
+        <td class="api-list">Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ShellDefinition_ApproximationOptimized.htm">ApproximationOptimized</a></td>
+        <td class="api-list">Gets and sets whether the approximation is optimized.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ShellDefinition_ApproximationTolerance.htm">ApproximationTolerance</a></td>
+        <td class="api-list">Gets and sets the approximation tolerance.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ShellDefinition_ApproximationType.htm">ApproximationType</a></td>
+        <td class="api-list">Gets and sets the approximation method used for the feature.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ShellDefinition_Direction.htm">Direction</a></td>
+        <td class="api-list">Gets and sets the shell boundary relative to part face.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ShellDefinition_FaceSetCount.htm">FaceSetCount</a></td>
+        <td class="api-list">Property that specifies the number of face sets currently defined in the defintion.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ShellDefinition_FaceSetItem.htm">FaceSetItem</a></td>
+        <td class="api-list">Method that returns the specified ShellThicknessFaceSet object from the collection.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ShellDefinition_InputFaces.htm">InputFaces</a></td>
+        <td class="api-list">Gets and sets the faces that were specified to create or edit the Shell feature.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ShellDefinition_Method.htm">Method</a></td>
+        <td class="api-list">Read-write property that gets and sets the shell method. This defaults to kSharpShellMethod when the definition is just created.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ShellDefinition_Parent.htm">Parent</a></td>
+        <td class="api-list">Property that returns the parent object from whom this object can logically be reached.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ShellDefinition_Thickness.htm">Thickness</a></td>
+        <td class="api-list">Property that returns the parameter that controls the thickness of the shell. This property will return Nothing if the shell feature has not been created yet.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ShellDefinition_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="ShellDefinition_Copy.htm">ShellDefinition.Copy</a>, <a href="ShellFeature_Definition.htm">ShellFeature.Definition</a>, <a href="ShellFeatureProxy_Definition.htm">ShellFeatureProxy.Definition</a>, <a href="ShellFeatures_CreateDefinition.htm">ShellFeatures.CreateDefinition</a><h2 class="api">
+            Version
+          </h2>
+        Introduced in version 9<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(ShellDefinition%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

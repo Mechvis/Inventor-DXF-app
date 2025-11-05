@@ -1,0 +1,110 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/ProjectAssetLibrary.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="ProjectAssetLibrary">
+    <meta name="description" content="ProjectAssetLibrary Object">
+    <meta name="topicid" content="GUID-ProjectAssetLibrary">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>ProjectAssetLibrary Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">ProjectAssetLibrary Object
+			</h1><br><h2 class="api">
+          Description
+        </h2>The ProjectAssetLibrary object represents a reference in this project to a material or appearance library.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ProjectAssetLibrary_Activate.htm">Activate</a></td>
+        <td class="api-list"><p>Method that activates this material or appearance library.</p>
+<p>The user can override this and specify another library as the currently active library using the check boxes at the bottom of the material drop-down, as shown below, which will not change the project settings.</p>
+<CENTER><IMG src="../Images/ActiveAssetLibrary.png"></CENTER></td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ProjectAssetLibrary_Delete.htm">Delete</a></td>
+        <td class="api-list">Method that deletes this library reference from the collection.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ProjectAssetLibrary_Application.htm">Application</a></td>
+        <td class="api-list">Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ProjectAssetLibrary_LibraryFilename.htm">LibraryFilename</a></td>
+        <td class="api-list">Read-only property that returns the full filename of the library file.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ProjectAssetLibrary_Name.htm">Name</a></td>
+        <td class="api-list">Read-only property that returns the name of the library.&nbsp;This is the name displayed in the Projects dialog.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ProjectAssetLibrary_Parent.htm">Parent</a></td>
+        <td class="api-list">Read-only property that returns the parent DesignProject object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ProjectAssetLibrary_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="DesignProject_ActiveAppearanceLibrary.htm">DesignProject.ActiveAppearanceLibrary</a>, <a href="DesignProject_ActiveMaterialLibrary.htm">DesignProject.ActiveMaterialLibrary</a>, <a href="ProjectAssetLibraries_Add.htm">ProjectAssetLibraries.Add</a>, <a href="ProjectAssetLibraries_Item.htm">ProjectAssetLibraries.Item</a><h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2014<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(ProjectAssetLibrary%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

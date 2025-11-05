@@ -1,0 +1,107 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/ApplicationEvents_OnDocumentChange.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="ApplicationEvents_OnDocumentChange">
+    <meta name="description" content="ApplicationEvents.OnDocumentChange Event">
+    <meta name="topicid" content="ApplicationEvents_OnDocumentChange">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>ApplicationEvents.OnDocumentChange Event</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">ApplicationEvents.OnDocumentChange Event</h1>
+
+          Parent Object: <a href="ApplicationEvents.htm">ApplicationEvents</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Fires just before the document is changed, supplying the reasons for change and the context in which this action is being taken.</p>
+    <h2 class="api">
+            Remarks
+          </h2>The OnDocumentChange event notifies a client when an action occurs that causes any change to a document. The context information can be used to determine what the change is. The notification is not sent for commands that do not change the document, i.e. measure and view commands. Care needs to be taken when using this event because changes to the document are made so frequently that depending on what you do in response to the event it can degrade the performance of Inventor. You should perform simple checks first to see if the change is one that you're interested in before you perform more expensive operations. Whenever possible you should use more specific events instead of this general change event. For example, if you're interested in knowing when a parameter value changes you can listen to the ModelingEvents.OnParameterChange event instead. This is both simpler for you and more efficient, but not all actions that can occur within Inventor have corresponding events so in many cases using the OnDocumentChange event is the only solution. When an object is deleted from the document, it is possible to find out what that object is by querying Document.SelectSet while in the kBefore state of this event.<h2 class="api">
+          Syntax
+        </h2>
+        
+            ApplicationEvents.<b>OnDocumentChange</b>( <b><i>DocumentObject</i></b> As <a href="Document.htm">Document</a>, <b><i>BeforeOrAfter</i></b> As <a href="EventTimingEnum.htm">EventTimingEnum</a>, <b><i>ReasonsForChange</i></b> As <a href="CommandTypesEnum.htm">CommandTypesEnum</a>, <b><i>Context</i></b> As <a href="NameValueMap.htm">NameValueMap</a>, <b><i>HandlingCode</i></b> As <a href="HandlingCodeEnum.htm">HandlingCodeEnum</a> )
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">DocumentObject</td>
+        <td class="api-list"><a href="Document.htm">Document</a></td>
+        <td class="api-list">The Document object the change is occurring within.</td>
+      </tr>
+      <tr>
+        <td class="api-list">BeforeOrAfter</td>
+        <td class="api-list"><a href="EventTimingEnum.htm">EventTimingEnum</a></td>
+        <td class="api-list">Input EventTimingEnum indicating when the event is being fired. This argument specifies if the notification is being sent before a change is made (kBefore), after a change is made (kAfter), or when a change has been aborted (kAbort).</td>
+      </tr>
+      <tr>
+        <td class="api-list">ReasonsForChange</td>
+        <td class="api-list"><a href="CommandTypesEnum.htm">CommandTypesEnum</a></td>
+        <td class="api-list">This argument indicates the type of change that occurred. The value is from the CommandTypesEnum list, which represents the different categories of changes that can be made. Typically this will be a single value from the list but it can represent multiple values that have been combined together so you need to use bitwise operations to check for a specific change.</td>
+      </tr>
+      <tr>
+        <td class="api-list">Context</td>
+        <td class="api-list"><a href="NameValueMap.htm">NameValueMap</a></td>
+        <td class="api-list">Input NameValueMap object that can be used to determine the context of why the event fired. This argument provides additional information as described below:<p />Name = "DisplayName", Value = The display name of the command that caused the change. This name will change based on the language currently being used for Inventor.<p />Name = "InternalName", Value = The internal name of the command that caused the change. This name will be consistent regardless of the current language.<p />Name = "InternalNamesList", Value = as follows. When the internal name is "CompositeChange" this value is returned. Some commands result in making several changes but combine or composite them into a single command. The individual changes that were composited into the single command are provided through this value. It is an array of strings that consist of the internal names of the individual changes made. For example, if you drag a sketch point that connects two lines, the display name is "Drag Sketch Inference", the internal name is "CompositeChange" and the internal names list is an array of the following three strings; "Modify Point", "Modify Line", and "Modify Line".<p />Name = "ConsideredDirty", Value = "". If this name appears in the context list then the change made is one that causes the document to be dirty. <todo /></td>
+      </tr>
+      <tr>
+        <td class="api-list">HandlingCode</td>
+        <td class="api-list"><a href="HandlingCodeEnum.htm">HandlingCodeEnum</a></td>
+        <td class="api-list">Output that indicates how you are handling the event. This event supports the ability to cancel the change. By setting this argument to kEventCanceled when the BeforeOrAfter argument is kBefore Inventor will abort the change. When the change is cancelled, this event is fired again but the BeforeOrAfter argument will have a value of kAbort.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 8<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(ApplicationEvents.OnDocumentChange%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

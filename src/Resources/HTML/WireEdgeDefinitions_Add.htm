@@ -1,0 +1,120 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/WireEdgeDefinitions_Add.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="WireEdgeDefinitions_Add">
+    <meta name="description" content="WireEdgeDefinitions.Add Method">
+    <meta name="topicid" content="WireEdgeDefinitions_Add">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>WireEdgeDefinitions.Add Method</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">WireEdgeDefinitions.Add Method</h1>
+
+          Parent Object: <a href="WireEdgeDefinitions.htm">WireEdgeDefinitions</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Creates a new WireEdgeDefinition within the associated SurfaceBodyDefinition.</p>
+    <h2 class="api">
+          Syntax
+        </h2>
+        
+            WireEdgeDefinitions.<b>Add</b>( <b><i>StartVertex</i></b> As <a href="VertexDefinition.htm">VertexDefinition</a>, <b><i>EndVertex</i></b> As <a href="VertexDefinition.htm">VertexDefinition</a>, <b><i>ModelSpaceCurve</i></b> As Object ) As <a href="WireEdgeDefinition.htm">WireEdgeDefinition</a>
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">StartVertex</td>
+        <td class="api-list"><a href="VertexDefinition.htm">VertexDefinition</a></td>
+        <td class="api-list">Input VertexDefinition object that defines the start of the edge.</td>
+      </tr>
+      <tr>
+        <td class="api-list">EndVertex</td>
+        <td class="api-list"><a href="VertexDefinition.htm">VertexDefinition</a></td>
+        <td class="api-list">Input VertexDefinition object that defines the end of the edge.</td>
+      </tr>
+      <tr>
+        <td class="api-list">ModelSpaceCurve</td>
+        <td class="api-list">Object</td>
+        <td class="api-list">Input transient geometry curve object that defines the shape of this edge using 3d geometry in model space.&nbsp;Valid input is Arc3d, BsplineCurve, Circle, EllipseFull, EllipticalArc, LineSegment and Polyline3D.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TaperFace_Sample.htm">Tapered Surface Using Offset Curve and Ruled Surface</a></td>
+        <td class="api-list">This sample demonstrates much of the wire body creation functionality.&nbsp;To run the sample you must have a part open and select a planar face.&nbsp;This sample then creates a trasient wire body using the geometry of the outside of the selected face.&nbsp;It then transforms and offsets that wire, and finally creates a ruled surface between the original wire and the offset wire.&nbsp;A base feature is created with the ruled surface.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TransientBRepRuledSurf1_Sample.htm">Transient B-Rep Ruled Surface with Lines</a></td>
+        <td class="api-list">Demonstrate creating a transient ruled surface.&nbsp;This sample uses all straight line segments for each of the sections. A part document must be open.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TransientBRepRuledSurf2_Sample.htm">Transient B-Rep Ruled Surface with Arc and Line</a></td>
+        <td class="api-list">Demonstrate creating a transient ruled surface.&nbsp;This sample uses straight line segments for once section and an arc for the second. A part document must be open.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2013<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(WireEdgeDefinitions.Add%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

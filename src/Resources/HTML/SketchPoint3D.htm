@@ -1,0 +1,168 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/SketchPoint3D.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="SketchPoint3D">
+    <meta name="description" content="SketchPoint3D Object">
+    <meta name="topicid" content="GUID-SketchPoint3D">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>SketchPoint3D Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">SketchPoint3D Object
+			</h1>
+              Derived from: <a href="SketchEntity3D.htm">SketchEntity3D</a> Object
+            <br><h2 class="api">
+          Description
+        </h2>The SketchPoint3D object represents a point within a 3D sketch. See the article in the overviews section.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchPoint3D_ConnectTo.htm">ConnectTo</a></td>
+        <td class="api-list">Method that connects this sketch point to the input point. Valid inputs are SketchPoint3D, SketchPoint, Vertex or WorkPoint. This method is the UI equivalent of 'Add Coincident Constraint'. The point being constrained is the sketch point on which this method is called and the input point is the constraining point. This method will fail if a coincident constraint exists between this sketch point and a vertex; i.e. this sketch point must be underconstrained.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchPoint3D_Delete.htm">Delete</a></td>
+        <td class="api-list">Method that deletes the sketch entity.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchPoint3D_GetReferenceKey.htm">GetReferenceKey</a></td>
+        <td class="api-list">Method that generates and returns the reference key for this entity.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchPoint3D_MoveBy.htm">MoveBy</a></td>
+        <td class="api-list">Method that moves the sketch point a delta distance from its current location. Movement of a sketch point is limited by the constraints currently defined on the sketch. If a sketch is partially constrained it will perform the move within the range allowed by the constraints. Because of this, the result of a move may not always be exactly what was specified.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchPoint3D_MoveTo.htm">MoveTo</a></td>
+        <td class="api-list">Method that moves the sketch point to an explicit x-y-z location. Movement of a sketch point is limited by the constraints currently defined on the sketch. If a sketch is partially constrained it will perform the move within the range allowed by the constraints. Because of this, the result of a move may not always be exactly what was specified.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchPoint3D_Application.htm">Application</a></td>
+        <td class="api-list">Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchPoint3D_AttachedEntities.htm">AttachedEntities</a></td>
+        <td class="api-list">Property that returns the collection of objects that are connected to this point.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchPoint3D_AttributeSets.htm">AttributeSets</a></td>
+        <td class="api-list">Property that returns the AttributeSets collection object associated with this object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchPoint3D_Constraints3D.htm">Constraints3D</a></td>
+        <td class="api-list">Property that returns a collection of sketch constraints that are tied directly to this entity. This collection consists of geometric and bend constraints.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchPoint3D_ConstraintStatus.htm">ConstraintStatus</a></td>
+        <td class="api-list">Property that returns an enum indicating the constraint status of the sketch entity, signifying whether it is fully constrained, over constrained, or under constrained.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchPoint3D_Construction.htm">Construction</a></td>
+        <td class="api-list">Gets / sets the Sketch3D Construction Property.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchPoint3D_Geometry.htm">Geometry</a></td>
+        <td class="api-list">Gets and sets a Point geometry object. The object returned represents a 'snapshot' view of the current state of the sketch point.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchPoint3D_HasReferenceComponent.htm">HasReferenceComponent</a></td>
+        <td class="api-list">Property that specifies if the object was created as the result of a derived part.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchPoint3D_HoleCenter.htm">HoleCenter</a></td>
+        <td class="api-list">Defines if the sketch point is being displayed as a hole center.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchPoint3D_OwnedBy.htm">OwnedBy</a></td>
+        <td class="api-list">Property indicating entity or entities that own this object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchPoint3D_Parent.htm">Parent</a></td>
+        <td class="api-list">Property that returns the parent sketch of the entity.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchPoint3D_RangeBox.htm">RangeBox</a></td>
+        <td class="api-list">Property that returns a Box object which contains the opposing points of a rectangular box that is guaranteed to enclose this object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchPoint3D_Reference.htm">Reference</a></td>
+        <td class="api-list">Gets and sets whether this entity is a reference entity or not.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchPoint3D_ReferenceComponent.htm">ReferenceComponent</a></td>
+        <td class="api-list">Property that returns the ReferenceComponent that resulted in the creation of this feature.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchPoint3D_ReferencedEntity.htm">ReferencedEntity</a></td>
+        <td class="api-list">Property that returns the object this entity is dependent on. When sketch entities are created by projecting model edges or intersecting the model, the resulting entities are driven by the original model entities and cannot be modified. This property returns the model entity the sketch entity is dependent on. The Reference property indicates whether the sketch entity is driven by a model entity or not. If the sketch entity is not referencing a model entity, this property will return Nothing. This property can also return nothing even when the sketch entity is referencing a model entity in the case where the model entity has been consumed by some subsequent modeling operation.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchPoint3D_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="MidpointConstraint3D_Point.htm">MidpointConstraint3D.Point</a>, <a href="MidpointConstraint3DProxy_Point.htm">MidpointConstraint3DProxy.Point</a>, <a href="OnFaceCurve_EndSketchPoint.htm">OnFaceCurve.EndSketchPoint</a>, <a href="OnFaceCurve_FitPoint.htm">OnFaceCurve.FitPoint</a>, <a href="OnFaceCurve_StartSketchPoint.htm">OnFaceCurve.StartSketchPoint</a>, <a href="OnFaceCurveProxy_EndSketchPoint.htm">OnFaceCurveProxy.EndSketchPoint</a>, <a href="OnFaceCurveProxy_FitPoint.htm">OnFaceCurveProxy.FitPoint</a>, <a href="OnFaceCurveProxy_StartSketchPoint.htm">OnFaceCurveProxy.StartSketchPoint</a>, <a href="PointAndPlaneDistanceDimConstraint3D_Point.htm">PointAndPlaneDistanceDimConstraint3D.Point</a>, <a href="PointAndPlaneDistanceDimConstraint3DProxy_Point.htm">PointAndPlaneDistanceDimConstraint3DProxy.Point</a>, <a href="ProfileEntity3D_EndSketchPoint.htm">ProfileEntity3D.EndSketchPoint</a>, <a href="ProfileEntity3D_StartSketchPoint.htm">ProfileEntity3D.StartSketchPoint</a>, <a href="ProfileEntity3DProxy_EndSketchPoint.htm">ProfileEntity3DProxy.EndSketchPoint</a>, <a href="ProfileEntity3DProxy_StartSketchPoint.htm">ProfileEntity3DProxy.StartSketchPoint</a>, <a href="SketchArc3D_EndSketchPoint.htm">SketchArc3D.EndSketchPoint</a>, <a href="SketchArc3D_StartSketchPoint.htm">SketchArc3D.StartSketchPoint</a>, <a href="SketchArc3DProxy_EndSketchPoint.htm">SketchArc3DProxy.EndSketchPoint</a>, <a href="SketchArc3DProxy_StartSketchPoint.htm">SketchArc3DProxy.StartSketchPoint</a>, <a href="SketchControlPointSpline3D_ControlPoint.htm">SketchControlPointSpline3D.ControlPoint</a>, <a href="SketchControlPointSpline3D_EndSketchPoint.htm">SketchControlPointSpline3D.EndSketchPoint</a>, <a href="SketchControlPointSpline3D_StartSketchPoint.htm">SketchControlPointSpline3D.StartSketchPoint</a>, <a href="SketchControlPointSpline3DProxy_ControlPoint.htm">SketchControlPointSpline3DProxy.ControlPoint</a>, <a href="SketchControlPointSpline3DProxy_EndSketchPoint.htm">SketchControlPointSpline3DProxy.EndSketchPoint</a>, <a href="SketchControlPointSpline3DProxy_StartSketchPoint.htm">SketchControlPointSpline3DProxy.StartSketchPoint</a>, <a href="SketchEllipticalArc3D_EndSketchPoint.htm">SketchEllipticalArc3D.EndSketchPoint</a>, <a href="SketchEllipticalArc3D_StartSketchPoint.htm">SketchEllipticalArc3D.StartSketchPoint</a>, <a href="SketchEllipticalArc3DProxy_EndSketchPoint.htm">SketchEllipticalArc3DProxy.EndSketchPoint</a>, <a href="SketchEllipticalArc3DProxy_StartSketchPoint.htm">SketchEllipticalArc3DProxy.StartSketchPoint</a>, <a href="SketchEquationCurve3D_EndSketchPoint.htm">SketchEquationCurve3D.EndSketchPoint</a>, <a href="SketchEquationCurve3D_StartSketchPoint.htm">SketchEquationCurve3D.StartSketchPoint</a>, <a href="SketchEquationCurve3DProxy_EndSketchPoint.htm">SketchEquationCurve3DProxy.EndSketchPoint</a>, <a href="SketchEquationCurve3DProxy_StartSketchPoint.htm">SketchEquationCurve3DProxy.StartSketchPoint</a>, <a href="SketchFixedSpline3D_EndSketchPoint.htm">SketchFixedSpline3D.EndSketchPoint</a>, <a href="SketchFixedSpline3D_StartSketchPoint.htm">SketchFixedSpline3D.StartSketchPoint</a>, <a href="SketchFixedSpline3DProxy_EndSketchPoint.htm">SketchFixedSpline3DProxy.EndSketchPoint</a>, <a href="SketchFixedSpline3DProxy_StartSketchPoint.htm">SketchFixedSpline3DProxy.StartSketchPoint</a>, <a href="SketchLine3D_EndSketchPoint.htm">SketchLine3D.EndSketchPoint</a>, <a href="SketchLine3D_StartSketchPoint.htm">SketchLine3D.StartSketchPoint</a>, <a href="SketchLine3DProxy_EndSketchPoint.htm">SketchLine3DProxy.EndSketchPoint</a>, <a href="SketchLine3DProxy_StartSketchPoint.htm">SketchLine3DProxy.StartSketchPoint</a>, <a href="SketchPoint3DProxy_NativeObject.htm">SketchPoint3DProxy.NativeObject</a>, <a href="SketchPoints3D_Add.htm">SketchPoints3D.Add</a>, <a href="SketchPoints3D_Item.htm">SketchPoints3D.Item</a>, <a href="SketchSpline3D_EndSketchPoint.htm">SketchSpline3D.EndSketchPoint</a>, <a href="SketchSpline3D_FitPoint.htm">SketchSpline3D.FitPoint</a>, <a href="SketchSpline3D_InsertFitPoint.htm">SketchSpline3D.InsertFitPoint</a>, <a href="SketchSpline3D_StartSketchPoint.htm">SketchSpline3D.StartSketchPoint</a>, <a href="SketchSpline3DProxy_EndSketchPoint.htm">SketchSpline3DProxy.EndSketchPoint</a>, <a href="SketchSpline3DProxy_FitPoint.htm">SketchSpline3DProxy.FitPoint</a>, <a href="SketchSpline3DProxy_InsertFitPoint.htm">SketchSpline3DProxy.InsertFitPoint</a>, <a href="SketchSpline3DProxy_StartSketchPoint.htm">SketchSpline3DProxy.StartSketchPoint</a>, <a href="SketchSplineHandle3D_EndSketchPoint.htm">SketchSplineHandle3D.EndSketchPoint</a>, <a href="SketchSplineHandle3D_FitPoint.htm">SketchSplineHandle3D.FitPoint</a>, <a href="SketchSplineHandle3D_StartSketchPoint.htm">SketchSplineHandle3D.StartSketchPoint</a>, <a href="SketchSplineHandle3DProxy_EndSketchPoint.htm">SketchSplineHandle3DProxy.EndSketchPoint</a>, <a href="SketchSplineHandle3DProxy_FitPoint.htm">SketchSplineHandle3DProxy.FitPoint</a>, <a href="SketchSplineHandle3DProxy_StartSketchPoint.htm">SketchSplineHandle3DProxy.StartSketchPoint</a><h2 class="api">
+            Derived Classes
+          </h2><a href="SketchPoint3DProxy.htm">SketchPoint3DProxy</a><h2 class="api">
+            Version
+          </h2>
+        Introduced in version 6<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(SketchPoint3D%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

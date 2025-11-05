@@ -1,0 +1,394 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/DerivedAssemblyComponents_Add_Sample.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="DerivedAssemblyComponents_Add_Sample">
+    <meta name="description" content="Derived Parts and Assemblies Sample">
+    <meta name="topicid" content="DerivedAssemblyComponents_Add_Sample">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>Derived Parts and Assemblies</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body><script>
+          function copyCode(language) {
+          // Get the pre element for the specified language.
+          var preElement = document.getElementById(language);
+
+          // Get the text from the element and copy it to the clipboard.
+          var preText = preElement.innerText;
+
+          var isIE = /*@cc_on!@*/false || !!document.documentMode;
+
+          if (isIE)
+          {
+            window.clipboardData.setData('Text', preText);
+          }
+          else
+          {
+            navigator.clipboard.writeText(preText);
+          }
+
+          //alert("Code copied to clipboard");
+          }
+        </script><link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">Derived Parts and Assemblies</h1>
+    <h2 class="api">
+          Description
+        </h2>This sample demonstrates the use of the API to create derived parts and assemblies.<h2 class="api">
+          Code Samples
+        </h2>
+    <div id="tabs">
+      <ul>
+        <li><a href="#VBA">VBA</a></li>
+        <li><a href="#iLogic">iLogic</a></li>
+      </ul>
+      <div id="VBA" class="api-code">This example used is a simple case of a part subtracted from a mold. To simplify setup, the program creates the parts representing the part and the mold. It then uses derived parts and assemblies to scale the part and subtract it from the mold.<table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('VBA_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="VBA_code">Public Sub MoldBaseSample()
+    <span style="color:blue">' Initialize the string that defines the directory where the</span>
+    <span style="color:blue">' files will be created.</span>
+    Dim sFilePath As String
+    sFilePath = "C:\Temp\"
+    
+    <span style="color:blue">' Call the functions to create the parts that represent the</span>
+    <span style="color:blue">' molded part and the mold base.</span>
+    Call CreateMoldPart(sFilePath & "MoldPart.ipt")
+    Call CreateMoldBase(sFilePath & "MoldBase.ipt")
+    
+    <span style="color:blue">' Create a new part file to derive the mold part in.</span>
+    Dim oPartDoc As PartDocument
+    Set oPartDoc = ThisApplication.Documents.Add(kPartDocumentObject, _
+                 ThisApplication.FileManager.GetTemplateFile(kPartDocumentObject))
+    
+    <span style="color:blue">' Create a derived definition for the molded part.</span>
+    Dim oDerivedPartDef As DerivedPartUniformScaleDef
+    Set oDerivedPartDef = oPartDoc.ComponentDefinition.ReferenceComponents.DerivedPartComponents.CreateUniformScaleDef(sFilePath & "MoldPart.ipt")
+    
+    <span style="color:blue">' Set the scale to use.</span>
+    oDerivedPartDef.ScaleFactor = 1.1
+    
+    <span style="color:blue">' We could set other options for the derived part using the derived part definition.</span>
+    <span style="color:blue">' In this case the defaults are good except for the scale which we changed.</span>
+    
+    <span style="color:blue">' Create the derived part.</span>
+    Call oPartDoc.ComponentDefinition.ReferenceComponents.DerivedPartComponents.Add(oDerivedPartDef)
+    
+    <span style="color:blue">' Save and close the part.  Uses SilentOperation to bypass the save dialog.</span>
+    ThisApplication.SilentOperation = True
+    Call oPartDoc.SaveAs(sFilePath & "ScaledMoldPart.ipt", False)
+    ThisApplication.SilentOperation = False
+    oPartDoc.Close
+    
+    <span style="color:blue">' Create a new assembly file to put the mold base and scaled part together.</span>
+    Dim oAsmDoc As AssemblyDocument
+    Set oAsmDoc = ThisApplication.Documents.Add(kAssemblyDocumentObject, _
+                ThisApplication.FileManager.GetTemplateFile(kAssemblyDocumentObject))
+    
+    <span style="color:blue">' Create the matrix used to define the position of the occurrences.  When a new</span>
+    <span style="color:blue">' matrix is created it is initialized to an identity matrix.  This will cause</span>
+    <span style="color:blue">' parts to be placed into the assembly in the same location that are in part space.</span>
+    Dim oMatrix As Matrix
+    Set oMatrix = ThisApplication.TransientGeometry.CreateMatrix
+    
+    <span style="color:blue">' Place the mold base.</span>
+    Dim oOcc As ComponentOccurrence
+    Set oOcc = oAsmDoc.ComponentDefinition.Occurrences.Add(sFilePath & "MoldBase.ipt", oMatrix)
+    
+    <span style="color:blue">' Rename the occurrence.  This sample uses the name to identify the occurrence later.</span>
+    <span style="color:blue">' This isn't the only method that could be used, but is one of the simplest.</span>
+    oOcc.Name = "Mold Base"
+    
+    <span style="color:blue">' Place the scaled part.</span>
+    Set oOcc = oAsmDoc.ComponentDefinition.Occurrences.Add(sFilePath & "ScaledMoldPart.ipt", oMatrix)
+    oOcc.Name = "Mold Part"
+    
+    <span style="color:blue">' Save and close the assembly.</span>
+    Call oAsmDoc.SaveAs(sFilePath & "MoldSample.iam", False)
+    oAsmDoc.Close
+    
+    <span style="color:blue">' Create a new part to derive the assembly into, subtracting the part from the mold base.</span>
+    Set oPartDoc = ThisApplication.Documents.Add(kPartDocumentObject, _
+                 ThisApplication.FileManager.GetTemplateFile(kPartDocumentObject))
+    
+    <span style="color:blue">' Create a derived definition for the molded assembly.</span>
+    Dim oDerivedAsmDef As DerivedAssemblyDefinition
+    Set oDerivedAsmDef = oPartDoc.ComponentDefinition.ReferenceComponents.DerivedAssemblyComponents.CreateDefinition(sFilePath & "MoldSample.iam")
+    
+    <span style="color:blue">' Set the part to be subtracted.</span>
+    oDerivedAsmDef.Occurrences.Item("Mold Part").InclusionOption = kDerivedSubtractAll
+    
+    <span style="color:blue">' Create the derived assembly.</span>
+    Call oPartDoc.ComponentDefinition.ReferenceComponents.DerivedAssemblyComponents.Add(oDerivedAsmDef)
+End Sub
+
+<span style="color:blue">' Sub to create the part representing the molded part.</span>
+Private Sub CreateMoldPart(Filename As String)
+    <span style="color:blue">' Create a new part document using the default part template.</span>
+    Dim oPartDoc As PartDocument
+    Set oPartDoc = ThisApplication.Documents.Add(kPartDocumentObject, _
+                 ThisApplication.FileManager.GetTemplateFile(kPartDocumentObject))
+    
+    <span style="color:blue">' Create a new sketch on the XY base workplane.</span>
+    Dim oSketch As PlanarSketch
+    Set oSketch = oPartDoc.ComponentDefinition.Sketches.Add(oPartDoc.ComponentDefinition.WorkPlanes(3))
+    
+    Dim oTG As TransientGeometry
+    Set oTG = ThisApplication.TransientGeometry
+    
+    <span style="color:blue">' Draw the geometry defining the shape of the part.</span>
+    Dim oPoints As ObjectCollection
+    Set oPoints = ThisApplication.TransientObjects.CreateObjectCollection
+    oPoints.Add oTG.CreatePoint2d(-5, 0)
+    oPoints.Add oTG.CreatePoint2d(-4, 3)
+    oPoints.Add oTG.CreatePoint2d(-2, 4)
+    oPoints.Add oTG.CreatePoint2d(0, 3)
+    oPoints.Add oTG.CreatePoint2d(3, 4)
+    oPoints.Add oTG.CreatePoint2d(4, 2)
+    oPoints.Add oTG.CreatePoint2d(5, 0)
+   
+    Dim oSpline As SketchSpline
+    Set oSpline = oSketch.SketchSplines.Add(oPoints)
+    oSpline.FitMethod = kSweetSplineFit
+    
+    Dim oLine As SketchLine
+    Set oLine = oSketch.SketchLines.AddByTwoPoints(oSpline.FitPoint(1), oSpline.FitPoint(oSpline.FitPointCount))
+    
+    Dim oProfile As Profile
+    Set oProfile = oSketch.Profiles.AddForSolid
+    
+    <span style="color:blue">' Create a revolved feature.</span>
+    Call oPartDoc.ComponentDefinition.Features.RevolveFeatures.AddFull(oProfile, oLine, kJoinOperation)
+    
+    <span style="color:blue">' Save and close the document.</span>
+    Call oPartDoc.SaveAs(Filename, False)
+    oPartDoc.Close
+End Sub
+
+<span style="color:blue">' Sub to create the part representing the mold base.</span>
+Private Sub CreateMoldBase(Filename As String)
+    <span style="color:blue">' Create a new part document using the default part template.</span>
+    Dim oPartDoc As PartDocument
+    Set oPartDoc = ThisApplication.Documents.Add(kPartDocumentObject, _
+                 ThisApplication.FileManager.GetTemplateFile(kPartDocumentObject))
+    
+    <span style="color:blue">' Create a new sketch on the XY base workplane.</span>
+    Dim oSketch As PlanarSketch
+    Set oSketch = oPartDoc.ComponentDefinition.Sketches.Add(oPartDoc.ComponentDefinition.WorkPlanes(3))
+    
+    <span style="color:blue">' Draw the geometry defining the shape of the part.</span>
+    Dim oTG As TransientGeometry
+    Set oTG = ThisApplication.TransientGeometry
+    Call oSketch.SketchLines.AddAsTwoPointRectangle(oTG.CreatePoint2d(-6, -5), oTG.CreatePoint2d(6, 5))
+        
+    Dim oProfile As Profile
+    Set oProfile = oSketch.Profiles.AddForSolid
+    
+    <span style="color:blue">' Create an extruded feature.</span>
+    Dim oCompDef As PartComponentDefinition
+    Set oCompDef = oPartDoc.ComponentDefinition
+    Dim oExtrudeDef As ExtrudeDefinition
+    Set oExtrudeDef = oCompDef.Features.ExtrudeFeatures.CreateExtrudeDefinition(oProfile, kJoinOperation)
+    Call oExtrudeDef.SetDistanceExtent(5, kNegativeExtentDirection)
+    Call oCompDef.Features.ExtrudeFeatures.Add(oExtrudeDef)
+
+    <span style="color:blue">' Save and close the document.</span>
+    Call oPartDoc.SaveAs(Filename, False)
+    oPartDoc.Close
+End Sub</pre>
+      </div>
+      <div id="iLogic" class="api-code">This example used is a simple case of a part subtracted from a mold. To simplify setup, the program creates the parts representing the part and the mold. It then uses derived parts and assemblies to scale the part and subtract it from the mold.<table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('iLogic_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="iLogic_code">Sub Main
+    <span style="color:blue">' Initialize the string that defines the directory where the</span>
+    <span style="color:blue">' files will be created.</span>
+    Dim sFilePath As String
+    sFilePath = "C:\Temp\"
+    
+    <span style="color:blue">' Call the functions to create the parts that represent the</span>
+    <span style="color:blue">' molded part and the mold base.</span>
+    Call CreateMoldPart(sFilePath & "MoldPart.ipt")
+    Call CreateMoldBase(sFilePath & "MoldBase.ipt")
+    
+    <span style="color:blue">' Create a new part file to derive the mold part in.</span>
+    Dim oPartDoc As PartDocument
+    oPartDoc = ThisApplication.Documents.Add(kPartDocumentObject, _
+                 ThisApplication.FileManager.GetTemplateFile(kPartDocumentObject))
+    
+    <span style="color:blue">' Create a derived definition for the molded part.</span>
+    Dim oDerivedPartDef As DerivedPartUniformScaleDef
+    oDerivedPartDef = oPartDoc.ComponentDefinition.ReferenceComponents.DerivedPartComponents.CreateUniformScaleDef(sFilePath & "MoldPart.ipt")
+    
+    <span style="color:blue">' Set the scale to use.</span>
+    oDerivedPartDef.ScaleFactor = 1.1
+    
+    <span style="color:blue">' We could set other options for the derived part using the derived part definition.</span>
+    <span style="color:blue">' In this case the defaults are good except for the scale which we changed.</span>
+    
+    <span style="color:blue">' Create the derived part.</span>
+    Call oPartDoc.ComponentDefinition.ReferenceComponents.DerivedPartComponents.Add(oDerivedPartDef)
+    
+    <span style="color:blue">' Save and close the part.  Uses SilentOperation to bypass the save dialog.</span>
+    ThisApplication.SilentOperation = True
+    Call oPartDoc.SaveAs(sFilePath & "ScaledMoldPart.ipt", False)
+    ThisApplication.SilentOperation = False
+    oPartDoc.Close
+    
+    <span style="color:blue">' Create a new assembly file to put the mold base and scaled part together.</span>
+    Dim oAsmDoc As AssemblyDocument
+    oAsmDoc = ThisApplication.Documents.Add(kAssemblyDocumentObject, _
+                ThisApplication.FileManager.GetTemplateFile(kAssemblyDocumentObject))
+    
+    <span style="color:blue">' Create the matrix used to define the position of the occurrences.  When a new</span>
+    <span style="color:blue">' matrix is created it is initialized to an identity matrix.  This will cause</span>
+    <span style="color:blue">' parts to be placed into the assembly in the same location that are in part space.</span>
+    Dim oMatrix As Matrix
+    oMatrix = ThisApplication.TransientGeometry.CreateMatrix
+    
+    <span style="color:blue">' Place the mold base.</span>
+    Dim oOcc As ComponentOccurrence
+    oOcc = oAsmDoc.ComponentDefinition.Occurrences.Add(sFilePath & "MoldBase.ipt", oMatrix)
+    
+    <span style="color:blue">' Rename the occurrence.  This sample uses the name to identify the occurrence later.</span>
+    <span style="color:blue">' This isn't the only method that could be used, but is one of the simplest.</span>
+    oOcc.Name = "Mold Base"
+    
+    <span style="color:blue">' Place the scaled part.</span>
+    oOcc = oAsmDoc.ComponentDefinition.Occurrences.Add(sFilePath & "ScaledMoldPart.ipt", oMatrix)
+    oOcc.Name = "Mold Part"
+    
+    <span style="color:blue">' Save and close the assembly.</span>
+    Call oAsmDoc.SaveAs(sFilePath & "MoldSample.iam", False)
+    oAsmDoc.Close
+    
+    <span style="color:blue">' Create a new part to derive the assembly into, subtracting the part from the mold base.</span>
+    oPartDoc = ThisApplication.Documents.Add(kPartDocumentObject, _
+                 ThisApplication.FileManager.GetTemplateFile(kPartDocumentObject))
+    
+    <span style="color:blue">' Create a derived definition for the molded assembly.</span>
+    Dim oDerivedAsmDef As DerivedAssemblyDefinition
+    oDerivedAsmDef = oPartDoc.ComponentDefinition.ReferenceComponents.DerivedAssemblyComponents.CreateDefinition(sFilePath & "MoldSample.iam")
+    
+    <span style="color:blue">' Set the part to be subtracted.</span>
+    oDerivedAsmDef.Occurrences.Item("Mold Part").InclusionOption = kDerivedSubtractAll
+    
+    <span style="color:blue">' Create the derived assembly.</span>
+    Call oPartDoc.ComponentDefinition.ReferenceComponents.DerivedAssemblyComponents.Add(oDerivedAsmDef)
+End Sub
+
+<span style="color:blue">' Sub to create the part representing the molded part.</span>
+Private Sub CreateMoldPart(Filename As String)
+    <span style="color:blue">' Create a new part document using the default part template.</span>
+    Dim oPartDoc As PartDocument
+    oPartDoc = ThisApplication.Documents.Add(kPartDocumentObject, _
+                 ThisApplication.FileManager.GetTemplateFile(kPartDocumentObject))
+    
+    <span style="color:blue">' Create a new sketch on the XY base workplane.</span>
+    Dim oSketch As PlanarSketch
+    oSketch = oPartDoc.ComponentDefinition.Sketches.Add(oPartDoc.ComponentDefinition.WorkPlanes(3))
+    
+    Dim oTG As TransientGeometry
+    oTG = ThisApplication.TransientGeometry
+    
+    <span style="color:blue">' Draw the geometry defining the shape of the part.</span>
+    Dim oPoints As ObjectCollection
+    oPoints = ThisApplication.TransientObjects.CreateObjectCollection
+    oPoints.Add(oTG.CreatePoint2d(-5, 0))
+    oPoints.Add(oTG.CreatePoint2d(-4, 3))
+    oPoints.Add(oTG.CreatePoint2d(-2, 4))
+    oPoints.Add(oTG.CreatePoint2d(0, 3))
+    oPoints.Add(oTG.CreatePoint2d(3, 4))
+    oPoints.Add(oTG.CreatePoint2d(4, 2))
+    oPoints.Add(oTG.CreatePoint2d(5, 0))
+   
+    Dim oSpline As SketchSpline
+    oSpline = oSketch.SketchSplines.Add(oPoints)
+    oSpline.FitMethod = kSweetSplineFit
+    
+    Dim oLine As SketchLine
+    oLine = oSketch.SketchLines.AddByTwoPoints(oSpline.FitPoint(1), oSpline.FitPoint(oSpline.FitPointCount))
+    
+    Dim oProfile As Profile
+    oProfile = oSketch.Profiles.AddForSolid
+    
+    <span style="color:blue">' Create a revolved feature.</span>
+    Call oPartDoc.ComponentDefinition.Features.RevolveFeatures.AddFull(oProfile, oLine, kJoinOperation)
+    
+    <span style="color:blue">' Save and close the document.</span>
+    Call oPartDoc.SaveAs(Filename, False)
+    oPartDoc.Close
+End Sub
+
+<span style="color:blue">' Sub to create the part representing the mold base.</span>
+Private Sub CreateMoldBase(Filename As String)
+    <span style="color:blue">' Create a new part document using the default part template.</span>
+    Dim oPartDoc As PartDocument
+    oPartDoc = ThisApplication.Documents.Add(kPartDocumentObject, _
+                 ThisApplication.FileManager.GetTemplateFile(kPartDocumentObject))
+    
+    <span style="color:blue">' Create a new sketch on the XY base workplane.</span>
+    Dim oSketch As PlanarSketch
+    oSketch = oPartDoc.ComponentDefinition.Sketches.Add(oPartDoc.ComponentDefinition.WorkPlanes(3))
+    
+    <span style="color:blue">' Draw the geometry defining the shape of the part.</span>
+    Dim oTG As TransientGeometry
+    oTG = ThisApplication.TransientGeometry
+    Call oSketch.SketchLines.AddAsTwoPointRectangle(oTG.CreatePoint2d(-6, -5), oTG.CreatePoint2d(6, 5))
+        
+    Dim oProfile As Profile
+    oProfile = oSketch.Profiles.AddForSolid
+    
+    <span style="color:blue">' Create an extruded feature.</span>
+    Dim oCompDef As PartComponentDefinition
+    oCompDef = oPartDoc.ComponentDefinition
+    Dim oExtrudeDef As ExtrudeDefinition
+    oExtrudeDef = oCompDef.Features.ExtrudeFeatures.CreateExtrudeDefinition(oProfile, kJoinOperation)
+    Call oExtrudeDef.SetDistanceExtent(5, kNegativeExtentDirection)
+    Call oCompDef.Features.ExtrudeFeatures.Add(oExtrudeDef)
+
+    <span style="color:blue">' Save and close the document.</span>
+    Call oPartDoc.SaveAs(Filename, False)
+    oPartDoc.Close
+End Sub</pre>
+      </div>
+    </div><br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(DerivedAssemblyComponents_Add%20Sample%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

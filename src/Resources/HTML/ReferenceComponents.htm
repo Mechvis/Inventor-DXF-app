@@ -1,0 +1,128 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/ReferenceComponents.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="ReferenceComponents">
+    <meta name="description" content="ReferenceComponents Object">
+    <meta name="topicid" content="GUID-ReferenceComponents">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>ReferenceComponents Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">ReferenceComponents Object
+			</h1><br><h2 class="api">
+          Description
+        </h2>Provides access to all of the objects that are owned by a particular PartComponentDefinition and have an external file reference.<h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ReferenceComponents_Application.htm">Application</a></td>
+        <td class="api-list">Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ReferenceComponents_DerivedAliasComponents.htm">DerivedAliasComponents</a></td>
+        <td class="api-list">Property that returns the DerivedAliasComponents collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ReferenceComponents_DerivedAssemblyComponents.htm">DerivedAssemblyComponents</a></td>
+        <td class="api-list">Property that returns the DerivedAssemblyComponent collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ReferenceComponents_DerivedFutureAssemblyComponents.htm">DerivedFutureAssemblyComponents</a></td>
+        <td class="api-list">Gets the DerivedFutureAssemblyComponents collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ReferenceComponents_DerivedFuturePartComponents.htm">DerivedFuturePartComponents</a></td>
+        <td class="api-list">Gets the DerivedFuturePartComponents collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ReferenceComponents_DerivedPartComponents.htm">DerivedPartComponents</a></td>
+        <td class="api-list">Property that returns the DerivedPartComponents collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ReferenceComponents_iFeatureTemplateDescriptors.htm">iFeatureTemplateDescriptors</a></td>
+        <td class="api-list">Property that returns the iFeatureTemplateDescriptors collection object. This collection provides access to existing iFeatureTemplateDescriptor objects. Note: iFeatureTemplateDescriptors was previously known as iFeatureDescriptors and were accessed through the DerivativeDescriptors collection. The DerivativeDescriptors collection has been removed and is now obsolete.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ReferenceComponents_ImportedComponents.htm">ImportedComponents</a></td>
+        <td class="api-list">Read-only property that returns the ImportedComponents collection object.&nbsp;This collection provides access to existing ImportedComponent objects and provides functionality to create new ImportedComponent objects.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ReferenceComponents_ShrinkwrapComponents.htm">ShrinkwrapComponents</a></td>
+        <td class="api-list">Gets the ShrinkwrapComponents collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ReferenceComponents_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="PartComponentDefinition_ReferenceComponents.htm">PartComponentDefinition.ReferenceComponents</a>, <a href="SheetMetalComponentDefinition_ReferenceComponents.htm">SheetMetalComponentDefinition.ReferenceComponents</a><h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DerivedAssemblyComponents_Add_Sample.htm">Derived Parts and Assemblies</a></td>
+        <td class="api-list">This sample demonstrates the use of the API to create derived parts and assemblies.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ImportedDWGComponentCreation_Sample.htm">ImportedDWGComponent Creation</a></td>
+        <td class="api-list">This sample demonstrates how to create an imported DWG component into Inventor part document, and project the DWG entities onto Inventor planar sketch.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 5.3<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(ReferenceComponents%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

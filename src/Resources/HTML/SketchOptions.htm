@@ -1,0 +1,159 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/SketchOptions.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="SketchOptions">
+    <meta name="description" content="SketchOptions Object">
+    <meta name="topicid" content="GUID-SketchOptions">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>SketchOptions Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">SketchOptions Object
+			</h1><br><h2 class="api">
+          Description
+        </h2>The SketchOptions object provides access to properties that provide read and write access of the 2D sketch related application options. This is somewhat equivalent to the 2D Sketch portion on the Sketch tab of the Application Options dialog.<h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchOptions_Application.htm">Application</a></td>
+        <td class="api-list">Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchOptions_AutoBendWithLineCreation.htm">AutoBendWithLineCreation</a></td>
+        <td class="api-list">Enables/disables automatically creating corner bends on 3D lines.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchOptions_AutomaticReferenceEdges.htm">AutomaticReferenceEdges</a></td>
+        <td class="api-list">Gets/sets the capability to automatically project edges of the selected face onto the sketch plane as reference geometry, when creating a new sketch.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchOptions_AutoProjectEdges.htm">AutoProjectEdges</a></td>
+        <td class="api-list">Gets/sets the capability to select and project existing geometry to the current sketch by rubbing existing lines.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchOptions_AutoProjectPartOrigin.htm">AutoProjectPartOrigin</a></td>
+        <td class="api-list">Enables/disables&nbsp;projecting the part origin onto a sketch when the sketch is created.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchOptions_AutoScaleSketchGeometriesOnInitialDimension.htm">AutoScaleSketchGeometriesOnInitialDimension</a></td>
+        <td class="api-list">Enables/disables whether to auto scale sketch geometries on initial dimension.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchOptions_ConstraintToolbarScale.htm">ConstraintToolbarScale</a></td>
+        <td class="api-list">Gets/sets the scale for the size of the constraint toolbars with respect to the graphics window.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchOptions_DisplayAxes.htm">DisplayAxes</a></td>
+        <td class="api-list">Enables/disables the display of the sketch plane axes.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchOptions_DisplayCoordinateSystemIndicator.htm">DisplayCoordinateSystemIndicator</a></td>
+        <td class="api-list">Enables/disables the display of the sketch plane coordinate system indicator (triad).</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchOptions_DisplayGridLines.htm">DisplayGridLines</a></td>
+        <td class="api-list">Enables/disables the display of the sketch plane grid lines.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchOptions_DisplayMinorGridLines.htm">DisplayMinorGridLines</a></td>
+        <td class="api-list">Enables/disables the display of minor sketch plane grid lines.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchOptions_HeadsUpDisplayOptions.htm">HeadsUpDisplayOptions</a></td>
+        <td class="api-list">Property that returns the HeadsUpDisplayOptions object. The HeadsUpDisplayOptions object provides access to various heads-up display related application level options for sketches.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchOptions_ImageInsertionLINKOptionCheckedAsDefault.htm">ImageInsertionLINKOptionCheckedAsDefault</a></td>
+        <td class="api-list">Gets/sets the default option for LINK when attaching image.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchOptions_ParallelViewOnSketchCreationInAssembly.htm">ParallelViewOnSketchCreationInAssembly</a></td>
+        <td class="api-list">Enables/disables whether the view is automatically reoriented to be planar to the screen in assembly environment.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchOptions_ParallelViewOnSketchCreationInPart.htm">ParallelViewOnSketchCreationInPart</a></td>
+        <td class="api-list">Enables/disables whether the view is automatically reoriented to be planar to the screen in part environment.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchOptions_PointAlignment.htm">PointAlignment</a></td>
+        <td class="api-list">Gets/sets whether to infer alignment between endpoints of newly created geometry and points of existing geometry.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchOptions_ProjectObjectsAsConstructionGeometry.htm">ProjectObjectsAsConstructionGeometry</a></td>
+        <td class="api-list">Enables/disables whether project objects as construction geometry.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchOptions_SketchConstraintSettings.htm">SketchConstraintSettings</a></td>
+        <td class="api-list">Returns the SketchConstraintSettings object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchOptions_SketchOpacity.htm">SketchOpacity</a></td>
+        <td class="api-list">Gets/sets the opacity of the sketch displayed through shaded model, valid value is from 0 to 100 indicating the opacity percentage.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchOptions_SnapToGrid.htm">SnapToGrid</a></td>
+        <td class="api-list">Enables/disables the snap behavior for sketching tasks.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchOptions_SplineDefaultTension.htm">SplineDefaultTension</a></td>
+        <td class="api-list">Gets/sets the default tension for splines in 2d sketches.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchOptions_SplineFitMethod.htm">SplineFitMethod</a></td>
+        <td class="api-list">Gets/sets the default fit method for splines in 2d sketches.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchOptions_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="Application_SketchOptions.htm">Application.SketchOptions</a>, <a href="HeadsUpDisplayOptions_Parent.htm">HeadsUpDisplayOptions.Parent</a>, <a href="InventorServer_SketchOptions.htm">InventorServer.SketchOptions</a>, <a href="InventorServerObject_SketchOptions.htm">InventorServerObject.SketchOptions</a>, <a href="SketchConstraintSettings_Parent.htm">SketchConstraintSettings.Parent</a><h2 class="api">
+            Version
+          </h2>
+        Introduced in version 9<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(SketchOptions%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

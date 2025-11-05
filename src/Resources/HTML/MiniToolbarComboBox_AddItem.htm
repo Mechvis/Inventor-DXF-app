@@ -1,0 +1,115 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/MiniToolbarComboBox_AddItem.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="MiniToolbarComboBox_AddItem">
+    <meta name="description" content="MiniToolbarComboBox.AddItem Method">
+    <meta name="topicid" content="MiniToolbarComboBox_AddItem">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>MiniToolbarComboBox.AddItem Method</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">MiniToolbarComboBox.AddItem Method</h1>
+
+          Parent Object: <a href="MiniToolbarComboBox.htm">MiniToolbarComboBox</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Method that adds an item to the controls list.</p>
+    <h2 class="api">
+          Syntax
+        </h2>
+        
+            MiniToolbarComboBox.<b>AddItem</b>( <b><i>Text</i></b> As String, <b><i>ToolTipText</i></b> As String, [<b><i>InternalName</i></b>] As String, [<b><i>AllowDelete</i></b>] As Boolean, [<b><i>StandardIcon</i></b>] As Variant, [<b><i>LargeIcon</i></b>] As Variant, [<b><i>Index</i></b>] As Long ) As <a href="MiniToolbarListItem.htm">MiniToolbarListItem</a>
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">Text</td>
+        <td class="api-list">String</td>
+        <td class="api-list">Input String that specifies the text for the item.</td>
+      </tr>
+      <tr>
+        <td class="api-list">ToolTipText</td>
+        <td class="api-list">String</td>
+        <td class="api-list">Input String that specifies the tooltip text for the item.&nbsp;This is used as the tooltip for the control when this item is selected.</td>
+      </tr>
+      <tr>
+        <td class="api-list">InternalName</td>
+        <td class="api-list">String</td>
+        <td class="api-list">Optional input String that specifies an internal name for the control.&nbsp;You can provide this for convenience in identifying the item at a later time.&nbsp;If provided, it must be unique with respect to all other items in this combo box.<br /><br /> This is an optional argument whose default value is "".</td>
+      </tr>
+      <tr>
+        <td class="api-list">AllowDelete</td>
+        <td class="api-list">Boolean</td>
+        <td class="api-list">Optional input Boolean that specifies whether the user can delete this item from the combobox.&nbsp;Defaults to False if not provided.<br /><br /> This is an optional argument whose default value is False.</td>
+      </tr>
+      <tr>
+        <td class="api-list">StandardIcon</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional input IPictureDisp that specifies the icon to use for the item.&nbsp;A standard size icon is 16 pixels wide and 16 pixels high.<br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+      <tr>
+        <td class="api-list">LargeIcon</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional input IPictureDisp that specifies the large icon to use for the item.&nbsp;A large size icon is 24 pixels wide and 24 pixels high.<br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+      <tr>
+        <td class="api-list">Index</td>
+        <td class="api-list">Long</td>
+        <td class="api-list">Optional input Long value that specifies the 1-based index at which to add the item.&nbsp;If not specified, the item is added at the end.<br /><br /> This is an optional argument whose default value is 0.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2012<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(MiniToolbarComboBox.AddItem%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

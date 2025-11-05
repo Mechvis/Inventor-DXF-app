@@ -1,0 +1,197 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/SimplifyDefinition.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="SimplifyDefinition">
+    <meta name="description" content="SimplifyDefinition Object">
+    <meta name="topicid" content="GUID-SimplifyDefinition">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>SimplifyDefinition Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">SimplifyDefinition Object
+			</h1><br><h2 class="api">
+          Description
+        </h2>The SimplifyDefinition object represents all of the information that defines a part simplify feature.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SimplifyDefinition_Copy.htm">Copy</a></td>
+        <td class="api-list">Method that creates a copy of this SimplifyDefinition object. The new SimplifyDefinition is independent of any SimplifyFeature. It can be edited and used as input to edit an existing SimplifyFeature or to create a new SimplifyFeature.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SimplifyDefinition_Application.htm">Application</a></td>
+        <td class="api-list">Gets the root Application object. Where the property is weakly-typed, it can be set to (QueryInterfaced for) 'Application' when running with Inventor whereas, 'ApprenticeServer' when running with the Apprentice Server.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SimplifyDefinition_EnvelopeBoundingType.htm">EnvelopeBoundingType</a></td>
+        <td class="api-list">Read-write property that gets and sets envelope bounding type. This is applicable only when the EnvelopesReplaceStyle is not kNoneReplaceStyle. When the definition is just created this is default to kOrthogonalBoundingBox.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SimplifyDefinition_EnvelopesReplaceBodies.htm">EnvelopesReplaceBodies</a></td>
+        <td class="api-list">Read-write property that gets and sets bodies that replaced by envelopes. This is applicable only when the EnvelopesReplaceStyle is set to kSelectedBodiesReplaceStyle.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SimplifyDefinition_EnvelopesReplaceStyle.htm">EnvelopesReplaceStyle</a></td>
+        <td class="api-list">Read-write property that gets and sets envelopes replace style. When the definition is just created this is default to kNoneReplaceStyle. Valid values are kNoneReplaceStyle, kAllInOneEnvelopeReplaceStyle, kEachBodyReplaceStyle and kSelectedBodiesReplaceStyle.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SimplifyDefinition_Parent.htm">Parent</a></td>
+        <td class="api-list">Gets the parent object from whom this object can logically be reached.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SimplifyDefinition_PreservedBodies.htm">PreservedBodies</a></td>
+        <td class="api-list">Read-write property that gets and sets the bodies to preserve from removing.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SimplifyDefinition_PreservedFeatures.htm">PreservedFeatures</a></td>
+        <td class="api-list">Read-write property that gets and sets the features to preserve from removing.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SimplifyDefinition_RemoveBodiesBySize.htm">RemoveBodiesBySize</a></td>
+        <td class="api-list">Read-write property that gets and sets whether remove bodies by size or not. This is applicable when the source document is a part document. This is applicable when the EnvelopesReplaceStyle is not kAllInOneEnvelopeReplaceStyle.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SimplifyDefinition_RemoveBodiesSize.htm">RemoveBodiesSize</a></td>
+        <td class="api-list">Read-write property that gets and sets the bounding box diagonal length in centimeters of the bodies being removed. This is applicable when the RemoveBodiesBySize is set to True.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SimplifyDefinition_RemoveChamfersMaxDistanceRange.htm">RemoveChamfersMaxDistanceRange</a></td>
+        <td class="api-list">Read-write property that gets and sets the max distance of chamfers in centimeters to remove for the simplify feature. The chamfers which distance is less than or equal to this value will be removed. This is only applicable when the RemoveChamfersStyle is set.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SimplifyDefinition_RemoveChamfersStyle.htm">RemoveChamfersStyle</a></td>
+        <td class="api-list">Read-write property that gets and sets the style to remove chamfers for the simplify feature. This is applicable when the EnvelopesReplaceStyle is kNoneReplaceStyle or kSelectedBodiesReplaceStyle.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SimplifyDefinition_RemovedBodies.htm">RemovedBodies</a></td>
+        <td class="api-list">Read-write property that gets and sets the bodies being removed. This is applicable when the RemoveBodiesBySize is set to True.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SimplifyDefinition_RemoveEmbossesStyle.htm">RemoveEmbossesStyle</a></td>
+        <td class="api-list">Read-write property that gets and sets the style to remove embosses for the simplify feature. This is applicable when the EnvelopesReplaceStyle is kNoneReplaceStyle or kSelectedBodiesReplaceStyle.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SimplifyDefinition_RemoveEmbossMaxHeightRange.htm">RemoveEmbossMaxHeightRange</a></td>
+        <td class="api-list">Read-write property that gets and sets the max height of embosses in centimeters to remove for the simplify feature. The embosses which height is less than or equal to this value will be removed. This is only applicable when the RemoveEmbossesStyle is set to k.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SimplifyDefinition_RemoveFilletsMaxRadiusRange.htm">RemoveFilletsMaxRadiusRange</a></td>
+        <td class="api-list">Read-write property that gets and sets the max radius of fillets in centimeters to remove for the simplify feature. The fillets which radius is less than or equal to this value will be removed. This is only applicable when the RemoveFilletsStyle is set to kSim.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SimplifyDefinition_RemoveFilletsStyle.htm">RemoveFilletsStyle</a></td>
+        <td class="api-list">Read-write property that gets and sets the style to remove fillets for the simplify feature. This is applicable when the EnvelopesReplaceStyle is kNoneReplaceStyle or kSelectedBodiesReplaceStyle.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SimplifyDefinition_RemoveHolesMaxDiameterRange.htm">RemoveHolesMaxDiameterRange</a></td>
+        <td class="api-list">Read-write property that gets and sets the max diameter of holes in centimeters to remove for the simplify feature. The holes which diameter is less than or equal to this value will be removed. This is only applicable when the RemoveHolesStyle is set to kSimpl.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SimplifyDefinition_RemoveHolesStyle.htm">RemoveHolesStyle</a></td>
+        <td class="api-list">Read-write property that gets and sets the style to remove holes for the simplify feature. This is applicable when the EnvelopesReplaceStyle is kNoneReplaceStyle or kSelectedBodiesReplaceStyle.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SimplifyDefinition_RemoveInternalBodies.htm">RemoveInternalBodies</a></td>
+        <td class="api-list">Read-write property that gets and sets whether internal bodies will be removed or not. This is applicable when the EnvelopesReplaceStyle is not kAllInOneEnvelopeReplaceStyle.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SimplifyDefinition_RemoveInternalVoids.htm">RemoveInternalVoids</a></td>
+        <td class="api-list">Read-write property that gets and sets whether remove all the internal voids or not. Set this to True will fill all the internal void shells in the simplified solid. This is applicable when the EnvelopesReplaceStyle is kNoneReplaceStyle or kSelectedBodiesRepla.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SimplifyDefinition_RemovePocketsMaxDepthRange.htm">RemovePocketsMaxDepthRange</a></td>
+        <td class="api-list">Read-write property that gets and sets the max depth of pockets in centimeters to remove for the simplify feature. The pockets which max depth is less than or equal to this value will be removed. This is only applicable when the RemovePocketsStyle is set to kS.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SimplifyDefinition_RemovePocketsStyle.htm">RemovePocketsStyle</a></td>
+        <td class="api-list">Read-write property that gets and sets the style to remove pockets for the simplify feature. This is applicable when the EnvelopesReplaceStyle is kNoneReplaceStyle or kSelectedBodiesReplaceStyle.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SimplifyDefinition_RemoveTunnelsStyle.htm">RemoveTunnelsStyle</a></td>
+        <td class="api-list">Read-write property that gets and sets the style to remove tunnels for the simplify feature. This is applicable when the EnvelopesReplaceStyle is kNoneReplaceStyle or kSelectedBodiesReplaceStyle.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SimplifyDefinition_Type.htm">Type</a></td>
+        <td class="api-list">Gets the constant that indicates the type of this object.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="SimplifyDefinition_Copy.htm">SimplifyDefinition.Copy</a>, <a href="SimplifyFeature_Definition.htm">SimplifyFeature.Definition</a>, <a href="SimplifyFeatureProxy_Definition.htm">SimplifyFeatureProxy.Definition</a>, <a href="SimplifyFeatures_CreateDefinition.htm">SimplifyFeatures.CreateDefinition</a><h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PartSimplifyFeatureSample_Sample.htm">Part SimplifyFeature Sample</a></td>
+        <td class="api-list">This sample demonstrates how to create a simplify feature in part document.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2026<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(SimplifyDefinition%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

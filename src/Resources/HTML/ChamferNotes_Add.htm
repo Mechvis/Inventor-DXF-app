@@ -1,0 +1,100 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/ChamferNotes_Add.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="ChamferNotes_Add">
+    <meta name="description" content="ChamferNotes.Add Method">
+    <meta name="topicid" content="ChamferNotes_Add">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>ChamferNotes.Add Method</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">ChamferNotes.Add Method</h1>
+
+          Parent Object: <a href="ChamferNotes.htm">ChamferNotes</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Method that creates a chamfer note positioned at the specified point on the sheet.</p>
+    <h2 class="api">
+          Syntax
+        </h2>
+        
+            ChamferNotes.<b>Add</b>( <b><i>Position</i></b> As <a href="Point2d.htm">Point2d</a>, <b><i>ChamferEdgeOne</i></b> As Object, <b><i>ChamferEdgeTwo</i></b> As Object, [<b><i>DimensionStyle</i></b>] As Variant ) As <a href="ChamferNote.htm">ChamferNote</a>
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">Position</td>
+        <td class="api-list"><a href="Point2d.htm">Point2d</a></td>
+        <td class="api-list">Input Point2d that specifies the position of the chamfer note on the sheet.</td>
+      </tr>
+      <tr>
+        <td class="api-list">ChamferEdgeOne</td>
+        <td class="api-list">Object</td>
+        <td class="api-list">Input object that specifies the first chamfer edge. This can either be a linear DrawingCurve object or a SketchLine object from a sheet sketch. Use the corresponding DrawingCurve objects for view sketch and model sketch entities. The leader of the chamfer note will point to the center of entity.</td>
+      </tr>
+      <tr>
+        <td class="api-list">ChamferEdgeTwo</td>
+        <td class="api-list">Object</td>
+        <td class="api-list">Input object that specifies the second chamfer edge. This can either be a linear DrawingCurve object or a SketchLine object from a sheet sketch. Use the corresponding DrawingCurve objects for view sketch and model sketch entities. This object must be connected to the first chamfer edge and at an angle other than 90 degrees, else the method will fail.</td>
+      </tr>
+      <tr>
+        <td class="api-list">DimensionStyle</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional input Variant that specifies which dimension style to use for the note. The dimension style can be specified by providing the name of an existing style or by supplying a DimensionStyle object.<br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2010<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(ChamferNotes.Add%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

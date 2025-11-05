@@ -1,0 +1,116 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/AttributeManager.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="AttributeManager">
+    <meta name="description" content="AttributeManager Object">
+    <meta name="topicid" content="GUID-AttributeManager">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>AttributeManager Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">AttributeManager Object
+			</h1><br><h2 class="api">
+          Description
+        </h2>Dynamic attributes provide the ability for a programmer to add any arbitrary data to any persistent object within Autodesk Inventor.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AttributeManager_FindAttributes.htm">FindAttributes</a></td>
+        <td class="api-list">Method that returns the Attribute objects that match the search criteria.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AttributeManager_FindAttributeSets.htm">FindAttributeSets</a></td>
+        <td class="api-list">Method that returns attribute sets that have the specified names and values.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AttributeManager_FindObjects.htm">FindObjects</a></td>
+        <td class="api-list">Method that returns the objects that have the specified attributes.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AttributeManager_FindObjectsByPattern.htm">FindObjectsByPattern</a></td>
+        <td class="api-list">Method that returns the objects whose AttributeSets, if converted to XML, satisfy the specified XSL pattern.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AttributeManager_OpenAttributeSets.htm">OpenAttributeSets</a></td>
+        <td class="api-list">Finds the AttributeSet of the given name for each object in the object collection. If it does not find one, it creates a new AttributeSet. returns the in the same order as the object collection. Using this method is several times faster than accessing AttributeSets for each object individually. OpenAttributeSets works correctly even if the given collection has degenerate objects such as an edge for the apex of a cone. In such a case, OpenAttributeSets succeeds for all the valid objects, and returns NULL objects for the degenerate objects.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AttributeManager_PurgeAttributeSets.htm">PurgeAttributeSets</a></td>
+        <td class="api-list">Method that finds and deletes the AttributeSets of the specified names whose parent cannot be resolved. If preview flag is true, then instead of deleting these AttributeSets, it returns their collection.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AttributeManager_Parent.htm">Parent</a></td>
+        <td class="api-list">Property that returns either the Autodesk Inventor document or the ApprenticeServerDocument.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AttributeManager_RevisionId.htm">RevisionId</a></td>
+        <td class="api-list">Gets the GUID that represents the last saved revision of this file. Works as a stamp of the contents of this file.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AttributeManager_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="ApprenticeServerDocument_AttributeManager.htm">ApprenticeServerDocument.AttributeManager</a>, <a href="ApprenticeServerDrawingDocument_AttributeManager.htm">ApprenticeServerDrawingDocument.AttributeManager</a>, <a href="AssemblyDocument_AttributeManager.htm">AssemblyDocument.AttributeManager</a>, <a href="Document_AttributeManager.htm">Document.AttributeManager</a>, <a href="DrawingDocument_AttributeManager.htm">DrawingDocument.AttributeManager</a>, <a href="PartDocument_AttributeManager.htm">PartDocument.AttributeManager</a>, <a href="PresentationDocument_AttributeManager.htm">PresentationDocument.AttributeManager</a><h2 class="api">
+            Version
+          </h2>
+        Introduced in version 5<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(AttributeManager%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

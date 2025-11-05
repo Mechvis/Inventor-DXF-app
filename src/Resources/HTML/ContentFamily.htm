@@ -1,0 +1,209 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/ContentFamily.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="ContentFamily">
+    <meta name="description" content="ContentFamily Object">
+    <meta name="topicid" content="GUID-ContentFamily">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>ContentFamily Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">ContentFamily Object
+			</h1><br><h2 class="api">
+          Description
+        </h2>The ContentFamily object represents a content center family and provides access to the information associated with a family.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ContentFamily_CreateMember.htm">CreateMember</a></td>
+        <td class="api-list">Method that creates a member part for the specified table row. The full filename of the created member is returned. If the creation fails the FailureReason argument indicates the reason for failure.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ContentFamily_GetCustomData.htm">GetCustomData</a></td>
+        <td class="api-list">Method that gets the specified custom data from the family. The custom data is returned if it exists or this method will fail if the specified custom data does not exist. You can use the HasCustomData property to determine if custom data exists.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ContentFamily_HasCustomData.htm">HasCustomData</a></td>
+        <td class="api-list">Property indicates if the family has the specified custom data. Returns True if the data exists.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ContentFamily_Save.htm">Save</a></td>
+        <td class="api-list">Method that saves the changes that have been made to this family. This method fails if the family is not modifiable</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ContentFamily_ActiveCell.htm">ActiveCell</a></td>
+        <td class="api-list">Property that returns a floating cell object that caller can use for iterating the table using indices. Set the Row and Column properties on the returned object to iterate through the table.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ContentFamily_Application.htm">Application</a></td>
+        <td class="api-list">Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ContentFamily_ContentIdentifier.htm">ContentIdentifier</a></td>
+        <td class="api-list">Property that returns the identifier for this object. This can be used with the GetContentObject method of the ContentCenter object to obtain this object at a later time.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ContentFamily_Description.htm">Description</a></td>
+        <td class="api-list">Gets/Sets the description of this family.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ContentFamily_DesignationColumn.htm">DesignationColumn</a></td>
+        <td class="api-list">Property that returns the column representing family designation values.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ContentFamily_DisplayName.htm">DisplayName</a></td>
+        <td class="api-list">Gets/Sets the name of this family.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ContentFamily_FamilyType.htm">FamilyType</a></td>
+        <td class="api-list">Property that returns the constant that indicates what type of family this family is; kContentPartFamily or kContentFeatureFamily.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ContentFamily_FileNameColumn.htm">FileNameColumn</a></td>
+        <td class="api-list">Property that returns the column representing family file name values.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ContentFamily_InternalName.htm">InternalName</a></td>
+        <td class="api-list">Property that returns the internal name of the ContentFamily. The internal name uniquely identifies this family with respect to other families in the library and it cannot be changed so it will remain consistent.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ContentFamily_IsCustom.htm">IsCustom</a></td>
+        <td class="api-list">Property that indicates if this family is a custom or standard family. A custom family has at least one custom column and requires the additional input of the values for the custom columns and a filename when creating a member of the family.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ContentFamily_IsModifiable.htm">IsModifiable</a></td>
+        <td class="api-list">Property that indicates if this library is writable or not. Returns True in the case where the library is modifiable.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ContentFamily_LibraryInternalName.htm">LibraryInternalName</a></td>
+        <td class="api-list">Property that returns the internal name of the library this family is defined within.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ContentFamily_LibraryName.htm">LibraryName</a></td>
+        <td class="api-list">Property that returns the display name of the library this family is defined within.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ContentFamily_Manufacturer.htm">Manufacturer</a></td>
+        <td class="api-list">Gets/Sets the manufacturer of the parts within this family.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ContentFamily_MemberDirectory.htm">MemberDirectory</a></td>
+        <td class="api-list">Gets/Sets the name of the directory where family members are saved.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ContentFamily_RevisionId.htm">RevisionId</a></td>
+        <td class="api-list">Property that returns the family revision Id, which is a GUID in string format.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ContentFamily_Standard.htm">Standard</a></td>
+        <td class="api-list">Gets/Sets the standard this family is based on.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ContentFamily_StandardOrganization.htm">StandardOrganization</a></td>
+        <td class="api-list">Gets/Sets the standard organization this family is part of.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ContentFamily_StandardRevision.htm">StandardRevision</a></td>
+        <td class="api-list">Gets/Sets the standard revision this family is based on.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ContentFamily_TableColumns.htm">TableColumns</a></td>
+        <td class="api-list">Property that returns the collection of columns for the table associated with this family.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ContentFamily_TableRows.htm">TableRows</a></td>
+        <td class="api-list">Property that returns the collection of rows for the table associated with this family.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ContentFamily_Thumbnail.htm">Thumbnail</a></td>
+        <td class="api-list">Gets/Sets the image used for the thumbnail of this family.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ContentFamily_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="ContentFamiliesEnumerator_Item.htm">ContentFamiliesEnumerator.Item</a>, <a href="ContentTableCell_Parent.htm">ContentTableCell.Parent</a>, <a href="ContentTableColumn_Parent.htm">ContentTableColumn.Parent</a>, <a href="ContentTableRow_Parent.htm">ContentTableRow.Parent</a><h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ContentCenterPartReplace_Sample.htm">Replace content center part</a></td>
+        <td class="api-list">This sample demonstrates how to replace the content part referenced by an assembly occurrence.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PlaceContentCenterPart_Sample.htm">Place Content Center Parts</a></td>
+        <td class="api-list">Places all of the items in a specified family within an assembly.  The specific family is identified by the strings where it's setting the HexHeadNode variable.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2010<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(ContentFamily%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

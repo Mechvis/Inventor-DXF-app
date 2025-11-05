@@ -1,0 +1,326 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU">
+    <link rel="canonical" href="http://help.autodesk.com/cloudhelp/2026/ENU/Inventor-API/files/ConvertingToRegFree_Overview.htm">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="27/4/2016">
+    <meta name="user-comments" content="enable">
+    <meta name="description" content="">
+    <meta name="topicid" content="GUID-CFFA5CC6-38E6-4ACD-A2BC-8B8732727996">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>Converting an Existing Add-In to be Registry-Free</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"/>
+    <script type="text/javascript" src="/view/clientframework/client.js"><!--filler--></script>
+	<script>
+	  // This turns on the display of the copyright notice which is not visible by default.
+	  // Because the head is removed when used in the web help, this function will only exists
+	  // when the chm help is being created.
+	  window.onload = function() {
+		copyrightElement = document.getElementById('CopyrightNotice');
+		copyrightElement.style.display = 'block';
+	  };
+	</script>
+</head>
+<body>
+<link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+
+    <h1>
+        Converting an Existing Add-In to be Registry-Free</h1>
+    <p class="normal">
+        The following describes the process of converting a standard add-in into a registry-free add-in.   
+        Since the process is different for the different programming languages, the process is described 
+        for Visual Basic, C#, and VC++.
+    </p>
+    <h2>
+        Making your <b>Visual Basic</b> Add-In Registry Free</h2>
+    <ol class="indent">
+<li>
+Create a new file in the same folder as your project file with the name "<span style="background-color:yellow">MyOEMApp</span>.X.manifest", 
+where MyOEMApp will be replaced with the name of your add-in.  Add the following to the manifest file.  
+The portions highlighted in yellow need to be edited to match your add-in.
+<p />
+
+                    <table class="code">
+                        <td class="code">                 
+<pre><code>&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;
+&lt;assembly xmlns="urn:schemas-microsoft-com:asm.v1" manifestVersion="1.0"&gt;
+  &lt;assemblyIdentity name="<span style="background-color:yellow">MyOEMApp</span>" version="1.0.0.0" /&gt;
+  &lt;clrClass clsid="{<span style="background-color:yellow">2bf59d73-5170-4524-b0e1-391760aaffa5</span>}" 
+            progid="<span style="background-color:yellow">MyOEMApp.StandardAddInServer</span>" 
+            threadingModel="Both" 
+            name="<span style="background-color:yellow">MyOEMApp.MyOEMApp.StandardAddInServer</span>" 
+            runtimeVersion="" /&gt;
+  &lt;file name="<span style="background-color:yellow">MyOEMApp.dll</span>" hashalg="SHA1" /&gt;
+&lt;/assembly>
+</code></pre></td></table>
+
+<p>
+The “name” attribute of the clrClass element consists of three parts, separated by periods.  
+The first is the name of the root namespace, which is highlighted below.</p>
+
+<br>
+<div align="center"> <img src="../images/ov.ConvertRegFree1.png" alt="" border=0></div>
+<br>
+
+<p>
+The second part is the namespace that the COM class is defined within.  For this example is it MyOEMApp 
+and is highlighted below.  The Last piece is the name of the class that implements the ApplicationAddInServer 
+interface, which is “StandardAddInServer” in this example and is also highlighted below. </p>
+
+<div align="center"> <img src="../images/ov.ConvertRegFree2.png" alt="" border=0></div>
+<br>
+</li>
+<li>
+The next step is to add a post-build process to incorporate this manifest into your dll.  
+The post-build process calls mt.exe which is a Microsoft utility that will embed the manifest 
+into your add-in’s dll.  You define a post-build step through the Compile tab of the Application 
+Properties dialog.  On the Compile tab, click the “Build Events…” button and then on the “Build Events” 
+dialog click the “Edit Post-build…” button.  Finally enter the lines below into the “Post-build Event 
+Command Line” dialog, as shown below; OEMTestAddin is the name of your add-in.
+
+<pre>
+call "%VS100COMNTOOLS%vsvars32"
+mt.exe -manifest "$(ProjectDir)<span style="background-color:yellow">OEMTestAddin</span>.X.manifest" -outputresource:"$(TargetPath)";#2
+</pre>
+
+<br>
+<div align="center"> <img src="../images/ov.ConvertRegFree3.png" alt="" border=0></div>
+<br>
+</li>
+
+<li>
+Remove any code associated with registering the add-in in the registry.  This typically 
+just means removing the Register and Unregister methods from your add-in class.  The AddInGuid 
+property is in the same region as the registration functions, so if you intend on using this 
+property in other areas of your add-in you’ll want to be careful not to delete it.
+</li>
+</ol>
+
+<p class=normalindent>Skip to step 4 below, which is the same for all languages.</p>
+<br />
+<br />
+
+<h2>Making your <b>C#</b> Add-In Registry Free</h2>
+
+<ol class="indent">
+<li>
+Create a new file in the same directory as your project file and name it “<span style="background-color:yellow">CSharpOEMAddIn</span>.X.manifest”, 
+where CSharpOEMAddIn is the name of your add-in.  Add the following to the manifest file.  
+The portions highlighted in yellow need to be edited to match your add-in.
+<p />
+
+                    <table class="code">
+                        <td class="code">                 
+<pre><code>&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;
+&lt;assembly xmlns="urn:schemas-microsoft-com:asm.v1" manifestVersion="1.0"&gt;
+  &lt;assemblyIdentity name="<span style="background-color:yellow">InvAddIn</span>" version="<span style="background-color:yellow">1.0</span>.0.0" /&gt;
+  &lt;clrClass clsid="{<span style="background-color:yellow">2bf59d73-5170-4524-b0e1-391760aaffa5</span>}" 
+            progid="<span style="background-color:yellow">CSharpOEMAddIn.StandardAddInServer</span>" 
+            threadingModel="Both" 
+            name="<span style="background-color:yellow">CSharpOEMAddIn.StandardAddInServer</span>" 
+            runtimeVersion="" /&gt;
+  &lt;file name="<span style="background-color:yellow">InvAddIn.dll</span>" hashalg="SHA1" /&gt;
+&lt;/assembly>
+</code></pre></td></table>
+
+<p>
+The “name” attribute of the assemblyIdentity element is the name of the assembly, which is highlighted below.</p>
+
+<br>
+<div align="center"> <img src="../images/ov.ConvertRegFree4.png" alt="" border=0></div>
+<br>
+
+<p>
+The “name” attribute of the clrClass element consists of two parts, separated by periods.  The first is the name of 
+the namespace that the COM class is defined within.  For this example is it CSharpOEMAddIn, and the second part is 
+the name of the class that implements the ApplicationAddInServer interface, which is “StandardAddInServer”.  
+Both of these are highlighted below. </p>
+
+<div align="center"> <img src="../images/ov.ConvertRegFree5.png" alt="" border=0></div>
+<br>
+</li>
+<li>
+The next step is to add a post-build process to incorporate this manifest into your dll.  The post-build 
+process calls mt.exe which is a Microsoft utility that will embed the manifest into your add-in’s dll.  
+You define a post-build step through the Build Events tab of the Application Properties dialog.  
+On the Build Events tab, click the “Edit Post-build…” button.  Enter the string below into the “Post-build Event 
+Command Line” dialog, as shown below.  Replace <span style="background-color:yellow">InvAddin</span> with the name of your add-in.
+<pre>
+call "%VS100COMNTOOLS%vsvars32"
+mt.exe -manifest $(ProjectDir)<span style="background-color:yellow">INVAddin</span>.X.manifest -outputresource:"$(TargetPath)";#2
+</pre>
+
+<br>
+<div align="center"> <img src="../images/ov.ConvertRegFree6.png" alt="" border=0></div>
+<br>
+</li>
+
+<li>
+Remove any code associated with registering the add-in in the registry.  This typically just 
+means removing the Register and Unregister methods from your add-in class.  The AddInGuid 
+function is in the same region as the registration functions, so if you intend on using this 
+property in other areas of your add-in you’ll want to be careful not to delete it.
+</li>
+</ol>
+
+<p class=normalindent>Skip to step 4 below, which is the same for all languages.</p>
+<br />
+<br />
+
+
+
+
+
+<h2>Making your <b>C++</b> Add-In Registry Free</h2>
+
+<ol class="indent">
+<li>
+Create a new file in the same directory as your project file and name it “<span style="background-color:yellow">CPPOEMAddIn</span>.X.manifest”, 
+where CPPOEMAddIn is the name of your add-in.  Add the following to the manifest file.  
+The portions highlighted in yellow need to be edited to match your add-in.
+<p />
+
+                    <table class="code">
+                        <td class="code">                 
+<pre><code>&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;
+&lt;assembly xmlns="urn:schemas-microsoft-com:asm.v1" manifestVersion="1.0"&gt;
+  &lt;assemblyIdentity name="<span style="background-color:yellow">CPPOEMAddIn</span>" version="<span style="background-color:yellow">1.0</span>.0.0" /&gt;
+  &lt;clrClass clsid="{<span style="background-color:yellow">2bf59d73-5170-4524-b0e1-391760aaffa5</span>}" 
+            progid="<span style="background-color:yellow">CppOEMAddIn.CppOEMAddInAddInServer</span>" 
+            threadingModel="Both" 
+            name="<span style="background-color:yellow">CppOEMAddIn.CppOEMAddInAddInServer</span>" 
+            runtimeVersion="" /&gt;
+  &lt;file name="<span style="background-color:yellow">CppOEMAddIn.dll</span>" hashalg="SHA1" /&gt;
+&lt;/assembly>
+</code></pre></td></table>
+
+<p>
+The “name” attribute of the assemblyIdentity element is the name of the project, which is highlighted below.</p>
+
+<br>
+<div align="center"> <img src="../images/ov.ConvertRegFree7.png" alt="" border=0></div>
+<br>
+
+<p>
+The clsid is the class ID for your add-in and can be found in the .idl file associated with your add-in, 
+which is shown below.  Remember that the braces are required in the manifest file.
+</p>
+<p>
+The “name” attribute of the clrClass element consists of two parts, separated by periods.  The first part 
+is the name of your project.  For this example it is CppOEMAddIn.  The second part is the name of the class that 
+implements the ApplicationAddInServer interface, which is “CppOEMAddInAddInServer” for this example, as shown below.
+</p>
+
+<div align="center"> <img src="../images/ov.ConvertRegFree8.png" alt="" border=0></div>
+<br>
+</li>
+<li>
+<p>The next step is to configure some project settings so the manifest is correctly embedded within the dll.  
+The first two settings are part of the Linker settings.  The settings and the values to change them to are 
+highlighted in the picture below.  Some of these settings may already have the correct value.
+</p>
+
+<div align="center"> <img src="../images/ov.ConvertRegFree9.png" alt="" border=0></div>
+
+<p>The next setting is of the Manifest Tool settings.  Make sure the “Embed Manifest setting is set to “Yes”, as shown below.
+</br>
+</p>
+<div align="center"> <img src="../images/ov.ConvertRegFree12.png" alt="" border=0></div>
+<br>
+<p>Finally you want to remove the post-build step that registers the add-in in the registry.  This is found in the 
+Build Events section of the settings.  Clear out any text in the Command Line field, as shown below.</p>
+
+<div align="center"> <img src="../images/ov.ConvertRegFree10.png" alt="" border=0></div>
+</br>
+</li>
+
+<li>
+Remove any code associated with registering the add-in in the registry.  This typically just 
+means removing the Register and Unregister methods from your add-in class.  The AddInGuid 
+function is in the same region as the registration functions, so if you intend on using this 
+property in other areas of your add-in you’ll want to be careful not to delete it.
+</li>
+
+<p>Skip to step 4 below, which is the same for all languages.</p>
+<p />
+<br />
+<br />
+<br />
+<b>====== The following steps apply to all languages. ======</b>
+<p />
+<li>
+<p>Compile your project.  This will cause the manifest to be embedded within your dll.  
+If you get any errors when compiling, verify that the command line that you entered matches the one above.</p>
+<p>You can verify that the manifest has been correctly embedded by dragging the add-in dll into Visual Studio.
+You should see the “RT_MANIFEST” folder, as shown below.  Double clicking on the “2” icon will open a window 
+to show you actual manifest data.</p>
+
+<div align="center"> <img src="../images/ov.ConvertRegFree11.png" alt="" border=0></div>
+
+</li>
+
+<li>
+<p>A requirement for all registry-free add-ins is to have an .addin file.  With a registry based add-in, 
+Inventor relied completely on the registry to get information about the add-in.  The .addin file takes 
+the place of the registry for this same information.  The addin filename is in the form of 
+Autodesk.AddInName.Inventor.addin   Below is the .addin file for an example primary add-in with the 
+portions to change highlighted.</p>
+
+<p><i>
+            Please note: When you manually copy the content to a .addin file, make sure there are no leading spaces and blank lines in it.</i></p>
+
+<table class="code"><td class="code">                 
+<pre><code>&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;Addin Type="Standard"&gt;
+	&lt;ClassId&gt;{<span style="background-color:yellow">2bf59d73-5170-4524-b0e1-391760aaffa5</span>}&lt;/ClassId&gt;
+	&lt;ClientId&gt;{<span style="background-color:yellow">2bf59d73-5170-4524-b0e1-391760aaffa5</span>}&lt;/ClientId&gt;
+	&lt;DisplayName&gt;<span style="background-color:yellow">MyOEMApp</span>&lt;/DisplayName&gt;
+	&lt;Description&gt;<span style="background-color:yellow">Inventor OEM Sample App</span>&lt;/Description&gt;
+	&lt;Assembly&gt;<span style="background-color:yellow">MyOEMApp\MyOEMApp.dll</span>&lt;/Assembly&gt;
+	&lt;Hidden>0&lt;/Hidden&gt;
+&lt;/Addin&gt;
+</code></pre></td></table>
+
+<p>For most add-ins, the <b>ClassId</b> and <b>ClientId</b> elements will be the same value, which is the GUID at the top of the 
+StandardAddInServer class.</p>
+<p>The value of the <b>DisplayName</b> element can be anything and is the name of the add-ins as shown in the Add-In Manager.</p>
+<p>The <b>Description</b> element can also be anything and is the description of the add-in as shown in the Add-In Manager.</p>
+<p>The <b>Assembly</b> element defines the name of the add-in dll.  It also defines the path to the dll, relative to the OEM 
+bin directory, but the subdirectory must always have the same name as the add-in dll.</p>
+<p>The <b>Hidden</b> element defines whether the add-in is visible in the Add-In Manager or not.  A value of 1 indicates that it is 
+hidden, although the end-user can still right-click within the Add-In Manager and choose “Show hidden members” to display all add-ins.</p>
+<p>There are some other elements that you might see defined for other add-ins that either don’t apply or are 
+ignored for an OEM primary add-in.</p>
+</li>
+
+<li>
+<p>See the <a href="CreatingAnAddIn_Overview.htm" data-topic-id="GUID-52422162-1784-4E8F-B495-CDB7BE9987AB">Creating an Inventor Add-In</a> topic for more information about where the files go.</p>
+</li>
+</ol>
+
+<br />
+<br />
+<div id="CopyrightNotice" style="display:none;">
+  <hr />
+  <table width="100%" style="font-size:15">
+	<tr>
+	  <td align="left">
+		&copy; Copyright 2025 Autodesk, Inc.
+	  </td>
+	  <td align="right">
+		<a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(ConvertingToRegFree_Overview)">Comment on this page.</a>
+	  </td>
+	</tr>
+  </table>
+</div>
+
+</body>
+</html>

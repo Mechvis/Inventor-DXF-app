@@ -1,0 +1,100 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/SketchedSymbolDefinitions_SaveAllToLibrary.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="SketchedSymbolDefinitions_SaveAllToLibrary">
+    <meta name="description" content="SketchedSymbolDefinitions.SaveAllToLibrary Method">
+    <meta name="topicid" content="SketchedSymbolDefinitions_SaveAllToLibrary">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>SketchedSymbolDefinitions.SaveAllToLibrary Method</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">SketchedSymbolDefinitions.SaveAllToLibrary Method</h1>
+
+          Parent Object: <a href="SketchedSymbolDefinitions.htm">SketchedSymbolDefinitions</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Saves all the sketched symbol definitions in current document to the specified library.</p>
+    <h2 class="api">
+          Syntax
+        </h2>
+        
+            SketchedSymbolDefinitions.<b>SaveAllToLibrary</b>( <b><i>TargetSketchedSymbolDefinitionLibrary</i></b> As Variant, [<b><i>RetainResourceFolderStructure</i></b>] As Variant, [<b><i>DestinationFolder</i></b>] As Variant, [<b><i>ReplaceExisting</i></b>] As Variant )
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">TargetSketchedSymbolDefinitionLibrary</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Input SketchedSymbolDefinitionLibrary&nbsp;object or String that specifies the sketched symbol library name.</td>
+      </tr>
+      <tr>
+        <td class="api-list">RetainResourceFolderStructure</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional input Boolean that specifies whether retain resource folder structure when save sketched symbol definitions to the library.&nbsp;This defaults to True indicating the resource folder structure will be retained.<br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+      <tr>
+        <td class="api-list">DestinationFolder</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional input LibraryFolder that specifies destination folder to save the sketched symbol definition to.<br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+      <tr>
+        <td class="api-list">ReplaceExisting</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional input Boolean that specifies whether replace the existing sketched symbol definitions in the library if they have same names with the definitions that are being saved to the library.<br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2016<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(SketchedSymbolDefinitions.SaveAllToLibrary%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,203 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/LineGraphics.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="LineGraphics">
+    <meta name="description" content="LineGraphics Object">
+    <meta name="topicid" content="GUID-LineGraphics">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>LineGraphics Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">LineGraphics Object
+			</h1>
+              Derived from: <a href="GraphicsPrimitive.htm">GraphicsPrimitive</a> Object
+            <br><h2 class="api">
+          Description
+        </h2>The LineGraphics object defines one or more disconnected lines.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LineGraphics_Delete.htm">Delete</a></td>
+        <td class="api-list">Method that deletes the graphics primitive.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LineGraphics_GetCustomLineType.htm">GetCustomLineType</a></td>
+        <td class="api-list">Method that returns information regarding the custom line type in use. The method returns a failure if the return value of the LineType property is not kCustomLineType.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LineGraphics_GetTransformBehavior.htm">GetTransformBehavior</a></td>
+        <td class="api-list">Returns the current view transformation settings (e.g. pixel scaling and front facing).</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LineGraphics_GetViewSpaceAnchor.htm">GetViewSpaceAnchor</a></td>
+        <td class="api-list">Method that gets the anchor information of the graphics object. This method returns an error if the 'Anchored' property returns False.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LineGraphics_RemoveViewSpaceAnchor.htm">RemoveViewSpaceAnchor</a></td>
+        <td class="api-list">The RemoveViewSpaceAnchor method removes the view space anchor from the object, and sets the Anchored property to false.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LineGraphics_SetCustomLineType.htm">SetCustomLineType</a></td>
+        <td class="api-list">Method that sets a custom line type to the curve from the specified .lin file. The method automatically changes the value of LineType property to kCustomLineType.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LineGraphics_SetTransformBehavior.htm">SetTransformBehavior</a></td>
+        <td class="api-list">Sets the view transformation settings (e.g. pixel scaling and front facing).</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LineGraphics_SetViewSpaceAnchor.htm">SetViewSpaceAnchor</a></td>
+        <td class="api-list">Method that anchors the graphics object at the specified point in view space. The Anchored property is set to True.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LineGraphics_Anchored.htm">Anchored</a></td>
+        <td class="api-list">Property that indicates whether this graphics primitive is anchored in view space. This property can only be set to False. The Anchored property is automatically set to True by the SetViewSpaceAnchor method.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LineGraphics_Application.htm">Application</a></td>
+        <td class="api-list">Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LineGraphics_BurnThrough.htm">BurnThrough</a></td>
+        <td class="api-list">Read-write property that specifies whether or not graphics are always visible even if they are blocked by other objects.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LineGraphics_ColorBinding.htm">ColorBinding</a></td>
+        <td class="api-list">Gets and sets how colors are defined for the line.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LineGraphics_ColorIndexSet.htm">ColorIndexSet</a></td>
+        <td class="api-list">Gets and sets the GraphicsIndexSet that defines the indices within the GraphicsColorSet to use.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LineGraphics_ColorSet.htm">ColorSet</a></td>
+        <td class="api-list">Gets and sets the GraphicsColorSet associated with the set.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LineGraphics_CoordinateIndexSet.htm">CoordinateIndexSet</a></td>
+        <td class="api-list">Gets and sets the GraphicsCoordinateIndexSet that defines the indices within the coordinate set to use for the lines of the set.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LineGraphics_CoordinateSet.htm">CoordinateSet</a></td>
+        <td class="api-list">Gets and sets the GraphicsCoordinateSet associated with the set.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LineGraphics_DepthPriority.htm">DepthPriority</a></td>
+        <td class="api-list">Read-write property that allows you to specify a display priority to the line graphics.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LineGraphics_Id.htm">Id</a></td>
+        <td class="api-list">Read-only property that returns the Id of the object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LineGraphics_LineDefinitionSpace.htm">LineDefinitionSpace</a></td>
+        <td class="api-list">Gets and sets the LineDefinitionSpace applied to this line graphics.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LineGraphics_LineScale.htm">LineScale</a></td>
+        <td class="api-list">Gets and sets the LineScale applied to this line graphics.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LineGraphics_LineType.htm">LineType</a></td>
+        <td class="api-list">Property that gets and sets the line type override. Setting the property to kDefaultLineType restores the default line type. If the property returns kCustomLineType, the GetCustomLineType method can be used to get further details about the line type.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LineGraphics_LineWeight.htm">LineWeight</a></td>
+        <td class="api-list">Gets and sets the LineWeight applied to this line graphics.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LineGraphics_Parent.htm">Parent</a></td>
+        <td class="api-list">Property that returns the parent object from whom this object can logically be reached.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LineGraphics_RangeBox.htm">RangeBox</a></td>
+        <td class="api-list">Property that returns a Box object which contains the opposing points of a rectangular box that is guaranteed to enclose this object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LineGraphics_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="GraphicsNode_AddLineGraphics.htm">GraphicsNode.AddLineGraphics</a>, <a href="GraphicsNodeProxy_AddLineGraphics.htm">GraphicsNodeProxy.AddLineGraphics</a><h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ClientGraphics_Sample.htm">Client Graphics - Draw Range Box</a></td>
+        <td class="api-list">This sample demonstrates the use of client graphics to draw the range box of selected entities.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="GraphicsNode_AddLineGraphics_Sample.htm">Client Graphics - Line</a></td>
+        <td class="api-list">This sample demonstrates the creation of custom graphics using LineGraphics and LineStripGraphics. The same set of coordinate data is used for both types of graphics. Line graphics use two coordinates to define a line, and then the next two coordinates to define the next line, and so on through the defined coordinates. For the data provided, this results in gaps in the drawn curve. Line strips use the first two coordinates to define the first line and then the last point of the first line becomes the first point of the second line and the next coordinate is used as the end point of the second line. This results in the set of points being connected by a continuous set of lines, drawing a continuous curve. This sample also demonstrates two methods of defining the color for client graphics. In one case it uses an existing appearance asset, and in the other, it explicitly defines a color and assigns it. To use the sample you need to have an assembly or part document open. The program has two behaviors: the first time it is run it will draw the graphics. The second time it is run it deletes the previously drawn graphics.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 5<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(LineGraphics%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,181 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/WorkPlanes.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="WorkPlanes">
+    <meta name="description" content="WorkPlanes Object">
+    <meta name="topicid" content="GUID-WorkPlanes">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>WorkPlanes Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">WorkPlanes Object
+			</h1><br><h2 class="api">
+          Description
+        </h2>The WorkPlanes collection object provides access to all of the <link Inventor::WorkPlane, WorkPlane> objects in the parent document and provides methods to create new work planes.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="WorkPlanes_AddByLineAndTangent.htm">AddByLineAndTangent</a></td>
+        <td class="api-list">Method that creates a new work plane through the input line and tangent to the input surface.&nbsp;This method is not currently supported when creating a work plane within an assembly.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="WorkPlanes_AddByLinePlaneAndAngle.htm">AddByLinePlaneAndAngle</a></td>
+        <td class="api-list">Method that creates a new work plane through the input line at the specified angle from the input plane. This method is not currently supported when creating a work plane within an assembly.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="WorkPlanes_AddByNormalToCurve.htm">AddByNormalToCurve</a></td>
+        <td class="api-list">Method that creates a new work plane that passes through the point and is normal to the input curve. The point must lie on the curve, as described below. This method is not currently supported when creating a work plane within an assembly.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="WorkPlanes_AddByPlaneAndOffset.htm">AddByPlaneAndOffset</a></td>
+        <td class="api-list">Method that creates a new work plane that is parallel to the input plane at a specified distance in the specified direction. This method is not currently supported when creating a work plane within an assembly.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="WorkPlanes_AddByPlaneAndPoint.htm">AddByPlaneAndPoint</a></td>
+        <td class="api-list">Method that creates a new work plane that is parallel to the input plane and passes through the input point. This method is not currently supported when creating a work plane within an assembly.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="WorkPlanes_AddByPlaneAndTangent.htm">AddByPlaneAndTangent</a></td>
+        <td class="api-list">Method that creates a new work plane that is parallel to the input plane and tangent to the input surface. Valid geometry for the face includes cylinders, cones, and spheres. This method is not currently supported when creating a work plane within an assembly.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="WorkPlanes_AddByPointAndTangent.htm">AddByPointAndTangent</a></td>
+        <td class="api-list">Method that creates a new work plane through the input point and tangent to the input surface. The input point must lie on the input surface. This method is not currently supported when creating a work plane within an assembly.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="WorkPlanes_AddByThreePoints.htm">AddByThreePoints</a></td>
+        <td class="api-list">Method that creates a new work plane based on the three input points. The three input points must be unique non-coincident points. Point1 to Point2 defines the positive X axis and Point3 defines the positive Y direction. This method is not currently supported when creating a work plane within an assembly.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="WorkPlanes_AddByTorusMidPlane.htm">AddByTorusMidPlane</a></td>
+        <td class="api-list">Method that creates a new work plane at the mid-plane of the torus specified by the input face. This method is not currently supported when creating a work plane within an assembly.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="WorkPlanes_AddByTwoLines.htm">AddByTwoLines</a></td>
+        <td class="api-list">Method that creates a new work plane based on the two input lines. Line1 defines the X axis. If the two lines are not in the same plane, the plane is calculated by crossing the vectors defined by Line1 and Line2. This method is not currently supported when creating a work plane within an assembly.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="WorkPlanes_AddByTwoPlanes.htm">AddByTwoPlanes</a></td>
+        <td class="api-list">Creates a new work plane that bisects the two input planes. This method is not currently supported when creating a work plane within an assembly.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="WorkPlanes_AddFixed.htm">AddFixed</a></td>
+        <td class="api-list">Method that creates a new work plane at the position and orientation defined by the point and X and Y axis vectors. When used to create a work plane within an assembly the resulting work plane will return an AssemblyWorkPlaneDef definition.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="WorkPlanes_Application.htm">Application</a></td>
+        <td class="api-list">Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="WorkPlanes_Count.htm">Count</a></td>
+        <td class="api-list">Property that returns the number of items in this collection.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="WorkPlanes_Item.htm">Item</a></td>
+        <td class="api-list">Returns the specified WorkPlane object from the collection. This is the default property of the WorkPlanes collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="WorkPlanes_Parent.htm">Parent</a></td>
+        <td class="api-list">Property returning the parent <link Inventor::ComponentDefinition, ComponentDefinition> object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="WorkPlanes_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="AssemblyComponentDefinition_WorkPlanes.htm">AssemblyComponentDefinition.WorkPlanes</a>, <a href="FlatPattern_WorkPlanes.htm">FlatPattern.WorkPlanes</a>, <a href="PartComponentDefinition_WorkPlanes.htm">PartComponentDefinition.WorkPlanes</a>, <a href="SheetMetalComponentDefinition_WorkPlanes.htm">SheetMetalComponentDefinition.WorkPlanes</a>, <a href="WeldmentComponentDefinition_WorkPlanes.htm">WeldmentComponentDefinition.WorkPlanes</a><h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="CopyBodyFeature_Sample.htm">SurfaceBody Copy</a></td>
+        <td class="api-list">This sample demonstrates copying a surface body from one part to another. This is equivalent to the Promote command, but the API is much more flexible. In order for the sample to be self-contained, it creates two parts on the fly that will be used to demonstrate copying a body from one part to another. When copying a body into a part, you provide the surface body and a matrix to define its position in the new part. This sample creates a matrix based on the position of these parts within an assembly.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LoftedFlangeFeatures_Add_Sample.htm">Create sheet metal lofted flange feature</a></td>
+        <td class="api-list">The following sample demonstrates the creation of a sheet metal lofted flange feature.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch_AddByProjectingEntity_Sample.htm">Projection - project across parts</a></td>
+        <td class="api-list">This sample demonstrates projecting a sketch entity across parts in an assembly. To use the sample, have an assembly open that contains at least two occurrences, (parts only), and run the program.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchFixedSpline_Sample.htm">Spline - create NURBS</a></td>
+        <td class="api-list">This sample demonstrates the creation of a sketch spline using a geometry definition (a NURB). The API also supports creation of 3D sketch splines in a similar way.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SweepFeature_Sample.htm">Sweep Feature Add</a></td>
+        <td class="api-list">This sample demonstrates the creation of a sweep feature. The profile is a circle, but the path is made up of a 3D sketch and a 2D sketch.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 4<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(WorkPlanes%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

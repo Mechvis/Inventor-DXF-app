@@ -1,0 +1,173 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/iPartFactory.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="iPartFactory">
+    <meta name="description" content="iPartFactory Object">
+    <meta name="topicid" content="GUID-iPartFactory">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>iPartFactory Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">iPartFactory Object
+			</h1><br><h2 class="api">
+          Description
+        </h2>The iPartFactory object provides access to the iPart table and provides methods to create additional iPart members ( objects).<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="iPartFactory_CreateCustomMember.htm">CreateCustomMember</a></td>
+        <td class="api-list">Method that creates an iPart member for a custom factory using the parameter values in a row. The created iPartMember is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="iPartFactory_CreateMember.htm">CreateMember</a></td>
+        <td class="api-list">Method that creates an iPart member using the parameter values in a row. The created iPartMember is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="iPartFactory_Delete.htm">Delete</a></td>
+        <td class="api-list">Method that converts an iPart factory to a regular part. When an iPart factory is converted to a regular part, all of the iPart members created from the factory become sick.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="iPartFactory_Export.htm">Export</a></td>
+        <td class="api-list">Exports the iPartFactory to an external file.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="iPartFactory_Application.htm">Application</a></td>
+        <td class="api-list">Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="iPartFactory_CustomFactory.htm">CustomFactory</a></td>
+        <td class="api-list">Property that specifies whether this iPartFactory object represents a custom factory or a standard factory. This property is True in the case where it represents a custom factory.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="iPartFactory_DefaultRow.htm">DefaultRow</a></td>
+        <td class="api-list">Gets and sets the default row for this iPart factory.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="iPartFactory_DisplayStyleColumn.htm">DisplayStyleColumn</a></td>
+        <td class="api-list">Gets and sets the column to use as the display (render) style&nbsp;column.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="iPartFactory_ExcelWorkSheet.htm">ExcelWorkSheet</a></td>
+        <td class="api-list">Property that returns the Excel spreadsheet that represents the iPart table.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="iPartFactory_FactoryOptions.htm">FactoryOptions</a></td>
+        <td class="api-list">Property that gets the options for the factory.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="iPartFactory_FileNameColumn.htm">FileNameColumn</a></td>
+        <td class="api-list">Gets and sets the column to use as the file name column.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="iPartFactory_MaterialColumn.htm">MaterialColumn</a></td>
+        <td class="api-list">Gets and sets the column to use as the material&nbsp;column.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="iPartFactory_MemberCacheDir.htm">MemberCacheDir</a></td>
+        <td class="api-list">Property that returns the directory location for the newly created iPart members.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="iPartFactory_MemberEditScope.htm">MemberEditScope</a></td>
+        <td class="api-list">Gets and sets whether the edits to a member should affect just the active member or all members within the factory.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="iPartFactory_Parent.htm">Parent</a></td>
+        <td class="api-list">Property that returns the parent PartDocument of the factory.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="iPartFactory_TableColumns.htm">TableColumns</a></td>
+        <td class="api-list">Property that returns the iPartTableColumns collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="iPartFactory_TableRows.htm">TableRows</a></td>
+        <td class="api-list">Property that returns the iPartTableRows collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="iPartFactory_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="iPartMember_ParentFactory.htm">iPartMember.ParentFactory</a>, <a href="iPartTableCell_Parent.htm">iPartTableCell.Parent</a>, <a href="iPartTableColumn_Parent.htm">iPartTableColumn.Parent</a>, <a href="iPartTableRow_Parent.htm">iPartTableRow.Parent</a>, <a href="PartComponentDefinition_CreateFactory.htm">PartComponentDefinition.CreateFactory</a>, <a href="PartComponentDefinition_iPartFactory.htm">PartComponentDefinition.iPartFactory</a>, <a href="SheetMetalComponentDefinition_CreateFactory.htm">SheetMetalComponentDefinition.CreateFactory</a>, <a href="SheetMetalComponentDefinition_iPartFactory.htm">SheetMetalComponentDefinition.iPartFactory</a><h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AddiPartMember_Sample.htm">Adding iPart occurrences to an assembly</a></td>
+        <td class="api-list">This sample demonstrates adding iPart occurrences to an assembly.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="CustomTables_AddConfigurationTable_Sample.htm">Create a Configuration Table</a></td>
+        <td class="api-list">This sample demonstrates the creation of a configuration (iPart/iAssembly) table in a drawing from a factory document.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 6<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(iPartFactory%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

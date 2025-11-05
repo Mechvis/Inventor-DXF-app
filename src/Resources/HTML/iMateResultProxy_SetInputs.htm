@@ -1,0 +1,100 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/iMateResultProxy_SetInputs.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="iMateResultProxy_SetInputs">
+    <meta name="description" content="iMateResultProxy.SetInputs Method">
+    <meta name="topicid" content="iMateResultProxy_SetInputs">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>iMateResultProxy.SetInputs Method</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">iMateResultProxy.SetInputs Method</h1>
+
+          Parent Object: <a href="iMateResultProxy.htm">iMateResultProxy</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Method that edits the inputs of an iMate result.</p>
+    <h2 class="api">
+          Syntax
+        </h2>
+        
+            iMateResultProxy.<b>SetInputs</b>( <b><i>iMateDefinition</i></b> As <a href="iMateDefinition.htm">iMateDefinition</a>, <b><i>Entity</i></b> As Object, [<b><i>EntityBiasPoint</i></b>] As Variant, [<b><i>SolutionType</i></b>] As <a href="AngleConstraintSolutionTypeEnum.htm">AngleConstraintSolutionTypeEnum</a> )
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">iMateDefinition</td>
+        <td class="api-list"><a href="iMateDefinition.htm">iMateDefinition</a></td>
+        <td class="api-list">Input iMateDefinitionProxy object that defines the input iMate.</td>
+      </tr>
+      <tr>
+        <td class="api-list">Entity</td>
+        <td class="api-list">Object</td>
+        <td class="api-list">Input object that defines the second entity. This object can be either a iMateDefinition proxy object or a geometric entity.</td>
+      </tr>
+      <tr>
+        <td class="api-list">EntityBiasPoint</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional input Point object that is used to help in determining the initial position of the occurrence. The occurrences are repositioned in an attempt to make the bias point coincident with the iMate. This provides some general control over the position of the occurrence when it isn't being controlled by another constraint.<p />An example of when the bias points are useful is the case when the first constraint on a part is a mate constraint. In the case where the mate is between two planes, the parts can be positioned anywhere along the infinite plane that defines their mating contact. Using the bias point you can define the position of the two occurrences, relative to each other.<p />If a bias point is not given, one is calculated that is at the center of the parameter range of the input entity.<br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+      <tr>
+        <td class="api-list">SolutionType</td>
+        <td class="api-list"><a href="AngleConstraintSolutionTypeEnum.htm">AngleConstraintSolutionTypeEnum</a></td>
+        <td class="api-list">Optional input AngleConstraintSolutionTypeEnum that specifies the solution type when creating an angle constraint. If specified to be kDirectedSolution, the solution always applies the right hand rule. If specified to be kUndirectedSolution, the solution allows either orientation, thus resolving situations where component orientation flips during a constraint drive or drag. The default value is kDirectedSolution.<br /><br /> This is an optional argument whose default value is 78593.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2011<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(iMateResultProxy.SetInputs%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

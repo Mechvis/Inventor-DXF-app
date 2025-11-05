@@ -1,0 +1,189 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/BOM.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="BOM">
+    <meta name="description" content="BOM Object">
+    <meta name="topicid" content="GUID-BOM">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>BOM Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">BOM Object
+			</h1><br><h2 class="api">
+          Description
+        </h2>The BOM object represents the Bill Of Materials (BOM) data of a document.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BOM_ExportBOMCustomization.htm">ExportBOMCustomization</a></td>
+        <td class="api-list">Export BOM column customization as XML file.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BOM_GetPartNumberMergeSettings.htm">GetPartNumberMergeSettings</a></td>
+        <td class="api-list">Method that gets the part number row merge settings for the BOM.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BOM_GetPartNumberMergeSettings2.htm">GetPartNumberMergeSettings2</a></td>
+        <td class="api-list">Gets the part number row merge settings for the BOM.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BOM_ImportBOMCustomization.htm">ImportBOMCustomization</a></td>
+        <td class="api-list">Import BOM column customization as XML file.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BOM_SetPartNumberMergeSettings.htm">SetPartNumberMergeSettings</a></td>
+        <td class="api-list">Method that sets the part number row merge settings for the BOM.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BOM_SetPartNumberMergeSettings2.htm">SetPartNumberMergeSettings2</a></td>
+        <td class="api-list">Sets the part number row merge settings for the BOM.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BOM_Application.htm">Application</a></td>
+        <td class="api-list">Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BOM_BOMViews.htm">BOMViews</a></td>
+        <td class="api-list">Property that gets the BOMViews collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BOM_HideSuppressedComponentsInBOM.htm">HideSuppressedComponentsInBOM</a></td>
+        <td class="api-list">Gets and sets whether to hide the suppressed components in BOM.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BOM_Parent.htm">Parent</a></td>
+        <td class="api-list">Property that returns the parent ComponentDefinition object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BOM_PartsOnlyViewEnabled.htm">PartsOnlyViewEnabled</a></td>
+        <td class="api-list">Gets and sets whether the parts only BOM view is enabled.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BOM_PartsOnlyViewMinimumDigits.htm">PartsOnlyViewMinimumDigits</a></td>
+        <td class="api-list">Gets and sets the minimum number of digits displayed in a parts only view with the PartsOnlyViewNumberingScheme set to kNumericNumbering.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BOM_PartsOnlyViewNumberingScheme.htm">PartsOnlyViewNumberingScheme</a></td>
+        <td class="api-list">gets and sets the numbering scheme for a 'Parts Only' view.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BOM_RenumberItemsSequentially.htm">RenumberItemsSequentially</a></td>
+        <td class="api-list">Gets and sets whether to renumber the items sequentially or not.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BOM_RequiresUpdate.htm">RequiresUpdate</a></td>
+        <td class="api-list">Determines whether the BOM requires an update.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BOM_RevisionId.htm">RevisionId</a></td>
+        <td class="api-list">Property that returns the GUID that represents the last saved revision of this BOM.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BOM_StructuredViewDelimiter.htm">StructuredViewDelimiter</a></td>
+        <td class="api-list">Gets and sets the delimiter to use for numbering.&nbsp;This property applies only for an all-level structured view.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BOM_StructuredViewEnabled.htm">StructuredViewEnabled</a></td>
+        <td class="api-list">Gets and sets whether the structured BOM view is enabled.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BOM_StructuredViewFirstLevelOnly.htm">StructuredViewFirstLevelOnly</a></td>
+        <td class="api-list">Gets and sets whether the structured view is an 'all-level' or a 'first level only' view.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BOM_StructuredViewMinimumDigits.htm">StructuredViewMinimumDigits</a></td>
+        <td class="api-list">Gets and sets the minimum number of digits displayed in a 'first level only' structured view.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BOM_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="AssemblyComponentDefinition_BOM.htm">AssemblyComponentDefinition.BOM</a>, <a href="BOMView_Parent.htm">BOMView.Parent</a>, <a href="WeldmentComponentDefinition_BOM.htm">WeldmentComponentDefinition.BOM</a><h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Balloons_Add_Sample.htm">Creation a balloon</a></td>
+        <td class="api-list">This sample demonstrates the creation of a balloon.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BOM_Sample.htm">Using the BOM APIs</a></td>
+        <td class="api-list">This sample demonstrates the Bill of Materials API functionality in assemblies.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BOMView_Export_Sample.htm">Exporting the assembly BOM</a></td>
+        <td class="api-list">This sample demonstrates exporting the Assembly BOM to an external file.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 10<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(BOM%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

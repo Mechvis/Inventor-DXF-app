@@ -1,0 +1,152 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/Sketch_MoveSketchObjects_Sample.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="Sketch_MoveSketchObjects_Sample">
+    <meta name="description" content="Move sketch entities Sample">
+    <meta name="topicid" content="Sketch_MoveSketchObjects_Sample">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>Move sketch entities</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body><script>
+          function copyCode(language) {
+          // Get the pre element for the specified language.
+          var preElement = document.getElementById(language);
+
+          // Get the text from the element and copy it to the clipboard.
+          var preText = preElement.innerText;
+
+          var isIE = /*@cc_on!@*/false || !!document.documentMode;
+
+          if (isIE)
+          {
+            window.clipboardData.setData('Text', preText);
+          }
+          else
+          {
+            navigator.clipboard.writeText(preText);
+          }
+
+          //alert("Code copied to clipboard");
+          }
+        </script><link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">Move sketch entities</h1>
+    <h2 class="api">
+          Description
+        </h2>This sample demonstrates the translation of all the objects on the active sketch by a certain distance.<h2 class="api">
+          Code Samples
+        </h2>
+    <div id="tabs">
+      <ul>
+        <li><a href="#VBA">VBA</a></li>
+        <li><a href="#iLogic">iLogic</a></li>
+      </ul>
+      <div id="VBA" class="api-code">Have a sketch active that contains several entities (this could include text boxes and images) and run the sample.<table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('VBA_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="VBA_code">Public Sub MoveSketchObjects()    
+    <span style="color:blue">' Check to make sure a sketch is open.</span>
+    If Not Typeof ThisApplication.ActiveEditObject Is Sketch Then
+        MsgBox "A sketch must be active."
+        Exit Sub
+    End If
+
+    <span style="color:blue">' Set a reference to the active sketch.</span>
+    Dim oSketch As Sketch
+    Set oSketch = ThisApplication.ActiveEditObject
+    
+    <span style="color:blue">' Create a vector along the x-axis.</span>
+    Dim oVec As Vector2d
+    Set oVec = ThisApplication.TransientGeometry.CreateVector2d(5, 0)
+    
+    Dim oSketchObjects As ObjectCollection
+    Set oSketchObjects = ThisApplication.TransientObjects.CreateObjectCollection
+    
+    <span style="color:blue">' Get all entities in the sketch</span>
+    Dim oSketchEntity As SketchEntity
+    For Each oSketchEntity In oSketch.SketchEntities
+        oSketchObjects.Add oSketchEntity
+    Next
+    
+    <span style="color:blue">' Move all sketch objects along x-axis by 5 units.</span>
+    <span style="color:blue">' This will move all the text boxes and images in</span>
+    <span style="color:blue">' the sketch as well since these have sketch lines</span>
+    <span style="color:blue">' as boundary geometry or a sketch point as an</span>
+    <span style="color:blue">' origin point.</span>
+    Call oSketch.MoveSketchObjects(oSketchObjects, oVec)
+End Sub</pre>
+      </div>
+      <div id="iLogic" class="api-code">Have a sketch active that contains several entities (this could include text boxes and images) and run the sample.<table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('iLogic_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="iLogic_code">    <span style="color:blue">' Check to make sure a sketch is open.</span>
+    If Not Typeof ThisApplication.ActiveEditObject Is Sketch Then
+        MsgBox("A sketch must be active.")
+        Exit Sub
+    End If
+
+    <span style="color:blue">' Set a reference to the active sketch.</span>
+    Dim oSketch As Sketch
+    oSketch = ThisApplication.ActiveEditObject
+    
+    <span style="color:blue">' Create a vector along the x-axis.</span>
+    Dim oVec As Vector2d
+    oVec = ThisApplication.TransientGeometry.CreateVector2d(5, 0)
+    
+    Dim oSketchObjects As ObjectCollection
+    oSketchObjects = ThisApplication.TransientObjects.CreateObjectCollection
+    
+    <span style="color:blue">' Get all entities in the sketch</span>
+    Dim oSketchEntity As SketchEntity
+    For Each oSketchEntity In oSketch.SketchEntities
+        oSketchObjects.Add(oSketchEntity)
+    Next
+    
+    <span style="color:blue">' Move all sketch objects along x-axis by 5 units.</span>
+    <span style="color:blue">' This will move all the text boxes and images in</span>
+    <span style="color:blue">' the sketch as well since these have sketch lines</span>
+    <span style="color:blue">' as boundary geometry or a sketch point as an</span>
+    <span style="color:blue">' origin point.</span>
+    Call oSketch.MoveSketchObjects(oSketchObjects, oVec)</pre>
+      </div>
+    </div><br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(Sketch_MoveSketchObjects%20Sample%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,114 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/ExtrudeDefinition_SetToExtent.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="ExtrudeDefinition_SetToExtent">
+    <meta name="description" content="ExtrudeDefinition.SetToExtent Method">
+    <meta name="topicid" content="ExtrudeDefinition_SetToExtent">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>ExtrudeDefinition.SetToExtent Method</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">ExtrudeDefinition.SetToExtent Method</h1>
+
+          Parent Object: <a href="ExtrudeDefinition.htm">ExtrudeDefinition</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Method that changes the extents to be “to entity” extents.</p>
+    <h2 class="api">
+          Syntax
+        </h2>
+        
+            ExtrudeDefinition.<b>SetToExtent</b>( <b><i>ToEntity</i></b> As Object, [<b><i>ExtendToFace</i></b>] As Boolean )
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">ToEntity</td>
+        <td class="api-list">Object</td>
+        <td class="api-list"><p>Input Object that defines the “to entity”.</p>
+<p>This can be one of the following types:
+<ul><li>Planar entity: Face or WorkPlane object.</li> 
+<li>Point entity: Vertex, SketchPoint, SketchPoint3D, WorkPoint or Edge object.</br></br> 
+If an Edge object is specified, only its mid-point will be used as input. If other points (e.g. start point or end point) of the edge need to be used as input, they have to be specified using the corresponding Vertex object.</li></ul>
+</p></td>
+      </tr>
+      <tr>
+        <td class="api-list">ExtendToFace</td>
+        <td class="api-list">Boolean</td>
+        <td class="api-list"><p>Optional Input Boolean that defines whether the plane defined by the “to entity” should be extended to contain the extents of the profile.</p>
+<p>This argument is applicable only if the ToEntity argument is a Face. If no value is explicitly specified, a default value of False will be assumed.</p>
+<p>If the ToEntity argument is not a Face, this argument will be ignored.</p><br /><br /> This is an optional argument whose default value is False.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PartFeature_SetEndOfPart_Sample.htm">Create and Edit an Extrude Feature with a pocket</a></td>
+        <td class="api-list">This sample demonstrates how to edit an extrude feature. It shows how to create a sketch plane at a specified orientation to existing geometry.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2012<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(ExtrudeDefinition.SetToExtent%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

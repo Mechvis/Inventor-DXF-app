@@ -1,0 +1,110 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/SweepDefinition_SetSectionTwists.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="SweepDefinition_SetSectionTwists">
+    <meta name="description" content="SweepDefinition.SetSectionTwists Method">
+    <meta name="topicid" content="SweepDefinition_SetSectionTwists">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>SweepDefinition.SetSectionTwists Method</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">SweepDefinition.SetSectionTwists Method</h1>
+
+          Parent Object: <a href="SweepDefinition.htm">SweepDefinition</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Method that sets the twisted sweep sections and the twist conditions at these sections. This method is applicable when the SweepType is kPathAndSectionTwistSweepType.</p>
+    <h2 class="api">
+            Remarks
+          </h2>The SectionTwistPoints argument specifies the object collection that contains the sweep path points at which section twists need to be applied and the SectionTwistPoints argument specifies the object collection that contains the corresponding twist vectors for these sweep sections.<h2 class="api">
+          Syntax
+        </h2>
+        
+            SweepDefinition.<b>SetSectionTwists</b>( <b><i>SectionTwistPoints</i></b> As <a href="ObjectCollection.htm">ObjectCollection</a>, <b><i>SectionTwistVectors</i></b> As <a href="ObjectCollection.htm">ObjectCollection</a> )
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">SectionTwistPoints</td>
+        <td class="api-list"><a href="ObjectCollection.htm">ObjectCollection</a></td>
+        <td class="api-list">Input ObjectCollection that contains the points along the sweep path at which the sweep twists need to be specified. The sweep path points define the positions of the sweep cross-sections at which the twists need to be specified. Since the sweep feature is created by sweeping a profile cross-section along a sweep path, the twist of the sweep can theoretically be controlled at all points along the sweep path. But for practical purposes, the creation of a twisted sweep feature will be limited to sweep features that are swept along a spline path and the twist can only be specified for cross-sections at fit points of the spline path. Since the sweep feature can only be twisted at fit points of the spline that defines the sweep path, the valid input points are only the fit points of the spline that defines the sweep path. If any of the specified input points are not fit points on the sweep path specified by the Path argument, then setting the twists for the sweep sections will fail. Therefore, the valid input objects can be either SketchPoint objects that correspond to any of the fit points of the sweep path if it is a 2D spline or SketchPoint3D objects that correspond to any of the fit points of the sweep path if it is a 3D spline. Since this argument together with the SectionTwistVectors argument defines the twist conditions at all cross-sections of the sweep at which the twist needs to be specified, valid collection objects need to be specified for both these arguments in order to define twist conditions for the sweep. Also, the following conditions need to be satisfied in order to correctly specify both these arguments: </br>
+<ul>
+<li>The number of items in the collection specified by this argument must be the same as the number of items in the collection specified by the SectionTwistVectors argument. </li>
+<li>The order of the sweep path points in the collection specified by this argument must correspond to the order of the twist unit-vectors in the collection specified by the SectionTwistVectors argument. </li>
+</ul>
+
+Therefore, if a particular item number in the collection specified by this argument corresponds to a particular sweep path point at which the sweep section needs to be twisted, the same item number in the collection specified by the SectionTwistVectors argument should correspond to the twist vector for that sweep section. For example, for a twist condition that needs to be applied for the sweep cross-section at the first fit point of the sweep path, if the first item in the collection specified by this argument is the first fit point of the sweep path, then the first item in the collection specified by the SectionTwistVectors argument must be the twist vector for the cross-section at the first fit point of the sweep path. Setting the twists for the sweep sections will fail for the following cases: 
+<ul>
+<li>The object collections specified for this argument and the SectionTwistVectors arguments are both empty. </li>
+<li>Valid object collections are specified for both this argument and the SectionTwistVectors argument, but any of the sweep path points specified by this argument are not fit points on the sweep path specified by the Path argument. </li>
+</ul></td>
+      </tr>
+      <tr>
+        <td class="api-list">SectionTwistVectors</td>
+        <td class="api-list"><a href="ObjectCollection.htm">ObjectCollection</a></td>
+        <td class="api-list">Input ObjectCollection object that specifies the unit-vectors that define the twists for the sweep sections. The sweep twist vectors define the twists for the sweep cross-sections specified using the SectionTwistPoints argument. The twist vectors are unit-vectors specified in the model space coordinate system. Also, each vector should lie on the plane of the sweep cross-section for which it defines the twist, otherwise, setting the twists for the sweep sections will fail. Therefore, the valid input objects are UnitVector objects that specify the twist vector directions for the sweep sections. Since this argument together with the SectionTwistPoints argument defines the twist conditions at all cross-sections of the sweep at which the twist needs to be specified, valid collection objects need to be specified for both these arguments in order to define twist conditions for the sweep. Also, the following conditions need to be satisfied in order to correctly specify both these arguments: 
+<ul>
+<li>The number of items in the collection specified by this argument must be the same as the number of items in the collection specified by the SectionTwistPoints argument. </li>
+<li>The order of the sweep path points in the collection specified by the SectionTwistPoints argument must correspond to the order of the twist unit-vectors in the collection specified by this argument. </li>
+</ul>
+
+Therefore, if a particular item number in the collection specified by the SectionTwistPoints argument corresponds to a particular sweep path point at which the sweep section needs to be twisted, the same item number in the collection specified by this argument should correspond to the twist vector for that sweep section. 
+For example, for a twist condition that needs to be applied for the sweep cross-section at the first fit point of the sweep path, if the first item in the collection specified by the SectionTwistPoints argument is the first fit point of the sweep path, then the first item in the collection specified by this argument must be the twist vector for the cross-section at the first fit point of the sweep path. Setting the twists for the sweep sections will fail for the following cases: The object collections specified for this argument and the SectionTwistPoints arguments are both empty. 
+Valid object collections are specified for both this argument and the SectionTwistPoints argument, but any of the twist unit-vectors specified by this argument does not lie on the respective sweep cross-section plane for which the unit-vector defines the twist.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2015<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(SweepDefinition.SetSectionTwists%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

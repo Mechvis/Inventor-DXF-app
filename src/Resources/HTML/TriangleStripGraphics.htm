@@ -1,0 +1,194 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/TriangleStripGraphics.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="TriangleStripGraphics">
+    <meta name="description" content="TriangleStripGraphics Object">
+    <meta name="topicid" content="GUID-TriangleStripGraphics">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>TriangleStripGraphics Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">TriangleStripGraphics Object
+			</h1>
+              Derived from: <a href="GraphicsPrimitive.htm">GraphicsPrimitive</a> Object
+            <br><h2 class="api">
+          Description
+        </h2>The TriangleStripGraphics object defines a set of connected triangles. The first three coordinates define a triangle and the next coordinate defines another triangle using the previous two coordinates.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TriangleStripGraphics_Delete.htm">Delete</a></td>
+        <td class="api-list">Method that deletes the graphics primitive.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TriangleStripGraphics_GetStripLengths.htm">GetStripLengths</a></td>
+        <td class="api-list">Method that returns the current strip lengths. The strip lengths are defined by the number of coordinates used for each strip.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TriangleStripGraphics_GetTransformBehavior.htm">GetTransformBehavior</a></td>
+        <td class="api-list">Returns the current view transformation settings (e.g. pixel scaling and front facing).</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TriangleStripGraphics_GetViewSpaceAnchor.htm">GetViewSpaceAnchor</a></td>
+        <td class="api-list">Method that gets the anchor information of the graphics object. This method returns an error if the 'Anchored' property returns False.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TriangleStripGraphics_PutStripLengths.htm">PutStripLengths</a></td>
+        <td class="api-list">Method that sets the current strip lengths. The strip lengths are defined by the number of coordinates used for each strip.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TriangleStripGraphics_RemoveViewSpaceAnchor.htm">RemoveViewSpaceAnchor</a></td>
+        <td class="api-list">The RemoveViewSpaceAnchor method removes the view space anchor from the object, and sets the Anchored property to false.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TriangleStripGraphics_SetTransformBehavior.htm">SetTransformBehavior</a></td>
+        <td class="api-list">Sets the view transformation settings (e.g. pixel scaling and front facing).</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TriangleStripGraphics_SetViewSpaceAnchor.htm">SetViewSpaceAnchor</a></td>
+        <td class="api-list">Method that anchors the graphics object at the specified point in view space. The Anchored property is set to True.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TriangleStripGraphics_Anchored.htm">Anchored</a></td>
+        <td class="api-list">Property that indicates whether this graphics primitive is anchored in view space. This property can only be set to False. The Anchored property is automatically set to True by the SetViewSpaceAnchor method.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TriangleStripGraphics_Application.htm">Application</a></td>
+        <td class="api-list">Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TriangleStripGraphics_BackFaceCulling.htm">BackFaceCulling</a></td>
+        <td class="api-list">Gets and sets how the back face culling are defined for the triangles.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TriangleStripGraphics_BurnThrough.htm">BurnThrough</a></td>
+        <td class="api-list">Read-write property that specifies whether or not graphics are always visible even if they are blocked by other object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TriangleStripGraphics_ColorBinding.htm">ColorBinding</a></td>
+        <td class="api-list">Gets and sets how the colors are defined for the triangle.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TriangleStripGraphics_ColorIndexSet.htm">ColorIndexSet</a></td>
+        <td class="api-list">Gets and sets the GraphicsIndexSet that defines the indices within the GraphicsColorSet to use.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TriangleStripGraphics_ColorMapper.htm">ColorMapper</a></td>
+        <td class="api-list">Read-write property that gets and sets the GraphicsColorMapper object associated with the set.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TriangleStripGraphics_ColorSet.htm">ColorSet</a></td>
+        <td class="api-list">Gets and sets the GraphicsColorSet associated with the set.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TriangleStripGraphics_CoordinateIndexSet.htm">CoordinateIndexSet</a></td>
+        <td class="api-list">Get and sets the GraphicsIndexSet that defines the indices within the coordinate set to use for the triangles of the set.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TriangleStripGraphics_CoordinateSet.htm">CoordinateSet</a></td>
+        <td class="api-list">Gets and sets the GraphicsCoordinateSet associated with the set.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TriangleStripGraphics_DepthPriority.htm">DepthPriority</a></td>
+        <td class="api-list">Read-write property that allows you to specify a priority to a set.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TriangleStripGraphics_Id.htm">Id</a></td>
+        <td class="api-list">Read-only property that returns the Id of the object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TriangleStripGraphics_NormalBinding.htm">NormalBinding</a></td>
+        <td class="api-list">Gets and sets how the normals are defined for the triangles.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TriangleStripGraphics_NormalIndexSet.htm">NormalIndexSet</a></td>
+        <td class="api-list">Gets and sets the GraphicsIndexSet that defines the indices within the normal set to use for the triangles of the set.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TriangleStripGraphics_NormalSet.htm">NormalSet</a></td>
+        <td class="api-list">Gets and sets the GraphicsNormalSet associated with the set.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TriangleStripGraphics_Parent.htm">Parent</a></td>
+        <td class="api-list">Property that returns the parent object from whom this object can logically be reached.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TriangleStripGraphics_RangeBox.htm">RangeBox</a></td>
+        <td class="api-list">Property that returns a Box object which contains the opposing points of a rectangular box that is guaranteed to enclose this object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TriangleStripGraphics_TextureCoordinateIndexSet.htm">TextureCoordinateIndexSet</a></td>
+        <td class="api-list">Read-write property that gets and sets the GraphicsCoordinateIndexSet that defines the indices within the texture coordinate set to use for the triangles of the set.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TriangleStripGraphics_TextureCoordinateSet.htm">TextureCoordinateSet</a></td>
+        <td class="api-list">Read-write property that gets and sets the GraphicsCoordinateSet associated with the set.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TriangleStripGraphics_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="GraphicsNode_AddTriangleStripGraphics.htm">GraphicsNode.AddTriangleStripGraphics</a>, <a href="GraphicsNodeProxy_AddTriangleStripGraphics.htm">GraphicsNodeProxy.AddTriangleStripGraphics</a><h2 class="api">
+            Version
+          </h2>
+        Introduced in version 5<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(TriangleStripGraphics%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,416 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/UserInputEventsSink_OnDrag_Sample.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="UserInputEventsSink_OnDrag_Sample">
+    <meta name="description" content="OnDrag Event - dragging a WorkPoint Sample">
+    <meta name="topicid" content="UserInputEventsSink_OnDrag_Sample">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>OnDrag Event - dragging a WorkPoint</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body><script>
+          function copyCode(language) {
+          // Get the pre element for the specified language.
+          var preElement = document.getElementById(language);
+
+          // Get the text from the element and copy it to the clipboard.
+          var preText = preElement.innerText;
+
+          var isIE = /*@cc_on!@*/false || !!document.documentMode;
+
+          if (isIE)
+          {
+            window.clipboardData.setData('Text', preText);
+          }
+          else
+          {
+            navigator.clipboard.writeText(preText);
+          }
+
+          //alert("Code copied to clipboard");
+          }
+        </script><link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">OnDrag Event - dragging a WorkPoint</h1>
+    <h2 class="api">
+          Description
+        </h2>This sample demonstrates the use of the OnDrag event to drag fixed work points when no command is active. This sample only allows drags parallel to the X-Y plane. This sample is dependent on events and VB only supports events within a class module.<h2 class="api">
+          Code Samples
+        </h2>
+    <div id="tabs">
+      <ul>
+        <li><a href="#VBA">VBA</a></li>
+        <li><a href="#iLogic">iLogic</a></li>
+      </ul>
+      <div id="VBA" class="api-code">To use the sample copy the WorkPointDrag sub into a code module. Create a new class module called clsDragWorkPoint and copy all of the rest of the code into it. Have a part document open that contains at least one fixed work point. Run the sample and drag the fixed work point.<table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('VBA_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="VBA_code">Option Explicit
+Public oDragWorkPoint As clsDragWorkPoint
+
+Sub WorkPointDrag()
+    
+    Set oDragWorkPoint = New clsDragWorkPoint
+    oDragWorkPoint.Initialize
+    
+End Sub
+
+<span style="color:blue">'*************************************************************</span>
+<span style="color:blue">' The declarations and functions below need to be copied into</span>
+<span style="color:blue">' a class module whose name is "clsDragWorkPoint".  The name </span>
+<span style="color:blue">' can be changed but you'll need to change the declaration in</span>
+<span style="color:blue">' the calling function "WorkPointDrag" to use the new name.</span>
+Option Explicit
+Private WithEvents oUserInputEvents As UserInputEvents
+Private oIE As InteractionEvents
+Private WithEvents oMouseEvents As MouseEvents
+Private oIntGraphics As InteractionGraphics
+Private oWP As WorkPoint
+
+Public Sub Initialize()
+    Set oUserInputEvents = ThisApplication.CommandManager.UserInputEvents
+End Sub
+
+Private Sub oUserInputEvents_OnDrag(ByVal DragState As Inventor.DragStateEnum, ByVal ShiftKeys As Inventor.ShiftStateEnum, ByVal ModelPosition As Inventor.Point, ByVal ViewPosition As Inventor.Point2d, ByVal View As Inventor.View, ByVal AdditionalInfo As Inventor.NameValueMap, HandlingCode As Inventor.HandlingCodeEnum)
+
+    Dim oSS As SelectSet
+    Set oSS = ThisApplication.ActiveDocument.SelectSet
+
+    If DragState = kDragStateDragHandlerSelection Then
+
+        If oSS.Count = 1 And oSS.Item(1).Type = kWorkPointObject Then
+
+            Set oWP = oSS.Item(1)
+
+            If oWP.DefinitionType = kFixedWorkPoint Then
+                HandlingCode = kEventCanceled
+                Set oIE = ThisApplication.CommandManager.CreateInteractionEvents
+                Set oMouseEvents = oIE.MouseEvents
+                oMouseEvents.MouseMoveEnabled = True
+
+                Set oIntGraphics = oIE.InteractionGraphics
+                Call oIE.SetCursor(kCursorBuiltInCommonSketchDrag)
+                oIE.Start                
+            End If
+        End If
+    End If
+End Sub
+
+Private Sub oMouseEvents_OnMouseMove(ByVal Button As MouseButtonEnum, ByVal ShiftKeys As ShiftStateEnum, ByVal ModelPosition As Point, ByVal ViewPosition As Point2d, ByVal View As View)
+    Dim oSS As SelectSet
+    Set oSS = ThisApplication.ActiveDocument.SelectSet
+
+    If oSS.Count = 1 And oSS.Item(1).Type = kWorkPointObject Then
+        
+        Dim oWPDef As FixedWorkPointDef
+        Set oWPDef = oWP.Definition
+
+        Dim oProjectedPoint As Inventor.Point
+        Call ProjectPoint(ModelPosition, oWPDef.Point, oProjectedPoint)
+            
+        <span style="color:blue">' Set a reference to the transient geometry object for user later.</span>
+        Dim oTransGeom As TransientGeometry
+        Set oTransGeom = ThisApplication.TransientGeometry
+    
+        <span style="color:blue">' Create a graphics data set object.  This object contains all of the</span>
+        <span style="color:blue">' information used to define the graphics.</span>
+        Dim oDataSets As GraphicsDataSets
+        Set oDataSets = oIntGraphics.GraphicsDataSets
+        
+        If oDataSets.Count &lt;&gt; 0 Then
+            oDataSets.Item(1).Delete
+        End If
+        
+        <span style="color:blue">' Create a coordinate set.</span>
+        Dim oCoordSet As GraphicsCoordinateSet
+        Set oCoordSet = oDataSets.CreateCoordinateSet(1)
+        
+        <span style="color:blue">' Create an array that contains coordinates that define a set</span>
+        <span style="color:blue">' of outwardly spiraling points.</span>
+        Dim oPointCoords(1 To 3) As Double
+        <span style="color:blue">' Define the X, Y, and Z components of the point.</span>
+        oPointCoords(1) = oProjectedPoint.X
+        oPointCoords(2) = oProjectedPoint.Y
+        oPointCoords(3) = oProjectedPoint.Z
+                 
+        <span style="color:blue">' Assign the points into the coordinate set.</span>
+        Call oCoordSet.PutCoordinates(oPointCoords)
+        
+        <span style="color:blue">' Create the ClientGraphics object.</span>
+        Dim oClientGraphics As ClientGraphics
+        Set oClientGraphics = oIntGraphics.PreviewClientGraphics
+        
+        If oClientGraphics.Count &lt;&gt; 0 Then
+            oClientGraphics.Item(1).Delete
+        End If
+        
+        <span style="color:blue">' Create a new graphics node within the client graphics objects.</span>
+        Dim oPtNode As GraphicsNode
+        Set oPtNode = oClientGraphics.AddNode(1)
+       
+        <span style="color:blue">' Create a PointGraphics object within the node.</span>
+        Dim oPtGraphics As PointGraphics
+        Set oPtGraphics = oPtNode.AddPointGraphics
+        
+        <span style="color:blue">' Assign the coordinate set to the line graphics.</span>
+        oPtGraphics.CoordinateSet = oCoordSet
+        oPtGraphics.PointRenderStyle = kCrossPointStyle
+        ThisApplication.ActiveView.Update
+    End If
+End Sub
+
+Private Sub oMouseEvents_OnMouseUp(ByVal Button As MouseButtonEnum, ByVal ShiftKeys As ShiftStateEnum, ByVal ModelPosition As Point, ByVal ViewPosition As Point2d, ByVal View As View)
+    
+    Dim oSS As SelectSet
+    Set oSS = ThisApplication.ActiveDocument.SelectSet
+
+    If oSS.Count = 1 And oSS.Item(1).Type = kWorkPointObject Then
+            
+            Dim oWPDef As FixedWorkPointDef
+            Set oWPDef = oWP.Definition
+
+            Dim oProjectedPoint As Inventor.Point
+            Call ProjectPoint(ModelPosition, oWPDef.Point, oProjectedPoint)
+
+            <span style="color:blue">' Reposition the fixed work point</span>
+            oWPDef.Point = oProjectedPoint
+            ThisApplication.ActiveDocument.Update
+            oIE.Stop
+            
+            Set oWP = Nothing
+            
+    End If
+End Sub
+
+<span style="color:blue">' Project the ModelPosition to a plane parallel to the</span>
+<span style="color:blue">' X-Y plane on which the work point currently is.</span>
+Private Sub ProjectPoint(ByVal ModelPosition As Inventor.Point, ByVal WorkPointPosition As Inventor.Point, ProjectedPoint As Inventor.Point)
+    
+    <span style="color:blue">' Set a reference to the camera object</span>
+    Dim oCamera As Inventor.Camera
+    Set oCamera = ThisApplication.ActiveView.Camera
+    
+    Dim oVec As Vector
+    Set oVec = oCamera.Eye.VectorTo(oCamera.Target)
+    
+    Dim oLine As Line
+    Set oLine = ThisApplication.TransientGeometry.CreateLine(ModelPosition, oVec)
+    
+    <span style="color:blue">' Create the z-axis vector</span>
+    Dim oZAxis As Vector
+    Set oZAxis = ThisApplication.TransientGeometry.CreateVector(0, 0, 1)
+    
+    <span style="color:blue">' Create a plane parallel to the X-Y plane</span>
+    Dim oWPPlane As Plane
+    Set oWPPlane = ThisApplication.TransientGeometry.CreatePlane(WorkPointPosition, oZAxis)
+    
+    Set ProjectedPoint = oWPPlane.IntersectWithLine(oLine)
+End Sub</pre>
+      </div>
+      <div id="iLogic" class="api-code">Have a part document open that contains at least one fixed work point. Run the sample and drag the fixed work point.<table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('iLogic_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="iLogic_code">Sub Main
+    Dim oDragWorkPoint As clsDragWorkPoint
+    oDragWorkPoint = New clsDragWorkPoint
+    oDragWorkPoint.Initialize(ThisApplication)
+    
+End Sub
+
+Class clsDragWorkPoint
+	Private ThisApplication As Inventor.Application
+	Private WithEvents oUserInputEvents As UserInputEvents
+	Private oIE As InteractionEvents
+	Private WithEvents oMouseEvents As MouseEvents
+	Private oIntGraphics As InteractionGraphics
+	Private oWP As WorkPoint
+	Private bStop As Boolean
+	
+	Public Sub Initialize(oApp As Inventor.Application)
+		ThisApplication = oApp
+	    oUserInputEvents = ThisApplication.CommandManager.UserInputEvents
+		
+		<span style="color:blue">' Loop until a selection is made.</span>
+<span style="color:blue">'	    Do  </span>
+<span style="color:blue">'	        ThisApplication.UserInterfaceManager.DoEvents</span>
+<span style="color:blue">'	    Loop Until bStop</span>
+	End Sub
+	
+	Private Sub oUserInputEvents_OnDrag(ByVal DragState As Inventor.DragStateEnum, ByVal ShiftKeys As Inventor.ShiftStateEnum, ByVal ModelPosition As Inventor.Point, ByVal ViewPosition As Inventor.Point2d, ByVal View As Inventor.View, ByVal AdditionalInfo As Inventor.NameValueMap,ByRef HandlingCode As Inventor.HandlingCodeEnum) Handles oUserInputEvents.OnDrag
+	
+	    Dim oSS As SelectSet
+	    oSS = ThisApplication.ActiveDocument.SelectSet
+	
+	    If DragState = kDragStateDragHandlerSelection Then
+	
+	        If oSS.Count = 1 And oSS.Item(1).Type = kWorkPointObject Then
+	
+	            oWP = oSS.Item(1)
+	
+	            If oWP.DefinitionType = kFixedWorkPoint Then
+
+	                HandlingCode = kEventCanceled
+	                oIE = ThisApplication.CommandManager.CreateInteractionEvents
+	                oMouseEvents = oIE.MouseEvents
+	                oMouseEvents.MouseMoveEnabled = True
+	
+	                oIntGraphics = oIE.InteractionGraphics
+	                Call oIE.SetCursor(kCursorBuiltInCommonSketchDrag)
+	                oIE.Start                
+	            End If
+	        End If
+	    End If
+	End Sub
+	
+	Private Sub oMouseEvents_OnMouseMove(ByVal Button As MouseButtonEnum, ByVal ShiftKeys As ShiftStateEnum, ByVal ModelPosition As Point, ByVal ViewPosition As Point2d, ByVal View As View) Handles oMouseEvents.OnMouseMove
+	    Dim oSS As SelectSet
+	    oSS = ThisApplication.ActiveDocument.SelectSet
+	 	
+	    If oSS.Count = 1 And oSS.Item(1).Type = kWorkPointObject Then
+
+	        Dim oWPDef As FixedWorkPointDef
+	        oWPDef = oWP.Definition
+
+	        Dim oProjectedPoint As Inventor.Point
+	        Call ProjectPoint(ModelPosition, oWPDef.Point, oProjectedPoint)
+
+	        <span style="color:blue">' Set a reference to the transient geometry object for user later.</span>
+	        Dim oTransGeom As TransientGeometry
+	        oTransGeom = ThisApplication.TransientGeometry
+	    
+	        <span style="color:blue">' Create a graphics data set object.  This object contains all of the</span>
+	        <span style="color:blue">' information used to define the graphics.</span>
+	        Dim oDataSets As GraphicsDataSets
+	        oDataSets = oIntGraphics.GraphicsDataSets
+
+	        If oDataSets.Count &lt;&gt; 0 Then
+	            oDataSets.Item(1).Delete
+	        End If
+
+	        <span style="color:blue">' Create a coordinate set.</span>
+	        Dim oCoordSet As GraphicsCoordinateSet
+	        oCoordSet = oDataSets.CreateCoordinateSet(1)
+
+	        <span style="color:blue">' Create an array that contains coordinates that define a set</span>
+	        <span style="color:blue">' of outwardly spiraling points.</span>
+	        Dim oPointCoords(0 To 2) As Double
+	        <span style="color:blue">' Define the X, Y, and Z components of the point.</span>
+	        oPointCoords(0) = oProjectedPoint.X
+	        oPointCoords(1) = oProjectedPoint.Y
+	        oPointCoords(2) = oProjectedPoint.Z
+   
+	        <span style="color:blue">' Assign the points into the coordinate set.</span>
+	        Call oCoordSet.PutCoordinates(oPointCoords)
+
+	        <span style="color:blue">' Create the ClientGraphics object.</span>
+	        Dim oClientGraphics As ClientGraphics
+	        oClientGraphics = oIntGraphics.PreviewClientGraphics
+
+	        If oClientGraphics.Count &lt;&gt; 0 Then
+	            oClientGraphics.Item(1).Delete
+	        End If
+	        
+	        <span style="color:blue">' Create a new graphics node within the client graphics objects.</span>
+	        Dim oPtNode As GraphicsNode
+	        oPtNode = oClientGraphics.AddNode(oClientGraphics.Count + 1) <span style="color:blue">'oClientGraphics.AddNode(1)</span>
+
+	        <span style="color:blue">' Create a PointGraphics object within the node.</span>
+	        Dim oPtGraphics As PointGraphics
+	        oPtGraphics = oPtNode.AddPointGraphics
+	        
+	        <span style="color:blue">' Assign the coordinate set to the line graphics.</span>
+	        oPtGraphics.CoordinateSet = oCoordSet
+	        oPtGraphics.PointRenderStyle = kCrossPointStyle
+	        ThisApplication.ActiveView.Update
+	    End If
+	End Sub
+	
+	Private Sub oMouseEvents_OnMouseUp(ByVal Button As MouseButtonEnum, ByVal ShiftKeys As ShiftStateEnum, ByVal ModelPosition As Point, ByVal ViewPosition As Point2d, ByVal View As View) Handles oMouseEvents.OnMouseUp
+	    
+	    Dim oSS As SelectSet
+	    oSS = ThisApplication.ActiveDocument.SelectSet
+	
+	    If oSS.Count = 1 And oSS.Item(1).Type = kWorkPointObject Then
+	            
+	            Dim oWPDef As FixedWorkPointDef
+	            oWPDef = oWP.Definition
+	
+	            Dim oProjectedPoint As Inventor.Point
+	            Call ProjectPoint(ModelPosition, oWPDef.Point, oProjectedPoint)
+	
+	            <span style="color:blue">' Reposition the fixed work point</span>
+	            oWPDef.Point = oProjectedPoint
+	            ThisApplication.ActiveDocument.Update
+	            oIE.Stop
+
+	            oWP = Nothing
+	            
+	    End If
+	End Sub
+	
+	<span style="color:blue">' Project the ModelPosition to a plane parallel to the</span>
+	<span style="color:blue">' X-Y plane on which the work point currently is.</span>
+	Private Sub ProjectPoint(ByVal ModelPosition As Inventor.Point, ByVal WorkPointPosition As Inventor.Point, ByRef ProjectedPoint As Inventor.Point)
+	    
+	    <span style="color:blue">' Set a reference to the camera object</span>
+	    Dim oCamera As Inventor.Camera
+	    oCamera = ThisApplication.ActiveView.Camera
+	    
+	    Dim oVec As Vector
+	    oVec = oCamera.Eye.VectorTo(oCamera.Target)
+	    
+	    Dim oLine As Line
+	    oLine = ThisApplication.TransientGeometry.CreateLine(ModelPosition, oVec)
+	    
+	    <span style="color:blue">' Create the z-axis vector</span>
+	    Dim oZAxis As Vector
+	    oZAxis = ThisApplication.TransientGeometry.CreateVector(0, 0, 1)
+	    
+	    <span style="color:blue">' Create a plane parallel to the X-Y plane</span>
+	    Dim oWPPlane As Plane
+	    oWPPlane = ThisApplication.TransientGeometry.CreatePlane(WorkPointPosition, oZAxis)
+	    
+	    ProjectedPoint = oWPPlane.IntersectWithLine(oLine)
+	End Sub
+End Class</pre>
+      </div>
+    </div><br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(UserInputEventsSink_OnDrag%20Sample%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

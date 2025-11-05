@@ -1,0 +1,115 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/CoilFeatures_AddSpiral.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="CoilFeatures_AddSpiral">
+    <meta name="description" content="CoilFeatures.AddSpiral Method">
+    <meta name="topicid" content="CoilFeatures_AddSpiral">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>CoilFeatures.AddSpiral Method</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">CoilFeatures.AddSpiral Method</h1>
+
+          Parent Object: <a href="CoilFeatures.htm">CoilFeatures</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Method that creates a new CoilFeature that sweeps a specified angle. The new CoilFeature is returned.</p>
+    <h2 class="api">
+          Syntax
+        </h2>
+        
+            CoilFeatures.<b>AddSpiral</b>( <b><i>Profile</i></b> As <a href="Profile.htm">Profile</a>, <b><i>AxisEntity</i></b> As Object, <b><i>Pitch</i></b> As Variant, <b><i>Revolution</i></b> As Variant, <b><i>Operation</i></b> As <a href="PartFeatureOperationEnum.htm">PartFeatureOperationEnum</a>, [<b><i>AxisDirectionReversed</i></b>] As Boolean, [<b><i>ClockwiseRotation</i></b>] As Boolean ) As <a href="CoilFeature.htm">CoilFeature</a>
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">Profile</td>
+        <td class="api-list"><a href="Profile.htm">Profile</a></td>
+        <td class="api-list">Input object used to define the shape of the coil.</td>
+      </tr>
+      <tr>
+        <td class="api-list">AxisEntity</td>
+        <td class="api-list">Object</td>
+        <td class="api-list">Input linear entity that defines the axis of the revolution. Valid input is either a sketch line or work axis. The axis entity must not intersect the input profile.</td>
+      </tr>
+      <tr>
+        <td class="api-list">Pitch</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Input Variant that defines the pitch of the coil feature. This can be either a numeric value or a string. A parameter for this value will be created and the supplied string or value is assigned to the parameter. If a value is input, the units are centimeters. If a string is input, the units can be specified as part of the string or it will default to the current length units of the document.</td>
+      </tr>
+      <tr>
+        <td class="api-list">Revolution</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Input Variant that defines the number of revolutions of the coil feature. This can be either a numeric value or a string. A parameter for this value will be created and the supplied string or value is assigned to the parameter. If a value is input, it is unitless. If a string is input it must resolve to a unitless value.</td>
+      </tr>
+      <tr>
+        <td class="api-list">Operation</td>
+        <td class="api-list"><a href="PartFeatureOperationEnum.htm">PartFeatureOperationEnum</a></td>
+        <td class="api-list">Input constant that indicates the type of operation to perform. Valid input is kJoinOperation, kCutOperation, kIntersectOperation, kSurfaceOperation.</td>
+      </tr>
+      <tr>
+        <td class="api-list">AxisDirectionReversed</td>
+        <td class="api-list">Boolean</td>
+        <td class="api-list">Optional input Boolean that indicates a reversal of axis direction. The default is False, which means the axis direction will be in the same direction as the natural direction of the input axis entity.<br /><br /> This is an optional argument whose default value is False.</td>
+      </tr>
+      <tr>
+        <td class="api-list">ClockwiseRotation</td>
+        <td class="api-list">Boolean</td>
+        <td class="api-list">Optional input Boolean that defines whether the rotation of the coil is clockwise or counter-clockwise. The default is False, indicating counter-clockwise rotation.<br /><br /> This is an optional argument whose default value is False.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 5.3<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(CoilFeatures.AddSpiral%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

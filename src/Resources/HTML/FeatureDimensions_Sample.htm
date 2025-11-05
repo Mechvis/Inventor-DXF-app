@@ -1,0 +1,152 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/FeatureDimensions_Sample.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="FeatureDimensions_Sample">
+    <meta name="description" content="Query feature dimensions Sample">
+    <meta name="topicid" content="FeatureDimensions_Sample">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>Query feature dimensions</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body><script>
+          function copyCode(language) {
+          // Get the pre element for the specified language.
+          var preElement = document.getElementById(language);
+
+          // Get the text from the element and copy it to the clipboard.
+          var preText = preElement.innerText;
+
+          var isIE = /*@cc_on!@*/false || !!document.documentMode;
+
+          if (isIE)
+          {
+            window.clipboardData.setData('Text', preText);
+          }
+          else
+          {
+            navigator.clipboard.writeText(preText);
+          }
+
+          //alert("Code copied to clipboard");
+          }
+        </script><link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">Query feature dimensions</h1>
+    <h2 class="api">
+          Description
+        </h2>This sample demonstrates querying the dimensions of a feature in a part or an assembly document. The sample also demonstrates how to show the dimensions of a feature.<h2 class="api">
+          Code Samples
+        </h2>
+    <div id="tabs">
+      <ul>
+        <li><a href="#VBA">VBA</a></li>
+        <li><a href="#iLogic">iLogic</a></li>
+      </ul>
+      <div id="VBA" class="api-code">
+        <table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('VBA_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="VBA_code">Sub QueryAndShowFeatureDimensions()
+    Dim oDoc As Document
+    Set oDoc = ThisApplication.ActiveDocument
+
+    <span style="color:blue">' Check to make sure a feature is selected.</span>
+    If Not Typeof oDoc.SelectSet.Item(1) Is PartFeature Then
+        MsgBox "A feature must be selected."
+        Exit Sub
+    End If
+    
+    <span style="color:blue">' Set a reference to the selected feature.</span>
+    Dim oFeature As PartFeature
+    Set oFeature = oDoc.SelectSet.Item(1)
+    
+    Dim oFeatureDim As FeatureDimension
+    Dim i As Long
+    i = 0
+    <span style="color:blue">' Iterate over all dimensions of the feature.</span>
+    For Each oFeatureDim In oFeature.FeatureDimensions
+        i = i + 1
+        <span style="color:blue">' Format and print the name and position.</span>
+        Debug.Print i & ". Name: " & oFeatureDim.Parameter.Name _
+                 & "  Position: (" & oFeatureDim.TextPoint.X & _
+                              ", " & oFeatureDim.TextPoint.Y & _
+                              ", " & oFeatureDim.TextPoint.Z & ")"
+    Next
+    
+    <span style="color:blue">' Show all the feature dimensions</span>
+    oFeature.FeatureDimensions.Show
+End Sub</pre>
+      </div>
+      <div id="iLogic" class="api-code">
+        <table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('iLogic_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="iLogic_code">    Dim oDoc As Document
+    oDoc = ThisApplication.ActiveDocument
+
+    <span style="color:blue">' Check to make sure a feature is selected.</span>
+    If Not Typeof oDoc.SelectSet.Item(1) Is PartFeature Then
+        MsgBox("A feature must be selected.")
+        Exit Sub
+    End If
+    
+    <span style="color:blue">' Set a reference to the selected feature.</span>
+    Dim oFeature As PartFeature
+    oFeature = oDoc.SelectSet.Item(1)
+    
+    Dim oFeatureDim As FeatureDimension
+    Dim i As Long
+    i = 0
+    <span style="color:blue">' Iterate over all dimensions of the feature.</span>
+    For Each oFeatureDim In oFeature.FeatureDimensions
+        i = i + 1
+        <span style="color:blue">' Format and print the name and position.</span>
+        Logger.Info(i & ". Name: " & oFeatureDim.Parameter.Name _
+                 & "  Position: (" & oFeatureDim.TextPoint.X & _
+                              ", " & oFeatureDim.TextPoint.Y & _
+                              ", " & oFeatureDim.TextPoint.Z & ")")
+    Next
+    
+    <span style="color:blue">' Show all the feature dimensions</span>
+    oFeature.FeatureDimensions.Show</pre>
+      </div>
+    </div><br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(FeatureDimensions%20Sample%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

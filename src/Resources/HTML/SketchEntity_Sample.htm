@@ -1,0 +1,377 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/SketchEntity_Sample.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="SketchEntity_Sample">
+    <meta name="description" content="Sketch Display Entities Sample">
+    <meta name="topicid" content="SketchEntity_Sample">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>Sketch Display Entities</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body><script>
+          function copyCode(language) {
+          // Get the pre element for the specified language.
+          var preElement = document.getElementById(language);
+
+          // Get the text from the element and copy it to the clipboard.
+          var preText = preElement.innerText;
+
+          var isIE = /*@cc_on!@*/false || !!document.documentMode;
+
+          if (isIE)
+          {
+            window.clipboardData.setData('Text', preText);
+          }
+          else
+          {
+            navigator.clipboard.writeText(preText);
+          }
+
+          //alert("Code copied to clipboard");
+          }
+        </script><link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">Sketch Display Entities</h1>
+    <h2 class="api">
+          Description
+        </h2>This sample demonstrates the query functionality available for sketch entities.<h2 class="api">
+          Code Samples
+        </h2>
+    <div id="tabs">
+      <ul>
+        <li><a href="#VBA">VBA</a></li>
+        <li><a href="#iLogic">iLogic</a></li>
+      </ul>
+      <div id="VBA" class="api-code">To use this sample, select a sketch entity that you want to query. Run the program and it will display information about the selected entity in the immediate window.<table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('VBA_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="VBA_code">Public Sub SketchEntities()
+    <span style="color:blue">' Get the first item in the select set.  This assumes</span>
+    <span style="color:blue">' something is selected and that it's a sketch entity.</span>
+    Dim oSketchEnt As SketchEntity
+    Set oSketchEnt = ThisApplication.ActiveDocument.SelectSet.Item(1)
+
+    <span style="color:blue">' Set a reference to the transient geometry object.</span>
+    Dim oTransGeom As TransientGeometry
+    Set oTransGeom = ThisApplication.TransientGeometry
+
+    <span style="color:blue">' Display type specific information.</span>
+    Select Case oSketchEnt.Type
+        Case kSketchArcObject
+            Dim oArc As SketchArc
+            Set oArc = oSketchEnt
+            Debug.Print "Sketch Arc selected."
+            Debug.Print "  Center Point: " & oArc.CenterSketchPoint.Geometry.X & _
+                            ", " & oArc.CenterSketchPoint.Geometry.Y
+            Debug.Print "  Start Point: " & oArc.StartSketchPoint.Geometry.X & _
+                            ", " & oArc.StartSketchPoint.Geometry.Y
+            Debug.Print "  End Point: " & oArc.EndSketchPoint.Geometry.X & _
+                            ", " & oArc.EndSketchPoint.Geometry.Y
+            Debug.Print "  Start Angle: " & oArc.StartAngle
+            Debug.Print "  Sweep Angle: " & oArc.SweepAngle
+            Debug.Print "  Radius: " & oArc.Radius
+            Debug.Print "  Length: " & oArc.Length
+        Case kSketchCircleObject
+            Dim oCircle As SketchCircle
+            Set oCircle = oSketchEnt
+            Debug.Print "Sketch Circle selected."
+            Debug.Print "  Center Point: " & oCircle.CenterSketchPoint.Geometry.X & _
+                            ", " & oCircle.CenterSketchPoint.Geometry.Y
+            Debug.Print "  Radius: " & oCircle.Radius
+            Debug.Print "  Area: " & oCircle.Area
+
+            <span style="color:blue">' Change the radius</span>
+            oCircle.Radius = oCircle.Radius * 1.5
+        Case kSketchEllipseObject
+            Dim oEllipse As SketchEllipse
+            Set oEllipse = oSketchEnt
+            Debug.Print "Sketch Ellipse selected."
+            Debug.Print "  Center Point: " & oEllipse.CenterSketchPoint.Geometry.X & _
+                            ", " & oEllipse.CenterSketchPoint.Geometry.Y
+            Debug.Print "  Major Axis Vecotr: " & oEllipse.MajorAxisVector.X & _
+                            ", " & oEllipse.MajorAxisVector.Y
+            Debug.Print "  Major Radius: " & oEllipse.MajorRadius
+            Debug.Print "  Minor Radius: " & oEllipse.MinorRadius
+            Debug.Print "  Area: " & oEllipse.Area
+
+            <span style="color:blue">' Modify the ellipse</span>
+            oEllipse.MajorAxisVector = oTransGeom.CreateUnitVector2d(1, 1)
+            oEllipse.MajorRadius = oEllipse.MajorRadius / 2
+            oEllipse.MinorRadius = oEllipse.MinorRadius * 2
+        Case kSketchEllipticalArcObject
+            Dim oEllipticalArc As SketchEllipticalArc
+            Set oEllipticalArc = oSketchEnt
+            Debug.Print "Sketch Elliptical Arc selected."
+            Debug.Print "  Center Point: " & oEllipticalArc.CenterSketchPoint.Geometry.X & _
+                            ", " & oEllipticalArc.CenterSketchPoint.Geometry.Y
+            Debug.Print "  Major Axis Vector: " & oEllipticalArc.MajorAxisVector.X & _
+                            ", " & oEllipticalArc.MajorAxisVector.Y
+            Debug.Print "  Major Radius: " & oEllipticalArc.MajorRadius
+            Debug.Print "  Minor Radius: " & oEllipticalArc.MinorRadius
+            Debug.Print "  Start Angle: " & oEllipticalArc.StartAngle
+            Debug.Print "  Sweep Angle: " & oEllipticalArc.SweepAngle
+            Debug.Print "  Length: " & oEllipticalArc.Length
+
+            <span style="color:blue">' Modify the elliptical arc.</span>
+            oEllipticalArc.MajorAxisVector = oTransGeom.CreateUnitVector2d(1, 1)
+            oEllipticalArc.MajorRadius = oEllipticalArc.MajorRadius / 2
+            oEllipticalArc.MinorRadius = oEllipticalArc.MinorRadius * 2
+        Case kSketchLineObject
+            Dim oLine As SketchLine
+            Set oLine = oSketchEnt
+            Debug.Print "Sketch Line selected."
+            Debug.Print "  Start Point: " & oLine.StartSketchPoint.Geometry.X & _
+                            ", " & oLine.StartSketchPoint.Geometry.Y
+            Debug.Print "  End Point: " & oLine.EndSketchPoint.Geometry.X & _
+                            ", " & oLine.EndSketchPoint.Geometry.Y
+            Debug.Print "  Length: " & oLine.Length
+            Debug.Print "  Centerline: " & oLine.Centerline
+
+            <span style="color:blue">' Toggle the centerline property.</span>
+            If oLine.Centerline Then
+                oLine.Centerline = False
+            Else
+                oLine.Centerline = True
+            End If
+        Case kSketchPointObject
+            Dim oPoint As SketchPoint
+            Set oPoint = oSketchEnt
+            Debug.Print "Sketch Point selected."
+            Debug.Print "  Position: " & oPoint.Geometry.X & _
+                            ", " & oPoint.Geometry.Y
+            Debug.Print "  Hole Center: " & oPoint.HoleCenter
+
+            <span style="color:blue">' Toggle the hole center property.</span>
+            If oPoint.HoleCenter Then
+                oPoint.HoleCenter = False
+            Else
+                oPoint.HoleCenter = True
+            End If
+        Case kSketchSplineObject
+            Dim oSpline As SketchSpline
+            Set oSpline = oSketchEnt
+            Debug.Print "Sketch Spline selected."
+            Debug.Print "  Length: " & oSpline.Length
+            Debug.Print "  Closed: " & oSpline.Closed
+            Debug.Print "  Fit Points (" & oSpline.FitPointCount & ")"
+            Dim i As Long
+            For i = 1 To oSpline.FitPointCount
+                Debug.Print "    Fit Point " & i & ": " & oSpline.FitPoint(i).Geometry.X & _
+                            ", " & oSpline.FitPoint(i).Geometry.Y
+            Next
+    End Select
+
+    <span style="color:blue">' Call the generic sketch entity methods.</span>
+    Debug.Print "  Constraint count: " & oSketchEnt.Constraints.Count
+    Debug.Print "  Construction: " & oSketchEnt.Construction
+    Debug.Print "  Range: (" & oSketchEnt.RangeBox.MinPoint.X & ", " & _
+                            oSketchEnt.RangeBox.MinPoint.Y & ") - (" & _
+                            oSketchEnt.RangeBox.MaxPoint.X & ", " & _
+                            oSketchEnt.RangeBox.MaxPoint.Y & ")"
+    Debug.Print "  Reference: " & oSketchEnt.Reference
+    If oSketchEnt.Reference Then
+        Debug.Print "  Referenced Entity: " & TypeName(oSketchEnt.ReferencedEntity)
+    End If
+End Sub</pre>
+      </div>
+      <div id="iLogic" class="api-code">To use this sample, select a sketch entity that you want to query. Run the program and it will display information about the selected entity in the immediate window.<table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('iLogic_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="iLogic_code">    <span style="color:blue">' Get the first item in the select set.  This assumes</span>
+    <span style="color:blue">' something is selected and that it's a sketch entity.</span>
+    Dim oSketchEnt As SketchEntity
+    oSketchEnt = ThisApplication.ActiveDocument.SelectSet.Item(1)
+
+    <span style="color:blue">' Set a reference to the transient geometry object.</span>
+    Dim oTransGeom As TransientGeometry
+    oTransGeom = ThisApplication.TransientGeometry
+
+    <span style="color:blue">' Display type specific information.</span>
+    Select Case oSketchEnt.Type
+        Case kSketchArcObject
+            Dim oArc As SketchArc
+            oArc = oSketchEnt
+            Logger.Info("Sketch Arc selected.")
+
+            Logger.Info("  Center Point: " & oArc.CenterSketchPoint.Geometry.X & _
+                            ", " & oArc.CenterSketchPoint.Geometry.Y)
+            Logger.Info("  Start Point: " & oArc.StartSketchPoint.Geometry.X & _
+                            ", " & oArc.StartSketchPoint.Geometry.Y)
+            Logger.Info("  End Point: " & oArc.EndSketchPoint.Geometry.X & _
+                            ", " & oArc.EndSketchPoint.Geometry.Y)
+            Logger.Info("  Start Angle: " & oArc.StartAngle)
+
+            Logger.Info("  Sweep Angle: " & oArc.SweepAngle)
+
+            Logger.Info("  Radius: " & oArc.Radius)
+
+            Logger.Info("  Length: " & oArc.Length)
+
+        Case kSketchCircleObject
+            Dim oCircle As SketchCircle
+            oCircle = oSketchEnt
+            Logger.Info("Sketch Circle selected.")
+
+            Logger.Info("  Center Point: " & oCircle.CenterSketchPoint.Geometry.X & _
+                            ", " & oCircle.CenterSketchPoint.Geometry.Y)
+            Logger.Info("  Radius: " & oCircle.Radius)
+
+            Logger.Info("  Area: " & oCircle.Area)
+
+
+            <span style="color:blue">' Change the radius</span>
+            oCircle.Radius = oCircle.Radius * 1.5
+        Case kSketchEllipseObject
+            Dim oEllipse As SketchEllipse
+            oEllipse = oSketchEnt
+            Logger.Info("Sketch Ellipse selected.")
+
+            Logger.Info("  Center Point: " & oEllipse.CenterSketchPoint.Geometry.X & _
+                            ", " & oEllipse.CenterSketchPoint.Geometry.Y)
+            Logger.Info("  Major Axis Vecotr: " & oEllipse.MajorAxisVector.X & _
+                            ", " & oEllipse.MajorAxisVector.Y)
+            Logger.Info("  Major Radius: " & oEllipse.MajorRadius)
+
+            Logger.Info("  Minor Radius: " & oEllipse.MinorRadius)
+
+            Logger.Info("  Area: " & oEllipse.Area)
+
+
+            <span style="color:blue">' Modify the ellipse</span>
+            oEllipse.MajorAxisVector = oTransGeom.CreateUnitVector2d(1, 1)
+            oEllipse.MajorRadius = oEllipse.MajorRadius / 2
+            oEllipse.MinorRadius = oEllipse.MinorRadius * 2
+        Case kSketchEllipticalArcObject
+            Dim oEllipticalArc As SketchEllipticalArc
+            oEllipticalArc = oSketchEnt
+            Logger.Info("Sketch Elliptical Arc selected.")
+
+            Logger.Info("  Center Point: " & oEllipticalArc.CenterSketchPoint.Geometry.X & _
+                            ", " & oEllipticalArc.CenterSketchPoint.Geometry.Y)
+            Logger.Info("  Major Axis Vector: " & oEllipticalArc.MajorAxisVector.X & _
+                            ", " & oEllipticalArc.MajorAxisVector.Y)
+            Logger.Info("  Major Radius: " & oEllipticalArc.MajorRadius)
+
+            Logger.Info("  Minor Radius: " & oEllipticalArc.MinorRadius)
+
+            Logger.Info("  Start Angle: " & oEllipticalArc.StartAngle)
+
+            Logger.Info("  Sweep Angle: " & oEllipticalArc.SweepAngle)
+
+            Logger.Info("  Length: " & oEllipticalArc.Length)
+
+
+            <span style="color:blue">' Modify the elliptical arc.</span>
+            oEllipticalArc.MajorAxisVector = oTransGeom.CreateUnitVector2d(1, 1)
+            oEllipticalArc.MajorRadius = oEllipticalArc.MajorRadius / 2
+            oEllipticalArc.MinorRadius = oEllipticalArc.MinorRadius * 2
+        Case kSketchLineObject
+            Dim oLine As SketchLine
+            oLine = oSketchEnt
+            Logger.Info("Sketch Line selected.")
+
+            Logger.Info("  Start Point: " & oLine.StartSketchPoint.Geometry.X & _
+                            ", " & oLine.StartSketchPoint.Geometry.Y)
+            Logger.Info("  End Point: " & oLine.EndSketchPoint.Geometry.X & _
+                            ", " & oLine.EndSketchPoint.Geometry.Y)
+            Logger.Info("  Length: " & oLine.Length)
+
+            Logger.Info("  Centerline: " & oLine.Centerline)
+
+
+            <span style="color:blue">' Toggle the centerline property.</span>
+            If oLine.Centerline Then
+                oLine.Centerline = False
+            Else
+                oLine.Centerline = True
+            End If
+        Case kSketchPointObject
+            Dim oPoint As SketchPoint
+            oPoint = oSketchEnt
+            Logger.Info("Sketch Point selected.")
+
+            Logger.Info("  Position: " & oPoint.Geometry.X & _
+                            ", " & oPoint.Geometry.Y)
+            Logger.Info("  Hole Center: " & oPoint.HoleCenter)
+
+
+            <span style="color:blue">' Toggle the hole center property.</span>
+            If oPoint.HoleCenter Then
+                oPoint.HoleCenter = False
+            Else
+                oPoint.HoleCenter = True
+            End If
+        Case kSketchSplineObject
+            Dim oSpline As SketchSpline
+            oSpline = oSketchEnt
+            Logger.Info("Sketch Spline selected.")
+
+            Logger.Info("  Length: " & oSpline.Length)
+
+            Logger.Info("  Closed: " & oSpline.Closed)
+
+            Logger.Info("  Fit Points (" & oSpline.FitPointCount & ")")
+
+            Dim i As Long
+            For i = 1 To oSpline.FitPointCount
+                Logger.Info("    Fit Point " & i & ": " & oSpline.FitPoint(i).Geometry.X & _
+                            ", " & oSpline.FitPoint(i).Geometry.Y)
+            Next
+    End Select
+
+    <span style="color:blue">' Call the generic sketch entity methods.</span>
+    Logger.Info("  Constraint count: " & oSketchEnt.Constraints.Count)
+
+    Logger.Info("  Construction: " & oSketchEnt.Construction)
+
+    Logger.Info("  Range: (" & oSketchEnt.RangeBox.MinPoint.X & ", " & _
+                            oSketchEnt.RangeBox.MinPoint.Y & ") - (" & _
+                            oSketchEnt.RangeBox.MaxPoint.X & ", " & _
+                            oSketchEnt.RangeBox.MaxPoint.Y & ")")
+    Logger.Info("  Reference: " & oSketchEnt.Reference)
+
+    If oSketchEnt.Reference Then
+        Logger.Info("  Referenced Entity: " & TypeName(oSketchEnt.ReferencedEntity))
+
+    End If</pre>
+      </div>
+    </div><br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(SketchEntity%20Sample%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

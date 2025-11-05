@@ -1,0 +1,97 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/ExpressionList_SetExpressionList.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="ExpressionList_SetExpressionList">
+    <meta name="description" content="ExpressionList.SetExpressionList Method">
+    <meta name="topicid" content="ExpressionList_SetExpressionList">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>ExpressionList.SetExpressionList Method</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">ExpressionList.SetExpressionList Method</h1>
+
+          Parent Object: <a href="ExpressionList.htm">ExpressionList</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Method that sets the list of expressions for the parameter this expression list is associated with. The current value of the associated parameter will be modifed to match one of the values in the list. The CurrentValueIndex argument allows you control over which value from the list is used.</p>
+    <h2 class="api">
+          Syntax
+        </h2>
+        
+            ExpressionList.<b>SetExpressionList</b>( <b><i>ExpressionList</i></b>() As String, [<b><i>ChangeCurrentValue</i></b>] As Boolean, [<b><i>CurrentValueIndex</i></b>] As Long )
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">ExpressionList</td>
+        <td class="api-list">String</td>
+        <td class="api-list">Input array of Strings that defines a list of valid expressions that the user will be able to select from when setting the value of the associated parameter. 
+</Br>
+When set this for Text parameter, the expression value should be quoted by quotation marks at beginning and ending of a string(like """I am Jack""").</td>
+      </tr>
+      <tr>
+        <td class="api-list">ChangeCurrentValue</td>
+        <td class="api-list">Boolean</td>
+        <td class="api-list">Optional input Boolean value indicating whether to change the current value or not. When set this to True then you can use CurrentValueIndex to specify which value in the expression list to use as current value.<br /><br /> This is an optional argument whose default value is False.</td>
+      </tr>
+      <tr>
+        <td class="api-list">CurrentValueIndex</td>
+        <td class="api-list">Long</td>
+        <td class="api-list">Input Long value that specifies which value within the expression list should be used as the current value of the parameter. The first value in the expression list is index 0.<p />For a numerical parameter, the default value of -1 will result in the expression that is closest to the current value of the parameter being used." Otherwise the index value specified will be used.<p />For a String parameter, the default value of -1 will result in using the value from the list if there's one that matches the current value of the parameter. If -1 is specified and the current parameter value doesn't match one of the values in the list the first value in the list is used.<p />This method is not valid for Boolean type parameters since they are already limited to True or False.<br /><br /> This is an optional argument whose default value is -1.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2011<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(ExpressionList.SetExpressionList%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

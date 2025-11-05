@@ -1,0 +1,252 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/FaceProxy.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="FaceProxy">
+    <meta name="description" content="FaceProxy Object">
+    <meta name="topicid" content="GUID-FaceProxy">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>FaceProxy Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">FaceProxy Object
+			</h1>
+              Derived from: <a href="Face.htm">Face</a> Object
+            <br><h2 class="api">
+          Description
+        </h2>This is an assembly-context proxy object derived from its native definition-context object.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FaceProxy_CalculateFacets.htm">CalculateFacets</a></td>
+        <td class="api-list">Obtain the facetted representation for the given chord-height tolerance.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FaceProxy_CalculateFacetsAndTextureMap.htm">CalculateFacetsAndTextureMap</a></td>
+        <td class="api-list">Obtain the facetted representation for the given chord-height tolerance. This also include the texture map coordinates.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FaceProxy_CalculateFacetsWithOptions.htm">CalculateFacetsWithOptions</a></td>
+        <td class="api-list">Method that creates a new set of facets within the specified conditions.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FaceProxy_CalculateStrokes.htm">CalculateStrokes</a></td>
+        <td class="api-list">Obtain the stroked or polygonal representation for the given chord-height tolerance.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FaceProxy_CalculateStrokesWithOptions.htm">CalculateStrokesWithOptions</a></td>
+        <td class="api-list">Method that creates a new set of strokes within the specified conditions.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FaceProxy_GetClosestPointTo.htm">GetClosestPointTo</a></td>
+        <td class="api-list">Method that returns a point on the face that is closest to the input point. A single point is returned even if multiple equidistant points are found. To get the u-v parameters of the returned point on the face, use Face.Evaluator.GetParamAtPoint method.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FaceProxy_GetExistingFacets.htm">GetExistingFacets</a></td>
+        <td class="api-list">Obtain the facetted representation for the given chord-height tolerance as. Fails if the tolerance supplied is not pre-existing.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FaceProxy_GetExistingFacetsAndTextureMap.htm">GetExistingFacetsAndTextureMap</a></td>
+        <td class="api-list">Method that returns the specified set of existing display facets. Existing display facets are stored to single-precision floating point accuracy. This is typically adequate accuracy for display purposes. If a more accurate result is required you can use the CalculateFacets method which will calculate new facets to a given tolerance at double-precision accuracy.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FaceProxy_GetExistingFacetTolerances.htm">GetExistingFacetTolerances</a></td>
+        <td class="api-list">Method that gets the tolerances that were used to calculate the existing sets of display facets. These can be used to determine if any existing facets have been calculated within your desired accuracy. The tolerance value is also used as an index to specify which set of existing facets to retrieve when using the GetExistingFacets method. If you are using this method within Apprentice, you can use the DisplayAffinity property to optimize Apprentice for access to facets. Setting this property to True before you begin to traverse an assembly notifies Apprentice not to load any B-rep entities.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FaceProxy_GetExistingStrokes.htm">GetExistingStrokes</a></td>
+        <td class="api-list">Method that returns the specified set of strokes from the SurfaceBody, Face or Edge the method was called from. Existing strokes are stored to single-precision floating point accuracy. This is typically adequate accuracy for display purposes. If a more accurate result is required you can use the CalculateStrokes method, which will calculate new strokes to a given tolerance at double-precision accuracy. If you are using this method within Apprentice, you can use the DisplayAffinity property to optimize Apprentice for access to strokes. Setting this property to True before you begin to traverse an assembly notifies Apprentice not to load any B-rep entities.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FaceProxy_GetExistingStrokeTolerances.htm">GetExistingStrokeTolerances</a></td>
+        <td class="api-list">Method that gets the tolerances that were used to calculate the existing sets of display strokes. These can be used to determine if any existing strokes have been calculated within your desired accuracy. The tolerance value is also used as an index to specify which set of existing strokes to retrieve when using the GetExistingStrokes method. If you are using this method within Apprentice, you can use the DisplayAffinity property to optimize Apprentice for access to strokes. Setting this property to True before you begin to traverse an assembly notifies Apprentice not to load any B-rep entities.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FaceProxy_GetReferenceKey.htm">GetReferenceKey</a></td>
+        <td class="api-list">Method that generates and returns the reference key for this entity.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FaceProxy_GetSourceFace.htm">GetSourceFace</a></td>
+        <td class="api-list">Method that gets the source face that has been overridden by this face. The method returns Nothing if this face is not an override. An error is returned if this method is called on a face in a part.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FaceProxy_GetTextureScale.htm">GetTextureScale</a></td>
+        <td class="api-list">Method that returns U scale and V scale.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FaceProxy_AlternateBody.htm">AlternateBody</a></td>
+        <td class="api-list">Property that returns the alternate SurfaceBody.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FaceProxy_Appearance.htm">Appearance</a></td>
+        <td class="api-list">Gets and sets the current appearance of the face.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FaceProxy_AppearanceSourceType.htm">AppearanceSourceType</a></td>
+        <td class="api-list">Gets and sets the source of the appearance for the face.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FaceProxy_Application.htm">Application</a></td>
+        <td class="api-list">Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FaceProxy_AttributeSets.htm">AttributeSets</a></td>
+        <td class="api-list">Property that returns the AttributeSets collection object associated with this object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FaceProxy_ContainingOccurrence.htm">ContainingOccurrence</a></td>
+        <td class="api-list">Property that returns the ComponentOccurrence that the native object is being referenced through. The returned occurrence is the containing occurrence.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FaceProxy_CreatedByFeature.htm">CreatedByFeature</a></td>
+        <td class="api-list">Property that returns the feature that resulted in the creation of this face. This property is not currently supported for FaceProxy objects and will return Nothing in those cases. It is also not currently supported for Assembly Features and will fail in that case.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FaceProxy_EdgeLoops.htm">EdgeLoops</a></td>
+        <td class="api-list">Gets the EdgeLoops collection referenced by this Face.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FaceProxy_Edges.htm">Edges</a></td>
+        <td class="api-list">Gets the Edges referenced by this Face.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FaceProxy_Evaluator.htm">Evaluator</a></td>
+        <td class="api-list">Gets the surface evaluator for this face.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FaceProxy_FaceShell.htm">FaceShell</a></td>
+        <td class="api-list">Property that returns the FaceShell object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FaceProxy_Geometry.htm">Geometry</a></td>
+        <td class="api-list">Property that returns the underlying geometry of the face.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FaceProxy_GeometryForm.htm">GeometryForm</a></td>
+        <td class="api-list">Gets the form of the underlying geometry as a combination of one or more CurveGeometryFormEnum values.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FaceProxy_HasReferenceComponent.htm">HasReferenceComponent</a></td>
+        <td class="api-list">Property that specifies if the object was created as the result of a derived part.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FaceProxy_InternalName.htm">InternalName</a></td>
+        <td class="api-list">Property that returns a unique string identifying this face. This identifier is valid only so long as there are no further modifications to the face.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FaceProxy_IsParamReversed.htm">IsParamReversed</a></td>
+        <td class="api-list">Gets whether the parameterization of the geometry obtained from the Geometry property is aligned or opposed to the topological sense of this Face.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FaceProxy_NativeObject.htm">NativeObject</a></td>
+        <td class="api-list">Gets the object in the context of the definition instead of the containing assembly.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FaceProxy_Parent.htm">Parent</a></td>
+        <td class="api-list">Property that returns the parent object from whom this object can logically be reached.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FaceProxy_PointOnFace.htm">PointOnFace</a></td>
+        <td class="api-list">Property that returns a characteristic somewhere on the interior of the Face.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FaceProxy_ReferenceComponent.htm">ReferenceComponent</a></td>
+        <td class="api-list">Property that returns the ReferenceComponent that resulted in the creation of this feature.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FaceProxy_ReferencedEntity.htm">ReferencedEntity</a></td>
+        <td class="api-list">Property that returns the referenced face(s) from the source part. This could be a proxy object in case of a derived assembly. The property returns Nothing if there isn't a referenced entity.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FaceProxy_SurfaceBody.htm">SurfaceBody</a></td>
+        <td class="api-list">Property that returns the associated with this object or feature.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FaceProxy_SurfaceType.htm">SurfaceType</a></td>
+        <td class="api-list">Property that returns a SurfaceTypeEnum that specifies the surface type for this Face.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FaceProxy_TangentiallyConnectedFaces.htm">TangentiallyConnectedFaces</a></td>
+        <td class="api-list">Property that returns a FaceCollection that contains the input face and all tangentially connected faces. The CollectionType of the output FaceCollection is set to kFaceTangentiallyConnected.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FaceProxy_TextureMaps.htm">TextureMaps</a></td>
+        <td class="api-list">Gets the texture maps associated with this face.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FaceProxy_ThreadInfos.htm">ThreadInfos</a></td>
+        <td class="api-list">Property that returns a ThreadInfo object for each thread affecting this face.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FaceProxy_TransientKey.htm">TransientKey</a></td>
+        <td class="api-list">Property that obtains an ID key that can be used to bind back to the live object. This transient key is only valid as long as the document state has not changed. For more information, see the ReferenceKeys overview.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FaceProxy_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FaceProxy_Vertices.htm">Vertices</a></td>
+        <td class="api-list">Gets the vertices for this Face.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 4<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(FaceProxy%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

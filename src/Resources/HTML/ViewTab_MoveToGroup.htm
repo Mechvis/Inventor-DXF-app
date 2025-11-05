@@ -1,0 +1,117 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/ViewTab_MoveToGroup.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="ViewTab_MoveToGroup">
+    <meta name="description" content="ViewTab.MoveToGroup Method">
+    <meta name="topicid" content="ViewTab_MoveToGroup">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>ViewTab.MoveToGroup Method</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">ViewTab.MoveToGroup Method</h1>
+
+          Parent Object: <a href="ViewTab.htm">ViewTab</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Method that moves the current view tab to a ViewTabGroup. The ViewTabGroup the current ViewTab moves into will be returned.</p>
+    <h2 class="api">
+          Syntax
+        </h2>
+        
+            ViewTab.<b>MoveToGroup</b>( <b><i>CreateNewGroup</i></b> As Boolean, <b><i>TargetViewTab</i></b> As <a href="ViewTab.htm">ViewTab</a>, <b><i>DockingState</i></b> As <a href="DockingStateEnum.htm">DockingStateEnum</a>, [<b><i>AdditionalViewTabs</i></b>] As Variant ) As <a href="ViewTabGroup.htm">ViewTabGroup</a>
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">CreateNewGroup</td>
+        <td class="api-list">Boolean</td>
+        <td class="api-list">Input Boolean value that specifies whether to move&nbsp;the current ViewTab to a newly created ViewTabGroup or an existing ViewTabGroup. If set this as True then a new ViewTabGroup containing this ViewTab will be created. If this is set to False current ViewTab will be moved to an existing ViewTabGroup that contains the TargetViewTab.</td>
+      </tr>
+      <tr>
+        <td class="api-list">TargetViewTab</td>
+        <td class="api-list"><a href="ViewTab.htm">ViewTab</a></td>
+        <td class="api-list">Input ViewTab object that specifies the target ViewTab.</td>
+      </tr>
+      <tr>
+        <td class="api-list">DockingState</td>
+        <td class="api-list"><a href="DockingStateEnum.htm">DockingStateEnum</a></td>
+        <td class="api-list">Input DockingStateEnum value that specifies the docking state of the current ViewTab. If the CreateNewGroup is set to True then the current ViewTab will be docked to the location against the TargetViewTab’s group, valid values for this argument are: kDockBottom, kDockTop, kDockLeft and kDockRight. If the CreateNewGroup is set to False, then the current ViewTab will be moved to the left or right side of the TargetViewTab, so valid values for this argument are: kDockLeft and kDockRight.</td>
+      </tr>
+      <tr>
+        <td class="api-list">AdditionalViewTabs</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional&nbsp;input ObjectCollection object containing ViewTab objects as additional view tabs to move to the group with current ViewTab.<br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ViewTabMoveSample_Sample.htm">Move view tab between different view frames</a></td>
+        <td class="api-list">This sample demonstrates how to move views using ViewTab between different view frames.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2022<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(ViewTab.MoveToGroup%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,160 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/OrdinateDimensionSet.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="OrdinateDimensionSet">
+    <meta name="description" content="OrdinateDimensionSet Object">
+    <meta name="topicid" content="GUID-OrdinateDimensionSet">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>OrdinateDimensionSet Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">OrdinateDimensionSet Object
+			</h1><br><h2 class="api">
+          Description
+        </h2>The OrdinateDimensionSet object represents an ordinate dimension set placed on a sheet.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="OrdinateDimensionSet_AddMember.htm">AddMember</a></td>
+        <td class="api-list">Method that adds a member to the ordinate set and returns an OrdinateDimension object that represents the member.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="OrdinateDimensionSet_Delete.htm">Delete</a></td>
+        <td class="api-list">Method that deletes the OrdinateDimensionSet.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="OrdinateDimensionSet_GetReferenceKey.htm">GetReferenceKey</a></td>
+        <td class="api-list">Method that generates and returns the reference key for this entity.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="OrdinateDimensionSet_AlignMembers.htm">AlignMembers</a></td>
+        <td class="api-list">Gets and sets whether to align the text and the jog points of all the members.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="OrdinateDimensionSet_AllowBrokenLeaders.htm">AllowBrokenLeaders</a></td>
+        <td class="api-list">Gets and sets whether to allow jog points (movable vertices) on the dimensions.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="OrdinateDimensionSet_Application.htm">Application</a></td>
+        <td class="api-list">Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="OrdinateDimensionSet_AttributeSets.htm">AttributeSets</a></td>
+        <td class="api-list">Property that returns the AttributeSets collection object associated with this object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="OrdinateDimensionSet_ContinuousRunning.htm">ContinuousRunning</a></td>
+        <td class="api-list">Gets and sets whether to display continuity line between the set members.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="OrdinateDimensionSet_DimensionType.htm">DimensionType</a></td>
+        <td class="api-list">Property that returns the dimension type of the ordinate set. Possible values are kAlignedDimensionType, kHorizontalDimensionType and kVerticalDimensionType.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="OrdinateDimensionSet_DirectionReversed.htm">DirectionReversed</a></td>
+        <td class="api-list">Gets and sets whether to reverse the direction of positive numbers.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="OrdinateDimensionSet_Layer.htm">Layer</a></td>
+        <td class="api-list">Gets and sets the layer for the dimension set.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="OrdinateDimensionSet_Members.htm">Members</a></td>
+        <td class="api-list">Property that returns all the member OrdinateDimension objects.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="OrdinateDimensionSet_OriginArrowheadType.htm">OriginArrowheadType</a></td>
+        <td class="api-list">Read-write property that gets and sets the arrowhead type for the origin member of the ordinate dimension set.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="OrdinateDimensionSet_OriginMember.htm">OriginMember</a></td>
+        <td class="api-list">Gets and sets the origin for the ordinate dimension set.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="OrdinateDimensionSet_Parent.htm">Parent</a></td>
+        <td class="api-list">Property that returns the parent sheet of the object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="OrdinateDimensionSet_PositiveBothDirections.htm">PositiveBothDirections</a></td>
+        <td class="api-list">Gets and sets whether dimension values should be positive in both directions of the origin.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="OrdinateDimensionSet_Precision.htm">Precision</a></td>
+        <td class="api-list">Gets and sets the number of decimal places displayed for all the members in this set.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="OrdinateDimensionSet_ShowDirection.htm">ShowDirection</a></td>
+        <td class="api-list">Gets and sets whether to place an arrow on the origin dimension pointing in the positive direction.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="OrdinateDimensionSet_Style.htm">Style</a></td>
+        <td class="api-list">Gets and sets the dimension style used for this dimension set.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="OrdinateDimensionSet_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="OrdinateDimension_OrdinateDimensionSet.htm">OrdinateDimension.OrdinateDimensionSet</a>, <a href="OrdinateDimensionSets_Add.htm">OrdinateDimensionSets.Add</a>, <a href="OrdinateDimensionSets_Item.htm">OrdinateDimensionSets.Item</a><h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2010<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(OrdinateDimensionSet%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

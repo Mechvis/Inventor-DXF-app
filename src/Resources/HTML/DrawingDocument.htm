@@ -1,0 +1,555 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/DrawingDocument.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="DrawingDocument">
+    <meta name="description" content="DrawingDocument Object">
+    <meta name="topicid" content="GUID-DrawingDocument">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>DrawingDocument Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">DrawingDocument Object
+			</h1>
+              Derived from: <a href="Document.htm">Document</a> Object
+            <br><h2 class="api">
+          Description
+        </h2>The DrawingDocument object provides methods and properties to create, activate, save, and query many properties of individual drawing documents.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_Activate.htm">Activate</a></td>
+        <td class="api-list">Makes this document the active one (receives user-focus).</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_Close.htm">Close</a></td>
+        <td class="api-list">Closes this document.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_CreateHighlightSet.htm">CreateHighlightSet</a></td>
+        <td class="api-list">Method that creates a new highlight set.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_FindWhereUsed.htm">FindWhereUsed</a></td>
+        <td class="api-list">Method that obtains the set of documents that reference the given file within this document.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_GetLocationFoundIn.htm">GetLocationFoundIn</a></td>
+        <td class="api-list">Obtains the name of the location this file was found in.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_GetMissingAddInBehavior.htm">GetMissingAddInBehavior</a></td>
+        <td class="api-list">Method that gets the commands disabled when a particular AddIn is absent.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_GetPrivateStorage.htm">GetPrivateStorage</a></td>
+        <td class="api-list">Obtains a private sub-storage within this document with the given name. Can create one, if one does not exist.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_GetPrivateStream.htm">GetPrivateStream</a></td>
+        <td class="api-list">Obtains a private stream within this document with the given name. Can create one, if one does not exist.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_HasPrivateStorage.htm">HasPrivateStorage</a></td>
+        <td class="api-list">Obtains a Boolean flag indicating if the specified sub-storage exists within this document.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_HasPrivateStream.htm">HasPrivateStream</a></td>
+        <td class="api-list">Obtains a Boolean flag indicating if the specified stream exists within this document.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_MakeAllViewsPrecise.htm">MakeAllViewsPrecise</a></td>
+        <td class="api-list">Set all drawing views in the document to be precise views.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_MakeAllViewsRaster.htm">MakeAllViewsRaster</a></td>
+        <td class="api-list">Set all drawing views in the document to be raster views.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_ProcessViewSelection.htm">ProcessViewSelection</a></td>
+        <td class="api-list">Process object selection according to the context of the document referenced by the containing view.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_PutInternalNameAndRevisionId.htm">PutInternalNameAndRevisionId</a></td>
+        <td class="api-list">Constructs and sets the Internal Name and Revision Identifier for this Document from strings supplied. This can only be done on a previously un-saved document (New or SaveCopyAs)</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_Rebuild.htm">Rebuild</a></td>
+        <td class="api-list">Performs compute operations on all of the entities within this document's scope as if all of the driving entities had been 'dirtied.'</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_Rebuild2.htm">Rebuild2</a></td>
+        <td class="api-list">Method that performs compute operations on all of the entities within this Document's scope as if all of the driving entities had been 'dirtied'.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_ReleaseReference.htm">ReleaseReference</a></td>
+        <td class="api-list">Method that releases the reference that gets added if a document is opened invisibly through the API. Releasing the reference on a hidden document makes it a candidate for closure the next time Inventor closes all unreferenced documents.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_ResolveFile.htm">ResolveFile</a></td>
+        <td class="api-list">Method that invoke the resolve file for the document if there are references missing.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_RevertReservedForWriteByMe.htm">RevertReservedForWriteByMe</a></td>
+        <td class="api-list">Method that reverts the file checked out by the caller.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_Save.htm">Save</a></td>
+        <td class="api-list">Saves this document to disk.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_Save2.htm">Save2</a></td>
+        <td class="api-list">Method that saves the document and the specified dependent documents.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_SaveAs.htm">SaveAs</a></td>
+        <td class="api-list">Saves this document into a file of the specified name.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_SaveAs2.htm">SaveAs2</a></td>
+        <td class="api-list">Saves this document into a file of the specified name.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_SaveAsInventorDWG.htm">SaveAsInventorDWG</a></td>
+        <td class="api-list">Method that saves the document as an Inventor DWG with the specified name.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_SetMissingAddInBehavior.htm">SetMissingAddInBehavior</a></td>
+        <td class="api-list">Method that sets the commands to be disabled when a particular AddIn is absent.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_SetThumbnailSaveOption.htm">SetThumbnailSaveOption</a></td>
+        <td class="api-list">Method that sets the thumbnail (preview picture) save option.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_Update.htm">Update</a></td>
+        <td class="api-list">Performs compute operations on all of the entities within this Document's scope that may be out of date with respect to their driving entities.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_Update2.htm">Update2</a></td>
+        <td class="api-list">Method that performs compute operations on all of the entities within this Document's scope that may be out of date with respect to their driving entities.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_ActivatedObject.htm">ActivatedObject</a></td>
+        <td class="api-list">Gets the object that has been in-place activated for edit within the context of this document.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_ActiveSheet.htm">ActiveSheet</a></td>
+        <td class="api-list">Property that returns the currently active sheet.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_AllReferencedDocuments.htm">AllReferencedDocuments</a></td>
+        <td class="api-list">Property that returns all the document references of this Document along with all of the recursively nested references.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_AttributeManager.htm">AttributeManager</a></td>
+        <td class="api-list">Returns the AttributeManager object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_AttributeSets.htm">AttributeSets</a></td>
+        <td class="api-list">Property that returns the AttributeSets collection object associated with this object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_AutoCADBlockDefinitions.htm">AutoCADBlockDefinitions</a></td>
+        <td class="api-list">Property that returns the AutoCADBlockDefinitions collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_BorderDefinitions.htm">BorderDefinitions</a></td>
+        <td class="api-list">Property that returns the BorderDefinitions collection object. This object provides access to all of the border definitions in the document and provides functionality to create new border definitions.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_BrowserPanes.htm">BrowserPanes</a></td>
+        <td class="api-list">Property that returns the <link Inventor::BrowserPanes, BrowserPanes> collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_ClientViews.htm">ClientViews</a></td>
+        <td class="api-list">Returns document's client views.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_Compacted.htm">Compacted</a></td>
+        <td class="api-list">Gets the Boolean that states whether this file has been processed for compaction since the last save.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_ContainingDWGDocument.htm">ContainingDWGDocument</a></td>
+        <td class="api-list">Gets the reference to the containing DWG document when this document is stored in a DWG.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_DatabaseRevisionId.htm">DatabaseRevisionId</a></td>
+        <td class="api-list">Gets the GUID that represents the last saved revision of database contained in this document. This revision id tracks modifications to the database (such as reference changes, geometry changes, etc.) but does not track file property changes.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_DefaultCommand.htm">DefaultCommand</a></td>
+        <td class="api-list">Gets the default command for this document.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_Dirty.htm">Dirty</a></td>
+        <td class="api-list">Gets/Sets a Boolean flag indicating if the Document has been written into, since opened.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_DisabledCommandList.htm">DisabledCommandList</a></td>
+        <td class="api-list">Property that returns the DisabledCommandList object. This object allows the document to disable specific commands. This list contains commands that are disabled in addition to those specified by the DisabledCommandTypes property.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_DisabledCommandTypes.htm">DisabledCommandTypes</a></td>
+        <td class="api-list">Bit mask indicating the disabled command types.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_DisplayNameBasis.htm">DisplayNameBasis</a></td>
+        <td class="api-list">Gets and sets the display name basis of this document. This defaults to file name.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_DisplayNameOverridden.htm">DisplayNameOverridden</a></td>
+        <td class="api-list">Read-write property that gets and sets whether the display name of the document has been overridden.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_DocumentEvents.htm">DocumentEvents</a></td>
+        <td class="api-list">This object supports a set of events that are specific to the document.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_DocumentInterests.htm">DocumentInterests</a></td>
+        <td class="api-list">Property that returns the DocumentInterests collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_DocumentSubType.htm">DocumentSubType</a></td>
+        <td class="api-list">Property that returns the subtype of the document.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_DocumentType.htm">DocumentType</a></td>
+        <td class="api-list">Gets the constant that indicates the type of this document.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_DrawingBOMs.htm">DrawingBOMs</a></td>
+        <td class="api-list">Property that returns the collection of locally stored BOMs in this drawing document.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_DrawingEvents.htm">DrawingEvents</a></td>
+        <td class="api-list">Property that gets the DrawingEvents object. This provides drawing event notification such as onRetrieveDimensions.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_DrawingHatchPatternsManager.htm">DrawingHatchPatternsManager</a></td>
+        <td class="api-list">Read-only property that returns the DrawingHatchPatternsManager object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_DrawingSettings.htm">DrawingSettings</a></td>
+        <td class="api-list">The DrawingSettings object provides access to various drawing related document settings. This is somewhat equivalent to the Drawing tab of the Document Settings dialog.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_EnvironmentManager.htm">EnvironmentManager</a></td>
+        <td class="api-list">Property that returns the EnvironmentManager object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_File.htm">File</a></td>
+        <td class="api-list">Property that returns the file (storage) on disk that contains this document.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_FilePropertySets.htm">FilePropertySets</a></td>
+        <td class="api-list">Read-only property that returns the file PropertySets. This is equivalent to the iProperties that got from Shell Extension.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_FileSaveCounter.htm">FileSaveCounter</a></td>
+        <td class="api-list">Gets the number that indicates the number of times the file has been saved.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_FullDisplayName.htm">FullDisplayName</a></td>
+        <td class="api-list">Read-only property that returns the full display name of this document.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_FullDocumentName.htm">FullDocumentName</a></td>
+        <td class="api-list">Property that returns the fully qualified name of the document. The string is the full file name concatenated with the document name and is a unique identifier for the document. The document name is returned by the Name property on the Document object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_FullFileName.htm">FullFileName</a></td>
+        <td class="api-list">Gets/Sets the fully qualified file-name of this Document.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_GraphicsDataSetsCollection.htm">GraphicsDataSetsCollection</a></td>
+        <td class="api-list">Property that returns the object for the document.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_HasReferencesMissing.htm">HasReferencesMissing</a></td>
+        <td class="api-list">Read-only property that returns whether there are references missing for this document.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_InternalName.htm">InternalName</a></td>
+        <td class="api-list">Gets the Internal Name (a GUID) for this document.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_IsInventorDWG.htm">IsInventorDWG</a></td>
+        <td class="api-list">Property that returns whether this is an Inventor DWG document.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_IsModifiable.htm">IsModifiable</a></td>
+        <td class="api-list">Property that returns whether this document can be currently modified. One of the reasons a document may be non-modifiable is if any other document belonging to the file containing this document is currently being edited.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_ModelStateName.htm">ModelStateName</a></td>
+        <td class="api-list">Read-only property that returns the model state that this document represents.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_NeedsMigrating.htm">NeedsMigrating</a></td>
+        <td class="api-list">Property that returns whether the document needs to be migrated to the current release.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_NonTransactingClientGraphicsCollection.htm">NonTransactingClientGraphicsCollection</a></td>
+        <td class="api-list">Read-only property that returns the non-transacting ClientGraphicsCollection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_NonTransactingGraphicsDataSetsCollection.htm">NonTransactingGraphicsDataSetsCollection</a></td>
+        <td class="api-list">Read-only property that returns the non-transacting GraphicsDataSetsCollection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_Open.htm">Open</a></td>
+        <td class="api-list">Property that returns whether this document is currently open. If False, the document has only been initialized and calling methods or properties on the document could cause it to open.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_Parameters.htm">Parameters</a></td>
+        <td class="api-list">Property that returns the set of parameters stored in this drawing document.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_Parent.htm">Parent</a></td>
+        <td class="api-list">Property that returns the parent object from whom this object can logically be reached.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_PrintManager.htm">PrintManager</a></td>
+        <td class="api-list">Property that returns the PrintManager, or when called from a DrawingDocument it returns a DrawingPrintManager object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_PropertySets.htm">PropertySets</a></td>
+        <td class="api-list">Gets the Property Sets object that controls the file's published-format properties.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_RecentChanges.htm">RecentChanges</a></td>
+        <td class="api-list">Gets a bit-encoded value where the bits indicate the kind of changes made to the document since it became dirty.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_ReferencedDocumentDescriptors.htm">ReferencedDocumentDescriptors</a></td>
+        <td class="api-list">Property that returns an enumeration of descriptors that represent the native document references held by this document.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_ReferencedDocuments.htm">ReferencedDocuments</a></td>
+        <td class="api-list">Property that returns all the documents directly referenced by this document.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_ReferencedOLEFileDescriptors.htm">ReferencedOLEFileDescriptors</a></td>
+        <td class="api-list">Property that returns the collection of linked and embedded files in the document.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_ReferencedOLEFileDescriptors2.htm">ReferencedOLEFileDescriptors2</a></td>
+        <td class="api-list">Gets the collection of OLE attachments made in this Document that match the input type. Returns all OLE attachments if type is kOLEDocumentUnknownObject.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_ReferencedOpaqueFileDescriptors.htm">ReferencedOpaqueFileDescriptors</a></td>
+        <td class="api-list">Gets the collection of descriptor objects, presenting (editable) information about opaque references held.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_ReferenceKeyManager.htm">ReferenceKeyManager</a></td>
+        <td class="api-list">Gets this document's ReferenceKeyManager.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_ReferencingDocuments.htm">ReferencingDocuments</a></td>
+        <td class="api-list">Property that returns all the documents in memory that reference this document. A referencing document may or may not be fully open (i.e. may just be initialized).</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_RequiresUpdate.htm">RequiresUpdate</a></td>
+        <td class="api-list">Gets the Boolean indicating if any of the entities within this document's scope is out of date with respect to their driving entities.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_ReservedForWrite.htm">ReservedForWrite</a></td>
+        <td class="api-list">Gets the Boolean flag indicating whether this file has been reserved for write by someone.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_ReservedForWriteByMe.htm">ReservedForWriteByMe</a></td>
+        <td class="api-list">Gets/Sets the Boolean flag indicating whether this file has been reserved for write by the caller.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_ReservedForWriteLogin.htm">ReservedForWriteLogin</a></td>
+        <td class="api-list">Gets the login of the person who currently holds the reservation to write.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_ReservedForWriteName.htm">ReservedForWriteName</a></td>
+        <td class="api-list">Gets the name of the person who currently holds the reservation to write.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_ReservedForWriteTime.htm">ReservedForWriteTime</a></td>
+        <td class="api-list">Gets the time at which the reservation was made.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_ReservedForWriteVersion.htm">ReservedForWriteVersion</a></td>
+        <td class="api-list">Gets the version within this file that has been reserved for write.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_SelectionPreferences.htm">SelectionPreferences</a></td>
+        <td class="api-list">Gets the SelectionPreferences.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_SelectionPriority.htm">SelectionPriority</a></td>
+        <td class="api-list">Gets and sets the current selection priority for the document.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_SelectSet.htm">SelectSet</a></td>
+        <td class="api-list">Property that returns the SelectSet object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_SheetFormats.htm">SheetFormats</a></td>
+        <td class="api-list">Property that returns the SheetFormats collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_Sheets.htm">Sheets</a></td>
+        <td class="api-list">Property that returns the Sheets collection object. This object provides access to all of the sheets in the document.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_SheetSettings.htm">SheetSettings</a></td>
+        <td class="api-list">Property that returns the SheetSettings object. The SheetSettings object provides access to various sheet related document options. This is somewhat equivalent to the Sheet tab of the Document Settings dialog.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_SketchedSymbolDefinitions.htm">SketchedSymbolDefinitions</a></td>
+        <td class="api-list">Property that returns the SketchedSymbolDefinitions collection object. This object provides access to all of the sketched symbol definitions available for placement in the document and provides functionality to create new sketched symbol definitions.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_SketchSettings.htm">SketchSettings</a></td>
+        <td class="api-list">Property that returns the SketchSettings object. The SketchSettings object provides access to various sketch related document options. This is somewhat equivalent to the Sketch tab of the Document Settings dialog.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_SoftwareVersionCreated.htm">SoftwareVersionCreated</a></td>
+        <td class="api-list">Gets the object that encapsulates the version of the software with which this document was first created.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_SoftwareVersionSaved.htm">SoftwareVersionSaved</a></td>
+        <td class="api-list">Gets the object that encapsulates the version of the software with which this document was last saved.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_StylesManager.htm">StylesManager</a></td>
+        <td class="api-list">Property that returns the DrawingStylesManager object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_SubType.htm">SubType</a></td>
+        <td class="api-list">Gets/Sets the sub-Type (a published GUID. See DocCLSIDs.h) of this Document. Setting a new sub-Type will invoke a validation sequence and may fail if the operation is invalid.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_Thumbnail.htm">Thumbnail</a></td>
+        <td class="api-list">Property that returns a bitmap picture of the document.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_ThumbnailSaveOption.htm">ThumbnailSaveOption</a></td>
+        <td class="api-list">Property that returns the current thumbnail (preview picture) save option.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_TitleBlockDefinitions.htm">TitleBlockDefinitions</a></td>
+        <td class="api-list">Property that returns the TitleBlockDefinitions collection object. This object provides access to all of the title block definition in the document and provides functionality to create new title block definitions.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_UnitsOfMeasure.htm">UnitsOfMeasure</a></td>
+        <td class="api-list">Property that returns the UnitsOfMeasure object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_VBAProject.htm">VBAProject</a></td>
+        <td class="api-list">Property that returns the Autodesk Inventor VBA project for this document.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_Views.htm">Views</a></td>
+        <td class="api-list">Gets all the open views of this document in a collection.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="AutoCADBlockDefinition_Parent.htm">AutoCADBlockDefinition.Parent</a>, <a href="BorderDefinition_Parent.htm">BorderDefinition.Parent</a>, <a href="DrawingBOM_Parent.htm">DrawingBOM.Parent</a>, <a href="DrawingEvents_Parent.htm">DrawingEvents.Parent</a>, <a href="DrawingHatchPatternsManager_Parent.htm">DrawingHatchPatternsManager.Parent</a>, <a href="DrawingSettings_Parent.htm">DrawingSettings.Parent</a>, <a href="DrawingStylesManager_Parent.htm">DrawingStylesManager.Parent</a>, <a href="SheetFormat_Parent.htm">SheetFormat.Parent</a>, <a href="SheetSettings_Parent.htm">SheetSettings.Parent</a>, <a href="SketchedSymbolDefinition_Parent.htm">SketchedSymbolDefinition.Parent</a>, <a href="TitleBlockDefinition_Parent.htm">TitleBlockDefinition.Parent</a><h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Balloons_Sample.htm">Balloons - edit</a></td>
+        <td class="api-list">This sample demonstrates the editing of balloons in a drawing.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Balloons_Add_Sample.htm">Creation a balloon</a></td>
+        <td class="api-list">This sample demonstrates the creation of a balloon.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BalloonValueSet_ReferencedRow_Sample.htm">Find component referenced by balloon</a></td>
+        <td class="api-list">This sample demonstrates how to find the component that a balloon references.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="CustomTables_Sample.htm">Custom Table - create</a></td>
+        <td class="api-list">This sample demonstrates how to create a custom table.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TitleBlockDefinition_Sample.htm">Title Block Definition Create and Insert</a></td>
+        <td class="api-list">This sample illustrates creating a new title block definition object and inserting it into the active sheet. This sample consists of two subs. The first demonstrates the creation of a title block definition and the second inserts it into the active sheet.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TitleBlockDefinition_CopyTo_Sample.htm">Copying a title block definition</a></td>
+        <td class="api-list">This sample demonstrates copying a title block definition from one drawing to another and replacing the existing title blocks in the drawing with the new title block.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 4<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(DrawingDocument%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

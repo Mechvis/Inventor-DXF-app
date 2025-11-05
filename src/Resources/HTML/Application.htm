@@ -1,0 +1,537 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/Application.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="Application">
+    <meta name="description" content="Application Object">
+    <meta name="topicid" content="GUID-Application">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>Application Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">Application Object
+			</h1>
+              Derived from: <a href="InventorServerObject.htm">InventorServerObject</a> Object
+            <br><h2 class="api">
+          Description
+        </h2>Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_ConstructInternalNameAndRevisionId.htm">ConstructInternalNameAndRevisionId</a></td>
+        <td class="api-list">Constructs and returns the Internal Name and Revision Identifier</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_CreateFactoryTableDialog.htm">CreateFactoryTableDialog</a></td>
+        <td class="api-list">Creates a Factory Table dialog.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_CreateFileDialog.htm">CreateFileDialog</a></td>
+        <td class="api-list">Method that creates a new FileDialog object. The FileDialog object is similar to the Microsoft common dialog control and allows you to reuse the Inventor open and save dialogs.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_CreateProgressBar.htm">CreateProgressBar</a></td>
+        <td class="api-list">Method that creates a new ProgressBar object. The progress bar is not immediately displayed. Calling the UpdateProgress method for the first time causes the bar to display.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_ExportApplicationOptions.htm">ExportApplicationOptions</a></td>
+        <td class="api-list">Method that exports the Application Options to an XML file.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_GetAppFrameExtents.htm">GetAppFrameExtents</a></td>
+        <td class="api-list">Obtains the position and size of the application's main frame window.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_GetInterfaceObject.htm">GetInterfaceObject</a></td>
+        <td class="api-list">Constructs and returns the IUnknown object for the specified ProgID or CLSID.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_GetInterfaceObject32.htm">GetInterfaceObject32</a></td>
+        <td class="api-list">In 32-bit Autodesk Inventor, this method always returns the same object as GetInterfaceObject.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_GetMaterialXFromAsset.htm">GetMaterialXFromAsset</a></td>
+        <td class="api-list">Method that gets the MaterialX string from an Asset.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_GetMDIClientAreaExtents.htm">GetMDIClientAreaExtents</a></td>
+        <td class="api-list">Obtains the position and size of the Application's MDI client area.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_ImportApplicationOptions.htm">ImportApplicationOptions</a></td>
+        <td class="api-list">Method that imports the Application Options from an XML file.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_Move.htm">Move</a></td>
+        <td class="api-list">Method that moves the frame window.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_Quit.htm">Quit</a></td>
+        <td class="api-list">Shuts down the application.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_RefreshRibbonForComparison.htm">RefreshRibbonForComparison</a></td>
+        <td class="api-list">Method that refreshes the ribbon controls display when the comparison is set.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_ReserveLicense.htm">ReserveLicense</a></td>
+        <td class="api-list">Informs Inventor/Apprentice that a license should be retained for this instance of the application. Used to prevent idle detection from returning the seat license to the license pool. Requires a call to UnreserveLicense with the same ClientID to allow license reclamation to resume.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_UnreserveLicense.htm">UnreserveLicense</a></td>
+        <td class="api-list">Informs Inventor/Apprentice that normal seat license reclamation can resume. Use this method when extended processing for which a license was reserved completes. Do not use without a previous call to ReserveLicense using the same ClientID.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_UseAutoCADRelatedSettings.htm">UseAutoCADRelatedSettings</a></td>
+        <td class="api-list">Method that sets the Application Options using AutoCAD related settings.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_UseInventorSettings.htm">UseInventorSettings</a></td>
+        <td class="api-list">Method that sets the Application Options using Inventor Settings.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_ActiveAppearanceLibrary.htm">ActiveAppearanceLibrary</a></td>
+        <td class="api-list">Read-write property that gets and sets the library whose contents is listed in the appearances drop-down list in the QAT (Quick Access Toolbar)_at the top of the Inventor window.&nbsp;The initial active appearance is defined by the active project.&nbsp;Using this property you can override the project appearance.&nbsp;When a new project is activated the active appearance will be determined by the activated project.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_ActiveColorScheme.htm">ActiveColorScheme</a></td>
+        <td class="api-list">Property that returns the ColorScheme that is currently active.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_ActiveDocument.htm">ActiveDocument</a></td>
+        <td class="api-list">Gets the active Document.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_ActiveDocumentType.htm">ActiveDocumentType</a></td>
+        <td class="api-list">Gets the type of the active document.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_ActiveEditDocument.htm">ActiveEditDocument</a></td>
+        <td class="api-list">Property that returns the current in-place editing document.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_ActiveEditObject.htm">ActiveEditObject</a></td>
+        <td class="api-list">Gets the object that is currently open for edit within the Autodesk Inventor user interface.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_ActiveMaterialLibrary.htm">ActiveMaterialLibrary</a></td>
+        <td class="api-list">Gets and sets the library whose contents is listed in the materials drop-down list in the QAT(Quick Access Toolbar) at the top of the Inventor window.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_ActiveView.htm">ActiveView</a></td>
+        <td class="api-list">Gets the active view.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_ActiveViewFrame.htm">ActiveViewFrame</a></td>
+        <td class="api-list">Read-only property that returns the active ViewFrame object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_ApplicationAddIns.htm">ApplicationAddIns</a></td>
+        <td class="api-list">Property that returns the ApplicationAddIns object. This object provides access to the Add-Ins currently installed.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_ApplicationEvents.htm">ApplicationEvents</a></td>
+        <td class="api-list">Property that returns the ApplicationEvents object. This object supports a set of events that are application-centric.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_AssemblyEvents.htm">AssemblyEvents</a></td>
+        <td class="api-list">Property that returns the AssemblyEvents object. This object supports a set of events that are assembly centric.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_AssemblyOptions.htm">AssemblyOptions</a></td>
+        <td class="api-list">Property that returns the AssemblyOptions object. The AssemblyOptions object provides access to various assembly related application level options. This is somewhat equivalent to the Assembly tab of the Application Options dialog.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_AssetLibraries.htm">AssetLibraries</a></td>
+        <td class="api-list">Gets AssetLibraries collection object. This collection provides access to the all of the appearance and material libraries.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_AvailableComparisonVersions.htm">AvailableComparisonVersions</a></td>
+        <td class="api-list">Read-only property that returns an array of strings indicating the versions can be used to compare the commands with selected version.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_CameraEvents.htm">CameraEvents</a></td>
+        <td class="api-list">Gets the object that fires the Camera related events.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_Caption.htm">Caption</a></td>
+        <td class="api-list">Gets/Sets the caption on the Application's frame window.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_ChangeManager.htm">ChangeManager</a></td>
+        <td class="api-list">Gets the ChangeManager object. The ChangeManager object manages the processes involved in making changes to data and recording the change process.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_ClientOperationEvents.htm">ClientOperationEvents</a></td>
+        <td class="api-list">Read-only property that returns the ClientOperationEvents object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_ClientResourceMaps.htm">ClientResourceMaps</a></td>
+        <td class="api-list">Read-only property that returns ClientResourceMaps object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_ColorSchemes.htm">ColorSchemes</a></td>
+        <td class="api-list">Property that returns the ColorSchemes object. The ColorSchemes object provides access to the color schemes. This is somewhat equivalent to the Colors tab of the Application Options dialog.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_CommandManager.htm">CommandManager</a></td>
+        <td class="api-list">Property that returns the CommandManager object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_ComparisonVersion.htm">ComparisonVersion</a></td>
+        <td class="api-list">Read-write property that gets and sets the comparison version for commands. When set a comparison version, the commands will show additional info against the version (like whether a command is introduced/updated later than the version). The AvailableComparison.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_ContentCenter.htm">ContentCenter</a></td>
+        <td class="api-list">Property that returns the ContentCenter object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_ContentCenterOptions.htm">ContentCenterOptions</a></td>
+        <td class="api-list">Returns the ContentCenterOptions object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_DesignProjectManager.htm">DesignProjectManager</a></td>
+        <td class="api-list">Gets the design project manager object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_DisplayOptions.htm">DisplayOptions</a></td>
+        <td class="api-list">Gets the Display Options.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_Documents.htm">Documents</a></td>
+        <td class="api-list">Gets all the in-memory documents in a collection.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_DrawingOptions.htm">DrawingOptions</a></td>
+        <td class="api-list">Property that returns the DrawingOptions object. The DrawingOptions object provides access to various drawing related application level options. This is somewhat equivalent to the Drawing tab of the Application Options dialog.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_ErrorManager.htm">ErrorManager</a></td>
+        <td class="api-list">Property that returns the ErrorManager object. This object can be used to get errors that occurred during an API call, add to Inventor's errors or to display them.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_FavoriteAssets.htm">FavoriteAssets</a></td>
+        <td class="api-list">Gets the set of favorite assets. This includes both appearance and material assets.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_FileAccessEvents.htm">FileAccessEvents</a></td>
+        <td class="api-list">Property that returns the FileAccessEvents object. This object supports a set of events that are fired as a result of a file being accessed.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_FileManager.htm">FileManager</a></td>
+        <td class="api-list">Property that returns the FileManager object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_FileOptions.htm">FileOptions</a></td>
+        <td class="api-list">Property that returns the FileOptions object. The FileOptions object provides access to various file related application level options. This is somewhat equivalent to the File tab of the Application Options dialog.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_FileUIEvents.htm">FileUIEvents</a></td>
+        <td class="api-list">Property that returns the FileUIEvents object. This object supports a set of events that are fired in reaction to certain user interface actions.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_GeneralOptions.htm">GeneralOptions</a></td>
+        <td class="api-list">Property that returns the GeneralOptions object. The GeneralOptions object provides access to various application level options. This is somewhat equivalent to the General tab of the Application Options dialog.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_HardwareOptions.htm">HardwareOptions</a></td>
+        <td class="api-list">Gets the Hardware Options.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_Height.htm">Height</a></td>
+        <td class="api-list">Gets/Sets Height edge of the frame window.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_HelpManager.htm">HelpManager</a></td>
+        <td class="api-list">Gets the HelpManager object that provides access to the help-related activity taking place in the system.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_iFeatureOptions.htm">iFeatureOptions</a></td>
+        <td class="api-list">Property that returns the iFeatureOptions object. The iFeatureOptions object provides access to various iFeature related application level options. This is somewhat equivalent to the iFeature tab of the Application Options dialog.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_InstallPath.htm">InstallPath</a></td>
+        <td class="api-list">Property that returns the full path where Inventor/Apprentice is installed.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_IsIn3dPrintMode.htm">IsIn3dPrintMode</a></td>
+        <td class="api-list">Read-only property that indicates whether Application is in 3D print preview mode.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_LanguageCode.htm">LanguageCode</a></td>
+        <td class="api-list">Read-only property that returns the language code used to describe the current language being used by Inventor.&nbsp;The code is returned in the form of an EITF language code.&nbsp;The following codes can be returned by Inventor:
+<ul>
+<li>Brazilian Portuguese: pt-BR</li>
+<li>Czech: cs-CZ</li>
+<li>English: en-US</li>
+<li>French: fr-FR</li>
+<li>German: de-DE</li>
+<li>Italian: it-IT</li>
+<li>Japanese: ja-JP</li>
+<li>Korean: ko-KR</li>
+<li>Polish: pl-PL</li>
+<li>Russian: ru-RU</li>
+<li>Simplified Chinese: zh-CN</li>
+<li>Spanish: es-ES</li>
+<li>Traditional Chinese: zh-TW</li>
+</ul></td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_LanguageName.htm">LanguageName</a></td>
+        <td class="api-list">Gets the language currently in use in Autodesk Inventor.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_LanguageTools.htm">LanguageTools</a></td>
+        <td class="api-list">Property that returns the LanguageTools object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_Left.htm">Left</a></td>
+        <td class="api-list">Gets/Sets the distance between the left edge of the screen and left edge of the frame window.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_Locale.htm">Locale</a></td>
+        <td class="api-list">Property that returns the Locale Id currently in use in Autodesk Inventor, along with a string name of the language. Calling GetLocaleInfo with the LocaleId should give you further information.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_LoggedIn.htm">LoggedIn</a></td>
+        <td class="api-list">Read-only property that returns whether a user has logged in the online services or not.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_LoginUserId.htm">LoginUserId</a></td>
+        <td class="api-list">Read-only property that returns the login user Id(this is the same as the A360 oxygen Id). This returns empty string if has not logged in.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_LoginUserName.htm">LoginUserName</a></td>
+        <td class="api-list">Read-only property that returns the online services login user name. This returns empty string if has not logged in.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_MainFrameHWND.htm">MainFrameHWND</a></td>
+        <td class="api-list">Gets the Application main window's HWND.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_MaterialDisplayUnits.htm">MaterialDisplayUnits</a></td>
+        <td class="api-list">Gets and sets the units that are used in the user interface when working with materials.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_MeasureTools.htm">MeasureTools</a></td>
+        <td class="api-list">Returns the MeasureTools object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_ModelingEvents.htm">ModelingEvents</a></td>
+        <td class="api-list">Property that returns the ModelingEvents object. This object supports a set of events that are common to parts and assemblies.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_ModelStateEvents.htm">ModelStateEvents</a></td>
+        <td class="api-list">Read-only property that returns the ModelStateEvents object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_MRUDisplay.htm">MRUDisplay</a></td>
+        <td class="api-list">Gets/Sets the property that turns display of the application's MRU list on and off.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_MRUEnabled.htm">MRUEnabled</a></td>
+        <td class="api-list">Gets/Sets the property that deals with the application's ability to add files to the MRU list.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_NotebookOptions.htm">NotebookOptions</a></td>
+        <td class="api-list">Property that returns the NotebookOptions object. The NotebookOptions object provides access to various notebook related application level options. This is somewhat equivalent to the Notebook tab of the Application Options dialog.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_OpenDocumentsDisplay.htm">OpenDocumentsDisplay</a></td>
+        <td class="api-list">Gets/Sets the property that turns display of the application's Open Documents list on and off.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_PartOptions.htm">PartOptions</a></td>
+        <td class="api-list">Property that returns the PartOptions object. The PartOptions object provides access to various part related application level options. This is somewhat equivalent to the Part tab of the Application Options dialog.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_PresentationOptions.htm">PresentationOptions</a></td>
+        <td class="api-list">Gets the Presentation Options.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_PromptsOptions.htm">PromptsOptions</a></td>
+        <td class="api-list">Gets the Prompts Options object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_Ready.htm">Ready</a></td>
+        <td class="api-list">Boolean property indicating whether Inventor has completed its initialization. This includes initialization of all the Add-ins loaded at startup.This property should be used in conjunction with the ApplicationEvents.OnReady event.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_RepresentationEvents.htm">RepresentationEvents</a></td>
+        <td class="api-list">Property that returns the RepresentationEvents object. This object supports a set of events related to design view and positional representations that are assembly centric.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_SaveOptions.htm">SaveOptions</a></td>
+        <td class="api-list">Property that returns the SaveOptions object. The SaveOptions object provides access to various save related application level options. This is somewhat equivalent to the Save tab of the Application Options dialog.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_ScreenUpdating.htm">ScreenUpdating</a></td>
+        <td class="api-list">Gets and sets whether the screen is updated (redrawn) during a series of actions. Turn off screen updating while a series of actions are performed so that the screen is not redrawn after each action. Remember to turn screen updating on to update the screen.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_SilentOperation.htm">SilentOperation</a></td>
+        <td class="api-list">Gets/Sets the Boolean flag that controls whether an operation will proceed without prompting (if that gets required...e.g.: error message dismissal). If Inventor is running visible, this property is FALSE by default.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_SketchEvents.htm">SketchEvents</a></td>
+        <td class="api-list">Property that returns the SketchEvents object. This object supports a set of 2d and 3d sketch-related events that are common to parts, assemblies and drawings.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_SketchOptions.htm">SketchOptions</a></td>
+        <td class="api-list">Property that returns the SketchOptions object. The SketchOptions object provides access to various 2D sketch related application level options. This is somewhat equivalent to the 2D Sketch portion on the Sketch tab of the Application Options dialog.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_SoftwareVersion.htm">SoftwareVersion</a></td>
+        <td class="api-list">Gets the object that encapsulates the version of the current software.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_StatusBarText.htm">StatusBarText</a></td>
+        <td class="api-list">Gets/Sets the Status Bar text in first pane of the Application's Main frame.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_StyleEvents.htm">StyleEvents</a></td>
+        <td class="api-list">Property that returns the StyleEvents object. This object supports a set of events that relate to styles.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_StylesManager.htm">StylesManager</a></td>
+        <td class="api-list">Gets the StylesManager object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_SupportsFileManagement.htm">SupportsFileManagement</a></td>
+        <td class="api-list">Gets/Sets whether a file management AddIn is present.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_ThemeManager.htm">ThemeManager</a></td>
+        <td class="api-list">Gets the ThemeManager object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_Top.htm">Top</a></td>
+        <td class="api-list">Gets/Sets the distance between the top of the screen and top of the frame window.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_TransactionManager.htm">TransactionManager</a></td>
+        <td class="api-list">Gets the TransactionManager object that controls all the database transactions taking place in the system.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_TransientBRep.htm">TransientBRep</a></td>
+        <td class="api-list">Property that returns the TransientBRep object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_TransientGeometry.htm">TransientGeometry</a></td>
+        <td class="api-list">Gets the object through which all transient geometry objects can be constructed.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_TransientObjects.htm">TransientObjects</a></td>
+        <td class="api-list">Gets the object through which all general transient objects are created.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_UnitsOfMeasure.htm">UnitsOfMeasure</a></td>
+        <td class="api-list">Property that returns the UnitsOfMeasure object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_UserInterfaceManager.htm">UserInterfaceManager</a></td>
+        <td class="api-list">Gets the UserInterfaceManager object. The UserInterfaceManager object is the starting point for UI and environment control, providing access to available environments, command bars, browsers, panel bars, toolbars etc.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_UserName.htm">UserName</a></td>
+        <td class="api-list">Gets/sets the string that identifies the current user. Autodesk Inventor saves its own copy of this name per user and can thus be manipulated without affecting the rest of the OS.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_VBAProjects.htm">VBAProjects</a></td>
+        <td class="api-list">Property that returns Autodesk Inventor's VBA projects collection.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_VBE.htm">VBE</a></td>
+        <td class="api-list">Gets the top-level automation pointer to VBA's IDE.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_ViewFrames.htm">ViewFrames</a></td>
+        <td class="api-list">Read-only property that returns the ViewFramesEnumerator collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_Views.htm">Views</a></td>
+        <td class="api-list">Gets all the open Views in a collection.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_Visible.htm">Visible</a></td>
+        <td class="api-list">Gets/Sets the visibility of this application.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_WebBrowserDialogs.htm">WebBrowserDialogs</a></td>
+        <td class="api-list">Read-only property that returns the WebBrowserDialogs collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_Width.htm">Width</a></td>
+        <td class="api-list">Gets/Sets the Width the frame window.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Application_WindowState.htm">WindowState</a></td>
+        <td class="api-list">Gets/Sets the frame windows state.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="ApplicationAddInSite_Application.htm">ApplicationAddInSite.Application</a>, <a href="AuxiliaryFeatureIndicator_Application.htm">AuxiliaryFeatureIndicator.Application</a>, <a href="AuxiliaryFeatureIndicators_Application.htm">AuxiliaryFeatureIndicators.Application</a>, <a href="BalloonTip_Application.htm">BalloonTip.Application</a>, <a href="BalloonTips_Application.htm">BalloonTips.Application</a>, <a href="BrowserFoldersEnumerator_Application.htm">BrowserFoldersEnumerator.Application</a>, <a href="BrowserNodesEnumerator_Application.htm">BrowserNodesEnumerator.Application</a>, <a href="ButtonDefinition_Application.htm">ButtonDefinition.Application</a>, <a href="ClientResourceMap_Parent.htm">ClientResourceMap.Parent</a>, <a href="ComboBoxDefinition_Application.htm">ComboBoxDefinition.Application</a>, <a href="CommandBar_Application.htm">CommandBar.Application</a>, <a href="CommandBar_Parent.htm">CommandBar.Parent</a>, <a href="CommandBarBaseCollection_Application.htm">CommandBarBaseCollection.Application</a>, <a href="CommandBarButton_Application.htm">CommandBarButton.Application</a>, <a href="CommandBarControl_Application.htm">CommandBarControl.Application</a>, <a href="CommandBarControls_Application.htm">CommandBarControls.Application</a>, <a href="CommandBarList_Application.htm">CommandBarList.Application</a>, <a href="CommandBarPopUp_Application.htm">CommandBarPopUp.Application</a>, <a href="CommandBars_Application.htm">CommandBars.Application</a>, <a href="CommandCategories_Application.htm">CommandCategories.Application</a>, <a href="CommandCategory_Application.htm">CommandCategory.Application</a>, <a href="CommandControl_Application.htm">CommandControl.Application</a>, <a href="CommandControls_Application.htm">CommandControls.Application</a>, <a href="CommandControlsEnumerator_Application.htm">CommandControlsEnumerator.Application</a>, <a href="CommandManager_Parent.htm">CommandManager.Parent</a>, <a href="ControlDefinition_Application.htm">ControlDefinition.Application</a>, <a href="ControlDefinitionEvents_Application.htm">ControlDefinitionEvents.Application</a>, <a href="ControlDefinitions_Application.htm">ControlDefinitions.Application</a>, <a href="DisabledCommandList_Application.htm">DisabledCommandList.Application</a>, <a href="Environment_Application.htm">Environment.Application</a>, <a href="Environment_Parent.htm">Environment.Parent</a>, <a href="EnvironmentBase_Application.htm">EnvironmentBase.Application</a>, <a href="EnvironmentBase_Parent.htm">EnvironmentBase.Parent</a>, <a href="EnvironmentBaseCollection_Application.htm">EnvironmentBaseCollection.Application</a>, <a href="EnvironmentList_Application.htm">EnvironmentList.Application</a>, <a href="EnvironmentManager_Application.htm">EnvironmentManager.Application</a>, <a href="Environments_Application.htm">Environments.Application</a>, <a href="FileUIEvents_Application.htm">FileUIEvents.Application</a>, <a href="FileUIEvents_Parent.htm">FileUIEvents.Parent</a>, <a href="InteractionEvents_Application.htm">InteractionEvents.Application</a>, <a href="InventorVBAProject_Parent.htm">InventorVBAProject.Parent</a>, <a href="InventorVBAProjects_Parent.htm">InventorVBAProjects.Parent</a>, <a href="KeyboardEvents_Application.htm">KeyboardEvents.Application</a>, <a href="LicenseManager_Application.htm">LicenseManager.Application</a>, <a href="LicenseManager_Parent.htm">LicenseManager.Parent</a>, <a href="MacroControlDefinition_Application.htm">MacroControlDefinition.Application</a>, <a href="ManipulatorEvents_Application.htm">ManipulatorEvents.Application</a>, <a href="MeasureEvents_Application.htm">MeasureEvents.Application</a>, <a href="MiniToolbar_Application.htm">MiniToolbar.Application</a>, <a href="MiniToolbarButton_Application.htm">MiniToolbarButton.Application</a>, <a href="MiniToolbarCheckBox_Application.htm">MiniToolbarCheckBox.Application</a>, <a href="MiniToolbarComboBox_Application.htm">MiniToolbarComboBox.Application</a>, <a href="MiniToolbarControl_Application.htm">MiniToolbarControl.Application</a>, <a href="MiniToolbarControls_Application.htm">MiniToolbarControls.Application</a>, <a href="MiniToolbarDropdown_Application.htm">MiniToolbarDropdown.Application</a>, <a href="MiniToolbarSlider_Application.htm">MiniToolbarSlider.Application</a>, <a href="MiniToolbarTextBox_Application.htm">MiniToolbarTextBox.Application</a>, <a href="MiniToolbarTextEditor_Application.htm">MiniToolbarTextEditor.Application</a>, <a href="MiniToolbarValueEditor_Application.htm">MiniToolbarValueEditor.Application</a>, <a href="ModelDatumReferenceFrame_Application.htm">ModelDatumReferenceFrame.Application</a>, <a href="ModelDatumReferenceFrameDefinition_Application.htm">ModelDatumReferenceFrameDefinition.Application</a>, <a href="ModelDatumReferenceFrameProxy_Application.htm">ModelDatumReferenceFrameProxy.Application</a>, <a href="ModelDatumReferenceFrames_Application.htm">ModelDatumReferenceFrames.Application</a>, <a href="ModelToleranceFeatureDefinition_Application.htm">ModelToleranceFeatureDefinition.Application</a>, <a href="MouseEvents_Application.htm">MouseEvents.Application</a>, <a href="PanelBar_Application.htm">PanelBar.Application</a>, <a href="ProgressiveToolTip_Application.htm">ProgressiveToolTip.Application</a>, <a href="ProjectOptionsButton_Application.htm">ProjectOptionsButton.Application</a>, <a href="PublicationMeshEdge_Application.htm">PublicationMeshEdge.Application</a>, <a href="PublicationMeshFace_Application.htm">PublicationMeshFace.Application</a>, <a href="RadialMarkingMenu_Application.htm">RadialMarkingMenu.Application</a>, <a href="RadialMarkingMenus_Application.htm">RadialMarkingMenus.Application</a>, <a href="Ribbon_Application.htm">Ribbon.Application</a>, <a href="RibbonPanel_Application.htm">RibbonPanel.Application</a>, <a href="RibbonPanels_Application.htm">RibbonPanels.Application</a>, <a href="Ribbons_Application.htm">Ribbons.Application</a>, <a href="RibbonTab_Application.htm">RibbonTab.Application</a>, <a href="RibbonTabs_Application.htm">RibbonTabs.Application</a>, <a href="SelectEvents_Application.htm">SelectEvents.Application</a>, <a href="Theme_Application.htm">Theme.Application</a>, <a href="ThemeManager_Application.htm">ThemeManager.Application</a>, <a href="ThemeManager_Parent.htm">ThemeManager.Parent</a>, <a href="ThemesEnumerator_Application.htm">ThemesEnumerator.Application</a>, <a href="TriadEvents_Application.htm">TriadEvents.Application</a>, <a href="TutorialsManager_Parent.htm">TutorialsManager.Parent</a>, <a href="UserInputEvents_Application.htm">UserInputEvents.Application</a>, <a href="UserInterfaceEvents_Application.htm">UserInterfaceEvents.Application</a>, <a href="UserInterfaceManager_Application.htm">UserInterfaceManager.Application</a>, <a href="UserInterfaceManager_Parent.htm">UserInterfaceManager.Parent</a>, <a href="VbaApplication_ThisApplication.htm">VbaApplication.ThisApplication</a>, <a href="ViewFrame_Application.htm">ViewFrame.Application</a>, <a href="ViewFrame_Parent.htm">ViewFrame.Parent</a>, <a href="ViewFramesEnumerator_Application.htm">ViewFramesEnumerator.Application</a>, <a href="WebBrowserDialog_Application.htm">WebBrowserDialog.Application</a>, <a href="WebView_Application.htm">WebView.Application</a><h2 class="api">
+            Version
+          </h2>
+        Introduced in version 4<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(Application%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

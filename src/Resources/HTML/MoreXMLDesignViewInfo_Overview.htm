@@ -1,0 +1,249 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU">
+    <link rel="canonical" href="http://help.autodesk.com/cloudhelp/2026/ENU/Inventor-API/files/MoreXMLDesignViewInfo_Overview.htm">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="27/4/2016">
+    <meta name="user-comments" content="enable">
+    <meta name="description" content="">
+    <meta name="topicid" content="GUID-D6666F9E-C43E-488d-8AE6-BCAAEFA545BD">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>Design View Data XML Formatting</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"/>
+    <script type="text/javascript" src="/view/clientframework/client.js"><!--filler--></script>
+	<script>
+	  // This turns on the display of the copyright notice which is not visible by default.
+	  // Because the head is removed when used in the web help, this function will only exists
+	  // when the chm help is being created.
+	  window.onload = function() {
+		copyrightElement = document.getElementById('CopyrightNotice');
+		copyrightElement.style.display = 'block';
+	  };
+	</script>
+</head>
+<body>
+<link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+<H1 class="dxH1">Design View Data XML Formatting</h1>
+<h3>DesignView XML String</h3>
+
+<BR>
+
+<p Class="Normal"><b>Information stored for a Design View</b></p>
+<P></P>A design view captures the following display characteristics:
+<P></P>
+<ol type="1">
+	<li>Component visibility (visible or not visible)</li>
+	<li>Sketch and work feature visibility (visible or not visible)</li> 
+ 	<li>Component selectionstatus (enabled or not enabled)</li>
+	<li>Color and style characteristics applied in the assembly</li>
+	<li>Zoom magnification</li>
+	<li>Viewing angle</li>
+</ol>
+ 
+<BR><p Class="Normal"><b>How is this data defined via XML?</b></p></BR>
+
+<p Class="Normal"> The output XML string should be compared to the XML 
+  output of the StreamLine translator. For example, open 
+  an Inventor assembly file, and then invoke the 
+  Streamline translator from the Inventor File/SaveCopy As 
+  menu item. When the Inventor Save CopyAs dialog appears,
+select StreamLine Assembly Packages(*.amp) as the output type, with
+ the designview data option. The data in the DesignViewInfo string
+  can be compared to the design view data in the XML file produced 
+by the Streamline translator.</p>  
+  
+<BR><p Class="Normal"><b>DesignViewInfo XML tags</b></p>
+<p Class="Normal">The XML tags for the DesignViewInfo string are as follows:</p>
+<table>
+  <tr>  
+   <td>DesignViewInfo</td>
+   <td>This is the root tag.</td>
+  </tr>
+  <tr>
+   <td>DesignView</td>
+   <td>This is one of the design views in the designview database.</td>
+  </tr>
+  <tr>
+   <td>Camera</td>
+   <td>This is the camera information for the parent design view.</td>
+  </tr>  
+  <tr>
+   <td>Occurrence</td>
+   <td>This is an object to which the design view applies camera, visible, and material overrides.</td>
+  </tr>
+  <tr>
+   <td>Path</td>
+   <td>This is the path to the occurrence, as seen in the browser.</td>
+  </tr>
+  <tr>
+   <td>Material</td>
+   <td>The material parameters applied to the occurrence.</td>
+  </tr>  
+</table>
+
+<BR><p Class="Normal"><b>Example</b></p><BR>
+<p Class="Normal">Below is part of a sample DesignViewInfo XML string, demonstrating the use of these tags.</p><BR>
+
+<P> <FONT face="Courier New" size="3"> -&lt;DesignViewInfo units="cm" designviewfilepath="C:\Autodesk\Inventor 10\Tutorial Files\final_assy.idv"&gt;  </FONT>
+  
+</P>
+<P><FONT face="Courier New" size="3">- &lt;DesignView name="Internal 
+Components"&gt;</FONT></P>
+<P><FONT face="Courier New" size="3">&nbsp;- &lt;Camera width="14.1727" 
+height="13.9774"&gt;</FONT></P>
+<P><FONT face="Courier New" size="3">&nbsp;&lt;UpVector x="-0.333333" y="0.666667" 
+z="-0.333333" /&gt;</FONT></P>
+<P><FONT face="Courier New" size="3">&nbsp;&lt;CameraPosition x="15.2765" y="17.3914" 
+z="21.4982" /&gt; </FONT></P>
+<P><FONT face="Courier New" size="3">&lt;Target x="-1.33647" y="0.778433" z="4.88529" 
+/&gt;</FONT></P>
+<P><FONT face="Courier New" size="3">&nbsp;&lt;/Camera&gt;</FONT></P>
+<P><FONT face="Courier New" size="3">&nbsp;- &lt;Occurrence visible="false" 
+enabled="true" colored="true"&gt;</FONT></P>
+<P><FONT face="Courier New" size="3">&nbsp;- &lt;Path&gt;</FONT></P>
+<P><FONT 
+face="Courier New" size="3">&nbsp;&lt;PathNode&gt;vbody.ipt:1&lt;/PathNode&gt;</FONT></P>
+<P><FONT face="Courier New" size="3">&nbsp;&lt;/Path&gt; </FONT></P>
+<P><FONT face="Courier New" size="3">- &lt;Material alpha="0.5" shine="20"&gt;</FONT></P>
+<P><FONT face="Courier New" size="3">&nbsp;&lt;Diffuse r="17.0001" g="193" b="84.0001" 
+/&gt;</FONT></P>
+<P><FONT face="Courier New" size="3">&nbsp;&lt;AmbientColor r="12.9999" g="147" b="63" 
+/&gt;</FONT></P>
+<P><FONT face="Courier New" size="3">&nbsp;&lt;EmissiveColor r="0" g="0" b="0" 
+/&gt;</FONT></P>
+<P><FONT face="Courier New" size="3">&lt;SpecularColor r="80.0001" g="239" b="139" 
+/&gt;</FONT></P>
+<P><FONT face="Courier New" size="3">&nbsp;&lt;/Material&gt;</FONT></P>
+<P><FONT face="Courier New" size="3">&nbsp;&lt;/Occurrence&gt; </FONT></P>
+<P><FONT face="Courier New" size="3">- &lt;Occurrence visible="true" enabled="true" 
+colored="true"&gt;</FONT></P>
+<P><FONT face="Courier New" size="3">&nbsp;- &lt;Path&gt;</FONT></P>
+<P><FONT 
+face="Courier New" size="3">&nbsp;&lt;PathNode&gt;vnozzle.ipt:1&lt;/PathNode&gt;</FONT></P>
+<P><FONT face="Courier New" size="3">&nbsp;&lt;/Path&gt;</FONT></P>
+<P><FONT face="Courier New" size="3">&nbsp;- &lt;Material alpha="1" 
+shine="20"&gt;</FONT></P>
+<P><FONT face="Courier New" size="3">&nbsp;&lt;Diffuse r="1.99996" g="54.0001" b="210" 
+/&gt;</FONT></P>
+<P><FONT face="Courier New" size="3">&nbsp;&lt;AmbientColor r="1.00011" g="40.0001" 
+b="158" /&gt;</FONT></P>
+<P><FONT face="Courier New" size="3">&nbsp;&lt;EmissiveColor r="0" g="0" b="0" 
+/&gt;</FONT></P>
+<P><FONT face="Courier New" size="3">&nbsp;&lt;SpecularColor r="66.0001" g="113" b="253" 
+/&gt;</FONT></P>
+<P><FONT face="Courier New" size="3">&nbsp;&lt;/Material&gt;</FONT></P>
+<P><FONT face="Courier New" size="3">&nbsp;&lt;/Occurrence&gt;</FONT></P>
+<P><FONT face="Courier New" size="3">&nbsp;- &lt;Occurrence visible="true" enabled="true" 
+colored="true"&gt;</FONT></P>
+<P><FONT face="Courier New" size="3">&nbsp;- &lt;Path&gt;</FONT></P>
+<P><FONT 
+face="Courier New" size="3">&nbsp;&lt;PathNode&gt;knob.ipt:1&lt;/PathNode&gt;</FONT></P>
+<P><FONT face="Courier New" size="3">&nbsp;&lt;/Path&gt;</FONT></P>
+<P><FONT face="Courier New" size="3">&nbsp;- &lt;Material alpha="1" shine="10"&gt; 
+&lt;Diffuse r="109" g="120" b="138" /&gt;</FONT></P>
+<P><FONT face="Courier New" size="3">&nbsp;&lt;AmbientColor r="109" g="120" b="138" 
+/&gt;</FONT></P>
+<P><FONT face="Courier New" size="3">&nbsp;&lt;EmissiveColor r="0" g="0" b="0" 
+/&gt;</FONT></P>
+<P><FONT face="Courier New" size="3">&nbsp;&lt;SpecularColor r="84.9999" g="84.9999" 
+b="133" /&gt;</FONT></P>
+<P><FONT face="Courier New" size="3">&nbsp;&lt;/Material&gt; &lt;/Occurrence&gt; 
+&lt;/DesignView&gt;</FONT></P>
+<P><FONT face="Courier New" size="3">&nbsp;- &lt;DesignView name="All Components 
+Displayed"&gt;</FONT></P>
+<P><FONT face="Courier New" size="3">&nbsp;- &lt;Camera width="14.1727" 
+height="13.9774"&gt;</FONT></P>
+<P><FONT face="Courier New" size="3">&nbsp;&lt;UpVector x="-0.408248" y="0.816497" 
+z="-0.408248" /&gt;</FONT></P>
+<P><FONT face="Courier New" size="3">&nbsp;&lt;CameraPosition x="17.3029" y="19.4178" 
+z="23.5247" /&gt;</FONT></P>
+<P><FONT face="Courier New" size="3">&nbsp;&lt;Target x="-1.33647" y="0.778433" 
+z="4.88529" /&gt;</FONT></P>
+<P><FONT face="Courier New" size="3">&nbsp;&lt;/Camera&gt; </FONT></P>
+<P><FONT face="Courier New" size="3">- &lt;Occurrence visible="true" enabled="true" 
+colored="true"&gt;</FONT></P>
+<P><FONT face="Courier New" size="3">&nbsp;- &lt;Path&gt;</FONT></P>
+<P><FONT 
+face="Courier New" size="3">&nbsp;&lt;PathNode&gt;vbody.ipt:1&lt;/PathNode&gt;</FONT></P>
+<P><FONT face="Courier New" size="3">&nbsp;&lt;/Path&gt;</FONT></P>
+<P><FONT face="Courier New" size="3">&nbsp;- &lt;Material alpha="0.5" 
+shine="20"&gt;</FONT></P>
+<P><FONT face="Courier New" size="3">&nbsp;&lt;Diffuse r="17.0001" g="193" b="84.0001" 
+/&gt;</FONT></P>
+<P><FONT face="Courier New" size="3">&nbsp;&lt;AmbientColor r="12.9999" g="147" b="63" 
+/&gt;</FONT></P>
+<P><FONT face="Courier New" size="3">&nbsp;&lt;EmissiveColor r="0" g="0" b="0" 
+/&gt;</FONT></P>
+<P><FONT face="Courier New" size="3">&nbsp;&lt;SpecularColor r="80.0001" g="239" b="139" 
+/&gt;</FONT></P>
+<P><FONT face="Courier New" size="3">&nbsp;&lt;/Material&gt;</FONT></P>
+<P><FONT face="Courier New" size="3">&nbsp;&lt;/Occurrence&gt;</FONT></P>
+<P><FONT face="Courier New" size="3">&nbsp;- &lt;Occurrence visible="true" enabled="true" 
+colored="true"&gt;</FONT></P>
+<P><FONT face="Courier New" size="3">- &lt;Path&gt;</FONT></P>
+<P><FONT 
+face="Courier New" size="3">&nbsp;&lt;PathNode&gt;vnozzle.ipt:1&lt;/PathNode&gt;</FONT></P>
+<P><FONT face="Courier New" size="3">&nbsp;&lt;/Path&gt;</FONT></P>
+<P><FONT face="Courier New" size="3">&nbsp;- &lt;Material alpha="1" 
+shine="20"&gt;</FONT></P>
+<P><FONT face="Courier New" size="3">&nbsp;&lt;Diffuse r="1.99996" g="54.0001" b="210" 
+/&gt;</FONT></P>
+<P><FONT face="Courier New" size="3">&nbsp;&lt;AmbientColor r="1.00011" g="40.0001" 
+b="158" /&gt;</FONT></P>
+<P><FONT face="Courier New" size="3">&nbsp;&lt;EmissiveColor r="0" g="0" b="0" 
+/&gt;</FONT></P>
+<P><FONT face="Courier New" size="3">&nbsp;&lt;SpecularColor r="66.0001" g="113" b="253" 
+/&gt;</FONT></P>
+<P><FONT face="Courier New" size="3">&nbsp;&lt;/Material&gt;</FONT></P>
+<P><FONT face="Courier New" size="3">&nbsp;&lt;/Occurrence&gt;</FONT></P>
+<P><FONT face="Courier New" size="3">&nbsp;- &lt;Occurrence visible="true" enabled="true" 
+colored="true"&gt;</FONT></P>
+<P><FONT face="Courier New" size="3">&nbsp;- &lt;Path&gt;</FONT></P>
+<P><FONT 
+face="Courier New" size="3">&nbsp;&lt;PathNode&gt;knob.ipt:1&lt;/PathNode&gt;</FONT></P>
+<P><FONT face="Courier New" size="3">&nbsp;&lt;/Path&gt;</FONT></P>
+<P><FONT face="Courier New" size="3">&nbsp;- &lt;Material alpha="1" 
+shine="10"&gt;</FONT></P>
+<P><FONT face="Courier New" size="3">&nbsp;&lt;Diffuse r="109" g="120" b="138" 
+/&gt;</FONT></P>
+<P><FONT face="Courier New" size="3">&nbsp;&lt;AmbientColor r="109" g="120" b="138" 
+/&gt;</FONT></P>
+<P><FONT face="Courier New" size="3">&nbsp;&lt;EmissiveColor r="0" g="0" b="0" 
+/&gt;</FONT></P>
+<P><FONT face="Courier New" size="3">&nbsp;&lt;SpecularColor r="84.9999" g="84.9999" 
+b="133" /&gt;</FONT></P>
+<P><FONT face="Courier New" size="3">&nbsp;&lt;/Material&gt;</FONT></P>
+<P><FONT face="Courier New" size="3">&nbsp;&lt;/Occurrence&gt;</FONT></P>
+<P><FONT face="Courier New" size="3">&lt;/DesignView&gt;</FONT></P>
+<P><FONT face="Courier New" size="3">&lt;/DesignViewInfo&gt;</FONT><FONT face=Arial> 
+</FONT></P>
+<P><FONT face="Courier New" size="3"></FONT>&nbsp;</P>
+<P><FONT face="Courier New" size="3">&nbsp;</FONT><code></code><BR>&nbsp;</P>
+</div>
+
+<br />
+<br />
+<div id="CopyrightNotice" style="display:none;">
+  <hr />
+  <table width="100%" style="font-size:15">
+	<tr>
+	  <td align="left">
+		&copy; Copyright 2025 Autodesk, Inc.
+	  </td>
+	  <td align="right">
+		<a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(MoreXMLDesignViewInfo_Overview)">Comment on this page.</a>
+	  </td>
+	</tr>
+  </table>
+</div>
+
+</body>
+</html>

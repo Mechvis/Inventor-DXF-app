@@ -1,0 +1,230 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/ComponentDefinition.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="ComponentDefinition">
+    <meta name="description" content="ComponentDefinition Object">
+    <meta name="topicid" content="GUID-ComponentDefinition">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>ComponentDefinition Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">ComponentDefinition Object
+			</h1><br><h2 class="api">
+          Description
+        </h2>The ComponentDefinition object is the base class for the PartComponentDefinition, AssemblyComponentDefinition and the FlatPattern objects.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ComponentDefinition_FindUsingPoint.htm">FindUsingPoint</a></td>
+        <td class="api-list">Method that finds all the entities of the specified type at the specified location.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ComponentDefinition_FindUsingVector.htm">FindUsingVector</a></td>
+        <td class="api-list">Method that finds all the entities of the specified type along the specified vector using either a cylinder or cone that to define the tolerance within the defined vector.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ComponentDefinition_GetUnusedGeometries.htm">GetUnusedGeometries</a></td>
+        <td class="api-list">Method that gets the unused sketches and work features.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ComponentDefinition_PurgeUnusedGeometries.htm">PurgeUnusedGeometries</a></td>
+        <td class="api-list">Method that purges unused sketches and work features.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ComponentDefinition_RepositionObject.htm">RepositionObject</a></td>
+        <td class="api-list">Method that repositions the specifies object(s) to the new position within the collection of the object in the document.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ComponentDefinition_Application.htm">Application</a></td>
+        <td class="api-list">Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ComponentDefinition_AttributeSets.htm">AttributeSets</a></td>
+        <td class="api-list">Property that returns the AttributeSets collection object associated with this object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ComponentDefinition_BOMQuantity.htm">BOMQuantity</a></td>
+        <td class="api-list">Property that returns the BOMQuantity object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ComponentDefinition_BOMStructure.htm">BOMStructure</a></td>
+        <td class="api-list">Gets and sets how the component is used/viewed in a BOM.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ComponentDefinition_ClientGraphicsCollection.htm">ClientGraphicsCollection</a></td>
+        <td class="api-list">Property that returns the ClientGraphicsCollection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ComponentDefinition_DataIO.htm">DataIO</a></td>
+        <td class="api-list">Gets the object that directly deals with I/O to and from a storage-medium, including Streams(IStream).</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ComponentDefinition_Document.htm">Document</a></td>
+        <td class="api-list">Property that returns the containing Document object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ComponentDefinition_ModelGeometryVersion.htm">ModelGeometryVersion</a></td>
+        <td class="api-list">Property that returns a string that can be used to determine if the document has been modified. This version string is changed every time the assembly is modified. By saving a previous version string, you can compare the current version string to see if the assembly has been modified.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ComponentDefinition_Occurrences.htm">Occurrences</a></td>
+        <td class="api-list">Property that returns the collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ComponentDefinition_OrientedMinimumRangeBox.htm">OrientedMinimumRangeBox</a></td>
+        <td class="api-list">Read-only property that returns the oriented minimum range box for this object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ComponentDefinition_PreciseRangeBox.htm">PreciseRangeBox</a></td>
+        <td class="api-list">Gets a bounding box that tightly encloses all the solid and surface bodies under the ComponentDefinition.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ComponentDefinition_RangeBox.htm">RangeBox</a></td>
+        <td class="api-list">Property that returns a Box object which contains the opposing points of a rectangular box that is guaranteed to enclose this object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ComponentDefinition_SurfaceBodies.htm">SurfaceBodies</a></td>
+        <td class="api-list">Property that returns all of the <i>result</i> SurfaceBody objects contained within this ComponentDefinition.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ComponentDefinition_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="AliasFreeformFeature_Parent.htm">AliasFreeformFeature.Parent</a>, <a href="AliasFreeformFeatureProxy_Parent.htm">AliasFreeformFeatureProxy.Parent</a>, <a href="AnalysisManager_Parent.htm">AnalysisManager.Parent</a>, <a href="AngularModelDimension_Parent.htm">AngularModelDimension.Parent</a>, <a href="AngularModelDimensionProxy_Parent.htm">AngularModelDimensionProxy.Parent</a>, <a href="AnnotationPlane_Parent.htm">AnnotationPlane.Parent</a>, <a href="AnnotationPlaneProxy_Parent.htm">AnnotationPlaneProxy.Parent</a>, <a href="ApprenticeServerDocument_ComponentDefinition.htm">ApprenticeServerDocument.ComponentDefinition</a>, <a href="ApprenticeServerDrawingDocument_ComponentDefinition.htm">ApprenticeServerDrawingDocument.ComponentDefinition</a>, <a href="BendFeature_Parent.htm">BendFeature.Parent</a>, <a href="BendFeatureProxy_Parent.htm">BendFeatureProxy.Parent</a>, <a href="BendPartFeature_Parent.htm">BendPartFeature.Parent</a>, <a href="BendPartFeatureProxy_Parent.htm">BendPartFeatureProxy.Parent</a>, <a href="BIMComponent_ComponentDefinition.htm">BIMComponent.ComponentDefinition</a>, <a href="BOMQuantity_Parent.htm">BOMQuantity.Parent</a>, <a href="BossFeature_Parent.htm">BossFeature.Parent</a>, <a href="BossFeatureProxy_Parent.htm">BossFeatureProxy.Parent</a>, <a href="BoundaryPatchFeature_Parent.htm">BoundaryPatchFeature.Parent</a>, <a href="BoundaryPatchFeatureProxy_Parent.htm">BoundaryPatchFeatureProxy.Parent</a>, <a href="ChamferFeature_Parent.htm">ChamferFeature.Parent</a>, <a href="ChamferFeatureProxy_Parent.htm">ChamferFeatureProxy.Parent</a>, <a href="CircularPatternFeature_Parent.htm">CircularPatternFeature.Parent</a>, <a href="CircularPatternFeatureProxy_Parent.htm">CircularPatternFeatureProxy.Parent</a>, <a href="ClientFeature_Parent.htm">ClientFeature.Parent</a>, <a href="ClientFeatureProxy_Parent.htm">ClientFeatureProxy.Parent</a>, <a href="CoilFeature_Parent.htm">CoilFeature.Parent</a>, <a href="CoilFeatureProxy_Parent.htm">CoilFeatureProxy.Parent</a>, <a href="CombineFeature_Parent.htm">CombineFeature.Parent</a>, <a href="CombineFeatureProxy_Parent.htm">CombineFeatureProxy.Parent</a>, <a href="ComponentDefinitionReference_ReferencedDefinition.htm">ComponentDefinitionReference.ReferencedDefinition</a>, <a href="ComponentDefinitions_Item.htm">ComponentDefinitions.Item</a>, <a href="ComponentDefinitionsEnumerator_Item.htm">ComponentDefinitionsEnumerator.Item</a>, <a href="ComponentOccurrence_ContextDefinition.htm">ComponentOccurrence.ContextDefinition</a>, <a href="ComponentOccurrence_Definition.htm">ComponentOccurrence.Definition</a>, <a href="ComponentOccurrenceProxy_ContextDefinition.htm">ComponentOccurrenceProxy.ContextDefinition</a>, <a href="ComponentOccurrenceProxy_Definition.htm">ComponentOccurrenceProxy.Definition</a>, <a href="ContourFlangeFeature_Parent.htm">ContourFlangeFeature.Parent</a>, <a href="ContourFlangeFeatureProxy_Parent.htm">ContourFlangeFeatureProxy.Parent</a>, <a href="ContourRollFeature_Parent.htm">ContourRollFeature.Parent</a>, <a href="ContourRollFeatureProxy_Parent.htm">ContourRollFeatureProxy.Parent</a>, <a href="CoreCavityFeature_Parent.htm">CoreCavityFeature.Parent</a>, <a href="CoreCavityFeatureProxy_Parent.htm">CoreCavityFeatureProxy.Parent</a>, <a href="CornerChamferFeature_Parent.htm">CornerChamferFeature.Parent</a>, <a href="CornerChamferFeatureProxy_Parent.htm">CornerChamferFeatureProxy.Parent</a>, <a href="CornerFeature_Parent.htm">CornerFeature.Parent</a>, <a href="CornerFeatureProxy_Parent.htm">CornerFeatureProxy.Parent</a>, <a href="CornerRoundFeature_Parent.htm">CornerRoundFeature.Parent</a>, <a href="CornerRoundFeatureProxy_Parent.htm">CornerRoundFeatureProxy.Parent</a>, <a href="CosmeticBendFeature_Parent.htm">CosmeticBendFeature.Parent</a>, <a href="CosmeticBendFeatureProxy_Parent.htm">CosmeticBendFeatureProxy.Parent</a>, <a href="CutFeature_Parent.htm">CutFeature.Parent</a>, <a href="CutFeatureProxy_Parent.htm">CutFeatureProxy.Parent</a>, <a href="DecalFeature_Parent.htm">DecalFeature.Parent</a>, <a href="DecalFeatureProxy_Parent.htm">DecalFeatureProxy.Parent</a>, <a href="DeleteFaceFeature_Parent.htm">DeleteFaceFeature.Parent</a>, <a href="DeleteFaceFeatureProxy_Parent.htm">DeleteFaceFeatureProxy.Parent</a>, <a href="DerivedAliasComponent_Parent.htm">DerivedAliasComponent.Parent</a>, <a href="DerivedAliasComponentProxy_Parent.htm">DerivedAliasComponentProxy.Parent</a>, <a href="DerivedAliasComponents_Parent.htm">DerivedAliasComponents.Parent</a>, <a href="DerivedAssemblyComponent_Parent.htm">DerivedAssemblyComponent.Parent</a>, <a href="DerivedAssemblyComponentProxy_Parent.htm">DerivedAssemblyComponentProxy.Parent</a>, <a href="DerivedAssemblyComponents_Parent.htm">DerivedAssemblyComponents.Parent</a>, <a href="DerivedFutureAssemblyComponent_Parent.htm">DerivedFutureAssemblyComponent.Parent</a>, <a href="DerivedFutureAssemblyComponentProxy_Parent.htm">DerivedFutureAssemblyComponentProxy.Parent</a>, <a href="DerivedFutureAssemblyComponents_Parent.htm">DerivedFutureAssemblyComponents.Parent</a>, <a href="DerivedFuturePartComponent_Parent.htm">DerivedFuturePartComponent.Parent</a>, <a href="DerivedFuturePartComponentProxy_Parent.htm">DerivedFuturePartComponentProxy.Parent</a>, <a href="DerivedFuturePartComponents_Parent.htm">DerivedFuturePartComponents.Parent</a>, <a href="DerivedPartComponent_Parent.htm">DerivedPartComponent.Parent</a>, <a href="DerivedPartComponentProxy_Parent.htm">DerivedPartComponentProxy.Parent</a>, <a href="DerivedPartComponents_Parent.htm">DerivedPartComponents.Parent</a>, <a href="DiameterModelDimension_Parent.htm">DiameterModelDimension.Parent</a>, <a href="DiameterModelDimensionProxy_Parent.htm">DiameterModelDimensionProxy.Parent</a>, <a href="DirectEditFeature_Parent.htm">DirectEditFeature.Parent</a>, <a href="DirectEditFeatureProxy_Parent.htm">DirectEditFeatureProxy.Parent</a>, <a href="EmbossFeature_Parent.htm">EmbossFeature.Parent</a>, <a href="EmbossFeatureProxy_Parent.htm">EmbossFeatureProxy.Parent</a>, <a href="EndOfFeatures_Parent.htm">EndOfFeatures.Parent</a>, <a href="ExtendFeature_Parent.htm">ExtendFeature.Parent</a>, <a href="ExtendFeatureProxy_Parent.htm">ExtendFeatureProxy.Parent</a>, <a href="ExtrudeFeature_Parent.htm">ExtrudeFeature.Parent</a>, <a href="ExtrudeFeatureProxy_Parent.htm">ExtrudeFeatureProxy.Parent</a>, <a href="FaceDraftFeature_Parent.htm">FaceDraftFeature.Parent</a>, <a href="FaceDraftFeatureProxy_Parent.htm">FaceDraftFeatureProxy.Parent</a>, <a href="FaceFeature_Parent.htm">FaceFeature.Parent</a>, <a href="FaceFeatureProxy_Parent.htm">FaceFeatureProxy.Parent</a>, <a href="FaceOffsetFeature_Parent.htm">FaceOffsetFeature.Parent</a>, <a href="FaceOffsetFeatureProxy_Parent.htm">FaceOffsetFeatureProxy.Parent</a>, <a href="FilletFeature_Parent.htm">FilletFeature.Parent</a>, <a href="FilletFeatureProxy_Parent.htm">FilletFeatureProxy.Parent</a>, <a href="FinishFeature_Parent.htm">FinishFeature.Parent</a>, <a href="FinishFeatureProxy_Parent.htm">FinishFeatureProxy.Parent</a>, <a href="FlangeFeature_Parent.htm">FlangeFeature.Parent</a>, <a href="FlangeFeatureProxy_Parent.htm">FlangeFeatureProxy.Parent</a>, <a href="FoldFeature_Parent.htm">FoldFeature.Parent</a>, <a href="FoldFeatureProxy_Parent.htm">FoldFeatureProxy.Parent</a>, <a href="FreeformFeature_Parent.htm">FreeformFeature.Parent</a>, <a href="FreeformFeatureProxy_Parent.htm">FreeformFeatureProxy.Parent</a>, <a href="GrillFeature_Parent.htm">GrillFeature.Parent</a>, <a href="GrillFeatureProxy_Parent.htm">GrillFeatureProxy.Parent</a>, <a href="HemFeature_Parent.htm">HemFeature.Parent</a>, <a href="HemFeatureProxy_Parent.htm">HemFeatureProxy.Parent</a>, <a href="HoleFeature_Parent.htm">HoleFeature.Parent</a>, <a href="HoleFeatureProxy_Parent.htm">HoleFeatureProxy.Parent</a>, <a href="iFeature_Parent.htm">iFeature.Parent</a>, <a href="iFeatureComponent_Parent.htm">iFeatureComponent.Parent</a>, <a href="iFeatureProxy_Parent.htm">iFeatureProxy.Parent</a>, <a href="iFeatureTemplateDescriptor_Parent.htm">iFeatureTemplateDescriptor.Parent</a>, <a href="ImportedComponent_Parent.htm">ImportedComponent.Parent</a>, <a href="ImportedComponents_Parent.htm">ImportedComponents.Parent</a>, <a href="ImportedDataExchangeComponent_Parent.htm">ImportedDataExchangeComponent.Parent</a>, <a href="ImportedDataExchangeComponentProxy_Parent.htm">ImportedDataExchangeComponentProxy.Parent</a>, <a href="ImportedDWGComponent_Parent.htm">ImportedDWGComponent.Parent</a>, <a href="ImportedDWGComponentProxy_Parent.htm">ImportedDWGComponentProxy.Parent</a>, <a href="ImportedGenericComponent_Parent.htm">ImportedGenericComponent.Parent</a>, <a href="ImportedGenericComponentProxy_Parent.htm">ImportedGenericComponentProxy.Parent</a>, <a href="ImportedRVTComponent_Parent.htm">ImportedRVTComponent.Parent</a>, <a href="ImportedRVTComponentProxy_Parent.htm">ImportedRVTComponentProxy.Parent</a>, <a href="iPartMember_Parent.htm">iPartMember.Parent</a>, <a href="KnitFeature_Parent.htm">KnitFeature.Parent</a>, <a href="KnitFeatureProxy_Parent.htm">KnitFeatureProxy.Parent</a>, <a href="LinearModelDimension_Parent.htm">LinearModelDimension.Parent</a>, <a href="LinearModelDimensionProxy_Parent.htm">LinearModelDimensionProxy.Parent</a>, <a href="LipFeature_Parent.htm">LipFeature.Parent</a>, <a href="LipFeatureProxy_Parent.htm">LipFeatureProxy.Parent</a>, <a href="LoftedFlangeFeature_Parent.htm">LoftedFlangeFeature.Parent</a>, <a href="LoftedFlangeFeatureProxy_Parent.htm">LoftedFlangeFeatureProxy.Parent</a>, <a href="LoftFeature_Parent.htm">LoftFeature.Parent</a>, <a href="LoftFeatureProxy_Parent.htm">LoftFeatureProxy.Parent</a>, <a href="MarkFeature_Parent.htm">MarkFeature.Parent</a>, <a href="MarkFeatureProxy_Parent.htm">MarkFeatureProxy.Parent</a>, <a href="MeshFeatureSet_Parent.htm">MeshFeatureSet.Parent</a>, <a href="MeshFeatureSetProxy_Parent.htm">MeshFeatureSetProxy.Parent</a>, <a href="MidSurfaceFeature_Parent.htm">MidSurfaceFeature.Parent</a>, <a href="MidSurfaceFeatureProxy_Parent.htm">MidSurfaceFeatureProxy.Parent</a>, <a href="MirrorFeature_Parent.htm">MirrorFeature.Parent</a>, <a href="MirrorFeatureProxy_Parent.htm">MirrorFeatureProxy.Parent</a>, <a href="ModelAnnotation_Parent.htm">ModelAnnotation.Parent</a>, <a href="ModelCompositeAnnotation_Parent.htm">ModelCompositeAnnotation.Parent</a>, <a href="ModelCompositeAnnotationProxy_Parent.htm">ModelCompositeAnnotationProxy.Parent</a>, <a href="ModelDatum_Parent.htm">ModelDatum.Parent</a>, <a href="ModelDatumIdentifier_Parent.htm">ModelDatumIdentifier.Parent</a>, <a href="ModelDatumIdentifierProxy_Parent.htm">ModelDatumIdentifierProxy.Parent</a>, <a href="ModelDatumProxy_Parent.htm">ModelDatumProxy.Parent</a>, <a href="ModelDatumReferenceFrame_Parent.htm">ModelDatumReferenceFrame.Parent</a>, <a href="ModelDatumReferenceFrameProxy_Parent.htm">ModelDatumReferenceFrameProxy.Parent</a>, <a href="ModelDatumTarget_Parent.htm">ModelDatumTarget.Parent</a>, <a href="ModelDatumTargetProxy_Parent.htm">ModelDatumTargetProxy.Parent</a>, <a href="ModelDimension_Parent.htm">ModelDimension.Parent</a>, <a href="ModelFeatureControlFrame_Parent.htm">ModelFeatureControlFrame.Parent</a>, <a href="ModelFeatureControlFrameProxy_Parent.htm">ModelFeatureControlFrameProxy.Parent</a>, <a href="ModelGeneralNote_Parent.htm">ModelGeneralNote.Parent</a>, <a href="ModelGeneralNoteProxy_Parent.htm">ModelGeneralNoteProxy.Parent</a>, <a href="ModelHoleThreadNote_Parent.htm">ModelHoleThreadNote.Parent</a>, <a href="ModelHoleThreadNoteProxy_Parent.htm">ModelHoleThreadNoteProxy.Parent</a>, <a href="ModelLeaderNote_Parent.htm">ModelLeaderNote.Parent</a>, <a href="ModelLeaderNoteProxy_Parent.htm">ModelLeaderNoteProxy.Parent</a>, <a href="ModelState_Parent.htm">ModelState.Parent</a>, <a href="ModelStates_Parent.htm">ModelStates.Parent</a>, <a href="ModelSurfaceTextureSymbol_Parent.htm">ModelSurfaceTextureSymbol.Parent</a>, <a href="ModelSurfaceTextureSymbolProxy_Parent.htm">ModelSurfaceTextureSymbolProxy.Parent</a>, <a href="ModelToleranceFeature_Parent.htm">ModelToleranceFeature.Parent</a>, <a href="ModelToleranceFeatureProxy_Parent.htm">ModelToleranceFeatureProxy.Parent</a>, <a href="ModelWeldingSymbol_Parent.htm">ModelWeldingSymbol.Parent</a>, <a href="ModelWeldingSymbolProxy_Parent.htm">ModelWeldingSymbolProxy.Parent</a>, <a href="MoveFaceFeature_Parent.htm">MoveFaceFeature.Parent</a>, <a href="MoveFaceFeatureProxy_Parent.htm">MoveFaceFeatureProxy.Parent</a>, <a href="MoveFeature_Parent.htm">MoveFeature.Parent</a>, <a href="MoveFeatureProxy_Parent.htm">MoveFeatureProxy.Parent</a>, <a href="NonParametricBaseFeature_Parent.htm">NonParametricBaseFeature.Parent</a>, <a href="NonParametricBaseFeatureProxy_Parent.htm">NonParametricBaseFeatureProxy.Parent</a>, <a href="PartFeature_Parent.htm">PartFeature.Parent</a>, <a href="PointCloud_Parent.htm">PointCloud.Parent</a>, <a href="PointCloudProxy_Parent.htm">PointCloudProxy.Parent</a>, <a href="PointClouds_Parent.htm">PointClouds.Parent</a>, <a href="PunchToolFeature_Parent.htm">PunchToolFeature.Parent</a>, <a href="PunchToolFeatureProxy_Parent.htm">PunchToolFeatureProxy.Parent</a>, <a href="RadiusModelDimension_Parent.htm">RadiusModelDimension.Parent</a>, <a href="RadiusModelDimensionProxy_Parent.htm">RadiusModelDimensionProxy.Parent</a>, <a href="RectangularPatternFeature_Parent.htm">RectangularPatternFeature.Parent</a>, <a href="RectangularPatternFeatureProxy_Parent.htm">RectangularPatternFeatureProxy.Parent</a>, <a href="ReferenceComponent_Parent.htm">ReferenceComponent.Parent</a>, <a href="ReferenceFeature_Parent.htm">ReferenceFeature.Parent</a>, <a href="ReferenceFeatureProxy_Parent.htm">ReferenceFeatureProxy.Parent</a>, <a href="RefoldFeature_Parent.htm">RefoldFeature.Parent</a>, <a href="RefoldFeatureProxy_Parent.htm">RefoldFeatureProxy.Parent</a>, <a href="ReplaceFaceFeature_Parent.htm">ReplaceFaceFeature.Parent</a>, <a href="ReplaceFaceFeatureProxy_Parent.htm">ReplaceFaceFeatureProxy.Parent</a>, <a href="RepresentationsManager_Parent.htm">RepresentationsManager.Parent</a>, <a href="RestFeature_Parent.htm">RestFeature.Parent</a>, <a href="RestFeatureProxy_Parent.htm">RestFeatureProxy.Parent</a>, <a href="RevolveFeature_Parent.htm">RevolveFeature.Parent</a>, <a href="RevolveFeatureProxy_Parent.htm">RevolveFeatureProxy.Parent</a>, <a href="RibFeature_Parent.htm">RibFeature.Parent</a>, <a href="RibFeatureProxy_Parent.htm">RibFeatureProxy.Parent</a>, <a href="RipFeature_Parent.htm">RipFeature.Parent</a>, <a href="RipFeatureProxy_Parent.htm">RipFeatureProxy.Parent</a>, <a href="RuledSurfaceFeature_Parent.htm">RuledSurfaceFeature.Parent</a>, <a href="RuledSurfaceFeatureProxy_Parent.htm">RuledSurfaceFeatureProxy.Parent</a>, <a href="RuleFilletFeature_Parent.htm">RuleFilletFeature.Parent</a>, <a href="RuleFilletFeatureProxy_Parent.htm">RuleFilletFeatureProxy.Parent</a>, <a href="SculptFeature_Parent.htm">SculptFeature.Parent</a>, <a href="SculptFeatureProxy_Parent.htm">SculptFeatureProxy.Parent</a>, <a href="ShellFeature_Parent.htm">ShellFeature.Parent</a>, <a href="ShellFeatureProxy_Parent.htm">ShellFeatureProxy.Parent</a>, <a href="ShrinkwrapComponent_Parent.htm">ShrinkwrapComponent.Parent</a>, <a href="ShrinkwrapComponentProxy_Parent.htm">ShrinkwrapComponentProxy.Parent</a>, <a href="SimplifyFeature_Parent.htm">SimplifyFeature.Parent</a>, <a href="SimplifyFeatureProxy_Parent.htm">SimplifyFeatureProxy.Parent</a>, <a href="SimulationManager_Parent.htm">SimulationManager.Parent</a>, <a href="SketchDrivenPatternFeature_Parent.htm">SketchDrivenPatternFeature.Parent</a>, <a href="SketchDrivenPatternFeatureProxy_Parent.htm">SketchDrivenPatternFeatureProxy.Parent</a>, <a href="SnapFitFeature_Parent.htm">SnapFitFeature.Parent</a>, <a href="SnapFitFeatureProxy_Parent.htm">SnapFitFeatureProxy.Parent</a>, <a href="SplitFeature_Parent.htm">SplitFeature.Parent</a>, <a href="SplitFeatureProxy_Parent.htm">SplitFeatureProxy.Parent</a>, <a href="SurfaceBody_ComponentDefinition.htm">SurfaceBody.ComponentDefinition</a>, <a href="SurfaceBodyProxy_ComponentDefinition.htm">SurfaceBodyProxy.ComponentDefinition</a>, <a href="SweepFeature_Parent.htm">SweepFeature.Parent</a>, <a href="SweepFeatureProxy_Parent.htm">SweepFeatureProxy.Parent</a>, <a href="ThickenFeature_Parent.htm">ThickenFeature.Parent</a>, <a href="ThickenFeatureProxy_Parent.htm">ThickenFeatureProxy.Parent</a>, <a href="ThreadFeature_Parent.htm">ThreadFeature.Parent</a>, <a href="ThreadFeatureProxy_Parent.htm">ThreadFeatureProxy.Parent</a>, <a href="TrimFeature_Parent.htm">TrimFeature.Parent</a>, <a href="TrimFeatureProxy_Parent.htm">TrimFeatureProxy.Parent</a>, <a href="UnfoldFeature_Parent.htm">UnfoldFeature.Parent</a>, <a href="UnfoldFeatureProxy_Parent.htm">UnfoldFeatureProxy.Parent</a>, <a href="UnwrapFeature_Parent.htm">UnwrapFeature.Parent</a>, <a href="UnwrapFeatureProxy_Parent.htm">UnwrapFeatureProxy.Parent</a>, <a href="UserCoordinateSystem_Parent.htm">UserCoordinateSystem.Parent</a>, <a href="UserCoordinateSystemProxy_Parent.htm">UserCoordinateSystemProxy.Parent</a>, <a href="WorkAxes_Parent.htm">WorkAxes.Parent</a>, <a href="WorkAxis_Parent.htm">WorkAxis.Parent</a>, <a href="WorkAxisProxy_Parent.htm">WorkAxisProxy.Parent</a>, <a href="WorkPlane_Parent.htm">WorkPlane.Parent</a>, <a href="WorkPlaneProxy_Parent.htm">WorkPlaneProxy.Parent</a>, <a href="WorkPlanes_Parent.htm">WorkPlanes.Parent</a>, <a href="WorkPoint_Parent.htm">WorkPoint.Parent</a>, <a href="WorkPointProxy_Parent.htm">WorkPointProxy.Parent</a>, <a href="WorkPoints_Parent.htm">WorkPoints.Parent</a>, <a href="WorkSurface_Parent.htm">WorkSurface.Parent</a>, <a href="WorkSurfaceProxy_Parent.htm">WorkSurfaceProxy.Parent</a>, <a href="WorkSurfaces_Parent.htm">WorkSurfaces.Parent</a><h2 class="api">
+            Derived Classes
+          </h2><a href="AssemblyComponentDefinition.htm">AssemblyComponentDefinition</a>, <a href="FlatPattern.htm">FlatPattern</a>, <a href="PartComponentDefinition.htm">PartComponentDefinition</a>, <a href="VirtualComponentDefinition.htm">VirtualComponentDefinition</a>, <a href="WeldsComponentDefinition.htm">WeldsComponentDefinition</a><h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AddiAssemblyMember_Sample.htm">Adding iAssembly occurrences</a></td>
+        <td class="api-list">This sample demonstrates adding iAssembly occurrences to an assembly.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AssemblyTraverse_Sample.htm">Traverse an Assembly</a></td>
+        <td class="api-list">This sample shows how to recursively traverse an assembly and get the count of leaf node components and subassemblies.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BalloonValueSet_ReferencedRow_Sample.htm">Find component referenced by balloon</a></td>
+        <td class="api-list">This sample demonstrates how to find the component that a balloon references.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BOM_Sample.htm">Using the BOM APIs</a></td>
+        <td class="api-list">This sample demonstrates the Bill of Materials API functionality in assemblies.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ClientGraphics_Sample.htm">Client Graphics - Draw Range Box</a></td>
+        <td class="api-list">This sample demonstrates the use of client graphics to draw the range box of selected entities.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="WriteFlatPatternAsDXF_Sample.htm">Translate - Sheet Metal to DXF</a></td>
+        <td class="api-list">The sample code below writes a sheet metal file out as DXF. DWG is also supported. Use either the FLAT PATTERN DWG or FLAT PATTERN DXF formats.There are several optional arguments that can be specified as part of the format string. E.g. 'FLAT PATTERN DXF?TangentLayer=Tangents&amp;SimplifySplines=True'). Below are the names of these arguments and relevant default values. The output will use these values unless you override them as part of the input string.
+<table>
+<tr><td><b>Argument</b></td><td><b>Type</b></td><td><b>Default Value</b></td><td><b>Note</b></td></tr>
+<tr><td>TangentLayer</td><td>String</td><td>IV_TANGENT</td><td></td></tr>
+<tr><td>OuterProfileLayer</td><td>String</td><td>IV_OUTER_PROFILE</td><td></td></tr>
+<tr><td>ArcCentersLayer</td><td>String</td><td>IV_ARC_CENTERS</td><td></td></tr>
+<tr><td>InteriorProfilesLayer</td><td>String</td><td>IV_INTERIOR_PROFILES</td><td></td></tr>
+<tr><td>BendLayer</td><td>String</td><td>IV_BEND</td><td>BendUpLayer + BendDownLayer (legacy support)</td></tr>
+<tr><td>BendUpLayer</td><td>String</td><td>IV_BEND</td><td></td></tr>
+<tr><td>BendDownLayer</td><td>String</td><td>IV_BEND_DOWN</td><td></td></tr>
+<tr><td>ToolCenterLayer</td><td>String</td><td>IV_TOOL_CENTER</td><td>ToolCenterUpLayer + ToolCenterDownLayer (legacy support)</td></tr>
+<tr><td>ToolCenterUpLayer</td><td>String</td><td>IV_TOOL_CENTER</td><td></td></tr>
+<tr><td>ToolCenterDownLayer</td><td>String</td><td>IV_TOOL_CENTER_DOWN</td><td></td></tr>
+<tr><td>FeatureProfilesLayer</td><td>String</td><td>IV_FEATURE_PROFILES</td><td>FeatureProfilesUpLayer + FeatureProfilesDownLayer (legacy support)</td></tr>
+<tr><td>FeatureProfilesUpLayer</td><td>String</td><td>IV_FEATURE_PROFILES</td><td></td></tr>
+<tr><td>FeatureProfilesDownLayer</td><td>String</td><td>IV_FEATURE_PROFILES_DOWN</td><td></td></tr>
+<tr><td>AltRepFrontLayer</td><td>String</td><td>IV_ALTREP_FRONT</td><td></td></tr>
+<tr><td>AltRepBackLayer</td><td>String</td><td>IV_ALTREP_BACK</td><td></td></tr>
+<tr><td>UnconsumedSketchesLayer</td><td>String</td><td>IV_UNCONSUMED_SKETCHES</td><td></td></tr>
+<tr><td>UnconsumedSketchConstructionLayer</td><td>String</td><td>IV_UNCONSUMED_SKETCH_CONSTRUCTION</td><td></td></tr>
+<tr><td>TangentRollLinesLayer</td><td>String</td><td>IV_ROLL_TANGENT</td><td></td></tr>
+<tr><td>RollLinesLayer</td><td>String</td><td>IV_ROLL</td><td></td></tr>
+<tr><td>***Color</td><td>String</td><td></td><td>*** indicates name of layer from the argument column. RGB values separated by ;. Example: TangentLayerColor=255;0;0</td></tr>
+<tr><td>***LineType</td><td>Long</td><td></td><td>*** indicates name of layer from the argument column. Long value from LineTypeEnum. Example: TangentLayerLineType=37644</td></tr>
+<tr><td>***LineWeight</td><td>Double</td><td></td><td>*** indicates name of layer from the argument column. Value in centimeters. Example: TangentLayerLineWeight=.1016</td></tr>
+<tr><td>CustomizeFilename</td><td>String</td><td></td><td></td></tr>
+<tr><td>AcadVersion</td><td>String</td><td></td><td>2018, 2013, 2010, 2007, 2004, 2000, or R12 (for DXF only)</td></tr>
+<tr><td>SimplifySplines</td><td>Boolean</td><td>True</td><td>Enable spline replacement(by linear segments or arcs).</td></tr>
+<tr><td>SplineTolerance</td><td>Double</td><td>0.01</td><td>Chord tolerance for spline replacement</td></tr>
+<tr><td>AdvancedLegacyExport</td><td>Boolean</td><td>True</td><td></td></tr>
+<tr><td>MergeProfilesIntoPolyline</td><td>Boolean</td><td>False</td><td>Build a polyline of the exterior profiles</td></tr>
+<tr><td>RebaseGeometry</td><td>Boolean</td><td>False</td><td>Move geometry to 1st quadrant</td></tr>
+<tr><td>InvisibleLayers</td><td>String</td><td></td><td>List of layer names to make invisible, separated by ;</td></tr>
+<tr><td>TrimCenterlinesAtContour</td><td>Boolean</td><td>False</td><td>Trim the centerlines at contour.</td></tr>
+<tr><td>SimplifyAsTangentArcs</td><td>Boolean</td><td>False</td><td>True: Replace splines by tangent arcs. False: Replace splines by line segments. The SimplifySplines should be specified to True otherwise this option is ignored.</td></tr>
+</table></td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 4<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(ComponentDefinition%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

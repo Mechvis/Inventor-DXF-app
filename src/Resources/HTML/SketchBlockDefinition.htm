@@ -1,0 +1,457 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/SketchBlockDefinition.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="SketchBlockDefinition">
+    <meta name="description" content="SketchBlockDefinition Object">
+    <meta name="topicid" content="GUID-SketchBlockDefinition">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>SketchBlockDefinition Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">SketchBlockDefinition Object
+			</h1>
+              Derived from: <a href="PlanarSketch.htm">PlanarSketch</a> Object
+            <br><h2 class="api">
+          Description
+        </h2>The SketchBlockDefinition object represents a sketch block definition.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlockDefinition_AddArcSlotByCenterPointArc.htm">AddArcSlotByCenterPointArc</a></td>
+        <td class="api-list">Method that creates an arc slot. The sketch entities represent the sketch slot are returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlockDefinition_AddArcSlotByThreePointArc.htm">AddArcSlotByThreePointArc</a></td>
+        <td class="api-list">Method that creates an arc slot. The sketch entities represent the sketch slot are returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlockDefinition_AddByProjectingEntity.htm">AddByProjectingEntity</a></td>
+        <td class="api-list">Method that creates a new sketch entity by projecting other entities onto the sketch plane. This method performs the same function as the Project Geometry or Project DWG Geometry command according to the Entity you specified.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlockDefinition_AddBySilhouette.htm">AddBySilhouette</a></td>
+        <td class="api-list">Method that creates new reference sketch geometry as the silhouette on the input face near the input proximity point.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlockDefinition_AddStraightSlotByCenterToCenter.htm">AddStraightSlotByCenterToCenter</a></td>
+        <td class="api-list">Method that creates a straight slot. The sketch entities represent the sketch slot are returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlockDefinition_AddStraightSlotByOverall.htm">AddStraightSlotByOverall</a></td>
+        <td class="api-list">Method that creates a straight slot. The sketch entities represent the sketch slot are returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlockDefinition_AddStraightSlotBySlotCenter.htm">AddStraightSlotBySlotCenter</a></td>
+        <td class="api-list">Method that creates a straight slot. The sketch entities represent the sketch slot are returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlockDefinition_AdjustContext.htm">AdjustContext</a></td>
+        <td class="api-list">Method that returns the specified sketch object scoped into this sketch block definition, trimming any portion of the context from any sketch block in which this definition has been instanced. In other words, for the given object, this method returns the corresponding object in the context of this sketch block definition, by trimming the sketch block path.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlockDefinition_BreakLink.htm">BreakLink</a></td>
+        <td class="api-list">Method that breaks the link to the source sketch.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlockDefinition_CopyContentsTo.htm">CopyContentsTo</a></td>
+        <td class="api-list">Method that copies all the contents of the sketch to the \input target sketch.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlockDefinition_CopyEntitiesTo.htm">CopyEntitiesTo</a></td>
+        <td class="api-list">Method that copies sketch entities of the sketch to the input target sketch.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlockDefinition_CopyTo.htm">CopyTo</a></td>
+        <td class="api-list">Method that copies the definition to the target document.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlockDefinition_Delete.htm">Delete</a></td>
+        <td class="api-list">Method that deletes the sketch. This method is only valid for sketches that are not used by a feature.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlockDefinition_Edit.htm">Edit</a></td>
+        <td class="api-list">Method that causes the Sketch environment to be invoked with this sketch available for interactive edit.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlockDefinition_ExitEdit.htm">ExitEdit</a></td>
+        <td class="api-list">Causes the Sketch environment to be closed and the user interface to return to the previous environment. This is equivalent to the Return command. This method is only valid in the case where this sketch is open for edit within the user interface.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlockDefinition_GetCustomLineType.htm">GetCustomLineType</a></td>
+        <td class="api-list">Method that returns information regarding the custom line type in use. The method returns a failure if the return value of the LineType property is not kCustomLineType.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlockDefinition_GetReferenceKey.htm">GetReferenceKey</a></td>
+        <td class="api-list">Method that generates and returns the reference key for this entity.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlockDefinition_ModelToSketchSpace.htm">ModelToSketchSpace</a></td>
+        <td class="api-list">Method that takes a 3D coordinate in model space, projects it onto the sketch plane along the normal of the plane and returns a Point2d object containing the resulting coordinate point in sketch space.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlockDefinition_MoveSketchObjects.htm">MoveSketchObjects</a></td>
+        <td class="api-list">Method that moves a collection of sketch objects by a specified vector. If the Copy argument is set to True, the newly created objects are returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlockDefinition_OffsetSketchEntitiesUsingDistance.htm">OffsetSketchEntitiesUsingDistance</a></td>
+        <td class="api-list">Method that offsets a sketch entity or a group of connected sketch entities. In both cases, the base sketch entity is first offset by the specified distance and along the specified direction. The base sketch entity is determined as follows: 	*	If only one sketch entity needs to be offset, it will be treated as the base sketch entity. 	*	If a group of end-to-end connected entities need to be offset, the first entity in the group will be treated as the base sketch entity. If this method successfully offsets the specified input sketch entities, the newly created sketch entities are returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlockDefinition_OffsetSketchEntitiesUsingPoint.htm">OffsetSketchEntitiesUsingPoint</a></td>
+        <td class="api-list">Method that offsets a sketch entity or a group of end-to-end connected sketch entities. In both cases, the offset is first applied to the base sketch entity such that the offset of the base sketch entity passes through the specified offset point on the sketch. The shortest distance of this offset point from the original base sketch entity determines the offset distance.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlockDefinition_RotateSketchObjects.htm">RotateSketchObjects</a></td>
+        <td class="api-list">Method that rotates a collection of sketch objects by a specified angle. If the Copy argument is set to True, the newly created objects are returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlockDefinition_SetCustomLineType.htm">SetCustomLineType</a></td>
+        <td class="api-list">Method that sets a custom line type to the curve from the specified .lin file. The method automatically changes the value of LineType property to kCustomLineType.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlockDefinition_SetEndOfPart.htm">SetEndOfPart</a></td>
+        <td class="api-list">Method that repositions the end-of-part marker relative to the object this method is called from. The argument defines if the end-of-part marker will be positioned just before or just after the object. If the object is contained within another object and is not in the top level of the browser, the positioning of the marker will be relative to the top-level object the calling object is contained within. An example of this case is a sketch that has not been shared and has been consumed by a feature. Another example is a nested work feature.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlockDefinition_SketchToModelSpace.htm">SketchToModelSpace</a></td>
+        <td class="api-list">Method that takes a 2D coordinate in sketch space, and returns a Point3d containing the coordinates of the point in model space.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlockDefinition_Solve.htm">Solve</a></td>
+        <td class="api-list">Method that causes the sketch to solve.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlockDefinition_UpdateProfiles.htm">UpdateProfiles</a></td>
+        <td class="api-list">Method that updates all the profiles within the sketch.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlockDefinition_Adaptive.htm">Adaptive</a></td>
+        <td class="api-list">Gets and sets whether the sketch is adaptive or not.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlockDefinition_Application.htm">Application</a></td>
+        <td class="api-list">Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlockDefinition_AttributeSets.htm">AttributeSets</a></td>
+        <td class="api-list">Property that returns the AttributeSets collection object associated with this object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlockDefinition_AxisEntity.htm">AxisEntity</a></td>
+        <td class="api-list">Gets and sets the object that defines the X or Y axis of the sketch plane.&nbsp;The AxisIsX property defines whether it is the X or Y axis, and the NaturalAxisDirection property defines the direction of the axis.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlockDefinition_AxisEntityGeometry.htm">AxisEntityGeometry</a></td>
+        <td class="api-list">Property that gets the geometry that describes the axis entity.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlockDefinition_AxisIsX.htm">AxisIsX</a></td>
+        <td class="api-list">Gets and sets if the axis entity defines the X or Y axis.&nbsp;True indicates the axis defines the X-axis.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlockDefinition_CheckSumValue.htm">CheckSumValue</a></td>
+        <td class="api-list">Gets sketch checksum value.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlockDefinition_CircularPatterns.htm">CircularPatterns</a></td>
+        <td class="api-list">Gets the SketchCircularPatterns collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlockDefinition_Color.htm">Color</a></td>
+        <td class="api-list">Gets and Sets the color for the sketch.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlockDefinition_ConstraintStatus.htm">ConstraintStatus</a></td>
+        <td class="api-list">Property that returns an enum indicating the constraint status of the sketch entity, signifying whether it is fully constrained, over constrained, or under constrained.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlockDefinition_Consumed.htm">Consumed</a></td>
+        <td class="api-list">Gets whether the sketch is consumed or not.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlockDefinition_CopyToFlatPattern.htm">CopyToFlatPattern</a></td>
+        <td class="api-list">Gets and sets whether a sheet metal folded model sketch should be copied over (transposed) to the flat pattern.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlockDefinition_DataIO.htm">DataIO</a></td>
+        <td class="api-list">Gets the object through which this sketch's data content can be persisted.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlockDefinition_DeferUpdates.htm">DeferUpdates</a></td>
+        <td class="api-list">Gets and Sets whether to defer the solving of the sketch or not.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlockDefinition_Dependents.htm">Dependents</a></td>
+        <td class="api-list">Gets the dependent objects of the sketch.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlockDefinition_Description.htm">Description</a></td>
+        <td class="api-list">Gets and sets the description for the sketch block definition.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlockDefinition_DimensionConstraints.htm">DimensionConstraints</a></td>
+        <td class="api-list">Gets the collection of all dimension constraints on the sketch.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlockDefinition_DimensionsVisible.htm">DimensionsVisible</a></td>
+        <td class="api-list">Gets and sets whether the dimensions on the sketch are visible.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlockDefinition_DisabledActionTypes.htm">DisabledActionTypes</a></td>
+        <td class="api-list">Gets and sets the action types valid for this sketch.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlockDefinition_Exported.htm">Exported</a></td>
+        <td class="api-list">Read-write property that gets and sets whether the object is exported. Objects must be marked for export in order for them to be derived.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlockDefinition_GeometricConstraints.htm">GeometricConstraints</a></td>
+        <td class="api-list">Property that returns the collection of all geometric constraints on the sketch.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlockDefinition_HasReferenceComponent.htm">HasReferenceComponent</a></td>
+        <td class="api-list">Property that specifies if the object was created as the result of a derived part.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlockDefinition_HealthStatus.htm">HealthStatus</a></td>
+        <td class="api-list">Property that returns an enum indicating the current state of the object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlockDefinition_InsertionPoint.htm">InsertionPoint</a></td>
+        <td class="api-list">Property that returns the insertion point of the sketch block definition.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlockDefinition_IsInsertionPointVisible.htm">IsInsertionPointVisible</a></td>
+        <td class="api-list">Gets and sets whether the insertion point is visible.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlockDefinition_IsOwnedByFeature.htm">IsOwnedByFeature</a></td>
+        <td class="api-list">Property that returns whether this object is owned by a feature. This property should return True for sketches that are created as a result of an unfold or refold feature.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlockDefinition_IsReferenced.htm">IsReferenced</a></td>
+        <td class="api-list">Property that returns whether this sketch block definition is currently referenced within the document.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlockDefinition_LineType.htm">LineType</a></td>
+        <td class="api-list">Gets and Sets the line type override for the sketch.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlockDefinition_LineWeight.htm">LineWeight</a></td>
+        <td class="api-list">Gets and Sets the line weight override for the sketch.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlockDefinition_ModelToSketchTransform.htm">ModelToSketchTransform</a></td>
+        <td class="api-list">Property that returns the transformation from model space to the 2d sketch coordinate space.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlockDefinition_Name.htm">Name</a></td>
+        <td class="api-list">Gets and sets name of the sketch.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlockDefinition_NaturalAxisDirection.htm">NaturalAxisDirection</a></td>
+        <td class="api-list">Gets and sets if the sketch plane X or Y axis is in the same direction as that defined by axis entity.&nbsp;True indicates the axis direction is in the same direction as the axis.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlockDefinition_OriginPoint.htm">OriginPoint</a></td>
+        <td class="api-list">Gets and sets origin of the sketch. When set this property, the valid object can be a WorkPoint, Vertex or SketchPoint.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlockDefinition_OriginPointGeometry.htm">OriginPointGeometry</a></td>
+        <td class="api-list">Property that gets the geometry that describes the origin point.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlockDefinition_OwnedBy.htm">OwnedBy</a></td>
+        <td class="api-list">Property that returns the PartFeature object. This property should return the UnfoldFeature or RefoldFeature object that created the sketch.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlockDefinition_Parent.htm">Parent</a></td>
+        <td class="api-list">Property that gets the parent object from whom this object can logically be reached.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlockDefinition_PlanarEntity.htm">PlanarEntity</a></td>
+        <td class="api-list">Gets and sets the planar object that defines the planar object the sketch is to be built on.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlockDefinition_PlanarEntityGeometry.htm">PlanarEntityGeometry</a></td>
+        <td class="api-list">Property that returns the geometry that describes the plane the sketch is based on.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlockDefinition_Profiles.htm">Profiles</a></td>
+        <td class="api-list">Property that returns the Profiles collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlockDefinition_ProjectedCuts.htm">ProjectedCuts</a></td>
+        <td class="api-list">Property that returns the ProjectedCuts collection object. This collection provides access to the existing projected cut edges in the sketch and provides functionality to create new projected cut edges.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlockDefinition_RectangularPatterns.htm">RectangularPatterns</a></td>
+        <td class="api-list">Gets the SketchRectangularPatterns collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlockDefinition_ReferenceComponent.htm">ReferenceComponent</a></td>
+        <td class="api-list">Property that returns the ReferenceComponent that resulted in the creation of this feature.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlockDefinition_ReferencedEntity.htm">ReferencedEntity</a></td>
+        <td class="api-list">Property that returns the referenced sketch in the cases where this sketch was created as a result of a "derive" operation or copied over to the sheet metal flat pattern from the folded model.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlockDefinition_Shared.htm">Shared</a></td>
+        <td class="api-list">Gets and sets whether the profile is shared or not.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlockDefinition_SketchArcs.htm">SketchArcs</a></td>
+        <td class="api-list">Property that returns the SketchArcs collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlockDefinition_SketchBlocks.htm">SketchBlocks</a></td>
+        <td class="api-list">Property that returns the SketchBlocks collection object. Only the first level sketch blocks in the sketch are returned. Use SketchBlock.ChildBlocks property recursively to get sketch blocks at all levels.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlockDefinition_SketchCircles.htm">SketchCircles</a></td>
+        <td class="api-list">Property that returns the SketchArcs collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlockDefinition_SketchControlPointSplines.htm">SketchControlPointSplines</a></td>
+        <td class="api-list">Read-only property that returns the SketchControlPointSplines collection object.&nbsp;This collection provides access to the existing control point splines in the sketch and provides functionality to create new control point splines.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlockDefinition_SketchEllipses.htm">SketchEllipses</a></td>
+        <td class="api-list">Property that returns the SketchEllipses collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlockDefinition_SketchEllipticalArcs.htm">SketchEllipticalArcs</a></td>
+        <td class="api-list">Property that returns the SketchEllipticalArcs collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlockDefinition_SketchEntities.htm">SketchEntities</a></td>
+        <td class="api-list">Property that returns the collection of all entities on the sketch, regardless of their type.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlockDefinition_SketchEquationCurves.htm">SketchEquationCurves</a></td>
+        <td class="api-list">Read-only property that returns the SketchEquationCurves collection object.&nbsp;This collection provides access to the existing equation curves in the sketch and provides functionality to create new equation curves.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlockDefinition_SketchFixedSplines.htm">SketchFixedSplines</a></td>
+        <td class="api-list">Property that gets the collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlockDefinition_SketchImages.htm">SketchImages</a></td>
+        <td class="api-list">Property that returns a collection of all images on the sketch.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlockDefinition_SketchLines.htm">SketchLines</a></td>
+        <td class="api-list">Property that returns the SketchLines collection object. This collection provides access to the existing lines in the sketch and provides functionality to create new lines.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlockDefinition_SketchOffsetSplines.htm">SketchOffsetSplines</a></td>
+        <td class="api-list">Property that returns the collection object. This collection provides access to the existing offset splines in the sketch.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlockDefinition_SketchPoints.htm">SketchPoints</a></td>
+        <td class="api-list">Property that returns the SketchPoints collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlockDefinition_SketchSplines.htm">SketchSplines</a></td>
+        <td class="api-list">Property that returns the SketchSplines collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlockDefinition_SketchToModelTransform.htm">SketchToModelTransform</a></td>
+        <td class="api-list">Property that returns the transformation from the 2D sketch coordinate space to model space.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlockDefinition_TextBoxes.htm">TextBoxes</a></td>
+        <td class="api-list">Gets the TextBoxes collection associated with this Sketch.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlockDefinition_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlockDefinition_Visible.htm">Visible</a></td>
+        <td class="api-list">Gets and sets the visibility of the sketch.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="SketchBlock_Definition.htm">SketchBlock.Definition</a>, <a href="SketchBlockDefinition_CopyTo.htm">SketchBlockDefinition.CopyTo</a>, <a href="SketchBlockDefinitionProxy_CopyTo.htm">SketchBlockDefinitionProxy.CopyTo</a>, <a href="SketchBlockDefinitionProxy_NativeObject.htm">SketchBlockDefinitionProxy.NativeObject</a>, <a href="SketchBlockDefinitions_Add.htm">SketchBlockDefinitions.Add</a>, <a href="SketchBlockDefinitions_Item.htm">SketchBlockDefinitions.Item</a>, <a href="SketchBlockDefinitionsEnumerator_Item.htm">SketchBlockDefinitionsEnumerator.Item</a>, <a href="SketchBlockProxy_Definition.htm">SketchBlockProxy.Definition</a><h2 class="api">
+            Derived Classes
+          </h2><a href="SketchBlockDefinitionProxy.htm">SketchBlockDefinitionProxy</a><h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlockDefinition_Sample.htm">Create and insert a sketch block definition into a part sketch</a></td>
+        <td class="api-list">This sample demonstrates inserting a sketch block into a part sketch.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2010<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(SketchBlockDefinition%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

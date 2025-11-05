@@ -1,0 +1,139 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/PlanarSketches_AddWithOrientation.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="PlanarSketches_AddWithOrientation">
+    <meta name="description" content="PlanarSketches.AddWithOrientation Method">
+    <meta name="topicid" content="PlanarSketches_AddWithOrientation">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>PlanarSketches.AddWithOrientation Method</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">PlanarSketches.AddWithOrientation Method</h1>
+
+          Parent Object: <a href="PlanarSketches.htm">PlanarSketches</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Method that creates a new sketch based on the input planar entity and orientation information.</p>
+    <h2 class="api">
+          Syntax
+        </h2>
+        
+            PlanarSketches.<b>AddWithOrientation</b>( <b><i>PlanarEntity</i></b> As Object, <b><i>AxisEntity</i></b> As Object, <b><i>NaturalAxisDirection</i></b> As Boolean, <b><i>AxisIsX</i></b> As Boolean, <b><i>Origin</i></b> As Object, [<b><i>UseFaceEdges</i></b>] As Boolean ) As <a href="PlanarSketch.htm">PlanarSketch</a>
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">PlanarEntity</td>
+        <td class="api-list">Object</td>
+        <td class="api-list">Input object that defines the planar object the sketch is to be built on. Valid input for this argument includes planar faces and work planes.</td>
+      </tr>
+      <tr>
+        <td class="api-list">AxisEntity</td>
+        <td class="api-list">Object</td>
+        <td class="api-list">Input object that defines the X or Y axis of the sketch plane (the AxisIsX argument defines which). Valid input includes linear edges, sketch lines from another sketch, and work axes.</td>
+      </tr>
+      <tr>
+        <td class="api-list">NaturalAxisDirection</td>
+        <td class="api-list">Boolean</td>
+        <td class="api-list">Input Boolean that defines if the sketch plane X or Y axis is in the same direction as that defined by the input axis entity. True indicates the axis direction is in the same direction as that of the input entity.</td>
+      </tr>
+      <tr>
+        <td class="api-list">AxisIsX</td>
+        <td class="api-list">Boolean</td>
+        <td class="api-list">Input Boolean that specifies if the axis entity defines the X or Y axis. True indicates the axis defines the X-axis.</td>
+      </tr>
+      <tr>
+        <td class="api-list">Origin</td>
+        <td class="api-list">Object</td>
+        <td class="api-list">Input object that defines the origin of the sketch plane. Valid input is a vertex, work point, or a sketch point from another sketch.</td>
+      </tr>
+      <tr>
+        <td class="api-list">UseFaceEdges</td>
+        <td class="api-list">Boolean</td>
+        <td class="api-list">Optional input Boolean that specifies if sketch geometry should automatically be created for all of the edges of the input face. This is the behavior when creating a sketch interactively in Autodesk Inventor. This argument is ignored in the case when PlanarEntity is a work plane. The default value of False specifies that no sketch geometry should automatically be created from the face edges.<br /><br /> This is an optional argument whose default value is False.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ExtrudeFeature_Sample.htm">Extrude Feature - Create Block with Pocket</a></td>
+        <td class="api-list">This sample demonstrates creating a simple solid consisting a block with a pocket. It shows how to create a sketch plane at a specified orientation to existing geometry.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PartFeature_SetEndOfPart_Sample.htm">Create and Edit an Extrude Feature with a pocket</a></td>
+        <td class="api-list">This sample demonstrates how to edit an extrude feature. It shows how to create a sketch plane at a specified orientation to existing geometry.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PlanarSketches_AddWithOrientation_Sample.htm">Sketch Add Oriented</a></td>
+        <td class="api-list">This sample demonstrates the creation of a sketch using the Sketches.AddWithOrientation method.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalFeatures_Sample.htm">Create sheet metal face and cut features</a></td>
+        <td class="api-list">This sample demonstrates the creation of sheet metal face and cut features.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 5<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(PlanarSketches.AddWithOrientation%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

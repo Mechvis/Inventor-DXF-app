@@ -1,0 +1,207 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/TextGraphics.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="TextGraphics">
+    <meta name="description" content="TextGraphics Object">
+    <meta name="topicid" content="GUID-TextGraphics">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>TextGraphics Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">TextGraphics Object
+			</h1>
+              Derived from: <a href="GraphicsPrimitive.htm">GraphicsPrimitive</a> Object
+            <br><h2 class="api">
+          Description
+        </h2>The TextGraphics object defines a set of text strings that are displayed within the model. Each coordinate provided defines a new TextGraphics object. For each coordinate you must also provide a text string.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextGraphics_Delete.htm">Delete</a></td>
+        <td class="api-list">Method that deletes the graphics primitive.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextGraphics_GetTextColor.htm">GetTextColor</a></td>
+        <td class="api-list">Method that gets the color of the text.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextGraphics_GetTransformBehavior.htm">GetTransformBehavior</a></td>
+        <td class="api-list">Returns the current view transformation settings (e.g. pixel scaling and front facing).</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextGraphics_GetViewSpaceAnchor.htm">GetViewSpaceAnchor</a></td>
+        <td class="api-list">Method that gets the anchor information of the graphics object. This method returns an error if the 'Anchored' property returns False.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextGraphics_PutTextColor.htm">PutTextColor</a></td>
+        <td class="api-list">Method that sets the color of the text.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextGraphics_RemoveViewSpaceAnchor.htm">RemoveViewSpaceAnchor</a></td>
+        <td class="api-list">The RemoveViewSpaceAnchor method removes the view space anchor from the object, and sets the Anchored property to false.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextGraphics_SetTransformBehavior.htm">SetTransformBehavior</a></td>
+        <td class="api-list">Sets the view transformation settings (e.g. pixel scaling and front facing).</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextGraphics_SetViewSpaceAnchor.htm">SetViewSpaceAnchor</a></td>
+        <td class="api-list">Method that anchors the graphics object at the specified point in view space. The Anchored property is set to True.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextGraphics_Anchor.htm">Anchor</a></td>
+        <td class="api-list">Gets and sets the position of the text.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextGraphics_Anchored.htm">Anchored</a></td>
+        <td class="api-list">Property that indicates whether this graphics primitive is anchored in view space. This property can only be set to False. The Anchored property is automatically set to True by the SetViewSpaceAnchor method.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextGraphics_Application.htm">Application</a></td>
+        <td class="api-list">Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextGraphics_Bold.htm">Bold</a></td>
+        <td class="api-list">Gets and sets whether the text has bold formatting or not.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextGraphics_BurnThrough.htm">BurnThrough</a></td>
+        <td class="api-list">Read-write property that specifies whether or not graphics are always visible even if they are blocked by other objects.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextGraphics_DepthPriority.htm">DepthPriority</a></td>
+        <td class="api-list">Read-write property that allows you to specify a priority for a set.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextGraphics_Font.htm">Font</a></td>
+        <td class="api-list">Gets and sets the font used for the text.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextGraphics_FontSize.htm">FontSize</a></td>
+        <td class="api-list">Gets/sets the font size. The font size is defined in pixels for non-scalable text graphics objects. It is defined in model space units for scalable text graphics objects.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextGraphics_HorizontalAlignment.htm">HorizontalAlignment</a></td>
+        <td class="api-list">Read-write property that allows you to specify the horizontal justification of the text with respect to the coordinate point for the text.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextGraphics_Id.htm">Id</a></td>
+        <td class="api-list">Read-only property that returns the Id of the object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextGraphics_Italic.htm">Italic</a></td>
+        <td class="api-list">Gets and sets whether the text has italic formatting or not.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextGraphics_Parent.htm">Parent</a></td>
+        <td class="api-list">Property that returns the parent object from whom this object can logically be reached.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextGraphics_RangeBox.htm">RangeBox</a></td>
+        <td class="api-list">Property that returns a Box object which contains the opposing points of a rectangular box that is guaranteed to enclose this object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextGraphics_Scalable.htm">Scalable</a></td>
+        <td class="api-list">Property that returns whether the TextGraphics object is scalable. If True, the FontSize property can be set a double value indicating its size in model space units.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextGraphics_Text.htm">Text</a></td>
+        <td class="api-list">Gets and sets the text displayed for the TextGraphics object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextGraphics_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextGraphics_VerticalAlignment.htm">VerticalAlignment</a></td>
+        <td class="api-list">Read-write property that allows you to specify the vertical justification of the text with respect to the coordinate point for the text.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="GraphicsNode_AddScalableTextGraphics.htm">GraphicsNode.AddScalableTextGraphics</a>, <a href="GraphicsNode_AddTextGraphics.htm">GraphicsNode.AddTextGraphics</a>, <a href="GraphicsNodeProxy_AddScalableTextGraphics.htm">GraphicsNodeProxy.AddScalableTextGraphics</a>, <a href="GraphicsNodeProxy_AddTextGraphics.htm">GraphicsNodeProxy.AddTextGraphics</a><h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="GraphicsNode_AddTextGraphics_Sample.htm">Text Using Client Graphics (Simple)</a></td>
+        <td class="api-list">This sample demonstrates creating text using client graphics. It illustrates the simple case where the text is one font and is one line.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="GraphicsNode_AddTextGraphics2_Sample.htm">Text Using Client Graphics (Multiple fonts and lines)</a></td>
+        <td class="api-list">This sample demonstrates creating text using client graphics. It illustrates the more complex case of changes in font and more than one line.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="GraphicsPrimitive_SetViewSpaceAnchor_Sample.htm">Anchored Client Grahics</a></td>
+        <td class="api-list">This sample demonstrates the creation of client graphics that is fully anchored in a view.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 5<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(TextGraphics%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

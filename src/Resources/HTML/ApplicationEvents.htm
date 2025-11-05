@@ -1,0 +1,200 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/ApplicationEvents.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="ApplicationEvents">
+    <meta name="description" content="ApplicationEvents Object">
+    <meta name="topicid" content="GUID-ApplicationEvents">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>ApplicationEvents Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">ApplicationEvents Object
+			</h1><br><h2 class="api">
+          Description
+        </h2>Inventor::ApplicationEventsSink<h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ApplicationEvents_Application.htm">Application</a></td>
+        <td class="api-list">Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ApplicationEvents_Parent.htm">Parent</a></td>
+        <td class="api-list">Gets the parent object from whom this object can logically be reached.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ApplicationEvents_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Events
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ApplicationEvents_OnActivateDocument.htm">OnActivateDocument</a></td>
+        <td class="api-list">Event that is fired whenever a document is activated.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ApplicationEvents_OnActivateView.htm">OnActivateView</a></td>
+        <td class="api-list">Event that fires just after a view is activated.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ApplicationEvents_OnActiveProjectChanged.htm">OnActiveProjectChanged</a></td>
+        <td class="api-list">Fires just before and soon after the active project is changed, supplying the context in which this action is being taken.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ApplicationEvents_OnApplicationOptionChange.htm">OnApplicationOptionChange</a></td>
+        <td class="api-list">Fires just before and soon after application options are modified.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ApplicationEvents_OnCloseDocument.htm">OnCloseDocument</a></td>
+        <td class="api-list">Event that is fired whenever a document is closed.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ApplicationEvents_OnCloseView.htm">OnCloseView</a></td>
+        <td class="api-list">The OnCloseView event notifies a client when a view is closed. An API view is equivalent to an Inventor graphics window.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ApplicationEvents_OnDeactivateDocument.htm">OnDeactivateDocument</a></td>
+        <td class="api-list">The OnDeactivateDocument event notifies a client when a document is deactivated.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ApplicationEvents_OnDeactivateView.htm">OnDeactivateView</a></td>
+        <td class="api-list">Fires just after a view is deactivated.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ApplicationEvents_OnDisplayModeChange.htm">OnDisplayModeChange</a></td>
+        <td class="api-list">The OnDisplayModeChange event notifies a client when the display mode of a view has changed.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ApplicationEvents_OnDocumentChange.htm">OnDocumentChange</a></td>
+        <td class="api-list">Fires just before the document is changed, supplying the reasons for change and the context in which this action is being taken.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ApplicationEvents_OnInitializeDocument.htm">OnInitializeDocument</a></td>
+        <td class="api-list">Event that is fired whenever a document is initialized. At the time this event fires, the document is not open yet. Calling methods or properties on the document will force it to open.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ApplicationEvents_OnMigrateDocument.htm">OnMigrateDocument</a></td>
+        <td class="api-list">Event that is fired whenever a document is being explicitly migrated.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ApplicationEvents_OnMoveApplicationWindow.htm">OnMoveApplicationWindow</a></td>
+        <td class="api-list">Fires after application main window is moved.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ApplicationEvents_OnMoveView.htm">OnMoveView</a></td>
+        <td class="api-list">Fires after view window is moved.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ApplicationEvents_OnNewDocument.htm">OnNewDocument</a></td>
+        <td class="api-list">Event that is fired whenever a new document is created.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ApplicationEvents_OnNewEditObject.htm">OnNewEditObject</a></td>
+        <td class="api-list">The OnNewEditObject event notifies a client when the edit object is changing.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ApplicationEvents_OnNewView.htm">OnNewView</a></td>
+        <td class="api-list">The OnNewView event notifies a client when a new View object is created. An API "View" object is equivalent to an Inventor graphics window.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ApplicationEvents_OnOpenDocument.htm">OnOpenDocument</a></td>
+        <td class="api-list">The OnOpenDocument event notifies a client when a document is opened.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ApplicationEvents_OnQuit.htm">OnQuit</a></td>
+        <td class="api-list">The OnQuit event notifies a client when Inventor is being shut down.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ApplicationEvents_OnReady.htm">OnReady</a></td>
+        <td class="api-list">The OnReady event notifies a client when Inventor has completely initialized and is ready for interactive use.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ApplicationEvents_OnResizeApplicationWindow.htm">OnResizeApplicationWindow</a></td>
+        <td class="api-list">Fires after application main window is resized, or layout is recalculated.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ApplicationEvents_OnResizeView.htm">OnResizeView</a></td>
+        <td class="api-list">Fires after view window is resized, or window state is changed.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ApplicationEvents_OnRestart32BitHost.htm">OnRestart32BitHost</a></td>
+        <td class="api-list">This event is fired when the 32BitHost process is restarted. This process is used to host 32-bit processes when running 64-bit Inventor.&nbsp;The primary use of this is to host VBA, which is currently only a 32-bit process.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ApplicationEvents_OnSaveDocument.htm">OnSaveDocument</a></td>
+        <td class="api-list">The OnSaveDocument notifies a client whenever a document is saved.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ApplicationEvents_OnTerminateDocument.htm">OnTerminateDocument</a></td>
+        <td class="api-list">The OnTerminateDocument event notifies a client when a document is being terminated. Termination of a document is a complete close of the document. A document terminate corresponds with a document initialize.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ApplicationEvents_OnTranslateDocument.htm">OnTranslateDocument</a></td>
+        <td class="api-list">The OnTranslateDocument event notifies a client whenever a file is translated into Inventor or an Inventor document is translated out to a non-Inventor file.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ApplicationEvents_OnUndoOpenDocument.htm">OnUndoOpenDocument</a></td>
+        <td class="api-list">Fires when an open document transaction is undone.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="Application_ApplicationEvents.htm">Application.ApplicationEvents</a>, <a href="InventorServer_ApplicationEvents.htm">InventorServer.ApplicationEvents</a>, <a href="InventorServerObject_ApplicationEvents.htm">InventorServerObject.ApplicationEvents</a><h2 class="api">
+            Version
+          </h2>
+        Introduced in version 4<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(ApplicationEvents%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

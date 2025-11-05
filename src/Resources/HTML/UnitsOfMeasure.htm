@@ -1,0 +1,181 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/UnitsOfMeasure.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="UnitsOfMeasure">
+    <meta name="description" content="UnitsOfMeasure Object">
+    <meta name="topicid" content="GUID-UnitsOfMeasure">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>UnitsOfMeasure Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">UnitsOfMeasure Object
+			</h1><br><h2 class="api">
+          Description
+        </h2>The UnitsOfMeasure object supports various functions to allow you to interact with the units associated with the document.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UnitsOfMeasure_CompatibleUnits.htm">CompatibleUnits</a></td>
+        <td class="api-list">Method that evaluates the two input expressions and determines if the result in units that have the same base unit type.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UnitsOfMeasure_ConvertUnits.htm">ConvertUnits</a></td>
+        <td class="api-list">Method that converts a value from one unit to another. The input and output unit specifiers must both define compatible units. For example, "in" (inches) and "cm" (centimeters) will work because they both define lengths. If incompatible units are specified, this method will fail. The converted value, in the units specified by the OutputUnitsSpecifier argument is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UnitsOfMeasure_GetDatabaseUnitsFromExpression.htm">GetDatabaseUnitsFromExpression</a></td>
+        <td class="api-list">Evaluates an input string and returns equivalent database units as a string.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UnitsOfMeasure_GetDrivingParameters.htm">GetDrivingParameters</a></td>
+        <td class="api-list">Obtains the driving parameters enumerator corresponding to the input string.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UnitsOfMeasure_GetLocaleCorrectedExpression.htm">GetLocaleCorrectedExpression</a></td>
+        <td class="api-list">This method converts the input expression to a locale-friendly version. For instance, if you input "1.0 in" on a machine set to the German locale, the return value is "1,0 in". In this case, the decimal separator is different.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UnitsOfMeasure_GetPreciseStringFromValue.htm">GetPreciseStringFromValue</a></td>
+        <td class="api-list">Obtains the precise string along with the units, given a value. The output units needs to be specified as well.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UnitsOfMeasure_GetStringFromType.htm">GetStringFromType</a></td>
+        <td class="api-list">Given a unit type from the UnitsTypeEnum as input, this method returns the string that can be used to specify the same unit type.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UnitsOfMeasure_GetStringFromValue.htm">GetStringFromValue</a></td>
+        <td class="api-list">Method that creates a string that represents the input value evaluated using the specified units.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UnitsOfMeasure_GetTypeFromString.htm">GetTypeFromString</a></td>
+        <td class="api-list">Given a string defining a unit this method returns the corresponding unit from the UnitsTypeEnum constant list. If the unit specified by the string does not exist in the constant list an error will occur. For example, inputting "mm" will return kMillimeterLengthUnits. This method is not currently supported when the UnitsOfMeasure object was obtained using Apprentice.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UnitsOfMeasure_GetValueFromExpression.htm">GetValueFromExpression</a></td>
+        <td class="api-list">Method that evaluates the input expression using the units specified and returns a value in database units.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UnitsOfMeasure_IsExpressionValid.htm">IsExpressionValid</a></td>
+        <td class="api-list">Returns whether the input expression is valid or not.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UnitsOfMeasure_AngleDisplayPrecision.htm">AngleDisplayPrecision</a></td>
+        <td class="api-list">Gets/Sets the number of places to display after the decimal point, when displaying an angle value.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UnitsOfMeasure_AngleUnits.htm">AngleUnits</a></td>
+        <td class="api-list">Gets/Sets the default unit of angle for this Document.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UnitsOfMeasure_LengthDisplayPrecision.htm">LengthDisplayPrecision</a></td>
+        <td class="api-list">Gets/Sets the number of places to display after the decimal point, when displaying a length value.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UnitsOfMeasure_LengthUnits.htm">LengthUnits</a></td>
+        <td class="api-list">Gets/Sets the default unit of length for this Document.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UnitsOfMeasure_MassUnits.htm">MassUnits</a></td>
+        <td class="api-list">Gets/Sets the default unit of mass for this Document.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UnitsOfMeasure_Parent.htm">Parent</a></td>
+        <td class="api-list">Property returning the parent Document object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UnitsOfMeasure_TimeUnits.htm">TimeUnits</a></td>
+        <td class="api-list">Gets/Sets the default unit of time for this Document.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UnitsOfMeasure_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="Application_UnitsOfMeasure.htm">Application.UnitsOfMeasure</a>, <a href="ApprenticeServerDocument_UnitsOfMeasure.htm">ApprenticeServerDocument.UnitsOfMeasure</a>, <a href="ApprenticeServerDrawingDocument_UnitsOfMeasure.htm">ApprenticeServerDrawingDocument.UnitsOfMeasure</a>, <a href="AssemblyDocument_UnitsOfMeasure.htm">AssemblyDocument.UnitsOfMeasure</a>, <a href="Document_UnitsOfMeasure.htm">Document.UnitsOfMeasure</a>, <a href="DrawingDocument_UnitsOfMeasure.htm">DrawingDocument.UnitsOfMeasure</a>, <a href="InventorServer_UnitsOfMeasure.htm">InventorServer.UnitsOfMeasure</a>, <a href="InventorServerObject_UnitsOfMeasure.htm">InventorServerObject.UnitsOfMeasure</a>, <a href="PartDocument_UnitsOfMeasure.htm">PartDocument.UnitsOfMeasure</a>, <a href="PresentationDocument_UnitsOfMeasure.htm">PresentationDocument.UnitsOfMeasure</a><h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="GraphicsColorMapper_Sample.htm">Client graphics texture-based color mapping</a></td>
+        <td class="api-list">This test applies texture coordinates expressing distance from the origin to 'the triangle mesh of whatever Part you have open. It then creates either a discrete-band or continuous color mapper and allows you to adjust the values of the mapper to change the range of values that map to various colors.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="iPropertyCreateUpdateCustom_Sample.htm">Create or update custom iProperty</a></td>
+        <td class="api-list">This example creates a custom iProperty if it doesn't exist and updates the value if it does already exist.  A part document must be open before runnin the sample.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="MeasureEventsSink_OnMeasure_Sample.htm">Using measure events</a></td>
+        <td class="api-list">This sample demonstrates using the measure events to measure distance and angle. Interactive measure is dependent on events and VB only supports events within a class module. To use the sample copy the InteractiveMeasureDistance and InteractiveMeasureAngle subs into a code module. Create a new class module called clsMeasure and copy all of the rest of the code into it.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 4<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(UnitsOfMeasure%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,195 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/SketchEntity.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="SketchEntity">
+    <meta name="description" content="SketchEntity Object">
+    <meta name="topicid" content="GUID-SketchEntity">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>SketchEntity Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">SketchEntity Object
+			</h1><br><h2 class="api">
+          Description
+        </h2>The SketchEntity object is the base class for all geometric sketch entities. See the article in the overviews section.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchEntity_Delete.htm">Delete</a></td>
+        <td class="api-list">Method that deletes the sketch entity. This method will fail in the case where this object was created as a result of a derived part. The HasReferenceComponent property can be used to determine when this is the case.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchEntity_GetReferenceKey.htm">GetReferenceKey</a></td>
+        <td class="api-list">Method that generates and returns the reference key for this entity.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchEntity_Application.htm">Application</a></td>
+        <td class="api-list">Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchEntity_AttributeSets.htm">AttributeSets</a></td>
+        <td class="api-list">Property that returns the AttributeSets collection object associated with this object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchEntity_Constraints.htm">Constraints</a></td>
+        <td class="api-list">Property that returns a collection of sketch constraints that are tied directly to this entity. This collection consists of both geometric and dimension constraints.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchEntity_ConstraintStatus.htm">ConstraintStatus</a></td>
+        <td class="api-list">Read-only property that returns the constraint status of the sketch.&nbsp;Possible return values are kFullyConstrainedConstraintStatus, kOverConstrainedConstraintStatus, kUnderConstrainedConstraintStatus, and kUnknownConstraintStatus.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchEntity_Construction.htm">Construction</a></td>
+        <td class="api-list">Gets and sets whether the entity behaves as a construction entity or not.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchEntity_ContainingSketchBlock.htm">ContainingSketchBlock</a></td>
+        <td class="api-list">Property that returns the sketch block that contains this object. This is the same SketchBlock returned as the last item in the SketchBlockPath property. This property returns Nothing if this object does not belong to a sketch block and lives directly under a sketch.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchEntity_DisabledActionTypes.htm">DisabledActionTypes</a></td>
+        <td class="api-list">Gets and sets whether specific user actions are blocked on this sketch geometry.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchEntity_HasReferenceComponent.htm">HasReferenceComponent</a></td>
+        <td class="api-list">Property that specifies if the object was created as the result of a derived part.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchEntity_Layer.htm">Layer</a></td>
+        <td class="api-list">Gets and sets the layer applied to this sketch entity.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchEntity_OwnedBy.htm">OwnedBy</a></td>
+        <td class="api-list">Indicates entity or entities that own this object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchEntity_Parent.htm">Parent</a></td>
+        <td class="api-list">Property that returns the parent sketch of the entity.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchEntity_RangeBox.htm">RangeBox</a></td>
+        <td class="api-list">Property that returns a Box2D object which contains the lower-left and upper-right corners of a rectangle that is guaranteed to enclose this object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchEntity_Reference.htm">Reference</a></td>
+        <td class="api-list">Gets and sets whether this entity is a reference entity or not. It is only valid to set this property to False.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchEntity_ReferenceComponent.htm">ReferenceComponent</a></td>
+        <td class="api-list">Property that returns the ReferenceComponent that resulted in the creation of this feature.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchEntity_ReferencedEntity.htm">ReferencedEntity</a></td>
+        <td class="api-list">Property that returns the object this entity is dependent on. When sketch entities are created by projecting model edges or intersecting the model, the resulting entities are driven by the original model entities and cannot be modified.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchEntity_SketchBlockPath.htm">SketchBlockPath</a></td>
+        <td class="api-list">Property that returns the path of sketch blocks at the leaf of which this sketch object is found. The enumerator returns a count of 0 if the object lives directly under a sketch.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchEntity_SketchOnly.htm">SketchOnly</a></td>
+        <td class="api-list">Gets and sets whether this entity is visible only when editing the sketch.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchEntity_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="ArcLengthDimConstraint_Entity.htm">ArcLengthDimConstraint.Entity</a>, <a href="ArcLengthDimConstraintProxy_Entity.htm">ArcLengthDimConstraintProxy.Entity</a>, <a href="CoincidentConstraint_EntityOne.htm">CoincidentConstraint.EntityOne</a>, <a href="CoincidentConstraint_EntityTwo.htm">CoincidentConstraint.EntityTwo</a>, <a href="CoincidentConstraintProxy_EntityOne.htm">CoincidentConstraintProxy.EntityOne</a>, <a href="CoincidentConstraintProxy_EntityTwo.htm">CoincidentConstraintProxy.EntityTwo</a>, <a href="CollinearConstraint_EntityOne.htm">CollinearConstraint.EntityOne</a>, <a href="CollinearConstraint_EntityTwo.htm">CollinearConstraint.EntityTwo</a>, <a href="CollinearConstraintProxy_EntityOne.htm">CollinearConstraintProxy.EntityOne</a>, <a href="CollinearConstraintProxy_EntityTwo.htm">CollinearConstraintProxy.EntityTwo</a>, <a href="ConcentricConstraint_EntityOne.htm">ConcentricConstraint.EntityOne</a>, <a href="ConcentricConstraint_EntityTwo.htm">ConcentricConstraint.EntityTwo</a>, <a href="ConcentricConstraintProxy_EntityOne.htm">ConcentricConstraintProxy.EntityOne</a>, <a href="ConcentricConstraintProxy_EntityTwo.htm">ConcentricConstraintProxy.EntityTwo</a>, <a href="DiameterDimConstraint_Entity.htm">DiameterDimConstraint.Entity</a>, <a href="DiameterDimConstraintProxy_Entity.htm">DiameterDimConstraintProxy.Entity</a>, <a href="DrawingSketch_AddByProjectingEntity.htm">DrawingSketch.AddByProjectingEntity</a>, <a href="EllipseRadiusDimConstraint_Entity.htm">EllipseRadiusDimConstraint.Entity</a>, <a href="EllipseRadiusDimConstraintProxy_Entity.htm">EllipseRadiusDimConstraintProxy.Entity</a>, <a href="EqualRadiusConstraint_EntityOne.htm">EqualRadiusConstraint.EntityOne</a>, <a href="EqualRadiusConstraint_EntityTwo.htm">EqualRadiusConstraint.EntityTwo</a>, <a href="EqualRadiusConstraintProxy_EntityOne.htm">EqualRadiusConstraintProxy.EntityOne</a>, <a href="EqualRadiusConstraintProxy_EntityTwo.htm">EqualRadiusConstraintProxy.EntityTwo</a>, <a href="GroundConstraint_Entity.htm">GroundConstraint.Entity</a>, <a href="GroundConstraintProxy_Entity.htm">GroundConstraintProxy.Entity</a>, <a href="HorizontalConstraint_Entity.htm">HorizontalConstraint.Entity</a>, <a href="HorizontalConstraintProxy_Entity.htm">HorizontalConstraintProxy.Entity</a>, <a href="OffsetConstraint_EntityFour.htm">OffsetConstraint.EntityFour</a>, <a href="OffsetConstraint_EntityOne.htm">OffsetConstraint.EntityOne</a>, <a href="OffsetConstraint_EntityThree.htm">OffsetConstraint.EntityThree</a>, <a href="OffsetConstraint_EntityTwo.htm">OffsetConstraint.EntityTwo</a>, <a href="OffsetConstraintProxy_EntityFour.htm">OffsetConstraintProxy.EntityFour</a>, <a href="OffsetConstraintProxy_EntityOne.htm">OffsetConstraintProxy.EntityOne</a>, <a href="OffsetConstraintProxy_EntityThree.htm">OffsetConstraintProxy.EntityThree</a>, <a href="OffsetConstraintProxy_EntityTwo.htm">OffsetConstraintProxy.EntityTwo</a>, <a href="OffsetDimConstraint_Entity.htm">OffsetDimConstraint.Entity</a>, <a href="OffsetDimConstraintProxy_Entity.htm">OffsetDimConstraintProxy.Entity</a>, <a href="ParallelConstraint_EntityOne.htm">ParallelConstraint.EntityOne</a>, <a href="ParallelConstraint_EntityTwo.htm">ParallelConstraint.EntityTwo</a>, <a href="ParallelConstraintProxy_EntityOne.htm">ParallelConstraintProxy.EntityOne</a>, <a href="ParallelConstraintProxy_EntityTwo.htm">ParallelConstraintProxy.EntityTwo</a>, <a href="PerpendicularConstraint_EntityOne.htm">PerpendicularConstraint.EntityOne</a>, <a href="PerpendicularConstraint_EntityTwo.htm">PerpendicularConstraint.EntityTwo</a>, <a href="PerpendicularConstraintProxy_EntityOne.htm">PerpendicularConstraintProxy.EntityOne</a>, <a href="PerpendicularConstraintProxy_EntityTwo.htm">PerpendicularConstraintProxy.EntityTwo</a>, <a href="PlanarSketch_AddByProjectingEntity.htm">PlanarSketch.AddByProjectingEntity</a>, <a href="PlanarSketch_AddBySilhouette.htm">PlanarSketch.AddBySilhouette</a>, <a href="PlanarSketchProxy_AddByProjectingEntity.htm">PlanarSketchProxy.AddByProjectingEntity</a>, <a href="PlanarSketchProxy_AddBySilhouette.htm">PlanarSketchProxy.AddBySilhouette</a>, <a href="ProfileEntity_SketchEntity.htm">ProfileEntity.SketchEntity</a>, <a href="ProfileEntityProxy_SketchEntity.htm">ProfileEntityProxy.SketchEntity</a>, <a href="RadiusDimConstraint_Entity.htm">RadiusDimConstraint.Entity</a>, <a href="RadiusDimConstraintProxy_Entity.htm">RadiusDimConstraintProxy.Entity</a>, <a href="Sketch_AddByProjectingEntity.htm">Sketch.AddByProjectingEntity</a>, <a href="SketchBlockDefinition_AddByProjectingEntity.htm">SketchBlockDefinition.AddByProjectingEntity</a>, <a href="SketchBlockDefinition_AddBySilhouette.htm">SketchBlockDefinition.AddBySilhouette</a>, <a href="SketchBlockDefinitionProxy_AddByProjectingEntity.htm">SketchBlockDefinitionProxy.AddByProjectingEntity</a>, <a href="SketchBlockDefinitionProxy_AddBySilhouette.htm">SketchBlockDefinitionProxy.AddBySilhouette</a>, <a href="SketchEntitiesEnumerator_Item.htm">SketchEntitiesEnumerator.Item</a>, <a href="SmoothConstraint_EntityOne.htm">SmoothConstraint.EntityOne</a>, <a href="SmoothConstraint_EntityTwo.htm">SmoothConstraint.EntityTwo</a>, <a href="SmoothConstraintProxy_EntityOne.htm">SmoothConstraintProxy.EntityOne</a>, <a href="SmoothConstraintProxy_EntityTwo.htm">SmoothConstraintProxy.EntityTwo</a>, <a href="SymmetryConstraint_EntityOne.htm">SymmetryConstraint.EntityOne</a>, <a href="SymmetryConstraint_EntityTwo.htm">SymmetryConstraint.EntityTwo</a>, <a href="SymmetryConstraintProxy_EntityOne.htm">SymmetryConstraintProxy.EntityOne</a>, <a href="SymmetryConstraintProxy_EntityTwo.htm">SymmetryConstraintProxy.EntityTwo</a>, <a href="TangentDistanceDimConstraint_EntityOne.htm">TangentDistanceDimConstraint.EntityOne</a>, <a href="TangentDistanceDimConstraint_EntityTwo.htm">TangentDistanceDimConstraint.EntityTwo</a>, <a href="TangentDistanceDimConstraintProxy_EntityOne.htm">TangentDistanceDimConstraintProxy.EntityOne</a>, <a href="TangentDistanceDimConstraintProxy_EntityTwo.htm">TangentDistanceDimConstraintProxy.EntityTwo</a>, <a href="TangentSketchConstraint_EntityOne.htm">TangentSketchConstraint.EntityOne</a>, <a href="TangentSketchConstraint_EntityTwo.htm">TangentSketchConstraint.EntityTwo</a>, <a href="TangentSketchConstraintProxy_EntityOne.htm">TangentSketchConstraintProxy.EntityOne</a>, <a href="TangentSketchConstraintProxy_EntityTwo.htm">TangentSketchConstraintProxy.EntityTwo</a>, <a href="VerticalConstraint_Entity.htm">VerticalConstraint.Entity</a>, <a href="VerticalConstraintProxy_Entity.htm">VerticalConstraintProxy.Entity</a><h2 class="api">
+            Derived Classes
+          </h2><a href="SketchArc.htm">SketchArc</a>, <a href="SketchCircle.htm">SketchCircle</a>, <a href="SketchControlPointSpline.htm">SketchControlPointSpline</a>, <a href="SketchEllipse.htm">SketchEllipse</a>, <a href="SketchEllipticalArc.htm">SketchEllipticalArc</a>, <a href="SketchEquationCurve.htm">SketchEquationCurve</a>, <a href="SketchFixedSpline.htm">SketchFixedSpline</a>, <a href="SketchLine.htm">SketchLine</a>, <a href="SketchOffsetSpline.htm">SketchOffsetSpline</a>, <a href="SketchPoint.htm">SketchPoint</a>, <a href="SketchSpline.htm">SketchSpline</a><h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ExtrudeFeature_Profile_Sample.htm">Edit profile of an extrude feature</a></td>
+        <td class="api-list">This sample demonstrates editing the profile of an extrude feature.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PlanarSketch_AddBySilhouette_Sample.htm">Sketch from Face Silhouette</a></td>
+        <td class="api-list">This sample creates a cylindrical solid, creates a new sketch plane and creates some new sketch lines from the actual edges and the apparent (silhouette) edges of the cylinder.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch_MoveSketchObjects_Sample.htm">Move sketch entities</a></td>
+        <td class="api-list">This sample demonstrates the translation of all the objects on the active sketch by a certain distance.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlocks_Add_Sample.htm">Create sketch block from an existing sketch</a></td>
+        <td class="api-list">This sample demonstrates creating a sketch block from an existing sketch.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchEntity_Sample.htm">Sketch Display Entities</a></td>
+        <td class="api-list">This sample demonstrates the query functionality available for sketch entities.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 5<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(SketchEntity%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

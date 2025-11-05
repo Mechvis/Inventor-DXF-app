@@ -1,0 +1,250 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/Approximate3DSketchGeometry_Sample.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="Approximate3DSketchGeometry_Sample">
+    <meta name="description" content="Create Approximate Polyline to 3D Curve Sample">
+    <meta name="topicid" content="Approximate3DSketchGeometry_Sample">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>Create Approximate Polyline to 3D Curve</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body><script>
+          function copyCode(language) {
+          // Get the pre element for the specified language.
+          var preElement = document.getElementById(language);
+
+          // Get the text from the element and copy it to the clipboard.
+          var preText = preElement.innerText;
+
+          var isIE = /*@cc_on!@*/false || !!document.documentMode;
+
+          if (isIE)
+          {
+            window.clipboardData.setData('Text', preText);
+          }
+          else
+          {
+            navigator.clipboard.writeText(preText);
+          }
+
+          //alert("Code copied to clipboard");
+          }
+        </script><link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">Create Approximate Polyline to 3D Curve</h1>
+    <h2 class="api">
+          Description
+        </h2>Draws a polyline that is an approximation of the selected curve. To use this have a part open that contains a 3D skech that contains curves.<h2 class="api">
+          Code Samples
+        </h2>
+    <div id="tabs">
+      <ul>
+        <li><a href="#VBA">VBA</a></li>
+        <li><a href="#iLogic">iLogic</a></li>
+      </ul>
+      <div id="VBA" class="api-code">To use this sample a part must be active.<table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('VBA_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="VBA_code">Public Sub Approximate3DSketchGeometry()
+    Dim partDoc As PartDocument
+    Set partDoc = ThisApplication.ActiveDocument
+    
+    <span style="color:blue">' Have the user select a sketch entity.</span>
+    Dim selectObj As SketchEntity3D
+    Set selectObj = ThisApplication.CommandManager.Pick(kSketch3DCurveFilter, "Select 3D sketch entity")
+    If selectObj Is Nothing Then
+        On Error Resume Next
+        Call partDoc.ComponentDefinition.ClientGraphicsCollection.Item("Test").Delete
+        Call partDoc.GraphicsDataSetsCollection.Item("Test").Delete
+        ThisApplication.ActiveView.Update
+        Exit Sub
+    End If
+    
+    <span style="color:blue">' Get the tolerance to approximate with.</span>
+    Dim tolerance As Double
+    tolerance = Val(InputBox("Enter the chord height tolerance:", "Tolerance", "0.25"))
+    
+    <span style="color:blue">' Get the evaluator from the curve.</span>
+    Dim eval As CurveEvaluator
+    Set eval = selectObj.Geometry.Evaluator
+    
+    <span style="color:blue">' Get the parameter extents.</span>
+    Dim startParam As Double
+    Dim endParam As Double
+    Call eval.GetParamExtents(startParam, endParam)
+    
+    Dim vertexCount As Long
+    Dim vertexCoords() As Double
+    Call eval.GetStrokes(startParam, endParam, tolerance, vertexCount, vertexCoords)
+    
+    <span style="color:blue">' Create a client graphics object.  If one already exists, give the user</span>
+    <span style="color:blue">' the option of re-using it, or creating a new one.</span>
+    Dim graphics As ClientGraphics
+    Dim graphicsData As GraphicsDataSets
+    On Error Resume Next
+    Set graphics = partDoc.ComponentDefinition.ClientGraphicsCollection.Item("Test")
+    On Error GoTo 0
+    If graphics Is Nothing Then
+        Set graphics = partDoc.ComponentDefinition.ClientGraphicsCollection.Add("Test")
+        Set graphicsData = partDoc.GraphicsDataSetsCollection.Add("Test")
+    Else
+        Dim answer As VbMsgBoxResult
+        answer = MsgBox("Yes to add to existing graphics. No to create new graphics. Cancel to clean graphics and quit.", vbYesNoCancel + vbQuestion)
+        If answer = vbNo Then
+            On Error Resume Next
+            graphics.Delete
+            partDoc.GraphicsDataSetsCollection.Item("Test").Delete
+            On Error GoTo 0
+            
+            Set graphics = partDoc.ComponentDefinition.ClientGraphicsCollection.Add("Test")
+            Set graphicsData = partDoc.GraphicsDataSetsCollection.Add("Test")
+        ElseIf answer = vbYes Then
+            Set graphicsData = partDoc.GraphicsDataSetsCollection.Item("Test")
+        ElseIf answer = vbCancel Then
+            If Not graphics Is Nothing Then
+                graphics.Delete
+                partDoc.GraphicsDataSetsCollection.Item("Test").Delete
+                ThisApplication.ActiveView.Update
+                Exit Sub
+            End If
+        End If
+    End If
+    
+    Dim coordSet As GraphicsCoordinateSet
+    Set coordSet = graphicsData.CreateCoordinateSet(1)
+    Call coordSet.PutCoordinates(vertexCoords)
+
+    <span style="color:blue">' Create a graphics node.</span>
+    Dim node As GraphicsNode
+    Set node = graphics.AddNode(1)
+    
+    <span style="color:blue">' Create a line strip using the calculated coordinates.</span>
+    Dim lineStrip As LineStripGraphics
+    Set lineStrip = node.AddLineStripGraphics
+    lineStrip.CoordinateSet = coordSet
+    
+    ThisApplication.ActiveView.Update
+End Sub</pre>
+      </div>
+      <div id="iLogic" class="api-code">To use this sample a part must be active.<table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('iLogic_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="iLogic_code">    Dim partDoc As PartDocument
+    partDoc = ThisApplication.ActiveDocument
+    
+    <span style="color:blue">' Have the user select a sketch entity.</span>
+    Dim selectObj As SketchEntity3D
+    selectObj = ThisApplication.CommandManager.Pick(kSketch3DCurveFilter, "Select 3D sketch entity")
+    If selectObj Is Nothing Then
+        On Error Resume Next
+        Call partDoc.ComponentDefinition.ClientGraphicsCollection.Item("Test").Delete
+        Call partDoc.GraphicsDataSetsCollection.Item("Test").Delete
+        ThisApplication.ActiveView.Update
+        Exit Sub
+    End If
+    
+    <span style="color:blue">' Get the tolerance to approximate with.</span>
+    Dim tolerance As Double
+    tolerance = Val(InputBox("Enter the chord height tolerance:", "Tolerance", "0.25"))
+    
+    <span style="color:blue">' Get the evaluator from the curve.</span>
+    Dim eval As CurveEvaluator
+    eval = selectObj.Geometry.Evaluator
+    
+    <span style="color:blue">' Get the parameter extents.</span>
+    Dim startParam As Double
+    Dim endParam As Double
+    Call eval.GetParamExtents(startParam, endParam)
+    
+    Dim vertexCount As Long
+    Dim vertexCoords() As Double = New Double() {} 
+    Call eval.GetStrokes(startParam, endParam, tolerance, vertexCount, vertexCoords)
+    
+    <span style="color:blue">' Create a client graphics object.  If one already exists, give the user</span>
+    <span style="color:blue">' the option of re-using it, or creating a new one.</span>
+    Dim graphics As ClientGraphics
+    Dim graphicsData As GraphicsDataSets
+    On Error Resume Next
+    graphics = partDoc.ComponentDefinition.ClientGraphicsCollection.Item("Test")
+    On Error GoTo 0
+    If graphics Is Nothing Then
+        graphics = partDoc.ComponentDefinition.ClientGraphicsCollection.Add("Test")
+        graphicsData = partDoc.GraphicsDataSetsCollection.Add("Test")
+    Else
+        Dim answer As MsgBoxResult
+        answer = MsgBox("Yes to add to existing graphics. No to create new graphics. Cancel to clean graphics and quit.", vbYesNoCancel + vbQuestion)
+        If answer = vbNo Then
+            On Error Resume Next
+            graphics.Delete
+            partDoc.GraphicsDataSetsCollection.Item("Test").Delete
+            On Error GoTo 0
+            
+            graphics = partDoc.ComponentDefinition.ClientGraphicsCollection.Add("Test")
+            graphicsData = partDoc.GraphicsDataSetsCollection.Add("Test")
+        ElseIf answer = vbYes Then
+            graphicsData = partDoc.GraphicsDataSetsCollection.Item("Test")
+        ElseIf answer = vbCancel Then
+            If Not graphics Is Nothing Then
+                graphics.Delete
+                partDoc.GraphicsDataSetsCollection.Item("Test").Delete
+                ThisApplication.ActiveView.Update
+                Exit Sub
+            End If
+        End If
+    End If
+    
+    Dim coordSet As GraphicsCoordinateSet
+    coordSet = graphicsData.CreateCoordinateSet(1)
+    Call coordSet.PutCoordinates(vertexCoords)
+
+    <span style="color:blue">' Create a graphics node.</span>
+    Dim node As GraphicsNode
+    node = graphics.AddNode(1)
+    
+    <span style="color:blue">' Create a line strip using the calculated coordinates.</span>
+    Dim lineStrip As LineStripGraphics
+    lineStrip = node.AddLineStripGraphics
+    lineStrip.CoordinateSet = coordSet
+    
+    ThisApplication.ActiveView.Update</pre>
+      </div>
+    </div><br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(Approximate3DSketchGeometry%20Sample%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

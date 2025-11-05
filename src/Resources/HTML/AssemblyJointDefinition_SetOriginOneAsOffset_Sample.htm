@@ -1,0 +1,185 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/AssemblyJointDefinition_SetOriginOneAsOffset_Sample.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="AssemblyJointDefinition_SetOriginOneAsOffset_Sample">
+    <meta name="description" content="Create planar AssemblyJoint with offset to origins Sample">
+    <meta name="topicid" content="AssemblyJointDefinition_SetOriginOneAsOffset_Sample">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>Create planar AssemblyJoint with offset to origins</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body><script>
+          function copyCode(language) {
+          // Get the pre element for the specified language.
+          var preElement = document.getElementById(language);
+
+          // Get the text from the element and copy it to the clipboard.
+          var preText = preElement.innerText;
+
+          var isIE = /*@cc_on!@*/false || !!document.documentMode;
+
+          if (isIE)
+          {
+            window.clipboardData.setData('Text', preText);
+          }
+          else
+          {
+            navigator.clipboard.writeText(preText);
+          }
+
+          //alert("Code copied to clipboard");
+          }
+        </script><link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">Create planar AssemblyJoint with offset to origins</h1>
+    <h2 class="api">
+          Description
+        </h2>This sample demonstrates how to create a planar AssemblyJoint with offset to the OriginOne and OriginTwo.<h2 class="api">
+          Code Samples
+        </h2>
+    <div id="tabs">
+      <ul>
+        <li><a href="#VBA">VBA</a></li>
+        <li><a href="#iLogic">iLogic</a></li>
+      </ul>
+      <div id="VBA" class="api-code">Create a part with some solid and make sure there are linear edges in it, save it as C:\Temp\Part1.ipt or you need to edit the VBA code to change the paths to make it work.<table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('VBA_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="VBA_code">Sub CreateAssemblyJointWithOffsetSample()
+    Dim oDoc As AssemblyDocument
+    Set oDoc = ThisApplication.Documents.Add(kAssemblyDocumentObject)
+    
+    Dim oCompDef As AssemblyComponentDefinition
+    Set oCompDef = oDoc.ComponentDefinition
+    
+    Dim oMatrix As Matrix
+    Set oMatrix = ThisApplication.TransientGeometry.CreateMatrix
+    
+    Dim oOccu1 As ComponentOccurrence
+    Dim oOccu2 As ComponentOccurrence
+    <span style="color:blue">' Create two occurrences for adding assembly joint, make sure the sample Part1 has linear edge in it.</span>
+    Set oOccu1 = oCompDef.Occurrences.Add("C:\Temp\Part1.ipt", oMatrix)
+    oMatrix.SetTranslation ThisApplication.TransientGeometry.CreateVector(20, 20, 20)
+    Set oOccu2 = oCompDef.Occurrences.Add("C:\Temp\Part1.ipt", oMatrix)
+    
+    <span style="color:blue">' Create two GeometryIntent objects for creating assembly joint.</span>
+    Dim oOriginOne As GeometryIntent, oOriginTwo As GeometryIntent
+    Dim oEdge As Edge
+    For Each oEdge In oOccu1.SurfaceBodies(1).Edges
+        If oEdge.GeometryType = kLineSegmentCurve Then
+            Set oOriginOne = oCompDef.CreateGeometryIntent(oEdge, kMidPointIntent)
+            Exit For
+        End If
+    Next
+    
+    For Each oEdge In oOccu2.SurfaceBodies(1).Edges
+        If oEdge.GeometryType = kLineSegmentCurve Then
+            Set oOriginTwo = oCompDef.CreateGeometryIntent(oEdge, kMidPointIntent)
+            Exit For
+        End If
+    Next
+    
+    <span style="color:blue">' Create AssemblyJointDefinition</span>
+    Dim oJointDef As AssemblyJointDefinition
+    Set oJointDef = oCompDef.Joints.CreateAssemblyJointDefinition(kPlanarJointType, oOriginOne, oOriginTwo)
+    
+    Call oJointDef.SetOriginOneAsOffset(5, 5)
+    Call oJointDef.SetOriginTwoAsOffset(2, 2)
+    
+    Debug.Print oJointDef.OriginOneDefinitionType = kOffsetOriginDefinitionType
+    
+    <span style="color:blue">' Create assembly joint.</span>
+    Dim oJoint As AssemblyJoint
+    Set oJoint = oCompDef.Joints.Add(oJointDef)
+End Sub</pre>
+      </div>
+      <div id="iLogic" class="api-code">Create a part with some solid and make sure there are linear edges in it, save it as C:\Temp\Part1.ipt or you need to edit the VBA code to change the paths to make it work.<table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('iLogic_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="iLogic_code">    Dim oDoc As AssemblyDocument
+    oDoc = ThisApplication.Documents.Add(kAssemblyDocumentObject)
+    
+    Dim oCompDef As AssemblyComponentDefinition
+    oCompDef = oDoc.ComponentDefinition
+    
+    Dim oMatrix As Matrix
+    oMatrix = ThisApplication.TransientGeometry.CreateMatrix
+    
+    Dim oOccu1 As ComponentOccurrence
+    Dim oOccu2 As ComponentOccurrence
+    <span style="color:blue">' Create two occurrences for adding assembly joint, make sure the sample Part1 has linear edge in it.</span>
+    oOccu1 = oCompDef.Occurrences.Add("C:\Temp\Part1.ipt", oMatrix)
+    oMatrix.SetTranslation(ThisApplication.TransientGeometry.CreateVector(20, 20, 20))
+    oOccu2 = oCompDef.Occurrences.Add("C:\Temp\Part1.ipt", oMatrix)
+    
+    <span style="color:blue">' Create two GeometryIntent objects for creating assembly joint.</span>
+    Dim oOriginOne As GeometryIntent, oOriginTwo As GeometryIntent
+    Dim oEdge As Edge
+    For Each oEdge In oOccu1.SurfaceBodies(1).Edges
+        If oEdge.GeometryType = kLineSegmentCurve Then
+            oOriginOne = oCompDef.CreateGeometryIntent(oEdge, kMidPointIntent)
+            Exit For
+        End If
+    Next
+    
+    For Each oEdge In oOccu2.SurfaceBodies(1).Edges
+        If oEdge.GeometryType = kLineSegmentCurve Then
+            oOriginTwo = oCompDef.CreateGeometryIntent(oEdge, kMidPointIntent)
+            Exit For
+        End If
+    Next
+    
+    <span style="color:blue">' Create AssemblyJointDefinition</span>
+    Dim oJointDef As AssemblyJointDefinition
+    oJointDef = oCompDef.Joints.CreateAssemblyJointDefinition(kPlanarJointType, oOriginOne, oOriginTwo)
+    
+    Call oJointDef.SetOriginOneAsOffset(5, 5)
+    Call oJointDef.SetOriginTwoAsOffset(2, 2)
+    
+    Logger.Info(oJointDef.OriginOneDefinitionType = kOffsetOriginDefinitionType)
+
+    
+    <span style="color:blue">' Create assembly joint.</span>
+    Dim oJoint As AssemblyJoint
+    oJoint = oCompDef.Joints.Add(oJointDef)</pre>
+      </div>
+    </div><br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(AssemblyJointDefinition_SetOriginOneAsOffset%20Sample%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

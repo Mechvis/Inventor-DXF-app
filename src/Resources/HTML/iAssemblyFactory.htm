@@ -1,0 +1,153 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/iAssemblyFactory.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="iAssemblyFactory">
+    <meta name="description" content="iAssemblyFactory Object">
+    <meta name="topicid" content="GUID-iAssemblyFactory">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>iAssemblyFactory Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">iAssemblyFactory Object
+			</h1><br><h2 class="api">
+          Description
+        </h2>The iAssemblyFactory object provides access to the iAssembly table and provides methods to create iAssembly members.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="iAssemblyFactory_CreateMember.htm">CreateMember</a></td>
+        <td class="api-list">Method that creates an iAssembly member using the parameter values in a row. The created iAssemblyMember is returned. If the member already exists, the member is updated and the iAssemblyMember object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="iAssemblyFactory_Delete.htm">Delete</a></td>
+        <td class="api-list">Method that converts the iAssembly factory to a regular assembly. When an iAssembly factory is converted to a regular assembly, all of the iAssembly members created from the factory become sick.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="iAssemblyFactory_Export.htm">Export</a></td>
+        <td class="api-list">Method that exports the iAssemblyFactory to an external file.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="iAssemblyFactory_Application.htm">Application</a></td>
+        <td class="api-list">Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="iAssemblyFactory_DefaultRow.htm">DefaultRow</a></td>
+        <td class="api-list">Read-write property that gets and sets the default row for this iAssemblyFactory.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="iAssemblyFactory_ExcelWorkSheet.htm">ExcelWorkSheet</a></td>
+        <td class="api-list">Property that returns the excel spreadsheet that represents the iAssembly table.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="iAssemblyFactory_FactoryOptions.htm">FactoryOptions</a></td>
+        <td class="api-list">Property that gets the options for the factory.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="iAssemblyFactory_FileNameColumn.htm">FileNameColumn</a></td>
+        <td class="api-list">Read-write property that gets and sets the column to use as the file name column.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="iAssemblyFactory_MemberCacheDir.htm">MemberCacheDir</a></td>
+        <td class="api-list">Property that returns the directory location for the newly created iAssembly members.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="iAssemblyFactory_MemberEditScope.htm">MemberEditScope</a></td>
+        <td class="api-list">Read-write property that gets and sets whether the edits to a member should affect just the active member or all members within the factory.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="iAssemblyFactory_Parent.htm">Parent</a></td>
+        <td class="api-list">Property that returns the parent AssemblyComponentDefinition of the factory.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="iAssemblyFactory_TableColumns.htm">TableColumns</a></td>
+        <td class="api-list">Property that returns the iAssemblyTableColumns collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="iAssemblyFactory_TableRows.htm">TableRows</a></td>
+        <td class="api-list">Property that returns the iAssemblyTableRows collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="iAssemblyFactory_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="AssemblyComponentDefinition_CreateFactory.htm">AssemblyComponentDefinition.CreateFactory</a>, <a href="AssemblyComponentDefinition_iAssemblyFactory.htm">AssemblyComponentDefinition.iAssemblyFactory</a>, <a href="iAssemblyMember_ParentFactory.htm">iAssemblyMember.ParentFactory</a>, <a href="iAssemblyTableCell_Parent.htm">iAssemblyTableCell.Parent</a>, <a href="iAssemblyTableColumn_Parent.htm">iAssemblyTableColumn.Parent</a>, <a href="iAssemblyTableRow_Parent.htm">iAssemblyTableRow.Parent</a>, <a href="WeldmentComponentDefinition_CreateFactory.htm">WeldmentComponentDefinition.CreateFactory</a>, <a href="WeldmentComponentDefinition_iAssemblyFactory.htm">WeldmentComponentDefinition.iAssemblyFactory</a><h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AddiAssemblyMember_Sample.htm">Adding iAssembly occurrences</a></td>
+        <td class="api-list">This sample demonstrates adding iAssembly occurrences to an assembly.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 11<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(iAssemblyFactory%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

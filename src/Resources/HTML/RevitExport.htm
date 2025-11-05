@@ -1,0 +1,137 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/RevitExport.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="RevitExport">
+    <meta name="description" content="RevitExport Object">
+    <meta name="topicid" content="GUID-RevitExport">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>RevitExport Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">RevitExport Object
+			</h1><br><h2 class="api">
+          Description
+        </h2>RevitExport Object.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="RevitExport_Delete.htm">Delete</a></td>
+        <td class="api-list">Method that deletes the RevitExport browser node.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="RevitExport_GetReferenceKey.htm">GetReferenceKey</a></td>
+        <td class="api-list">Generate the sequence of bytes, called this object's reference key, which can be held onto beyond document edits and which will allow the caller to be bound back to the live object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="RevitExport_Update.htm">Update</a></td>
+        <td class="api-list">Method that updates the Revit model file that relates with this RevitExport object.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="RevitExport_Application.htm">Application</a></td>
+        <td class="api-list">Gets the root Application object. Where the property is weakly-typed, it can be set to (QueryInterfaced for) 'Application' when running with Inventor whereas, 'ApprenticeServer' when running with the Apprentice Server.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="RevitExport_AttributeSets.htm">AttributeSets</a></td>
+        <td class="api-list">Gets the Attribute Sets collection on this object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="RevitExport_Definition.htm">Definition</a></td>
+        <td class="api-list">Read-write property that returns the RevitExport definition that defines the current state of the RevitExport.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="RevitExport_FullFileName.htm">FullFileName</a></td>
+        <td class="api-list">Read-only property that returns the full filename of the Revit model file that relates with this RevitExport object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="RevitExport_Name.htm">Name</a></td>
+        <td class="api-list">Read-only property that gets browser node name of RevitExport..</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="RevitExport_Parent.htm">Parent</a></td>
+        <td class="api-list">Gets the parent object from whom this object can logically be reached.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="RevitExport_Type.htm">Type</a></td>
+        <td class="api-list">Gets the constant that indicates the type of this object.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="RevitExportDefinition_Parent.htm">RevitExportDefinition.Parent</a>, <a href="RevitExports_Add.htm">RevitExports.Add</a>, <a href="RevitExports_Item.htm">RevitExports.Item</a><h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="CreateRevitExportSample_Sample.htm">Create Revit Export sample</a></td>
+        <td class="api-list">This sample demonstrates how to create a RevitExport object.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2022<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(RevitExport%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

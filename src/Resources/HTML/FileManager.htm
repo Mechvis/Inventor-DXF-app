@@ -1,0 +1,313 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/FileManager.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="FileManager">
+    <meta name="description" content="FileManager Object">
+    <meta name="topicid" content="GUID-FileManager">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>FileManager Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">FileManager Object
+			</h1><br><h2 class="api">
+          Description
+        </h2>The FileManager object provides access to file-related utility functions.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FileManager_CanCADFileBeAssociativelyImported.htm">CanCADFileBeAssociativelyImported</a></td>
+        <td class="api-list">Method that checks whether a foreign CAD file can be associatively imported into Inventor document or not.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FileManager_CopyFile.htm">CopyFile</a></td>
+        <td class="api-list">Method that copies the specified Autodesk Inventor file (.ipt, .idw, .ipt etc.) from one location to another.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FileManager_DeleteFile.htm">DeleteFile</a></td>
+        <td class="api-list">Method that deletes the specified file.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FileManager_GetAutoCADBlockDefinitions.htm">GetAutoCADBlockDefinitions</a></td>
+        <td class="api-list">Method that returns the names of all the AutoCAD block definitions contained within the input DWG file. The input file can be an AutoCAD DWG or an Inventor DWG.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FileManager_GetDesignViewRepresentations.htm">GetDesignViewRepresentations</a></td>
+        <td class="api-list">Method that returns the names of all the design view representations contained within the input file (either *.iam, *.ipt or *.idv).</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FileManager_GetDWGDocumentReferences.htm">GetDWGDocumentReferences</a></td>
+        <td class="api-list">Gets the set of direct file references from a DWG file.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FileManager_GetEmbeddedDocumentShortName.htm">GetEmbeddedDocumentShortName</a></td>
+        <td class="api-list">Method that returns the short filename of an embedded document path.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FileManager_GetExpressGraphicsStatus.htm">GetExpressGraphicsStatus</a></td>
+        <td class="api-list">Returns a value indicating the current state of the express graphics in the specified assembly.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FileManager_GetFileNameFromIdentifier.htm">GetFileNameFromIdentifier</a></td>
+        <td class="api-list">Property that returns the fully qualified name of a file using its unique identifier. The identifier must have been obtained from the GetIdentifierFromFileName method.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FileManager_GetFullDocumentName.htm">GetFullDocumentName</a></td>
+        <td class="api-list">Returns the full document name which is a unique identifier for an open Document. The returned string is the full file name concatenated with the model state name for a part or assembly document.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FileManager_GetFullFileName.htm">GetFullFileName</a></td>
+        <td class="api-list">Returns the full file name given its full document name.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FileManager_GetIdentifierFromFileName.htm">GetIdentifierFromFileName</a></td>
+        <td class="api-list">Creates and returns a unique, persistent identifier for the specified file.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FileManager_GetLastActiveDesignViewRepresentation.htm">GetLastActiveDesignViewRepresentation</a></td>
+        <td class="api-list">Method that returns the name of the design view representation that was active when the file was last saved.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FileManager_GetLastActiveModelState.htm">GetLastActiveModelState</a></td>
+        <td class="api-list">Method that returns the name of the model state that was active when the file was last saved.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FileManager_GetModelStateName.htm">GetModelStateName</a></td>
+        <td class="api-list">Method that returns the name of the model state given its full document name.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FileManager_GetModelStates.htm">GetModelStates</a></td>
+        <td class="api-list">Method that returns the names of all the model states contained within the input file.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FileManager_GetPositionalRepresentations.htm">GetPositionalRepresentations</a></td>
+        <td class="api-list">Method that returns the names of all the positional representations contained within the input assembly file.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FileManager_GetRevitEngineInstallationStatus.htm">GetRevitEngineInstallationStatus</a></td>
+        <td class="api-list">Method that returns the Revit engine installation status for available versions.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FileManager_GetRevitFamilyCategories.htm">GetRevitFamilyCategories</a></td>
+        <td class="api-list">Method and returns an array of string that contains the names of Revit family categories.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FileManager_GetRevitFamilyCategoryIds.htm">GetRevitFamilyCategoryIds</a></td>
+        <td class="api-list">Method and returns an array of Long values that contains the unique Ids of Revit family categories.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FileManager_GetRevitFileVersionCreated.htm">GetRevitFileVersionCreated</a></td>
+        <td class="api-list">Method that returns the Revit version that the Revit file was created with.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FileManager_GetRFAFamilyCategories.htm">GetRFAFamilyCategories</a></td>
+        <td class="api-list">Method and returns an array of string that contains the names of RFA family categories.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FileManager_GetRFAFamilyCategoryIds.htm">GetRFAFamilyCategoryIds</a></td>
+        <td class="api-list">Method and returns an array of Long values that contains the unique Ids of RFA family categories.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FileManager_GetSHXFontList.htm">GetSHXFontList</a></td>
+        <td class="api-list">Method that gets the array of strings containing the SHX font name list.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FileManager_GetTemplateFile.htm">GetTemplateFile</a></td>
+        <td class="api-list">Method that specifies the template to use when creating a file.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FileManager_GetTemplateFileWithOptions.htm">GetTemplateFileWithOptions</a></td>
+        <td class="api-list">Method that gets a template file that can be used to create a new document.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FileManager_InstallRevitEngineVersion.htm">InstallRevitEngineVersion</a></td>
+        <td class="api-list">Method that tries to install specified Revit engine and returns the installation status. The installation is asynchronous, and this returns kInstallationInProcessStatus if the installation is started.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FileManager_IsEmbeddedDocumentPath.htm">IsEmbeddedDocumentPath</a></td>
+        <td class="api-list">Method that returns whether the input string indicates an embedded document path.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FileManager_IsFileNameValid.htm">IsFileNameValid</a></td>
+        <td class="api-list">Validate the input filename and replace illegal filename characters with something more appropriate.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FileManager_IsFutureCADFile.htm">IsFutureCADFile</a></td>
+        <td class="api-list">Method that returns whether the input CAD file is a future CAD file. If an invalid CAD filename is provided an error would occur.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FileManager_IsInventorComponent.htm">IsInventorComponent</a></td>
+        <td class="api-list">Returns whether the input file is an Inventor Component (part or assembly).</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FileManager_IsInventorDWG.htm">IsInventorDWG</a></td>
+        <td class="api-list">Method that returns whether the input file is an Inventor DWG file.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FileManager_MoveFile.htm">MoveFile</a></td>
+        <td class="api-list">Method that moves the specified file from one location to another.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FileManager_ReferencedDocumentCount.htm">ReferencedDocumentCount</a></td>
+        <td class="api-list">Returns the number of uniquely referenced documents the input document had at the time it was last saved. This is the number that is used in determining whether or not an assembly will open in Express mode or Full mode.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FileManager_RefreshAllDocuments.htm">RefreshAllDocuments</a></td>
+        <td class="api-list">Refreshes all documents in memory to the latest version on disk.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FileManager_SoftwareVersionSaved.htm">SoftwareVersionSaved</a></td>
+        <td class="api-list">Returns the object that encapsulates the version of the software with which this file was last saved.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FileManager_WillOpenExpressDefault.htm">WillOpenExpressDefault</a></td>
+        <td class="api-list">Returns whether the input assembly will open in Express mode by default.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FileManager_Application.htm">Application</a></td>
+        <td class="api-list">Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FileManager_FileManagerEvents.htm">FileManagerEvents</a></td>
+        <td class="api-list">Property that gets the object that fires the File Manager related events.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FileManager_Files.htm">Files</a></td>
+        <td class="api-list">Property that returns the FilesEnumerator object</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FileManager_FileSystemObject.htm">FileSystemObject</a></td>
+        <td class="api-list">Gets the Scripting.FileSystemObject in Inventor process.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FileManager_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="Application_FileManager.htm">Application.FileManager</a>, <a href="ApprenticeServerComponent_FileManager.htm">ApprenticeServerComponent.FileManager</a>, <a href="InventorServer_FileManager.htm">InventorServer.FileManager</a>, <a href="InventorServerObject_FileManager.htm">InventorServerObject.FileManager</a><h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BoundaryPatchFeatures_Add_Sample.htm">Delete Face, Boundary Patch and Stitch features</a></td>
+        <td class="api-list">Demonstrates creating Face, Boundary Patch and Stitch features.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="CopyBodyFeature_Sample.htm">SurfaceBody Copy</a></td>
+        <td class="api-list">This sample demonstrates copying a surface body from one part to another. This is equivalent to the Promote command, but the API is much more flexible. In order for the sample to be self-contained, it creates two parts on the fly that will be used to demonstrate copying a body from one part to another. When copying a body into a part, you provide the surface body and a matrix to define its position in the new part. This sample creates a matrix based on the position of these parts within an assembly.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DecalFeatures_Add_Sample.htm">Add a decal feature</a></td>
+        <td class="api-list">This sample demonstrates the creation of a decal feature.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DerivedAssemblyComponents_Add_Sample.htm">Derived Parts and Assemblies</a></td>
+        <td class="api-list">This sample demonstrates the use of the API to create derived parts and assemblies.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ExtrudeFeature_Profile_Sample.htm">Edit profile of an extrude feature</a></td>
+        <td class="api-list">This sample demonstrates editing the profile of an extrude feature.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FoldFeatures_Add_Sample.htm">Create sheet metal face and fold features</a></td>
+        <td class="api-list">This sample demonstrates the creation of sheet metal face and fold features.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="GetLastActiveModelState_Sample.htm">Open assembly using last model state</a></td>
+        <td class="api-list">This sample demonstrates how to open an assembly document in its last active model state.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LoftedFlangeFeatures_Add_Sample.htm">Create sheet metal lofted flange feature</a></td>
+        <td class="api-list">The following sample demonstrates the creation of a sheet metal lofted flange feature.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PlanarSketch_AddBySilhouette_Sample.htm">Sketch from Face Silhouette</a></td>
+        <td class="api-list">This sample creates a cylindrical solid, creates a new sketch plane and creates some new sketch lines from the actual edges and the apparent (silhouette) edges of the cylinder.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ProfilePath_AddsMaterial_Sample.htm">Sketch profile control</a></td>
+        <td class="api-list">This sample demonstrates the usage of the Profiles API to control the shape of the profile. The sample creates three concntric circles and creates an extrusion of the region between the inner circles.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="RipFeatures_Add_Sample.htm">Create sheet metal rip feature</a></td>
+        <td class="api-list">This sample demonstrates the creation of a rip sheet metal feature.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalComponentDefinition_Sample.htm">Sheet Metal Feature Display</a></td>
+        <td class="api-list">This sample illustrates getting basic information from the various sheet metal features.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalFeatures_FlangeFeatures_Sample.htm">Create sheet metal face and flange features</a></td>
+        <td class="api-list">This sample demonstrates the creation of sheet metal face and flange features.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 6<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(FileManager%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

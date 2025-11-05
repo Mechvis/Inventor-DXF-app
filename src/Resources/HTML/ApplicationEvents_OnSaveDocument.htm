@@ -1,0 +1,102 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/ApplicationEvents_OnSaveDocument.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="ApplicationEvents_OnSaveDocument">
+    <meta name="description" content="ApplicationEvents.OnSaveDocument Event">
+    <meta name="topicid" content="ApplicationEvents_OnSaveDocument">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>ApplicationEvents.OnSaveDocument Event</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">ApplicationEvents.OnSaveDocument Event</h1>
+
+          Parent Object: <a href="ApplicationEvents.htm">ApplicationEvents</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">The OnSaveDocument notifies a client whenever a document is saved.</p>
+    <h2 class="api">
+            Remarks
+          </h2>The notification is made when the standard Save and the Save Copy As commands are invoked. When assemblies are saved this can also cause the dependent documents to be saved and this event is also fired in those cases.<h2 class="api">
+          Syntax
+        </h2>
+        
+            ApplicationEvents.<b>OnSaveDocument</b>( <b><i>DocumentObject</i></b> As <a href="Document.htm">Document</a>, <b><i>BeforeOrAfter</i></b> As <a href="EventTimingEnum.htm">EventTimingEnum</a>, <b><i>Context</i></b> As <a href="NameValueMap.htm">NameValueMap</a>, <b><i>HandlingCode</i></b> As <a href="HandlingCodeEnum.htm">HandlingCodeEnum</a> )
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">DocumentObject</td>
+        <td class="api-list"><a href="Document.htm">Document</a></td>
+        <td class="api-list">Input object that is being saved.</td>
+      </tr>
+      <tr>
+        <td class="api-list">BeforeOrAfter</td>
+        <td class="api-list"><a href="EventTimingEnum.htm">EventTimingEnum</a></td>
+        <td class="api-list">Input indicating if the notification is being sent before the document is saved (kBefore), after a change is made (kAfter), or when a change has been aborted (kAbort).</td>
+      </tr>
+      <tr>
+        <td class="api-list">Context</td>
+        <td class="api-list"><a href="NameValueMap.htm">NameValueMap</a></td>
+        <td class="api-list">Input object that can be used to determine the context of why the event fired. Additional information is provided through this argument to help in understanding the context of the save. Either SaveCopyAsFileName or SaveFileName is provided depending on whether the end-user executed the Save or Save Copy As command. The TopLevelSaveFileName is always provided but in some cases will have an empty string as the value. Name = SaveCopyAsFileName, Value = The full filename of the new document being created. Name = SaveFileName, Value = The full filename of the document being saved. Name = TopLevelSaveFileName, Value = Different values are returned depending on the context of the save. When a document is saved in the context of another document (for example, a part is saved when the assembly it is in is saved) this will return the name of the top-level assembly. When the notification is made for a save copy as operation this value is the full filename of the original document that is being saved to a new name. When the notification is made for a standard save this value is the filename of the document being saved. When a document is saved for the first time, this value will be "" for the kBefore timing and the filename of the document in the kAfter timing.</td>
+      </tr>
+      <tr>
+        <td class="api-list">HandlingCode</td>
+        <td class="api-list"><a href="HandlingCodeEnum.htm">HandlingCodeEnum</a></td>
+        <td class="api-list">Output that indicates how you are handling the event. This event supports the ability to cancel the save. By setting this argument to kEventCanceled when the BeforeOrAfter argument is kBefore Inventor will abort the save. When the save is cancelled, this event is fired again but the BeforeOrAfter argument will have a value of kAbort.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 4<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(ApplicationEvents.OnSaveDocument%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

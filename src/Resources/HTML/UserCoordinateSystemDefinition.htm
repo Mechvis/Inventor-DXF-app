@@ -1,0 +1,129 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/UserCoordinateSystemDefinition.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="UserCoordinateSystemDefinition">
+    <meta name="description" content="UserCoordinateSystemDefinition Object">
+    <meta name="topicid" content="GUID-UserCoordinateSystemDefinition">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>UserCoordinateSystemDefinition Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">UserCoordinateSystemDefinition Object
+			</h1><br><h2 class="api">
+          Description
+        </h2>The UserCoordinateSystemDefinition object represents the information that defines a coordinate system. You can use this object as input to the UserCoordinateSystems.Add method to create the actual coordinate system.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UserCoordinateSystemDefinition_GetByThreePoints.htm">GetByThreePoints</a></td>
+        <td class="api-list">Method that gets the inputs that fully define the coordinate system. The objects returned will be Nothing if the coordinate system was not parametrically defined (i.e. if the DefinitionType property returns kTransformationDefinitionType). This method returns a failure in assembly documents.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UserCoordinateSystemDefinition_SetByThreePoints.htm">SetByThreePoints</a></td>
+        <td class="api-list">Method that sets the inputs that fully define the coordinate system. This method returns a failure in assembly documents.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UserCoordinateSystemDefinition_Application.htm">Application</a></td>
+        <td class="api-list">Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UserCoordinateSystemDefinition_DefinitionType.htm">DefinitionType</a></td>
+        <td class="api-list">Property that returns how the inputs for the coordinate system are defined. This can return either kTransformationDefinitionType or kThreePointsDefinitionType.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UserCoordinateSystemDefinition_Parent.htm">Parent</a></td>
+        <td class="api-list">Property that returns the parent UserCoordinateSystem of this definition. In the case where this is a newly created UserCoordinateSystemDefinition object, this property will return Nothing because there is not a logical parent for the object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UserCoordinateSystemDefinition_Transformation.htm">Transformation</a></td>
+        <td class="api-list">Gets and puts the transformation matrix.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UserCoordinateSystemDefinition_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="UserCoordinateSystem_Definition.htm">UserCoordinateSystem.Definition</a>, <a href="UserCoordinateSystemProxy_Definition.htm">UserCoordinateSystemProxy.Definition</a>, <a href="UserCoordinateSystems_CreateDefinition.htm">UserCoordinateSystems.CreateDefinition</a><h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UserCoordinateSystems_Add_Sample.htm">UCS by three points</a></td>
+        <td class="api-list">This sample demonstrates the creation of a User Coordinate System (UCS) based on 3 points that define the origin, x-direction and y-direction for the UCS.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UserCoordinateSystems_CreateDefinition_Sample.htm">UCS by transformation matrix</a></td>
+        <td class="api-list">This sample demonstrates the creation of a user coordinate system (UCS) by specifying a transformation matrix.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2011<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(UserCoordinateSystemDefinition%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

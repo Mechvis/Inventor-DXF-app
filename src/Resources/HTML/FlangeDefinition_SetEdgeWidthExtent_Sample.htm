@@ -1,0 +1,184 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/FlangeDefinition_SetEdgeWidthExtent_Sample.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="FlangeDefinition_SetEdgeWidthExtent_Sample">
+    <meta name="description" content="Edit width extent of an existing flange feature Sample">
+    <meta name="topicid" content="FlangeDefinition_SetEdgeWidthExtent_Sample">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>Edit width extent of an existing flange feature</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body><script>
+          function copyCode(language) {
+          // Get the pre element for the specified language.
+          var preElement = document.getElementById(language);
+
+          // Get the text from the element and copy it to the clipboard.
+          var preText = preElement.innerText;
+
+          var isIE = /*@cc_on!@*/false || !!document.documentMode;
+
+          if (isIE)
+          {
+            window.clipboardData.setData('Text', preText);
+          }
+          else
+          {
+            navigator.clipboard.writeText(preText);
+          }
+
+          //alert("Code copied to clipboard");
+          }
+        </script><link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">Edit width extent of an existing flange feature</h1>
+    <h2 class="api">
+          Description
+        </h2>This sample demonstrates editing the width extent of an existing flange feature. This expects an existing sheet metal document that contains a flange feature that contains for physical flanges. It changes the type of width extent for each of the physical flanges. The result from the FlangeWidthsCreation sample can be used as the document to run this macro in.<h2 class="api">
+          Code Samples
+        </h2>
+    <div id="tabs">
+      <ul>
+        <li><a href="#VBA">VBA</a></li>
+        <li><a href="#iLogic">iLogic</a></li>
+      </ul>
+      <div id="VBA" class="api-code">
+        <table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('VBA_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="VBA_code">Public Sub EditFlangeWidths()
+    <span style="color:blue">' Create the active sheet metal document.</span>
+    Dim sheetMetalDoc As PartDocument
+    Set sheetMetalDoc = ThisApplication.ActiveDocument
+
+    <span style="color:blue">' Get the sheet metal component definition.</span>
+    Dim smCompDef As SheetMetalComponentDefinition
+    Set smCompDef = sheetMetalDoc.ComponentDefinition
+
+    Dim smFeatures As SheetMetalFeatures
+    Set smFeatures = smCompDef.Features
+
+    <span style="color:blue">' Get the flange feature.</span>
+    Dim flange As FlangeFeature
+    Set flange = smFeatures.FlangeFeatures.Item(1)
+
+    <span style="color:blue">' Position the end of part marker to just before this feature so the</span>
+    <span style="color:blue">' edges are in their original state.</span>
+    Call flange.SetEndOfPart(True)
+
+    Dim flangeDef As FlangeDefinition
+    Set flangeDef = flange.Definition
+
+    <span style="color:blue">' Iterate over the four edges and edit the width extent for each one.</span>
+    Dim i As Integer
+    For i = 1 To 4
+        Dim currentEdge As Edge
+        Set currentEdge = flangeDef.Edges.Item(i)
+        Select Case i
+            Case 1
+                <span style="color:blue">' Edit the width extent to be offset as measured from the vertices of the edge.</span>
+                Call flangeDef.SetOffsetWidthExtent(currentEdge, currentEdge.StartVertex, 2, currentEdge.StopVertex, 5)
+            Case 2
+                Call flangeDef.SetEdgeWidthExtent(currentEdge)
+            Case 3
+                <span style="color:blue">' Edit the width extent to be an offset width extent.</span>
+                Call flangeDef.SetWidthOffsetWidthExtent(currentEdge, 6, 2, currentEdge.StartVertex, True)
+            Case 4
+                <span style="color:blue">' Edit the width extent to be centered.</span>
+                Call flangeDef.SetCenteredWidthExtent(currentEdge, 10)
+        End Select
+    Next
+
+    <span style="color:blue">' Set the stop node back to the bottom of the browser.</span>
+    Call smCompDef.SetEndOfPartToTopOrBottom(False)
+End Sub</pre>
+      </div>
+      <div id="iLogic" class="api-code">
+        <table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('iLogic_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="iLogic_code">    <span style="color:blue">' Create the active sheet metal document.</span>
+    Dim sheetMetalDoc As PartDocument
+    sheetMetalDoc = ThisApplication.ActiveDocument
+
+    <span style="color:blue">' Get the sheet metal component definition.</span>
+    Dim smCompDef As SheetMetalComponentDefinition
+    smCompDef = sheetMetalDoc.ComponentDefinition
+
+    Dim smFeatures As SheetMetalFeatures
+    smFeatures = smCompDef.Features
+
+    <span style="color:blue">' Get the flange feature.</span>
+    Dim flange As FlangeFeature
+    flange = smFeatures.FlangeFeatures.Item(1)
+
+    <span style="color:blue">' Position the end of part marker to just before this feature so the</span>
+    <span style="color:blue">' edges are in their original state.</span>
+    Call flange.SetEndOfPart(True)
+
+    Dim flangeDef As FlangeDefinition
+    flangeDef = flange.Definition
+
+    <span style="color:blue">' Iterate over the four edges and edit the width extent for each one.</span>
+    Dim i As Integer
+    For i = 1 To 4
+        Dim currentEdge As Edge
+        currentEdge = flangeDef.Edges.Item(i)
+        Select Case i
+            Case 1
+                <span style="color:blue">' Edit the width extent to be offset as measured from the vertices of the edge.</span>
+                Call flangeDef.SetOffsetWidthExtent(currentEdge, currentEdge.StartVertex, 2, currentEdge.StopVertex, 5)
+            Case 2
+                Call flangeDef.SetEdgeWidthExtent(currentEdge)
+            Case 3
+                <span style="color:blue">' Edit the width extent to be an offset width extent.</span>
+                Call flangeDef.SetWidthOffsetWidthExtent(currentEdge, 6, 2, currentEdge.StartVertex, True)
+            Case 4
+                <span style="color:blue">' Edit the width extent to be centered.</span>
+                Call flangeDef.SetCenteredWidthExtent(currentEdge, 10)
+        End Select
+    Next
+
+    <span style="color:blue">' Set the stop node back to the bottom of the browser.</span>
+    Call smCompDef.SetEndOfPartToTopOrBottom(False)</pre>
+      </div>
+    </div><br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(FlangeDefinition_SetEdgeWidthExtent%20Sample%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

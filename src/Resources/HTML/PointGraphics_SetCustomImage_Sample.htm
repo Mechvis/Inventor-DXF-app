@@ -1,0 +1,275 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/PointGraphics_SetCustomImage_Sample.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="PointGraphics_SetCustomImage_Sample">
+    <meta name="description" content="Client graphics - image in point graphics Sample">
+    <meta name="topicid" content="PointGraphics_SetCustomImage_Sample">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>Client graphics - image in point graphics</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body><script>
+          function copyCode(language) {
+          // Get the pre element for the specified language.
+          var preElement = document.getElementById(language);
+
+          // Get the text from the element and copy it to the clipboard.
+          var preText = preElement.innerText;
+
+          var isIE = /*@cc_on!@*/false || !!document.documentMode;
+
+          if (isIE)
+          {
+            window.clipboardData.setData('Text', preText);
+          }
+          else
+          {
+            navigator.clipboard.writeText(preText);
+          }
+
+          //alert("Code copied to clipboard");
+          }
+        </script><link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">Client graphics - image in point graphics</h1>
+    <h2 class="api">
+          Description
+        </h2>The following sample demonstrates creation of point client graphics with a custom image.<h2 class="api">
+          Code Samples
+        </h2>
+    <div id="tabs">
+      <ul>
+        <li><a href="#VBA">VBA</a></li>
+        <li><a href="#iLogic">iLogic</a></li>
+      </ul>
+      <div id="VBA" class="api-code">The sample assumes that you've placed a MyImage.bmp in the C:\Temp\ directory.<table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('VBA_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="VBA_code">Public Sub ImageInPointClientGraphics()
+    Dim oDoc As Document
+    Set oDoc = ThisApplication.ActiveDocument
+
+    <span style="color:blue">' Set a reference to component definition of the active document.</span>
+    <span style="color:blue">' This assumes that a part or assembly document is active.</span>
+    Dim oCompDef As ComponentDefinition
+    Set oCompDef = ThisApplication.ActiveDocument.ComponentDefinition
+
+    <span style="color:blue">' Check to see if the test graphics data object already exists.</span>
+    <span style="color:blue">' If it does clean up by removing all associated of the client graphics</span>
+    <span style="color:blue">' from the document.  If it doesn't create it.</span>
+    On Error Resume Next
+    Dim oGraphicsData As GraphicsDataSets
+    Set oGraphicsData = oDoc.GraphicsDataSetsCollection.Item("SampleGraphicsID")
+    If Err.Number = 0 Then
+        On Error GoTo 0
+        <span style="color:blue">' An existing client graphics object was successfully obtained so clean up.</span>
+        oGraphicsData.Delete
+        oCompDef.ClientGraphicsCollection.Item("SampleGraphicsID").Delete
+
+        <span style="color:blue">' update the display to see the results.</span>
+        ThisApplication.ActiveView.Update
+    Else
+        Err.Clear
+        On Error GoTo 0
+
+        <span style="color:blue">' Set a reference to the transient geometry object for user later.</span>
+        Dim oTransGeom As TransientGeometry
+        Set oTransGeom = ThisApplication.TransientGeometry
+
+        <span style="color:blue">' Create a graphics data set object.  This object contains all of the</span>
+        <span style="color:blue">' information used to define the graphics.</span>
+        Dim oDataSets As GraphicsDataSets
+        Set oDataSets = oDoc.GraphicsDataSetsCollection.Add("SampleGraphicsID")
+
+        <span style="color:blue">' Create a coordinate set.</span>
+        Dim oCoordSet As GraphicsCoordinateSet
+        Set oCoordSet = oDataSets.CreateCoordinateSet(1)
+
+        <span style="color:blue">' Create an array that contains coordinates that define a set</span>
+        <span style="color:blue">' of outwardly spiraling points.</span>
+        Dim oPointCoords(2) As Double
+        oPointCoords(0) = 1
+        oPointCoords(1) = 1
+        oPointCoords(2) = 0
+
+        <span style="color:blue">' Assign the points into the coordinate set.</span>
+        Call oCoordSet.PutCoordinates(oPointCoords)
+
+        <span style="color:blue">' Create an image set</span>
+        Dim oImageSet As GraphicsImageSet
+        Set oImageSet = oDataSets.CreateImageSet(2)
+
+        Dim oImage As IPictureDisp
+        Set oImage = LoadPicture("C:\Temp\MyImage.bmp")
+
+        Call oImageSet.Add(1, oImage)
+
+        <span style="color:blue">' Create the ClientGraphics object.</span>
+        Dim oClientGraphics As ClientGraphics
+        Set oClientGraphics = oCompDef.ClientGraphicsCollection.Add("SampleGraphicsID")
+
+        <span style="color:blue">' Create a new graphics node within the client graphics objects.</span>
+        Dim oPointNode As GraphicsNode
+        Set oPointNode = oClientGraphics.AddNode(1)
+
+        <span style="color:blue">' Create a PointGraphics object within the node.</span>
+        Dim oPointGraphics As PointGraphics
+        Set oPointGraphics = oPointNode.AddPointGraphics
+
+        <span style="color:blue">' Assign the coordinate set to the point graphics.</span>
+        oPointGraphics.CoordinateSet = oCoordSet
+
+        <span style="color:blue">' Set a custom image</span>
+        Call oPointGraphics.SetCustomImage(oImageSet, 1)
+
+        <span style="color:blue">' Update the view.</span>
+        ThisApplication.ActiveView.Update
+    End If
+End Sub</pre>
+      </div>
+      <div id="iLogic" class="api-code">The sample assumes that you've placed a MyImage.bmp in the C:\Temp\ directory.<table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('iLogic_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="iLogic_code">AddReference "stdole.dll"
+Imports stdole
+AddReference "System.Drawing.dll"
+Sub Main
+    Dim oDoc As Document
+    oDoc = ThisApplication.ActiveDocument
+
+    <span style="color:blue">' Set a reference to component definition of the active document.</span>
+    <span style="color:blue">' This assumes that a part or assembly document is active.</span>
+    Dim oCompDef As ComponentDefinition
+    oCompDef = ThisApplication.ActiveDocument.ComponentDefinition
+
+    <span style="color:blue">' Check to see if the test graphics data object already exists.</span>
+    <span style="color:blue">' If it does clean up by removing all associated of the client graphics</span>
+    <span style="color:blue">' from the document.  If it doesn't create it.</span>
+    On Error Resume Next
+    Dim oGraphicsData As GraphicsDataSets
+    oGraphicsData = oDoc.GraphicsDataSetsCollection.Item("SampleGraphicsID")
+    If Err.Number = 0 Then
+        On Error GoTo 0
+		
+        <span style="color:blue">' An existing client graphics object was successfully obtained so clean up.</span>
+        oGraphicsData.Delete
+		oCompDef.ClientGraphicsCollection("SampleGraphicsID").Delete
+		
+        <span style="color:blue">' update the display to see the results.</span>
+        ThisApplication.ActiveView.Update
+    Else
+        Err.Clear
+        On Error GoTo 0
+
+        <span style="color:blue">' Set a reference to the transient geometry object for user later.</span>
+        Dim oTransGeom As TransientGeometry
+        oTransGeom = ThisApplication.TransientGeometry
+
+        <span style="color:blue">' Create a graphics data set object.  This object contains all of the</span>
+        <span style="color:blue">' information used to define the graphics.</span>
+        Dim oDataSets As GraphicsDataSets
+        oDataSets = oDoc.GraphicsDataSetsCollection.Add("SampleGraphicsID")
+
+        <span style="color:blue">' Create a coordinate set.</span>
+        Dim oCoordSet As GraphicsCoordinateSet
+        oCoordSet = oDataSets.CreateCoordinateSet(1)
+
+        <span style="color:blue">' Create an array that contains coordinates that define a set</span>
+        <span style="color:blue">' of outwardly spiraling points.</span>
+        Dim oPointCoords(2) As Double
+        oPointCoords(0) = 1
+        oPointCoords(1) = 1
+        oPointCoords(2) = 0
+
+        <span style="color:blue">' Assign the points into the coordinate set.</span>
+        Call oCoordSet.PutCoordinates(oPointCoords)
+
+        <span style="color:blue">' Create an image set</span>
+        Dim oImageSet As GraphicsImageSet
+        oImageSet = oDataSets.CreateImageSet(2)
+		
+		Dim oImageFromFile As System.Drawing.Image
+		oImageFromFile = System.Drawing.Image.FromFile("C:\Temp\MyImage.bmp")
+		
+		Dim oAxHostConverter As AxHostConverter = New AxHostConverter
+		
+        Dim oImage As stdole.IPictureDisp
+        oImage = oAxHostConverter.GetIPictureDispFromImage(oImageFromFile)
+
+        Call oImageSet.Add(1, oImage)
+
+        <span style="color:blue">' Create the ClientGraphics object.</span>
+        Dim oClientGraphics As ClientGraphics
+        oClientGraphics = oCompDef.ClientGraphicsCollection.Add("SampleGraphicsID")
+
+        <span style="color:blue">' Create a new graphics node within the client graphics objects.</span>
+        Dim oPointNode As GraphicsNode
+        oPointNode = oClientGraphics.AddNode(1)
+
+        <span style="color:blue">' Create a PointGraphics object within the node.</span>
+        Dim oPointGraphics As PointGraphics
+        oPointGraphics = oPointNode.AddPointGraphics
+
+        <span style="color:blue">' Assign the coordinate set to the point graphics.</span>
+        oPointGraphics.CoordinateSet = oCoordSet
+
+        <span style="color:blue">' Set a custom image</span>
+        Call oPointGraphics.SetCustomImage(oImageSet, 1)
+
+        <span style="color:blue">' Update the view.</span>
+        ThisApplication.ActiveView.Update
+    End If
+End Sub
+
+Class AxHostConverter
+	Inherits System.Windows.Forms.AxHost
+
+Public Sub New()
+	MyBase.New("{63109182-966B-4e3c-A8B2-8BC4A88D221C}")
+End Sub
+
+Public Function GetIPictureDispFromImage(ByVal image As System.Drawing.Image) As stdole.IPictureDisp
+	Return MyBase.GetIPictureDispFromPicture(image)
+End Function
+End Class</pre>
+      </div>
+    </div><br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(PointGraphics_SetCustomImage%20Sample%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

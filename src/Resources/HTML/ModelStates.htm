@@ -1,0 +1,145 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/ModelStates.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="ModelStates">
+    <meta name="description" content="ModelStates Object">
+    <meta name="topicid" content="GUID-ModelStates">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>ModelStates Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">ModelStates Object
+			</h1><br><h2 class="api">
+          Description
+        </h2>ModelStates Object.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelStates_Add.htm">Add</a></td>
+        <td class="api-list">Method that creates a new ModelState. The newly created ModelState is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelStates_AddSubstitute.htm">AddSubstitute</a></td>
+        <td class="api-list">Method that creates a new ModelState. The newly created ModelState is returned.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelStates_ActiveModelState.htm">ActiveModelState</a></td>
+        <td class="api-list">Read-only property that returns the active model state for this document.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelStates_Application.htm">Application</a></td>
+        <td class="api-list">Gets the root Application object. Where the property is weakly-typed, it can be set to (QueryInterfaced for) 'Application' when running with Inventor whereas, 'ApprenticeServer' when running with the Apprentice Server.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelStates_Count.htm">Count</a></td>
+        <td class="api-list">Gets the number of items in this collection.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelStates_ExcelWorkSheet.htm">ExcelWorkSheet</a></td>
+        <td class="api-list">Read-only property that returns the excel spreadsheet that represents the model states table.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelStates_Item.htm">Item</a></td>
+        <td class="api-list">Allows VARIANT-indexed access to items in the collection. You can use names as indexes as well.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelStates_MemberEditScope.htm">MemberEditScope</a></td>
+        <td class="api-list">Read-write property that gets and sets whether the edits to a member should affect just the active member or all members.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelStates_ModelStatesInEdit.htm">ModelStatesInEdit</a></td>
+        <td class="api-list">Read-write property that gets and sets the model states in edit.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelStates_ModelStateTable.htm">ModelStateTable</a></td>
+        <td class="api-list">Read-only property that gets the ModelStateTable object that represents the model states table. If the ModelStates is from a model state member document then this property will return Nothing.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelStates_Parent.htm">Parent</a></td>
+        <td class="api-list">Gets the parent object from whom this object can logically be reached.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelStates_Type.htm">Type</a></td>
+        <td class="api-list">Gets the constant that indicates the type of this object.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="AssemblyComponentDefinition_ModelStates.htm">AssemblyComponentDefinition.ModelStates</a>, <a href="ModelStateTable_Parent.htm">ModelStateTable.Parent</a>, <a href="PartComponentDefinition_ModelStates.htm">PartComponentDefinition.ModelStates</a>, <a href="SheetMetalComponentDefinition_ModelStates.htm">SheetMetalComponentDefinition.ModelStates</a>, <a href="WeldmentComponentDefinition_ModelStates.htm">WeldmentComponentDefinition.ModelStates</a><h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModifyMultipleModelStatesSample_Sample.htm">Modify Multiple Model States Sample</a></td>
+        <td class="api-list">This sample demonstrates how to set multiple but not all model states into edit mode.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2022<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(ModelStates%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

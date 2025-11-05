@@ -1,0 +1,338 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/TextBoxes_Sample.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="TextBoxes_Sample">
+    <meta name="description" content="Sketch Text Add Sample">
+    <meta name="topicid" content="TextBoxes_Sample">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>Sketch Text Add</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body><script>
+          function copyCode(language) {
+          // Get the pre element for the specified language.
+          var preElement = document.getElementById(language);
+
+          // Get the text from the element and copy it to the clipboard.
+          var preText = preElement.innerText;
+
+          var isIE = /*@cc_on!@*/false || !!document.documentMode;
+
+          if (isIE)
+          {
+            window.clipboardData.setData('Text', preText);
+          }
+          else
+          {
+            navigator.clipboard.writeText(preText);
+          }
+
+          //alert("Code copied to clipboard");
+          }
+        </script><link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">Sketch Text Add</h1>
+    <h2 class="api">
+          Description
+        </h2>This sample illustrates creating text in a sketch.<h2 class="api">
+          Code Samples
+        </h2>
+    <div id="tabs">
+      <ul>
+        <li><a href="#VBA">VBA</a></li>
+        <li><a href="#iLogic">iLogic</a></li>
+      </ul>
+      <div id="VBA" class="api-code">Before running this sample, open a drawing document.<table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('VBA_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="VBA_code">Public Sub SketchTextAdd()
+    <span style="color:blue">' Set a reference to the drawing document.</span>
+    <span style="color:blue">' This assumes a drawing document is active.</span>
+    Dim oDrawDoc As DrawingDocument
+    Set oDrawDoc = ThisApplication.ActiveDocument
+    
+    <span style="color:blue">' Create a new sketch on the active sheet.</span>
+    Dim oSketch As DrawingSketch
+    Set oSketch = oDrawDoc.ActiveSheet.Sketches.Add
+    
+    <span style="color:blue">' Open the sketch for edit so the text boxes can be created.</span>
+    <span style="color:blue">' This is only required for drawing sketches, not part.</span>
+    oSketch.Edit
+    
+    Dim oTG As TransientGeometry
+    Set oTG = ThisApplication.TransientGeometry
+    
+    <span style="color:blue">' Create text with simple string as input.  Since this doesn't use</span>
+    <span style="color:blue">' any text overrides, it will default to the active text style.</span>
+    Dim sText As String
+    sText = "Drawing Notes"
+    Dim oTextBox As TextBox
+    Set oTextBox = oSketch.TextBoxes.AddFitted(oTG.CreatePoint2d(3, 18), sText)
+    
+    <span style="color:blue">' Create text using various overrides.</span>
+    sText = "Notice: All holes larger than 0.500 n are to be lubricated."
+    Set oTextBox = oSketch.TextBoxes.AddFitted(oTG.CreatePoint2d(3, 16), sText)
+    
+    <span style="color:blue">' Create a set of notes that are numbered and aligned along the left.</span>
+    Dim dYCoord As Double
+    dYCoord = 14
+    Dim dYOffset As Double
+    Dim oStyle As TextStyle
+    Set oStyle = oSketch.TextBoxes.Item(1).Style
+    dYOffset = oStyle.FontSize * 1.5
+    
+    <span style="color:blue">' Simple single line text.</span>
+    Set oTextBox = oSketch.TextBoxes.AddFitted(oTG.CreatePoint2d(3, dYCoord), "1.")
+    sText = "This is note 1."
+    Set oTextBox = oSketch.TextBoxes.AddFitted(oTG.CreatePoint2d(4, dYCoord), sText)
+    
+    <span style="color:blue">' Two line text.  The two lines are defined using the  tag within the text string.</span>
+    dYCoord = dYCoord - (oTextBox.FittedTextHeight + 0.5)
+    Set oTextBox = oSketch.TextBoxes.AddFitted(oTG.CreatePoint2d(3, dYCoord), "2.")
+    sText = "This is note 2,  which contains two lines."
+    Set oTextBox = oSketch.TextBoxes.AddFitted(oTG.CreatePoint2d(4, dYCoord), sText)
+    
+    <span style="color:blue">' Single line of text.</span>
+    dYCoord = dYCoord - (oTextBox.FittedTextHeight + 0.5)
+    Set oTextBox = oSketch.TextBoxes.AddFitted(oTG.CreatePoint2d(3, dYCoord), "3.")
+    sText = "This is note 3."
+    Set oTextBox = oSketch.TextBoxes.AddFitted(oTG.CreatePoint2d(4, dYCoord), sText)
+    
+    <span style="color:blue">' Three lines of text.</span>
+    dYCoord = dYCoord - (oTextBox.FittedTextHeight + 0.5)
+    Set oTextBox = oSketch.TextBoxes.AddFitted(oTG.CreatePoint2d(3, dYCoord), "4.")
+    sText = "This is note 4,  which contains  several lines."
+    Set oTextBox = oSketch.TextBoxes.AddFitted(oTG.CreatePoint2d(4, dYCoord), sText)
+    
+    <span style="color:blue">' The number of this line of text will have a triangle around it.</span>
+    dYCoord = dYCoord - (oTextBox.FittedTextHeight + 0.5)
+    Set oTextBox = oSketch.TextBoxes.AddFitted(oTG.CreatePoint2d(3, dYCoord), "5")
+    
+    <span style="color:blue">' Draw a triangle that fits around a text box.</span>
+    Dim Points(1 To 3) As Point2d
+    Call CalculateTriangle(oTextBox, Points)
+    
+    Dim oLines(1 To 3) As SketchLine
+    Set oLines(1) = oSketch.SketchLines.AddByTwoPoints(Points(1), Points(2))
+    Set oLines(2) = oSketch.SketchLines.AddByTwoPoints(oLines(1).EndSketchPoint, Points(3))
+    Set oLines(3) = oSketch.SketchLines.AddByTwoPoints(oLines(2).EndSketchPoint, oLines(1).StartSketchPoint)
+        
+    sText = "Here is the last and final line of text."
+    Set oTextBox = oSketch.TextBoxes.AddFitted(oTG.CreatePoint2d(4, dYCoord), sText)
+        
+    <span style="color:blue">' Exit the sketch from the edit environment.</span>
+    oSketch.ExitEdit
+End Sub
+
+<span style="color:blue">' Function to calcuate the three points of a triangle that fits tightly around the input text box.</span>
+Private Sub CalculateTriangle(TextBox As TextBox, Points() As Point2d)
+    <span style="color:blue">' Get the top-left corner of the text box.</span>
+    Dim dLeft As Double
+    Dim dTop As Double
+    Call GetCorner(TextBox, dLeft, dTop)
+    
+    Dim oTG As TransientGeometry
+    Set oTG = ThisApplication.TransientGeometry
+   
+    <span style="color:blue">' Determine the top point of the triangle.</span>
+    Set Points(1) = oTG.CreatePoint2d(dLeft + (TextBox.Width / 2), dTop + ((TextBox.Width / 2) * Tan(1.0471975511966)))
+    
+    <span style="color:blue">' Determine the bottom-left corner point of the triangle.</span>
+    Dim dY As Double
+    dY = (Points(1).Y - dTop) + (1.125 * TextBox.height)
+    Set Points(2) = oTG.CreatePoint2d(Points(1).X - (dY / Tan(1.0471975511966)), Points(1).Y - dY)
+    
+    <span style="color:blue">' Determine the bottom right corner point of the triangle</span>
+    Set Points(3) = oTG.CreatePoint2d(Points(1).X + (dY / Tan(1.0471975511966)), Points(2).Y)
+End Sub
+
+<span style="color:blue">' Function to determine the top left corner of the input text box.</span>
+Private Sub GetCorner(TextBox As TextBox, Left As Double, Top As Double)
+    <span style="color:blue">' Determine the top left corner of the text box by accounting</span>
+    <span style="color:blue">' for the justifications.</span>
+    Select Case TextBox.HorizontalJustification
+        Case kAlignTextLeft
+            Left = TextBox.Origin.X
+        Case kAlignTextCenter
+            Left = TextBox.Origin.X - (TextBox.Width / 2)
+        Case kAlignTextRight
+            Left = TextBox.Origin.X - TextBox.Width
+    End Select
+
+    Select Case TextBox.VerticalJustification
+        Case kAlignTextUpper
+            Top = TextBox.Origin.Y
+        Case kAlignTextMiddle
+            Top = TextBox.Origin.Y + (TextBox.height / 2)
+        Case kAlignTextLower
+            Top = TextBox.Origin.Y + TextBox.height
+    End Select
+End Sub</pre>
+      </div>
+      <div id="iLogic" class="api-code">Before running this sample, open a drawing document.<table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('iLogic_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="iLogic_code">Sub Main
+    <span style="color:blue">' Set a reference to the drawing document.</span>
+    <span style="color:blue">' This assumes a drawing document is active.</span>
+    Dim oDrawDoc As DrawingDocument
+    oDrawDoc = ThisApplication.ActiveDocument
+    
+    <span style="color:blue">' Create a new sketch on the active sheet.</span>
+    Dim oSketch As DrawingSketch
+    oSketch = oDrawDoc.ActiveSheet.Sketches.Add()
+    
+    <span style="color:blue">' Open the sketch for edit so the text boxes can be created.</span>
+    <span style="color:blue">' This is only required for drawing sketches, not part.</span>
+    oSketch.Edit
+    
+    Dim oTG As TransientGeometry
+    oTG = ThisApplication.TransientGeometry
+    
+    <span style="color:blue">' Create text with simple string as input.  Since this doesn't use</span>
+    <span style="color:blue">' any text overrides, it will default to the active text style.</span>
+    Dim sText As String
+    sText = "Drawing Notes"
+    Dim oTextBox As TextBox
+    oTextBox = oSketch.TextBoxes.AddFitted(oTG.CreatePoint2d(3, 18), sText)
+    
+    <span style="color:blue">' Create text using various overrides.</span>
+    sText = "Notice: All holes larger than 0.500 n are to be lubricated."
+    oTextBox = oSketch.TextBoxes.AddFitted(oTG.CreatePoint2d(3, 16), sText)
+    
+    <span style="color:blue">' Create a set of notes that are numbered and aligned along the left.</span>
+    Dim dYCoord As Double
+    dYCoord = 14
+    Dim dYOffset As Double
+    Dim oStyle As TextStyle
+    oStyle = oSketch.TextBoxes.Item(1).Style
+    dYOffset = oStyle.FontSize * 1.5
+    
+    <span style="color:blue">' Simple single line text.</span>
+    oTextBox = oSketch.TextBoxes.AddFitted(oTG.CreatePoint2d(3, dYCoord), "1.")
+    sText = "This is note 1."
+    oTextBox = oSketch.TextBoxes.AddFitted(oTG.CreatePoint2d(4, dYCoord), sText)
+    
+    <span style="color:blue">' Two line text.  The two lines are defined using the  tag within the text string.</span>
+    dYCoord = dYCoord - (oTextBox.FittedTextHeight + 0.5)
+    oTextBox = oSketch.TextBoxes.AddFitted(oTG.CreatePoint2d(3, dYCoord), "2.")
+    sText = "This is note 2,  which contains two lines."
+    oTextBox = oSketch.TextBoxes.AddFitted(oTG.CreatePoint2d(4, dYCoord), sText)
+    
+    <span style="color:blue">' Single line of text.</span>
+    dYCoord = dYCoord - (oTextBox.FittedTextHeight + 0.5)
+    oTextBox = oSketch.TextBoxes.AddFitted(oTG.CreatePoint2d(3, dYCoord), "3.")
+    sText = "This is note 3."
+    oTextBox = oSketch.TextBoxes.AddFitted(oTG.CreatePoint2d(4, dYCoord), sText)
+    
+    <span style="color:blue">' Three lines of text.</span>
+    dYCoord = dYCoord - (oTextBox.FittedTextHeight + 0.5)
+    oTextBox = oSketch.TextBoxes.AddFitted(oTG.CreatePoint2d(3, dYCoord), "4.")
+    sText = "This is note 4,  which contains  several lines."
+    oTextBox = oSketch.TextBoxes.AddFitted(oTG.CreatePoint2d(4, dYCoord), sText)
+    
+    <span style="color:blue">' The number of this line of text will have a triangle around it.</span>
+    dYCoord = dYCoord - (oTextBox.FittedTextHeight + 0.5)
+    oTextBox = oSketch.TextBoxes.AddFitted(oTG.CreatePoint2d(3, dYCoord), "5")
+    
+    <span style="color:blue">' Draw a triangle that fits around a text box.</span>
+    Dim Points(0 To 2) As Point2d
+    Call CalculateTriangle(oTextBox, Points)
+    
+    Dim oLines(0 To 2) As SketchLine
+    oLines(0) = oSketch.SketchLines.AddByTwoPoints(Points(0), Points(1))
+    oLines(1) = oSketch.SketchLines.AddByTwoPoints(oLines(0).EndSketchPoint, Points(2))
+    oLines(2) = oSketch.SketchLines.AddByTwoPoints(oLines(1).EndSketchPoint, oLines(0).StartSketchPoint)
+        
+    sText = "Here is the last and final line of text."
+    oTextBox = oSketch.TextBoxes.AddFitted(oTG.CreatePoint2d(4, dYCoord), sText)
+        
+    <span style="color:blue">' Exit the sketch from the edit environment.</span>
+    oSketch.ExitEdit
+End Sub
+
+<span style="color:blue">' Function to calcuate the three points of a triangle that fits tightly around the input text box.</span>
+Private Sub CalculateTriangle(TextBox As TextBox, Points() As Point2d)
+    <span style="color:blue">' Get the top-left corner of the text box.</span>
+    Dim dLeft As Double
+    Dim dTop As Double
+    Call GetCorner(TextBox, dLeft, dTop)
+    
+    Dim oTG As TransientGeometry
+    oTG = ThisApplication.TransientGeometry
+   
+    <span style="color:blue">' Determine the top point of the triangle.</span>
+    Points(0) = oTG.CreatePoint2d(dLeft + (TextBox.Width / 2), dTop + ((TextBox.Width / 2) * Tan(1.0471975511966)))
+    
+    <span style="color:blue">' Determine the bottom-left corner point of the triangle.</span>
+    Dim dY As Double
+    dY = (Points(0).Y - dTop) + (1.125 * TextBox.Height)
+    Points(1) = oTG.CreatePoint2d(Points(0).X - (dY / Tan(1.0471975511966)), Points(0).Y - dY)
+    
+    <span style="color:blue">' Determine the bottom right corner point of the triangle</span>
+    Points(2) = oTG.CreatePoint2d(Points(0).X + (dY / Tan(1.0471975511966)), Points(1).Y)
+End Sub
+
+<span style="color:blue">' Function to determine the top left corner of the input text box.</span>
+Private Sub GetCorner(TextBox As TextBox, Left As Double, Top As Double)
+    <span style="color:blue">' Determine the top left corner of the text box by accounting</span>
+    <span style="color:blue">' for the justifications.</span>
+    Select Case TextBox.HorizontalJustification
+        Case kAlignTextLeft
+            Left = TextBox.Origin.X
+        Case kAlignTextCenter
+            Left = TextBox.Origin.X - (TextBox.Width / 2)
+        Case kAlignTextRight
+            Left = TextBox.Origin.X - TextBox.Width
+    End Select
+
+    Select Case TextBox.VerticalJustification
+        Case kAlignTextUpper
+            Top = TextBox.Origin.Y
+        Case kAlignTextMiddle
+            Top = TextBox.Origin.Y + (TextBox.height / 2)
+        Case kAlignTextLower
+            Top = TextBox.Origin.Y + TextBox.height
+    End Select
+End Sub</pre>
+      </div>
+    </div><br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(TextBoxes%20Sample%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

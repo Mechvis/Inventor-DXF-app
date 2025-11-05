@@ -1,0 +1,266 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/FeatureControlFrameStyle.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="FeatureControlFrameStyle">
+    <meta name="description" content="FeatureControlFrameStyle Object">
+    <meta name="topicid" content="GUID-FeatureControlFrameStyle">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>FeatureControlFrameStyle Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">FeatureControlFrameStyle Object
+			</h1>
+              Derived from: <a href="Style.htm">Style</a> Object
+            <br><h2 class="api">
+          Description
+        </h2>The FeatureControlFrameStyle object represents a feature control frame style in a drawing. The properties and methods listed below are in addition to those supported by the Style object.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FeatureControlFrameStyle_ConvertToLocal.htm">ConvertToLocal</a></td>
+        <td class="api-list">Method that creates a local cached copy of a global style and returns the local style.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FeatureControlFrameStyle_Copy.htm">Copy</a></td>
+        <td class="api-list">Method that creates a new local Style object. The newly created style is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FeatureControlFrameStyle_Delete.htm">Delete</a></td>
+        <td class="api-list">Method that deletes the Style/Layer/UnfoldMethod.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FeatureControlFrameStyle_GetAvailableAdditionalSymbols.htm">GetAvailableAdditionalSymbols</a></td>
+        <td class="api-list">Gets the array of FeatureControlFrameAdditionalSymbolsEnum indicating the additional symbols to be made available in the feature control frame creation and edit dialog.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FeatureControlFrameStyle_GetReferenceKey.htm">GetReferenceKey</a></td>
+        <td class="api-list">Method that generates and returns the reference key for this entity.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FeatureControlFrameStyle_SaveToGlobal.htm">SaveToGlobal</a></td>
+        <td class="api-list">Method that saves this style to the global repository. If a style with the same name is found in the repository, that style is updated.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FeatureControlFrameStyle_SetAvailableAdditionalSymbols.htm">SetAvailableAdditionalSymbols</a></td>
+        <td class="api-list">Sets the array of FeatureControlFrameAdditionalSymbolsEnum to specify additional symbols to be made available in the feature control frame creation and edit dialog.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FeatureControlFrameStyle_UpdateFromGlobal.htm">UpdateFromGlobal</a></td>
+        <td class="api-list">Method that updates this style from the global repository.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FeatureControlFrameStyle_AlignCellsVertically.htm">AlignCellsVertically</a></td>
+        <td class="api-list">Property that gets and sets whether to add spaces to short cells so that pairs of cells align vertically.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FeatureControlFrameStyle_AllowTolerance2.htm">AllowTolerance2</a></td>
+        <td class="api-list">Property that gets and sets whether to provide the ability to add a second tolerance in the feature control frame dialog.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FeatureControlFrameStyle_AlternateDecimalMarkerType.htm">AlternateDecimalMarkerType</a></td>
+        <td class="api-list">Property that gets and sets the character to use as a decimal marker for alternate units. Valid values are kPeriodDecimalMarker and kCommaDecimalMarker. This property is used only when the AlternateUnitsDisplay property is set to true.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FeatureControlFrameStyle_AlternateDisplayUnitType.htm">AlternateDisplayUnitType</a></td>
+        <td class="api-list">Property that gets and sets the arrangement of the alternate units display with respect to the primary units. The primary unit always precedes the alternate unit. This property is used only when the AlternateUnitsDisplay property is set to true.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FeatureControlFrameStyle_AlternateLeadingZeroDisplay.htm">AlternateLeadingZeroDisplay</a></td>
+        <td class="api-list">Property that gets and sets whether to display the leading zeroes for alternate units. This property is used only when the AlternateUnitsDisplay property is set to true.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FeatureControlFrameStyle_AlternateLinearPrecision.htm">AlternateLinearPrecision</a></td>
+        <td class="api-list">Property that gets and sets the precision for linear alternate units. This property is used only when the AlternateUnitsDisplay property is set to true.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FeatureControlFrameStyle_AlternateLinearUnits.htm">AlternateLinearUnits</a></td>
+        <td class="api-list">Property that gets and sets the units of length measure used for alternate units. This property is used only when the AlternateUnitsDisplay property is set to true.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FeatureControlFrameStyle_AlternateTrailingZeroDisplay.htm">AlternateTrailingZeroDisplay</a></td>
+        <td class="api-list">Property that gets and sets whether to display the trailing zeroes for alternate units. This property is used only when the AlternateUnitsDisplay property is set to true.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FeatureControlFrameStyle_AlternateUnitsDisplay.htm">AlternateUnitsDisplay</a></td>
+        <td class="api-list">Property that gets and sets whether to display alternate units.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FeatureControlFrameStyle_AlternateUnitsDisplayType.htm">AlternateUnitsDisplayType</a></td>
+        <td class="api-list">Property that gets and sets the arrangement of the alternate units display with respect to the primary units. The primary unit always precedes the alternate unit. This property is used only when the AlternateUnitsDisplay property is set to true.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FeatureControlFrameStyle_Application.htm">Application</a></td>
+        <td class="api-list">Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FeatureControlFrameStyle_AttachLeaderToCorner.htm">AttachLeaderToCorner</a></td>
+        <td class="api-list">Property that gets and sets whether the leader terminates on the corner of the frame or at the midpoint of a vertical leg of the frame.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FeatureControlFrameStyle_AvailableGeometricCharacteristics.htm">AvailableGeometricCharacteristics</a></td>
+        <td class="api-list">Property that gets and sets the geometric characteristics to be made available in the feature control frame creation and edit dialog. A combination of enum values can be provided.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FeatureControlFrameStyle_AvailableModifiers.htm">AvailableModifiers</a></td>
+        <td class="api-list">Property that gets and sets the material removal modifiers to be made available in the feature control frame creation and edit dialog. A combination of enum values can be provided.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FeatureControlFrameStyle_Comments.htm">Comments</a></td>
+        <td class="api-list">Gets and sets comments associated with the style.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FeatureControlFrameStyle_DecimalMarkerType.htm">DecimalMarkerType</a></td>
+        <td class="api-list">Property that gets and sets the character to use as a decimal marker for primary units. Valid values are kPeriodDecimalMarker and kCommaDecimalMarker.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FeatureControlFrameStyle_DisplayUnitType.htm">DisplayUnitType</a></td>
+        <td class="api-list">Property that gets and sets whether to display units string for primary units.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FeatureControlFrameStyle_EnableAuxiliaryFeatureIndicators.htm">EnableAuxiliaryFeatureIndicators</a></td>
+        <td class="api-list">Gets and sets whether the auxiliary feature indicators is enabled or not.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FeatureControlFrameStyle_EnableInlineNotes.htm">EnableInlineNotes</a></td>
+        <td class="api-list">Gets and sets whether the inline notes is enabled or not.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FeatureControlFrameStyle_InternalName.htm">InternalName</a></td>
+        <td class="api-list">Property that returns the internal name of the style. The name is the internal English name of the standard style. This name will remain constant and is not affected by locale. This name is never displayed to the user. Note that this name is not guaranteed to be unique.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FeatureControlFrameStyle_InUse.htm">InUse</a></td>
+        <td class="api-list">Property that indicates if this style is in use.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FeatureControlFrameStyle_LeaderStyle.htm">LeaderStyle</a></td>
+        <td class="api-list">Property that gets and sets the leader style used for a feature control frame symbol.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FeatureControlFrameStyle_LeadingZeroDisplay.htm">LeadingZeroDisplay</a></td>
+        <td class="api-list">Property that gets and sets whether to display the leading zeroes for primary units.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FeatureControlFrameStyle_LinearUnits.htm">LinearUnits</a></td>
+        <td class="api-list">Property that gets and sets the units of length measure.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FeatureControlFrameStyle_MergeDatum.htm">MergeDatum</a></td>
+        <td class="api-list">Property that gets and sets whether to merge datum cells when the data is the same.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FeatureControlFrameStyle_MergeSymbol.htm">MergeSymbol</a></td>
+        <td class="api-list">Property that gets and sets whether to merge symbol cells when the data is the same.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FeatureControlFrameStyle_MergeTolerance.htm">MergeTolerance</a></td>
+        <td class="api-list">Property that gets and sets whether to merge tolerance cells when the data is the same.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FeatureControlFrameStyle_Name.htm">Name</a></td>
+        <td class="api-list">Gets/Sets the name of the Style.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FeatureControlFrameStyle_Parent.htm">Parent</a></td>
+        <td class="api-list">Property returning the parent of this object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FeatureControlFrameStyle_ScaleToTextHeight.htm">ScaleToTextHeight</a></td>
+        <td class="api-list">Property that gets and sets whether to define the symbol size by text height.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FeatureControlFrameStyle_Size.htm">Size</a></td>
+        <td class="api-list">Property that gets and sets the size of the feature control frame in linear units. This value is used only if the ScaleToTextHeight property is set to False.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FeatureControlFrameStyle_StyleLocation.htm">StyleLocation</a></td>
+        <td class="api-list">Property that returns the location of this style, i.e. local to the document, cached locally in the document, exists in the library. Styles that exist in the library cannot be edited.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FeatureControlFrameStyle_StyleType.htm">StyleType</a></td>
+        <td class="api-list">Gets the type of the style.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FeatureControlFrameStyle_TextStyle.htm">TextStyle</a></td>
+        <td class="api-list">Property that gets and sets the text style used to format the text in a feature control frame symbol.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FeatureControlFrameStyle_TrailingZeroDisplay.htm">TrailingZeroDisplay</a></td>
+        <td class="api-list">Property that gets and sets whether to display the trailing zeroes for primary units.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FeatureControlFrameStyle_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FeatureControlFrameStyle_UpToDate.htm">UpToDate</a></td>
+        <td class="api-list">Property that gets the up-to-date status of the style against the global repository.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FeatureControlFrameStyle_WhiteSpace.htm">WhiteSpace</a></td>
+        <td class="api-list">Property that gets and sets the space before and after text in the tolerance and datum cells.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="FeatureControlFrame_Style.htm">FeatureControlFrame.Style</a>, <a href="FeatureControlFrameStylesEnumerator_Item.htm">FeatureControlFrameStylesEnumerator.Item</a>, <a href="ObjectDefaultsStyle_FeatureControlFrameStyle.htm">ObjectDefaultsStyle.FeatureControlFrameStyle</a><h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2009<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(FeatureControlFrameStyle%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

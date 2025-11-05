@@ -1,0 +1,133 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/ClientGraphicsCollection.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="ClientGraphicsCollection">
+    <meta name="description" content="ClientGraphicsCollection Object">
+    <meta name="topicid" content="GUID-ClientGraphicsCollection">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>ClientGraphicsCollection Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">ClientGraphicsCollection Object
+			</h1><br><h2 class="api">
+          Description
+        </h2>The ClientGraphicsCollection object provides access to all of the existing objects associated with a graphics container.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ClientGraphicsCollection_Add.htm">Add</a></td>
+        <td class="api-list">Method that creates a new ClientGraphics object. The identifier supplied needs to uniquely identify the client. The method will fail in the case where a ClientGraphics object with this ClientId already exists on the object.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ClientGraphicsCollection_Application.htm">Application</a></td>
+        <td class="api-list">Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ClientGraphicsCollection_Count.htm">Count</a></td>
+        <td class="api-list">Property that returns the number of ClientGraphics objects associated with the graphic container.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ClientGraphicsCollection_Item.htm">Item</a></td>
+        <td class="api-list">Returns an existing ClientGraphics object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ClientGraphicsCollection_NonTransacting.htm">NonTransacting</a></td>
+        <td class="api-list">Read-only property that returns whether the creation of this ClientGraphicsColection object and all its associated data is non-transacting.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ClientGraphicsCollection_Parent.htm">Parent</a></td>
+        <td class="api-list">Property returns the logical parent of this object. This could currently be a ComponentDefinition or an AssemblyOccurrence.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ClientGraphicsCollection_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="AssemblyComponentDefinition_ClientGraphicsCollection.htm">AssemblyComponentDefinition.ClientGraphicsCollection</a>, <a href="AssemblyDocument_NonTransactingClientGraphicsCollection.htm">AssemblyDocument.NonTransactingClientGraphicsCollection</a>, <a href="ClientFeatureDefinition_ClientGraphicsCollection.htm">ClientFeatureDefinition.ClientGraphicsCollection</a>, <a href="ClientGraphics_Parent.htm">ClientGraphics.Parent</a>, <a href="ComponentDefinition_ClientGraphicsCollection.htm">ComponentDefinition.ClientGraphicsCollection</a>, <a href="DetailDrawingView_ClientGraphicsCollection.htm">DetailDrawingView.ClientGraphicsCollection</a>, <a href="Document_NonTransactingClientGraphicsCollection.htm">Document.NonTransactingClientGraphicsCollection</a>, <a href="DrawingDocument_NonTransactingClientGraphicsCollection.htm">DrawingDocument.NonTransactingClientGraphicsCollection</a>, <a href="DrawingView_ClientGraphicsCollection.htm">DrawingView.ClientGraphicsCollection</a>, <a href="FlatPattern_ClientGraphicsCollection.htm">FlatPattern.ClientGraphicsCollection</a>, <a href="PartComponentDefinition_ClientGraphicsCollection.htm">PartComponentDefinition.ClientGraphicsCollection</a>, <a href="PartDocument_NonTransactingClientGraphicsCollection.htm">PartDocument.NonTransactingClientGraphicsCollection</a>, <a href="PresentationDocument_NonTransactingClientGraphicsCollection.htm">PresentationDocument.NonTransactingClientGraphicsCollection</a>, <a href="PresentationScene_ClientGraphicsCollection.htm">PresentationScene.ClientGraphicsCollection</a>, <a href="Publication_ClientGraphicsCollection.htm">Publication.ClientGraphicsCollection</a>, <a href="SectionDrawingView_ClientGraphicsCollection.htm">SectionDrawingView.ClientGraphicsCollection</a>, <a href="Sheet_ClientGraphicsCollection.htm">Sheet.ClientGraphicsCollection</a>, <a href="SheetMetalComponentDefinition_ClientGraphicsCollection.htm">SheetMetalComponentDefinition.ClientGraphicsCollection</a>, <a href="VirtualComponentDefinition_ClientGraphicsCollection.htm">VirtualComponentDefinition.ClientGraphicsCollection</a>, <a href="WeldmentComponentDefinition_ClientGraphicsCollection.htm">WeldmentComponentDefinition.ClientGraphicsCollection</a>, <a href="WeldsComponentDefinition_ClientGraphicsCollection.htm">WeldsComponentDefinition.ClientGraphicsCollection</a><h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PointGraphics_SetCustomImage_Sample.htm">Client graphics - image in point graphics</a></td>
+        <td class="api-list">The following sample demonstrates creation of point client graphics with a custom image.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TransientBRep_CreateSolidCylinderCone_Sample.htm">Client graphics creation of 3D primitives</a></td>
+        <td class="api-list">This sample demonstrates the creation of 3D primitives (cylinder, cone, etc.) using client graphics.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TransientGeometry_Sample.htm">Create curve primitives</a></td>
+        <td class="api-list">This sample demonstrates the creation of curve primitives (lines, arcs, circles, etc.) using client graphics.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 5<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(ClientGraphicsCollection%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

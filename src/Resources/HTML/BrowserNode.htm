@@ -1,0 +1,177 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/BrowserNode.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="BrowserNode">
+    <meta name="description" content="BrowserNode Object">
+    <meta name="topicid" content="GUID-BrowserNode">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>BrowserNode Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">BrowserNode Object
+			</h1><br><h2 class="api">
+          Description
+        </h2>The BrowserNode object represents a node in the browser.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BrowserNode_AddChild.htm">AddChild</a></td>
+        <td class="api-list">Method that creates a new as a nested child of this one. The new BrowserNode is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BrowserNode_AllReferencedNodes.htm">AllReferencedNodes</a></td>
+        <td class="api-list">Method that returns all browser nodes referencing the specified BrowserNodeDefinition below this BrowserNode. For instance, in the case of a shared sketch, two browser nodes reference the same definition.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BrowserNode_Delete.htm">Delete</a></td>
+        <td class="api-list">Method that deletes the browser node. All of its child browser nodes are deleted as well. None of the corresponding browser node definitions nor the client node resources are deleted, however. This method will fail for built-in browser nodes.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BrowserNode_DoPreSelect.htm">DoPreSelect</a></td>
+        <td class="api-list">This method will simulate a mouse hover on the browser node.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BrowserNode_DoSelect.htm">DoSelect</a></td>
+        <td class="api-list">This method will simulate a mouse click on the browser node.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BrowserNode_EnsureVisible.htm">EnsureVisible</a></td>
+        <td class="api-list">Method that ensures the BrowserNode object is visible.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BrowserNode_InsertChild.htm">InsertChild</a></td>
+        <td class="api-list">Method that creates a new BrowserNode at the specified location. The new BrowserNode is returned.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BrowserNode_Application.htm">Application</a></td>
+        <td class="api-list">Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BrowserNode_BrowserFolders.htm">BrowserFolders</a></td>
+        <td class="api-list">Property that returns a collection of all browser folders contained directly under this node in the browser.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BrowserNode_BrowserNodeDefinition.htm">BrowserNodeDefinition</a></td>
+        <td class="api-list">Property that returns a object which defines the various inputs that were used to create the browser node.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BrowserNode_BrowserNodes.htm">BrowserNodes</a></td>
+        <td class="api-list">Property that returns a collection of the top level BrowserNode objects contained under this node.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BrowserNode_Expanded.htm">Expanded</a></td>
+        <td class="api-list">Specifies the BrowserNode object is expanded.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BrowserNode_FullPath.htm">FullPath</a></td>
+        <td class="api-list">Gets the fully qualified label of the BrowserNode.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BrowserNode_NativeObject.htm">NativeObject</a></td>
+        <td class="api-list">Gets the object in the context of the definition instead of the containing assembly.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BrowserNode_Parent.htm">Parent</a></td>
+        <td class="api-list">Property that returns the parent of the BrowserNode object. This may either be another BrowserNode or a BrowserPane.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BrowserNode_Selected.htm">Selected</a></td>
+        <td class="api-list">Property that returns whether the object is selected or not.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BrowserNode_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BrowserNode_Visible.htm">Visible</a></td>
+        <td class="api-list">Gets and sets whether the browser node is visible or not.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="BrowserFolder_BrowserNode.htm">BrowserFolder.BrowserNode</a>, <a href="BrowserNode_AddChild.htm">BrowserNode.AddChild</a>, <a href="BrowserNode_InsertChild.htm">BrowserNode.InsertChild</a>, <a href="BrowserNodesEnumerator_Item.htm">BrowserNodesEnumerator.Item</a>, <a href="BrowserNodesEnumerator_ItemById.htm">BrowserNodesEnumerator.ItemById</a>, <a href="BrowserPane_GetBrowserNodeFromObject.htm">BrowserPane.GetBrowserNodeFromObject</a>, <a href="BrowserPane_TopNode.htm">BrowserPane.TopNode</a>, <a href="ClientFeature_BrowserNode.htm">ClientFeature.BrowserNode</a>, <a href="ClientFeatureProxy_BrowserNode.htm">ClientFeatureProxy.BrowserNode</a><h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BrowserPaneObject_AddBrowserFolder_Sample.htm">Add assembly occurrences to a new folder</a></td>
+        <td class="api-list">Demonstrates assembly occurrences to a new folder</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BrowserPaneObject_Reorder_Demote_Sample.htm">Demote occurence</a></td>
+        <td class="api-list">This sample demonstrates how to demote a top level occurrence in an assembly into a new sub-assembly occurrence.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BrowserPanes_GetNativeBrowserNodeDefinition_Sample.htm">Navigation between browser and data</a></td>
+        <td class="api-list">This sample demonstrates the navigation between a browser node and it's corresponding data model object and vice versa. This sample creates a work plane, finds its browser node and gets the work plane object back from the browser node.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 8<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(BrowserNode%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

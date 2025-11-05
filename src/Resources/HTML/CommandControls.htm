@@ -1,0 +1,173 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/CommandControls.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="CommandControls">
+    <meta name="description" content="CommandControls Object">
+    <meta name="topicid" content="GUID-CommandControls">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>CommandControls Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">CommandControls Object
+			</h1><br><h2 class="api">
+          Description
+        </h2>The CommandControls collection object provides access to a collection of user interface controls and provides methods to create additional controls.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="CommandControls_AddButton.htm">AddButton</a></td>
+        <td class="api-list">Method that creates a new button CommandControl object. An example of this type of control is the 'Extrude' feature command button.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="CommandControls_AddButtonPopup.htm">AddButtonPopup</a></td>
+        <td class="api-list">Method that creates a new popup CommandControl object. An example of this type of control is the 'Display Mode' drop down (Shaded, Hidden Edge, Wireframe) available on the 'View' tab of the ribbon in parts and assemblies.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="CommandControls_AddComboBox.htm">AddComboBox</a></td>
+        <td class="api-list">Method that creates a new combo-box CommandControl object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="CommandControls_AddCopy.htm">AddCopy</a></td>
+        <td class="api-list">Method that creates a copy of an existing CommandControl object as a child control of the current CommandControl. This can be used to copy controls between ribbon panels.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="CommandControls_AddGallery.htm">AddGallery</a></td>
+        <td class="api-list">Method that creates a new gallery CommandControl object. An example of this type of control is the gallery control available in the Symbols panel of the Annotate tab in drawings.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="CommandControls_AddMacro.htm">AddMacro</a></td>
+        <td class="api-list">Method that creates a new macro CommandControl object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="CommandControls_AddPopup.htm">AddPopup</a></td>
+        <td class="api-list">Method that creates a new popup CommandControl object. An example of this type of control is the 'Switch' control available in the Windows panel of the View tab.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="CommandControls_AddSeparator.htm">AddSeparator</a></td>
+        <td class="api-list">Method that creates a new separator CommandControl object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="CommandControls_AddSplitButton.htm">AddSplitButton</a></td>
+        <td class="api-list">Method that creates a new split button CommandControl object. An example of this type of control is the 'New File' split button drop down available in the Quick Access Toolbar.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="CommandControls_AddSplitButtonMRU.htm">AddSplitButtonMRU</a></td>
+        <td class="api-list">Method that creates a new split button MRU (Most Recently Used) CommandControl object. An example of this type of control is the 'Circle' drop down in the Sketch tab of the ribbon.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="CommandControls_AddTogglePopup.htm">AddTogglePopup</a></td>
+        <td class="api-list">Method that creates a new toggle popup CommandControl object. An example of this type of control is the 'Object Visibility' control available in the Visibility panel of the Views tab.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="CommandControls_Application.htm">Application</a></td>
+        <td class="api-list">Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="CommandControls_Count.htm">Count</a></td>
+        <td class="api-list">Property that returns the number of items in this collection.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="CommandControls_Item.htm">Item</a></td>
+        <td class="api-list">Returns the specified CommandControl object from the collection.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="CommandControls_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="CommandControl_ChildControls.htm">CommandControl.ChildControls</a>, <a href="Ribbon_QuickAccessControls.htm">Ribbon.QuickAccessControls</a>, <a href="RibbonPanel_CommandControls.htm">RibbonPanel.CommandControls</a>, <a href="RibbonPanel_SlideoutControls.htm">RibbonPanel.SlideoutControls</a>, <a href="UserInterfaceManager_FileBrowserControls.htm">UserInterfaceManager.FileBrowserControls</a>, <a href="UserInterfaceManager_HelpControls.htm">UserInterfaceManager.HelpControls</a><h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AddButtonToAppMenu_Sample.htm">Add commands to the application menu</a></td>
+        <td class="api-list">Demonstrates adding command to the application menu.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="CreateParallelEnvironment_Sample.htm">Add parallel environment with contextual tabs</a></td>
+        <td class="api-list">The following sample demonstrates the use of parallel environments and contextual ribbon tabs.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DumpRibbons_Sample.htm">Print information about all available ribbons.</a></td>
+        <td class="api-list">This sample prints out all of the elements of the ribbons.  This output is very useful when customizing the ribbon to be able to get the names of the various existing ribbons, tabs, and panels.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="EnvironmentManager_OverrideEnvironment_Sample.htm">Creation of an override environment for a document</a></td>
+        <td class="api-list">A new ribbon tab is created and associated with the override environment.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="RibbonPanels_Add_Sample.htm">Create a ribbon panel in an existing tab</a></td>
+        <td class="api-list">Demonstrates creating a new ribbon panel within an existing ribbon tab.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2010<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(CommandControls%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,405 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/SheetMetalFeatures.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="SheetMetalFeatures">
+    <meta name="description" content="SheetMetalFeatures Object">
+    <meta name="topicid" content="GUID-SheetMetalFeatures">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>SheetMetalFeatures Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">SheetMetalFeatures Object
+			</h1>
+              Derived from: <a href="PartFeatures.htm">PartFeatures</a> Object
+            <br><h2 class="api">
+          Description
+        </h2>The SheetMetalFeaturesFeatures collection object provides access to all of the SheetMetalFeature objects in a sheet metal component definition.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalFeatures_CreatePath.htm">CreatePath</a></td>
+        <td class="api-list">Method that creates a path used to define the shape of several part features such as sweep, rectangular pattern, split, etc. All other 2D and 3D curves that are connected to the input curve are obtained and used to create a Path object. The new Path is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalFeatures_CreateSpecifiedPath.htm">CreateSpecifiedPath</a></td>
+        <td class="api-list">Method that creates a path used to define the shape of several part features such as sweep, rectangular pattern, split, etc. The new path is returned. This method will fail if the input curves are not connected end-to-end.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalFeatures_AliasFreeformFeatures.htm">AliasFreeformFeatures</a></td>
+        <td class="api-list">Returns the AliasFrreeformFeatures collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalFeatures_Application.htm">Application</a></td>
+        <td class="api-list">Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalFeatures_BendFeatures.htm">BendFeatures</a></td>
+        <td class="api-list">Property that returns the BendFeatures collection object. This collection provides access to existing BendFeature objects.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalFeatures_BendPartFeatures.htm">BendPartFeatures</a></td>
+        <td class="api-list">Gets the collection object that besides listing out the subset of part features that are BendPartFeatures, allows the creations of BendPartFeatures.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalFeatures_BossFeatures.htm">BossFeatures</a></td>
+        <td class="api-list">Gets the collection object that lists the subset of part features that are BossFeatures.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalFeatures_BoundaryPatchFeatures.htm">BoundaryPatchFeatures</a></td>
+        <td class="api-list">Property that gets the collection object. Besides listing out the subset of part features that are BoundaryPatches, it allows the creation of new BoundaryPatches.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalFeatures_ChamferFeatures.htm">ChamferFeatures</a></td>
+        <td class="api-list">Property that returns the ChamferFeatures collection object. This collection provides access to existing ChamferFeature objects and provides functionality to create new ChamferFeature objects.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalFeatures_CircularPatternFeatures.htm">CircularPatternFeatures</a></td>
+        <td class="api-list">Property that returns the CircularPatternFeatures collection object. This collection provides access to existing CircularPatternFeature objects and provides functionality to create new CircularPatternFeature objects.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalFeatures_ClientFeatures.htm">ClientFeatures</a></td>
+        <td class="api-list">Property returning the client features collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalFeatures_CoilFeatures.htm">CoilFeatures</a></td>
+        <td class="api-list">Property that returns the CoilFeatures collection object. This collection provides access to existing CoilFeature objects and provides functionality to create new CoilFeature objects.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalFeatures_CombineFeatures.htm">CombineFeatures</a></td>
+        <td class="api-list">Property that returns the CombineFeatures collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalFeatures_ContourFlangeFeatures.htm">ContourFlangeFeatures</a></td>
+        <td class="api-list">Property that returns the CounterFlangeFeatures collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalFeatures_ContourRollFeatures.htm">ContourRollFeatures</a></td>
+        <td class="api-list">Property that returns the ContourRollFeatures Object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalFeatures_CornerChamferFeatures.htm">CornerChamferFeatures</a></td>
+        <td class="api-list">Property that returns the CornerChamferFeatures collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalFeatures_CornerFeatures.htm">CornerFeatures</a></td>
+        <td class="api-list">Property that returns the CornerFeatures collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalFeatures_CornerRoundFeatures.htm">CornerRoundFeatures</a></td>
+        <td class="api-list">Property that returns the CornerRoundFeatures collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalFeatures_Count.htm">Count</a></td>
+        <td class="api-list">Property that returns the number of items in the collection.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalFeatures_CutFeatures.htm">CutFeatures</a></td>
+        <td class="api-list">Property that returns the CutFeatures object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalFeatures_DecalFeatures.htm">DecalFeatures</a></td>
+        <td class="api-list">Property that returns the DecalFeatures collection object. This collection provides access to existing DecalFeature objects.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalFeatures_DeleteFaceFeatures.htm">DeleteFaceFeatures</a></td>
+        <td class="api-list">Property that returns the DeleteFaceFeatures collection object. This collection provides access to existing DeleteFaceFeature objects.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalFeatures_DirectEditFeatures.htm">DirectEditFeatures</a></td>
+        <td class="api-list">Gets the collection object that besides listing out the subset of part features that are DirectEdit features.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalFeatures_EmbossFeatures.htm">EmbossFeatures</a></td>
+        <td class="api-list">Property that returns the EmbossFeatures collection object. This collection provides access to existing EmbossFeature objects.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalFeatures_ExtendFeatures.htm">ExtendFeatures</a></td>
+        <td class="api-list">Property that returns the ExtendFeatures collection object. This collection provides access to existing ExtendFeature objects and provides functionality to create new ExtendFeature objects.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalFeatures_ExtrudeFeatures.htm">ExtrudeFeatures</a></td>
+        <td class="api-list">Property that returns the collection object. This collection provides access to existing ExtrudeFeature objects and provides functionality to create new ExtrudeFeature objects.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalFeatures_FaceDraftFeatures.htm">FaceDraftFeatures</a></td>
+        <td class="api-list">Property that returns the FaceDraftFeatures collection object. This collection provides access to existing FaceDraftFeature objects.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalFeatures_FaceFeatures.htm">FaceFeatures</a></td>
+        <td class="api-list">Property that returns the FaceDraftFeatures collection object. This collection provides access to existing FaceFeature objects.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalFeatures_FilletFeatures.htm">FilletFeatures</a></td>
+        <td class="api-list">Property that returns the FilletFeatures collection object. This collection provides access to existing FilletFeature objects and provides functionality to create new FilletFeature objects.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalFeatures_FinishFeatures.htm">FinishFeatures</a></td>
+        <td class="api-list">Gets the collection object that lists the subset of part features that are FinishFeatures.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalFeatures_FlangeFeatures.htm">FlangeFeatures</a></td>
+        <td class="api-list">Property that returns the FlangeFeatures collection object. This collection provides access to existing FlangeFeature objects.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalFeatures_FoldFeatures.htm">FoldFeatures</a></td>
+        <td class="api-list">Property that returns the FoldFeatures collection object. This collection provides access to existing FoldFeature objects.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalFeatures_FreeformFeatures.htm">FreeformFeatures</a></td>
+        <td class="api-list">Gets the collection object that besides listing out the subset of part features that are Freeform features, allows the creations of new Freeform features.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalFeatures_GrillFeatures.htm">GrillFeatures</a></td>
+        <td class="api-list">Gets the collection object that lists the subset of part features that are GrillFeatures.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalFeatures_HemFeatures.htm">HemFeatures</a></td>
+        <td class="api-list">Property that returns the HemFeatures collection object. This collection provides access to existing HemFeature objects.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalFeatures_HoleFeatures.htm">HoleFeatures</a></td>
+        <td class="api-list">Property that returns the HoleFeatures collection object. This collection provides access to existing HoleFeature objects and provides functionality to create new HoleFeature objects.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalFeatures_iFeatures.htm">iFeatures</a></td>
+        <td class="api-list">Property that returns the iFeatures collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalFeatures_Item.htm">Item</a></td>
+        <td class="api-list">Returns the specified PartFeature object from the collection. It accesses all of the features regardless of their type. If you increment through the features in the collection they are returned in the same order as they appear in the feature browser.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalFeatures_KnitFeatures.htm">KnitFeatures</a></td>
+        <td class="api-list">Property that returns the KnitFeatures collection object. This collection provides access to existing KnitFeature objects.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalFeatures_LipFeatures.htm">LipFeatures</a></td>
+        <td class="api-list">Gets the collection object that lists the subset of part features that are LipFeatures.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalFeatures_LoftedFlangeFeatures.htm">LoftedFlangeFeatures</a></td>
+        <td class="api-list">Property that returns the LoftedFlangeFeatures collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalFeatures_LoftFeatures.htm">LoftFeatures</a></td>
+        <td class="api-list">Property that returns the LoftFeatures collection object. This collection provides access to existing LoftFeature objects and provides functionality to create new LoftFeature objects.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalFeatures_MarkFeatures.htm">MarkFeatures</a></td>
+        <td class="api-list">Gets the collection object that lists the subset of part features that are MarkFeatures.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalFeatures_MirrorFeatures.htm">MirrorFeatures</a></td>
+        <td class="api-list">Property that returns the MirrorFeatures collection object. This collection provides access to existing MirrorFeature objects and provides functionality to create new MirrorFeature objects.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalFeatures_MoveFaceFeatures.htm">MoveFaceFeatures</a></td>
+        <td class="api-list">Property that returns the MoveFaceFeatures collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalFeatures_MoveFeatures.htm">MoveFeatures</a></td>
+        <td class="api-list">Gets the collection object that besides listing out the subset of part features that are Moves, allows the creations of new Moves.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalFeatures_NonParametricBaseFeatures.htm">NonParametricBaseFeatures</a></td>
+        <td class="api-list">Property that returns the NonParametericBaseFeatures collection object. This collection provides access to existing NonParametericBaseFeature objects and provides functionality to create new NonParametericBaseFeature objects.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalFeatures_PunchToolFeatures.htm">PunchToolFeatures</a></td>
+        <td class="api-list">Property that returns the PunchToolFeatures collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalFeatures_RectangularPatternFeatures.htm">RectangularPatternFeatures</a></td>
+        <td class="api-list">Property that returns the RectangularPatternFeatures collection object. This collection provides access to existing RectangularPatternFeature objects and provides functionality to create new RectangularPatternFeature objects.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalFeatures_ReferenceFeatures.htm">ReferenceFeatures</a></td>
+        <td class="api-list">Property that returns the ReferenceFeatures collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalFeatures_RefoldFeatures.htm">RefoldFeatures</a></td>
+        <td class="api-list">Property that returns the RefoldFeatures collection object. This collection provides access to existing RefoldFeature objects and provides functionality to create new RefoldFeature objects.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalFeatures_ReplaceFaceFeatures.htm">ReplaceFaceFeatures</a></td>
+        <td class="api-list">Property that returns the ReplaceFaceFeatures collection object. This collection provides access to existing ReplaceFaceFeature objects.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalFeatures_RestFeatures.htm">RestFeatures</a></td>
+        <td class="api-list">Gets the collection object that lists the subset of part features that are RestFeatures.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalFeatures_RevolveFeatures.htm">RevolveFeatures</a></td>
+        <td class="api-list">Property that returns the RevolveFeatures collection object. This collection provides access to existing RevolveFeature objects and provides functionality to create new RevolveFeature objects.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalFeatures_RibFeatures.htm">RibFeatures</a></td>
+        <td class="api-list">Property that returns the RibFeatures collection object. This collection provides access to existing RibFeature objects.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalFeatures_RipFeatures.htm">RipFeatures</a></td>
+        <td class="api-list">Property that returns the RipFeatures collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalFeatures_RuledSurfaceFeatures.htm">RuledSurfaceFeatures</a></td>
+        <td class="api-list">Gets the collection object that lists the subset of part features that are RuledSurfaceFeatures.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalFeatures_RuleFilletFeatures.htm">RuleFilletFeatures</a></td>
+        <td class="api-list">Gets the collection object that lists the subset of part features that are RuleFilletFeatures.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalFeatures_SculptFeatures.htm">SculptFeatures</a></td>
+        <td class="api-list">Property that returns the SculptFeatures collection object. This collection provides access to existing SculptFeature objects and provides functionality to create new SculptFeature objects.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalFeatures_ShellFeatures.htm">ShellFeatures</a></td>
+        <td class="api-list">Property that returns the ShellFeatures collection object. This collection provides access to existing ShellFeature objects.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalFeatures_SimplifyFeatures.htm">SimplifyFeatures</a></td>
+        <td class="api-list">Read-only property that returns the SimplifyFeatures collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalFeatures_SketchDrivenPatternFeatures.htm">SketchDrivenPatternFeatures</a></td>
+        <td class="api-list">Gets the collection object that besides listing out the subset of part features that are SketchDrivenPatterns, allows the creations of new SketchDrivenPatterns.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalFeatures_SnapFitFeatures.htm">SnapFitFeatures</a></td>
+        <td class="api-list">Gets the collection object that lists the subset of part features that are SnapFitFeatures.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalFeatures_SplitFeatures.htm">SplitFeatures</a></td>
+        <td class="api-list">Property that returns the SplitFeatures collection object. This collection provides access to existing SplitFeature objects.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalFeatures_SweepFeatures.htm">SweepFeatures</a></td>
+        <td class="api-list">Property that returns the SweepFeatures collection object. This collection provides access to existing SweepFeature objects and provides functionality to create new SweepFeature objects.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalFeatures_ThickenFeatures.htm">ThickenFeatures</a></td>
+        <td class="api-list">Property that returns the ThickenFeatures collection object. This collection provides access to existing ThickenFeature objects.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalFeatures_ThreadFeatures.htm">ThreadFeatures</a></td>
+        <td class="api-list">Property that returns the ThreadFeatures collection object. This collection provides access to existing ThreadFeature objects and provides functionality to create new ThreadFeature objects.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalFeatures_TrimFeatures.htm">TrimFeatures</a></td>
+        <td class="api-list">Property that returns the TrimFeatures collection object. This collection provides access to existing TrimFeature objects and provides functionality to create new TrimFeature objects.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalFeatures_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalFeatures_UnfoldFeatures.htm">UnfoldFeatures</a></td>
+        <td class="api-list">Property that returns the UnfoldFeatures collection object. This collection provides access to existing UnfoldFeature objects and provides functionality to create new UnfoldFeature objects.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalFeatures_UnwrapFeatures.htm">UnwrapFeatures</a></td>
+        <td class="api-list">Gets the collection object that lists the subset of part features that are UnwrapFeatures.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FoldFeatures_Add_Sample.htm">Create sheet metal face and fold features</a></td>
+        <td class="api-list">This sample demonstrates the creation of sheet metal face and fold features.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LoftedFlangeFeatures_Add_Sample.htm">Create sheet metal lofted flange feature</a></td>
+        <td class="api-list">The following sample demonstrates the creation of a sheet metal lofted flange feature.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PunchToolFeatureIDs_Sample.htm">Report on punch feature ID's</a></td>
+        <td class="api-list">This program demonstrates accessing punch features and creates a report of the punch ID's used.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PunchToolFeatures_Add_Sample.htm">Add a punch tool feature</a></td>
+        <td class="api-list">This program demonstrates the creation of a punch tool feature. It uses one of the punch features that's delivered with Inventor. It assumes you already have an existing sheet metal part and have selected a face to place the punch feature on. The selected face should be large so there is room for the punch features.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="RipFeatures_Add_Sample.htm">Create sheet metal rip feature</a></td>
+        <td class="api-list">This sample demonstrates the creation of a rip sheet metal feature.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalFeatures_Sample.htm">Create sheet metal face and cut features</a></td>
+        <td class="api-list">This sample demonstrates the creation of sheet metal face and cut features.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalFeatures_FlangeFeatures_Sample.htm">Create sheet metal face and flange features</a></td>
+        <td class="api-list">This sample demonstrates the creation of sheet metal face and flange features.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 5.3<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(SheetMetalFeatures%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,136 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/ContentTableColumn.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="ContentTableColumn">
+    <meta name="description" content="ContentTableColumn Object">
+    <meta name="topicid" content="GUID-ContentTableColumn">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>ContentTableColumn Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">ContentTableColumn Object
+			</h1><br><h2 class="api">
+          Description
+        </h2>The ContentTableColumn object represents the column of the table associated with a particular content center family.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ContentTableColumn_ClearPropertyMap.htm">ClearPropertyMap</a></td>
+        <td class="api-list">Method that removes any property mapping for this column.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ContentTableColumn_GetPropertyMap.htm">GetPropertyMap</a></td>
+        <td class="api-list">Method that gets the information associated with a custom expression. This method is only valid when the HasPropertyMap property returns True.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ContentTableColumn_SetPropertyMap.htm">SetPropertyMap</a></td>
+        <td class="api-list">Method that sets the information associated with a custom expression.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ContentTableColumn_Application.htm">Application</a></td>
+        <td class="api-list">Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ContentTableColumn_DataType.htm">DataType</a></td>
+        <td class="api-list">Property that indicates the type of value defined for this column. Values this property can return are kIntegerType, kDoubleType, kStringType, and kBooleanType.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ContentTableColumn_DisplayHeading.htm">DisplayHeading</a></td>
+        <td class="api-list">Gets/Sets the display name of this column.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ContentTableColumn_Expression.htm">Expression</a></td>
+        <td class="api-list">Gets/Sets the expression to use to automatically populate the rows of this column.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ContentTableColumn_HasPropertyMap.htm">HasPropertyMap</a></td>
+        <td class="api-list">Property that indicates if this column is mapped to an iProperty.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ContentTableColumn_InternalName.htm">InternalName</a></td>
+        <td class="api-list">Property that gets and sets the name of this column.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ContentTableColumn_IsCustom.htm">IsCustom</a></td>
+        <td class="api-list">Read-only property that returns True if the column is a custom column.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ContentTableColumn_KeyColumnOrder.htm">KeyColumnOrder</a></td>
+        <td class="api-list">Read-write Property that allows you to get and set the KeyWeight of the column.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ContentTableColumn_Parent.htm">Parent</a></td>
+        <td class="api-list">Property that returns the ContentFamily object this column is associated with.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ContentTableColumn_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ContentTableColumn_Units.htm">Units</a></td>
+        <td class="api-list">Read-write Property that allows you to get and set the units of the column.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="ContentFamily_DesignationColumn.htm">ContentFamily.DesignationColumn</a>, <a href="ContentFamily_FileNameColumn.htm">ContentFamily.FileNameColumn</a>, <a href="ContentTableColumns_Add.htm">ContentTableColumns.Add</a>, <a href="ContentTableColumns_Item.htm">ContentTableColumns.Item</a><h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2010<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(ContentTableColumn%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

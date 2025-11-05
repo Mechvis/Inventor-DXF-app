@@ -1,0 +1,130 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/ModelFeatureControlFrameRows_Add.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="ModelFeatureControlFrameRows_Add">
+    <meta name="description" content="ModelFeatureControlFrameRows.Add Method">
+    <meta name="topicid" content="ModelFeatureControlFrameRows_Add">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>ModelFeatureControlFrameRows.Add Method</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">ModelFeatureControlFrameRows.Add Method</h1>
+
+          Parent Object: <a href="ModelFeatureControlFrameRows.htm">ModelFeatureControlFrameRows</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Method that adds a row to the feature control frame.</p>
+    <h2 class="api">
+          Syntax
+        </h2>
+        
+            ModelFeatureControlFrameRows.<b>Add</b>( <b><i>GeometricCharacteristic</i></b> As <a href="GeometricCharacteristicEnum.htm">GeometricCharacteristicEnum</a>, <b><i>Tolerance</i></b> As Double, [<b><i>ToleranceModifierPrefix</i></b>] As <a href="GDTSymbolEnum.htm">GDTSymbolEnum</a>, [<b><i>ToleranceMaterialCondition</i></b>] As <a href="GDTSymbolEnum.htm">GDTSymbolEnum</a>, [<b><i>PrimaryDatumIdentifier</i></b>] As Variant, [<b><i>PrimaryDatumModifier</i></b>] As <a href="GDTSymbolEnum.htm">GDTSymbolEnum</a>, [<b><i>SecondaryDatumIdentifier</i></b>] As Variant, [<b><i>SecondaryDatumModifier</i></b>] As <a href="GDTSymbolEnum.htm">GDTSymbolEnum</a>, [<b><i>TertiaryDatumIdentifier</i></b>] As Variant, [<b><i>TertiaryDatumModifier</i></b>] As <a href="GDTSymbolEnum.htm">GDTSymbolEnum</a> ) As <a href="ModelFeatureControlFrameRow.htm">ModelFeatureControlFrameRow</a>
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">GeometricCharacteristic</td>
+        <td class="api-list"><a href="GeometricCharacteristicEnum.htm">GeometricCharacteristicEnum</a></td>
+        <td class="api-list">Input GeometricCharacteristicEnum that specifies the geometric characteristic symbol for the row.</td>
+      </tr>
+      <tr>
+        <td class="api-list">Tolerance</td>
+        <td class="api-list">Double</td>
+        <td class="api-list">Input Double that specifies the tolerance associated with this geometric characteristic.&nbsp;For length values the units for the value is always centimeters and for angles the value is always radians.&nbsp;The actual displayed value will use the units and precision specified by the style.</td>
+      </tr>
+      <tr>
+        <td class="api-list">ToleranceModifierPrefix</td>
+        <td class="api-list"><a href="GDTSymbolEnum.htm">GDTSymbolEnum</a></td>
+        <td class="api-list">Optional input GDTSymbolEnum that specifies a symbol to use as a prefix for the tolerance.&nbsp;For example, the <b><font face="AIGDT" color="black">n</font></b> symbol is used when the tolerance zone is cylindrical.<br /><br /> This is an optional argument whose default value is 104193.</td>
+      </tr>
+      <tr>
+        <td class="api-list">ToleranceMaterialCondition</td>
+        <td class="api-list"><a href="GDTSymbolEnum.htm">GDTSymbolEnum</a></td>
+        <td class="api-list">Optional input GDTSymbolEnum that specifies a symbol to use as material condition for the tolerance.&nbsp;For example, the <b><font face="AIGDT" color="black">m</font></b>&nbsp;symbol is used to specify maximum material condition. Valid values for this argument are kGDTNoSymbol, kGDTMaximumMaterialCondition and kGDTLeastMaterialCondition.<br /><br /> This is an optional argument whose default value is 104193.</td>
+      </tr>
+      <tr>
+        <td class="api-list">PrimaryDatumIdentifier</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional input ModelDatumIdentifier object that specifies the primary datum reference. If the geometric characteristic is kStraightness, kFlatness, kCircularity, or kCylindricity no datum identifiers are needed and the datum arguments will be ignored.<br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+      <tr>
+        <td class="api-list">PrimaryDatumModifier</td>
+        <td class="api-list"><a href="GDTSymbolEnum.htm">GDTSymbolEnum</a></td>
+        <td class="api-list">Optional input GDTSymbolEnum enum value that specifies the material condition symbol to append to the primary datum.&nbsp;For example, the <b><font face="AIGDT" color="black">m</font></b>&nbsp;symbol is used to specify maximum material condition.&nbsp;The PrimaryDatumIdentifier argument must be specified for this argument to be used.<br /><br /> This is an optional argument whose default value is 104193.</td>
+      </tr>
+      <tr>
+        <td class="api-list">SecondaryDatumIdentifier</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional input ModelDatumIdentifier object that specifies the secondary datum reference. The first datum identifier must be specified before the secondary will be used.<br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+      <tr>
+        <td class="api-list">SecondaryDatumModifier</td>
+        <td class="api-list"><a href="GDTSymbolEnum.htm">GDTSymbolEnum</a></td>
+        <td class="api-list">Optional input GDTSymbolEnum enum value that specifies the material condition symbol to append to the secondary datum.&nbsp;For example, the <b><font face="AIGDT" color="black">m</font></b> symbol is used to specify maximum material condition.&nbsp;The SecondaryDatumIdentifier argument must be specified for this argument to be used.<br /><br /> This is an optional argument whose default value is 104193.</td>
+      </tr>
+      <tr>
+        <td class="api-list">TertiaryDatumIdentifier</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional input ModelDatumIdentifier object that specifies the tertiary datum reference.&nbsp;The first and second datum identifiers must be specified before the tertiary will be used.<br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+      <tr>
+        <td class="api-list">TertiaryDatumModifier</td>
+        <td class="api-list"><a href="GDTSymbolEnum.htm">GDTSymbolEnum</a></td>
+        <td class="api-list">Optional input GDTSymbolEnum enum value that specifies the material condition symbol to append to the tertiary datum.&nbsp;For example, the <b><font face="AIGDT" color="black">m</font></b> symbol is used to specify maximum material condition.&nbsp;The TertiaryDatumIdentifier argument must be specified for this argument to be used.<br /><br /> This is an optional argument whose default value is 104193.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2015<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(ModelFeatureControlFrameRows.Add%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

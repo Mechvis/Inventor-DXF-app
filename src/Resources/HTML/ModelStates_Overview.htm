@@ -1,0 +1,659 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU">
+    <link rel="canonical" href="http://help.autodesk.com/cloudhelp/2026/ENU/Inventor-API/files/ModelStates_Overview.htm">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="5/1/2021">
+    <meta name="user-comments" content="enable">
+    <meta name="description" content="">
+    <meta name="topicid" content="GUID-045E78DB-DBE3-4220-8EBC-29EB53890E1A">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>Working with Model States</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"/>
+    <script type="text/javascript" src="/view/clientframework/client.js"><!--filler--></script>
+	<script>
+	  // This turns on the display of the copyright notice which is not visible by default.
+	  // Because the head is removed when used in the web help, this function will only exists
+	  // when the chm help is being created.
+	  window.onload = function() {
+		copyrightElement = document.getElementById('CopyrightNotice');
+		copyrightElement.style.display = 'block';
+	  };
+	</script>
+</head>
+<body>
+<link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+	
+<H1>Model States</h1>
+	
+<h3>Introduction to Model State</h3>
+
+<p Class="Normal">Model state is introduced to both Part and Assembly 
+    documents since Inventor 2022,&nbsp; and the LOD(Level of Detail) in assembly 
+    will be removed from UI, the LOD related APIs will be hidden, so all the LOD 
+    related funcitons need to be migrated to Model State. In assembly, most of the 
+    functions that can work in legacy LOD can also work in model state, only some 
+    functions in legacy LOD are changed, and in model state there are some 
+    enhancements against legacy LOD(e.g. the file properties can be overriden for 
+    each model state). Because of this big change, API developers may need to know 
+    how this will impact the API behaviors.</p>
+
+<h3>The behavior changes from Level of Detail to Model State</h3>
+
+
+
+<p Class="Normal">1. The legacy LevelOfDetailRepresentation objects are migrated to 
+    ModelState objects. So the FullDocumentName will represent the “FullFileName&lt;ModelState&gt;” 
+    instead of legacy “FullFileName&lt;LevelofDetail&gt;”.</p>
+    <ul>
+<li>Legacy master LevelOfDetailRepresentation object is migrated to primary ModelState</li>
+<li>Legacy custom LevelOfDetailRepresentation objects are migrated to custom ModelState objects.</li>
+<li>Legacy system LevelOfDetailRepresentation objects are removed. When call the Documents.Open/OpenWithOptions with specifying the legacy system LevelOfDetailRepresentation, the document will be opened with primary ModelState active and a proper system design view for it to make use of the visibility indicating the occurrences' suppression status.</li>
+</ul>
+
+<div align="center"> <img src="../images/LODToMS.png" border=0 ></div> <br>
+
+2. In legacy assembly data the iAssembly and LOD can exist in the same assembly 
+    file, while since Inventor 2022 the iAssembly and model states are mutually 
+    exclusive.It means ModelState is not supported in iAssembly document, and vice 
+    versa. Like ComponentOccurrences.AddiAssemblyMember doesn&#39;t support the 
+    ModelState in Options argument.<br><br>
+
+
+    3. Suppress ComponentOccurrenceProxy is not allowed. If a legacy data has a 
+    suppressed ComponentOccurrenceProxy then you can only unsuppress it in Inventor 
+    2022 to remove the Suppress(Override) status:<br><div align="center"> <img src="../images/ComponentOccurrenceProxySuppress.png" border=0 ></div> <div align="center"> </div><br>
+    
+	4. Document for Primary and custom ModelState shares the same Document but each substitute has its own Document pointer. That means in legacy Inventor when open assembly document with different LOD specified the returned AssemblyDocument pointers are different, while in Inventor 2022:<br>
+	<ul>
+<li>When open document with specifying different primary/custom ModelState, only one AssemblyDocument pointer is returned.</li>
+<li>A substitute’s Document pointer is different from any other ModelState’s Document’s pointer(the same as legacy behavior).</li>
+</ul>
+
+    5. OnActivateModelState won't be triggered when activate or deactivate a substitute model state but the OnActivateDocument should be used to monitor this action instead.<br />
+    <br>
+    
+    6. When open assemly with Primary or custom model state activated, the document(s) referenced by substitute model states will be also included in the Document.ReferencedDocuments/AllReferencedDocuments collection(in Inventor 2022 RTM they won't be included but since Inventor 2022.1 will). But when the subsitute model state is activated the assembly's Document.ReferencedDocuments/AllReferencedDocuments collection will return the referenced document(s) by current substitute document only.<br />
+    <br>
+    
+    7. Document.File.AllReferencedFiles returns all referenced files for the IAM file including the substitutes and suppressed components.<br />
+    <br>
+    
+    8. It is required to save dirty assembly before adding a substitute into it, otherwise AddSubstitute will raise error.<br /><br>
+    
+    9. When use Documents.Open or OpenWithOptions to open one IAM file multiple times with different ModelState specified, it would just switch active ModelState in the same document window instead of displaying in different document windows.<br /><br>
+    
+    10. For Documents.ItemByName, if model state factory document and model state member document with the same FullDocumentName are both opened in memory it will return model state factory document firstly.<br /><br>
+    
+     11. The model state factory's Document.FileSaveCounter will increase by 1 for each model state's save, this means if there are multiple model states require to save, when save the model state factory document may cause the FileSaveCounter to increase by a number that is bigger than 1. This also applies to File or FileDescriptor.FileSaveCounter. The model state member's Document.FileSaveCounter will only record the model state member document's save count.<br />
+    
+    
+    <h3>New Model State APIs in Inventor 2022</h3>
+  <p Class="Normal">  
+1.	PartComponentDefinition.ModelStates/AssemblyComponentDefinition.ModelStates: Access Model States. <br><br>
+2.	AssemblyComponentDefinition/PartComponentDefinition.IsModelStateFactory/IsModelStateMember : Determine whether the document is model state factory or member document. 
+If the document is a model state member document, ComponentDefinition/ModelState.FactoryDocument can be used to get the relative model state factory document.<br><br>
+3.	ComponentOccurrence.ActiveModelState:Switch ComponentOccurrence model state. It is required that ComponentOccurrence.Definition.Document is up-to-date; otherwise, Save dialog would pop up to ask for document save, a failure will occur if user chooses not to save. <br><br>
+4.	ComponentOccurrence.Replace/Replace2 will use the last active model state by default.<br><br>
+5.	BOMView.ModelStateMemberName returns the model state member name that current BOMView is based on.<br><br>
+6.	PropertySets edit is impacted by ModelStates.MemberEditScope. <br><br>
+If MemberEditScope is set to kEditActiveMember, editting Property’s value for active ModelState just overrides the value for the active ModelState; otherwise the value will be applied to the Property for all ModelState.  The Document.FilePropertySets represents the iProperties in Shell Extension for Part/Assembly documents.<br><br>
+7.	AddBendTableWithOptions:Support to add bend table with specified model state.<br><br>
+8.	AddConfigurationTable:Support to create table with specifying model states.<br><br>
+9.	DocumentDescriptor.ReferencedModelState:Tell the model state type of the DocumentDescriptor.<br><br>
+10.	ModelingEvents.OnGenerateModelStateMember:To monitor when the model state member is generated.<br><br>
+11.	FileOpenOptions.DefaultModelStateInAssembly&DefaultModelStateInPart:Set default model state when opening assembly or part document.<br><br>
+12.	In Apprentice: 
+ApprenticeServerComponent.Open can open part or assembly with specifying model state in FullDocumentName, but it always opens the model state factory document. 
+ApprenticeServerDocument.ComponentDefinition.ModelStates is not accessible at present. FileManager.GetModelStates/GetModelStateName/GetLastActiveModelState are supported in Apprentice.<br><br>
+13.	For custom addin: Environment.PreserveWhenSwitchModelState allows addin to preserve its environment when switch model states. For built-in addin this API will always return True to keep legacy behavior.<br><br>
+</p>
+
+
+<h3>Equivalent APIs(Level of Detail vs Model State)</h3>
+ 
+<table style="width:100%" border = "1"> 
+  <tr>
+    <th>Level of Detail APIs</th>
+    <th>Model State APIs</th> 
+
+  </tr>
+  <tr>
+    <td><span style="font-size:11.0pt;line-height:107%;
+font-family:&quot;Calibri&quot;,sans-serif;mso-ascii-theme-font:minor-latin;mso-fareast-font-family:
+DengXian;mso-fareast-theme-font:minor-fareast;mso-hansi-theme-font:minor-latin;
+mso-bidi-font-family:&quot;Times New Roman&quot;;mso-bidi-theme-font:minor-bidi;
+mso-ansi-language:EN-US;mso-fareast-language:ZH-CN;mso-bidi-language:AR-SA">
+        FullDocumentName (e.g. “C:\Assembly1.iam&lt;Level of Detail1&gt;”)</span></td>
+    <td><span style="font-size:11.0pt;line-height:107%;
+font-family:&quot;Calibri&quot;,sans-serif;mso-ascii-theme-font:minor-latin;mso-fareast-font-family:
+DengXian;mso-fareast-theme-font:minor-fareast;mso-hansi-theme-font:minor-latin;
+mso-bidi-font-family:&quot;Times New Roman&quot;;mso-bidi-theme-font:minor-bidi;
+mso-ansi-language:EN-US;mso-fareast-language:ZH-CN;mso-bidi-language:AR-SA">
+        FullDocumentName (e.g. “C:\Assembly1.iam&lt;Model State1&gt;”)</span></td>
+
+  </tr>
+  <tr>
+    <td><span style="font-size:11.0pt;line-height:107%;
+font-family:&quot;Calibri&quot;,sans-serif;mso-ascii-theme-font:minor-latin;mso-fareast-font-family:
+DengXian;mso-fareast-theme-font:minor-fareast;mso-hansi-theme-font:minor-latin;
+mso-bidi-font-family:&quot;Times New Roman&quot;;mso-bidi-theme-font:minor-bidi;
+mso-ansi-language:EN-US;mso-fareast-language:ZH-CN;mso-bidi-language:AR-SA">
+        ComponentOccurrence. ActiveLevelOfDetailRepresentation</span></td>
+    <td><span style="font-size:11.0pt;line-height:107%;
+font-family:&quot;Calibri&quot;,sans-serif;mso-ascii-theme-font:minor-latin;mso-fareast-font-family:
+DengXian;mso-fareast-theme-font:minor-fareast;mso-hansi-theme-font:minor-latin;
+mso-bidi-font-family:&quot;Times New Roman&quot;;mso-bidi-theme-font:minor-bidi;
+mso-ansi-language:EN-US;mso-fareast-language:ZH-CN;mso-bidi-language:AR-SA">
+        ComponentOccurrence.ActiveModelState</span></td>
+
+  </tr>
+  <tr>
+    <td><span style="font-size:11.0pt;line-height:107%;
+font-family:&quot;Calibri&quot;,sans-serif;mso-ascii-theme-font:minor-latin;mso-fareast-font-family:
+DengXian;mso-fareast-theme-font:minor-fareast;mso-hansi-theme-font:minor-latin;
+mso-bidi-font-family:&quot;Times New Roman&quot;;mso-bidi-theme-font:minor-bidi;
+mso-ansi-language:EN-US;mso-fareast-language:ZH-CN;mso-bidi-language:AR-SA">
+        DerivedAssemblyDefinition. ActiveLevelOfDetailRepresentation</span></td>
+    <td><span style="font-size:11.0pt;line-height:107%;
+font-family:&quot;Calibri&quot;,sans-serif;mso-ascii-theme-font:minor-latin;mso-fareast-font-family:
+DengXian;mso-fareast-theme-font:minor-fareast;mso-hansi-theme-font:minor-latin;
+mso-bidi-font-family:&quot;Times New Roman&quot;;mso-bidi-theme-font:minor-bidi;
+mso-ansi-language:EN-US;mso-fareast-language:ZH-CN;mso-bidi-language:AR-SA">
+        DerivedAssemblyDefinition.ActiveModelState</span></td>
+  </tr>
+    <tr>
+    <td>&nbsp;</td>
+    <td><span style="font-size:11.0pt;line-height:107%;
+font-family:&quot;Calibri&quot;,sans-serif;mso-ascii-theme-font:minor-latin;mso-fareast-font-family:
+DengXian;mso-fareast-theme-font:minor-fareast;mso-hansi-theme-font:minor-latin;
+mso-bidi-font-family:&quot;Times New Roman&quot;;mso-bidi-theme-font:minor-bidi;
+mso-ansi-language:EN-US;mso-fareast-language:ZH-CN;mso-bidi-language:AR-SA">
+        DerivedPartDefinition.ActiveModelState</span></td>
+    </tr>
+    <tr>
+    <td><span style="font-size:11.0pt;line-height:107%;
+font-family:&quot;Calibri&quot;,sans-serif;mso-ascii-theme-font:minor-latin;mso-fareast-font-family:
+DengXian;mso-fareast-theme-font:minor-fareast;mso-hansi-theme-font:minor-latin;
+mso-bidi-font-family:&quot;Times New Roman&quot;;mso-bidi-theme-font:minor-bidi;
+mso-ansi-language:EN-US;mso-fareast-language:ZH-CN;mso-bidi-language:AR-SA">
+        ShrinkwrapDefinition.ActiveLevelOfDetailRepresentation</span></td>
+    <td><span style="font-size:11.0pt;line-height:107%;
+font-family:&quot;Calibri&quot;,sans-serif;mso-ascii-theme-font:minor-latin;mso-fareast-font-family:
+DengXian;mso-fareast-theme-font:minor-fareast;mso-hansi-theme-font:minor-latin;
+mso-bidi-font-family:&quot;Times New Roman&quot;;mso-bidi-theme-font:minor-bidi;
+mso-ansi-language:EN-US;mso-fareast-language:ZH-CN;mso-bidi-language:AR-SA">
+        ShrinkwrapDefinition.ActiveModelState</span></td>
+    </tr>
+    <tr>
+    <td><span style="font-size:11.0pt;line-height:107%;
+font-family:&quot;Calibri&quot;,sans-serif;mso-ascii-theme-font:minor-latin;mso-fareast-font-family:
+DengXian;mso-fareast-theme-font:minor-fareast;mso-hansi-theme-font:minor-latin;
+mso-bidi-font-family:&quot;Times New Roman&quot;;mso-bidi-theme-font:minor-bidi;
+mso-ansi-language:EN-US;mso-fareast-language:ZH-CN;mso-bidi-language:AR-SA">
+        AssemblyComponentDefinition. RepresentationsManager. 
+        LevelOfDetailRepresentations</span></td>
+    <td><span style="font-size:11.0pt;line-height:107%;
+font-family:&quot;Calibri&quot;,sans-serif;mso-ascii-theme-font:minor-latin;mso-fareast-font-family:
+DengXian;mso-fareast-theme-font:minor-fareast;mso-hansi-theme-font:minor-latin;
+mso-bidi-font-family:&quot;Times New Roman&quot;;mso-bidi-theme-font:minor-bidi;
+mso-ansi-language:EN-US;mso-fareast-language:ZH-CN;mso-bidi-language:AR-SA">
+        AssemblyComponentDefinition.ModelStates</span></td>
+    </tr>
+    <tr>
+    <td>&nbsp;</td>
+    <td><span style="font-size:11.0pt;line-height:107%;
+font-family:&quot;Calibri&quot;,sans-serif;mso-ascii-theme-font:minor-latin;mso-fareast-font-family:
+DengXian;mso-fareast-theme-font:minor-fareast;mso-hansi-theme-font:minor-latin;
+mso-bidi-font-family:&quot;Times New Roman&quot;;mso-bidi-theme-font:minor-bidi;
+mso-ansi-language:EN-US;mso-fareast-language:ZH-CN;mso-bidi-language:AR-SA">
+        PartComponentDefinition.ModelStates</span></td>
+    </tr>
+    <tr>
+    <td><span style="font-size:11.0pt;line-height:107%;
+font-family:&quot;Calibri&quot;,sans-serif;mso-ascii-theme-font:minor-latin;mso-fareast-font-family:
+DengXian;mso-fareast-theme-font:minor-fareast;mso-hansi-theme-font:minor-latin;
+mso-bidi-font-family:&quot;Times New Roman&quot;;mso-bidi-theme-font:minor-bidi;
+mso-ansi-language:EN-US;mso-fareast-language:ZH-CN;mso-bidi-language:AR-SA">
+        RepresentationsManager.ActiveLevelOfDetailRepresentation</span></td>
+    <td><span style="font-size:11.0pt;line-height:107%;
+font-family:&quot;Calibri&quot;,sans-serif;mso-ascii-theme-font:minor-latin;mso-fareast-font-family:
+DengXian;mso-fareast-theme-font:minor-fareast;mso-hansi-theme-font:minor-latin;
+mso-bidi-font-family:&quot;Times New Roman&quot;;mso-bidi-theme-font:minor-bidi;
+mso-ansi-language:EN-US;mso-fareast-language:ZH-CN;mso-bidi-language:AR-SA">
+        ModelStates.ActiveModelState</span></td>
+    </tr>
+    <tr>
+    <td><span style="font-size:11.0pt;line-height:107%;
+font-family:&quot;Calibri&quot;,sans-serif;mso-ascii-theme-font:minor-latin;mso-fareast-font-family:
+DengXian;mso-fareast-theme-font:minor-fareast;mso-hansi-theme-font:minor-latin;
+mso-bidi-font-family:&quot;Times New Roman&quot;;mso-bidi-theme-font:minor-bidi;
+mso-ansi-language:EN-US;mso-fareast-language:ZH-CN;mso-bidi-language:AR-SA">
+        FileOpenOptions.DefaultLevelOfDetail</span></td>
+    <td><span style="font-size:11.0pt;line-height:107%;
+font-family:&quot;Calibri&quot;,sans-serif;mso-ascii-theme-font:minor-latin;mso-fareast-font-family:
+DengXian;mso-fareast-theme-font:minor-fareast;mso-hansi-theme-font:minor-latin;
+mso-bidi-font-family:&quot;Times New Roman&quot;;mso-bidi-theme-font:minor-bidi;
+mso-ansi-language:EN-US;mso-fareast-language:ZH-CN;mso-bidi-language:AR-SA">
+        FileOpenOptions.DefaultModelStateInAssembly</span></td>
+    </tr>
+    <tr>
+    <td>&nbsp;</td>
+    <td><span style="font-size:11.0pt;line-height:107%;
+font-family:&quot;Calibri&quot;,sans-serif;mso-ascii-theme-font:minor-latin;mso-fareast-font-family:
+DengXian;mso-fareast-theme-font:minor-fareast;mso-hansi-theme-font:minor-latin;
+mso-bidi-font-family:&quot;Times New Roman&quot;;mso-bidi-theme-font:minor-bidi;
+mso-ansi-language:EN-US;mso-fareast-language:ZH-CN;mso-bidi-language:AR-SA">
+        FileOpenOptions.DefaultModelStateInPart</span></td>
+    </tr>
+    <tr>
+    <td>&nbsp;</td>
+    <td><span style="font-size:11.0pt;line-height:107%;
+font-family:&quot;Calibri&quot;,sans-serif;mso-ascii-theme-font:minor-latin;mso-fareast-font-family:
+DengXian;mso-fareast-theme-font:minor-fareast;mso-hansi-theme-font:minor-latin;
+mso-bidi-font-family:&quot;Times New Roman&quot;;mso-bidi-theme-font:minor-bidi;
+mso-ansi-language:EN-US;mso-fareast-language:ZH-CN;mso-bidi-language:AR-SA">
+        SaveOptions.DefaultToSaveForModelStateUpdates</span></td>
+    </tr>
+    <tr>
+    <td><span style="font-size:11.0pt;line-height:107%;
+font-family:&quot;Calibri&quot;,sans-serif;mso-ascii-theme-font:minor-latin;mso-fareast-font-family:
+DengXian;mso-fareast-theme-font:minor-fareast;mso-hansi-theme-font:minor-latin;
+mso-bidi-font-family:&quot;Times New Roman&quot;;mso-bidi-theme-font:minor-bidi;
+mso-ansi-language:EN-US;mso-fareast-language:ZH-CN;mso-bidi-language:AR-SA">
+        FileManager.GetLastActiveLevelOfDetailRepresentation</span></td>
+    <td><span style="font-size:11.0pt;line-height:107%;
+font-family:&quot;Calibri&quot;,sans-serif;mso-ascii-theme-font:minor-latin;mso-fareast-font-family:
+DengXian;mso-fareast-theme-font:minor-fareast;mso-hansi-theme-font:minor-latin;
+mso-bidi-font-family:&quot;Times New Roman&quot;;mso-bidi-theme-font:minor-bidi;
+mso-ansi-language:EN-US;mso-fareast-language:ZH-CN;mso-bidi-language:AR-SA">
+        FileManager.GetLastActiveModelState</span></td>
+    </tr>
+    <tr>
+    <td><span style="font-size:11.0pt;line-height:107%;
+font-family:&quot;Calibri&quot;,sans-serif;mso-ascii-theme-font:minor-latin;mso-fareast-font-family:
+DengXian;mso-fareast-theme-font:minor-fareast;mso-hansi-theme-font:minor-latin;
+mso-bidi-font-family:&quot;Times New Roman&quot;;mso-bidi-theme-font:minor-bidi;
+mso-ansi-language:EN-US;mso-fareast-language:ZH-CN;mso-bidi-language:AR-SA">
+        FileManager.GetLevelOfDetailName</span></td>
+    <td><span style="font-size:11.0pt;line-height:107%;
+font-family:&quot;Calibri&quot;,sans-serif;mso-ascii-theme-font:minor-latin;mso-fareast-font-family:
+DengXian;mso-fareast-theme-font:minor-fareast;mso-hansi-theme-font:minor-latin;
+mso-bidi-font-family:&quot;Times New Roman&quot;;mso-bidi-theme-font:minor-bidi;
+mso-ansi-language:EN-US;mso-fareast-language:ZH-CN;mso-bidi-language:AR-SA">
+        FileManager.GetModelStateName</span></td>
+    </tr>
+    <tr>
+    <td><span style="font-size:11.0pt;line-height:107%;
+font-family:&quot;Calibri&quot;,sans-serif;mso-ascii-theme-font:minor-latin;mso-fareast-font-family:
+DengXian;mso-fareast-theme-font:minor-fareast;mso-hansi-theme-font:minor-latin;
+mso-bidi-font-family:&quot;Times New Roman&quot;;mso-bidi-theme-font:minor-bidi;
+mso-ansi-language:EN-US;mso-fareast-language:ZH-CN;mso-bidi-language:AR-SA">
+        FileManager.GetLevelOfDetailRepresentations</span></td>
+    <td><span style="font-size:11.0pt;line-height:107%;
+font-family:&quot;Calibri&quot;,sans-serif;mso-ascii-theme-font:minor-latin;mso-fareast-font-family:
+DengXian;mso-fareast-theme-font:minor-fareast;mso-hansi-theme-font:minor-latin;
+mso-bidi-font-family:&quot;Times New Roman&quot;;mso-bidi-theme-font:minor-bidi;
+mso-ansi-language:EN-US;mso-fareast-language:ZH-CN;mso-bidi-language:AR-SA">
+        FileManager.GetModelStates</span></td>
+    </tr>
+    <tr>
+    <td>&nbsp;</td>
+    <td><span style="font-size:11.0pt;line-height:107%;
+font-family:&quot;Calibri&quot;,sans-serif;mso-ascii-theme-font:minor-latin;mso-fareast-font-family:
+DengXian;mso-fareast-theme-font:minor-fareast;mso-hansi-theme-font:minor-latin;
+mso-bidi-font-family:&quot;Times New Roman&quot;;mso-bidi-theme-font:minor-bidi;
+mso-ansi-language:EN-US;mso-fareast-language:ZH-CN;mso-bidi-language:AR-SA">
+        AssemblyComponentDefinition.IsModelStateFactory</span></td>
+    </tr>
+    <tr>
+    <td>&nbsp;</td>
+    <td><span style="font-size:11.0pt;line-height:107%;
+font-family:&quot;Calibri&quot;,sans-serif;mso-ascii-theme-font:minor-latin;mso-fareast-font-family:
+DengXian;mso-fareast-theme-font:minor-fareast;mso-hansi-theme-font:minor-latin;
+mso-bidi-font-family:&quot;Times New Roman&quot;;mso-bidi-theme-font:minor-bidi;
+mso-ansi-language:EN-US;mso-fareast-language:ZH-CN;mso-bidi-language:AR-SA">
+        AssemblyComponentDefinition.IsModelStateMember</span></td>
+    </tr>
+    <tr>
+    <td>&nbsp;</td>
+    <td><span style="font-size:11.0pt;line-height:107%;
+font-family:&quot;Calibri&quot;,sans-serif;mso-ascii-theme-font:minor-latin;mso-fareast-font-family:
+DengXian;mso-fareast-theme-font:minor-fareast;mso-hansi-theme-font:minor-latin;
+mso-bidi-font-family:&quot;Times New Roman&quot;;mso-bidi-theme-font:minor-bidi;
+mso-ansi-language:EN-US;mso-fareast-language:ZH-CN;mso-bidi-language:AR-SA">
+        AssemblyComponentDefinition.FactoryDocument</span></td>
+    </tr>
+    <tr>
+    <td>&nbsp;</td>
+    <td><span style="font-size:11.0pt;line-height:107%;
+font-family:&quot;Calibri&quot;,sans-serif;mso-ascii-theme-font:minor-latin;mso-fareast-font-family:
+DengXian;mso-fareast-theme-font:minor-fareast;mso-hansi-theme-font:minor-latin;
+mso-bidi-font-family:&quot;Times New Roman&quot;;mso-bidi-theme-font:minor-bidi;
+mso-ansi-language:EN-US;mso-fareast-language:ZH-CN;mso-bidi-language:AR-SA">
+        PartComponentDefinition.IsModelStateFactory</span></td>
+    </tr>
+    <tr>
+    <td>&nbsp;</td>
+    <td><span style="font-size:11.0pt;line-height:107%;
+font-family:&quot;Calibri&quot;,sans-serif;mso-ascii-theme-font:minor-latin;mso-fareast-font-family:
+DengXian;mso-fareast-theme-font:minor-fareast;mso-hansi-theme-font:minor-latin;
+mso-bidi-font-family:&quot;Times New Roman&quot;;mso-bidi-theme-font:minor-bidi;
+mso-ansi-language:EN-US;mso-fareast-language:ZH-CN;mso-bidi-language:AR-SA">
+        PartComponentDefinition.IsModelStateMember</span></td>
+    </tr>
+    <tr>
+    <td>&nbsp;</td>
+    <td><span style="font-size:11.0pt;line-height:107%;
+font-family:&quot;Calibri&quot;,sans-serif;mso-ascii-theme-font:minor-latin;mso-fareast-font-family:
+DengXian;mso-fareast-theme-font:minor-fareast;mso-hansi-theme-font:minor-latin;
+mso-bidi-font-family:&quot;Times New Roman&quot;;mso-bidi-theme-font:minor-bidi;
+mso-ansi-language:EN-US;mso-fareast-language:ZH-CN;mso-bidi-language:AR-SA">
+        PartComponentDefinition.FactoryDocument</span></td>
+    </tr>
+    <tr>
+    <td><span style="font-size:11.0pt;line-height:107%;
+font-family:&quot;Calibri&quot;,sans-serif;mso-ascii-theme-font:minor-latin;mso-fareast-font-family:
+DengXian;mso-fareast-theme-font:minor-fareast;mso-hansi-theme-font:minor-latin;
+mso-bidi-font-family:&quot;Times New Roman&quot;;mso-bidi-theme-font:minor-bidi;
+mso-ansi-language:EN-US;mso-fareast-language:ZH-CN;mso-bidi-language:AR-SA">
+        LevelOfDetailEnum</span></td>
+    <td><span style="font-size:11.0pt;line-height:107%;
+font-family:&quot;Calibri&quot;,sans-serif;mso-ascii-theme-font:minor-latin;mso-fareast-font-family:
+DengXian;mso-fareast-theme-font:minor-fareast;mso-hansi-theme-font:minor-latin;
+mso-bidi-font-family:&quot;Times New Roman&quot;;mso-bidi-theme-font:minor-bidi;
+mso-ansi-language:EN-US;mso-fareast-language:ZH-CN;mso-bidi-language:AR-SA">
+        ModelStateTypeEnum</span></td>
+    </tr>
+    <tr>
+    <td><span style="font-size:11.0pt;line-height:107%;
+font-family:&quot;Calibri&quot;,sans-serif;mso-ascii-theme-font:minor-latin;mso-fareast-font-family:
+DengXian;mso-fareast-theme-font:minor-fareast;mso-hansi-theme-font:minor-latin;
+mso-bidi-font-family:&quot;Times New Roman&quot;;mso-bidi-theme-font:minor-bidi;
+mso-ansi-language:EN-US;mso-fareast-language:ZH-CN;mso-bidi-language:AR-SA">
+        RepresentationEvents</span></td>
+    <td><span style="font-size:11.0pt;line-height:107%;
+font-family:&quot;Calibri&quot;,sans-serif;mso-ascii-theme-font:minor-latin;mso-fareast-font-family:
+DengXian;mso-fareast-theme-font:minor-fareast;mso-hansi-theme-font:minor-latin;
+mso-bidi-font-family:&quot;Times New Roman&quot;;mso-bidi-theme-font:minor-bidi;
+mso-ansi-language:EN-US;mso-fareast-language:ZH-CN;mso-bidi-language:AR-SA">
+        ModelStateEvents</span></td>
+    </tr>
+    <tr>
+    <td><span style="font-size:11.0pt;line-height:107%;
+font-family:&quot;Calibri&quot;,sans-serif;mso-ascii-theme-font:minor-latin;mso-fareast-font-family:
+DengXian;mso-fareast-theme-font:minor-fareast;mso-hansi-theme-font:minor-latin;
+mso-bidi-font-family:&quot;Times New Roman&quot;;mso-bidi-theme-font:minor-bidi;
+mso-ansi-language:EN-US;mso-fareast-language:ZH-CN;mso-bidi-language:AR-SA">
+        RepresentationEvents.OnActivateLevelOfDetailRepresentation</span></td>
+    <td><span style="font-size:11.0pt;line-height:107%;
+font-family:&quot;Calibri&quot;,sans-serif;mso-ascii-theme-font:minor-latin;mso-fareast-font-family:
+DengXian;mso-fareast-theme-font:minor-fareast;mso-hansi-theme-font:minor-latin;
+mso-bidi-font-family:&quot;Times New Roman&quot;;mso-bidi-theme-font:minor-bidi;
+mso-ansi-language:EN-US;mso-fareast-language:ZH-CN;mso-bidi-language:AR-SA">
+        ModelStateEvents.OnActivateModelState</span></td>
+    </tr>
+    <tr>
+    <td><span style="font-size:11.0pt;line-height:107%;
+font-family:&quot;Calibri&quot;,sans-serif;mso-ascii-theme-font:minor-latin;mso-fareast-font-family:
+DengXian;mso-fareast-theme-font:minor-fareast;mso-hansi-theme-font:minor-latin;
+mso-bidi-font-family:&quot;Times New Roman&quot;;mso-bidi-theme-font:minor-bidi;
+mso-ansi-language:EN-US;mso-fareast-language:ZH-CN;mso-bidi-language:AR-SA">
+        RepresentationEvents.OnDelete</span></td>
+    <td><span style="font-size:11.0pt;line-height:107%;
+font-family:&quot;Calibri&quot;,sans-serif;mso-ascii-theme-font:minor-latin;mso-fareast-font-family:
+DengXian;mso-fareast-theme-font:minor-fareast;mso-hansi-theme-font:minor-latin;
+mso-bidi-font-family:&quot;Times New Roman&quot;;mso-bidi-theme-font:minor-bidi;
+mso-ansi-language:EN-US;mso-fareast-language:ZH-CN;mso-bidi-language:AR-SA">
+        ModelStateEvents.OnDeleteModelState</span></td>
+    </tr>
+    <tr>
+    <td><span style="font-size:11.0pt;line-height:107%;
+font-family:&quot;Calibri&quot;,sans-serif;mso-ascii-theme-font:minor-latin;mso-fareast-font-family:
+DengXian;mso-fareast-theme-font:minor-fareast;mso-hansi-theme-font:minor-latin;
+mso-bidi-font-family:&quot;Times New Roman&quot;;mso-bidi-theme-font:minor-bidi;
+mso-ansi-language:EN-US;mso-fareast-language:ZH-CN;mso-bidi-language:AR-SA">
+        RepresentationEvents.OnNewLevelOfDetailRepresentation</span></td>
+    <td><span style="font-size:11.0pt;line-height:107%;
+font-family:&quot;Calibri&quot;,sans-serif;mso-ascii-theme-font:minor-latin;mso-fareast-font-family:
+DengXian;mso-fareast-theme-font:minor-fareast;mso-hansi-theme-font:minor-latin;
+mso-bidi-font-family:&quot;Times New Roman&quot;;mso-bidi-theme-font:minor-bidi;
+mso-ansi-language:EN-US;mso-fareast-language:ZH-CN;mso-bidi-language:AR-SA">
+        ModelStateEvents.OnNewModelState</span></td>
+    </tr>
+    <tr>
+    <td>&nbsp;</td>
+    <td><span style="font-size:11.0pt;line-height:107%;
+font-family:&quot;Calibri&quot;,sans-serif;mso-ascii-theme-font:minor-latin;mso-fareast-font-family:
+DengXian;mso-fareast-theme-font:minor-fareast;mso-hansi-theme-font:minor-latin;
+mso-bidi-font-family:&quot;Times New Roman&quot;;mso-bidi-theme-font:minor-bidi;
+mso-ansi-language:EN-US;mso-fareast-language:ZH-CN;mso-bidi-language:AR-SA">
+        BOMView.ModelStateMemberName</span></td>
+    </tr>
+    <tr>
+    <td><span style="font-size:11.0pt;line-height:107%;
+font-family:&quot;Calibri&quot;,sans-serif;mso-ascii-theme-font:minor-latin;mso-fareast-font-family:
+DengXian;mso-fareast-theme-font:minor-fareast;mso-hansi-theme-font:minor-latin;
+mso-bidi-font-family:&quot;Times New Roman&quot;;mso-bidi-theme-font:minor-bidi;
+mso-ansi-language:EN-US;mso-fareast-language:ZH-CN;mso-bidi-language:AR-SA">
+        AssemblyDocument.LevelOfDetailName</span></td>
+    <td><span style="font-size:11.0pt;line-height:107%;
+font-family:&quot;Calibri&quot;,sans-serif;mso-ascii-theme-font:minor-latin;mso-fareast-font-family:
+DengXian;mso-fareast-theme-font:minor-fareast;mso-hansi-theme-font:minor-latin;
+mso-bidi-font-family:&quot;Times New Roman&quot;;mso-bidi-theme-font:minor-bidi;
+mso-ansi-language:EN-US;mso-fareast-language:ZH-CN;mso-bidi-language:AR-SA">
+        AssemblyDocument.ModelStateName</span></td>
+    </tr>
+    <tr>
+    <td>&nbsp;</td>
+    <td><span style="font-size:11.0pt;line-height:107%;
+font-family:&quot;Calibri&quot;,sans-serif;mso-ascii-theme-font:minor-latin;mso-fareast-font-family:
+DengXian;mso-fareast-theme-font:minor-fareast;mso-hansi-theme-font:minor-latin;
+mso-bidi-font-family:&quot;Times New Roman&quot;;mso-bidi-theme-font:minor-bidi;
+mso-ansi-language:EN-US;mso-fareast-language:ZH-CN;mso-bidi-language:AR-SA">
+        PartDocument.ModelStateName</span></td>
+    </tr>
+    <tr>
+    <td>&nbsp;</td>
+    <td><span style="font-size:11.0pt;line-height:107%;
+font-family:&quot;Calibri&quot;,sans-serif;mso-ascii-theme-font:minor-latin;mso-fareast-font-family:
+DengXian;mso-fareast-theme-font:minor-fareast;mso-hansi-theme-font:minor-latin;
+mso-bidi-font-family:&quot;Times New Roman&quot;;mso-bidi-theme-font:minor-bidi;
+mso-ansi-language:EN-US;mso-fareast-language:ZH-CN;mso-bidi-language:AR-SA">
+        ModelingEvents.OnGenerateModelStateMember</span></td>
+    </tr>
+    <tr>
+    <td><span style="font-size:11.0pt;line-height:107%;
+font-family:&quot;Calibri&quot;,sans-serif;mso-ascii-theme-font:minor-latin;mso-fareast-font-family:
+DengXian;mso-fareast-theme-font:minor-fareast;mso-hansi-theme-font:minor-latin;
+mso-bidi-font-family:&quot;Times New Roman&quot;;mso-bidi-theme-font:minor-bidi;
+mso-ansi-language:EN-US;mso-fareast-language:ZH-CN;mso-bidi-language:AR-SA">
+        DocumentDescriptor.ReferencedLevelOfDetail</span></td>
+    <td><span style="font-size:11.0pt;line-height:107%;
+font-family:&quot;Calibri&quot;,sans-serif;mso-ascii-theme-font:minor-latin;mso-fareast-font-family:
+DengXian;mso-fareast-theme-font:minor-fareast;mso-hansi-theme-font:minor-latin;
+mso-bidi-font-family:&quot;Times New Roman&quot;;mso-bidi-theme-font:minor-bidi;
+mso-ansi-language:EN-US;mso-fareast-language:ZH-CN;mso-bidi-language:AR-SA">
+        DocumentDescriptor.ReferencedModelState</span></td>
+    </tr>
+    <tr>
+    <td><span style="font-size:11.0pt;line-height:107%;
+font-family:&quot;Calibri&quot;,sans-serif;mso-ascii-theme-font:minor-latin;mso-fareast-font-family:
+DengXian;mso-fareast-theme-font:minor-fareast;mso-hansi-theme-font:minor-latin;
+mso-bidi-font-family:&quot;Times New Roman&quot;;mso-bidi-theme-font:minor-bidi;
+mso-ansi-language:EN-US;mso-fareast-language:ZH-CN;mso-bidi-language:AR-SA">
+        DrawingView.ActiveLevelOfDetailRepresentation</span></td>
+    <td><span style="font-size:11.0pt;line-height:107%;
+font-family:&quot;Calibri&quot;,sans-serif;mso-ascii-theme-font:minor-latin;mso-fareast-font-family:
+DengXian;mso-fareast-theme-font:minor-fareast;mso-hansi-theme-font:minor-latin;
+mso-bidi-font-family:&quot;Times New Roman&quot;;mso-bidi-theme-font:minor-bidi;
+mso-ansi-language:EN-US;mso-fareast-language:ZH-CN;mso-bidi-language:AR-SA">
+        DrawingView.ActiveModelState &amp; SetActiveModelState</span></td>
+    </tr>
+    <tr>
+    <td><span style="font-size:11.0pt;line-height:107%;
+font-family:&quot;Calibri&quot;,sans-serif;mso-ascii-theme-font:minor-latin;mso-fareast-font-family:
+DengXian;mso-fareast-theme-font:minor-fareast;mso-hansi-theme-font:minor-latin;
+mso-bidi-font-family:&quot;Times New Roman&quot;;mso-bidi-theme-font:minor-bidi;
+mso-ansi-language:EN-US;mso-fareast-language:ZH-CN;mso-bidi-language:AR-SA">
+        DesignViewRepresentation.CopyToLevelOfDetail</span></td>
+    <td><span style="font-size:11.0pt;line-height:107%;
+font-family:&quot;Calibri&quot;,sans-serif;mso-ascii-theme-font:minor-latin;mso-fareast-font-family:
+DengXian;mso-fareast-theme-font:minor-fareast;mso-hansi-theme-font:minor-latin;
+mso-bidi-font-family:&quot;Times New Roman&quot;;mso-bidi-theme-font:minor-bidi;
+mso-ansi-language:EN-US;mso-fareast-language:ZH-CN;mso-bidi-language:AR-SA">
+        DesignViewRepresentation. CopyComponentVisibilityToSuppression</span></td>
+    </tr>
+    <tr>
+    <td>&nbsp;</td>
+    <td>ModelState.CopyComponentSuppressionToVisibility</td>
+    </tr>
+    <tr>
+    <td><span style="font-size:11.0pt;line-height:107%;
+font-family:&quot;Calibri&quot;,sans-serif;mso-ascii-theme-font:minor-latin;mso-fareast-font-family:
+DengXian;mso-fareast-theme-font:minor-fareast;mso-hansi-theme-font:minor-latin;
+mso-bidi-font-family:&quot;Times New Roman&quot;;mso-bidi-theme-font:minor-bidi;
+mso-ansi-language:EN-US;mso-fareast-language:ZH-CN;mso-bidi-language:AR-SA">
+        BrowserNode(Level of Detail root).NativeObject = LevelOfDetailRepresentation</span></td>
+    <td><span style="font-size:11.0pt;line-height:107%;
+font-family:&quot;Calibri&quot;,sans-serif;mso-ascii-theme-font:minor-latin;mso-fareast-font-family:
+DengXian;mso-fareast-theme-font:minor-fareast;mso-hansi-theme-font:minor-latin;
+mso-bidi-font-family:&quot;Times New Roman&quot;;mso-bidi-theme-font:minor-bidi;
+mso-ansi-language:EN-US;mso-fareast-language:ZH-CN;mso-bidi-language:AR-SA">
+        BrowserNode(ModelStates).NativeObject = ModelState</span></td>
+    </tr>
+</table>
+
+
+      
+ 
+    <h3>Working with Model State API</h3>
+
+<p Class="Normal">Get model state names in a document. Place an Assembly1.iam to C:\Temp folder firstly:</p>
+<p><table Class="Code">
+<tr valign="middle">
+	<td Class="Code">
+	<pre>
+Sub GetModelStateNames()
+    Dim sFileName As String
+    sFileName = &quot;C:\Temp\Assembly1.iam&quot;
+    
+    Dim oDoc As AssemblyDocument
+    Set oDoc = ThisApplication.Documents.Open(sFileName)
+
+    Dim oAssemblyCompDef As AssemblyComponentDefinition
+    Set oAssemblyCompDef = oDoc.ComponentDefinition
+
+    &#39; Get ModelStates collection object.
+    Dim oModelStates As ModelStates
+    Set oModelStates = oAssemblyCompDef.ModelStates
+
+    &#39; Get all model state names from ModelStsates object.
+    Dim oModelState As ModelState
+    For Each oModelState In oModelStates
+        Debug.Print oModelState.Name
+    Next
+    
+    oDoc.Close True
+    
+    &#39; Get all model state name from FileManager
+    Dim oFileManager As FileManager
+    Set oFileManager = ThisApplication.FileManager
+    
+    Dim sModelStateNames() As String
+    sModelStateNames = oFileManager.GetModelStates(sFileName)
+    
+    Dim sName As Variant
+    For Each sName In sModelStateNames
+        Debug.Print sName
+    Next
+    
+End Sub
+</pre>
+    </td></tr>
+</table></p>
+
+</p>
+<p Class="Normal">Switch model state for a ComponentOccurrence. Open an assembly with occurrences(not virtual component):</p>
+
+<table Class="Code">
+<tr valign="middle">
+	<td Class="Code">
+	<pre>
+Sub SwitchActiveModelStateOfOccurrence()
+    Dim oDoc As AssemblyDocument
+    Set oDoc = ThisApplication.ActiveDocument
+
+    Dim oAssemblyCompDef As AssemblyComponentDefinition
+    Set oAssemblyCompDef = oDoc.ComponentDefinition
+
+    &#39; Specify an occurrence to change its active model state.
+    Dim oOccu As ComponentOccurrence
+    Set oOccu = oAssemblyCompDef.Occurrences(1)
+
+    &#39; Get native document ComponentDefinition of occurrence.
+    Dim oOccuDef As ComponentDefinition
+    Set oOccuDef = oOccu.Definition
+    
+    &#39; Before switch the active model state of an occurrence you should check if the document is up to date.
+    If oOccuDef.Document.RequiresUpdate Then
+        MsgBox(&quot;Can not switch active model state because the native document is not up to date!&quot;)
+    Else
+        Dim oModelStates As ModelStates
+        Set oModelStates = oOccuDef.ModelStates
+        
+        Dim oModelState As ModelState
+        For Each oModelState In oModelStates
+            If oModelState.Name <> oOccu.ActiveModelState Then
+    
+                oOccu.ActiveModelState = oModelState.Name
+                Exit Sub
+            End If
+        Next
+    End If
+End Sub
+
+
+</pre>
+    </td></tr>
+</table>
+
+
+    <h3>More info about model state</h3>
+
+<p Class="Normal">As each substitute in an assembly has its own Document pointer, when query each and every occurrences in an .iam file you should query the occurrences from Primary model state and also iterate each and every substitue to get their occurrences. Also when deal with attributes and reference keys each substitute has its own document context, so when use AttributeManager or ReferenceKeyManager you should consider the Document for each substitute but not only the Primary model state.</p>
+
+<p Class="Normal">Model state member document is generated(if not yet) when a ModelState is specified to create a ComponentOccurrence, DrawingView, DerivedPart and DerivedAssembly etc.. <Br/>Model state member document is not modifiable(Document.IsModifiable returns True) in below situations: <Br/>
+	<ul>
+<li>The model state factory document is also opened. It's recommended that the changes to be done in model state factory document and then update the changes to model state member documents. </li>
+<li>No model state factory document opened, but another model state member document generated from the same model state factory document is already dirty in memory. </li>
+</ul>
+It is good practice to check the Document.IsModifiable property before trying to edit a document when work with model state document.
+ </p>
+
+<br />
+<br />
+<div id="CopyrightNotice" style="display:none;">
+  <hr />
+  <table width="100%" style="font-size:15">
+	<tr>
+	  <td align="left">
+		&copy; Copyright 2025 Autodesk, Inc.
+	  </td>
+	  <td align="right">
+		<a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(ModelStates_Overview)">Comment on this page.</a>
+	  </td>
+	</tr>
+  </table>
+</div>
+
+</body>
+</html>

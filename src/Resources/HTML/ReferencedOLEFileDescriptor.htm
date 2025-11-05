@@ -1,0 +1,148 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/ReferencedOLEFileDescriptor.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="ReferencedOLEFileDescriptor">
+    <meta name="description" content="ReferencedOLEFileDescriptor Object">
+    <meta name="topicid" content="GUID-ReferencedOLEFileDescriptor">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>ReferencedOLEFileDescriptor Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">ReferencedOLEFileDescriptor Object
+			</h1><br><h2 class="api">
+          Description
+        </h2>The ReferencedOLEFileDescriptor object represents an OLE reference to another file.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ReferencedOLEFileDescriptor_Activate.htm">Activate</a></td>
+        <td class="api-list">Method that causes the OLE file to be activated by the process currently registered to handle that type of document.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ReferencedOLEFileDescriptor_Delete.htm">Delete</a></td>
+        <td class="api-list">Method that deletes the reference file attachment.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ReferencedOLEFileDescriptor_GetReferenceKey.htm">GetReferenceKey</a></td>
+        <td class="api-list">Method that generates and returns the reference key for this entity.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ReferencedOLEFileDescriptor_Application.htm">Application</a></td>
+        <td class="api-list">Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ReferencedOLEFileDescriptor_AttributeSets.htm">AttributeSets</a></td>
+        <td class="api-list">Property that returns the AttributeSets collection object associated with this object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ReferencedOLEFileDescriptor_BrowserVisible.htm">BrowserVisible</a></td>
+        <td class="api-list">Gets/Sets visible of the file reference in 3rdPartyFolder.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ReferencedOLEFileDescriptor_DisplayName.htm">DisplayName</a></td>
+        <td class="api-list">Gets/Sets the display name of the file as currently found (or the last known display name, if reference is not found).</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ReferencedOLEFileDescriptor_FileDescriptor.htm">FileDescriptor</a></td>
+        <td class="api-list">Property that returns the corresponding FileDescriptor object. The ReplaceReference method on the returned object can be used to replace the referenced file. This property returns Nothing for embeddings.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ReferencedOLEFileDescriptor_FullFileName.htm">FullFileName</a></td>
+        <td class="api-list">Property that returns the full path name of the file as currently found (or the last known full file name, if reference is not found). This property returns a null string for an embedding descriptor.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ReferencedOLEFileDescriptor_LastKnownFileTime.htm">LastKnownFileTime</a></td>
+        <td class="api-list">Property that returns the time stamp on the file when it was last reviewed. This property returns Nothing for embeddings.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ReferencedOLEFileDescriptor_LogicalName.htm">LogicalName</a></td>
+        <td class="api-list">Property that returns the logical name of the reference. This is essentially the relative path used by Autodesk Inventor to find the file using the project paths as the search paths.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ReferencedOLEFileDescriptor_OLEDocumentType.htm">OLEDocumentType</a></td>
+        <td class="api-list">Property that returns the type of OLE reference this represents. Valid values are kOLEDocumentEmbeddingObject, kOLEDocumentLinkObject, or kOLEDocumentUnknownObject.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ReferencedOLEFileDescriptor_Parent.htm">Parent</a></td>
+        <td class="api-list">Property that returns the parent Document (in Inventor) or ApprenticeServerDocument (in Apprentice).</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ReferencedOLEFileDescriptor_ReferenceMonitoring.htm">ReferenceMonitoring</a></td>
+        <td class="api-list">Gets/Sets whether the referenced file is monitored by Inventor for changes.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ReferencedOLEFileDescriptor_ReferenceStatus.htm">ReferenceStatus</a></td>
+        <td class="api-list">Property that returns the current status of the file reference. This property returns kUpToDateReference for embeddings.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ReferencedOLEFileDescriptor_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ReferencedOLEFileDescriptor_Visible.htm">Visible</a></td>
+        <td class="api-list">Gets/Sets whether the linked/embedded object is visible in the graphics window.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="ParameterTable_ReferencedFileDescriptor.htm">ParameterTable.ReferencedFileDescriptor</a>, <a href="ReferencedOLEFileDescriptors_Add.htm">ReferencedOLEFileDescriptors.Add</a>, <a href="ReferencedOLEFileDescriptors_Item.htm">ReferencedOLEFileDescriptors.Item</a>, <a href="ReferencedOLEFileDescriptors_ItemByName.htm">ReferencedOLEFileDescriptors.ItemByName</a>, <a href="SketchImage_ReferencedFileDescriptor.htm">SketchImage.ReferencedFileDescriptor</a>, <a href="SketchImageProxy_ReferencedFileDescriptor.htm">SketchImageProxy.ReferencedFileDescriptor</a><h2 class="api">
+            Version
+          </h2>
+        Introduced in version 4<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(ReferencedOLEFileDescriptor%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,292 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/GraphicsNode_AddTextGraphics2_Sample.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="GraphicsNode_AddTextGraphics2_Sample">
+    <meta name="description" content="Text Using Client Graphics (Multiple fonts and lines) Sample">
+    <meta name="topicid" content="GraphicsNode_AddTextGraphics2_Sample">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>Text Using Client Graphics (Multiple fonts and lines)</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body><script>
+          function copyCode(language) {
+          // Get the pre element for the specified language.
+          var preElement = document.getElementById(language);
+
+          // Get the text from the element and copy it to the clipboard.
+          var preText = preElement.innerText;
+
+          var isIE = /*@cc_on!@*/false || !!document.documentMode;
+
+          if (isIE)
+          {
+            window.clipboardData.setData('Text', preText);
+          }
+          else
+          {
+            navigator.clipboard.writeText(preText);
+          }
+
+          //alert("Code copied to clipboard");
+          }
+        </script><link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">Text Using Client Graphics (Multiple fonts and lines)</h1>
+    <h2 class="api">
+          Description
+        </h2>This sample demonstrates creating text using client graphics. It illustrates the more complex case of changes in font and more than one line.<h2 class="api">
+          Code Samples
+        </h2>
+    <div id="tabs">
+      <ul>
+        <li><a href="#VBA">VBA</a></li>
+        <li><a href="#iLogic">iLogic</a></li>
+      </ul>
+      <div id="VBA" class="api-code">To run the sample have a part or assembly document open.<table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('VBA_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="VBA_code">Public Sub ClientGraphicsTextMultipleFonts()
+    <span style="color:blue">' Set a reference to the document.  This will work with</span>
+    <span style="color:blue">' either a part or assembly document.</span>
+    Dim oDoc As Document
+    Set oDoc = ThisApplication.ActiveDocument
+
+    <span style="color:blue">' Set a reference to the component definition.</span>
+    Dim oCompDef As ComponentDefinition
+    Set oCompDef = oDoc.ComponentDefinition
+
+    <span style="color:blue">' Attempt to get the existing client graphics object.  If it exists</span>
+    <span style="color:blue">' delete it so the rest of the code can continue as if it never existed.</span>
+    Dim oClientGraphics As ClientGraphics
+    On Error Resume Next
+    Set oClientGraphics = oCompDef.ClientGraphicsCollection.Item("Text Test")
+    If Err.Number = 0 Then
+        oClientGraphics.Delete
+    End If
+    On Error GoTo 0
+    ThisApplication.ActiveView.Update
+
+    <span style="color:blue">' Create a new ClientGraphics object.</span>
+    Set oClientGraphics = oCompDef.ClientGraphicsCollection.Add("Text Test")
+
+    <span style="color:blue">' Create a graphics node.</span>
+    Dim oNode As GraphicsNode
+    Set oNode = oClientGraphics.AddNode(1)
+
+    Dim oTG As TransientGeometry
+    Set oTG = ThisApplication.TransientGeometry
+
+    Dim oModelAnchorPoint As Point
+    Set oModelAnchorPoint = oTG.CreatePoint(50, 0, 0)
+
+    <span style="color:blue">' Create several text graphics objects, one for each font change.  The anchor of the</span>
+    <span style="color:blue">' TextGraphics object defines the position of each text element relative to each other.</span>
+    <span style="color:blue">' Because they're all drawn with pixel scaling behavior these coordinates are in</span>
+    <span style="color:blue">' pixel space.  They all use the same point as input for the SetTransformBehavior call.</span>
+    <span style="color:blue">' This point is in model space and defines their anchor within the model.</span>
+
+    <span style="color:blue">' Draw the first character which is the diameter symbol.</span>
+    Dim oTextGraphics(1 To 4) As TextGraphics
+    Set oTextGraphics(1) = oNode.AddTextGraphics
+    oTextGraphics(1).Text = "n "
+
+    <span style="color:blue">' Because this text will have pixel scaling behavior these coordinates are in pixel space.</span>
+    oTextGraphics(1).Anchor = oTG.CreatePoint(0, 0, 0)
+
+    oTextGraphics(1).Font = "AIGDT"
+    oTextGraphics(1).FontSize = 25
+    oTextGraphics(1).HorizontalAlignment = kAlignTextLeft
+    Call oTextGraphics(1).PutTextColor(0, 255, 255)
+    oTextGraphics(1).VerticalAlignment = kAlignTextMiddle
+    Call oTextGraphics(1).SetTransformBehavior(oModelAnchorPoint, kFrontFacingAndPixelScaling)
+    Dim oBox As Box
+    Set oBox = oTextGraphics(1).RangeBox
+
+    <span style="color:blue">' Draw the next section of the string relative to the first section.</span>
+    Set oTextGraphics(2) = oNode.AddTextGraphics
+    oTextGraphics(2).Text = "9.4 - 9.8"
+
+    <span style="color:blue">' The range of the previous character is used to determine where to position</span>
+    <span style="color:blue">' the next string.  The range is returned in pixels.</span>
+    oTextGraphics(2).Anchor = oTG.CreatePoint(oModelAnchorPoint.X + oBox.MaxPoint.X, 0, 0)
+
+    oTextGraphics(2).Font = "Arial"
+    oTextGraphics(2).FontSize = 25
+    oTextGraphics(2).HorizontalAlignment = kAlignTextLeft
+    Call oTextGraphics(2).PutTextColor(0, 255, 255)
+    oTextGraphics(2).VerticalAlignment = kAlignTextMiddle
+    Call oTextGraphics(2).SetTransformBehavior(oModelAnchorPoint, kFrontFacingAndPixelScaling)
+
+    <span style="color:blue">' Draw a depth symbol on the next line.</span>
+    Set oTextGraphics(3) = oNode.AddTextGraphics
+    oTextGraphics(3).Text = "x "
+
+    <span style="color:blue">' Using the range of the first text graphics determine the position for a string that</span>
+    <span style="color:blue">' is immediately below.  This defines the next line of text.</span>
+    oTextGraphics(3).Anchor = oTG.CreatePoint(oModelAnchorPoint.X + oBox.MinPoint.X, oBox.MinPoint.Y - ((oBox.MaxPoint.Y - oBox.MinPoint.Y) * 1.5), 0)
+    oTextGraphics(3).Font = "AIGDT"
+    oTextGraphics(3).FontSize = 25
+    oTextGraphics(3).HorizontalAlignment = kAlignTextLeft
+    Call oTextGraphics(3).PutTextColor(0, 255, 255)
+    oTextGraphics(3).VerticalAlignment = kAlignTextMiddle
+    Call oTextGraphics(3).SetTransformBehavior(oModelAnchorPoint, kFrontFacingAndPixelScaling)
+    Set oBox = oTextGraphics(3).RangeBox
+
+     <span style="color:blue">' Draw the last set of text.s</span>
+    Set oTextGraphics(4) = oNode.AddTextGraphics
+    oTextGraphics(4).Text = "20"
+    oTextGraphics(4).Anchor = oTG.CreatePoint(oModelAnchorPoint.X + oBox.MaxPoint.X, oTextGraphics(3).Anchor.Y, 0)
+    oTextGraphics(4).Font = "Arial"
+    oTextGraphics(4).FontSize = 25
+    oTextGraphics(4).HorizontalAlignment = kAlignTextLeft
+    Call oTextGraphics(4).PutTextColor(0, 255, 255)
+    oTextGraphics(4).VerticalAlignment = kAlignTextMiddle
+    Call oTextGraphics(4).SetTransformBehavior(oModelAnchorPoint, kFrontFacingAndPixelScaling)
+
+    <span style="color:blue">' Update the view to see the text.</span>
+    ThisApplication.ActiveView.Update
+End Sub</pre>
+      </div>
+      <div id="iLogic" class="api-code">To run the sample have a part or assembly document open.<table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('iLogic_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="iLogic_code">    <span style="color:blue">' Set a reference to the document.  This will work with</span>
+    <span style="color:blue">' either a part or assembly document.</span>
+    Dim oDoc As Document
+    oDoc = ThisApplication.ActiveDocument
+
+    <span style="color:blue">' Set a reference to the component definition.</span>
+    Dim oCompDef As ComponentDefinition
+    oCompDef = oDoc.ComponentDefinition
+
+    <span style="color:blue">' Attempt to get the existing client graphics object.  If it exists</span>
+    <span style="color:blue">' delete it so the rest of the code can continue as if it never existed.</span>
+    Dim oClientGraphics As ClientGraphics
+    On Error Resume Next
+    oClientGraphics = oCompDef.ClientGraphicsCollection.Item("Text Test")
+    If Err.Number = 0 Then
+        oClientGraphics.Delete
+    End If
+    On Error GoTo 0
+    ThisApplication.ActiveView.Update
+
+    <span style="color:blue">' Create a new ClientGraphics object.</span>
+    oClientGraphics = oCompDef.ClientGraphicsCollection.Add("Text Test")
+
+    <span style="color:blue">' Create a graphics node.</span>
+    Dim oNode As GraphicsNode
+    oNode = oClientGraphics.AddNode(1)
+
+    Dim oTG As TransientGeometry
+    oTG = ThisApplication.TransientGeometry
+
+    Dim oModelAnchorPoint As Point
+    oModelAnchorPoint = oTG.CreatePoint(50, 0, 0)
+
+    <span style="color:blue">' Create several text graphics objects, one for each font change.  The anchor of the</span>
+    <span style="color:blue">' TextGraphics object defines the position of each text element relative to each other.</span>
+    <span style="color:blue">' Because they're all drawn with pixel scaling behavior these coordinates are in</span>
+    <span style="color:blue">' pixel space.  They all use the same point as input for the SetTransformBehavior call.</span>
+    <span style="color:blue">' This point is in model space and defines their anchor within the model.</span>
+
+    <span style="color:blue">' Draw the first character which is the diameter symbol.</span>
+    Dim oTextGraphics(0 To 3) As TextGraphics
+    oTextGraphics(0) = oNode.AddTextGraphics
+    oTextGraphics(0).Text = "n "
+
+    <span style="color:blue">' Because this text will have pixel scaling behavior these coordinates are in pixel space.</span>
+    oTextGraphics(0).Anchor = oTG.CreatePoint(0, 0, 0)
+
+    oTextGraphics(0).Font = "AIGDT"
+    oTextGraphics(0).FontSize = 25
+    oTextGraphics(0).HorizontalAlignment = kAlignTextLeft
+    Call oTextGraphics(0).PutTextColor(0, 255, 255)
+    oTextGraphics(0).VerticalAlignment = kAlignTextMiddle
+    Call oTextGraphics(0).SetTransformBehavior(oModelAnchorPoint, kFrontFacingAndPixelScaling)
+    Dim oBox As Box
+    oBox = oTextGraphics(0).RangeBox
+
+    <span style="color:blue">' Draw the next section of the string relative to the first section.</span>
+    oTextGraphics(1) = oNode.AddTextGraphics
+    oTextGraphics(1).Text = "9.4 - 9.8"
+
+    <span style="color:blue">' The range of the previous character is used to determine where to position</span>
+    <span style="color:blue">' the next string.  The range is returned in pixels.</span>
+    oTextGraphics(1).Anchor = oTG.CreatePoint(oModelAnchorPoint.X + oBox.MaxPoint.X, 0, 0)
+
+    oTextGraphics(1).Font = "Arial"
+    oTextGraphics(1).FontSize = 25
+    oTextGraphics(1).HorizontalAlignment = kAlignTextLeft
+    Call oTextGraphics(1).PutTextColor(0, 255, 255)
+    oTextGraphics(1).VerticalAlignment = kAlignTextMiddle
+    Call oTextGraphics(1).SetTransformBehavior(oModelAnchorPoint, kFrontFacingAndPixelScaling)
+
+    <span style="color:blue">' Draw a depth symbol on the next line.</span>
+    oTextGraphics(2) = oNode.AddTextGraphics
+    oTextGraphics(2).Text = "x "
+
+    <span style="color:blue">' Using the range of the first text graphics determine the position for a string that</span>
+    <span style="color:blue">' is immediately below.  This defines the next line of text.</span>
+    oTextGraphics(2).Anchor = oTG.CreatePoint(oModelAnchorPoint.X + oBox.MinPoint.X, oBox.MinPoint.Y - ((oBox.MaxPoint.Y - oBox.MinPoint.Y) * 1.5), 0)
+    oTextGraphics(2).Font = "AIGDT"
+    oTextGraphics(2).FontSize = 25
+    oTextGraphics(2).HorizontalAlignment = kAlignTextLeft
+    Call oTextGraphics(2).PutTextColor(0, 255, 255)
+    oTextGraphics(2).VerticalAlignment = kAlignTextMiddle
+    Call oTextGraphics(2).SetTransformBehavior(oModelAnchorPoint, kFrontFacingAndPixelScaling)
+    oBox = oTextGraphics(2).RangeBox
+
+     <span style="color:blue">' Draw the last set of text.s</span>
+    oTextGraphics(3) = oNode.AddTextGraphics
+    oTextGraphics(3).Text = "20"
+    oTextGraphics(3).Anchor = oTG.CreatePoint(oModelAnchorPoint.X + oBox.MaxPoint.X, oTextGraphics(2).Anchor.Y, 0)
+    oTextGraphics(3).Font = "Arial"
+    oTextGraphics(3).FontSize = 25
+    oTextGraphics(3).HorizontalAlignment = kAlignTextLeft
+    Call oTextGraphics(3).PutTextColor(0, 255, 255)
+    oTextGraphics(3).VerticalAlignment = kAlignTextMiddle
+    Call oTextGraphics(3).SetTransformBehavior(oModelAnchorPoint, kFrontFacingAndPixelScaling)
+
+    <span style="color:blue">' Update the view to see the text.</span>
+    ThisApplication.ActiveView.Update</pre>
+      </div>
+    </div><br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(GraphicsNode_AddTextGraphics2%20Sample%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

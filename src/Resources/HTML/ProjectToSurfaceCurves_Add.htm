@@ -1,0 +1,106 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/ProjectToSurfaceCurves_Add.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="ProjectToSurfaceCurves_Add">
+    <meta name="description" content="ProjectToSurfaceCurves.Add Method">
+    <meta name="topicid" content="ProjectToSurfaceCurves_Add">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>ProjectToSurfaceCurves.Add Method</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">ProjectToSurfaceCurves.Add Method</h1>
+
+          Parent Object: <a href="ProjectToSurfaceCurves.htm">ProjectToSurfaceCurves</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Method that creates a project to surface curve.</p>
+    <h2 class="api">
+          Syntax
+        </h2>
+        
+            ProjectToSurfaceCurves.<b>Add</b>( <b><i>Faces</i></b> As <a href="ObjectCollection.htm">ObjectCollection</a>, <b><i>Curves</i></b> As <a href="ObjectCollection.htm">ObjectCollection</a>, [<b><i>ProjectionType</i></b>] As Variant, [<b><i>ProjectDirection</i></b>] As Variant ) As <a href="ProjectToSurfaceCurve.htm">ProjectToSurfaceCurve</a>
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">Faces</td>
+        <td class="api-list"><a href="ObjectCollection.htm">ObjectCollection</a></td>
+        <td class="api-list">Input ObjectCollection that specifies the faces and/or work planes to project curves to. Valid objects for this argument include Face and WorkPlane.</td>
+      </tr>
+      <tr>
+        <td class="api-list">Curves</td>
+        <td class="api-list"><a href="ObjectCollection.htm">ObjectCollection</a></td>
+        <td class="api-list">Input ObjectCollection that specifies the curves to project.&nbsp;This can be one or more 2D/3D sketch entities, the sketch entities need not to be from the same sketch.</td>
+      </tr>
+      <tr>
+        <td class="api-list">ProjectionType</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional input ProjectCurveToSufaceTypeEnum that specifies the projection type. 
+If not specified this argument defaults to kProjectAlongVectorType and the PorjectDirection can be specified, and the Curves can include 2D&3D sketch entities.
+If kProjectToClosestPointType is specified the Curves can include 2D&3D sketch entities.
+If kWrapToFaceType is specified, the Faces should be developable faces, otherwise an error would occur. The Curves should include 2D sketch entities only.<br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+      <tr>
+        <td class="api-list">ProjectDirection</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional input an object to specify the project direction. The direction is bidirectional. If not specified the normal of the sketch of first selected sketch entity is used. Valid objects are: 
+·	Linear Edge/WorkAxis, the direction of the edge is used.
+·	Planar Face/WorkPlane, the normal of the face is used.
+·	Cylindrical/conical/elliptical Face, the axis of the face is used.<br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2021<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(ProjectToSurfaceCurves.Add%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

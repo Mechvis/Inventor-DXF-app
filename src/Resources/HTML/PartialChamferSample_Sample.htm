@@ -1,0 +1,178 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/PartialChamferSample_Sample.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="PartialChamferSample_Sample">
+    <meta name="description" content="Partial Chamfer Sample Sample">
+    <meta name="topicid" content="PartialChamferSample_Sample">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>Partial Chamfer Sample</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body><script>
+          function copyCode(language) {
+          // Get the pre element for the specified language.
+          var preElement = document.getElementById(language);
+
+          // Get the text from the element and copy it to the clipboard.
+          var preText = preElement.innerText;
+
+          var isIE = /*@cc_on!@*/false || !!document.documentMode;
+
+          if (isIE)
+          {
+            window.clipboardData.setData('Text', preText);
+          }
+          else
+          {
+            navigator.clipboard.writeText(preText);
+          }
+
+          //alert("Code copied to clipboard");
+          }
+        </script><link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">Partial Chamfer Sample</h1>
+    <h2 class="api">
+          Description
+        </h2>This sample demonstrates how to edit a chamfer feature to set the partial chamfer on a chamfered edge.<h2 class="api">
+          Code Samples
+        </h2>
+    <div id="tabs">
+      <ul>
+        <li><a href="#VBA">VBA</a></li>
+        <li><a href="#iLogic">iLogic</a></li>
+      </ul>
+      <div id="VBA" class="api-code">
+        <table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('VBA_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="VBA_code">Sub PartialChamferSample()
+    Dim oDoc As PartDocument
+    Set oDoc = ThisApplication.Documents.Add(kPartDocumentObject)
+    
+    Dim oTG As TransientGeometry
+    Set oTG = ThisApplication.TransientGeometry
+    
+    Dim oSk As PlanarSketch
+    Set oSk = oDoc.ComponentDefinition.Sketches.Add(oDoc.ComponentDefinition.WorkPlanes(3))
+    
+    Call oSk.SketchLines.AddAsTwoPointRectangle(oTG.CreatePoint2d(-5, -5), oTG.CreatePoint2d(5, 5))
+    
+    Dim oProfile As Profile
+    Set oProfile = oSk.Profiles.AddForSolid
+    
+    Dim oExtrudeDef As ExtrudeDefinition
+    Set oExtrudeDef = oDoc.ComponentDefinition.Features.ExtrudeFeatures.CreateExtrudeDefinition(oProfile, kNewBodyOperation)
+    
+    Call oDoc.ComponentDefinition.Features.ExtrudeFeatures.Add(oExtrudeDef)
+    
+    Dim oEdges As EdgeCollection
+    Set oEdges = ThisApplication.TransientObjects.CreateEdgeCollection
+    
+    oEdges.Add oDoc.ComponentDefinition.SurfaceBodies(1).Edges(1)
+    
+    Dim oChamfer As ChamferFeature
+    Set oChamfer = oDoc.ComponentDefinition.Features.ChamferFeatures.AddUsingDistance(oEdges, 0.5, True)
+    
+    Dim oChamferDef As ChamferDefinition
+    Set oChamferDef = oChamfer.Definition
+    
+    <span style="color:blue">' Rollback the End of Part node to be above the chamfer feature to edit it.</span>
+    Call oChamfer.SetEndOfPart(True)
+    
+    Dim oPartialChamferEdges As PartialChamferEdges
+    Set oPartialChamferEdges = oChamferDef.PartialChamferEdges
+    
+    <span style="color:blue">' Set the partial chamfer edge.</span>
+    Call oPartialChamferEdges.Add(oDoc.ComponentDefinition.SurfaceBodies(1).Edges(1), 4, 3)
+    
+    <span style="color:blue">' After editing the feature, set it to be above the End of Part node.</span>
+    Call oChamfer.SetEndOfPart(False)
+End Sub</pre>
+      </div>
+      <div id="iLogic" class="api-code">
+        <table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('iLogic_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="iLogic_code">    Dim oDoc As PartDocument
+    oDoc = ThisApplication.Documents.Add(kPartDocumentObject)
+    
+    Dim oTG As TransientGeometry
+    oTG = ThisApplication.TransientGeometry
+    
+    Dim oSk As PlanarSketch
+    oSk = oDoc.ComponentDefinition.Sketches.Add(oDoc.ComponentDefinition.WorkPlanes(3))
+    
+    Call oSk.SketchLines.AddAsTwoPointRectangle(oTG.CreatePoint2d(-5, -5), oTG.CreatePoint2d(5, 5))
+    
+    Dim oProfile As Profile
+    oProfile = oSk.Profiles.AddForSolid
+    
+    Dim oExtrudeDef As ExtrudeDefinition
+    oExtrudeDef = oDoc.ComponentDefinition.Features.ExtrudeFeatures.CreateExtrudeDefinition(oProfile, kNewBodyOperation)
+    
+    Call oDoc.ComponentDefinition.Features.ExtrudeFeatures.Add(oExtrudeDef)
+    
+    Dim oEdges As EdgeCollection
+    oEdges = ThisApplication.TransientObjects.CreateEdgeCollection
+    
+    oEdges.Add(oDoc.ComponentDefinition.SurfaceBodies(1).Edges(1))
+    
+    Dim oChamfer As ChamferFeature
+    oChamfer = oDoc.ComponentDefinition.Features.ChamferFeatures.AddUsingDistance(oEdges, 0.5, True)
+    
+    Dim oChamferDef As ChamferDefinition
+    oChamferDef = oChamfer.Definition
+    
+    <span style="color:blue">' Rollback the End of Part node to be above the chamfer feature to edit it.</span>
+    Call oChamfer.SetEndOfPart(True)
+    
+    Dim oPartialChamferEdges As PartialChamferEdges
+    oPartialChamferEdges = oChamferDef.PartialChamferEdges
+    
+    <span style="color:blue">' Set the partial chamfer edge.</span>
+    Call oPartialChamferEdges.Add(oDoc.ComponentDefinition.SurfaceBodies(1).Edges(1), 4, 3)
+    
+    <span style="color:blue">' After editing the feature, set it to be above the End of Part node.</span>
+    Call oChamfer.SetEndOfPart(False)</pre>
+      </div>
+    </div><br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(PartialChamferSample%20Sample%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

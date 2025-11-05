@@ -1,0 +1,328 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/CopyBodyFeature_Sample.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="CopyBodyFeature_Sample">
+    <meta name="description" content="SurfaceBody Copy Sample">
+    <meta name="topicid" content="CopyBodyFeature_Sample">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>SurfaceBody Copy</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body><script>
+          function copyCode(language) {
+          // Get the pre element for the specified language.
+          var preElement = document.getElementById(language);
+
+          // Get the text from the element and copy it to the clipboard.
+          var preText = preElement.innerText;
+
+          var isIE = /*@cc_on!@*/false || !!document.documentMode;
+
+          if (isIE)
+          {
+            window.clipboardData.setData('Text', preText);
+          }
+          else
+          {
+            navigator.clipboard.writeText(preText);
+          }
+
+          //alert("Code copied to clipboard");
+          }
+        </script><link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">SurfaceBody Copy</h1>
+    <h2 class="api">
+          Description
+        </h2>This sample demonstrates copying a surface body from one part to another. This is equivalent to the Promote command, but the API is much more flexible. In order for the sample to be self-contained, it creates two parts on the fly that will be used to demonstrate copying a body from one part to another. When copying a body into a part, you provide the surface body and a matrix to define its position in the new part. This sample creates a matrix based on the position of these parts within an assembly.<h2 class="api">
+          Code Samples
+        </h2>
+    <div id="tabs">
+      <ul>
+        <li><a href="#VBA">VBA</a></li>
+        <li><a href="#iLogic">iLogic</a></li>
+      </ul>
+      <div id="VBA" class="api-code">
+        <table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('VBA_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="VBA_code">Public Sub CopyBodyFromPartToPart()
+    <span style="color:blue">' The first portion of this program creates an assembly so that the</span>
+    <span style="color:blue">' copy body API can be demonstrated. Any assembly could potentially</span>
+    <span style="color:blue">' be used, but the sample is simpler if it's for a specific case.</span>
+    <span style="color:blue">'</span>
+    <span style="color:blue">' This creates an assembly that contains two parts. An interesting</span>
+    <span style="color:blue">' aspect of the sample is that the assembly and parts only exist</span>
+    <span style="color:blue">' in memory and are not written to disk. Filenames are assigned,</span>
+    <span style="color:blue">' so that if you perform a Save they will be written to disk using</span>
+    <span style="color:blue">' the specified filenames.</span>
+
+    <span style="color:blue">' Create a new assembly.</span>
+    Dim oAsmDoc As AssemblyDocument
+    Set oAsmDoc = ThisApplication.Documents.Add(kAssemblyDocumentObject, _
+                ThisApplication.FileManager.GetTemplateFile(kAssemblyDocumentObject))
+
+    <span style="color:blue">' Define the filename for the assembly. It won't be saved at this point, but</span>
+    <span style="color:blue">' this name will be used if the assembly is saved later by the user.</span>
+    oAsmDoc.FullFileName = "C:\Temp\CopyBodyTestAsm.iam"
+
+    <span style="color:blue">' Create a new part, invisibly.</span>
+    Dim oPartDoc1 As PartDocument
+    Set oPartDoc1 = ThisApplication.Documents.Add(kPartDocumentObject, _
+                ThisApplication.FileManager.GetTemplateFile(kPartDocumentObject), False)
+
+    <span style="color:blue">' Define the filename for the part. It won't be saved at this point, but</span>
+    <span style="color:blue">' this name will be used if the part is saved later by the user.</span>
+    oPartDoc1.FullFileName = "C:\Temp\CopyBodyTestPart1.ipt"
+
+    <span style="color:blue">' Set a reference to the transient geometry object.</span>
+    Dim oTG As TransientGeometry
+    Set oTG = ThisApplication.TransientGeometry
+
+    Dim oCompDef As PartComponentDefinition
+    Set oCompDef = oPartDoc1.ComponentDefinition
+    
+    <span style="color:blue">' Create an extrude feature.</span>
+    Dim oSketch As PlanarSketch
+    Set oSketch = oCompDef.Sketches.Add(oCompDef.WorkPlanes.Item(1))
+    Call oSketch.SketchCircles.AddByCenterRadius(oTG.CreatePoint2d(0, 0), 2)
+    Dim oProfile As Profile
+    Set oProfile = oSketch.Profiles.AddForSolid
+    Dim oExtrudeDef As ExtrudeDefinition
+    Set oExtrudeDef = oCompDef.Features.ExtrudeFeatures.CreateExtrudeDefinition(oProfile, kJoinOperation)
+    Call oExtrudeDef.SetDistanceExtent(3, kPositiveExtentDirection)
+    Dim oExtrude As ExtrudeFeature
+    Set oExtrude = oCompDef.Features.ExtrudeFeatures.Add(oExtrudeDef)
+    
+    <span style="color:blue">' Create a second extrude feature as a work surface.</span>
+    Set oSketch = oPartDoc1.ComponentDefinition.Sketches.Add( _
+                    oPartDoc1.ComponentDefinition.WorkPlanes.Item(1))
+    Call oSketch.SketchLines.AddAsTwoPointRectangle(oTG.CreatePoint2d(-3, -3), oTG.CreatePoint2d(3, 3))
+    Set oProfile = oSketch.Profiles.AddForSolid
+
+    Set oExtrudeDef = oCompDef.Features.ExtrudeFeatures.CreateExtrudeDefinition(oProfile, kSurfaceOperation)
+    Call oExtrudeDef.SetDistanceExtent(1.5, kPositiveExtentDirection)
+    Set oExtrude = oCompDef.Features.ExtrudeFeatures.Add(oExtrudeDef)
+
+    <span style="color:blue">' Insert the occurrence into the assembly using a somewhat arbitrary position.</span>
+    Dim oMatrix As Matrix
+    Set oMatrix = oTG.CreateMatrix
+    Call oMatrix.Translation.AddVector(oTG.CreateVector(2, 3, 4))
+    Call oMatrix.SetToRotation(0.5, oTG.CreateVector(1, 0, 0), oTG.CreatePoint(2, 3, 4))
+    Dim oOcc1 As ComponentOccurrence
+    Set oOcc1 = oAsmDoc.ComponentDefinition.Occurrences.AddByComponentDefinition( _
+                                        oPartDoc1.ComponentDefinition, oMatrix)
+
+    <span style="color:blue">' Create a second new part, invisibly.</span>
+    Dim oPartDoc2 As PartDocument
+    Set oPartDoc2 = ThisApplication.Documents.Add(kPartDocumentObject, _
+                ThisApplication.FileManager.GetTemplateFile(kPartDocumentObject), False)
+
+    <span style="color:blue">' Define the filename for the part. It won't be saved at this point, but</span>
+    <span style="color:blue">' this name will be used if the part is saved later by the user.</span>
+    oPartDoc2.FullFileName = "C:\Temp\CopyBodyTestPart2.ipt"
+
+    <span style="color:blue">' Insert the second part into the assembly using a somewhat arbitrary position.</span>
+    Set oMatrix = oTG.CreateMatrix
+    Call oMatrix.Translation.AddVector(oTG.CreateVector(-1, -1, -1))
+    Call oMatrix.SetToRotation(0.5, oTG.CreateVector(1, 1, 0), oTG.CreatePoint(1, 1, 1))
+    Dim oOcc2 As ComponentOccurrence
+    Set oOcc2 = oAsmDoc.ComponentDefinition.Occurrences.AddByComponentDefinition( _
+                                        oPartDoc2.ComponentDefinition, oMatrix)
+
+    <span style="color:blue">' Get the surface body from the first part that represents the work surface.</span>
+    <span style="color:blue">' In this case we know there's only one work surface so this just gets the</span>
+    <span style="color:blue">' first work surface in the collection.</span>
+    Dim oWorkSurface As WorkSurface
+    Set oWorkSurface = oPartDoc1.ComponentDefinition.WorkSurfaces.Item(1)
+    Dim oBody As SurfaceBody
+    Set oBody = oWorkSurface.SurfaceBodies.Item(1)
+
+    <span style="color:blue">' Define the matrix to use in copying the surface body from one part to</span>
+    <span style="color:blue">' another. Any matrix can be used, but in this case I want the position</span>
+    <span style="color:blue">' of the body to be the same with respect to assembly space. Because</span>
+    <span style="color:blue">' the occurrences are in different positions within the assembly the matrix</span>
+    <span style="color:blue">' needs to take into account the transfrom from one occurrence to the other.</span>
+
+    <span style="color:blue">' Get the transform from the occurrence where the surface body currently exists.</span>
+    <span style="color:blue">' This defines the tranform of the surface body into assembly space.</span>
+    Set oMatrix = oOcc1.Transformation
+
+    <span style="color:blue">' Get the matrix of the second occurrence and invert it.</span>
+    <span style="color:blue">' The inverse of the second occurrence's transform defines the tranform from</span>
+    <span style="color:blue">' assembly space into that occurrence's part space.</span>
+    Dim oMatrix2 As Matrix
+    Set oMatrix2 = oOcc2.Transformation
+    oMatrix2.Invert
+
+    <span style="color:blue">' Combine these matrices.</span>
+    Call oMatrix.PreMultiplyBy(oMatrix2)
+
+    <span style="color:blue">' Copy the surface body from the first part into the second. You shouldn't</span>
+    <span style="color:blue">' see anything graphically change because the new body is directly on top of</span>
+    <span style="color:blue">' the existing body, but it can be verified because the new body is in</span>
+    <span style="color:blue">' the second part.</span>
+    Call oPartDoc2.ComponentDefinition.Features.NonParametricBaseFeatures.Add(oBody, oMatrix)
+End Sub</pre>
+      </div>
+      <div id="iLogic" class="api-code">
+        <table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('iLogic_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="iLogic_code">    <span style="color:blue">' The first portion of this program creates an assembly so that the</span>
+    <span style="color:blue">' copy body API can be demonstrated. Any assembly could potentially</span>
+    <span style="color:blue">' be used, but the sample is simpler if it's for a specific case.</span>
+    <span style="color:blue">'</span>
+    <span style="color:blue">' This creates an assembly that contains two parts. An interesting</span>
+    <span style="color:blue">' aspect of the sample is that the assembly and parts only exist</span>
+    <span style="color:blue">' in memory and are not written to disk. Filenames are assigned,</span>
+    <span style="color:blue">' so that if you perform a Save they will be written to disk using</span>
+    <span style="color:blue">' the specified filenames.</span>
+
+    <span style="color:blue">' Create a new assembly.</span>
+    Dim oAsmDoc As AssemblyDocument
+    oAsmDoc = ThisApplication.Documents.Add(kAssemblyDocumentObject, _
+                ThisApplication.FileManager.GetTemplateFile(kAssemblyDocumentObject))
+
+    <span style="color:blue">' Define the filename for the assembly. It won't be saved at this point, but</span>
+    <span style="color:blue">' this name will be used if the assembly is saved later by the user.</span>
+    oAsmDoc.FullFileName = "C:\Temp\CopyBodyTestAsm.iam"
+
+    <span style="color:blue">' Create a new part, invisibly.</span>
+    Dim oPartDoc1 As PartDocument
+    oPartDoc1 = ThisApplication.Documents.Add(kPartDocumentObject, _
+                ThisApplication.FileManager.GetTemplateFile(kPartDocumentObject), False)
+
+    <span style="color:blue">' Define the filename for the part. It won't be saved at this point, but</span>
+    <span style="color:blue">' this name will be used if the part is saved later by the user.</span>
+    oPartDoc1.FullFileName = "C:\Temp\CopyBodyTestPart1.ipt"
+
+    <span style="color:blue">' Set a reference to the transient geometry object.</span>
+    Dim oTG As TransientGeometry
+    oTG = ThisApplication.TransientGeometry
+
+    Dim oCompDef As PartComponentDefinition
+    oCompDef = oPartDoc1.ComponentDefinition
+    
+    <span style="color:blue">' Create an extrude feature.</span>
+    Dim oSketch As PlanarSketch
+    oSketch = oCompDef.Sketches.Add(oCompDef.WorkPlanes.Item(1))
+    Call oSketch.SketchCircles.AddByCenterRadius(oTG.CreatePoint2d(0, 0), 2)
+    Dim oProfile As Profile
+    oProfile = oSketch.Profiles.AddForSolid
+    Dim oExtrudeDef As ExtrudeDefinition
+    oExtrudeDef = oCompDef.Features.ExtrudeFeatures.CreateExtrudeDefinition(oProfile, kJoinOperation)
+    Call oExtrudeDef.SetDistanceExtent(3, kPositiveExtentDirection)
+    Dim oExtrude As ExtrudeFeature
+    oExtrude = oCompDef.Features.ExtrudeFeatures.Add(oExtrudeDef)
+    
+    <span style="color:blue">' Create a second extrude feature as a work surface.</span>
+    oSketch = oPartDoc1.ComponentDefinition.Sketches.Add( _
+                    oPartDoc1.ComponentDefinition.WorkPlanes.Item(1))
+    Call oSketch.SketchLines.AddAsTwoPointRectangle(oTG.CreatePoint2d(-3, -3), oTG.CreatePoint2d(3, 3))
+    oProfile = oSketch.Profiles.AddForSolid
+
+    oExtrudeDef = oCompDef.Features.ExtrudeFeatures.CreateExtrudeDefinition(oProfile, kSurfaceOperation)
+    Call oExtrudeDef.SetDistanceExtent(1.5, kPositiveExtentDirection)
+    oExtrude = oCompDef.Features.ExtrudeFeatures.Add(oExtrudeDef)
+
+    <span style="color:blue">' Insert the occurrence into the assembly using a somewhat arbitrary position.</span>
+    Dim oMatrix As Matrix
+    oMatrix = oTG.CreateMatrix
+    Call oMatrix.Translation.AddVector(oTG.CreateVector(2, 3, 4))
+    Call oMatrix.SetToRotation(0.5, oTG.CreateVector(1, 0, 0), oTG.CreatePoint(2, 3, 4))
+    Dim oOcc1 As ComponentOccurrence
+    oOcc1 = oAsmDoc.ComponentDefinition.Occurrences.AddByComponentDefinition( _
+                                        oPartDoc1.ComponentDefinition, oMatrix)
+
+    <span style="color:blue">' Create a second new part, invisibly.</span>
+    Dim oPartDoc2 As PartDocument
+    oPartDoc2 = ThisApplication.Documents.Add(kPartDocumentObject, _
+                ThisApplication.FileManager.GetTemplateFile(kPartDocumentObject), False)
+
+    <span style="color:blue">' Define the filename for the part. It won't be saved at this point, but</span>
+    <span style="color:blue">' this name will be used if the part is saved later by the user.</span>
+    oPartDoc2.FullFileName = "C:\Temp\CopyBodyTestPart2.ipt"
+
+    <span style="color:blue">' Insert the second part into the assembly using a somewhat arbitrary position.</span>
+    oMatrix = oTG.CreateMatrix
+    Call oMatrix.Translation.AddVector(oTG.CreateVector(-1, -1, -1))
+    Call oMatrix.SetToRotation(0.5, oTG.CreateVector(1, 1, 0), oTG.CreatePoint(1, 1, 1))
+    Dim oOcc2 As ComponentOccurrence
+    oOcc2 = oAsmDoc.ComponentDefinition.Occurrences.AddByComponentDefinition( _
+                                        oPartDoc2.ComponentDefinition, oMatrix)
+
+    <span style="color:blue">' Get the surface body from the first part that represents the work surface.</span>
+    <span style="color:blue">' In this case we know there's only one work surface so this just gets the</span>
+    <span style="color:blue">' first work surface in the collection.</span>
+    Dim oWorkSurface As WorkSurface
+    oWorkSurface = oPartDoc1.ComponentDefinition.WorkSurfaces.Item(1)
+    Dim oBody As SurfaceBody
+    oBody = oWorkSurface.SurfaceBodies.Item(1)
+
+    <span style="color:blue">' Define the matrix to use in copying the surface body from one part to</span>
+    <span style="color:blue">' another. Any matrix can be used, but in this case I want the position</span>
+    <span style="color:blue">' of the body to be the same with respect to assembly space. Because</span>
+    <span style="color:blue">' the occurrences are in different positions within the assembly the matrix</span>
+    <span style="color:blue">' needs to take into account the transfrom from one occurrence to the other.</span>
+
+    <span style="color:blue">' Get the transform from the occurrence where the surface body currently exists.</span>
+    <span style="color:blue">' This defines the tranform of the surface body into assembly space.</span>
+    oMatrix = oOcc1.Transformation
+
+    <span style="color:blue">' Get the matrix of the second occurrence and invert it.</span>
+    <span style="color:blue">' The inverse of the second occurrence's transform defines the tranform from</span>
+    <span style="color:blue">' assembly space into that occurrence's part space.</span>
+    Dim oMatrix2 As Matrix
+    oMatrix2 = oOcc2.Transformation
+    oMatrix2.Invert
+
+    <span style="color:blue">' Combine these matrices.</span>
+    Call oMatrix.PreMultiplyBy(oMatrix2)
+
+    <span style="color:blue">' Copy the surface body from the first part into the second. You shouldn't</span>
+    <span style="color:blue">' see anything graphically change because the new body is directly on top of</span>
+    <span style="color:blue">' the existing body, but it can be verified because the new body is in</span>
+    <span style="color:blue">' the second part.</span>
+    Call oPartDoc2.ComponentDefinition.Features.NonParametricBaseFeatures.Add(oBody, oMatrix)</pre>
+      </div>
+    </div><br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(CopyBodyFeature%20Sample%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,304 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/CreateParallelEnvironment_Sample.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="CreateParallelEnvironment_Sample">
+    <meta name="description" content="Add parallel environment with contextual tabs Sample">
+    <meta name="topicid" content="CreateParallelEnvironment_Sample">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>Add parallel environment with contextual tabs</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body><script>
+          function copyCode(language) {
+          // Get the pre element for the specified language.
+          var preElement = document.getElementById(language);
+
+          // Get the text from the element and copy it to the clipboard.
+          var preText = preElement.innerText;
+
+          var isIE = /*@cc_on!@*/false || !!document.documentMode;
+
+          if (isIE)
+          {
+            window.clipboardData.setData('Text', preText);
+          }
+          else
+          {
+            navigator.clipboard.writeText(preText);
+          }
+
+          //alert("Code copied to clipboard");
+          }
+        </script><link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">Add parallel environment with contextual tabs</h1>
+    <h2 class="api">
+          Description
+        </h2>The following sample demonstrates the use of parallel environments and contextual ribbon tabs.<h2 class="api">
+          Code Samples
+        </h2>
+    <div id="tabs">
+      <ul>
+        <li><a href="#VBA">VBA</a></li>
+        <li><a href="#iLogic">iLogic</a></li>
+        <li><a href="#C#">C#</a></li>
+      </ul>
+      <div id="VBA" class="api-code">Run the following macro. Open an assembly document. Go the the "Environments" tab and click on the "Some Analysis" button.<table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('VBA_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="VBA_code">Sub AddParallelEnvironment()
+    <span style="color:blue">' Get the Environments collection</span>
+    Dim oEnvironments As Environments
+    Set oEnvironments = ThisApplication.UserInterfaceManager.Environments
+
+    <span style="color:blue">' Create a new environment</span>
+    Dim oNewEnv As Environment
+    Set oNewEnv = oEnvironments.Add("Some Analysis", "SomeAnalysis")
+
+    <span style="color:blue">' Get the ribbon associated with the assembly environment</span>
+    Dim oAssemblyRibbon As Ribbon
+    Set oAssemblyRibbon = ThisApplication.UserInterfaceManager.Ribbons.Item("Assembly")
+
+    <span style="color:blue">' Create contextual tabs and panels within them</span>
+    Dim oContextualTabOne As RibbonTab
+    Set oContextualTabOne = oAssemblyRibbon.RibbonTabs.Add("Some Analysis", "SomeAnalysis", "ClientId123", , , True)
+
+    Dim oPanelOne As RibbonPanel
+    Set oPanelOne = oContextualTabOne.RibbonPanels.Add("Panel One", "PanelOne", "ClientId123")
+
+    Dim oDef1 As ButtonDefinition
+    Set oDef1 = ThisApplication.CommandManager.ControlDefinitions.Item("PartExtrudeCmd")
+
+    Call oPanelOne.CommandControls.AddButton(oDef1, True)
+
+    Dim oPanelTwo As RibbonPanel
+    Set oPanelTwo = oContextualTabOne.RibbonPanels.Add("Panel Two", "PanelTwo", "ClientId123")
+
+    Dim oDef2 As ButtonDefinition
+    Set oDef2 = ThisApplication.CommandManager.ControlDefinitions.Item("AssemblyPlaceComponentCmd")
+
+    Call oPanelTwo.CommandControls.AddButton(oDef2, True)
+
+    Dim oContextualTabTwo As RibbonTab
+    Set oContextualTabTwo = oAssemblyRibbon.RibbonTabs.Add("Some Analysis Extras", "SomeAnalysisExtras", "ClientId123", , , True)
+
+    Dim oPanelThree As RibbonPanel
+    Set oPanelThree = oContextualTabTwo.RibbonPanels.Add("Panel Three", "PanelThree", "ClientId123")
+    Call oPanelThree.CommandControls.AddButton(oDef1, True)
+
+    <span style="color:blue">' Associate the contextual tabs with the newly created environment</span>
+    <span style="color:blue">' The contextual tabs will only be displayed when this environment is active</span>
+    Dim strTabs(1) As String
+    strTabs(0) = "SomeAnalysis"
+    strTabs(1) = "SomeAnalysisExtras"
+
+    oNewEnv.AdditionalVisibleRibbonTabs = strTabs
+
+    <span style="color:blue">' Make the "SomeAnalysis" tab default for the environment</span>
+    oNewEnv.DefaultRibbonTab = "SomeAnalysis"
+
+    <span style="color:blue">' Get the collection of parallel environments and add the new environment</span>
+    Dim oParEnvs As EnvironmentList
+    Set oParEnvs = ThisApplication.UserInterfaceManager.ParallelEnvironments
+
+    Call oParEnvs.Add(oNewEnv)
+
+    <span style="color:blue">' Make the new parallel environment available only within the assembly environment</span>
+    <span style="color:blue">' A ControlDefinition is automatically created when an environment is added to the</span>
+    <span style="color:blue">' parallel environments list. The internal name of the definition is the same as</span>
+    <span style="color:blue">' the internal name of the environment.</span>
+    Dim oParallelEnvButton As ControlDefinition
+    Set oParallelEnvButton = ThisApplication.CommandManager.ControlDefinitions.Item("SomeAnalysis")
+
+    Dim oEnv As Environment
+    For Each oEnv In oEnvironments
+        If Not oEnv.InternalName = "AMxAssemblyEnvironment" Then
+            On Error Resume Next
+            Call oEnv.DisabledCommandList.Add(oParallelEnvButton)
+        End If
+    Next
+End Sub</pre>
+      </div>
+      <div id="iLogic" class="api-code">Run the following macro. Open an assembly document. Go the the "Environments" tab and click on the "Some Analysis" button.<table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('iLogic_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="iLogic_code">    <span style="color:blue">' Get the Environments collection</span>
+    Dim oEnvironments As Environments
+    oEnvironments = ThisApplication.UserInterfaceManager.Environments
+
+    <span style="color:blue">' Create a new environment</span>
+    Dim oNewEnv As Environment
+    oNewEnv = oEnvironments.Add("Some Analysis", "SomeAnalysis")
+
+    <span style="color:blue">' Get the ribbon associated with the assembly environment</span>
+    Dim oAssemblyRibbon As Ribbon
+    oAssemblyRibbon = ThisApplication.UserInterfaceManager.Ribbons.Item("Assembly")
+
+    <span style="color:blue">' Create contextual tabs and panels within them</span>
+    Dim oContextualTabOne As RibbonTab
+    oContextualTabOne = oAssemblyRibbon.RibbonTabs.Add("Some Analysis", "SomeAnalysis", "ClientId123", , , True)
+
+    Dim oPanelOne As RibbonPanel
+    oPanelOne = oContextualTabOne.RibbonPanels.Add("Panel One", "PanelOne", "ClientId123")
+
+    Dim oDef1 As ButtonDefinition
+    oDef1 = ThisApplication.CommandManager.ControlDefinitions.Item("PartExtrudeCmd")
+
+    Call oPanelOne.CommandControls.AddButton(oDef1, True)
+
+    Dim oPanelTwo As RibbonPanel
+    oPanelTwo = oContextualTabOne.RibbonPanels.Add("Panel Two", "PanelTwo", "ClientId123")
+
+    Dim oDef2 As ButtonDefinition
+    oDef2 = ThisApplication.CommandManager.ControlDefinitions.Item("AssemblyPlaceComponentCmd")
+
+    Call oPanelTwo.CommandControls.AddButton(oDef2, True)
+
+    Dim oContextualTabTwo As RibbonTab
+    oContextualTabTwo = oAssemblyRibbon.RibbonTabs.Add("Some Analysis Extras", "SomeAnalysisExtras", "ClientId123", , , True)
+
+    Dim oPanelThree As RibbonPanel
+    oPanelThree = oContextualTabTwo.RibbonPanels.Add("Panel Three", "PanelThree", "ClientId123")
+    Call oPanelThree.CommandControls.AddButton(oDef1, True)
+
+    <span style="color:blue">' Associate the contextual tabs with the newly created environment</span>
+    <span style="color:blue">' The contextual tabs will only be displayed when this environment is active</span>
+    Dim strTabs(1) As String
+    strTabs(0) = "SomeAnalysis"
+    strTabs(1) = "SomeAnalysisExtras"
+
+    oNewEnv.AdditionalVisibleRibbonTabs = strTabs
+
+    <span style="color:blue">' Make the "SomeAnalysis" tab default for the environment</span>
+    oNewEnv.DefaultRibbonTab = "SomeAnalysis"
+
+    <span style="color:blue">' Get the collection of parallel environments and add the new environment</span>
+    Dim oParEnvs As EnvironmentList
+    oParEnvs = ThisApplication.UserInterfaceManager.ParallelEnvironments
+
+    Call oParEnvs.Add(oNewEnv)
+
+    <span style="color:blue">' Make the new parallel environment available only within the assembly environment</span>
+    <span style="color:blue">' A ControlDefinition is automatically created when an environment is added to the</span>
+    <span style="color:blue">' parallel environments list. The internal name of the definition is the same as</span>
+    <span style="color:blue">' the internal name of the environment.</span>
+    Dim oParallelEnvButton As ControlDefinition
+    oParallelEnvButton = ThisApplication.CommandManager.ControlDefinitions.Item("SomeAnalysis")
+
+    Dim oEnv As Environment
+    For Each oEnv In oEnvironments
+        If Not oEnv.InternalName = "AMxAssemblyEnvironment" Then
+            On Error Resume Next
+            Call oEnv.DisabledCommandList.Add(oParallelEnvButton)
+        End If
+    Next</pre>
+      </div>
+      <div id="C#" class="api-code">Run the following macro. Open an assembly document. Go the the "Environments" tab and click on the "Some Analysis" button. The first line of this sample sets the oApp variable to ThisApplication - this should be appropriately changed.<table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('C#_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="C#_code">public void AddParallelEnvironment()
+{
+    Application oApp = ThisApplication;
+
+    <span style="color:blue">// Get the Environments collection</span>
+    Environments oEnvironments = oApp.UserInterfaceManager.Environments;
+
+    <span style="color:blue">// Create a new environment</span>
+    Inventor.Environment oNewEnv = oEnvironments.Add("Some Analysis", "SomeAnalysis", null, null, null);
+
+    <span style="color:blue">// Get the ribbon associated with the assembly environment</span>
+    Ribbon oAssemblyRibbon = oApp.UserInterfaceManager.Ribbons["Assembly"];
+
+    <span style="color:blue">// Create contextual tabs and panels within them</span>
+    RibbonTab oContextualTabOne = oAssemblyRibbon.RibbonTabs.Add("Some Analysis", "SomeAnalysis", "ClientId123","" ,false , true);
+
+    RibbonPanel oPanelOne = oContextualTabOne.RibbonPanels.Add("Panel One", "PanelOne", "ClientId123","", false);
+    ButtonDefinition oDef1 = (ButtonDefinition)oApp.CommandManager.ControlDefinitions["PartExtrudeCmd"];
+    oPanelOne.CommandControls.AddButton(oDef1, true, true, "", false);
+
+    RibbonPanel oPanelTwo = oContextualTabOne.RibbonPanels.Add("Panel Two", "PanelTwo", "ClientId123", "", false);
+    ButtonDefinition oDef2 = (ButtonDefinition)oApp.CommandManager.ControlDefinitions["AssemblyPlaceComponentCmd"];
+    oPanelTwo.CommandControls.AddButton(oDef2, true, true, "", false);
+
+    RibbonTab oContextualTabTwo = oAssemblyRibbon.RibbonTabs.Add("Some Analysis Extras", "SomeAnalysisExtras", "ClientId123","" ,false , true);
+
+    RibbonPanel oPanelThree = oContextualTabTwo.RibbonPanels.Add("Panel Three", "PanelThree", "ClientId123", "", false);
+    oPanelThree.CommandControls.AddButton(oDef1, true, true, "", false);
+
+    <span style="color:blue">// Associate the contextual tabs with the newly created environment</span>
+    <span style="color:blue">// The contextual tabs will only be displayed when this environment is active</span>
+    String[] strTabs = new String[2];
+    strTabs[0] = "SomeAnalysis";
+    strTabs[1] = "SomeAnalysisExtras";
+
+    oNewEnv.AdditionalVisibleRibbonTabs = strTabs;
+
+    <span style="color:blue">// Make the "SomeAnalysis" tab default for the environment</span>
+    oNewEnv.DefaultRibbonTab = "SomeAnalysis";
+
+    <span style="color:blue">// Get the collection of parallel environments and add the new environment</span>
+    EnvironmentList oParEnvs = oApp.UserInterfaceManager.ParallelEnvironments;
+
+    oParEnvs.Add(oNewEnv);
+
+    <span style="color:blue">// Make the new parallel environment available only within the assembly environment</span>
+    <span style="color:blue">// A ControlDefinition is automatically created when an environment is added to the</span>
+    <span style="color:blue">// parallel environments list. The internal name of the definition is the same as</span>
+    <span style="color:blue">// the internal name of the environment.</span>
+    ControlDefinition oParallelEnvButton = oApp.CommandManager.ControlDefinitions["SomeAnalysis"];
+
+    int iEnvCount = oEnvironments.Count;
+    Inventor.Environment oEnv;
+    int i;
+    for (i = 1; i &lt;= iEnvCount; i++)
+    {
+        oEnv = oEnvironments[i];
+        if (oEnv.InternalName != "AMxAssemblyEnvironment")
+        {
+            oEnv.DisabledCommandList.Add(oParallelEnvButton);
+        }
+    }
+}</pre>
+      </div>
+    </div><br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(CreateParallelEnvironment%20Sample%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

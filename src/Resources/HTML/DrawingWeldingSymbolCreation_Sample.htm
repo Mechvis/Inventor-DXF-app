@@ -1,0 +1,206 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/DrawingWeldingSymbolCreation_Sample.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="DrawingWeldingSymbolCreation_Sample">
+    <meta name="description" content="Drawing Welding Symbol Creation Sample">
+    <meta name="topicid" content="DrawingWeldingSymbolCreation_Sample">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>Drawing Welding Symbol Creation</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body><script>
+          function copyCode(language) {
+          // Get the pre element for the specified language.
+          var preElement = document.getElementById(language);
+
+          // Get the text from the element and copy it to the clipboard.
+          var preText = preElement.innerText;
+
+          var isIE = /*@cc_on!@*/false || !!document.documentMode;
+
+          if (isIE)
+          {
+            window.clipboardData.setData('Text', preText);
+          }
+          else
+          {
+            navigator.clipboard.writeText(preText);
+          }
+
+          //alert("Code copied to clipboard");
+          }
+        </script><link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">Drawing Welding Symbol Creation</h1>
+    <h2 class="api">
+          Description
+        </h2>This sample is to demonstrate how to create a drawing welding symbol.<h2 class="api">
+          Code Samples
+        </h2>
+    <div id="tabs">
+      <ul>
+        <li><a href="#VBA">VBA</a></li>
+        <li><a href="#iLogic">iLogic</a></li>
+      </ul>
+      <div id="VBA" class="api-code">This sample is to demonstrate how to create a drawing welding symbol.<table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('VBA_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="VBA_code">Public Sub AddDrawingWeldingSymbolSample()
+    <span style="color:blue">' Set a reference to the drawing document.</span>
+    <span style="color:blue">' This assumes a drawing document is active.</span>
+    Dim oDrawDoc As DrawingDocument
+    Set oDrawDoc = ThisApplication.ActiveDocument
+
+    <span style="color:blue">' Set a reference to the active sheet.</span>
+    Dim oActiveSheet As Sheet
+    Set oActiveSheet = oDrawDoc.ActiveSheet
+
+    <span style="color:blue">' Set a reference to the drawing curve segment.</span>
+    <span style="color:blue">' Please select a linear drwaing curve.</span>
+    Dim oDrawingCurveSegment As DrawingCurveSegment
+    Set oDrawingCurveSegment = ThisApplication.CommandManager.Pick(kDrawingCurveSegmentFilter, "Select a linear curve")
+
+    <span style="color:blue">' Set a reference to the drawing curve.</span>
+    Dim oDrawingCurve As DrawingCurve
+    Set oDrawingCurve = oDrawingCurveSegment.Parent
+
+    <span style="color:blue">' Get the mid point of the selected curve</span>
+    <span style="color:blue">' assuming that the selection curve is linear</span>
+    Dim oMidPoint As Point2d
+    Set oMidPoint = oDrawingCurve.MidPoint
+
+    <span style="color:blue">' Set a reference to the TransientGeometry object.</span>
+    Dim oTG As TransientGeometry
+    Set oTG = ThisApplication.TransientGeometry
+
+    Dim oLeaderPoints As ObjectCollection
+    Set oLeaderPoints = ThisApplication.TransientObjects.CreateObjectCollection
+
+    <span style="color:blue">' Create a few leader points.</span>
+    Call oLeaderPoints.Add(oTG.CreatePoint2d(oMidPoint.X + 10, oMidPoint.Y + 10))
+    Call oLeaderPoints.Add(oTG.CreatePoint2d(oMidPoint.X + 10, oMidPoint.Y + 5))
+
+    <span style="color:blue">' Create an intent and add to the leader points collection.</span>
+    <span style="color:blue">' This is the geometry that the symbol will attach to.</span>
+    Dim oGeometryIntent As GeometryIntent
+    Set oGeometryIntent = oActiveSheet.CreateGeometryIntent(oDrawingCurve)
+
+    Call oLeaderPoints.Add(oGeometryIntent)
+    
+    Dim oWeldingSymDefs As DrawingWeldingSymbolDefinitions
+    Set oWeldingSymDefs = oActiveSheet.WeldingSymbols.CreateDefinitions()
+   
+    Dim oWeldingSymDef As DrawingWeldingSymbolDefinition
+    Set oWeldingSymDef = oWeldingSymDefs.Add(1)
+     
+    <span style="color:blue">' Specify the weld symbol type(WeldSymbolTypeEnum/BackingSymbolTypeEnum)</span>
+    oWeldingSymDef.WeldSymbolOne.WeldSymbolType = BackingSymbolTypeEnum.kConsumableInsertANSI
+    oWeldingSymDef.WeldSymbolTwo.WeldSymbolType = WeldSymbolTypeEnum.kNoneWeldSymbolType
+    oWeldingSymDef.ClosedNoteTail = True
+    oWeldingSymDef.FieldWeldingSymbol = True
+    
+    <span style="color:blue">' Create the symbol with a leader</span>
+    Dim oSymbol As DrawingWeldingSymbol
+    Set oSymbol = oActiveSheet.WeldingSymbols.Add(oLeaderPoints, oWeldingSymDefs)
+End Sub</pre>
+      </div>
+      <div id="iLogic" class="api-code">This sample is to demonstrate how to create a drawing welding symbol.<table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('iLogic_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="iLogic_code">    <span style="color:blue">' Set a reference to the drawing document.</span>
+    <span style="color:blue">' This assumes a drawing document is active.</span>
+    Dim oDrawDoc As DrawingDocument
+    oDrawDoc = ThisApplication.ActiveDocument
+
+    <span style="color:blue">' Set a reference to the active sheet.</span>
+    Dim oActiveSheet As Sheet
+    oActiveSheet = oDrawDoc.ActiveSheet
+
+    <span style="color:blue">' Set a reference to the drawing curve segment.</span>
+    <span style="color:blue">' Please select a linear drwaing curve.</span>
+    Dim oDrawingCurveSegment As DrawingCurveSegment
+    oDrawingCurveSegment = ThisApplication.CommandManager.Pick(kDrawingCurveSegmentFilter, "Select a linear curve")
+
+    <span style="color:blue">' Set a reference to the drawing curve.</span>
+    Dim oDrawingCurve As DrawingCurve
+    oDrawingCurve = oDrawingCurveSegment.Parent
+
+    <span style="color:blue">' Get the mid point of the selected curve</span>
+    <span style="color:blue">' assuming that the selection curve is linear</span>
+    Dim oMidPoint As Point2d
+    oMidPoint = oDrawingCurve.MidPoint
+
+    <span style="color:blue">' Set a reference to the TransientGeometry object.</span>
+    Dim oTG As TransientGeometry
+    oTG = ThisApplication.TransientGeometry
+
+    Dim oLeaderPoints As ObjectCollection
+    oLeaderPoints = ThisApplication.TransientObjects.CreateObjectCollection
+
+    <span style="color:blue">' Create a few leader points.</span>
+    Call oLeaderPoints.Add(oTG.CreatePoint2d(oMidPoint.X + 10, oMidPoint.Y + 10))
+    Call oLeaderPoints.Add(oTG.CreatePoint2d(oMidPoint.X + 10, oMidPoint.Y + 5))
+
+    <span style="color:blue">' Create an intent and add to the leader points collection.</span>
+    <span style="color:blue">' This is the geometry that the symbol will attach to.</span>
+    Dim oGeometryIntent As GeometryIntent
+    oGeometryIntent = oActiveSheet.CreateGeometryIntent(oDrawingCurve)
+
+    Call oLeaderPoints.Add(oGeometryIntent)
+    
+    Dim oWeldingSymDefs As DrawingWeldingSymbolDefinitions
+    oWeldingSymDefs = oActiveSheet.WeldingSymbols.CreateDefinitions()
+   
+    Dim oWeldingSymDef As DrawingWeldingSymbolDefinition
+    oWeldingSymDef = oWeldingSymDefs.Add(1)
+     
+    <span style="color:blue">' Specify the weld symbol type(WeldSymbolTypeEnum/BackingSymbolTypeEnum)</span>
+    oWeldingSymDef.WeldSymbolOne.WeldSymbolType = BackingSymbolTypeEnum.kConsumableInsertANSI
+    oWeldingSymDef.WeldSymbolTwo.WeldSymbolType = WeldSymbolTypeEnum.kNoneWeldSymbolType
+    oWeldingSymDef.ClosedNoteTail = True
+    oWeldingSymDef.FieldWeldingSymbol = True
+    
+    <span style="color:blue">' Create the symbol with a leader</span>
+    Dim oSymbol As DrawingWeldingSymbol
+    oSymbol = oActiveSheet.WeldingSymbols.Add(oLeaderPoints, oWeldingSymDefs)</pre>
+      </div>
+    </div><br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(DrawingWeldingSymbolCreation%20Sample%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

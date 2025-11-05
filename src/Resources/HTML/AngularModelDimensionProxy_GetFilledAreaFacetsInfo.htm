@@ -1,0 +1,125 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/AngularModelDimensionProxy_GetFilledAreaFacetsInfo.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="AngularModelDimensionProxy_GetFilledAreaFacetsInfo">
+    <meta name="description" content="AngularModelDimensionProxy.GetFilledAreaFacetsInfo Method">
+    <meta name="topicid" content="AngularModelDimensionProxy_GetFilledAreaFacetsInfo">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>AngularModelDimensionProxy.GetFilledAreaFacetsInfo Method</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">AngularModelDimensionProxy.GetFilledAreaFacetsInfo Method</h1>
+
+          Parent Object: <a href="AngularModelDimensionProxy.htm">AngularModelDimensionProxy</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Returns facets’ coordinates of the filled areas of the annotation.</p>
+    <h2 class="api">
+          Syntax
+        </h2>
+        
+            AngularModelDimensionProxy.<b>GetFilledAreaFacetsInfo</b>( <b><i>Camera</i></b> As <a href="Camera.htm">Camera</a>, <b><i>TextVertexCount</i></b> As Long, <b><i>TextFacetCount</i></b> As Long, <b><i>TextVertexCoordinates</i></b>() As Double, <b><i>TextVertexIndices</i></b>() As Long, <b><i>SymbolVertexCount</i></b> As Long, <b><i>SymbolFacetCount</i></b> As Long, <b><i>SymbolVertexCoordinates</i></b>() As Double, <b><i>SymbolVertexIndices</i></b>() As Long )
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">Camera</td>
+        <td class="api-list"><a href="Camera.htm">Camera</a></td>
+        <td class="api-list">Input Camera object that specifies the view orientation. This can either be a transient Camera object or that got from View object etc.. And the camera properties can be changed but not applied.</td>
+      </tr>
+      <tr>
+        <td class="api-list">TextVertexCount</td>
+        <td class="api-list">Long</td>
+        <td class="api-list">Output Long value that indicates vertex count of filled texts.</td>
+      </tr>
+      <tr>
+        <td class="api-list">TextFacetCount</td>
+        <td class="api-list">Long</td>
+        <td class="api-list">Output Long value that indicates facet count of filled texts.</td>
+      </tr>
+      <tr>
+        <td class="api-list">TextVertexCoordinates</td>
+        <td class="api-list">Double</td>
+        <td class="api-list">Output array of Doubles that indicates the vertices coordinates of the filled texts. The array is a single dimension array containing sequential x, y, z values.</td>
+      </tr>
+      <tr>
+        <td class="api-list">TextVertexIndices</td>
+        <td class="api-list">Long</td>
+        <td class="api-list">Output array of Longs that are used as index values to index into the filled text vertex coordinate list. The first coordinate in the vertex coordinate list is index 1. Using vertex indices allows vertex coordinates to be reused by more than one triangle, thus reducing the overall resources required to define the entire mesh.</td>
+      </tr>
+      <tr>
+        <td class="api-list">SymbolVertexCount</td>
+        <td class="api-list">Long</td>
+        <td class="api-list">Output Long value that indicates vertex count of filled symbols.</td>
+      </tr>
+      <tr>
+        <td class="api-list">SymbolFacetCount</td>
+        <td class="api-list">Long</td>
+        <td class="api-list">Output Long value that indicates facet count of filled symbols.</td>
+      </tr>
+      <tr>
+        <td class="api-list">SymbolVertexCoordinates</td>
+        <td class="api-list">Double</td>
+        <td class="api-list">Output array of Doubles that indicates the vertices coordinates of the filled symbols. The array is a single dimension array containing sequential x, y, z values.</td>
+      </tr>
+      <tr>
+        <td class="api-list">SymbolVertexIndices</td>
+        <td class="api-list">Long</td>
+        <td class="api-list">Output array of Longs that are used as index values to index into the filled symbol vertex coordinate list. The first coordinate in the vertex coordinate list is index 1. Using vertex indices allows vertex coordinates to be reused by more than one triangle, thus reducing the overall resources required to define the entire mesh.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2018<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(AngularModelDimensionProxy.GetFilledAreaFacetsInfo%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

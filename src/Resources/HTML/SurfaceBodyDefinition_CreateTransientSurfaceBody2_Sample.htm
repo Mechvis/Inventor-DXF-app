@@ -1,0 +1,296 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/SurfaceBodyDefinition_CreateTransientSurfaceBody2_Sample.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="SurfaceBodyDefinition_CreateTransientSurfaceBody2_Sample">
+    <meta name="description" content="Transient surface body creation Sample">
+    <meta name="topicid" content="SurfaceBodyDefinition_CreateTransientSurfaceBody2_Sample">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>Transient surface body creation</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body><script>
+          function copyCode(language) {
+          // Get the pre element for the specified language.
+          var preElement = document.getElementById(language);
+
+          // Get the text from the element and copy it to the clipboard.
+          var preText = preElement.innerText;
+
+          var isIE = /*@cc_on!@*/false || !!document.documentMode;
+
+          if (isIE)
+          {
+            window.clipboardData.setData('Text', preText);
+          }
+          else
+          {
+            navigator.clipboard.writeText(preText);
+          }
+
+          //alert("Code copied to clipboard");
+          }
+        </script><link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">Transient surface body creation</h1>
+    <h2 class="api">
+          Description
+        </h2>The following sample demonstrates the creation of a transient surface body consisting of a single rectangular face. The body is created in transient space and then copied over to a part document as a base feature.<h2 class="api">
+          Code Samples
+        </h2>
+    <div id="tabs">
+      <ul>
+        <li><a href="#VBA">VBA</a></li>
+        <li><a href="#iLogic">iLogic</a></li>
+      </ul>
+      <div id="VBA" class="api-code">
+        <table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('VBA_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="VBA_code">Public Sub CreateRectangleFace()
+    Dim oTransBRep As TransientBRep
+    Set oTransBRep = ThisApplication.TransientBRep
+
+    Dim oSurfaceBodyDef As SurfaceBodyDefinition
+    Set oSurfaceBodyDef = oTransBRep.CreateSurfaceBodyDefinition
+
+    <span style="color:blue">' Create a lump.</span>
+    Dim oLumpDef As LumpDefinition
+    Set oLumpDef = oSurfaceBodyDef.LumpDefinitions.Add
+
+    <span style="color:blue">' Create a shell.</span>
+    Dim oShell As FaceShellDefinition
+    Set oShell = oLumpDef.FaceShellDefinitions.Add
+
+    Dim oTG As TransientGeometry
+    Set oTG = ThisApplication.TransientGeometry
+
+    <span style="color:blue">' Create transient points representing the four corners.</span>
+    Dim oPoint1 As Point
+    Set oPoint1 = oTG.CreatePoint(-1, -1, 1)
+    Dim oPoint2 As Point
+    Set oPoint2 = oTG.CreatePoint(1, -1, 1)
+    Dim oPoint3 As Point
+    Set oPoint3 = oTG.CreatePoint(1, 1, 1)
+    Dim oPoint4 As Point
+    Set oPoint4 = oTG.CreatePoint(-1, 1, 1)
+
+    <span style="color:blue">' Create the Vertices.</span>
+    Dim oVertex1 As VertexDefinition
+    Set oVertex1 = oSurfaceBodyDef.VertexDefinitions.Add(oPoint1)
+    Dim oVertex2 As VertexDefinition
+    Set oVertex2 = oSurfaceBodyDef.VertexDefinitions.Add(oPoint2)
+    Dim oVertex3 As VertexDefinition
+    Set oVertex3 = oSurfaceBodyDef.VertexDefinitions.Add(oPoint3)
+    Dim oVertex4 As VertexDefinition
+    Set oVertex4 = oSurfaceBodyDef.VertexDefinitions.Add(oPoint4)
+
+    <span style="color:blue">' Create each of the edges, as defined by a line segment.</span>
+    Dim oLineSeg As LineSegment
+    Set oLineSeg = oTG.CreateLineSegment(oPoint1, oPoint2)
+
+    Dim oEdgeDef1 As EdgeDefinition
+    Set oEdgeDef1 = oSurfaceBodyDef.EdgeDefinitions.Add(oVertex1, oVertex2, oLineSeg)
+
+    Set oLineSeg = oTG.CreateLineSegment(oPoint2, oPoint3)
+
+    Dim oEdgeDef2 As EdgeDefinition
+    Set oEdgeDef2 = oSurfaceBodyDef.EdgeDefinitions.Add(oVertex2, oVertex3, oLineSeg)
+
+    Set oLineSeg = oTG.CreateLineSegment(oPoint3, oPoint4)
+
+    Dim oEdgeDef3 As EdgeDefinition
+    Set oEdgeDef3 = oSurfaceBodyDef.EdgeDefinitions.Add(oVertex3, oVertex4, oLineSeg)
+
+    Set oLineSeg = oTG.CreateLineSegment(oPoint4, oPoint1)
+
+    Dim oEdgeDef4 As EdgeDefinition
+    Set oEdgeDef4 = oSurfaceBodyDef.EdgeDefinitions.Add(oVertex4, oVertex1, oLineSeg)
+
+    <span style="color:blue">' Create the face as a planar face.</span>
+    Dim oFaceDef As FaceDefinition
+    Set oFaceDef = oShell.FaceDefinitions.Add(oTG.CreatePlane( _
+                                              oTG.CreatePoint(0, 0, 1), _
+                                              oTG.CreateVector(0, 0, 1)), False)
+
+    <span style="color:blue">' Create the loop.</span>
+    Dim oEdgeLoop As EdgeLoopDefinition
+    Set oEdgeLoop = oFaceDef.EdgeLoopDefinitions.Add
+
+    <span style="color:blue">' Define each of the edge uses of the loop using the previously defined edges.</span>
+    Call oEdgeLoop.EdgeUseDefinitions.Add(oEdgeDef1, False)
+    Call oEdgeLoop.EdgeUseDefinitions.Add(oEdgeDef2, False)
+    Call oEdgeLoop.EdgeUseDefinitions.Add(oEdgeDef3, False)
+    Call oEdgeLoop.EdgeUseDefinitions.Add(oEdgeDef4, False)
+
+    <span style="color:blue">' Create a transient body.</span>
+    Dim oErrors As NameValueMap
+    Dim oNewBody As SurfaceBody
+    Set oNewBody = oSurfaceBodyDef.CreateTransientSurfaceBody(oErrors)
+
+    <span style="color:blue">' Create a non-parametric base feature based on the transient body.</span>
+    Dim oDoc As PartDocument
+    Set oDoc = ThisApplication.Documents.Add(kPartDocumentObject)
+
+    Dim oDef As PartComponentDefinition
+    Set oDef = oDoc.ComponentDefinition
+
+    Dim oFeatureDef As NonParametricBaseFeatureDefinition
+    Set oFeatureDef = oDef.Features.NonParametricBaseFeatures.CreateDefinition
+
+    Dim oCollection As ObjectCollection
+    Set oCollection = ThisApplication.TransientObjects.CreateObjectCollection
+
+    oCollection.Add oNewBody
+
+    oFeatureDef.BRepEntities = oCollection
+    oFeatureDef.OutputType = kSurfaceOutputType
+
+    Dim oBaseFeature As NonParametricBaseFeature
+    Set oBaseFeature = oDef.Features.NonParametricBaseFeatures.AddByDefinition(oFeatureDef)
+End Sub</pre>
+      </div>
+      <div id="iLogic" class="api-code">
+        <table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('iLogic_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="iLogic_code">    Dim oTransBRep As TransientBRep
+    oTransBRep = ThisApplication.TransientBRep
+
+    Dim oSurfaceBodyDef As SurfaceBodyDefinition
+    oSurfaceBodyDef = oTransBRep.CreateSurfaceBodyDefinition
+
+    <span style="color:blue">' Create a lump.</span>
+    Dim oLumpDef As LumpDefinition
+    oLumpDef = oSurfaceBodyDef.LumpDefinitions.Add
+
+    <span style="color:blue">' Create a shell.</span>
+    Dim oShell As FaceShellDefinition
+    oShell = oLumpDef.FaceShellDefinitions.Add
+
+    Dim oTG As TransientGeometry
+    oTG = ThisApplication.TransientGeometry
+
+    <span style="color:blue">' Create transient points representing the four corners.</span>
+    Dim oPoint1 As Point
+    oPoint1 = oTG.CreatePoint(-1, -1, 1)
+    Dim oPoint2 As Point
+    oPoint2 = oTG.CreatePoint(1, -1, 1)
+    Dim oPoint3 As Point
+    oPoint3 = oTG.CreatePoint(1, 1, 1)
+    Dim oPoint4 As Point
+    oPoint4 = oTG.CreatePoint(-1, 1, 1)
+
+    <span style="color:blue">' Create the Vertices.</span>
+    Dim oVertex1 As VertexDefinition
+    oVertex1 = oSurfaceBodyDef.VertexDefinitions.Add(oPoint1)
+    Dim oVertex2 As VertexDefinition
+    oVertex2 = oSurfaceBodyDef.VertexDefinitions.Add(oPoint2)
+    Dim oVertex3 As VertexDefinition
+    oVertex3 = oSurfaceBodyDef.VertexDefinitions.Add(oPoint3)
+    Dim oVertex4 As VertexDefinition
+    oVertex4 = oSurfaceBodyDef.VertexDefinitions.Add(oPoint4)
+
+    <span style="color:blue">' Create each of the edges, as defined by a line segment.</span>
+    Dim oLineSeg As LineSegment
+    oLineSeg = oTG.CreateLineSegment(oPoint1, oPoint2)
+
+    Dim oEdgeDef1 As EdgeDefinition
+    oEdgeDef1 = oSurfaceBodyDef.EdgeDefinitions.Add(oVertex1, oVertex2, oLineSeg)
+
+    oLineSeg = oTG.CreateLineSegment(oPoint2, oPoint3)
+
+    Dim oEdgeDef2 As EdgeDefinition
+    oEdgeDef2 = oSurfaceBodyDef.EdgeDefinitions.Add(oVertex2, oVertex3, oLineSeg)
+
+    oLineSeg = oTG.CreateLineSegment(oPoint3, oPoint4)
+
+    Dim oEdgeDef3 As EdgeDefinition
+    oEdgeDef3 = oSurfaceBodyDef.EdgeDefinitions.Add(oVertex3, oVertex4, oLineSeg)
+
+    oLineSeg = oTG.CreateLineSegment(oPoint4, oPoint1)
+
+    Dim oEdgeDef4 As EdgeDefinition
+    oEdgeDef4 = oSurfaceBodyDef.EdgeDefinitions.Add(oVertex4, oVertex1, oLineSeg)
+
+    <span style="color:blue">' Create the face as a planar face.</span>
+    Dim oFaceDef As FaceDefinition
+    oFaceDef = oShell.FaceDefinitions.Add(oTG.CreatePlane( _
+                                              oTG.CreatePoint(0, 0, 1), _
+                                              oTG.CreateVector(0, 0, 1)), False)
+
+    <span style="color:blue">' Create the loop.</span>
+    Dim oEdgeLoop As EdgeLoopDefinition
+    oEdgeLoop = oFaceDef.EdgeLoopDefinitions.Add
+
+    <span style="color:blue">' Define each of the edge uses of the loop using the previously defined edges.</span>
+    Call oEdgeLoop.EdgeUseDefinitions.Add(oEdgeDef1, False)
+    Call oEdgeLoop.EdgeUseDefinitions.Add(oEdgeDef2, False)
+    Call oEdgeLoop.EdgeUseDefinitions.Add(oEdgeDef3, False)
+    Call oEdgeLoop.EdgeUseDefinitions.Add(oEdgeDef4, False)
+
+    <span style="color:blue">' Create a transient body.</span>
+    Dim oErrors As NameValueMap
+    Dim oNewBody As SurfaceBody
+    oNewBody = oSurfaceBodyDef.CreateTransientSurfaceBody(oErrors)
+
+    <span style="color:blue">' Create a non-parametric base feature based on the transient body.</span>
+    Dim oDoc As PartDocument
+    oDoc = ThisApplication.Documents.Add(kPartDocumentObject)
+
+    Dim oDef As PartComponentDefinition
+    oDef = oDoc.ComponentDefinition
+
+    Dim oFeatureDef As NonParametricBaseFeatureDefinition
+    oFeatureDef = oDef.Features.NonParametricBaseFeatures.CreateDefinition
+
+    Dim oCollection As ObjectCollection
+    oCollection = ThisApplication.TransientObjects.CreateObjectCollection
+
+    oCollection.Add(oNewBody)
+
+    oFeatureDef.BRepEntities = oCollection
+    oFeatureDef.OutputType = kSurfaceOutputType
+
+    Dim oBaseFeature As NonParametricBaseFeature
+    oBaseFeature = oDef.Features.NonParametricBaseFeatures.AddByDefinition(oFeatureDef)</pre>
+      </div>
+    </div><br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(SurfaceBodyDefinition_CreateTransientSurfaceBody2%20Sample%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

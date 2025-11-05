@@ -1,0 +1,102 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/DimensionStyle_SetHoleThreadNoteOptionValue.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="DimensionStyle_SetHoleThreadNoteOptionValue">
+    <meta name="description" content="DimensionStyle.SetHoleThreadNoteOptionValue Method">
+    <meta name="topicid" content="DimensionStyle_SetHoleThreadNoteOptionValue">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>DimensionStyle.SetHoleThreadNoteOptionValue Method</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">DimensionStyle.SetHoleThreadNoteOptionValue Method</h1>
+
+          Parent Object: <a href="DimensionStyle.htm">DimensionStyle</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Sets the option value for hole thread notes.</p>
+    <h2 class="api">
+          Syntax
+        </h2>
+        
+            DimensionStyle.<b>SetHoleThreadNoteOptionValue</b>( <b><i>HoleThreadType</i></b> As String, <b><i>OptionName</i></b> As String, <b><i>OptionValue</i></b> As Variant, [<b><i>ApplyToAll</i></b>] As Variant )
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">HoleThreadType</td>
+        <td class="api-list">String</td>
+        <td class="api-list">Input String value that specifies a hole or thread type. The HoleThreadTypeList can return the hole and thread type list for this argument to use. The English-based hole or thread type can always be used as valid input for this argument(like “Thru” or “Thru Counterbore” etc.).</td>
+      </tr>
+      <tr>
+        <td class="api-list">OptionName</td>
+        <td class="api-list">String</td>
+        <td class="api-list">Input String value that specifies an option name. Below are valid option names and value types:
+<Br/><Br/>
+OptionName = RightHandedThread. Value = Boolean that indicates whether to display the RH for right handed thread or not.</td>
+      </tr>
+      <tr>
+        <td class="api-list">OptionValue</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Input value that specifies an option value. Refer to OptionName to find the value type to set for an option.</td>
+      </tr>
+      <tr>
+        <td class="api-list">ApplyToAll</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional input Boolean that specifies whether the value change should be applied to all the hole and thread types. If not provided this default to False.<br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2025<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(DimensionStyle.SetHoleThreadNoteOptionValue%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

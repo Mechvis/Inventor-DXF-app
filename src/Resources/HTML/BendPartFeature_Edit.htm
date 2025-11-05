@@ -1,0 +1,260 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/BendPartFeature_Edit.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="BendPartFeature_Edit">
+    <meta name="description" content="BendPartFeature.Edit Method">
+    <meta name="topicid" content="BendPartFeature_Edit">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>BendPartFeature.Edit Method</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">BendPartFeature.Edit Method</h1>
+
+          Parent Object: <a href="BendPartFeature.htm">BendPartFeature</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Method that edits the bend part feature using the new inputs.</p>
+    <h2 class="api">
+          Syntax
+        </h2>
+        
+            BendPartFeature.<b>Edit</b>( <b><i>BendLine</i></b> As <a href="SketchLine.htm">SketchLine</a>, <b><i>BendPartType</i></b> As <a href="BendPartTypeEnum.htm">BendPartTypeEnum</a>, <b><i>InputOne</i></b> As Variant, <b><i>InputTwo</i></b> As Variant, <b><i>BendSide</i></b> As <a href="PartFeatureExtentDirectionEnum.htm">PartFeatureExtentDirectionEnum</a>, <b><i>BendInSketchNormalDirection</i></b> As Boolean, [<b><i>Body</i></b>] As Variant, [<b><i>BendMinimum</i></b>] As Boolean )
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">BendLine</td>
+        <td class="api-list"><a href="SketchLine.htm">SketchLine</a></td>
+        <td class="api-list">Input SketchLine object that represents the bend line.</td>
+      </tr>
+      <tr>
+        <td class="api-list">BendPartType</td>
+        <td class="api-list"><a href="BendPartTypeEnum.htm">BendPartTypeEnum</a></td>
+        <td class="api-list"><p>Input constant that indicates the type of the bend part feature.<p> 
+<p> The BendPartType argument specifies the type of the input values used to define the bend arc. The values specified for the InputOne and InputTwo arguments will depend on the value specified for this argument.</p>
+ <p>The valid input is one of the constants in BendPartTypeEnum: kArcLengthAndAngleBendPart, kRadiusAndAngleBendPart and kRadiusAndArcLengthBendPart.</p> 
+ 
+ <p>The following table describes how this argument determines the values that need to be specified for the InputOne and InputTwo arguments:</p>
+ <table class="list" style="width:500px;">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<tr class="header">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<td class="list" style="width:50%">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BendPartType
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<td class="list" style="width:25%">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;InputOne
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<td class="list" style="width:25%">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;InputOne
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tr>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<tr>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<td class="list">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;kArcLengthAndAngleBendPart
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<td class="list">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Arc Length
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<td class="list">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Angle
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tr>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<tr>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<td class="list">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;kRadiusAndAngleBendPart 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<td class="list">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Radius
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<td class="list">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Angle
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tr>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<tr>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<td class="list">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;kRadiusAndArcLengthBendPart&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<td class="list">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Radius
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<td class="list">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Arc Length
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tr></table>
+ 
+ <p></p>For example, if kArcLengthAndAngleBendPart is specified for this argument, then the arc length value should be specified in the InputOne argument and the angle value should be specified in the InputTwo argument.</p></td>
+      </tr>
+      <tr>
+        <td class="api-list">InputOne</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list"><p>Input Variant that defines the first input for the bend arc.</p>
+<p>The InputOne parameter can be either a numeric value or a string. A parameter for this value will be created and the supplied string or value is assigned to the parameter.</p>
+<p>The type of the input value will be determined by the BendPartType argument. The following table shows what this input value should be based on the BendPartType argument:</p>
+
+ <table class="list" style="width:400px;">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<tr class="header">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<td class="list" style="width:50%">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BendPartType
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<td class="list" style="width:25%">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;InputOne
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tr>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<tr>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<td class="list">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;kArcLengthAndAngleBendPart
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<td class="list">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Arc Length
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tr>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<tr>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<td class="list">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;kRadiusAndAngleBendPart 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<td class="list">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Radius
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tr>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<tr>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<td class="list">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;kRadiusAndArcLengthBendPart&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<td class="list">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Radius
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tr></table>
+ 
+ <p>For example, if the bend is defined using the arc length and angle as indicated by the BendPartType argument being kArcLengthAndAngleBendPart, then this argument should be used to specify the arc length of the bend arc. Similarly, if the bend is defined using the radius and angle as indicated by the BendPartType argument being kRadiusAndAngleBendPart, then this argument should be used to specify the radius of the bend arc.</p>
+ <p>If a value is input, the units are the default database units (centimeters for distance and radians for angle). If a string is input, the units can be specified as part of the string or it will default to the current unit type for the document.</p></td>
+      </tr>
+      <tr>
+        <td class="api-list">InputTwo</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list"><p>Input Variant that defines the second input for the bend arc. </p>
+ <p>The InputTwo parameter can be either a numeric value or a string. A parameter for this value will be created and the supplied string or value is assigned to the parameter.</p> 
+ <p>The type of the input value will be determined by the BendPartType argument. The following table shows what this input value should be based on the BendPartType argument:</p>
+
+<table class="list" style="width:400px;">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<tr class="header">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<td class="list" style="width:50%">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BendPartType
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<td class="list" style="width:25%">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;InputTwo
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tr>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<tr>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<td class="list">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;kArcLengthAndAngleBendPart
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<td class="list">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Angle
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tr>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<tr>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<td class="list">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;kRadiusAndAngleBendPart 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<td class="list">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Angle
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tr>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<tr>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<td class="list">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;kRadiusAndArcLengthBendPart&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<td class="list">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Arc Length
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tr></table>
+ 
+<p>For example, if the bend is defined using the arc length and angle as indicated by the BendPartType argument being kArcLengthAndAngleBendPart, then this argument should be used to specify the angle of the bend arc. Similarly, if the bend is defined using the radius and arc length as indicated by the BendPartType argument being kRadiusAndArcLengthBendPart, then this argument should be used to specify the arc length of the bend arc. If a value is input, the units are the default database units (centimeters for distance and radians for angle). If a string is input, the units can be specified as part of the string or it will default to the current unit type for the document.</p></td>
+      </tr>
+      <tr>
+        <td class="api-list">BendSide</td>
+        <td class="api-list"><a href="PartFeatureExtentDirectionEnum.htm">PartFeatureExtentDirectionEnum</a></td>
+        <td class="api-list"><p>Input constant that indicates which side of the model to bend.</p>
+<p>The bend side is specified with respect to the input bend line (sketch line), i.e. whether the model to the left, right or both sides of the bend line should be bent. The left side is the natural normal direction at any point on the sketch line (the cross-product of the vector representing the direction of the sketch line and the vector representing the sketch normal). The right side refers to the direction opposite to that of the natural normal. The following figure demonstrates an example of how the bend side is determined based on the normal direction of the sketch line.</p>
+
+<center>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="../images/bendpartfeatures_add.png" /></center>
+ 
+ <p>The figure represents a model in which a sketch plane has been drawn on the rectangular side face. The sketch plane consists of a single sketch line which represents the bend line. The sketch plane normal direction is perpendicular to the face and coming out of the model. The direction of the sketch line which can be inferred from the start point and end points of the sketch line is towards the right. Therefore, the normal vector at any point on the sketch line is pointing in the downward direction (imagine standing on the normal side of the sketch plane and viewing in the direction of the sketch line, the normal of the sketch line will be towards your right). For the bend part feature, the left side of the bend corresponds to this normal direction of the sketch line. As indicated by the preview in the figure, when the left side is specified, the model in the normal direction of the sketch line is selected for the bend.</p> 
+ <p>The valid input is one of the constants in PartFeatureExtentDirectionEnum: kNegativeExtentDirection, kPositiveExtentDirection or kSymmetricExtentDirection.</p>
+ <ul>
+&nbsp;<li>If kNegativeExtentDirection is specified, the model on the left side of the input bend line will be bent.</li>
+&nbsp;<li>If kPositiveExtentDirection is specified, the model on the right side of the input bend line will be bent.</li>
+&nbsp;<li>If kSymmetricExtentDirection is specified, the model on both sides of the input bend line will be bent.</li>
+&nbsp;</ul></td>
+      </tr>
+      <tr>
+        <td class="api-list">BendInSketchNormalDirection</td>
+        <td class="api-list">Boolean</td>
+        <td class="api-list">Input boolean that indicates the bend direction. If True is specified, the model will be bent in the direction normal to the sketch on which the input bend line (sketch line) exists. If False is specified, the model will be bent in the direction opposite to the sketch normal. If no value is explicitly specified, the default value of True will be used.</td>
+      </tr>
+      <tr>
+        <td class="api-list">Body</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional input SurfaceBody object that specifies the solid body to bend.&nbsp;If not specified, the body used for creating the feature is used.<br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+      <tr>
+        <td class="api-list">BendMinimum</td>
+        <td class="api-list">Boolean</td>
+        <td class="api-list">Optional Input boolean that indicates whether minimum bend should be applied. If True is specified, minium bend will be applied. If no value is explicitly specified, the default value of True will be used.<br /><br /> This is an optional argument whose default value is True.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2010<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(BendPartFeature.Edit%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

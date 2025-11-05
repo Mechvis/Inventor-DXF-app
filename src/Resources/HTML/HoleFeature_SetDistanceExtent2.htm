@@ -1,0 +1,101 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/HoleFeature_SetDistanceExtent2.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="HoleFeature_SetDistanceExtent2">
+    <meta name="description" content="HoleFeature.SetDistanceExtent2 Method">
+    <meta name="topicid" content="HoleFeature_SetDistanceExtent2">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>HoleFeature.SetDistanceExtent2 Method</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">HoleFeature.SetDistanceExtent2 Method</h1>
+
+          Parent Object: <a href="HoleFeature.htm">HoleFeature</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Method that specifies the termination type for the hole feature. Hole features can be specified to terminate at a particular distance or object, or can be specified as through all, which means it extends through all faces of the feature. This method defines th.</p>
+    <h2 class="api">
+          Syntax
+        </h2>
+        
+            HoleFeature.<b>SetDistanceExtent2</b>( <b><i>Depth</i></b> As Variant, <b><i>ExtentDirection</i></b> As <a href="PartFeatureExtentDirectionEnum.htm">PartFeatureExtentDirectionEnum</a>, [<b><i>DrillPointType</i></b>] As Variant, [<b><i>BottomTipAngle</i></b>] As Variant )
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">Depth</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Input Variant that specifies the depth to which to extend the hole feature.&nbsp;This can be either a numeric value or a string.&nbsp;A parameter for this value will be created and the supplied string or value is assigned to the parameter.&nbsp;If a value is input, the units are centimeters.&nbsp;If a string is input, the units can be specified as part of the string or it will default to the current length units of the document.</td>
+      </tr>
+      <tr>
+        <td class="api-list">ExtentDirection</td>
+        <td class="api-list"><a href="PartFeatureExtentDirectionEnum.htm">PartFeatureExtentDirectionEnum</a></td>
+        <td class="api-list">Input constant that indicates which side of the sketch plane to extrude towards.&nbsp;Valid input is kPositive, kNegative, or kSymmetric.&nbsp;kPositive defines the offset direction to be in the same direction as the normal of the sketch plane.</td>
+      </tr>
+      <tr>
+        <td class="api-list">DrillPointType</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional input DrillPointTypeEnum that specifies the drill point of the hole.&nbsp;If specifies an angled drill point then the BottomTipAngle argument needs to be provided to specify the angle.&nbsp;The default value is kFlatDrillPointType.<br /><br /> This is an optional argument whose default value is 126977.</td>
+      </tr>
+      <tr>
+        <td class="api-list">BottomTipAngle</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional input Variant that defines the angle of the tip at the bottom of a hole. This argument is only used when the DrillPointType argument is kAngledDrillPointType, kAngledVDrillPointType or kAngledYDrillPointType.&nbsp;If this argument is not supplied a default value of 118 degrees is assigned.&nbsp;<Br/><Br/>
+This can be either a numeric value or a string.&nbsp;A parameter for this value will be created and the supplied string or value is assigned to the parameter.&nbsp;If a value is input, the units are radians.&nbsp;If a string is input, the units can be specified as part of the string or it will default to the current angle units of the document.<br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2025<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(HoleFeature.SetDistanceExtent2%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

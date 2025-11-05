@@ -1,0 +1,92 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/TransientBRep_DeleteFaces.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="TransientBRep_DeleteFaces">
+    <meta name="description" content="TransientBRep.DeleteFaces Method">
+    <meta name="topicid" content="TransientBRep_DeleteFaces">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>TransientBRep.DeleteFaces Method</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">TransientBRep.DeleteFaces Method</h1>
+
+          Parent Object: <a href="TransientBRep.htm">TransientBRep</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Method that modifies an existing transient surface body by deleting specified faces.</p>
+    <h2 class="api">
+            Remarks
+          </h2>This method allows you to either delete or save a list of specified faces. If you don't want the original SurfaceBody to be modified you can use the TransientBRep.Copy method to create a copy of the body to use as input.<h2 class="api">
+          Syntax
+        </h2>
+        
+            TransientBRep.<b>DeleteFaces</b>( <b><i>Faces</i></b> As Object, <b><i>DeleteSpecifiedFaces</i></b> As Boolean )
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">Faces</td>
+        <td class="api-list">Object</td>
+        <td class="api-list">Input Object to specifies the Face object(s) to either delete or save. This argument can be a single Face object or it can be a FaceCollection to specify more than one face. Depending on the value of the second argument these faces will be deleted or saved in the SurfaceBody. If a FaceCollection is provided as input all of the input faces must exist within the same transient SurfaceBody object.</td>
+      </tr>
+      <tr>
+        <td class="api-list">DeleteSpecifiedFaces</td>
+        <td class="api-list">Boolean</td>
+        <td class="api-list">Input Boolean that indicates if the face(s) specified in the Faces argument should be deleted or saved. If True, then the specified face(s) will be deleted from the SurfaceBody. If False, the specified face(s) will be saved and all other faces in the SurfaceBody will be deleted.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2009<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(TransientBRep.DeleteFaces%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,165 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/Plane.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="Plane">
+    <meta name="description" content="Plane Object">
+    <meta name="topicid" content="GUID-Plane">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>Plane Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">Plane Object
+			</h1><br><h2 class="api">
+          Description
+        </h2>The Plane object. A plane object is infinite. The object created is a transient mathematical object and is not displayed graphically. For more information, see the Transient Geometry article in the overviews section.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Plane_Copy.htm">Copy</a></td>
+        <td class="api-list">Creates a copy of this Plane object.&nbsp;The result is entirely independent and can be edited without affecting the original Plane object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Plane_DistanceTo.htm">DistanceTo</a></td>
+        <td class="api-list">Determine the distance between this plane and the specified point.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Plane_GetPlaneData.htm">GetPlaneData</a></td>
+        <td class="api-list">Method that gets the data defining this plane.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Plane_IntersectWithCurve.htm">IntersectWithCurve</a></td>
+        <td class="api-list">Gets the intersection points of the Plane and the input curve. Note that 3D transient geometry should be supplied. Obtain 3D transient geometry from any sktech entities or 2D geometry before calling this method (for example, by calling the Geometry method of the entity).</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Plane_IntersectWithLine.htm">IntersectWithLine</a></td>
+        <td class="api-list">Compute the intersection point of this Plane and the specified Line. If the Plane and the Line are parallel, this method will fail.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Plane_IntersectWithPlane.htm">IntersectWithPlane</a></td>
+        <td class="api-list">Compute the intersection line of this Plane and the specified Plane. If the two Planes are parallel, this method will fail.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Plane_IntersectWithSurface.htm">IntersectWithSurface</a></td>
+        <td class="api-list">Gets the intersection curves and points between the plane and the input surface.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Plane_PutPlaneData.htm">PutPlaneData</a></td>
+        <td class="api-list">Method that sets the data defining this plane.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Plane_Evaluator.htm">Evaluator</a></td>
+        <td class="api-list">Gets the surface evaluator for this plane.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Plane_IsCoplanarTo.htm">IsCoplanarTo</a></td>
+        <td class="api-list">Property that gets whether this Plane is coplanar with the specified Plane.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Plane_IsParallelTo.htm">IsParallelTo</a></td>
+        <td class="api-list">Property that gets whether this Plane is parallel to the specified Line or Plane.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Plane_IsPerpendicularTo.htm">IsPerpendicularTo</a></td>
+        <td class="api-list">Determine if this Plane is perpendicular to the specified Line or Plane.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Plane_Normal.htm">Normal</a></td>
+        <td class="api-list">Property that indicates the vector for a specific normal in the set.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Plane_RootPoint.htm">RootPoint</a></td>
+        <td class="api-list">Gets the root point for this plane.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="AnnotationPlaneDefinition_Plane.htm">AnnotationPlaneDefinition.Plane</a>, <a href="DesignViewRepresentation_GetSectionViewInfo.htm">DesignViewRepresentation.GetSectionViewInfo</a>, <a href="DimensionConstraint3D_DimensionPlane.htm">DimensionConstraint3D.DimensionPlane</a>, <a href="DimensionConstraints3D_GetDimensionPlane.htm">DimensionConstraints3D.GetDimensionPlane</a>, <a href="GroundPlaneSettings_Plane.htm">GroundPlaneSettings.Plane</a>, <a href="LineLengthDimConstraint3D_DimensionPlane.htm">LineLengthDimConstraint3D.DimensionPlane</a>, <a href="LineLengthDimConstraint3DProxy_DimensionPlane.htm">LineLengthDimConstraint3DProxy.DimensionPlane</a>, <a href="PlanarSketch_PlanarEntityGeometry.htm">PlanarSketch.PlanarEntityGeometry</a>, <a href="PlanarSketchProxy_PlanarEntityGeometry.htm">PlanarSketchProxy.PlanarEntityGeometry</a>, <a href="Plane_Copy.htm">Plane.Copy</a>, <a href="PointAndPlaneDistanceDimConstraint3D_DimensionPlane.htm">PointAndPlaneDistanceDimConstraint3D.DimensionPlane</a>, <a href="PointAndPlaneDistanceDimConstraint3DProxy_DimensionPlane.htm">PointAndPlaneDistanceDimConstraint3DProxy.DimensionPlane</a>, <a href="PointCloudPlane_Geometry.htm">PointCloudPlane.Geometry</a>, <a href="PointCloudPlane_GetPlaneRectangle.htm">PointCloudPlane.GetPlaneRectangle</a>, <a href="PointCloudPlaneProxy_Geometry.htm">PointCloudPlaneProxy.Geometry</a>, <a href="PointCloudPlaneProxy_GetPlaneRectangle.htm">PointCloudPlaneProxy.GetPlaneRectangle</a>, <a href="RadiusDimConstraint3D_DimensionPlane.htm">RadiusDimConstraint3D.DimensionPlane</a>, <a href="RadiusDimConstraint3DProxy_DimensionPlane.htm">RadiusDimConstraint3DProxy.DimensionPlane</a>, <a href="SketchBlockDefinition_PlanarEntityGeometry.htm">SketchBlockDefinition.PlanarEntityGeometry</a>, <a href="SketchBlockDefinitionProxy_PlanarEntityGeometry.htm">SketchBlockDefinitionProxy.PlanarEntityGeometry</a>, <a href="SplineLengthDimConstraint3D_DimensionPlane.htm">SplineLengthDimConstraint3D.DimensionPlane</a>, <a href="SplineLengthDimConstraint3DProxy_DimensionPlane.htm">SplineLengthDimConstraint3DProxy.DimensionPlane</a>, <a href="TransientGeometry_CreatePlane.htm">TransientGeometry.CreatePlane</a>, <a href="TransientGeometry_CreatePlaneByThreePoints.htm">TransientGeometry.CreatePlaneByThreePoints</a>, <a href="TwoLineAngleDimConstraint3D_DimensionPlane.htm">TwoLineAngleDimConstraint3D.DimensionPlane</a>, <a href="TwoLineAngleDimConstraint3DProxy_DimensionPlane.htm">TwoLineAngleDimConstraint3DProxy.DimensionPlane</a>, <a href="TwoPointDistanceDimConstraint3D_DimensionPlane.htm">TwoPointDistanceDimConstraint3D.DimensionPlane</a>, <a href="TwoPointDistanceDimConstraint3DProxy_DimensionPlane.htm">TwoPointDistanceDimConstraint3DProxy.DimensionPlane</a>, <a href="WorkPlane_Plane.htm">WorkPlane.Plane</a>, <a href="WorkPlaneProxy_Plane.htm">WorkPlaneProxy.Plane</a><h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="RipFeatures_Add_Sample.htm">Create sheet metal rip feature</a></td>
+        <td class="api-list">This sample demonstrates the creation of a rip sheet metal feature.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch_OffsetSketchEntitiesUsingDistance_Sample.htm">Offset a 2D sketch</a></td>
+        <td class="api-list">This sample demonstrates the creation of offsets in 2d sketches. Two ways of creating the offset are shown - one uses a distance and the other uses the input point.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SurfaceBodyDefinition_CreateTransientSurfaceBody_Sample.htm">Transient solid body creation</a></td>
+        <td class="api-list">The following sample demonstrates the creation of a transient solid block body. The newly created body is then displayed using client graphics in a part.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UserInputEventsSink_OnDrag_Sample.htm">OnDrag Event - dragging a WorkPoint</a></td>
+        <td class="api-list">This sample demonstrates the use of the OnDrag event to drag fixed work points when no command is active. This sample only allows drags parallel to the X-Y plane. This sample is dependent on events and VB only supports events within a class module.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 4<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(Plane%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

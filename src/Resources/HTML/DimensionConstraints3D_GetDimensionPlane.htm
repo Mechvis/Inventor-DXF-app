@@ -1,0 +1,104 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/DimensionConstraints3D_GetDimensionPlane.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="DimensionConstraints3D_GetDimensionPlane">
+    <meta name="description" content="DimensionConstraints3D.GetDimensionPlane Method">
+    <meta name="topicid" content="DimensionConstraints3D_GetDimensionPlane">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>DimensionConstraints3D.GetDimensionPlane Method</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">DimensionConstraints3D.GetDimensionPlane Method</h1>
+
+          Parent Object: <a href="DimensionConstraints3D.htm">DimensionConstraints3D</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Method that gets the transient dimension plane used to place and position the dimension text when a dimension constraint is applied to the specified input entities.</p>
+    <h2 class="api">
+            Remarks
+          </h2>The dimension plane is a transient geometric plane which is only used to define the placement plane for the dimension text and does not have a graphical representation. The orientation of the dimension plane will be automatically determined using the sketch entities when they are dimensioned. The dimension text will always be placed on this dimension plane. This method can be used to determine this dimension plane prior to actually creating the dimension constraint. The geometric information about the dimension plane could be used to calculate a 3D point that lies on the plane. This point can then be supplied as input for the position for the dimension text when creating the dimension constraint in which case the resultant position of the dimension text will be the same as the specified input placement point. On the other hand, if a placement point that does not lie on the dimension plane is specified as the position for the dimension text, it will be projected onto the dimension plane and the dimension text will be placed at this projected point. The following table shows the combination of the types of input objects that can be used to determine the dimension plane for the various dimension constraints. This combination matches the input types that will be supplied to actually create the corresponding dimension constraint. <table> Dimension Constraint Objects in collection ------------------------------------- ------------------------- LineLengthDimConstraint3D SketchLine3D PointAndPlaneDistanceDimConstraint3D SketchPoint3D and Face (planar) or SketchPoint3D and WorkPlane TwoLineAngleDimConstraint3D SketchLine3D and SketchLine3D TwoPointDistanceDimConstraint3D SketchPoint3D and SketchPoint3D or SketchPoint3D and Vertex or SketchPoint3D and WorkPoint </table> The collection must contain one of the combination of objects specified in the above table, otherwise the dimension plane cannot be determined. <todo /><h2 class="api">
+          Syntax
+        </h2>
+        
+            DimensionConstraints3D.<b>GetDimensionPlane</b>( <b><i>Entities</i></b> As <a href="ObjectCollection.htm">ObjectCollection</a> ) As <a href="Plane.htm">Plane</a>
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">Entities</td>
+        <td class="api-list"><a href="ObjectCollection.htm">ObjectCollection</a></td>
+        <td class="api-list">ObjectCollection that contains the entity objects that represents the entities for which the dimension plane has to be determined. The objects in this collection should normally contain the same objects that would be supplied as inputs to create a dimension constraint.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionConstraints3D_AddTwoPointDistance_Sample.htm">Create a 3D sketch dimension</a></td>
+        <td class="api-list">This sample demonstrates the creation of a 3d sketch line and a dimension between the start and the end points of the line.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 11<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(DimensionConstraints3D.GetDimensionPlane%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

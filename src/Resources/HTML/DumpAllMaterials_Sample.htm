@@ -1,0 +1,442 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/DumpAllMaterials_Sample.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="DumpAllMaterials_Sample">
+    <meta name="description" content="Write out all materials to a file. Sample">
+    <meta name="topicid" content="DumpAllMaterials_Sample">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>Write out all materials to a file.</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body><script>
+          function copyCode(language) {
+          // Get the pre element for the specified language.
+          var preElement = document.getElementById(language);
+
+          // Get the text from the element and copy it to the clipboard.
+          var preText = preElement.innerText;
+
+          var isIE = /*@cc_on!@*/false || !!document.documentMode;
+
+          if (isIE)
+          {
+            window.clipboardData.setData('Text', preText);
+          }
+          else
+          {
+            navigator.clipboard.writeText(preText);
+          }
+
+          //alert("Code copied to clipboard");
+          }
+        </script><link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">Write out all materials to a file.</h1>
+    <h2 class="api">
+          Description
+        </h2>This sample writes out information about all of the materials in all libraries.  This can be useful when trying to use the API to modify existing materials by allowing to easily see what information is available for a material.<h2 class="api">
+          Code Samples
+        </h2>
+    <div id="tabs">
+      <ul>
+        <li><a href="#VBA">VBA</a></li>
+        <li><a href="#iLogic">iLogic</a></li>
+      </ul>
+      <div id="VBA" class="api-code">
+        <table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('VBA_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="VBA_code">Public Sub DumpAllMaterialsInAllLibraries()
+    <span style="color:blue">' Open a file to write the results.</span>
+    Open "C:\Temp\AllLibMaterialDump.txt" For Output As #1
+    
+    <span style="color:blue">' Iterate through the libraries.</span>
+    Dim assetLib As AssetLibrary
+    For Each assetLib In ThisApplication.AssetLibraries
+        Print #1, "Library" & assetLib.DisplayName
+        Print #1, "  DisplayName: " & assetLib.DisplayName
+        Print #1, "  FullFileName: " & assetLib.FullFileName
+        Print #1, "  InternalName: " & assetLib.InternalName
+        Print #1, "  IsReadOnly: " & assetLib.IsReadOnly
+        
+        Dim material As MaterialAsset
+        For Each material In assetLib.MaterialAssets
+            Print #1, "    Material"
+            Print #1, "      DisplayName: " & material.DisplayName
+            Print #1, "      Category: " & material.CategoryName
+            Print #1, "      Associated Appearance: " & material.AppearanceAsset.DisplayName
+            Print #1, "      Associated Physical Properties: " & material.PhysicalPropertiesAsset.DisplayName
+            Print #1, "      IsReadOnly: " & material.IsReadOnly
+            Print #1, "      Name: " & material.Name
+            
+            Dim value As AssetValue
+            For Each value In material
+                Call PrintAssetValue(value, 8)
+            Next
+        Next
+    Next
+    
+    Close #1
+    
+    MsgBox "Finished writing output to ""C:\Temp\AllLibMaterialDump.txt"""
+End Sub
+
+
+<span style="color:blue">' Utility function that prints out information for the input asset value.</span>
+Private Sub PrintAssetValue(InValue As AssetValue, Indent As Integer)
+    Dim indentChars As String
+    indentChars = Space(Indent)
+    
+    Print #1, indentChars & "Value"
+    Print #1, indentChars & "  DisplayName: " & InValue.DisplayName
+    Print #1, indentChars & "  Name: " & InValue.Name
+    Print #1, indentChars & "  IsReadOnly: " & InValue.IsReadOnly
+    
+    Select Case InValue.ValueType
+        Case kAssetValueTextureType
+            Print #1, indentChars & "  Type: Texture"
+            
+            Dim textureValue As TextureAssetValue
+            Set textureValue = InValue
+            
+            Dim texture As AssetTexture
+            Set texture = textureValue.value
+            
+            Select Case texture.TextureType
+                Case kTextureTypeBitmap
+                    Print #1, indentChars & "  TextureType: kTextureTypeBitmap"
+                Case kTextureTypeChecker
+                    Print #1, indentChars & "  TextureType: kTextureTypeChecker"
+                Case kTextureTypeGradient
+                    Print #1, indentChars & "  TextureType: kTextureTypeGradient"
+                Case kTextureTypeMarble
+                    Print #1, indentChars & "  TextureType: kTextureTypeMarble"
+                Case kTextureTypeNoise
+                    Print #1, indentChars & "  TextureType: kTextureTypeNoise"
+                Case kTextureTypeSpeckle
+                    Print #1, indentChars & "  TextureType: kTextureTypeSpeckle"
+                Case kTextureTypeTile
+                    Print #1, indentChars & "  TextureType: kTextureTypeTile"
+                Case kTextureTypeUnknown
+                    Print #1, indentChars & "  TextureType: kTextureTypeUnknown"
+                Case kTextureTypeWave
+                    Print #1, indentChars & "  TextureType: kTextureTypeWave"
+                Case kTextureTypeWood
+                    Print #1, indentChars & "  TextureType: kTextureTypeWood"
+                Case Else
+                    Print #1, indentChars & "  TextureType: Unexpected type returned"
+            End Select
+            
+            Print #1, indentChars & "  Values"
+            Dim textureSubValue As AssetValue
+            For Each textureSubValue In texture
+                Call PrintAssetValue(textureSubValue, Indent + 4)
+            Next
+        Case kAssetValueTypeBoolean
+            Print #1, indentChars & "  Type: Boolean"
+            
+            Dim booleanValue As BooleanAssetValue
+            Set booleanValue = InValue
+            
+            Print #1, indentChars & "    Value: " & booleanValue.value
+        Case kAssetValueTypeChoice
+            Print #1, indentChars & "  Type: Choice"
+            
+            Dim choiceValue As ChoiceAssetValue
+            Set choiceValue = InValue
+            
+            Print #1, indentChars & "    Value: " & choiceValue.value
+            
+            Dim names() As String
+            Dim choices() As String
+            Call choiceValue.GetChoices(names, choices)
+            Print #1, indentChars & "    Choices:"
+            Dim i As Integer
+            For i = 0 To UBound(names)
+                Print #1, indentChars & "      " & names(i) & ", " & choices(i)
+            Next
+        Case kAssetValueTypeColor
+            Print #1, indentChars & "  Type: Color"
+            
+            Dim colorValue As ColorAssetValue
+            Set colorValue = InValue
+            
+            Print #1, indentChars & "  HasConnectedTexture: " & colorValue.HasConnectedTexture
+            Print #1, indentChars & "  HasMultipleValues: " & colorValue.HasMultipleValues
+            
+            If Not colorValue.HasMultipleValues Then
+                Print #1, indentChars & "  Color: " & ColorString(colorValue.value)
+            Else
+                Print #1, indentChars & "  Colors"
+                
+                Dim colors() As color
+                colors = colorValue.Values
+                
+                For i = 0 To UBound(colors)
+                    Print #1, indentChars & "    Color: " & ColorString(colors(i))
+                Next
+            End If
+        Case kAssetValueTypeFilename
+            Print #1, indentChars & "  Type: Filename"
+        
+            Dim filenameValue As FilenameAssetValue
+            Set filenameValue = InValue
+            
+            Print #1, indentChars & "    Value: " & filenameValue.value
+        Case kAssetValueTypeFloat
+            Print #1, indentChars & "  Type: Float"
+            
+            Dim floatValue As FloatAssetValue
+            Set floatValue = InValue
+            
+            Print #1, indentChars & "    Value: " & floatValue.value
+        Case kAssetValueTypeInteger
+            Print #1, indentChars & "  Type: Integer"
+            
+            Dim integerValue As IntegerAssetValue
+            Set integerValue = InValue
+            
+            Print #1, indentChars & "    Value: " & integerValue.value
+        Case kAssetValueTypeReference
+            <span style="color:blue">' This value type is not currently used in any of the assets.</span>
+            Print #1, indentChars & "  Type: Reference"
+            
+            Dim refType As ReferenceAssetValue
+            Set refType = InValue
+        Case kAssetValueTypeString
+            Print #1, indentChars & "  Type: String"
+            
+            Dim stringValue As StringAssetValue
+            Set stringValue = InValue
+            
+            Print #1, indentChars & "    Value: """ & stringValue.value & """"
+    End Select
+End Sub
+
+
+<span style="color:blue">' Utility function that returns a string with the R,G,B,K values for an input Color object.</span>
+Private Function ColorString(InColor As color) As String
+    ColorString = InColor.Red & "," & InColor.Green & "," & InColor.Blue & "," & InColor.Opacity
+End Function</pre>
+      </div>
+      <div id="iLogic" class="api-code">
+        <table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('iLogic_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="iLogic_code">Imports System.IO
+Class Test
+	Dim oWriter As System.IO.StreamWriter
+	Sub Main
+		<span style="color:blue">' Open a file to write the results.</span>
+		oWriter = New StreamWriter("C:\Temp\AllLibMaterialDump.txt")
+		
+		<span style="color:blue">' Iterate through the libraries.</span>
+		Dim assetLib As AssetLibrary
+		For Each assetLib In ThisApplication.AssetLibraries
+			oWriter.WriteLine("Library" & assetLib.DisplayName)
+			oWriter.WriteLine("  DisplayName: " & assetLib.DisplayName)
+			oWriter.WriteLine("  FullFileName: " & assetLib.FullFileName)
+			oWriter.WriteLine("  InternalName: " & assetLib.InternalName)
+			oWriter.WriteLine("  IsReadOnly: " & assetLib.IsReadOnly)
+			
+			Dim material As MaterialAsset
+			For Each material In assetLib.MaterialAssets
+				oWriter.WriteLine("    Material")
+				oWriter.WriteLine("      DisplayName: " & material.DisplayName)
+				oWriter.WriteLine("      Category: " & material.CategoryName)
+				oWriter.WriteLine("      Associated Appearance: " & material.AppearanceAsset.DisplayName)
+				oWriter.WriteLine("      Associated Physical Properties: " & material.PhysicalPropertiesAsset.DisplayName)
+				oWriter.WriteLine("      IsReadOnly: " & material.IsReadOnly)
+				oWriter.WriteLine("      Name: " & material.Name)
+				
+				Dim value As AssetValue
+				For Each value In material
+					Call PrintAssetValue(value, 8)
+				Next
+			Next
+		Next
+		
+		oWriter.Close()
+		
+		MsgBox("Finished writing output to ""C:\Temp\AllLibMaterialDump.txt""")
+	End Sub
+	
+	
+	<span style="color:blue">' Utility function that prints out information for the input asset value.</span>
+	Private Sub PrintAssetValue(InValue As AssetValue, Indent As Integer)
+		Dim indentChars As String
+		indentChars = Space(Indent)
+		
+		oWriter.WriteLine(indentChars & "Value")
+		oWriter.WriteLine(indentChars & "  DisplayName: " & InValue.DisplayName)
+		oWriter.WriteLine(indentChars & "  Name: " & InValue.Name)
+		oWriter.WriteLine(indentChars & "  IsReadOnly: " & InValue.IsReadOnly)
+		
+		Select Case InValue.ValueType
+			Case kAssetValueTextureType
+				oWriter.WriteLine(indentChars & "  Type: Texture")
+				
+				Dim textureValue As TextureAssetValue
+				textureValue = InValue
+				
+				Dim texture As AssetTexture
+				texture = textureValue.Value
+				
+				Select Case texture.TextureType
+					Case kTextureTypeBitmap
+						oWriter.WriteLine(indentChars & "  TextureType: kTextureTypeBitmap")
+					Case kTextureTypeChecker
+						oWriter.WriteLine(indentChars & "  TextureType: kTextureTypeChecker")
+					Case kTextureTypeGradient
+						oWriter.WriteLine(indentChars & "  TextureType: kTextureTypeGradient")
+					Case kTextureTypeMarble
+						oWriter.WriteLine(indentChars & "  TextureType: kTextureTypeMarble")
+					Case kTextureTypeNoise
+						oWriter.WriteLine(indentChars & "  TextureType: kTextureTypeNoise")
+					Case kTextureTypeSpeckle
+						oWriter.WriteLine(indentChars & "  TextureType: kTextureTypeSpeckle")
+					Case kTextureTypeTile
+						oWriter.WriteLine(indentChars & "  TextureType: kTextureTypeTile")
+					Case kTextureTypeUnknown
+						oWriter.WriteLine(indentChars & "  TextureType: kTextureTypeUnknown")
+					Case kTextureTypeWave
+						oWriter.WriteLine(indentChars & "  TextureType: kTextureTypeWave")
+					Case kTextureTypeWood
+						oWriter.WriteLine(indentChars & "  TextureType: kTextureTypeWood")
+					Case Else
+						oWriter.WriteLine(indentChars & "  TextureType: Unexpected type returned")
+				End Select
+				
+				oWriter.WriteLine(indentChars & "  Values")
+				Dim textureSubValue As AssetValue
+				For Each textureSubValue In texture
+					Call PrintAssetValue(textureSubValue, Indent + 4)
+				Next
+			Case kAssetValueTypeBoolean
+				oWriter.WriteLine(indentChars & "  Type: Boolean")
+				
+				Dim booleanValue As BooleanAssetValue
+				booleanValue = InValue
+				
+				oWriter.WriteLine(indentChars & "    Value: " & booleanValue.Value)
+			Case kAssetValueTypeChoice
+				oWriter.WriteLine(indentChars & "  Type: Choice")
+				
+				Dim choiceValue As ChoiceAssetValue
+				choiceValue = InValue
+				
+				oWriter.WriteLine(indentChars & "    Value: " & choiceValue.Value)
+				
+				Dim names() As String = New String() {}
+				Dim choices() As String = New String() {}
+				Call choiceValue.GetChoices(names, choices)
+				oWriter.WriteLine(indentChars & "    Choices:")
+				Dim i As Integer
+				For i = 0 To UBound(names)
+					oWriter.WriteLine(indentChars & "      " & names(i) & ", " & choices(i))
+				Next
+			Case kAssetValueTypeColor
+				oWriter.WriteLine(indentChars & "  Type: Color")
+				
+				Dim colorValue As ColorAssetValue
+				colorValue = InValue
+				
+				oWriter.WriteLine(indentChars & "  HasConnectedTexture: " & colorValue.HasConnectedTexture)
+				oWriter.WriteLine(indentChars & "  HasMultipleValues: " & colorValue.HasMultipleValues)
+				
+				If Not colorValue.HasMultipleValues Then
+					oWriter.WriteLine(indentChars & "  Color: " & ColorString(colorValue.Value))
+				Else
+					oWriter.WriteLine(indentChars & "  Colors")
+					
+					Dim colors() As Color
+					colors = colorValue.Values
+					
+					For i = 0 To UBound(colors)
+						oWriter.WriteLine(indentChars & "    Color: " & ColorString(colors(i)))
+					Next
+				End If
+			Case kAssetValueTypeFilename
+				oWriter.WriteLine(indentChars & "  Type: Filename")
+			
+				Dim filenameValue As FilenameAssetValue
+				filenameValue = InValue
+				
+				oWriter.WriteLine(indentChars & "    Value: " & filenameValue.Value)
+			Case kAssetValueTypeFloat
+				oWriter.WriteLine(indentChars & "  Type: Float")
+				
+				Dim floatValue As FloatAssetValue
+				floatValue = InValue
+				
+				oWriter.WriteLine(indentChars & "    Value: " & floatValue.Value)
+			Case kAssetValueTypeInteger
+				oWriter.WriteLine(indentChars & "  Type: Integer")
+				
+				Dim integerValue As IntegerAssetValue
+				integerValue = InValue
+				
+				oWriter.WriteLine(indentChars & "    Value: " & integerValue.Value)
+			Case kAssetValueTypeReference
+				<span style="color:blue">' This value type is not currently used in any of the assets.</span>
+				oWriter.WriteLine(indentChars & "  Type: Reference")
+				
+				Dim refType As ReferenceAssetValue
+				refType = InValue
+			Case kAssetValueTypeString
+				oWriter.WriteLine(indentChars & "  Type: String")
+				
+				Dim stringValue As StringAssetValue
+				stringValue = InValue
+				
+				oWriter.WriteLine(indentChars & "    Value: """ & stringValue.Value & """")
+		End Select
+	End Sub
+	
+	
+	<span style="color:blue">' Utility function that returns a string with the R,G,B,K values for an input Color object.</span>
+	Private Function ColorString(InColor As Color) As String
+		ColorString = InColor.Red & "," & InColor.Green & "," & InColor.Blue & "," & InColor.Opacity
+	End Function
+End Class</pre>
+      </div>
+    </div><br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(DumpAllMaterials%20Sample%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

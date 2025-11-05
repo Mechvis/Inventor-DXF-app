@@ -1,0 +1,168 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU">
+    <link rel="canonical" href="http://help.autodesk.com/cloudhelp/2026/ENU/Inventor-API/files/Balloons_Overview.htm">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="27/4/2016">
+    <meta name="user-comments" content="enable">
+    <meta name="description" content="">
+    <meta name="topicid" content="GUID-638E2791-8400-4F7F-80E0-9304849CF1C3">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>Balloons</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"/>
+    <script type="text/javascript" src="/view/clientframework/client.js"><!--filler--></script>
+	<script>
+	  // This turns on the display of the copyright notice which is not visible by default.
+	  // Because the head is removed when used in the web help, this function will only exists
+	  // when the chm help is being created.
+	  window.onload = function() {
+		copyrightElement = document.getElementById('CopyrightNotice');
+		copyrightElement.style.display = 'block';
+	  };
+	</script>
+</head>
+<body>
+<link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+
+<h1>Balloons</h1>
+<h3>Introduction to balloons</h3>
+
+<p Class="Normal">Autodesk Inventor users can add balloon notation to a drawing view
+or selection of parts automatically. These enumerated balloons are
+typically associated with a parts list, also generated automatically.
+Either the balloons or the list can have their values overridden, or
+new part numbers can be attached to custom parts. Balloons can be of
+various styles. The balloons and associated parts list can be updated
+to reflect the current content of the drawing view. </p>
+
+<h3>The purpose of balloons</h3>
+
+<p Class="Normal">Balloons and their associated parts list are a common means of
+calling out engineering requirements and specifications for
+manufacturing parts. Autodesk Inventor automates much of the process,
+including balloon placement. Balloon placement, type, and content can
+all be modified through the API.</p>
+
+<br>
+<table border="1" cellpadding="4" cellspacing="4">
+<tbody><tr>
+    <td bgcolor="Yellow"><b>Note:</b> 
+Balloon notation referencing properties (specified through styles) currently cannot be changed through the API.
+</td>
+</tr>
+</tbody></table>
+<br>
+
+<h3>Balloons Object Model Diagram</h3>
+
+ <br>
+<div align="center"> <img src="../images/ov.balloons_diag.png" border="0"></div>
+ <br>
+ 
+<h3>Balloons API structure</h3>
+
+<p Class="Normal">Balloons have content in the form of notation. This notation may be
+a part number, the date the part was created, the mass of the part, the
+author, and so on. It is typically a part number corresponding to items
+in a parts list.</p>
+<p Class="Normal">The Balloon object references a BalloonValueSets collection
+comprised of BalloonValueSet objects. These BalloonValueSet objects
+also have a value and an override value, corresponding to the same
+functionality through the Autodesk Inventor user interface. The balloon
+type can be set through the SetBalloonType method of the balloon
+object. Balloons can reference an existing sketched symbol in place of
+the standard balloon shapes.</p>
+
+<h3>Using the balloon API </h3>
+
+<p Class="Normal">The following sample code makes changes to balloons on a drawing
+sheet, and so assumes an open drawing with balloons attached to parts.
+The code modifies the type and value of all the balloons. It omits
+error checking for the sake of clarity and brevity. Always check that
+return values are of the expected type.</p>
+<p Class="Normal">The first step is to obtain the active sheet in the drawing. The
+sample performs a count of the number of balloons and value sets,
+overriding the balloon values with these counts, so the balloon count
+is first initialized.</p>
+ 
+<br>
+<table Class="Code">
+<tbody><tr valign="middle">
+	<td Class="Code">
+	<pre>Dim oDrawDoc As DrawingDocument<br>Set oDrawDoc = ThisApplication.ActiveDocument<br>    <br>Dim oSheet As Sheet<br>Set oSheet = oDrawDoc.ActiveSheet<br>    <br>Dim BalloonCount As Long<br>BalloonCount = 1<br></pre></td></tr>
+</tbody></table>
+<br>
+
+<p Class="Normal">The intention is to change values in all balloons on the sheet, not
+just in a view. The following code iterates through the balloons
+collection, obtaining each balloon object in turn. The balloon type is
+changed to hexagonal, and the balloon placement direction is changed to
+kBottomDirection.</p>
+
+<br>
+<table Class="Code">
+<tbody><tr valign="middle">
+	<td Class="Code">
+	<pre>Dim oBalloon As Balloon<br>    <br>For Each oBalloon In oSheet.Balloons<br>    oBalloon.SetBalloonType (kHexagonBalloonType)<br>    oBalloon.PlacementDirection = kBottomDirection<br></pre></td></tr>
+</tbody></table>
+<br>
+
+<p Class="Normal">Typically, a balloon has a single ValueSet object associated with
+it, but it's safe to iterate through the BalloonValueSets collection
+object. The code overrides each balloons value set or sets with a
+string, comprised of the balloon count and value set count values.</p>
+
+<br>
+<table Class="Code">
+<tbody><tr valign="middle">
+	<td Class="Code">
+	<pre>    Dim ValueSetCount As Long<br>    ValueSetCount = 1<br>        <br>    For Each oBalloonValueSet In oBalloon.BalloonValueSets<br>        oBalloonValueSet.OverrideValue = "Balloon" &amp; _<br>           BalloonCount &amp; ": ValueSet" &amp; ValueSetCount<br>        ValueSetCount = ValueSetCount + 1<br>    Next<br>    BalloonCount = BalloonCount + 1<br>Next<br></pre></td></tr>
+</tbody></table>
+<br>
+
+<p Class="Normal">In the following figure, the balloon on the right demonstrates the
+changes the preceding code applied to the balloon on the left. </p>
+
+ <br>
+<div align="center"> <img src="../images/ov.balloons_shot1.png" border="0"></div>
+ <br>
+
+<h3>Summary</h3>
+
+<p Class="Normal">Balloons are typically, though not exclusively, used as notation to
+identify parts in a drawing, with part numbers corresponding to items
+in a part list. The balloon API provides the means to modify balloon
+content, type, and position.&nbsp;</p>
+
+<h3>Also consider</h3>
+
+<p Class="Normal">Other types of notation available in the drawing sheet environment
+include drawing dimensions, drawing sketches, drawing text, and custom
+tables.</p>
+
+<br />
+<br />
+<div id="CopyrightNotice" style="display:none;">
+  <hr />
+  <table width="100%" style="font-size:15">
+	<tr>
+	  <td align="left">
+		&copy; Copyright 2025 Autodesk, Inc.
+	  </td>
+	  <td align="right">
+		<a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(Balloons_Overview)">Comment on this page.</a>
+	  </td>
+	</tr>
+  </table>
+</div>
+
+</body>
+</html>

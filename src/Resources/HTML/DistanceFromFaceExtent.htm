@@ -1,0 +1,111 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/DistanceFromFaceExtent.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="DistanceFromFaceExtent">
+    <meta name="description" content="DistanceFromFaceExtent Object">
+    <meta name="topicid" content="GUID-DistanceFromFaceExtent">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>DistanceFromFaceExtent Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">DistanceFromFaceExtent Object
+			</h1>
+              Derived from: <a href="PartFeatureExtent.htm">PartFeatureExtent</a> Object
+            <br><h2 class="api">
+          Description
+        </h2>The DistanceFromFaceExtent object provides access to the information that defines the extent for a feature that's extent is determined by extruding from a Face with offset. This is derived from the PartFeatureExtent object.<h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DistanceFromFaceExtent_AlternateSolutionDirection.htm">AlternateSolutionDirection</a></td>
+        <td class="api-list">Read-write property that gets and sets the alternate solution direction of the feature. Valid input is kPositiveExtentDirection or kNegativeExtentDirection. kPositiveExtentDirection defines the offset direction to be in the same direction as the normal of the sketch plane.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DistanceFromFaceExtent_Application.htm">Application</a></td>
+        <td class="api-list">Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DistanceFromFaceExtent_Direction.htm">Direction</a></td>
+        <td class="api-list">Read-write property that gets and sets the distance direction of the feature. Valid input is kPositiveExtentDirection, kNegativeExtentDirection, or kSymmetricExtentDirection. kPositiveExtentDirection defines the offset direction to be in the same direction as the normal of the sketch plane.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DistanceFromFaceExtent_Distance.htm">Distance</a></td>
+        <td class="api-list">Read-only property that returns the parameter controlling the distance extent of the feature.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DistanceFromFaceExtent_DistanceTwo.htm">DistanceTwo</a></td>
+        <td class="api-list">Read-only property that returns the parameter controlling the distance extent of the feature in the other direction. This returns Nothing if the IsTwoDirectional returns False.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DistanceFromFaceExtent_ExtendFromFace.htm">ExtendFromFace</a></td>
+        <td class="api-list">Property that gets and sets whether the 'from face' should be extended to contain the extents of the feature. This property is not valid for every surface type.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DistanceFromFaceExtent_FromFace.htm">FromFace</a></td>
+        <td class="api-list">Read-write property that gets and sets the distance from face, this can be a Face or WorkPlane object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DistanceFromFaceExtent_IsTwoDirectional.htm">IsTwoDirectional</a></td>
+        <td class="api-list">Read-write property that gets and sets the distance from face, this can be a Face or WorkPlane object. This is applicable when the Direction is not set to kSymmetricExtentDirection.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DistanceFromFaceExtent_MinimumSolution.htm">MinimumSolution</a></td>
+        <td class="api-list">Read-write property that gets and sets whether the feature starts from the nearest valid face when there are multiple options for valid starting faces.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DistanceFromFaceExtent_Parent.htm">Parent</a></td>
+        <td class="api-list">Property that returns the parent PartFeature of the definition.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DistanceFromFaceExtent_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2018<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(DistanceFromFaceExtent%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

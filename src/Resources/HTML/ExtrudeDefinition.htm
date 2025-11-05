@@ -1,0 +1,193 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/ExtrudeDefinition.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="ExtrudeDefinition">
+    <meta name="description" content="ExtrudeDefinition Object">
+    <meta name="topicid" content="GUID-ExtrudeDefinition">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>ExtrudeDefinition Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">ExtrudeDefinition Object
+			</h1><br><h2 class="api">
+          Description
+        </h2>ExtrudeDefinition Object.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ExtrudeDefinition_Copy.htm">Copy</a></td>
+        <td class="api-list">Method that creates a copy of this ExtrudeDefinition object.&nbsp;The new ExtrudeDefinition object is independent of any feature.&nbsp;It can edited and used as input to edit an existing feature or to create a new Extrude feature.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ExtrudeDefinition_SetDistanceExtent.htm">SetDistanceExtent</a></td>
+        <td class="api-list">Method that changes the extents to be “distance” extents.&nbsp;If this method is called on an asymmetric extrude, the second direction extent is removed.&nbsp;To change extent values, use the properties on the object returned by the Extent property.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ExtrudeDefinition_SetDistanceExtentTwo.htm">SetDistanceExtentTwo</a></td>
+        <td class="api-list">Method that sets the second direction extent to be “distance” extents.&nbsp;This method returns an error if the first extent type is not distance extent.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ExtrudeDefinition_SetDistanceFromFaceExtent.htm">SetDistanceFromFaceExtent</a></td>
+        <td class="api-list">Method that changes the extents to be “Distance From Face” extents.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ExtrudeDefinition_SetFromToExtent.htm">SetFromToExtent</a></td>
+        <td class="api-list">Method that changes the extents to be “from and to face” extents.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ExtrudeDefinition_SetThroughAllExtent.htm">SetThroughAllExtent</a></td>
+        <td class="api-list">Method that changes the extents to be “through all” extents.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ExtrudeDefinition_SetToExtent.htm">SetToExtent</a></td>
+        <td class="api-list">Method that changes the extents to be “to entity” extents.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ExtrudeDefinition_SetToNextExtent.htm">SetToNextExtent</a></td>
+        <td class="api-list">Method that changes the extents to be “to next face” extents.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ExtrudeDefinition_AffectedBodies.htm">AffectedBodies</a></td>
+        <td class="api-list">Read-write property that gets and sets the collection of bodies affected by this feature.&nbsp;If this property is not set for multi-body parts, the default solid body is used as the affected body.&nbsp;This property applies only to features in a part.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ExtrudeDefinition_AffectedOccurrences.htm">AffectedOccurrences</a></td>
+        <td class="api-list">Read-write property that gets and sets the collection of occurrences that should participate in this feature.&nbsp;If this property is not set, all possible occurrences will participate.&nbsp;This property applies only to features in an assembly.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ExtrudeDefinition_Application.htm">Application</a></td>
+        <td class="api-list">Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ExtrudeDefinition_Extent.htm">Extent</a></td>
+        <td class="api-list">Read-only property that returns the PartFeatureExtent object that defines how the extent of the feature is defined.&nbsp;The type of extent object returne.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ExtrudeDefinition_ExtentTwo.htm">ExtentTwo</a></td>
+        <td class="api-list">Read-only property that returns the PartFeatureExtent object that defines how the second direction extent of the feature is defined.&nbsp;The type of exte.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ExtrudeDefinition_ExtentTwoType.htm">ExtentTwoType</a></td>
+        <td class="api-list">Read-only property that returns an enum indicating how the second direction extent of the feature is defined.&nbsp;This indicates the type of object retur.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ExtrudeDefinition_ExtentType.htm">ExtentType</a></td>
+        <td class="api-list">Read-only property that returns an enum indicating how the extent of the feature is defined.&nbsp;This indicates the type of object returned by the Extent.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ExtrudeDefinition_InferiMates.htm">InferiMates</a></td>
+        <td class="api-list">Read-write property that gets and sets whether to automatically place iMates on full circular edges.&nbsp;If set to True, Inventor places the iMates on cl.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ExtrudeDefinition_IsTwoDirectional.htm">IsTwoDirectional</a></td>
+        <td class="api-list">Read-only property that returns whether extents have been defined in two directions for the extrude.&nbsp;If this property returns True, the ExtentTwoType.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ExtrudeDefinition_MatchShape.htm">MatchShape</a></td>
+        <td class="api-list">Read-write property that gets and sets how open profiles are handled.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ExtrudeDefinition_Operation.htm">Operation</a></td>
+        <td class="api-list">Read-write property that gets and sets the type of operation used to add the feature to the model.&nbsp;Valid inputs are kNewBodyOperation, kJoinOperation, kCutOperation, kIntersectOperation and kSurfaceOperation.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ExtrudeDefinition_Parent.htm">Parent</a></td>
+        <td class="api-list">Gets the parent object from whom this object can logically be reached.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ExtrudeDefinition_Profile.htm">Profile</a></td>
+        <td class="api-list">Read-write property gets and sets the sketch profile used for the extrude feature.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ExtrudeDefinition_TaperAngle.htm">TaperAngle</a></td>
+        <td class="api-list">Read-write property that provides access to the taper angle of an extrude feature.&nbsp;If not supplied, the feature will be created with a taper angle of.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ExtrudeDefinition_TaperAngleTwo.htm">TaperAngleTwo</a></td>
+        <td class="api-list">Read-write property that provides access to the second direction taper angle of an asymmetric extrude feature. This property is not applicable and ret.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ExtrudeDefinition_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="ExtrudeDefinition_Copy.htm">ExtrudeDefinition.Copy</a>, <a href="ExtrudeFeature_Definition.htm">ExtrudeFeature.Definition</a>, <a href="ExtrudeFeatureProxy_Definition.htm">ExtrudeFeatureProxy.Definition</a>, <a href="ExtrudeFeatures_CreateExtrudeDefinition.htm">ExtrudeFeatures.CreateExtrudeDefinition</a><h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DumpFeatureInfo_Sample.htm">Display feature information</a></td>
+        <td class="api-list">Displays information about all of the extrude features in the active document.  A part document must be active when this is run.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2012<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(ExtrudeDefinition%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

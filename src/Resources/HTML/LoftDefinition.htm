@@ -1,0 +1,190 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/LoftDefinition.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="LoftDefinition">
+    <meta name="description" content="LoftDefinition Object">
+    <meta name="topicid" content="GUID-LoftDefinition">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>LoftDefinition Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">LoftDefinition Object
+			</h1><br><h2 class="api">
+          Description
+        </h2>The LoftDefinition object is used to define additional input required for creating loft features.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LoftDefinition_Copy.htm">Copy</a></td>
+        <td class="api-list">Method that creates and returns a copy of this loft definition.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LoftDefinition_Centerline.htm">Centerline</a></td>
+        <td class="api-list">Property that specifies the centerline for the loft. Valid objects includes Profile, Profile3D, EdgeLoop and EdgeCollection. When this LoftDefinition is associative with an existing LoftFeature or if it is copied from an LoftDefinition that is associative with a LoftFeature, then set this property you should follow below rules, otherwise an error would occur:
+
+
+<ul>
+<li>If the LoftDefinition.LoftType returns kRegularLoft you can set this property directly.</li>
+<li>If the LoftDefinition.LoftType returns kLoftWithRails you need to clear the LoftDefinition.LoftRails before setting this property.</li>
+<li>If the LoftDefinition.LoftType returns kLoftWithAreaGraphSections you need to clear the LoftDefinition.LoftSectionDimensions if any before setting this property, </li>
+</ul></td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LoftDefinition_Closed.htm">Closed</a></td>
+        <td class="api-list">Property that specifies whether the loft needs to be closed or not.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LoftDefinition_FirstSectionAngle.htm">FirstSectionAngle</a></td>
+        <td class="api-list">Property that specifies the angle of the loft in relation to the sketch plane of the starting section.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LoftDefinition_FirstSectionCondition.htm">FirstSectionCondition</a></td>
+        <td class="api-list">Property that specifies the condition of the loft at the starting section.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LoftDefinition_FirstSectionDirectionReversed.htm">FirstSectionDirectionReversed</a></td>
+        <td class="api-list">Property that specifies whether the takeoff direction for the starting section should be reversed from its default direction.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LoftDefinition_FirstSectionImpact.htm">FirstSectionImpact</a></td>
+        <td class="api-list">Property that specifies the impact the starting section's condition has on the shape of the entire loft.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LoftDefinition_FirstSectionTangentPlane.htm">FirstSectionTangentPlane</a></td>
+        <td class="api-list">Property that specifies the tangent plane for the starting section in the case that the section is a point.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LoftDefinition_LastSectionAngle.htm">LastSectionAngle</a></td>
+        <td class="api-list">Property that specifies the angle of the loft in relation to the sketch plane of the ending section.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LoftDefinition_LastSectionCondition.htm">LastSectionCondition</a></td>
+        <td class="api-list">Property that specifies the condition of the loft at the ending section.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LoftDefinition_LastSectionDirectionReversed.htm">LastSectionDirectionReversed</a></td>
+        <td class="api-list">Property that specifies whether the takeoff direction for the ending section should be reversed from its default direction.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LoftDefinition_LastSectionImpact.htm">LastSectionImpact</a></td>
+        <td class="api-list">Property that specifies the impact the ending section's condition has on the shape of the entire loft.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LoftDefinition_LastSectionTangentPlane.htm">LastSectionTangentPlane</a></td>
+        <td class="api-list">Property that specifies the tangent plane for the ending section in the case that the section is a point.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LoftDefinition_LoftRails.htm">LoftRails</a></td>
+        <td class="api-list">Read-only property that specifies the rails for the loft. If the LoftDefinition.LoftType is not kRegularLoft or kLoftWithRails then set this property will raise error, you should follow below rules to set this property:
+
+<ul>
+<li>If the LoftDefinition.LoftType returns kRegularLoft you can set this property directly.</li>
+<li>If the LoftDefinition.LoftType returns kLoftWithCenterline you need to clear the LoftDefinition.Centerline before setting this property.</li>
+<li>If the LoftDefinition.LoftType returns kLoftWithAreaGraphSections you need to clear the LoftDefinition.LoftSectionDimensions if any and LoftDefinition.Centerline before setting this property, </li>
+</ul></td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LoftDefinition_LoftSectionDimensions.htm">LoftSectionDimensions</a></td>
+        <td class="api-list">Read-only property that specifies the placed section dimensions for an area-graph type loft. Before adding new LoftSectionDimension into this collection the LoftDefinition.Centerline should be set first, otherwise an error would occur.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LoftDefinition_LoftType.htm">LoftType</a></td>
+        <td class="api-list">Property that gets the type of loft feature.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LoftDefinition_MapPointCurves.htm">MapPointCurves</a></td>
+        <td class="api-list">Property that specifies the mapping to use between sections.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LoftDefinition_MergeTangentFaces.htm">MergeTangentFaces</a></td>
+        <td class="api-list">Property that specifies if the tangent faces of the loft should be merged or not.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LoftDefinition_Operation.htm">Operation</a></td>
+        <td class="api-list">Property that specifies the type of operation used to add the feature to the model.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LoftDefinition_Sections.htm">Sections</a></td>
+        <td class="api-list">Property that specifies the sections used for a loft.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="LoftDefinition_Copy.htm">LoftDefinition.Copy</a>, <a href="LoftFeature_Definition.htm">LoftFeature.Definition</a>, <a href="LoftFeatureProxy_Definition.htm">LoftFeatureProxy.Definition</a>, <a href="LoftFeatures_CreateLoftDefinition.htm">LoftFeatures.CreateLoftDefinition</a><h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LoftFeature_Sample.htm">Loft Feature With Non-Planar Section</a></td>
+        <td class="api-list">This sample demonstrates the creation of a loft feature. It uses two sections for the loft, one is from a 2d sketch and the other is a non-planar section from a 3d sketch. Because one of the sketches isn't planar, a surface is created instead of a solid.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2008<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(LoftDefinition%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

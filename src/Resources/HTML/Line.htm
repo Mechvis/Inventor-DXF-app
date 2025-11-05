@@ -1,0 +1,141 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/Line.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="Line">
+    <meta name="description" content="Line Object">
+    <meta name="topicid" content="GUID-Line">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>Line Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">Line Object
+			</h1><br><h2 class="api">
+          Description
+        </h2>The Line object. The object created is a transient mathematical object and is not displayed graphically. For more information, see the Transient Geometry article in the overview section.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Line_Copy.htm">Copy</a></td>
+        <td class="api-list">Creates a copy of this Line object.&nbsp;The result is entirely independent and can be edited without affecting the original Line object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Line_DistanceTo.htm">DistanceTo</a></td>
+        <td class="api-list">Method that returns the distance to the specified point.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Line_GetLineData.htm">GetLineData</a></td>
+        <td class="api-list">Get the data defining this line.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Line_IntersectWithCurve.htm">IntersectWithCurve</a></td>
+        <td class="api-list">Method that returns Point objects that represent the points at the intersection of the Line/LineSegment and the input curve. Returns Nothing if the curves overlap or are parallel.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Line_IntersectWithSurface.htm">IntersectWithSurface</a></td>
+        <td class="api-list">Method that returns Point objects that represent the points at the intersection of the Line/LineSegment and the input surface. Returns Nothing if the Line/LineSegment lies on the surface or it is parallel to the surface.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Line_PutLineData.htm">PutLineData</a></td>
+        <td class="api-list">Method that sets the data defining this line.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Line_Direction.htm">Direction</a></td>
+        <td class="api-list">Specifies the direction of the line.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Line_Evaluator.htm">Evaluator</a></td>
+        <td class="api-list">Gets the CurveEvaluator for the line.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Line_IsColinearTo.htm">IsColinearTo</a></td>
+        <td class="api-list">Property that gets whether this line is colinear to the specified line, within the specified tolerance.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Line_RootPoint.htm">RootPoint</a></td>
+        <td class="api-list">Specifies the root point of the line.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="AnnotationPlaneDefinition_XAxis.htm">AnnotationPlaneDefinition.XAxis</a>, <a href="DetailDrawingView_DrawingViewToModelSpace.htm">DetailDrawingView.DrawingViewToModelSpace</a>, <a href="DetailDrawingView_SheetToModelSpace.htm">DetailDrawingView.SheetToModelSpace</a>, <a href="DrawingView_DrawingViewToModelSpace.htm">DrawingView.DrawingViewToModelSpace</a>, <a href="DrawingView_SheetToModelSpace.htm">DrawingView.SheetToModelSpace</a>, <a href="Line_Copy.htm">Line.Copy</a>, <a href="PlanarSketch_AxisEntityGeometry.htm">PlanarSketch.AxisEntityGeometry</a>, <a href="PlanarSketchProxy_AxisEntityGeometry.htm">PlanarSketchProxy.AxisEntityGeometry</a>, <a href="Plane_IntersectWithPlane.htm">Plane.IntersectWithPlane</a>, <a href="SectionDrawingView_DrawingViewToModelSpace.htm">SectionDrawingView.DrawingViewToModelSpace</a>, <a href="SectionDrawingView_SheetToModelSpace.htm">SectionDrawingView.SheetToModelSpace</a>, <a href="SketchBlockDefinition_AxisEntityGeometry.htm">SketchBlockDefinition.AxisEntityGeometry</a>, <a href="SketchBlockDefinitionProxy_AxisEntityGeometry.htm">SketchBlockDefinitionProxy.AxisEntityGeometry</a>, <a href="TransientGeometry_CreateLine.htm">TransientGeometry.CreateLine</a>, <a href="WorkAxis_Line.htm">WorkAxis.Line</a>, <a href="WorkAxisProxy_Line.htm">WorkAxisProxy.Line</a><h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PlanarSketch_NaturalAxisDirection_Sample.htm">Sketch Edit Orientation</a></td>
+        <td class="api-list">This sample demonstrates modifying the orientation of a sketch.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="RipFeatures_Add_Sample.htm">Create sheet metal rip feature</a></td>
+        <td class="api-list">This sample demonstrates the creation of a rip sheet metal feature.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 4<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(Line%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

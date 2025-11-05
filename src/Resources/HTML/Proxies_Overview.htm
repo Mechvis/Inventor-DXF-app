@@ -1,0 +1,164 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU">
+    <link rel="canonical" href="http://help.autodesk.com/cloudhelp/2026/ENU/Inventor-API/files/Proxies_Overview.htm">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="27/4/2016">
+    <meta name="user-comments" content="enable">
+    <meta name="description" content="">
+    <meta name="topicid" content="GUID-6A540540-CA8A-40AD-8EBF-C4BB1F3E7288">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>Proxies</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"/>
+    <script type="text/javascript" src="/view/clientframework/client.js"><!--filler--></script>
+	<script>
+	  // This turns on the display of the copyright notice which is not visible by default.
+	  // Because the head is removed when used in the web help, this function will only exists
+	  // when the chm help is being created.
+	  window.onload = function() {
+		copyrightElement = document.getElementById('CopyrightNotice');
+		copyrightElement.style.display = 'block';
+	  };
+	</script>
+</head>
+<body>
+<link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+<H1>Proxies</h1>
+<h3>Introduction to proxies</h3>
+<p Class="Normal">For the Autodesk Inventor user, the concept of proxy files relates to the use of AutoCAD files in the Autodesk Inventor environment.  Proxies in the API context mean something different entirely.</p>
+<p Class="Normal">An object proxy is a reference to an object through a particular occurrence.  Think of it as a pairing with its respective native object, but returns context-specific data.</p>
+<p Class="Normal">An example is a face of a part within an assembly.  When this face is queried through the API, what do the results mean - are coordinates returned in the context of the assembly, or the native part?  What if the part is inserted into the assembly multiple times; how is a particular instance of the face identified?  A key purpose of proxies is to provide answers to these questions.  In this case, the proxy of the face object performs the necessary transformations to provide point data in the required context, and also provides information about which occurrence the face is associated with.</p>
+<h3>The purpose of  proxies</h3>
+<p Class="Normal">To the user, the notion of proxies is transparent.  When a user selects a part through the Autodesk Inventor user interface, conceptually the part is in the assembly.  It doesn't matter to users that they are working with a proxy that is presenting coordinates and faces and so on in the assembly context and not in the context of the referenced part.  But developers need to obtain data specifically in the part or assembly context.  There is no geometry in the assembly, only a proxy that is performing the required transformations based on the position of the part within the assembly.</p>
+
+<br>
+<table cellspacing="4" cellpadding="4" border="1">
+<tr>
+    <td  bgcolor="Yellow"><b>Note:</b> The idea of proxies can be extended to cover the ComponentOccurrence object (the concept is very similar).  Consider nested assemblies, or subassemblies, where the level of nesting is three or more levels.  An occurrence can be an instance of an assembly definition, not just a part definition.  At the top level (the instance), this occurrence is a ComponentOccurrence object as expected, but at other levels these occurrences are represented by ComponentOccurrenceProxy objects.</td>
+</tr>
+</table>
+<br>
+
+<p Class="Normal">There is no object model diagram for proxies.  Proxies are present for anything that is available for selection in an assembly context, including constraints, features, faces, edges, loops, sketches, profiles, and work features.</p>
+
+<h3>Working with proxies through the API</h3>
+
+<p Class="Normal">Object proxies are paired with their respective native objects.  In fact, proxies are derived from their native objects, and so have common methods and properties.  However, an object proxy is a reference to an object through a particular occurrence.  In other words, it's a reference to the native object through the occurrence path.  This path is potentially long when working with deeply nested subassemblies, so there are means to traverse this path.</p>
+<p Class="Normal">Proxy objects have two additional properties; NativeObject and ContainingOccurrence.  NativeObject returns the definition of the object - the object without its containing occurrence context.  So for a FaceProxy object, NativeObject returns the corresponding face object within the part definition.  The ContainingOccurrence property returns the containing object - in this case, the occurrence that contains the face.</p>
+
+<br>
+<table cellspacing="4" cellpadding="4" border="1">
+<tr>
+    <td  bgcolor="Yellow"><b>Note:</b> When working with an object or its proxy, be aware that calls to their respective Parent properties return different objects.  The parent of a proxy object will also be a proxy object.  For example, the parent of an EdgeProxy object may be a SurfaceBodyProxy.</td>
+</tr>
+</table>
+<br>
+
+<p Class="Normal">The starting point at the top of the path is the ComponentOccurrence.  The CreateGeometryProxy method of the ComponentOccurrence object creates the required proxy information for a given face, feature, constraint, and so on.</p>
+
+<h3>Sample demonstrating the difference between a proxy and its native object</h3>  
+
+<p Class="Normal">The following code omits error checking for the sake of clarity and brevity.  Always check that return values are of the expected type.</p>
+<p Class="Normal">Through the Autodesk Inventor user interface, create a simple part (for example, extrude a circle).  Save the part, and then start a new assembly.  Place your saved part in the assembly, unground the assembly, move it a little, then save the assembly.</p>
+<p Class="Normal">The following code prints the X and Y coordinates of one corner of the range box that encompasses the extrude feature of the part.  It demonstrates that different coordinates are returned for the proxy when compared to the native occurrence.</p>
+<p Class="Normal">First, obtain the component occurrence from the assembly document.  In this case it's simplified as we know the document contains only one.</p>
+
+<table Class="Code">
+<tr valign="middle">
+	<td Class="Code">
+	<pre>
+Dim oDoc As AssemblyDocument
+Set oDoc = ThisApplication.ActiveDocument
+
+Dim oCompOcc As ComponentOccurrence
+Set oCompOcc = oDoc.ComponentDefinition.Occurrences.Item(1)
+</pre></td></tr>
+</table>
+
+<p Class="Normal">Then obtain the part component definition to gain access to the part features.</p>
+
+<table Class="Code">
+<tr valign="middle">
+	<td Class="Code">
+	<pre>
+Dim oPartCompDef As PartComponentDefinition
+Set oPartCompDef = oCompOcc.Definition
+
+Dim oExtrudeFeature As ExtrudeFeature
+Set oExtrudeFeature = oPartCompDef.Features.ExtrudeFeatures.Item(1)
+</pre></td></tr>
+</table>
+
+<p Class="Normal">To get the proxy for the feature, use the CreateGeometryProxy method of the component occurrence, with the required feature as an argument.</p>
+
+<table Class="Code">
+<tr valign="middle">
+	<td Class="Code">
+	<pre>
+Dim oExtrudeFeatureProxy As ExtrudeFeatureProxy
+oCompOcc.CreateGeometryProxy oExtrudeFeature, oExtrudeFeatureProxy
+</pre></td></tr>
+</table>
+
+<p Class="Normal">Print some coordinate data, in this case the X Y values of one corner of the feature rangebox.  These figures will differ, indicating that the first set come from the native object, while the second set come from the proxy object - in other words, the second set of values are in the assembly context.</p>
+
+<table Class="Code">
+<tr valign="middle">
+	<td Class="Code">
+	<pre>
+Debug.Print oExtrudeFeature.RangeBox.MaxPoint.X
+Debug.Print oExtrudeFeature.RangeBox.MaxPoint.Y
+
+Debug.Print oExtrudeFeatureProxy.RangeBox.MaxPoint.X
+Debug.Print oExtrudeFeatureProxy.RangeBox.MaxPoint.Y
+</pre></td></tr>
+</table>
+
+<p Class="Normal">The preceding code demonstrated that coordinates for a known point differed according to the context of the feature.  Example output might look as follows.</p>
+
+<table Class="Code">
+<tr valign="middle">
+	<td Class="Code">
+	<pre>
+ 0.232857970569028 
+ 0.96726442148297 
+ 0.177086160521056 
+ 0.988809173640979
+</pre></td></tr>
+</table>
+
+<p Class="Normal">In the assembly context, the part was moved; therefore the coordinates returned by the proxy reflect this move (the first and second lines in the output).  These coordinates are different from those returned by the native object, the object definition, with no containing context (the third and fourth lines in the output).</p>
+
+<h3>Summary</h3>
+
+<p Class="Normal">An object proxy is a reference to an object through a particular occurrence. When the user picks an object (edge, face, loop and so on) in an assembly, they are really picking an object proxy.  The various proxies available through the API are derived from their real counterparts and contain the same methods and properties, as well as others specific to proxies (such as NativeObject, which returns the object definition the proxy is paired with).  The purpose of object proxies is to provide transformation and assembly context information for occurrences, features, constraints and so on. Object proxies are transparent to the Autodesk Inventor user.</p>
+
+<h3>Also consider</h3>
+
+<p Class="Normal">To fully understand object proxies, it is important to understand component occurrences and component definitions.</p>
+
+<br />
+<br />
+<div id="CopyrightNotice" style="display:none;">
+  <hr />
+  <table width="100%" style="font-size:15">
+	<tr>
+	  <td align="left">
+		&copy; Copyright 2025 Autodesk, Inc.
+	  </td>
+	  <td align="right">
+		<a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(Proxies_Overview)">Comment on this page.</a>
+	  </td>
+	</tr>
+  </table>
+</div>
+</body>
+</html>

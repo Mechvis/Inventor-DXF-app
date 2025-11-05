@@ -1,0 +1,107 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/DocumentInterests_Add.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="DocumentInterests_Add">
+    <meta name="description" content="DocumentInterests.Add Method">
+    <meta name="topicid" content="DocumentInterests_Add">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>DocumentInterests.Add Method</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">DocumentInterests.Add Method</h1>
+
+          Parent Object: <a href="DocumentInterests.htm">DocumentInterests</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Method that creates a new DocumentInterest.</p>
+    <h2 class="api">
+            Remarks
+          </h2>The new created DocumentInterest is returned. The method fails if a DocumentInterest with the same ClientId already exists. Note: Clients are strongly warned to store as little data as practicably possible, partly to avoid capacity issues, but mainly because this will affect Inventor's ability to open documents quickly in a 'lightweight' background mode.<h2 class="api">
+          Syntax
+        </h2>
+        
+            DocumentInterests.<b>Add</b>( <b><i>ClientId</i></b> As String, <b><i>Name</i></b> As String, <b><i>InterestType</i></b> As <a href="DocumentInterestTypeEnum.htm">DocumentInterestTypeEnum</a>, [<b><i>DataVersion</i></b>] As Long, [<b><i>ClientData</i></b>] As Variant ) As <a href="DocumentInterest.htm">DocumentInterest</a>
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">ClientId</td>
+        <td class="api-list">String</td>
+        <td class="api-list">Input String that uniquely identifies a client. This is the CLSID of the AddIn in a string form, e.g. "{C9A6C580-3817-11D0-BE4E-080036E87B02}".</td>
+      </tr>
+      <tr>
+        <td class="api-list">Name</td>
+        <td class="api-list">String</td>
+        <td class="api-list">Input String that specifies the name associated with this interest. This is typically a string specifying the document 'sub-type'.</td>
+      </tr>
+      <tr>
+        <td class="api-list">InterestType</td>
+        <td class="api-list"><a href="DocumentInterestTypeEnum.htm">DocumentInterestTypeEnum</a></td>
+        <td class="api-list">Input DocumentInterestTypeEnum that specifies the type of interest that the client has in this document. Valid inputs are kInterested and kNotInterested.</td>
+      </tr>
+      <tr>
+        <td class="api-list">DataVersion</td>
+        <td class="api-list">Long</td>
+        <td class="api-list">Optional input Long that specifies the current data version of the document. If not specified, this is assumed to be a 'non-migrating' type of interest. When a document is opened, if this DataVersion value is less than the current DataVersion value of the AddIn (ApplicationAddIn.DataVersion), the 'Migrate' command is enabled. When the user invokes the Migrate command, the OnMigrateDocument event is fired and gives the client an opportunity to migrate their data.<br /><br /> This is an optional argument whose default value is -1.</td>
+      </tr>
+      <tr>
+        <td class="api-list">ClientData</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional input String that contains some additional data that the client would like to store with the interest. This string is not interpreted by Inventor. Clients are expected to use the string with extreme economy.<br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2008<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(DocumentInterests.Add%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

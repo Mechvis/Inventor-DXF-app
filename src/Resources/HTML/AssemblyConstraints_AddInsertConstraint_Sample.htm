@@ -1,0 +1,150 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/AssemblyConstraints_AddInsertConstraint_Sample.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="AssemblyConstraints_AddInsertConstraint_Sample">
+    <meta name="description" content="Add assembly insert constraint Sample">
+    <meta name="topicid" content="AssemblyConstraints_AddInsertConstraint_Sample">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>Add assembly insert constraint</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body><script>
+          function copyCode(language) {
+          // Get the pre element for the specified language.
+          var preElement = document.getElementById(language);
+
+          // Get the text from the element and copy it to the clipboard.
+          var preText = preElement.innerText;
+
+          var isIE = /*@cc_on!@*/false || !!document.documentMode;
+
+          if (isIE)
+          {
+            window.clipboardData.setData('Text', preText);
+          }
+          else
+          {
+            navigator.clipboard.writeText(preText);
+          }
+
+          //alert("Code copied to clipboard");
+          }
+        </script><link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">Add assembly insert constraint</h1>
+    <h2 class="api">
+          Description
+        </h2>This sample demonstrates the creation of an assembly insert constraint.<h2 class="api">
+          Code Samples
+        </h2>
+    <div id="tabs">
+      <ul>
+        <li><a href="#VBA">VBA</a></li>
+        <li><a href="#iLogic">iLogic</a></li>
+      </ul>
+      <div id="VBA" class="api-code">Before running the sample, you need to open an assembly that contains at least two parts. Select circular edges on the two parts that will be used for the constraint and run the sample code. (Set the priority of the Select command and use the Shift-Select to select multiple edges.)<table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('VBA_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="VBA_code">Public Sub InsertConstraint()
+    <span style="color:blue">' Set a reference to the assembly component definintion.</span>
+    Dim oAsmCompDef As AssemblyComponentDefinition
+    Set oAsmCompDef = ThisApplication.ActiveDocument.ComponentDefinition
+    
+    <span style="color:blue">' Set a reference to the select set.</span>
+    Dim oSelectSet As SelectSet
+    Set oSelectSet = ThisApplication.ActiveDocument.SelectSet
+    
+    <span style="color:blue">' Validate the correct data is in the select set.</span>
+    If oSelectSet.Count &lt;&gt; 2 Then
+        MsgBox "You must select the two circular edges for the insert."
+        Exit Sub
+    End If
+
+    If Not TypeOf oSelectSet.Item(1) Is Edge Or Not TypeOf oSelectSet.Item(2) Is Edge Then
+        MsgBox "You must select the two circular edges for the insert."
+        Exit Sub
+    End If
+
+    <span style="color:blue">' Get the two edges from the select set.</span>
+    Dim oEdge1 As Edge
+    Dim oEdge2 As Edge
+    Set oEdge1 = oSelectSet.Item(1)
+    Set oEdge2 = oSelectSet.Item(2)
+ 
+    <span style="color:blue">' Create the insert constraint between the parts.</span>
+    Dim oInsert As InsertConstraint
+    Set oInsert = oAsmCompDef.Constraints.AddInsertConstraint(oEdge1, oEdge2, True, 0)
+End Sub</pre>
+      </div>
+      <div id="iLogic" class="api-code">Before running the sample, you need to open an assembly that contains at least two parts. Select circular edges on the two parts that will be used for the constraint and run the sample code. (Set the priority of the Select command and use the Shift-Select to select multiple edges.)<table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('iLogic_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="iLogic_code">    <span style="color:blue">' Set a reference to the assembly component definintion.</span>
+    Dim oAsmCompDef As AssemblyComponentDefinition
+    oAsmCompDef = ThisApplication.ActiveDocument.ComponentDefinition
+    
+    <span style="color:blue">' Set a reference to the select set.</span>
+    Dim oSelectSet As SelectSet
+    oSelectSet = ThisApplication.ActiveDocument.SelectSet
+    
+    <span style="color:blue">' Validate the correct data is in the select set.</span>
+    If oSelectSet.Count &lt;&gt; 2 Then
+        MsgBox("You must select the two circular edges for the insert.")
+        Exit Sub
+    End If
+
+    If Not TypeOf oSelectSet.Item(1) Is Edge Or Not TypeOf oSelectSet.Item(2) Is Edge Then
+        MsgBox("You must select the two circular edges for the insert.")
+        Exit Sub
+    End If
+
+    <span style="color:blue">' Get the two edges from the select set.</span>
+    Dim oEdge1 As Edge
+    Dim oEdge2 As Edge
+    oEdge1 = oSelectSet.Item(1)
+    oEdge2 = oSelectSet.Item(2)
+ 
+    <span style="color:blue">' Create the insert constraint between the parts.</span>
+    Dim oInsert As InsertConstraint
+    oInsert = oAsmCompDef.Constraints.AddInsertConstraint(oEdge1, oEdge2, True, 0)</pre>
+      </div>
+    </div><br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(AssemblyConstraints_AddInsertConstraint%20Sample%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

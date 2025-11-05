@@ -1,0 +1,105 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/BrowserPanesEvents_OnBrowserNodeLabelEdit.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="BrowserPanesEvents_OnBrowserNodeLabelEdit">
+    <meta name="description" content="BrowserPanesEvents.OnBrowserNodeLabelEdit Event">
+    <meta name="topicid" content="BrowserPanesEvents_OnBrowserNodeLabelEdit">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>BrowserPanesEvents.OnBrowserNodeLabelEdit Event</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">BrowserPanesEvents.OnBrowserNodeLabelEdit Event</h1>
+
+          Parent Object: <a href="BrowserPanesEvents.htm">BrowserPanesEvents</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Event that is fired whenever a node is renamed by the user.</p>
+    <h2 class="api">
+          Syntax
+        </h2>
+        
+            BrowserPanesEvents.<b>OnBrowserNodeLabelEdit</b>( <b><i>BrowserNodeDefinition</i></b> As Object, <b><i>NewLabel</i></b> As String, <b><i>BeforeOrAfter</i></b> As <a href="EventTimingEnum.htm">EventTimingEnum</a>, <b><i>Context</i></b> As <a href="NameValueMap.htm">NameValueMap</a>, <b><i>HandlingCode</i></b> As <a href="HandlingCodeEnum.htm">HandlingCodeEnum</a> )
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">BrowserNodeDefinition</td>
+        <td class="api-list">Object</td>
+        <td class="api-list">The ClientBrowserNodeDefinition associated with the node being edited.&nbsp;It’s the Label property of this object that will be affected by an edit.</td>
+      </tr>
+      <tr>
+        <td class="api-list">NewLabel</td>
+        <td class="api-list">String</td>
+        <td class="api-list">When BeforeOrAfter is kBefore this is the current label of the node.&nbsp;When BeforeOrAFter is kAfter this is the new label of the node.</td>
+      </tr>
+      <tr>
+        <td class="api-list">BeforeOrAfter</td>
+        <td class="api-list"><a href="EventTimingEnum.htm">EventTimingEnum</a></td>
+        <td class="api-list">Notification is sent before and after the label edit occurs.&nbsp;When the BeforeOrAfter argument is kBefore you can set the HandlingCode argument to kEventCanceled to abort the edit and prohibit the end-user from editing the label.&nbsp;Any other value for this argument will allow the end-user to edit the label.&nbsp;&nbsp;If the HandlingCode is set to kEventCanceled, this notification is only sent before.&nbsp;For the other cases this notification is also sent after the edit is finished.</td>
+      </tr>
+      <tr>
+        <td class="api-list">Context</td>
+        <td class="api-list"><a href="NameValueMap.htm">NameValueMap</a></td>
+        <td class="api-list">No context information is provided for this event.</td>
+      </tr>
+      <tr>
+        <td class="api-list">HandlingCode</td>
+        <td class="api-list"><a href="HandlingCodeEnum.htm">HandlingCodeEnum</a></td>
+        <td class="api-list">When the BeforeOrAfter argument is kBefore you can set the HandlingCode argument to kEventCanceled to abort the edit and prohibit the end-user from editing the label.&nbsp;Any other value for this argument will allow the end-user to edit the label.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 9<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(BrowserPanesEvents.OnBrowserNodeLabelEdit%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

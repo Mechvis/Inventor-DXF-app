@@ -1,0 +1,224 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/HoleTables_Add_Sample.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="HoleTables_Add_Sample">
+    <meta name="description" content="Creating hole tables Sample">
+    <meta name="topicid" content="HoleTables_Add_Sample">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>Creating hole tables</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body><script>
+          function copyCode(language) {
+          // Get the pre element for the specified language.
+          var preElement = document.getElementById(language);
+
+          // Get the text from the element and copy it to the clipboard.
+          var preText = preElement.innerText;
+
+          var isIE = /*@cc_on!@*/false || !!document.documentMode;
+
+          if (isIE)
+          {
+            window.clipboardData.setData('Text', preText);
+          }
+          else
+          {
+            navigator.clipboard.writeText(preText);
+          }
+
+          //alert("Code copied to clipboard");
+          }
+        </script><link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">Creating hole tables</h1>
+    <h2 class="api">
+          Description
+        </h2>This sample demonstrates the creation of hole tables in a drawing.<h2 class="api">
+          Code Samples
+        </h2>
+    <div id="tabs">
+      <ul>
+        <li><a href="#VBA">VBA</a></li>
+        <li><a href="#iLogic">iLogic</a></li>
+      </ul>
+      <div id="VBA" class="api-code">Select a drawing view that contains holes and run the following sample.<table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('VBA_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="VBA_code">Sub CreateHoleTables()
+    <span style="color:blue">' Set a reference to the drawing document.</span>
+    <span style="color:blue">' This assumes a drawing document is active.</span>
+    Dim oDrawDoc As DrawingDocument
+    Set oDrawDoc = ThisApplication.ActiveDocument
+
+    <span style="color:blue">' Set a reference to the active sheet.</span>
+    Dim oActiveSheet As Sheet
+    Set oActiveSheet = oDrawDoc.ActiveSheet
+    
+    <span style="color:blue">' Set a reference to the drawing view.</span>
+    <span style="color:blue">' This assumes that a drawing view is selected.</span>
+    Dim oDrawingView As DrawingView
+    Set oDrawingView = oDrawDoc.SelectSet.Item(1)
+    
+    <span style="color:blue">' Create origin indicator if it has not been already created.</span>
+    If Not oDrawingView.HasOriginIndicator Then
+        <span style="color:blue">' Create point intent to anchor the origin to.</span>
+        Dim oDimIntent As GeometryIntent
+        Dim oPointIntent As Point2d
+        
+        <span style="color:blue">' Get the first curve on the view</span>
+        Dim oCurve As DrawingCurve
+        Set oCurve = oDrawingView.DrawingCurves.Item(1)
+       
+        <span style="color:blue">' Check if it has a strt point</span>
+        Set oPointIntent = oCurve.StartPoint
+        
+        If oPointIntent Is Nothing Then
+            <span style="color:blue">' Else use the center point</span>
+            Set oPointIntent = oCurve.CenterPoint
+        End If
+        
+        Set oDimIntent = oActiveSheet.CreateGeometryIntent(oCurve, oPointIntent)
+        
+        oDrawingView.CreateOriginIndicator oDimIntent
+    End If
+    
+    Dim oPlacementPoint As Point2d
+    
+    <span style="color:blue">' Set a reference to th sheet's border</span>
+    Dim oBorder As Border
+    Set oBorder = oActiveSheet.Border
+    
+    If Not oBorder Is Nothing Then
+        <span style="color:blue">' A border exists. The placement point</span>
+        <span style="color:blue">' is the top-left corner of the border.</span>
+        Set oPlacementPoint = ThisApplication.TransientGeometry.CreatePoint2d(oBorder.RangeBox.MinPoint.X, oBorder.RangeBox.MaxPoint.Y)
+    Else
+        <span style="color:blue">' There is no border. The placement point</span>
+        <span style="color:blue">' is the top-left corner of the sheet.</span>
+        Set oPlacementPoint = ThisApplication.TransientGeometry.CreatePoint2d(0, oActiveSheet.height)
+    End If
+    
+    <span style="color:blue">' Create a 'view' hole table</span>
+    <span style="color:blue">' This hole table includes all holes as specified by the active hole table style</span>
+    Dim oViewHoleTable As HoleTable
+    Set oViewHoleTable = oActiveSheet.HoleTables.Add(oDrawingView, oPlacementPoint)
+    
+    oPlacementPoint.X = oActiveSheet.width / 2
+    
+    <span style="color:blue">' Create a 'feature type' hole table</span>
+    <span style="color:blue">' This hole table includes specified hole types only</span>
+    Dim oFeatureHoleTable As HoleTable
+    Set oFeatureHoleTable = oActiveSheet.HoleTables.AddByFeatureType(oDrawingView, oPlacementPoint, _
+            True, True, True, True, False, False, False)
+End Sub</pre>
+      </div>
+      <div id="iLogic" class="api-code">Select a drawing view that contains holes and run the following sample.<table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('iLogic_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="iLogic_code">    <span style="color:blue">' Set a reference to the drawing document.</span>
+    <span style="color:blue">' This assumes a drawing document is active.</span>
+    Dim oDrawDoc As DrawingDocument
+    oDrawDoc = ThisApplication.ActiveDocument
+
+    <span style="color:blue">' Set a reference to the active sheet.</span>
+    Dim oActiveSheet As Sheet
+    oActiveSheet = oDrawDoc.ActiveSheet
+    
+    <span style="color:blue">' Set a reference to the drawing view.</span>
+    <span style="color:blue">' This assumes that a drawing view is selected.</span>
+    Dim oDrawingView As DrawingView
+    oDrawingView = oDrawDoc.SelectSet.Item(1)
+    
+    <span style="color:blue">' Create origin indicator if it has not been already created.</span>
+    If Not oDrawingView.HasOriginIndicator Then
+        <span style="color:blue">' Create point intent to anchor the origin to.</span>
+        Dim oDimIntent As GeometryIntent
+        Dim oPointIntent As Point2d
+        
+        <span style="color:blue">' Get the first curve on the view</span>
+        Dim oCurve As DrawingCurve
+        oCurve = oDrawingView.DrawingCurves.Item(1)
+       
+        <span style="color:blue">' Check if it has a strt point</span>
+        oPointIntent = oCurve.StartPoint
+        
+        If oPointIntent Is Nothing Then
+            <span style="color:blue">' Else use the center point</span>
+            oPointIntent = oCurve.CenterPoint
+        End If
+        
+        oDimIntent = oActiveSheet.CreateGeometryIntent(oCurve, oPointIntent)
+        
+        oDrawingView.CreateOriginIndicator(oDimIntent)
+    End If
+    
+    Dim oPlacementPoint As Point2d
+    
+    <span style="color:blue">' Set a reference to th sheet's border</span>
+    Dim oBorder As Border
+    oBorder = oActiveSheet.Border
+    
+    If Not oBorder Is Nothing Then
+        <span style="color:blue">' A border exists. The placement point</span>
+        <span style="color:blue">' is the top-left corner of the border.</span>
+        oPlacementPoint = ThisApplication.TransientGeometry.CreatePoint2d(oBorder.RangeBox.MinPoint.X, oBorder.RangeBox.MaxPoint.Y)
+    Else
+        <span style="color:blue">' There is no border. The placement point</span>
+        <span style="color:blue">' is the top-left corner of the sheet.</span>
+        oPlacementPoint = ThisApplication.TransientGeometry.CreatePoint2d(0, oActiveSheet.height)
+    End If
+    
+    <span style="color:blue">' Create a 'view' hole table</span>
+    <span style="color:blue">' This hole table includes all holes as specified by the active hole table style</span>
+    Dim oViewHoleTable As HoleTable
+    oViewHoleTable = oActiveSheet.HoleTables.Add(oDrawingView, oPlacementPoint)
+    
+    oPlacementPoint.X = oActiveSheet.width / 2
+    
+    <span style="color:blue">' Create a 'feature type' hole table</span>
+    <span style="color:blue">' This hole table includes specified hole types only</span>
+    Dim oFeatureHoleTable As HoleTable
+    oFeatureHoleTable = oActiveSheet.HoleTables.AddByFeatureType(oDrawingView, oPlacementPoint, _
+            True, True, True, True, False, False, False)</pre>
+      </div>
+    </div><br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(HoleTables_Add%20Sample%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

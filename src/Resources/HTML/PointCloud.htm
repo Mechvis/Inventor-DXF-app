@@ -1,0 +1,178 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/PointCloud.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="PointCloud">
+    <meta name="description" content="PointCloud Object">
+    <meta name="topicid" content="GUID-PointCloud">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>PointCloud Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">PointCloud Object
+			</h1><br><h2 class="api">
+          Description
+        </h2>The PointCloud object represents a single point cloud within Inventor.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PointCloud_Delete.htm">Delete</a></td>
+        <td class="api-list">Method that deletes the point cloud.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PointCloud_GetReferenceKey.htm">GetReferenceKey</a></td>
+        <td class="api-list">Generate the sequence of bytes, called this object's reference key, which can be held onto beyond document edits and which will allow the caller to be bound back to the live object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PointCloud_ModelToPointCloudSpace.htm">ModelToPointCloudSpace</a></td>
+        <td class="api-list">Method that takes a 3d coordinate in model space and returns a Point object containing the coordinate point in point cloud space.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PointCloud_PointCloudToModelSpace.htm">PointCloudToModelSpace</a></td>
+        <td class="api-list">Method that takes a 3d coordinate in point cloud space and returns a Point object containing the coordinate point in model space.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PointCloud_Application.htm">Application</a></td>
+        <td class="api-list">Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PointCloud_AttributeSets.htm">AttributeSets</a></td>
+        <td class="api-list">Gets the Attribute Sets collection on this object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PointCloud_Crops.htm">Crops</a></td>
+        <td class="api-list">Read-only property that returns the PointCloudCrops collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PointCloud_Density.htm">Density</a></td>
+        <td class="api-list">Read-write property that gets and sets the density of the points displayed. The range of this property is from 1 to 10.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PointCloud_DisplayedPointCount.htm">DisplayedPointCount</a></td>
+        <td class="api-list">Read-only property that returns the total number of cloud points currently being displayed.&nbsp;This is the result of the density, MaximumPointCount and cropping.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PointCloud_HealthStatus.htm">HealthStatus</a></td>
+        <td class="api-list">Property that returns an enum indicating the current state of the object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PointCloud_MaximumPointCount.htm">MaximumPointCount</a></td>
+        <td class="api-list">Read-write property that gets and sets the maximum point count that can be displayed in current point cloud.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PointCloud_Name.htm">Name</a></td>
+        <td class="api-list">Read-only property that returns the name of the point cloud. This is the name that’s visible in the browser.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PointCloud_Parent.htm">Parent</a></td>
+        <td class="api-list">Gets the parent object from whom this object can logically be reached.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PointCloud_RangeBox.htm">RangeBox</a></td>
+        <td class="api-list">Property that returns a Box object which contains the opposing points of a rectangular box that is guaranteed to enclose this object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PointCloud_RangeBoxInPointCloudSpace.htm">RangeBoxInPointCloudSpace</a></td>
+        <td class="api-list">Read-only property that returns a Box object which contains the opposing points of a rectangular box that is guaranteed to enclose this object in point cloud space.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PointCloud_Regions.htm">Regions</a></td>
+        <td class="api-list">Read-only property that returns the point cloud regions collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PointCloud_Scale.htm">Scale</a></td>
+        <td class="api-list">Read-write property that gets and sets the scale of the point cloud.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PointCloud_Scans.htm">Scans</a></td>
+        <td class="api-list">Read-only property that returns the point cloud scans collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PointCloud_SourceFullFileName.htm">SourceFullFileName</a></td>
+        <td class="api-list">Read-only property that returns the point cloud source full file name.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PointCloud_TotalPointCount.htm">TotalPointCount</a></td>
+        <td class="api-list">Read-only property that returns the total number of points in the point cloud taking no account of the crops.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PointCloud_Transform.htm">Transform</a></td>
+        <td class="api-list">Read-write property that gets and sets the matrix that defines the translation, rotation of the point cloud in model space.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PointCloud_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PointCloud_UnitsFactor.htm">UnitsFactor</a></td>
+        <td class="api-list">Read-only property that returns the units ratio between the point cloud source units and the Inventor database length unit(centimeters).</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PointCloud_Visible.htm">Visible</a></td>
+        <td class="api-list">Read-write property that gets and sets the visibility of this point cloud.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="PointCloudCrop_Parent.htm">PointCloudCrop.Parent</a>, <a href="PointCloudPlane_Parent.htm">PointCloudPlane.Parent</a>, <a href="PointCloudPlaneProxy_Parent.htm">PointCloudPlaneProxy.Parent</a>, <a href="PointCloudPoint_Parent.htm">PointCloudPoint.Parent</a>, <a href="PointCloudPointProxy_Parent.htm">PointCloudPointProxy.Parent</a>, <a href="PointCloudProxy_NativeObject.htm">PointCloudProxy.NativeObject</a>, <a href="PointCloudRegion_Parent.htm">PointCloudRegion.Parent</a>, <a href="PointClouds_Add.htm">PointClouds.Add</a>, <a href="PointClouds_Item.htm">PointClouds.Item</a>, <a href="PointCloudScan_Parent.htm">PointCloudScan.Parent</a><h2 class="api">
+            Derived Classes
+          </h2><a href="PointCloudProxy.htm">PointCloudProxy</a><h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2013<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(PointCloud%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

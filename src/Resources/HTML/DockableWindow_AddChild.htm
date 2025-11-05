@@ -1,0 +1,87 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/DockableWindow_AddChild.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="DockableWindow_AddChild">
+    <meta name="description" content="DockableWindow.AddChild Method">
+    <meta name="topicid" content="DockableWindow_AddChild">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>DockableWindow.AddChild Method</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">DockableWindow.AddChild Method</h1>
+
+          Parent Object: <a href="DockableWindow.htm">DockableWindow</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Method that adds a dialog or a control to the dockable window. Currently, you can only add a single child to a dockable window. So this method returns a failure if the dockable window already has a child. It is the responsibility of the client to destroy the dialog/control as and when appropriate.</p>
+    <h2 class="api">
+          Syntax
+        </h2>
+        
+            DockableWindow.<b>AddChild</b>( <b><i>Identifier</i></b> As Variant )
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">Identifier</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Input Variant that specifies the dialog or control. This can either be the HWND of a dialog/window, or the ProgID of a control or the GUID of the control as a string (including the braces "{ }"). The ProgID/GUID can be that of an ActiveX or a .NET user control.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Notes
+          </h2>When adding a dialog (by passing in an HWND as input), it must be created as a modeless dialog. Also, it is recommended that the dialog be created with the DockableWindow.HWND as the parent before calling this method. However, if created with any other parent, this method re-parents the child dialog to the dockable window.<h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2011<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(DockableWindow.AddChild%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,110 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU">
+    <link rel="canonical" href="http://help.autodesk.com/cloudhelp/2026/ENU/Inventor-API/files/UsingSDK.htm">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="27/4/2016">
+    <meta name="user-comments" content="enable">
+    <meta name="description" content="">
+    <meta name="topicid" content="GUID-6FD7AA08-1E43-43FC-971B-5F20E56C8846">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>Introduction to Using Inventor's Programming Interface</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"/>
+    <script type="text/javascript" src="/view/clientframework/client.js"><!--filler--></script>
+	<script>
+	  // This turns on the display of the copyright notice which is not visible by default.
+	  // Because the head is removed when used in the web help, this function will only exists
+	  // when the chm help is being created.
+	  window.onload = function() {
+		copyrightElement = document.getElementById('CopyrightNotice');
+		copyrightElement.style.display = 'block';
+	  };
+	</script>
+  </head>
+<body>
+<link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+
+<h1>Introduction to Using Inventor's Programming Interface</h1>
+<p class="normal">There are several resources provided to help you use Inventor's Application Programming Interface (API).  These resources are all part of Inventor's Software Development Kit (SDK).  The various elements of the SDK and some additional external resources are described below.</p><p>Currently Inventor API help is provided in English language only.</p>
+<h2>API Help</h2>
+<p class="normal">The API Help is installed with Inventor and is accessed from the Help menu as shown below.</p>
+<p><center><img src="../images/AccessingAPIHelp.png" /></center></p>
+
+<p class="normal">The help content consists of several parts:</p>
+<ul>
+<li>Introduction to the API, which is what you're reading now.</li>
+<li>What's new in this release of Inventor.  This lists the changes that have been made in Inventor that may require some changes to any existing programs and lists the new objects, method, properties, and events that have been added for this release.</li>
+<li>User's manual which provides overview topics of much of the API.</li>
+<li>Reference manual.  The reference manual provides detailed information about every object, method, property, and event.  If that topic is demonstrated in a sample, there is a link to the sample in that topic.</li>
+<li>Sample programs.  This is a categorized list of the sample programs.  These are the same samples that are also accessed through links in the reference manual topics.  They are primarily VBA programs, with a few C# programs.  The API is the same regardless of what language is used.  It's the syntax that changes, so a program in any language can serve as an example of how to use the API.</li>
+</ul>
+<h2>SDK Folder</h2>
+
+<p class="normal">By default, when installing Inventor, you'll get an SDK folder.  On Win 10/11 it's created at:</p>
+<p class="normalindent"><code>C:\Users\Public\Documents\Autodesk\Inventor &lt;version&gt;\SDK</code></p>
+<p></p>
+<p class="normal">When installed the SDK folder contains three files; DeveloperTools.msi, UserTools.msi, and SDK_Readme.htm.  To access the SDK information you need to install one or both of the .msi files, which can be installed by double-clicking the .msi file in Explorer.</p>
+<h3>DeveloperTools.msi</h3>
+<p class="normal">The DeveloperTools.msi installs additional sample programs and some tools intended to help developers write applications using the Inventor API.  When this component is installed, it creates the directories that contain the DeveloperTools sub folder which contains the following subfolders.</p>
+<div class="indent">
+<h4>Docs</h4>
+<p class="normal">This contains an object model diagram chart that can be useful in understanding the relationships between various objects.  This folder also contains some guidelines to use when creating the user-interface for your Inventor programs.</p>
+
+<h4>Include</h4>
+<p class="normal">This folder contains several header (.h) files that are primarily intended to be used by programmers using VC++.  Occasionally information in these files is also useful in other circumstances.</p>
+
+<h4>References</h4>
+<p class="normal">This folder contains a utility that is currently only used internally and is now obsolete with registry-free add-ins.
+
+<h4>Samples</h4>
+<p class="normal">This folder contains many larger programs written in several different language that demonstrate various ways to access and use Inventor's API.
+
+<h4>Tools</h4>
+<p class="normal">This folder contains two programs that are useful utilities when working with Inventor's API.  
+<p class="normal">The first, called EventWatcher, allows you to specify and watch certain events as they occur within Inventor.  This tool is very useful when you're writing a program that will be using events within Inventor.  You can use this tool to better understand the event behavior so you can know how to take advantage of it within your programs.
+<p class="normal">The second, called ThumbnailView, is a small component that lets you extract thumbnail images from Inventor documents without having to go through Inventor.  There's a readme and some samples that describe and show its use.
+
+<h4>Wizards</h4>
+<p class="normal">This directory no longer contains the wizards installer but now only contains a readme describing the use of the wizards.  For those familiar with the previous additional step to install the add-in wizards, the seperate wizards installer is no longer needed because the wizards are installed as part of the SDK installer.</p>
+<p class="normal">The wizards are used from within Visual Studio to create skeleton Inventor add-in projects.</p>
+</div>
+<h3>UserTools.msi</h3>
+<p class="normal">The UserTools.msi file contains several add-ins and standalone executables that help automate certain tasks for Inventor users that are not available in the Inventor product itself.  When this component is installed, it creates the directories for the tools that include AddIns and standalone executables.  The dll and exe files are installed so you can immiediately use the tools without having to compile any source code.  The source code for the tools is also installed which you can use as a sample and also can modify to change and extend the behavior of these tools.
+
+<p class="normal">The user tools installer includes the following add-ins: AttributeHelper, DrawingTools, GeneralTools, DerivedPart_SP and AutoCustomize.  It also includes the following standalone executables: CopyDesign, PartNumberModifier. A UserTools subdirectory is created in the SDK folder and the programs areinstalled there.  For more details regarding these tools, please refer to the individual "ReadMe.txt" file associated with each tool.
+
+<h2>Additional Resources</h2>
+<p class="normal">Some other resources are available on the web that contain additional information about Inventor's API.</p>
+
+<p class="normal"><a href="http://www.autodesk.com/developinventor" target="_blank">Develop Inventor Site</a> - A general introduction to the API including presentations describing the API features added in recent releases.</p>
+
+<p class="normal"><a href="https://modthemachine.typepad.com" target="_blank"><b>Mod the Machine</b> Blog</a> - A blog dedicated to the Autodesk Inventor API</p>
+
+<p class="normal"><a href="http://forums.autodesk.com" target="_blank">Autodesk Discussion Groups</a> - Autodesk discussion groups where there are open discussions about all of Autodesk's products.  The <b>Autodesk Inventor Customization</b> group is specifically for Inventor API questions.</p>
+
+<br />
+<br />
+<div id="CopyrightNotice" style="display:none;">
+  <hr />
+  <table width="100%" style="font-size:15">
+	<tr>
+	  <td align="left">
+		&copy; Copyright 2025 Autodesk, Inc.
+	  </td>
+	  <td align="right">
+		<a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(UsingSDK)">Comment on this page.</a>
+	  </td>
+	</tr>
+  </table>
+</div>
+
+</body>
+</html>

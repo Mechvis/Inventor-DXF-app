@@ -1,0 +1,160 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU">
+    <link rel="canonical" href="http://help.autodesk.com/cloudhelp/2026/ENU/Inventor-API/files/AnyCAD_Overview.htm">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="27/4/2016">
+    <meta name="user-comments" content="enable">
+    <meta name="description" content="">
+    <meta name="topicid" content="GUID-6D1F335F-7680-4F7D-9A26-F141DCD1B1BD">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>Understanding AnyCAD</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"/>
+    <script type="text/javascript" src="/view/clientframework/client.js"><!--filler--></script>
+	<script>
+	  // This turns on the display of the copyright notice which is not visible by default.
+	  // Because the head is removed when used in the web help, this function will only exists
+	  // when the chm help is being created.
+	  window.onload = function() {
+		copyrightElement = document.getElementById('CopyrightNotice');
+		copyrightElement.style.display = 'block';
+	  };
+	</script>
+</head>
+<body>
+<link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+	
+<H1>Any CAD</h1>
+	
+<h3>Introduction to AnyCAD</h3>
+
+<p Class="Normal">AnyCAD is introduced since Inventor 2016,&nbsp; it not only means to consolidate the import process for any other CAD file formats that Inventor can translate into Inventor data, additionally it also means that the other CAD files can be associatively imported into Inventor. Currently below CAD files can be associatively imported into Inventor:</p>
+    <p Class="Normal" style="margin-left: 40px"><span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: &quot;Times New Roman&quot;,&quot;serif&quot;; mso-fareast-font-family: SimSun; mso-fareast-theme-font: minor-fareast; background: yellow; mso-highlight: yellow; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">Alias, CATIA V5, ProE/Creo Patametric, NX, SolidWorks, STEP and AutoCAD</span></p>
+
+<h3>AnyCAD consolidated import process in UI:</h3>
+
+<br>
+<div align="center"> <img src="../images/AnyCADDialog1.png" border=0 ></div> <div align="center"> <img src="../images/AnyCADDialog2.png" border=0 ></div>
+<br>
+
+<h3>&nbsp;</h3>
+
+<p Class="Normal">In Inventor API, the associatively imported AnyCAD files are defined as ImportedComponent objects. To create&nbsp; an ImportedComponent you should define the ImportedComponentDefinition for it first, use the ImportedComponents.CreateDefinition allows you to create an ImportedComponentDefinition object, please note that currently we have two definition objects for AutoCAD and other CAD file formats respectively:&nbsp; The ImportedDWGComponentDefinition and ImportedGenericComponentDefinition objects are derived from the ImportedComponentDefinition, and the created ImportedComponentDefinition should be either ImportedDWGComponentDefinition or ImportedGenericComponentDefinition, which is determined by the input AnyCAD file format, and the ImportedDWGComponentDefinition or ImportedGenericComponentDefinition have more properties than the base ImportedComponentDefinition object which allow users to set how to import AnyCAD file into Inventor.</p>
+
+    <h3>Working with AnyCAD through the API</h3>
+
+<p Class="Normal">When import a generic AnyCAD file other than AutoCAD&nbsp; DWG file to Inventor part and assembly you can refer to below VBA samples: </p>
+<p Class="Normal">Import a generic AnyCAD file to Inventor part:</p>
+<p><table Class="Code">
+<tr valign="middle">
+	<td Class="Code">
+	<pre>
+Sub AssociativelyImportAliasToPartSample() 
+    Dim oDoc As PartDocument 
+    Set oDoc = ThisApplication.Documents.Add(kPartDocumentObject) 
+
+    Dim oPartCompDef As PartComponentDefinition 
+    Set oPartCompDef = oDoc.ComponentDefinition 
+
+    &#39; Create the ImportedGenericComponentDefinition bases on an Alias file 
+    Dim oImportedGenericCompDef As ImportedGenericComponentDefinition 
+    Set oImportedGenericCompDef = oPartCompDef.ReferenceComponents.ImportedComponents.CreateDefinition(&quot;C:\ProjectName\iPod.wire&quot;) 
+
+    &#39; Set the ReferenceModel to associatively import the Alias file, set this property to False will just convert the 
+    oImportedGenericCompDef.ReferenceModel = True 
+    oImportedGenericCompDef.IncludeAll
+
+    &#39; Import the Alias 
+    Dim oImportedComp As ImportedComponent 
+    Set oImportedComp = oPartCompDef.ReferenceComponents.ImportedComponents.Add(oImportedGenericCompDef) 
+End Sub 
+
+</pre>
+    </td></tr>
+</table></p>
+<p Class="Normal">Import a generic AnyCAD file to Inventor assembly:</p>
+<p>
+<table Class="Code">
+<tr valign="middle">
+	<td Class="Code">
+	<pre>
+Sub AssociativelyImportSolidworksToAssemblySample()
+    Dim oDoc As AssemblyDocument
+    Set oDoc = ThisApplication.Documents.Add(kAssemblyDocumentObject)
+
+    Dim oAssyCompDef As AssemblyComponentDefinition
+    Set oAssyCompDef = oDoc.ComponentDefinition
+
+    &#39;Create the ImportedGenericComponentDefinition bases on an Alias file
+    Dim oImportedGenericCompDef As ImportedGenericComponentDefinition
+    Set oImportedGenericCompDef = oAssyCompDef.ImportedComponents.CreateDefinition(&quot;C:\ProjectName\iPod.SLDPRT&quot;)
+
+    &#39;Set the ReferenceModel to associatively import the Alias file
+    oImportedGenericCompDef.ReferenceModel = True
+
+    &#39;Import the Solidworks to assembly
+    Dim oImportedComp As ImportedComponent
+    Set oImportedComp = oAssyCompDef.ImportedComponents.Add(oImportedGenericCompDef)
+End Sub
+
+</pre>
+    </td></tr>
+</table>
+</p>
+<p Class="Normal">When import an AutoCAD DWG file into part you can refer to below VBA sample: </p>
+
+<table Class="Code">
+<tr valign="middle">
+	<td Class="Code">
+	<pre>
+Sub AssociativelyImportDWGToPartSample()
+    Dim oDoc As PartDocument
+    Set oDoc = ThisApplication.Documents.Add(kPartDocumentObject)
+    
+    Dim oPartCompDef As PartComponentDefinition
+    Set oPartCompDef = oDoc.ComponentDefinition
+    
+    &#39;Create the ImportedDWGComponentDefinition bases on an AutoCAD DWG file
+    Dim oImportedDWGCompDef As ImportedDWGComponentDefinition
+    Set oImportedDWGCompDef = oPartCompDef.ReferenceComponents.ImportedComponents.CreateDefinition(&quot;C:\ProjectName\Basic.dwg&quot;)
+
+    &#39;Import the AutoCAD DWG
+    Dim oImportedComp As ImportedComponent
+    Set oImportedComp = oPartCompDef.ReferenceComponents.ImportedComponents.Add(oImportedDWGCompDef)
+End Sub
+
+</pre>
+    </td></tr>
+</table>
+<br>
+
+    <h3>More info about AnyCAD</h3>
+
+<p Class="Normal">When import generic AnyCAD files into assembly documents, Inventor will generate embedded documents referenced by component occurrences for the imported components, and the ComponentOccurrence.HasAssociativeImportedComponent can be used to determine if a ComponentOccurrence has associative imported component, and then use the ComponentOccurrence.ImportedComponent to get the imported component if it has. Please be aware that if you associatively import AnyCAD file which is an assembly file(like Solidworks assembly), only the top AnyCAD assembly will be treated as ImportedComponent, that means only the top level ComponentOccurrence will have the HasAssociativeImportedComponent return True, and the sub-occurrences won't have equivalent imported components, but you can use the ComponentOccurrence.IsAssociativelyImported to check whether it is created along with importing AnyCAD assembly file, and the ComponentOccurrence.AssociativeForeignFilename returns the referenced AnyCAD file name. For the embedded documents, they are saved in the same file as the embedding document on disk, you can access them via API but because they are resulted from the imported AnyCAD files you should not treat them as normal Inventor documents, and the embedded documents will be updated if their referenced AnyCAD files have changed, the IsEmbeddedDocument can tell you if a part or assembly is embedded document, so you can ignore it because edit or save embedded documents directly are not allowed.</p>
+
+<br />
+<br />
+<div id="CopyrightNotice" style="display:none;">
+  <hr />
+  <table width="100%" style="font-size:15">
+	<tr>
+	  <td align="left">
+		&copy; Copyright 2025 Autodesk, Inc.
+	  </td>
+	  <td align="right">
+		<a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(AnyCAD_Overview)">Comment on this page.</a>
+	  </td>
+	</tr>
+  </table>
+</div>
+
+</body>
+</html>

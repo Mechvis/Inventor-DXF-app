@@ -1,0 +1,113 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/OnFaceCurves_Add.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="OnFaceCurves_Add">
+    <meta name="description" content="OnFaceCurves.Add Method">
+    <meta name="topicid" content="OnFaceCurves_Add">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>OnFaceCurves.Add Method</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">OnFaceCurves.Add Method</h1>
+
+          Parent Object: <a href="OnFaceCurves.htm">OnFaceCurves</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Creates a new on face curve.</p>
+    <h2 class="api">
+          Syntax
+        </h2>
+        
+            OnFaceCurves.<b>Add</b>( <b><i>Faces</i></b> As <a href="NameValueMap.htm">NameValueMap</a>, <b><i>FitPoints</i></b> As <a href="NameValueMap.htm">NameValueMap</a> ) As <a href="OnFaceCurve.htm">OnFaceCurve</a>
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">Faces</td>
+        <td class="api-list"><a href="NameValueMap.htm">NameValueMap</a></td>
+        <td class="api-list">Input NameValueMap object that specifies an array of faces to create the splines on. The faces are in sequence and a face should be connected with the faces that are before and after it in the sequence, otherwise an error will occur. The format is as below:
+
+<P>Name = “Face1”. Value = A Face object. The number in the Name is 1-based, and can be increased for more faces to be added.</td>
+      </tr>
+      <tr>
+        <td class="api-list">FitPoints</td>
+        <td class="api-list"><a href="NameValueMap.htm">NameValueMap</a></td>
+        <td class="api-list">Input NameValueMap object that contains an array of ObjectCollection objects that each ObjectCollection specifies the fit points for a spline curve on a face. The format is as below:
+
+<P>Name = “Face1”. Value = An ObjectCollection object that contains the Point or SketchPoint3D objects which indicate the fit points positions. The number in the Name is 1-based and can be increased for more ObjectCollection objects to be added. The name in this argument should be matched to the name in the Faces argument so the fit points are located on the corresponding Face object.
+
+<P>If the count of items in this argument is different from that in the Faces argument or the Name are not matched in the Faces and FitPoints argument, an error occurs.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="OnFaceCurveSample_Sample.htm">OnFaceCurve creation</a></td>
+        <td class="api-list">This sample demonstrates how to create a OnFaceCurve in 3D sketch.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2017<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(OnFaceCurves.Add%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

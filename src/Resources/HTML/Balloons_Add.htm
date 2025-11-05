@@ -1,0 +1,127 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/Balloons_Add.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="Balloons_Add">
+    <meta name="description" content="Balloons.Add Method">
+    <meta name="topicid" content="Balloons_Add">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>Balloons.Add Method</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">Balloons.Add Method</h1>
+
+          Parent Object: <a href="Balloons.htm">Balloons</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Method that creates a new Balloon. The newly created Balloon is returned. The corresponding BOMView in the model is automatically enabled if not already enabled.</p>
+    <h2 class="api">
+          Syntax
+        </h2>
+        
+            Balloons.<b>Add</b>( <b><i>LeaderPoints</i></b> As <a href="ObjectCollection.htm">ObjectCollection</a>, [<b><i>VirtualComponent</i></b>] As Variant, [<b><i>Level</i></b>] As Variant, [<b><i>NumberingScheme</i></b>] As Variant, [<b><i>BalloonStyle</i></b>] As Variant, [<b><i>Layer</i></b>] As Variant ) As <a href="Balloon.htm">Balloon</a>
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">LeaderPoints</td>
+        <td class="api-list"><a href="ObjectCollection.htm">ObjectCollection</a></td>
+        <td class="api-list">Input ObjectCollection containing a series of Point2d objects representing the leader originating at the note. The last item in the collection (even if it is the only item) must be a GeometryIntent object indicating a geometry to attach the leader to. A GeometryIntent object can be created using the Sheet.CreateGeometryIntent method. The ObjectCollection must contain at least one item (a GeometryIntent), else the method will fail. Note that the component that the balloon will attach to is inferred from the GeometryIntent object.<p /></td>
+      </tr>
+      <tr>
+        <td class="api-list">VirtualComponent</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional input object that defines the virtual or custom component that this balloon will be attached to. This can either be a ComponentOccurrence / ComponentOccurrenceProxy object representing a virtual component, a BOMRow that represents a virtual component or a custom/virtual DrawingBOMRow.<p /><br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+      <tr>
+        <td class="api-list">Level</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional input PartsListLevelEnum that sets the view type for the parts list. If supplied, this input is only used in the case where the balloon references an assembly document. If this value was previously set as a result of creating a parts list or a balloon in the drawing based on the same model, this argument is ignored. Use the DrawingDocument.DrawingBOMs.IsDrawingBOMDefined method to check whether or not to supply this argument. Valid enums are: kStructured, that creates a 'first level only' parts list in which a simple integer value is assigned to direct children, kStructuredAllLevels that creates an 'all level' parts list with full expanded numbering, and kPartsOnly, that creates a parts list that sequentially numbers all parts in the top level assembly, even if they are contained in subassemblies.<br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+      <tr>
+        <td class="api-list">NumberingScheme</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list"><p>Optional input NameValueMap object that specifies the numbering scheme to use for the parts list. This argument is ignored if the numbering schemes have already been set for this model as a result of creating a parts list or a balloon based on the same model. Use the DrawingDocument.DrawingBOMs.IsDrawingBOMDefined method to check whether or not to supply this argument. Also, this argument is ignored if the numbering schemes have been defined in the model BOM views. The NameValueMap can contain the following entries based on the input 'Level' argument:</p><p>For kStructured: 'MinimumDigits' As Long</p><p>For kStructuredAllLevels: 'Delimiter' As String</p><p>For kPartsOnly: 'NumberingScheme' As NumberingSchemeEnum and 'MinimumDigits' As Long</p><p>Valid values for NumberingSchemeEnum are kNumericNumbering, kLowercaseAlphaNumbering and kUppercaseAlphaNumbering. This input should be supplied only if the input argument Level is specified to be kPartsOnly. If this argument is not supplied for a 'parts only' parts list, a default value of kNumericNumbering is assumed.</p><br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+      <tr>
+        <td class="api-list">BalloonStyle</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional input BalloonStyle object that specifies the balloon style to use for the balloon. If not specified, the style defined by the active standard is used.<p /><br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+      <tr>
+        <td class="api-list">Layer</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional input Layer object that specifies the layer to use for the balloon. If not specified, the layer defined by the active standard is used.<br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Balloons_Add_Sample.htm">Creation a balloon</a></td>
+        <td class="api-list">This sample demonstrates the creation of a balloon.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2009<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(Balloons.Add%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

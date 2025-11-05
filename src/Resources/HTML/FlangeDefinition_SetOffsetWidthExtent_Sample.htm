@@ -1,0 +1,264 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/FlangeDefinition_SetOffsetWidthExtent_Sample.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="FlangeDefinition_SetOffsetWidthExtent_Sample">
+    <meta name="description" content="Creating flange features Sample">
+    <meta name="topicid" content="FlangeDefinition_SetOffsetWidthExtent_Sample">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>Creating flange features</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body><script>
+          function copyCode(language) {
+          // Get the pre element for the specified language.
+          var preElement = document.getElementById(language);
+
+          // Get the text from the element and copy it to the clipboard.
+          var preText = preElement.innerText;
+
+          var isIE = /*@cc_on!@*/false || !!document.documentMode;
+
+          if (isIE)
+          {
+            window.clipboardData.setData('Text', preText);
+          }
+          else
+          {
+            navigator.clipboard.writeText(preText);
+          }
+
+          //alert("Code copied to clipboard");
+          }
+        </script><link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">Creating flange features</h1>
+    <h2 class="api">
+          Description
+        </h2>Demonstrates creating flange features of various width extents. This creates a new document, creates a face feature and adds a flange feature on four edges.<h2 class="api">
+          Code Samples
+        </h2>
+    <div id="tabs">
+      <ul>
+        <li><a href="#VBA">VBA</a></li>
+        <li><a href="#iLogic">iLogic</a></li>
+      </ul>
+      <div id="VBA" class="api-code">
+        <table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('VBA_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="VBA_code">Public Sub FlangeWidthsCreation()
+    <span style="color:blue">' Create a new sheet metal document.</span>
+    Dim sheetMetalDoc As PartDocument
+    Set sheetMetalDoc = ThisApplication.Documents.Add(kPartDocumentObject, _
+                        ThisApplication.FileManager.GetTemplateFile(kPartDocumentObject, , , "{9C464203-9BAE-11D3-8BAD-0060B0CE6BB4}"))
+
+    <span style="color:blue">' Get the sheet metal component definition.</span>
+    Dim smCompDef As SheetMetalComponentDefinition
+    Set smCompDef = sheetMetalDoc.ComponentDefinition
+
+    <span style="color:blue">' Create a sketch on the x-y plane.</span>
+    Dim sketch As PlanarSketch
+    Set sketch = smCompDef.Sketches.Add(smCompDef.WorkPlanes.Item(3))
+
+    Dim tg As TransientGeometry
+    Set tg = ThisApplication.TransientGeometry
+
+    <span style="color:blue">' Draw a rectangle.</span>
+    Call sketch.SketchLines.AddAsTwoPointRectangle(tg.CreatePoint2d(0, 0), tg.CreatePoint2d(25, 15))
+
+    <span style="color:blue">' Create a profile.</span>
+    Dim profile As profile
+    Set profile = sketch.Profiles.AddForSolid
+
+    Dim smFeatures As SheetMetalFeatures
+    Set smFeatures = smCompDef.Features
+
+    <span style="color:blue">' Build up a face feature definition.</span>
+    Dim faceDef As FaceFeatureDefinition
+    Set faceDef = smFeatures.FaceFeatures.CreateFaceFeatureDefinition(profile)
+
+    <span style="color:blue">' Create a face feature.</span>
+    Dim faceFeature As faceFeature
+    Set faceFeature = smFeatures.FaceFeatures.Add(faceDef)
+
+    <span style="color:blue">' Get the "top" face.</span>
+    Dim topFace As Face
+    Set topFace = smCompDef.SurfaceBodies.Item(1).LocateUsingPoint(kFaceObject, tg.CreatePoint(5, 5, smCompDef.Thickness.Value))
+
+    <span style="color:blue">' Create a collection containing the four edges.</span>
+    Dim edgeSet As EdgeCollection
+    Set edgeSet = ThisApplication.TransientObjects.CreateEdgeCollection
+    Dim i As Integer
+    For i = 1 To 4
+        Call edgeSet.Add(topFace.Edges.Item(i))
+    Next
+
+    <span style="color:blue">' Create the flange definition.</span>
+    Dim flangeDef As FlangeDefinition
+    Set flangeDef = smFeatures.FlangeFeatures.CreateFlangeDefinition(edgeSet, "90", 6)
+    
+    Dim oEdgeSet As FlangeEdgeSet
+    Dim oEdgeCol As EdgeCollection
+    Set oEdgeCol = ThisApplication.TransientObjects.CreateEdgeCollection
+    
+    <span style="color:blue">' Edit the definition to define a different width extent for each edge.</span>
+    For i = 1 To 4
+        Dim faceEdge As Edge
+        Set faceEdge = edgeSet.Item(i)
+        Select Case i
+            Case 1
+                <span style="color:blue">' Do nothing and let it default to the edge extent.</span>
+            Case 2
+                <span style="color:blue">' Edit the width extent to be centered.</span>
+                oEdgeCol.Clear
+                oEdgeCol.Add faceEdge
+                Set oEdgeSet = flangeDef.AddFlangeEdgeSet(oEdgeCol)
+                oEdgeSet.SetCenteredWidthExtent 10
+            Case 3
+                <span style="color:blue">' Edit the width extent to be offset as measured from the vertices of the edge.</span>
+                oEdgeCol.Clear
+                oEdgeCol.Add faceEdge
+                Set oEdgeSet = flangeDef.AddFlangeEdgeSet(oEdgeCol)
+                oEdgeSet.SetOffsetdWidthExtent faceEdge.StartVertex, 2, faceEdge.StopVertex, 5
+            Case 4
+                <span style="color:blue">' Edit the width extent to be an offset width extent.</span>
+                oEdgeCol.Clear
+                oEdgeCol.Add faceEdge
+                Set oEdgeSet = flangeDef.AddFlangeEdgeSet(oEdgeCol)
+                oEdgeSet.SetWidthOffsetWidthExtent 6, 2, faceEdge.StartVertex, True
+        End Select
+    Next
+
+    <span style="color:blue">' Create the flange.</span>
+    Call smFeatures.FlangeFeatures.Add(flangeDef)
+End Sub</pre>
+      </div>
+      <div id="iLogic" class="api-code">
+        <table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('iLogic_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="iLogic_code">    <span style="color:blue">' Create a new sheet metal document.</span>
+    Dim sheetMetalDoc As PartDocument
+    sheetMetalDoc = ThisApplication.Documents.Add(kPartDocumentObject, _
+                        ThisApplication.FileManager.GetTemplateFile(kPartDocumentObject, , , "{9C464203-9BAE-11D3-8BAD-0060B0CE6BB4}"))
+
+    <span style="color:blue">' Get the sheet metal component definition.</span>
+    Dim smCompDef As SheetMetalComponentDefinition
+    smCompDef = sheetMetalDoc.ComponentDefinition
+
+    <span style="color:blue">' Create a sketch on the x-y plane.</span>
+    Dim sketch As PlanarSketch
+    sketch = smCompDef.Sketches.Add(smCompDef.WorkPlanes.Item(3))
+
+    Dim tg As TransientGeometry
+    tg = ThisApplication.TransientGeometry
+
+    <span style="color:blue">' Draw a rectangle.</span>
+    Call sketch.SketchLines.AddAsTwoPointRectangle(tg.CreatePoint2d(0, 0), tg.CreatePoint2d(25, 15))
+
+    <span style="color:blue">' Create a profile.</span>
+    Dim profile As Profile
+    profile = sketch.Profiles.AddForSolid
+
+    Dim smFeatures As SheetMetalFeatures
+    smFeatures = smCompDef.Features
+
+    <span style="color:blue">' Build up a face feature definition.</span>
+    Dim faceDef As FaceFeatureDefinition
+    faceDef = smFeatures.FaceFeatures.CreateFaceFeatureDefinition(profile)
+
+    <span style="color:blue">' Create a face feature.</span>
+    Dim faceFeature As FaceFeature
+    faceFeature = smFeatures.FaceFeatures.Add(faceDef)
+
+    <span style="color:blue">' Get the "top" face.</span>
+    Dim topFace As Face
+    topFace = smCompDef.SurfaceBodies.Item(1).LocateUsingPoint(kFaceObject, tg.CreatePoint(5, 5, smCompDef.Thickness.Value))
+
+    <span style="color:blue">' Create a collection containing the four edges.</span>
+    Dim edgeSet As EdgeCollection
+    edgeSet = ThisApplication.TransientObjects.CreateEdgeCollection
+    Dim i As Integer
+    For i = 1 To 4
+        Call edgeSet.Add(topFace.Edges.Item(i))
+    Next
+
+    <span style="color:blue">' Create the flange definition.</span>
+    Dim flangeDef As FlangeDefinition
+    flangeDef = smFeatures.FlangeFeatures.CreateFlangeDefinition(edgeSet, "90", 6)
+
+	Dim oEdgeSet As FlangeEdgeSet
+    Dim oEdgeCol As EdgeCollection
+    oEdgeCol = ThisApplication.TransientObjects.CreateEdgeCollection
+	
+    <span style="color:blue">' Edit the definition to define a different width extent for each edge.</span>
+    For i = 1 To 4
+        Dim faceEdge As Edge
+        faceEdge = edgeSet.Item(i)
+        Select Case i
+            Case 1
+                <span style="color:blue">' Do nothing and let it default to the edge extent.</span>
+            Case 2
+                <span style="color:blue">' Edit the width extent to be centered.</span>
+                oEdgeCol.Clear
+                oEdgeCol.Add(faceEdge)
+                oEdgeSet = flangeDef.AddFlangeEdgeSet(oEdgeCol)
+                oEdgeSet.SetCenteredWidthExtent(10)
+            Case 3
+                <span style="color:blue">' Edit the width extent to be offset as measured from the vertices of the edge.</span>
+                oEdgeCol.Clear
+                oEdgeCol.Add(faceEdge)
+                oEdgeSet = flangeDef.AddFlangeEdgeSet(oEdgeCol)
+                oEdgeSet.SetOffsetdWidthExtent(faceEdge.StartVertex, 2, faceEdge.StopVertex, 5)
+            Case 4
+                <span style="color:blue">' Edit the width extent to be an offset width extent.</span>
+                oEdgeCol.Clear
+                oEdgeCol.Add(faceEdge)
+                oEdgeSet = flangeDef.AddFlangeEdgeSet(oEdgeCol)
+                oEdgeSet.SetWidthOffsetWidthExtent(6, 2, faceEdge.StartVertex, True)
+        End Select
+    Next
+
+    <span style="color:blue">' Create the flange.</span>
+    Call smFeatures.FlangeFeatures.Add(flangeDef)</pre>
+      </div>
+    </div><br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(FlangeDefinition_SetOffsetWidthExtent%20Sample%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

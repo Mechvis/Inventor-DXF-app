@@ -1,0 +1,125 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/OccurrencePatterns_AddRectangularPattern.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="OccurrencePatterns_AddRectangularPattern">
+    <meta name="description" content="OccurrencePatterns.AddRectangularPattern Method">
+    <meta name="topicid" content="OccurrencePatterns_AddRectangularPattern">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>OccurrencePatterns.AddRectangularPattern Method</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">OccurrencePatterns.AddRectangularPattern Method</h1>
+
+          Parent Object: <a href="OccurrencePatterns.htm">OccurrencePatterns</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Method that creates a new rectangular occurrence pattern of input component(s).</p>
+    <h2 class="api">
+          Syntax
+        </h2>
+        
+            OccurrencePatterns.<b>AddRectangularPattern</b>( <b><i>ParentComponents</i></b> As <a href="ObjectCollection.htm">ObjectCollection</a>, <b><i>ColumnEntity</i></b> As Object, <b><i>ColumnEntityNaturalDirection</i></b> As Boolean, <b><i>ColumnOffset</i></b> As Variant, <b><i>ColumnCount</i></b> As Variant, [<b><i>RowEntity</i></b>] As Variant, [<b><i>RowEntityNaturalDirection</i></b>] As Boolean, [<b><i>RowOffset</i></b>] As Variant, [<b><i>RowCount</i></b>] As Variant ) As <a href="RectangularOccurrencePattern.htm">RectangularOccurrencePattern</a>
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">ParentComponents</td>
+        <td class="api-list"><a href="ObjectCollection.htm">ObjectCollection</a></td>
+        <td class="api-list">Input ObjectCollection that contains the components to pattern. The valid objects that can be specified in the collection are ComponentOccurrence and OccurrencePattern objects.</td>
+      </tr>
+      <tr>
+        <td class="api-list">ColumnEntity</td>
+        <td class="api-list">Object</td>
+        <td class="api-list">Input proxy object that defines the column (x) direction of the pattern. This must be a proxy to a linear edge or a work axis.<p /></td>
+      </tr>
+      <tr>
+        <td class="api-list">ColumnEntityNaturalDirection</td>
+        <td class="api-list">Boolean</td>
+        <td class="api-list">Input Boolean that specifies if the column direction is in the natural direction of the column entity or opposed. True if it is in the same direction as the natural direction of the column entity.<p /></td>
+      </tr>
+      <tr>
+        <td class="api-list">ColumnOffset</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Input Variant that defines the distance between the columns. This can be either a numeric value or a string. A parameter for this value will be created and the supplied string or value is assigned to the parameter. If a value is input, the units are centimeters. If a string is input, the units can be specified as part of the string or it will default to the current length units of the document.</td>
+      </tr>
+      <tr>
+        <td class="api-list">ColumnCount</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Input Variant that defines the number of columns. This can be either a numeric value or a string. A parameter for this value will be created and the supplied string or value is assigned to the parameter. If a string is input it must result in a unitless number.</td>
+      </tr>
+      <tr>
+        <td class="api-list">RowEntity</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional input Variant that defines the row (y) direction of the pattern. This must be a proxy to a linear edge or a work axis. If this argument is left out then the pattern will have a single row and all subsequent arguments will be ignored.<p /><br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+      <tr>
+        <td class="api-list">RowEntityNaturalDirection</td>
+        <td class="api-list">Boolean</td>
+        <td class="api-list">Optional input Boolean that specifies if the row direction is in the natural direction of the row entity or opposed. True if it is in the same direction as the natural direction of the row entity. This argument must be supplied if the RowEntity argument is provided; otherwise it is ignored.<p /><br /><br /> This is an optional argument whose default value is True.</td>
+      </tr>
+      <tr>
+        <td class="api-list">RowOffset</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional input Variant that defines the distance between the rows. This can be either a numeric value or a string. A parameter for this value will be created and the supplied string or value is assigned to the parameter. If a value is input, the units are centimeters. If a string is input, the units can be specified as part of the string or it will default to the current length units of the document. This argument must be supplied if the RowEntity argument is provided; otherwise it is ignored.<br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+      <tr>
+        <td class="api-list">RowCount</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional input Variant that defines the number of rows. This can be either a numeric value or a string. A parameter for this value will be created and the supplied string or value is assigned to the parameter. If a string is input it must result in a unitless number. This argument must be supplied if the RowEntity argument is provided; otherwise it is ignored.Sub PatternComponent()<p /><p />' Set a reference to the active assembly document<p />Dim oDoc As AssemblyDocument<p />Set oDoc = ThisApplication.ActiveDocument<p /><p />' Set a reference to the AssemblyComponentDefinition<p />Dim oDef As AssemblyComponentDefinition<p />Set oDef = oDoc.ComponentDefinition<p /><p />' Get the x\-axis of the assembly<p />Dim oXAxis As WorkAxis<p />Set oXAxis = oDef.WorkAxes.Item(1)<p /><p />' Get the y\-axis of the assembly<p />Dim oYAxis As WorkAxis<p />Set oYAxis = oDef.WorkAxes.Item(2)<p /><p />Dim oParentOccs As ObjectCollection<p />Set oParentOccs = ThisApplication.TransientObjects.CreateObjectCollection<p /><p />oParentOccs.Add oDef.Occurrences.Item(1)<p /><p />' Create a rectangular pattern of components\:<p />' 4 columns in the x\-direction with an offset of 5 in<p />' 3 rows in the y\-direction with an offset of 4 in<p />Dim oRectOccPattern As RectangularOccurrencePattern<p />Set oRectOccPattern = oDef.OccurrencePatterns.AddRectangularPattern( _<p />oParentOccs, oXAxis, True, "5 in", 4, oYAxis, True, "4 in", 3)<p />End Sub <todo /><br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 6<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(OccurrencePatterns.AddRectangularPattern%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

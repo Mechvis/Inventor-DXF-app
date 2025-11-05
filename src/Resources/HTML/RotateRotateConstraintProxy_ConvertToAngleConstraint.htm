@@ -1,0 +1,115 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/RotateRotateConstraintProxy_ConvertToAngleConstraint.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="RotateRotateConstraintProxy_ConvertToAngleConstraint">
+    <meta name="description" content="RotateRotateConstraintProxy.ConvertToAngleConstraint Method">
+    <meta name="topicid" content="RotateRotateConstraintProxy_ConvertToAngleConstraint">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>RotateRotateConstraintProxy.ConvertToAngleConstraint Method</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">RotateRotateConstraintProxy.ConvertToAngleConstraint Method</h1>
+
+          Parent Object: <a href="RotateRotateConstraintProxy.htm">RotateRotateConstraintProxy</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Method that converts the constraint to an angle constraint, and returns the AngleConstraint object. This method can also be used to edit the geometries associated with an angle constraint without changing its type, in which case the same object is returned by the method.</p>
+    <h2 class="api">
+          Syntax
+        </h2>
+        
+            RotateRotateConstraintProxy.<b>ConvertToAngleConstraint</b>( <b><i>EntityOne</i></b> As Object, <b><i>EntityTwo</i></b> As Object, <b><i>Angle</i></b> As Variant, [<b><i>SolutionType</i></b>] As <a href="AngleConstraintSolutionTypeEnum.htm">AngleConstraintSolutionTypeEnum</a>, [<b><i>ReferenceVectorEntity</i></b>] As Variant, [<b><i>BiasPointOne</i></b>] As Variant, [<b><i>BiasPointTwo</i></b>] As Variant ) As <a href="AngleConstraint.htm">AngleConstraint</a>
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">EntityOne</td>
+        <td class="api-list">Object</td>
+        <td class="api-list">Input object that defines the first object. This object can be a planar face, work plane, linear edge, work axis, or a face that defines an axis.</td>
+      </tr>
+      <tr>
+        <td class="api-list">EntityTwo</td>
+        <td class="api-list">Object</td>
+        <td class="api-list">Input object that defines the second object. This object can be a planar face, work plane, linear edge, work axis, or a face that defines an axis.</td>
+      </tr>
+      <tr>
+        <td class="api-list">Angle</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Input Variant that defines the angle between the two input entities. This can be either a numeric value or a string. A parameter for this value is created and the supplied string or value is assigned to the parameter. If a value is input, the units are radians. If a string is input the units can be specified as part of the string or will default to the current angle units of the document.</td>
+      </tr>
+      <tr>
+        <td class="api-list">SolutionType</td>
+        <td class="api-list"><a href="AngleConstraintSolutionTypeEnum.htm">AngleConstraintSolutionTypeEnum</a></td>
+        <td class="api-list">Optional input AngleConstraintSolutionTypeEnum that specifies the solution type. If specified to be kDirectedSolution, the solution always applies the right hand rule. If specified to be kUndirectedSolution, the solution allows either orientation, thus resolving situations where component orientation flips during a constraint drive or drag. If specified to be kReferenceVectorSolution, the ReferenceVectorEntity argument must be provided with a third entity for the solution. The default value is kDirectedSolution.<br /><br /> This is an optional argument whose default value is 78593.</td>
+      </tr>
+      <tr>
+        <td class="api-list">ReferenceVectorEntity</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional input object that provides a third entity to solve the angle constraint. This argument is ignored if the SolutionType argument is not kReferenceVectorSolution. This object can be a planar face, work plane, linear edge, work axis, or a face that defines an axis.<br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+      <tr>
+        <td class="api-list">BiasPointOne</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional input Point object that is used help in determining the initial position of the occurrence. The occurrences are repositioned in an attempt to make the two bias points coincident. This provides some general control over the position of the occurrence when it isn't being controlled by another constraint. An example of when the bias points are useful is the case when the first constraint on a part is a mate constraint. In the case where the mate is between two planes, the parts can be positioned anywhere along the infinite plane that defines their mating contact. Using the bias points you can define the position of the two occurrences, relative to each other. If a bias point is not given, one is calculated that is at the center of the parameter range of the input entity.<br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+      <tr>
+        <td class="api-list">BiasPointTwo</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional input Point object that is used help in determining the initial position of the occurrence. The occurrences are repositioned in an attempt to make the two bias points coincident. This provides some general control over the position of the occurrence when it isn't being controlled by another constraint. An example of when the bias points are useful is the case when the first constraint on a part is a mate constraint. In the case where the mate is between two planes, the parts can be positioned anywhere along the infinite plane that defines their mating contact. Using the bias points you can define the position of the two occurrences, relative to each other. If a bias point is not given, one is calculated that is at the center of the parameter range of the input entity.<br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2011<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(RotateRotateConstraintProxy.ConvertToAngleConstraint%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,289 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/AssemblyRotationalJoint_Sample.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="AssemblyRotationalJoint_Sample">
+    <meta name="description" content="Create rotational assembly joint Sample">
+    <meta name="topicid" content="AssemblyRotationalJoint_Sample">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>Create rotational assembly joint</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body><script>
+          function copyCode(language) {
+          // Get the pre element for the specified language.
+          var preElement = document.getElementById(language);
+
+          // Get the text from the element and copy it to the clipboard.
+          var preText = preElement.innerText;
+
+          var isIE = /*@cc_on!@*/false || !!document.documentMode;
+
+          if (isIE)
+          {
+            window.clipboardData.setData('Text', preText);
+          }
+          else
+          {
+            navigator.clipboard.writeText(preText);
+          }
+
+          //alert("Code copied to clipboard");
+          }
+        </script><link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">Create rotational assembly joint</h1>
+    <h2 class="api">
+          Description
+        </h2><p>This sample demonstrates creating an assembly joint. It connects the midpoints of the edges of two faces using a rotational joint. To do this it first creates a geometry intent object of the midpoint of the edge and then creates another intent using the face and the midpoint intent.  It does this to create to midpoint intents which it then uses to create the rotational connection.</p>
+
+<p>The sample uses and existing part that must be set up to allow it to work correctly.  To create the sample part you can use any part that has a planar face and a linear edge connected to that planar face.  A simple box is sufficient.  In this part Add a mate iMate to the planar face and rename the iMate to "Face1".  Also add a mate iMate to a linear edge that is on the face previously named and rename this iMate to "Edge1".  Save the part to "C:\Temp\SamplePart.ipt" or any other name and edit the code below to reference the file.  You can then run the sample code which will create a new assembly, insert two instances of the part and create a rotational connection between them.  Then it will animation the rotation by driving the connection.</p><h2 class="api">
+          Code Samples
+        </h2>
+    <div id="tabs">
+      <ul>
+        <li><a href="#VBA">VBA</a></li>
+        <li><a href="#iLogic">iLogic</a></li>
+      </ul>
+      <div id="VBA" class="api-code">
+        <table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('VBA_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="VBA_code">Public Sub AssemblyJointSample()
+    <span style="color:blue">' Create a new assembly document.</span>
+    Dim asmDoc As AssemblyDocument
+    Set asmDoc = ThisApplication.Documents.Add(kAssemblyDocumentObject, _
+                  ThisApplication.FileManager.GetTemplateFile(kAssemblyDocumentObject))
+    Dim asmDef As AssemblyComponentDefinition
+    Set asmDef = asmDoc.ComponentDefinition
+    
+    <span style="color:blue">' Place an occurrence into the assembly.</span>
+    Dim occ1 As ComponentOccurrence
+    Dim occ2 As ComponentOccurrence
+    Dim trans As Matrix
+    Set trans = ThisApplication.TransientGeometry.CreateMatrix
+    Set occ1 = asmDef.Occurrences.Add("C:\Temp\SamplePart.ipt", trans)
+    
+    <span style="color:blue">' Place a second occurrence with the matrix adjusted so it fits correctly with the first occurrence.</span>
+    trans.Cell(1, 4) = 6 * 2.54
+    Set occ2 = asmDef.Occurrences.Add("C:\Temp\SamplePart.ipt", trans)
+    
+    <span style="color:blue">' Get Face 1 from occ1 and create a FaceProxy.</span>
+    Dim faceOnOcc1 As Face
+    Set faceOnOcc1 = GetNamedEntity(occ1, "Face1")
+    
+    <span style="color:blue">' Get Face 1 from occ2 and create a FaceProxy.</span>
+    Dim faceOnOcc2 As Face
+    Set faceOnOcc2 = GetNamedEntity(occ2, "Face1")
+    
+    <span style="color:blue">' Get Edge 1 from occ2 and create an EdgeProxy.</span>
+    Dim edgeOnOcc2 As Edge
+    Set edgeOnOcc2 = GetNamedEntity(occ2, "Edge1")
+    
+    <span style="color:blue">' Get Edge 3 from occ1 and create an EdgeProxy.</span>
+    Dim edgeOnOcc1 As Edge
+    Set edgeOnOcc1 = GetNamedEntity(occ1, "Edge1")
+    
+    <span style="color:blue">' Create an intent to the center of Edge1.</span>
+    Dim edgeOcc2Intent As GeometryIntent
+    Set edgeOcc2Intent = asmDef.CreateGeometryIntent(edgeOnOcc2, PointIntentEnum.kMidPointIntent)
+    
+    <span style="color:blue">' Create an intent to the center of Edge3.</span>
+    Dim edgeOcc1Intent As GeometryIntent
+    Set edgeOcc1Intent = asmDef.CreateGeometryIntent(edgeOnOcc1, PointIntentEnum.kMidPointIntent)
+    
+    <span style="color:blue">' Create two intents to define the geometry for the joint.</span>
+    Dim intentOne As GeometryIntent
+    Set intentOne = asmDef.CreateGeometryIntent(faceOnOcc2, edgeOcc2Intent)
+    Dim intentTwo As GeometryIntent
+    Set intentTwo = asmDef.CreateGeometryIntent(faceOnOcc1, edgeOcc1Intent)
+
+    <span style="color:blue">' Create a rotational jont between the two parts.</span>
+    Dim jointDef As AssemblyJointDefinition
+    Set jointDef = asmDef.Joints.CreateAssemblyJointDefinition(kRotationalJointType, _
+                                                                           intentOne, intentTwo)
+    jointDef.FlipAlignmentDirection = False
+    jointDef.FlipOriginDirection = True
+    Dim joint As AssemblyJoint
+    Set joint = asmDef.Joints.Add(jointDef)
+
+    <span style="color:blue">' Make the joint visible.</span>
+    joint.Visible = True
+    
+    <span style="color:blue">' Drive the joint to animate it.</span>
+    joint.DriveSettings.StartValue = "0 deg"
+    joint.DriveSettings.EndValue = "180 deg"
+    joint.DriveSettings.GoToStart
+    joint.DriveSettings.PlayForward
+    joint.DriveSettings.PlayReverse
+End Sub
+
+
+<span style="color:blue">' This finds the entity associated with an iMate of a specified name.  This</span>
+<span style="color:blue">' allows iMates to be used as a generic naming mechansim.</span>
+Private Function GetNamedEntity(Occurrence As ComponentOccurrence, Name As String) As Object
+    <span style="color:blue">' Look for the iMate that has the specified name in the referenced file.</span>
+    Dim iMate As iMateDefinition
+    Dim partDef As PartComponentDefinition
+    Set partDef = Occurrence.Definition
+    For Each iMate In partDef.iMateDefinitions
+        <span style="color:blue">' Check to see if this iMate has the correct name.</span>
+        If UCase(iMate.Name) = UCase(Name) Then
+            <span style="color:blue">' Get the geometry assocated with the iMate.</span>
+            Dim entity As Object
+            Set entity = iMate.entity
+            
+            <span style="color:blue">' Create a proxy.</span>
+            Dim resultEntity As Object
+            Set resultEntity = Nothing
+            Call Occurrence.CreateGeometryProxy(entity, resultEntity)
+            
+            Exit For
+        End If
+    Next
+    
+    <span style="color:blue">' Return the found entity, or Nothing if a match wasn't found.</span>
+    Set GetNamedEntity = resultEntity
+End Function</pre>
+      </div>
+      <div id="iLogic" class="api-code">
+        <table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('iLogic_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="iLogic_code">Sub Main
+    <span style="color:blue">' Create a new assembly document.</span>
+    Dim asmDoc As AssemblyDocument
+    asmDoc = ThisApplication.Documents.Add(kAssemblyDocumentObject, _
+                  ThisApplication.FileManager.GetTemplateFile(kAssemblyDocumentObject))
+    Dim asmDef As AssemblyComponentDefinition
+    asmDef = asmDoc.ComponentDefinition
+    
+    <span style="color:blue">' Place an occurrence into the assembly.</span>
+    Dim occ1 As ComponentOccurrence
+    Dim occ2 As ComponentOccurrence
+    Dim trans As Matrix
+    trans = ThisApplication.TransientGeometry.CreateMatrix
+    occ1 = asmDef.Occurrences.Add("C:\Temp\SamplePart.ipt", trans)
+    
+    <span style="color:blue">' Place a second occurrence with the matrix adjusted so it fits correctly with the first occurrence.</span>
+    trans.Cell(1, 4) = 6 * 2.54
+    occ2 = asmDef.Occurrences.Add("C:\Temp\SamplePart.ipt", trans)
+    
+    <span style="color:blue">' Get Face 1 from occ1 and create a FaceProxy.</span>
+    Dim faceOnOcc1 As Face
+    faceOnOcc1 = GetNamedEntity(occ1, "Face1")
+    
+    <span style="color:blue">' Get Face 1 from occ2 and create a FaceProxy.</span>
+    Dim faceOnOcc2 As Face
+    faceOnOcc2 = GetNamedEntity(occ2, "Face1")
+    
+    <span style="color:blue">' Get Edge 1 from occ2 and create an EdgeProxy.</span>
+    Dim edgeOnOcc2 As Edge
+    edgeOnOcc2 = GetNamedEntity(occ2, "Edge1")
+    
+    <span style="color:blue">' Get Edge 3 from occ1 and create an EdgeProxy.</span>
+    Dim edgeOnOcc1 As Edge
+    edgeOnOcc1 = GetNamedEntity(occ1, "Edge1")
+    
+    <span style="color:blue">' Create an intent to the center of Edge1.</span>
+    Dim edgeOcc2Intent As GeometryIntent
+    edgeOcc2Intent = asmDef.CreateGeometryIntent(edgeOnOcc2, PointIntentEnum.kMidPointIntent)
+    
+    <span style="color:blue">' Create an intent to the center of Edge3.</span>
+    Dim edgeOcc1Intent As GeometryIntent
+    edgeOcc1Intent = asmDef.CreateGeometryIntent(edgeOnOcc1, PointIntentEnum.kMidPointIntent)
+    
+    <span style="color:blue">' Create two intents to define the geometry for the joint.</span>
+    Dim intentOne As GeometryIntent
+    intentOne = asmDef.CreateGeometryIntent(faceOnOcc2, edgeOcc2Intent)
+    Dim intentTwo As GeometryIntent
+    intentTwo = asmDef.CreateGeometryIntent(faceOnOcc1, edgeOcc1Intent)
+
+    <span style="color:blue">' Create a rotational jont between the two parts.</span>
+    Dim jointDef As AssemblyJointDefinition
+    jointDef = asmDef.Joints.CreateAssemblyJointDefinition(kRotationalJointType, _
+                                                                           intentOne, intentTwo)
+    jointDef.FlipAlignmentDirection = False
+    jointDef.FlipOriginDirection = True
+    Dim joint As AssemblyJoint
+    joint = asmDef.Joints.Add(jointDef)
+
+    <span style="color:blue">' Make the joint visible.</span>
+    joint.Visible = True
+    
+    <span style="color:blue">' Drive the joint to animate it.</span>
+    joint.DriveSettings.StartValue = "0 deg"
+    joint.DriveSettings.EndValue = "180 deg"
+    joint.DriveSettings.GoToStart
+    joint.DriveSettings.PlayForward
+    joint.DriveSettings.PlayReverse
+End Sub
+
+
+<span style="color:blue">' This finds the entity associated with an iMate of a specified name.  This</span>
+<span style="color:blue">' allows iMates to be used as a generic naming mechansim.</span>
+Private Function GetNamedEntity(Occurrence As ComponentOccurrence, Name As String) As Object
+    <span style="color:blue">' Look for the iMate that has the specified name in the referenced file.</span>
+    Dim iMate As iMateDefinition
+    Dim partDef As PartComponentDefinition
+    partDef = Occurrence.Definition
+	
+	Dim resultEntity As Object
+    For Each iMate In partDef.iMateDefinitions
+        <span style="color:blue">' Check to see if this iMate has the correct name.</span>
+        If UCase(iMate.Name) = UCase(Name) Then
+            <span style="color:blue">' Get the geometry assocated with the iMate.</span>
+            Dim entity As Object
+            entity = iMate.entity
+            
+            <span style="color:blue">' Create a proxy.</span>
+            resultEntity = Nothing
+            Call Occurrence.CreateGeometryProxy(entity, resultEntity)
+            
+            Exit For
+        End If
+    Next
+    
+    <span style="color:blue">' Return the found entity, or Nothing if a match wasn't found.</span>
+    GetNamedEntity = resultEntity
+End Function</pre>
+      </div>
+    </div><br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(AssemblyRotationalJoint%20Sample%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

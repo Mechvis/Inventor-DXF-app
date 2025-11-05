@@ -1,0 +1,130 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/FaceDraftDefinition_SetPartingTool.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="FaceDraftDefinition_SetPartingTool">
+    <meta name="description" content="FaceDraftDefinition.SetPartingTool Method">
+    <meta name="topicid" content="FaceDraftDefinition_SetPartingTool">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>FaceDraftDefinition.SetPartingTool Method</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">FaceDraftDefinition.SetPartingTool Method</h1>
+
+          Parent Object: <a href="FaceDraftDefinition.htm">FaceDraftDefinition</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Method that set the face draft definition to be kPartingToolFaceDraftDefinitionType with input values.</p>
+    <h2 class="api">
+          Syntax
+        </h2>
+        
+            FaceDraftDefinition.<b>SetPartingTool</b>( <b><i>InputFaces</i></b> As <a href="FaceCollection.htm">FaceCollection</a>, <b><i>PartingTool</i></b> As Object, <b><i>PullDirection</i></b> As Object, <b><i>DraftAngle</i></b> As Variant, [<b><i>CutMaterial</i></b>] As Boolean, [<b><i>FixedEdges</i></b>] As Variant, [<b><i>DraftAngleConstraintType</i></b>] As <a href="DraftAngleConstraintTypeEnum.htm">DraftAngleConstraintTypeEnum</a>, [<b><i>DraftAngleTwo</i></b>] As Variant, [<b><i>PullDirectionReversed</i></b>] As Boolean, [<b><i>AbsoluteDraftAngle</i></b>] As Boolean )
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">InputFaces</td>
+        <td class="api-list"><a href="FaceCollection.htm">FaceCollection</a></td>
+        <td class="api-list">Input FaceCollection object that specifies the faces to draft.</td>
+      </tr>
+      <tr>
+        <td class="api-list">PartingTool</td>
+        <td class="api-list">Object</td>
+        <td class="api-list">Input object that specifies the parting tool for face draft.&nbsp;This can be a 2D&3D sketch profile or work plane or work surface. Valid parting tool should be intersecting with the input faces for drafting.</td>
+      </tr>
+      <tr>
+        <td class="api-list">PullDirection</td>
+        <td class="api-list">Object</td>
+        <td class="api-list">Input Object that specifies an object to define the pull direction. This could be a planar Face, an Edge, a WorkPlane or a WorkAxis.</td>
+      </tr>
+      <tr>
+        <td class="api-list">DraftAngle</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Input Variant value that specifies the draft angle for face draft.&nbsp;A numeric or string value can be supplied for this property and a parameter will be automatically created after the face draft feature is created. If a numeric value is supplied, the value is in radian, and the parameter is set to the value specified. If a string value is supplied it will be used as the expression for the newly created parameter, if the value is supplied without a unit qualifier it will default to the current document angle unit. The following is a valid entry for it, assuming the parameter d1 already exists and defines a angle “d1+3 deg”.</td>
+      </tr>
+      <tr>
+        <td class="api-list">CutMaterial</td>
+        <td class="api-list">Boolean</td>
+        <td class="api-list">Optioanl input Boolean that specifies whether the draft face feature is to cut material. This defaults to True indicating the draft face feature is to cut material.<br /><br /> This is an optional argument whose default value is True.</td>
+      </tr>
+      <tr>
+        <td class="api-list">FixedEdges</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optioanl input EdgeCollection object that specifies the fixed edges for face draft.&nbsp;This is ignored if the CutMaterial is True.<br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+      <tr>
+        <td class="api-list">DraftAngleConstraintType</td>
+        <td class="api-list"><a href="DraftAngleConstraintTypeEnum.htm">DraftAngleConstraintTypeEnum</a></td>
+        <td class="api-list">Optioanl input DraftAngleConstraintTypeEnum that specifies how the draft angle will be applied to the draft faces on two sides of the parting tool. When the CutMaterial is True you can specify the kSymmetricDraftAngles and kAsymmetricDraftAngles, and the kSymmetricDraftAngles is default value in this case. While the CutMaterial is False, valid input values are kSideOneMinDraftAngle, kSideTwoMinDraftAngle and kBothSidesMinDraftAngle, and the kSideOneMinDraftAngle is default value in this case.<br /><br /> This is an optional argument whose default value is 108290.</td>
+      </tr>
+      <tr>
+        <td class="api-list">DraftAngleTwo</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional input Variant value that specifies the draft angle two for face draft.&nbsp;A numeric or string value can be supplied for this property and a parameter will be automatically created after the face draft feature is created. If a numeric value is supplied, the value is in radian, and the parameter is set to the value specified. If a string value is supplied it will be used as the expression for the newly created parameter, if the value is supplied without a unit qualifier it will default to the current document angle unit. The following is a valid entry for it, assuming the parameter d1 already exists and defines a angle “d1+3 deg”.<br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+      <tr>
+        <td class="api-list">PullDirectionReversed</td>
+        <td class="api-list">Boolean</td>
+        <td class="api-list">Optioanl input Boolean that specifies whether reverse the pull direction.<br /><br /> This is an optional argument whose default value is False.</td>
+      </tr>
+      <tr>
+        <td class="api-list">AbsoluteDraftAngle</td>
+        <td class="api-list">Boolean</td>
+        <td class="api-list">Optioanl input Boolean that specifies whether the DraftAngle is absolute angle or relative angle against the pull direction. This defaults to True indicating the draft angle is absolute angle value.<br /><br /> This is an optional argument whose default value is True.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2017<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(FaceDraftDefinition.SetPartingTool%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

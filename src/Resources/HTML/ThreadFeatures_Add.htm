@@ -1,0 +1,132 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/ThreadFeatures_Add.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="ThreadFeatures_Add">
+    <meta name="description" content="ThreadFeatures.Add Method">
+    <meta name="topicid" content="ThreadFeatures_Add">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>ThreadFeatures.Add Method</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">ThreadFeatures.Add Method</h1>
+
+          Parent Object: <a href="ThreadFeatures.htm">ThreadFeatures</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Method that creates a new ThreadFeature. The new ThreadFeature object is returned.</p>
+    <h2 class="api">
+          Syntax
+        </h2>
+        
+            ThreadFeatures.<b>Add</b>( <b><i>Face</i></b> As <a href="Face.htm">Face</a>, <b><i>StartEdge</i></b> As <a href="Edge.htm">Edge</a>, <b><i>ThreadInfo</i></b> As <a href="ThreadInfo.htm">ThreadInfo</a>, [<b><i>DirectionReversed</i></b>] As Boolean, [<b><i>FullDepth</i></b>] As Boolean, [<b><i>ThreadDepth</i></b>] As Variant, [<b><i>ThreadOffset</i></b>] As Variant ) As <a href="ThreadFeature.htm">ThreadFeature</a>
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">Face</td>
+        <td class="api-list"><a href="Face.htm">Face</a></td>
+        <td class="api-list">Input Face object that defines which face the thread feature is to be applied to. The face must be either a cylinder or cone.</td>
+      </tr>
+      <tr>
+        <td class="api-list">StartEdge</td>
+        <td class="api-list"><a href="Edge.htm">Edge</a></td>
+        <td class="api-list">Input Edge object that defines the start of the thread. The edge must be an edge of the input face.</td>
+      </tr>
+      <tr>
+        <td class="api-list">ThreadInfo</td>
+        <td class="api-list"><a href="ThreadInfo.htm">ThreadInfo</a></td>
+        <td class="api-list">Input ThreadInfo object that defines the thread attributes. This must be a StandardThreadInfo in the case where the input face is a cylinder and a TaperedThreadInfo in the case where the input face is a cone.</td>
+      </tr>
+      <tr>
+        <td class="api-list">DirectionReversed</td>
+        <td class="api-list">Boolean</td>
+        <td class="api-list">Optional input Boolean that specifies which direction from the start along the cone or cylinder the thread goes in.<br /><br /> This is an optional argument whose default value is False.</td>
+      </tr>
+      <tr>
+        <td class="api-list">FullDepth</td>
+        <td class="api-list">Boolean</td>
+        <td class="api-list">Optional input Boolean that specifies if the thread go the full length of the cylinder or cone. A value of True indicates it goes the full the length. If False, the ThreadDepth argument needs to be supplies.<br /><br /> This is an optional argument whose default value is True.</td>
+      </tr>
+      <tr>
+        <td class="api-list">ThreadDepth</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Input Variant that defines the depth of the thread. This can be either a numeric value or a string. A parameter for this value will be created and the supplied string or value is assigned to the parameter. If a value is input, the units are centimeters. If a string is input, the units can be specified as part of the string or it will default to the current length units of the document.<br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+      <tr>
+        <td class="api-list">ThreadOffset</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional input Variant that defines the offset of the start of the thread from the start edge. This can be either a numeric value or a string. A parameter for this value will be created and the supplied string or value is assigned to the parameter. If a value is input, the units are centimeters. If a string is input, the units can be specified as part of the string or it will default to the current length units of the document.<br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ThreadFeature_Sample.htm">Thread Feature Create</a></td>
+        <td class="api-list">This sample demonstrates the creation of a thread feature. It creates a cylinder in a new part document and creates a thread feature on the cylinder.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 5<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(ThreadFeatures.Add%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

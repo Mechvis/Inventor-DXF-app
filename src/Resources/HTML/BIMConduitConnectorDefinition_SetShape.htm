@@ -1,0 +1,122 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/BIMConduitConnectorDefinition_SetShape.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="BIMConduitConnectorDefinition_SetShape">
+    <meta name="description" content="BIMConduitConnectorDefinition.SetShape Method">
+    <meta name="topicid" content="BIMConduitConnectorDefinition_SetShape">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>BIMConduitConnectorDefinition.SetShape Method</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">BIMConduitConnectorDefinition.SetShape Method</h1>
+
+          Parent Object: <a href="BIMConduitConnectorDefinition.htm">BIMConduitConnectorDefinition</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Method that used to set the shape of the connector.</p>
+    <h2 class="api">
+          Syntax
+        </h2>
+        
+            BIMConduitConnectorDefinition.<b>SetShape</b>( <b><i>Geometry</i></b> As <a href="ObjectCollection.htm">ObjectCollection</a>, [<b><i>ConnectorShape</i></b>] As <a href="BIMConnectorShapeEnum.htm">BIMConnectorShapeEnum</a> )
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">Geometry</td>
+        <td class="api-list"><a href="ObjectCollection.htm">ObjectCollection</a></td>
+        <td class="api-list">Input ObjectCollection that specifies the set of geometry used to define the connector position and shape.</td>
+      </tr>
+      <tr>
+        <td class="api-list">ConnectorShape</td>
+        <td class="api-list"><a href="BIMConnectorShapeEnum.htm">BIMConnectorShapeEnum</a></td>
+        <td class="api-list"><p>Input value that indicates the desired shape of the connector and how the geometry is to be evaluated.&nbsp;Valid values for the various types of connectors is shown below.</p>
+
+<ul>
+<li>Cable tray connectors: kRectangularShapeConnector or kUndefinedShapeConnector</li>
+<li>Conduit connectors: kCircularShapeConnector or kUndefinedShapeConnector</li>
+<li>Duct connectors: kRectangularShapeConnector, kCircularShapeConnector, kOvalShapeConnector or kUndefinedShapeConnector</li>
+<li>Electrical connectors: kUndefinedShapeConnector</li>
+<li>Pipe connectors: kCircularShapeConnector or kUndefinedShapeConnector</li>
+</ul>
+
+<p>The input geometry for the various shapes can be the following: </p>
+<ul>
+<li>Circular shape
+<ul>
+<li>Single circular face.</li>
+<li>Circular edge (it can be an arc)</li>
+</ul>
+</li>
+<li>Rectangular shape
+<ul><li>Rectangular planar face.</li>
+<li>Four edges that define a rectangle as illustrated below.
+<p><center><img src="../images/CableTrayDef1.png" /></center></p>
+</li>
+</li>
+<li>Slot shape
+<ul>
+<li>Planar face that has a slot shape.</li>
+<li>Four edges that define a slot or oval shape, as illustrated below
+<p><center><img src="../images/CableTrayDef2.png" /></center></p>
+
+</li>
+</ul>
+</ul><br /><br /> This is an optional argument whose default value is 92673.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2011<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(BIMConduitConnectorDefinition.SetShape%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

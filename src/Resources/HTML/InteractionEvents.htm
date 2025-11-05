@@ -1,0 +1,222 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/InteractionEvents.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="InteractionEvents">
+    <meta name="description" content="InteractionEvents Object">
+    <meta name="topicid" content="GUID-InteractionEvents">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>InteractionEvents Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">InteractionEvents Object
+			</h1><br><h2 class="api">
+          Description
+        </h2>The InteractionEvents object provides the ability to obtain input from the user. This includes selecting objects, various mouse inputs, and using the keyboard.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="InteractionEvents_CreateMiniToolbar.htm">CreateMiniToolbar</a></td>
+        <td class="api-list">Method that creates a MiniToolbar object associated with the parent InteractionEvents.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="InteractionEvents_GetCursor.htm">GetCursor</a></td>
+        <td class="api-list">Gets the cursor for the command in which this interaction takes place.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="InteractionEvents_SetCursor.htm">SetCursor</a></td>
+        <td class="api-list">Sets the cursor for the command in which this interaction takes place.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="InteractionEvents_Start.htm">Start</a></td>
+        <td class="api-list">Starts this object inside Inventor. This will cause the OnActivate to fire initiating the activity linked with this object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="InteractionEvents_Stop.htm">Stop</a></td>
+        <td class="api-list">Stops this object inside Inventor. This will cause the OnTerminate to fire halting all activity linked with this object.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="InteractionEvents_AllowCommandAliases.htm">AllowCommandAliases</a></td>
+        <td class="api-list">Gets/Sets the Boolean flag indicating whether command aliases are allowed while the interaction command is active.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="InteractionEvents_Application.htm">Application</a></td>
+        <td class="api-list">Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="InteractionEvents_InteractionDisabled.htm">InteractionDisabled</a></td>
+        <td class="api-list">Gets/Sets the Boolean flag that disables this object's Selection, Mouse and Keyboard Events. Setting this to True, continues to honor the SelectionActive flag.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="InteractionEvents_InteractionGraphics.htm">InteractionGraphics</a></td>
+        <td class="api-list">Gets the Interaction Graphics object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="InteractionEvents_KeyboardEvents.htm">KeyboardEvents</a></td>
+        <td class="api-list">Gets the Keyboard Events object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="InteractionEvents_ManipulatorEvents.htm">ManipulatorEvents</a></td>
+        <td class="api-list">Gets the ManipulatorEvents object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="InteractionEvents_MeasureEvents.htm">MeasureEvents</a></td>
+        <td class="api-list">Gets the Measure Events object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="InteractionEvents_MouseEvents.htm">MouseEvents</a></td>
+        <td class="api-list">Gets the Mouse Events object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="InteractionEvents_Name.htm">Name</a></td>
+        <td class="api-list">Gets/Sets the name for the command in which this interaction takes place.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="InteractionEvents_Parent.htm">Parent</a></td>
+        <td class="api-list">Gets the parent object from whom this object can logically be reached.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="InteractionEvents_SelectEvents.htm">SelectEvents</a></td>
+        <td class="api-list">Gets the Selection Events object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="InteractionEvents_StatusBarText.htm">StatusBarText</a></td>
+        <td class="api-list">Gets/Sets the status bar message for the command in which this interaction takes place.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="InteractionEvents_TargetDocument.htm">TargetDocument</a></td>
+        <td class="api-list">Gets the Document which is the context in which this interaction takes place.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="InteractionEvents_TriadEvents.htm">TriadEvents</a></td>
+        <td class="api-list">Gets the TriadEvents object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="InteractionEvents_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Events
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="InteractionEvents_OnActivate.htm">OnActivate</a></td>
+        <td class="api-list">Event that notifies the command that control has been passed to it. This event is fired when the command initially starts, (when the Start method has been called).</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="InteractionEvents_OnHelp.htm">OnHelp</a></td>
+        <td class="api-list">Event that fires to signal the client to present help for the associated activity.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="InteractionEvents_OnResume.htm">OnResume</a></td>
+        <td class="api-list">Event that notifies the command to resume execution after being suspended.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="InteractionEvents_OnSuspend.htm">OnSuspend</a></td>
+        <td class="api-list">Event that notifies the InteractionEvents object to temporarily suspend itself. This happens when the user selects a command that stacks on the current command. Invocation of any of the view commands will cause the stacking behavior.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="InteractionEvents_OnTerminate.htm">OnTerminate</a></td>
+        <td class="api-list">Event that notifies the command has been terminated. This can happen when the user selects another command or presses escape. It can be forced by calling the Stop method on the InteractionEvents object as well.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="CommandManager_CreateInteractionEvents.htm">CommandManager.CreateInteractionEvents</a>, <a href="KeyboardEvents_Parent.htm">KeyboardEvents.Parent</a>, <a href="ManipulatorEvents_Parent.htm">ManipulatorEvents.Parent</a>, <a href="MeasureEvents_Parent.htm">MeasureEvents.Parent</a>, <a href="MouseEvents_Parent.htm">MouseEvents.Parent</a>, <a href="SelectEvents_Parent.htm">SelectEvents.Parent</a>, <a href="TriadEvents_Parent.htm">TriadEvents.Parent</a><h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="InteractionEventsSink_Sample.htm">Basic Selection Using Interaction Events</a></td>
+        <td class="api-list">This sample demonstrates using the selection events to select a face. Selection is dependent on events and VB only supports events within a class module.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="MeasureEventsSink_OnMeasure_Sample.htm">Using measure events</a></td>
+        <td class="api-list">This sample demonstrates using the measure events to measure distance and angle. Interactive measure is dependent on events and VB only supports events within a class module. To use the sample copy the InteractiveMeasureDistance and InteractiveMeasureAngle subs into a code module. Create a new class module called clsMeasure and copy all of the rest of the code into it.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SelectEventsObject_WindowSelectEnabled_Sample.htm">Window Selection</a></td>
+        <td class="api-list">This sample demonstrates using the selection events to window-select multiple edges. Selection is dependent on events and VB only supports events within a class module.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UserInputEventsSink_OnDrag_Sample.htm">OnDrag Event - dragging a WorkPoint</a></td>
+        <td class="api-list">This sample demonstrates the use of the OnDrag event to drag fixed work points when no command is active. This sample only allows drags parallel to the X-Y plane. This sample is dependent on events and VB only supports events within a class module.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 5<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(InteractionEvents%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

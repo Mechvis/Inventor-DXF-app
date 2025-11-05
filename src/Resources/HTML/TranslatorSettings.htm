@@ -1,0 +1,3229 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/Inventor2026/ENU">
+    <link rel="canonical" href="http://help.autodesk.com/cloudhelp/Inventor2026/ENU/Inventor-API/files/TranslatorSettings.htm">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="Inventor2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="27/4/2016">
+    <meta name="user-comments" content="enable">
+    <meta name="description" content="">
+    <meta name="topicid" content="GUID-25D24E28-7517-4903-8AEE-123F8C71A89E">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>Translator Options</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"/>
+    <script type="text/javascript" src="/view/clientframework/client.js"><!--filler--></script>
+    <style type="text/css">
+        .style1
+        {
+            font-weight: bold;
+        }
+        .style2
+        {
+            height: 23px;
+        }
+    </style>
+    </head>
+<body>
+	<link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+
+    <h1>
+        Translator Options</h1>
+    <p class="Normal">
+        The tables below list the valid name-value pairs that can be used to define the
+        various options when translating files using the translator add-ins. The serve as
+        the API equivalent to the Options dialog when translating a file interactively.
+        </p>
+    <p class="Normal">
+        Questions about what most of the options do can be answered by reading the Inventor
+        online help for the thranslator and by experimenting interactively with the various
+        options in the Options dialog of the "Save Copy As" or "Open" dialogs.</p>
+    <h3>
+        Import options for Alias, CATIA V4, CATIA V5, IGES, JT, NX, Parasolid, Pro/ENGINEER,
+        Rhino, STL, SAT, STEP, SolidWorks, Fusion and OBJ.</h3>
+    <table class="list">
+        <tr class="header">
+            <td class="style1">
+                Option Name
+            </td>
+            <td class="style1">
+                Value Type
+            </td>
+            <td class="style1">
+                Default Value
+            </td>
+            <td class="style1">
+                Supported Translators
+            </td>
+        </tr>
+        <tr>
+            <td class="style2">
+                SaveComponentDuringLoad
+            </td>
+            <td class="style2">
+                Boolean
+            </td>
+            <td class="style2">
+                False
+            </td>
+            <td class="style2">
+                Alias, CATIA V4, CATIA V5, IGES, JT, NX, Parasolid, Pro/ENGINEER, Rhino,
+                STL, STEP, SolidWorks, OBJ
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                SaveLocationIndex
+            </td>
+            <td class="list">
+                Integer
+            </td>
+            <td class="list">
+                0 (Save in workspace)
+            </td>
+            <td class="list">
+                Alias, CATIA V4, CATIA V5, IGES, JT, NX, Parasolid, Pro/ENGINEER, Rhino,
+                STL, SAT, STEP, SolidWorks
+                , OBJ
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                ComponentDestFolder
+            </td>
+            <td class="list">
+                String
+            </td>
+            <td class="list">
+            </td>
+            <td class="list">
+                Alias, CATIA V4, CATIA V5, IGES, JT, NX, Parasolid, Pro/ENGINEER, Rhino,
+                STL, SAT, STEP, SolidWorks
+                , OBJ
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                SaveAssemSeperateFolder
+            </td>
+            <td class="list">
+                Boolean
+            </td>
+            <td class="list">
+                False
+            </td>
+            <td class="list">
+                Alias, CATIA V4, CATIA V5, IGES, JT, NX, Parasolid, Pro/ENGINEER, SAT, STEP, SolidWorks
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                AssemDestFolder
+            </td>
+            <td class="list">
+                String
+            </td>
+            <td class="list">
+            </td>
+            <td class="list">
+                Alias, CATIA V4, CATIA V5, IGES, JT, NX, Parasolid, Pro/ENGINEER, SAT, STEP, SolidWorks,
+                Fusion
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                EmbedInDocument
+            </td>
+            <td class="list">
+                Boolean
+            </td>
+            <td class="list">
+                True
+            </td>
+            <td class="list">
+                Alias, CATIA V4, CATIA V5, IGES, JT, NX, Parasolid, Pro/ENGINEER, Rhino,
+                STL, STEP, SolidWorks
+                , OBJ
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                SaveToDisk
+            </td>
+            <td class="list">
+                Boolean
+            </td>
+            <td class="list">
+                False
+            </td>
+            <td class="list">
+                Alias, CATIA V4, CATIA V5, IGES, JT, NX, Parasolid, Pro/ENGINEER, Rhino,
+                STL, STEP, SolidWorks
+                , OBJ
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                ImportSolid
+            </td>
+            <td class="list">
+                Boolean
+            </td>
+            <td class="list">
+                True
+            </td>
+            <td class="list">
+                Alias, CATIA V4, CATIA V5, IGES, JT, NX, Parasolid, Pro/ENGINEER, Rhino, STEP, SolidWorks,
+                Fusion
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                ImportSurface
+            </td>
+            <td class="list">
+                Boolean
+            </td>
+            <td class="list">
+                True
+            </td>
+            <td class="list">
+                Alias, CATIA V4, CATIA V5, IGES, JT, NX, Parasolid, Pro/ENGINEER, Rhino, STEP, SolidWorks,
+                Fusion
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                ImportWire
+            </td>
+            <td class="list">
+                Boolean
+            </td>
+            <td class="list">
+                True
+            </td>
+            <td class="list">
+                Alias, CATIA V4, CATIA V5, IGES, JT, NX, Parasolid, Pro/ENGINEER, Rhino, STEP, SolidWorks,
+                Fusion
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                ImportWorkPlane
+            </td>
+            <td class="list">
+                Boolean
+            </td>
+            <td class="list">
+                True
+            </td>
+            <td class="list">
+                JT, NX, Pro/ENGINEER
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                ImportWorkAxe
+            </td>
+            <td class="list">
+                Boolean
+            </td>
+            <td class="list">
+                True
+            </td>
+            <td class="list">
+                JT, NX, Pro/ENGINEER
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                ImportWorkPoint
+            </td>
+            <td class="list">
+                Boolean
+            </td>
+            <td class="list">
+                True
+            </td>
+            <td class="list">
+                JT, NX, Pro/ENGINEER
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                ImportPoint
+            </td>
+            <td class="list">
+                Boolean
+            </td>
+            <td class="list">
+                True
+            </td>
+            <td class="list">
+                Alias, CATIA V4, CATIA V5, IGES, JT, NX, Parasolid, Rhino, STEP
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                ImportMeshes
+            </td>
+            <td class="list">
+                Boolean
+            </td>
+            <td class="list">
+                True
+            </td>
+            <td class="list">
+                CATIA V4, CATIA V5, Alias, NX, STEP, Rhino, Fusion
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                ImportMeshes
+            </td>
+            <td class="list">
+                Boolean
+            </td>
+            <td class="list">
+                False
+            </td>
+            <td class="list">
+                JT
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                ImportGraphicalPMI
+            </td>
+            <td class="list">
+                Boolean
+            </td>
+            <td class="list">
+                True
+            </td>
+            <td class="list">
+                JT
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                CreateIFO
+            </td>
+            <td class="list">
+                Boolean
+            </td>
+            <td class="list">
+                False
+            </td>
+            <td class="list">
+                Alias, CATIA V4, CATIA V5, IGES, JT, NX, Parasolid, Pro/ENGINEER, Rhino, STEP, SolidWorks,
+                Fusion
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                ImportAASP
+            </td>
+            <td class="list">
+                Boolean
+            </td>
+            <td class="list">
+                False
+            </td>
+            <td class="list">
+                CATIA V4, CATIA V5, IGES, JT, NX, Parasolid, Pro/ENGINEER,
+                SAT, STEP, SolidWorks, Fusion
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                ImportAASPIndex
+            </td>
+            <td class="list">
+                Integer
+            </td>
+            <td class="list">
+                0 (Part with multiple solids)
+            </td>
+            <td class="list">
+                CATIA V4, CATIA V5, IGES, JT, NX, Parasolid, Pro/ENGINEER, SAT, STEP, SolidWorks,
+                Fusion
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                CreateSurfIndex
+            </td>
+            <td class="list">
+                Integer
+            </td>
+            <td class="list">
+                1 (Single composite)
+            </td>
+            <td class="list">
+                CATIA V4, CATIA V5, IGES, JT, NX, Parasolid, Pro/ENGINEER, Rhino, SAT, STEP, SolidWorks,
+                Fusion
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                GroupNameIndex
+            </td>
+            <td class="list">
+                Integer
+            </td>
+            <td class="list">
+                0 (Default)
+            </td>
+            <td class="list">
+                CATIA V4, CATIA V5, IGES, JT, NX, Parasolid, Pro/ENGINEER, Rhino, SAT, STEP, SolidWorks,
+                Fusion
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                GroupName
+            </td>
+            <td class="list">
+                Integer
+            </td>
+            <td class="list">
+                0
+            </td>
+            <td class="list">
+                CATIA V4, CATIA V5, IGES, JT, NX, Parasolid, Pro/ENGINEER, Rhino, SAT, STEP, SolidWorks,
+                Fusion
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                ExplodeMSB2Assm
+            </td>
+            <td class="list">
+                Boolean
+            </td>
+            <td class="list">
+                True
+            </td>
+            <td class="list">
+                SAT
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                CHKSearchFolder
+            </td>
+            <td class="list">
+                Boolean
+            </td>
+            <td class="list">
+                False
+            </td>
+            <td class="list">
+                NX
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                SearchFolder
+            </td>
+            <td class="list">
+                String Array
+            </td>
+            <td class="list">
+            </td>
+            <td class="list">
+                NX
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                AssociativeImport
+            </td>
+            <td class="list">
+                Boolean
+            </td>
+            <td class="list">
+                True
+            </td>
+            <td class="list">
+                Alias, Catia, NX, Pro/ENGINEER, STEP, SolidWorks, Fusion
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                DefaultNames
+            </td>
+            <td class="list">
+                Boolean
+            </td>
+            <td class="list">
+                True
+            </td>
+            <td class="list">
+                SAT
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                CEGroupLevel
+            </td>
+            <td class="list">
+                Integer
+            </td>
+            <td class="list">
+                0 (Level)
+            </td>
+            <td class="list">
+                IGES, Rhino
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                CEPrefixCk
+            </td>
+            <td class="list">
+                Boolean
+            </td>
+            <td class="list">
+                False
+            </td>
+            <td class="list">
+                Alias, IGES, Rhino, STEP
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                ImportUnit
+            </td>
+            <td class="list">
+                Integer
+            </td>
+            <td class="list">
+                0 (Source unit)
+                <br />
+                STL, OBJ: 0 (Template units)
+            </td>
+            <td class="list">
+                CATIA V4, CATIA V5, IGES, JT, NX, Parasolid, Pro/ENGINEER, Rhino, SAT, STEP, SolidWorks, STL, OBJ
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                CheckDuringLoad
+            </td>
+            <td class="list">
+                Boolean
+            </td>
+            <td class="list">
+                False
+            </td>
+            <td class="list">
+                CATIA V4, CATIA V5, IGES, JT, NX, Parasolid, Pro/ENGINEER, Rhino, SAT, STEP, SolidWorks
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                AutoStitchAndPromote
+            </td>
+            <td class="list">
+                Boolean
+            </td>
+            <td class="list">
+                True
+            </td>
+            <td class="list">
+                CATIA V4, CATIA V5, IGES, JT, NX, Parasolid, Pro/ENGINEER, Rhino, SAT, STEP, SolidWorks
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                AdvanceHealing
+            </td>
+            <td class="list">
+                Boolean
+            </td>
+            <td class="list">
+                False
+            </td>
+            <td class="list">
+                CATIA V4, CATIA V5, IGES, JT, NX, Parasolid, Pro/ENGINEER, Rhino, SAT, STEP, SolidWorks
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                NoShowExpModelList (Input)
+            </td>
+            <td class="list">
+                Boolean
+            </td>
+            <td class="list">
+                True
+            </td>
+            <td class="list">
+                CATIA V4 (For *.exp and *.div3 import)
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                ExpModelIndex (Input)
+            </td>
+            <td class="list">
+                Integer
+            </td>
+            <td class="list">
+                N/A
+            </td>
+            <td class="list">
+                CATIA V4 (For *.exp and *.div3 import)
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                ExpModelCount (Output)
+            </td>
+            <td class="list">
+                Integer
+            </td>
+            <td class="list">
+                N/A
+            </td>
+            <td class="list">
+                CATIA V4 (For *.exp and *.div3 import)
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                ExpModelNameList (Output)
+            </td>
+            <td class="list">
+                String Array
+            </td>
+            <td class="list">
+                N/A
+            </td>
+            <td class="list">
+                CATIA V4 (For *.exp and *.div3 import)
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                ImportColor
+            </td>
+            <td class="list">
+                Boolean
+            </td>
+            <td class="list">
+                True
+            </td>
+            <td class="list">
+                STL
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                ImportColorIndex
+            </td>
+            <td class="list">
+                Integer
+            </td>
+            <td class="list">
+                0
+            </td>
+            <td class="list">
+                STL
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                TessellationDetailIndex
+            </td>
+            <td class="list">
+                Integer
+            </td>
+            <td class="list">
+                0
+            </td>
+            <td class="list">
+                JT
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                SplitGroup
+            </td>
+            <td class="list">
+                Boolean
+            </td>
+            <td class="list">
+                True
+            </td>
+            <td class="list">
+                OBJ
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                SaveInSubFolder
+            </td>
+            <td class="list">
+                Boolean
+            </td>
+            <td class="list">
+                True
+            </td>
+            <td class="list">
+                CATIA V4, CATIA V5, IGES, JT, NX, Parasolid, Pro/ENGINEER, Rhino, SAT, SMT, 
+                STEP, SolidWorks, Fusion</td>
+        </tr>
+    </table>
+	    <h3>
+        Import options for DWG import when importing into a sketch.</h3>
+		<p class="Normal">For other DWG import cases, an .ini file is used to define the options. You can manually use the dwg translator to set the various options you want and then write out an .ini file with the settings that you can then specify later when translating via the API.</p>
+    <table class="list">
+        <tr class="header">
+            <td class="style1">
+                Option Name
+            </td>
+            <td class="style1">
+                Value Type
+            </td>
+            <td class="style1">
+                Default Value
+            </td>
+            <td class="style1">
+                Notes
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                ImportModelSpace
+            </td>
+            <td class="list">
+                Boolean
+            </td>
+            <td class="list">
+                True
+            </td>
+            <td class="list">
+                Specifies whether to import model space or not, set this to False to import the layout paper space where you specify the layout name using the SelectedLayout setting.
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+			SelectedLayout
+            </td>
+            <td class="list">
+			String
+            </td>
+            <td class="list">
+            </td>
+            <td class="list">
+			Specifies the layout name to import when the ImportModelSpace setting is set to False.
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+			FileUnits
+            </td>
+            <td class="list">
+			String
+            </td>
+            <td class="list">
+            </td>
+            <td class="list">
+			Specifies the units for import. The units can be “Meters”, ”Feet”, “Microns”, “Inches”, “Centimeters”, or “Millimeters”. If not specified it will use the units from the document.
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+			SelectedLayers
+            </td>
+            <td class="list">
+			String
+            </td>
+            <td class="list">
+            </td>
+            <td class="list">
+			Specifies the layer names to import.  The names are comma delimited.
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+			InvertLayersSelection
+            </td>
+            <td class="list">
+			Boolean
+            </td>
+            <td class="list">
+			True
+            </td>
+            <td class="list">
+			Specifies whether to invert the layers selection during import. Leaving the SelectedLayers empty and setting this value to True will import all the layers.
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+			ConstrainEndPoints
+            </td>
+            <td class="list">
+			Boolean
+            </td>
+            <td class="list">
+            False
+            </td>
+            <td class="list">
+			Specifies if end points constraints should be applied to the imported geometry.
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+			ApplyGeometricConstraints
+            </td>
+            <td class="list">
+			Boolean
+            </td>
+            <td class="list">
+            False
+            </td>
+            <td class="list">
+			Specifies if geometric constraints should be applied to the imported geometry to fully constrain the sketch. This is ignored if the ConstrainEndPoints setting is set to False.
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+			ImportParametricConstraints
+            </td>
+            <td class="list">
+			Boolean
+            </td>
+            <td class="list">
+            False
+            </td>
+            <td class="list">
+			Specifies if AutoCAD 2D parametric constraints should be imported.  
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+			ProxyObjectsToUserDefinedSymbols
+            </td>
+            <td class="list">
+			Boolean
+            </td>
+            <td class="list">
+            False
+            </td>
+            <td class="list">
+			Specifies if proxy objects should be converted to user-defined symbols.  This is only valid in Inventor drawings.
+            </td>
+        </tr>
+	</table>
+    <h3>
+        Definitions of Import Values</h3>
+    <table class="list">
+        <tr class="header">
+            <td class="style1">
+                Option Name
+            </td>
+            <td class="style1">
+                Valid Values
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                SaveLocationIndex
+            </td>
+            <td class="list">
+                SAVE_IN_WORKSPACE = 0<br />
+                SELECT_SAVE_LOCATIONS = 1<br />
+                SAVE_AT_IMPORT_LOCATION = 2
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                CreateIFO
+            </td>
+            <td class="list">
+                1. When CreateIFO is true, CreateSurfIndex only supports SINGLE_COMPOSITE or MULTIPLE_COMPOSITE;
+                if CreateSurfIndex’s value is illegal, it will be set as SINGLE_COMPOSITE.<br />
+                2. When CreateIFO is true, AutoStitchAndPromote can be set as true or false.<br />
+                3. When CreateIFO is true, AdvanceHealing will be set as false.
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                ImportAASPIndex
+            </td>
+            <td class="list">
+                MULTIPLE_SOLID_PART = 0<br />
+                SINGLE_COMPOSITE_FEATURE = 1
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                CreateSurfIndex
+            </td>
+            <td class="list">
+                INDIVIDUAL_SURFACE = 0 (Translates all surfaces to individual ones, and consumes
+                much more memory and time.)<br />
+                SINGLE_COMPOSITE = 1<br />
+                MULTI_COMPOSITE = 2<br />
+                SINGLE_CONSTRUCTION = 3<br />
+                MULTI_CONSTRUCTION = 4
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                GroupNameIndex
+            </td>
+            <td class="list">
+                DEFAULT = 0<br />
+                ENTERED_NAME = 1
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                CEGroupLevel
+            </td>
+            <td class="list">
+                eLevelType = 0<br />
+                eGroupType = 1
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                ImportUnit
+            </td>
+            <td class="list">
+                SOURCE_UNITS = 0<br />
+                TEMPLATE_UNITS = 1<br />
+                INCH = 2<br />
+                FOOT = 3<br />
+                CENTIMETER = 4<br />
+                MILLIMETER = 5<br />
+                METER = 6<br />
+                MICRON = 7
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                NoShowExpModelList
+            </td>
+            <td class="list">
+                When set to true, a dialog that lists all models in the *.exp or *.dlv3 file is
+                shown and ask the user select a file to open.
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                ExpModelIndex
+            </td>
+            <td class="list">
+                Used for user’s input to open one of the models in the *.exp or *.dlv3 file.
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                ExpModelCount
+            </td>
+            <td class="list">
+                User can get the model count in the *.exp or *.dlv3 file.
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                ExpModelNameList
+            </td>
+            <td class="list">
+                User can get a list of all model"s name in the *.exp or *.dlv3 file.
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                ImportColorIndex
+            </td>
+            <td class="list">
+                RGB = 0<br />
+            BGR = 1
+        </tr>
+        <tr>
+            <td class="list">
+                TessellationDetailIndex
+            </td>
+            <td class="list">
+                eHighestDetail = 0<br />
+            eLowestDetail = 1
+        </tr>
+    </table>
+    <h3>
+        Export options for CATIA V5, IGES, JT, Parasolid, Pro/ENGINEER, SAT, STEP, STL and OBJ.</h3>
+    <table class="list">
+        <tr class="header">
+            <td class="style1">
+                Option Name
+            </td>
+            <td class="style1">
+                Value Type
+            </td>
+            <td class="style1">
+                Default Value
+            </td>
+            <td class="style1">
+                Supported Translators
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                Work Plane Export
+            </td>
+            <td class="list">
+                Boolean
+            </td>
+            <td class="list">
+                TRue
+            </td>
+            <td class="list">
+                JT, Pro/ENGINEER
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                Work Axes Export
+            </td>
+            <td class="list">
+                Boolean
+            </td>
+            <td class="list">
+                True
+            </td>
+            <td class="list">
+                JT
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                Work Point Export
+            </td>
+            <td class="list">
+                Boolean
+            </td>
+            <td class="list">
+                True
+            </td>
+            <td class="list">
+                JT, Pro/ENGINEER
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                IncludeSketches
+            </td>
+            <td class="list">
+                Boolean
+            </td>
+            <td class="list">
+                True
+            </td>
+            <td class="list">
+                CATIA V5, IGES, JT, Parasolid, Pro/ENGINEER, SAT, STEP
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                Version
+            </td>
+            <td class="list">
+                Integer
+            </td>
+            <td class="list">
+                CATIA: latest <br />
+                JT: latest <br />
+                Pro/ENGINEER Granite: latest <br />
+                Parasolid: latest <br />
+                SAT: 7<br />
+            </td>
+            <td class="list">
+                CATIA V5, JT, Parasolid, Pro/ENGINEER, SAT
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                ConfigFileEnabled
+            </td>
+            <td class="list">
+                Boolean
+            </td>
+            <td class="list">
+                False
+            </td>
+            <td class="list">
+                JT
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                ConfigFilePath
+            </td>
+            <td class="list">
+                String
+            </td>
+            <td class="list">
+            </td>
+            <td class="list">
+                JT
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                OutputFileType
+            </td>
+            <td class="list">
+                Integer
+            </td>
+            <td class="list">
+                0 (BrepAndFacets)
+            </td>
+            <td class="list">
+                JT
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                XTBrep
+            </td>
+            <td class="list">
+                Boolean
+            </td>
+            <td class="list">
+                True
+            </td>
+            <td class="list">
+                JT
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                ExportPMI
+            </td>
+            <td class="list">
+                Boolean
+            </td>
+            <td class="list">
+                True
+            </td>
+            <td class="list">
+                JT
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                FileStructure
+            </td>
+            <td class="list">
+                Integer
+            </td>
+            <td class="list">
+                0 (Monolithic)
+            </td>
+            <td class="list">
+                JT
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                ApplicationProtocolType
+            </td>
+            <td class="list">
+                Integer
+            </td>
+            <td class="list">
+                4 (eAP214IS)
+            </td>
+            <td class="list">
+                STEP
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                Author
+            </td>
+            <td class="list">
+                String
+            </td>
+            <td class="list">
+            </td>
+            <td class="list">
+                STEP
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                Organization
+            </td>
+            <td class="list">
+                String
+            </td>
+            <td class="list">
+            </td>
+            <td class="list">
+                STEP
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                Authorization
+            </td>
+            <td class="list">
+                String
+            </td>
+            <td class="list">
+            </td>
+            <td class="list">
+                STEP
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                Description
+            </td>
+            <td class="list">
+                String
+            </td>
+            <td class="list">
+            </td>
+            <td class="list">
+                STEP
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                GeometryType
+            </td>
+            <td class="list">
+                Integer
+            </td>
+            <td class="list">
+                1 (Solids)
+            </td>
+            <td class="list">
+                IGES
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                SurfaceType
+            </td>
+            <td class="list">
+                Integer
+            </td>
+            <td class="list">
+                0 (143-Bounded)
+            </td>
+            <td class="list">
+                IGES
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                SolidFaceType
+            </td>
+            <td class="list">
+                Integer
+            </td>
+            <td class="list">
+                0 (NURBS)
+            </td>
+            <td class="list">
+                IGES
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                ExportBodyNames
+            </td>
+            <td class="list">
+                Boolean
+            </td>
+            <td class="list">
+                False
+            </td>
+            <td class="list">
+                SAT
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                OutputFileType
+            </td>
+            <td class="list">
+                Integer
+            </td>
+            <td class="list">
+                0 (Binary)
+            </td>
+            <td class="list">
+                STL
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                ExportUnits
+            </td>
+            <td class="list">
+                Integer
+            </td>
+            <td class="list">
+                STL:
+                4 (Centimeters)
+                <br />
+                OBJ: 1 (Source unit)
+            </td>
+            <td class="list">
+                STL, OBJ</td>
+        </tr>
+        <tr>
+            <td class="list">
+                ExportFileStructure
+            </td>
+            <td class="list">
+                Integer
+            </td>
+            <td class="list">
+                0 (One File)
+            </td>
+            <td class="list">
+                STL
+                , OBJ</td>
+        </tr>
+        <tr>
+            <td class="list">
+                Resolution
+            </td>
+            <td class="list">
+                Integer
+            </td>
+            <td class="list">
+                1 (Medium)
+            </td>
+            <td class="list">
+                STL
+                , OBJ</td>
+        </tr>
+        <tr>
+            <td class="list">
+                SurfaceDeviation
+            </td>
+            <td class="list">
+                Integer
+            </td>
+            <td class="list">
+                60
+            </td>
+            <td class="list">
+                STL
+                , OBJ</td>
+        </tr>
+        <tr>
+            <td class="list">
+                NormalDeviation
+            </td>
+            <td class="list">
+                Integer
+            </td>
+            <td class="list">
+                14
+            </td>
+            <td class="list">
+                STL
+                , OBJ</td>
+        </tr>
+        <tr>
+            <td class="list">
+                MaxEdgeLength
+            </td>
+            <td class="list">
+                Integer
+            </td>
+            <td class="list">
+                100
+            </td>
+            <td class="list">
+                STL
+                , OBJ</td>
+        </tr>
+        <tr>
+            <td class="list">
+                AspectRatio
+            </td>
+            <td class="list">
+                Integer
+            </td>
+            <td class="list">
+                21.5
+            </td>
+            <td class="list">
+                STL
+                , OBJ</td>
+        </tr>
+        <tr>
+            <td class="list">
+                AllowMoveMeshNode
+            </td>
+            <td class="list">
+                Boolean
+            </td>
+            <td class="list">
+                False
+            </td>
+            <td class="list">
+                STL
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                export_fit_tolerance
+            </td>
+            <td class="list">
+                Double
+            </td>
+            <td class="list">
+                0.001
+            </td>
+            <td class="list">
+                IGES/STEP
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                ExportColor
+            </td>
+            <td class="list">
+                Boolean
+            </td>
+            <td class="list">
+                True
+            </td>
+            <td class="list">
+                STL
+            </td>
+        </tr>
+    </table>
+    <h3>
+        Definitions of Export Values</h3>
+    <table class="list">
+        <tr class="header">
+            <td class="style1">
+                Option Name
+            </td>
+            <td class="style1">
+                Valid Values
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                Version
+            </td>
+            <td class="list">
+                CATIA V5 (14, 19 - 34) e.g. 34 means "V5-6R2024" version<br />
+                Pro/Engineer Granite (1 - 16)<br />
+                JT (80, 81, 82, 90, 91, 92, 93, 94, 95, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109) e.g. 102 means 10.2 version file.<br />
+                PARASOLID (9 - 36)<br />
+                SAT (7)<br />
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                OutputFileType
+            </td>
+            <td class="list">
+                eBrepAndFacets = 0<br />
+                eBrepOnly = 1<br />
+                eFacetsOnly = 2
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                XTBrep
+            </td>
+            <td class="list">
+                XTBrep = True<br />
+                JTBrep = False
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                FileStructure
+            </td>
+            <td class="list">
+                JtkMONOLITHIC = 0<br />
+                JtkPER_PART = 1<br />
+                JtkFULL_SHATTER =2
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                ApplicationProtocolType
+            </td>
+            <td class="list">
+                eAP203 = 2<br />
+                eAP214IS = 4<br />
+                eAP242 = 5
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                GeometryType
+            </td>
+            <td class="list">
+                SURFACES = 0<br />
+                SOLIDS = 1<br />
+                WIREFRAMES = 2
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                SurfaceType
+            </td>
+            <td class="list">
+                143_Bounded = 0
+                <br />
+                144_Trimmed = 1
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                SolidFaceType
+            </td>
+            <td class="list">
+                NURBS = 0<br />
+                ANALYTICS = 1
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                OutputFileType
+            </td>
+            <td class="list">
+                BINARY = 0<br />
+                ASCII = 1
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                ExportUnits
+            </td>
+            <td class="list">
+                INCH = 2<br />
+                FOOT = 3<br />
+                CENTIMETER = 4<br />
+                MILLIMETER = 5<br />
+                METER = 6<br />
+                MICRON = 7<br />
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                ExportFileStructure
+            </td>
+            <td class="list">
+                ONE FILE = 0<br />
+                ONE FILE PER PART INSTANCE = 1
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                Resolution
+            </td>
+            <td class="list">
+                HIGH = 0<br />
+                MEDIUM = 1<br />
+                LOW = 2<br />
+                CUSTOM = 3
+                <br />
+                BREP = 4</td>
+        </tr>
+        <tr>
+            <td class="list">
+                SurfaceDeviation
+            </td>
+            <td class="list">
+                Range 0 to 100, the value has precision of 0.0001. None-zero value is used if Resolution is CUSTOM (3), otherwise value is ignored.
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                NormalDeviation
+            </td>
+            <td class="list">
+                Range 0 to 41. Non-zero value is used if Resolution is CUSTOM (3), otherwise value is ignored. Any input value out of this range will be changed to 14 by force.
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                MaxEdgeLength
+            </td>
+            <td class="list">
+                Range 0 to 100. Non-zero value is used if Resolution is CUSTOM (3), otherwise value is ignored.
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                AspectRatio
+            </td>
+            <td class="list">
+                Range 0 to 21.5. Non-zero value is used if Resolution is CUSTOM (3), otherwise value is ignored.
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                export_fit_tolerance
+            </td>
+            <td class="list">
+                Set the tolerance for the IGES/STEP file. The accepted range for the tolerance value
+                is from 0.00001 (cm) to 0.001 (cm). You can change this value, using cm units only.
+                A smaller tolerance creates more accurate geometry approximations and larger file
+                size.
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                ExportColor
+            </td>
+            <td class="list">
+                Write color information to STL binary file.
+            </td>
+        </tr>
+    </table>
+    <hr />
+
+    <h3>
+        Export options for DWF.</h3>
+    <table class="list">
+        <tr class="header">
+            <td class="style1">
+                Option Name
+            </td>
+            <td class="style1">
+                Value Type
+            </td>
+            <td class="style1">
+                Default Value
+            </td>
+            <td class="style1">
+                Supported Documents
+            </td>
+            <td class="style1">
+                Supported Translators
+            </td>
+            <td class="style1">
+                Notes</td>
+        </tr>
+        <tr>
+            <td class="list">
+                Launch_Viewer</td>
+            <td class="list">
+                Long
+            </td>
+            <td class="list">
+                0
+            </td>
+            <td class="list">
+                Part, Assembly, Drawing,Presentation</td>
+            <td class="list">
+                DWF</td>
+            <td class="list">
+                &nbsp;</td>
+        </tr>
+        <tr>
+            <td class="list">
+                Publish_Mode</td>
+            <td class="list">
+                DWFPublishModeEnum</td>
+            <td class="list">
+                kBasicDWFPublish</td>
+            <td class="list">
+                Part, Assembly, Drawing,Presentation</td>
+            <td class="list">
+                DWF</td>
+            <td class="list">
+                &nbsp;</td>
+        </tr>
+        <tr>
+            <td class="list">
+                Publish_Component_Props</td>
+            <td class="list">
+                Boolean
+            </td>
+            <td class="list">
+                False</td>
+            <td class="list">
+                Part, Assembly, Drawing,Presentation</td>
+            <td class="list">
+                DWF</td>
+            <td class="list">
+                <div class="Element68">
+                    Use this to publish ALL component properties&nbsp;</div>
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                <div class="Element68">
+                    Publish_Mass_Props&nbsp;</div>
+            </td>
+            <td class="list">
+                Boolean
+            </td>
+            <td class="list">
+                False</td>
+            <td class="list">
+                Part, Assembly, Drawing</td>
+            <td class="list">
+                DWF</td>
+            <td class="list">
+                <div class="Element68">
+                    Use this to publish ALL mass properties&nbsp;</div>
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                Publish_All_Component_Props</td>
+            <td class="list">
+                Boolean
+            </td>
+            <td class="list">
+                False</td>
+            <td class="list">
+                Part, Assembly, Drawing,Presentation</td>
+            <td class="list">
+                DWF</td>
+            <td class="list">
+                <div class="Element68">
+                    Same as Publish_Component_Props&nbsp;</div>
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                Publish_All_Physical_Props</td>
+            <td class="list">
+                Boolean
+            </td>
+            <td class="list">
+                False</td>
+            <td class="list">
+                Part, Assembly, Drawing</td>
+            <td class="list">
+                DWF
+            </td>
+            <td class="list">
+                <div class="Element68">
+                    Same as Publish_Mass_Props&nbsp;</div>
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                <div class="Element68">
+                    <div class="Element68">
+                        Enable_Measure&nbsp;</div>
+                </div>
+            </td>
+            <td class="list">
+                Boolean
+            </td>
+            <td class="list">
+                True</td>
+            <td class="list">
+                Part, Assembly, Drawing,Presentation</td>
+            <td class="list">
+                DWF
+            </td>
+            <td class="list">
+                DRM protection</td>
+        </tr>
+        <tr>
+            <td class="list">
+                <div class="Element68">
+                    Enable_Printing&nbsp;</div>
+            </td>
+            <td class="list">
+                Boolean
+            </td>
+            <td class="list">
+                True
+            </td>
+            <td class="list">
+                Part, Assembly, Drawing,Presentation</td>
+            <td class="list">
+                DWF</td>
+            <td class="list">
+                DRM protection</td>
+        </tr>
+        <tr>
+            <td class="list">
+                <div class="Element68">
+                    Enable_Markups&nbsp;</div>
+            </td>
+            <td class="list">
+                Boolean
+            </td>
+            <td class="list">
+                True</td>
+            <td class="list">
+                Part, Assembly, Drawing,Presentation</td>
+            <td class="list">
+                DWF</td>
+            <td class="list">
+                DRM protection</td>
+        </tr>
+        <tr>
+            <td class="list">
+                <div class="Element68">
+                    Enable_Markup_Edits&nbsp;</div>
+            </td>
+            <td class="list">
+                Boolean
+            </td>
+            <td class="list">
+                True
+            </td>
+            <td class="list">
+                Part, Assembly, Drawing,Presentation</td>
+            <td class="list">
+                DWF</td>
+            <td class="list">
+                DRM protection</td>
+        </tr>
+        <tr>
+            <td class="list">
+                Password
+            </td>
+            <td class="list">
+                String
+            </td>
+            <td class="list">
+                &quot;&quot;</td>
+            <td class="list">
+                Part, Assembly, Drawing,Presentation</td>
+            <td class="list">
+                DWF
+            </td>
+            <td class="list">
+                &nbsp;</td>
+        </tr>
+        <tr>
+            <td class="list">
+                <div class="Element68">
+                    Password_Protect&nbsp;</div>
+            </td>
+            <td class="list">
+                Boolean
+            </td>
+            <td class="list">
+                False</td>
+            <td class="list">
+                Part, Assembly, Drawing,Presentation</td>
+            <td class="list">
+                DWF</td>
+            <td class="list">
+                &nbsp;</td>
+        </tr>
+        <tr>
+            <td class="list">
+                <div class="Element68">
+                    Password_Type&nbsp;</div>
+            </td>
+            <td class="list">
+                string or enum</td>
+            <td class="list">
+                &nbsp;</td>
+            <td class="list">
+                Part, Assembly, Drawing,Presentation</td>
+            <td class="list">
+                DWF</td>
+            <td class="list">
+                &nbsp;</td>
+        </tr>
+        <tr>
+            <td class="list">
+                <div class="Element68">
+                    Enable_Large_Assembly_Mode&nbsp;</div>
+            </td>
+            <td class="list">
+                Boolean
+            </td>
+            <td class="list">
+                True
+            </td>
+            <td class="list">
+                &nbsp;Assembly</td>
+            <td class="list">
+                DWF</td>
+            <td class="list">
+                <div class="Element68">
+                    Enables large assembly optimizations (transactions and out of process publishing)&nbsp;</div>
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                <div class="Element68">
+                    Output_Path&nbsp;</div>
+            </td>
+            <td class="list">
+                String
+            </td>
+            <td class="list">
+            </td>
+            <td class="list">
+                Part, Assembly, Drawing,Presentation</td>
+            <td class="list">
+                DWF</td>
+            <td class="list">
+                &nbsp;</td>
+        </tr>
+        <tr>
+            <td class="list">
+                Publish_3D_Models&nbsp;&nbsp;</td>
+            <td class="list">
+                Boolean</td>
+            <td class="list">
+                False</td>
+            <td class="list">
+                Drawing</td>
+            <td class="list">
+                DWF</td>
+            <td class="list">
+                Specify the publish mode.</td>
+        </tr>
+        <tr>
+            <td class="list">
+                <div class="Element68">
+                    Publish_All_Sheets&nbsp;</div>
+            </td>
+            <td class="list">
+                Boolean</td>
+            <td class="list">
+                False</td>
+            <td class="list">
+                Drawing</td>
+            <td class="list">
+                DWF</td>
+            <td class="list">
+                &nbsp;</td>
+        </tr>
+        <tr>
+            <td class="list">
+                <div class="Element68">
+                    Include_Sheet_Tables&nbsp;</div>
+            </td>
+            <td class="list">
+                Boolean</td>
+            <td class="list">
+            </td>
+            <td class="list">
+                Drawing</td>
+            <td class="list">
+                DWF</td>
+            <td class="list">
+                &nbsp;</td>
+        </tr>
+        <tr>
+            <td class="list">
+                <div class="Element68">
+                    Sheet_Count&nbsp;</div>
+            </td>
+            <td class="list">
+                Integer</td>
+            <td class="list">
+            </td>
+            <td class="list">
+                Drawing</td>
+            <td class="list">
+                DWF</td>
+            <td class="list">
+                &nbsp;</td>
+        </tr>
+        <tr>
+            <td class="list">
+                <div class="Element68">
+                    Sheets</div>
+            </td>
+            <td class="list">
+                NameValueMap</td>
+            <td class="list">
+            </td>
+            <td class="list">
+                Drawing</td>
+            <td class="list">
+                DWF</td>
+            <td class="list">
+                &nbsp;</td>
+        </tr>
+        <tr>
+            <td class="list">
+                <div class="Element68">
+                    Override_Sheet_Color&nbsp;</div>
+            </td>
+            <td class="list">
+                Boolean</td>
+            <td class="list">
+                False</td>
+            <td class="list">
+                Drawing</td>
+            <td class="list">
+                DWF</td>
+            <td class="list">
+                Set whether to override the sheet background color.</td>
+        </tr>
+        <tr>
+            <td class="list">
+                <div class="Element68">
+                    Sheet_Color&nbsp;</div>
+            </td>
+            <td class="list">
+                Integer</td>
+            <td class="list">
+            </td>
+            <td class="list">
+                Drawing</td>
+            <td class="list">
+                DWF</td>
+            <td class="list">
+                Specify the sheet background color using an Integer. The Integer is calculated with R,G,B values(0 to 255) using below equation:<br />
+                Sheet_Color = R+G*256+B*65536.</td>
+        </tr>
+        <tr>
+            <td class="list">
+                <div class="Element68">
+                    Include_Sheet_Tables</div>
+            </td>
+            <td class="list">
+                Boolean</td>
+            <td class="list">
+                True</td>
+            <td class="list">
+                Drawing</td>
+            <td class="list">
+                DWF</td>
+            <td class="list">
+                Set whether to include sheet tables or not.</td>
+        </tr>
+        <tr>
+            <td class="list">
+                <div class="Element68">
+                    BOM_Structured</div>
+            </td>
+            <td class="list">
+                Boolean</td>
+            <td class="list">
+                False</td>
+            <td class="list">
+                Assembly;Presentation</td>
+            <td class="list">
+                DWF</td>
+            <td class="list">
+                Set whether to publish the Structured BOM.</td>
+        </tr>
+        <tr>
+            <td class="list">
+                <div class="Element68">
+                    BOM_Parts_Only&nbsp;</div>
+            </td>
+            <td class="list">
+                Boolean</td>
+            <td class="list">
+                False</td>
+            <td class="list">
+                Assembly;Presentation</td>
+            <td class="list">
+                DWF</td>
+            <td class="list">
+                Set whether to publish the Parts Only&nbsp;BOM.</td>
+        </tr>
+        <tr>
+            <td class="list">
+                <div class="Element68">
+                    Design_Views&nbsp;</div>
+            </td>
+            <td class="list">
+                NameValueMap</td>
+            <td class="list">
+            </td>
+            <td class="list">
+                Assembly;Presentation</td>
+            <td class="list">
+                DWF</td>
+            <td class="list">
+                Specify the design views which will be published.</td>
+        </tr>
+        <tr>
+            <td class="list">
+                <div class="Element68">
+                    <div class="Element68">
+                        Positional_Representations&nbsp;</div>
+                </div>
+            </td>
+            <td class="list">
+                NameValueMap</td>
+            <td class="list">
+            </td>
+            <td class="list">
+                Assembly;Presentation</td>
+            <td class="list">
+                DWF</td>
+            <td class="list">
+                Specify the
+                <div class="Element68">
+                    positional representations&nbsp;</div>
+                which will be published.</td>
+        </tr>
+        <tr>
+            <td class="list">
+                <div class="Element68">
+                    Sheet_Metal_Style_Information&nbsp;</div>
+            </td>
+            <td class="list">
+                Boolean</td>
+            <td class="list">
+                False</td>
+            <td class="list">
+                Sheetmetal</td>
+            <td class="list">
+                DWF</td>
+            <td class="list">
+                Specify whether to publish the sheet metal style infomation.</td>
+        </tr>
+        <tr>
+            <td class="list">
+                <div class="Element68">
+                    Sheet_Metal_Flat_Pattern&nbsp;</div>
+            </td>
+            <td class="list">
+                Boolean</td>
+            <td class="list">
+                False</td>
+            <td class="list">
+                Sheetmetal</td>
+            <td class="list">
+                DWF</td>
+            <td class="list">
+                Specify whether to publish the flat pattern.</td>
+        </tr>
+        <tr>
+            <td class="list">
+                <div class="Element68">
+                    Sheet_Metal_Part&nbsp;</div>
+            </td>
+            <td class="list">
+                Boolean</td>
+            <td class="list">
+                True</td>
+            <td class="list">
+                Sheetmetal</td>
+            <td class="list">
+                DWF</td>
+            <td class="list">
+                Specify whether to publish the sheet metal part. At least one of the Sheet_Metal_Flat_Pattern&nbsp;and Sheet_Metal_Part&nbsp;should be specified as True for a sheet metal publish.</td>
+        </tr>
+        <tr>
+            <td class="list">
+                <div class="Element68">
+                    Facet_Quality&nbsp;</div>
+            </td>
+            <td class="list">
+                AccuracyEnum</td>
+            <td class="list">
+                kHigh&nbsp;</td>
+            <td class="list">
+                &nbsp;</td>
+            <td class="list">
+                DWF</td>
+            <td class="list">
+                <div class="Element68">
+                    Specify the facet quality. Only kLow, kMedium and kHigh&nbsp;are valid values for this.
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                <div class="Element68">
+                    Animations&nbsp;</div>
+            </td>
+            <td class="list">
+                Boolean</td>
+            <td class="list">
+                False</td>
+            <td class="list">
+                Presentation</td>
+            <td class="list">
+                DWF</td>
+            <td class="list">
+                Specify whether to publish the animations.</td>
+        </tr>
+        <tr>
+            <td class="list">
+                <div class="Element68">
+                    Instructions&nbsp;</div>
+            </td>
+            <td class="list">
+                Boolea</td>
+            <td class="list">
+                False</td>
+            <td class="list">
+                Presentation</td>
+            <td class="list">
+                DWF</td>
+            <td class="list">
+                Specify whether to publish the instructions. This will be ignored if the Animations&nbsp;is set to False.</td>
+        </tr>
+        <tr>
+            <td class="list">
+                <div class="Element68">
+                    Presentations&nbsp;</div>
+            </td>
+            <td class="list">
+                NameValueMap</td>
+            <td class="list">
+            </td>
+            <td class="list">
+                Presentation</td>
+            <td class="list">
+                DWF</td>
+            <td class="list">
+                &nbsp;</td>
+        </tr>
+        <tr>
+            <td class="list">
+                <div class="Element68">
+                    iAssembly_All_Members&nbsp;</div>
+            </td>
+            <td class="list">
+                Boolean</td>
+            <td class="list">
+                False</td>
+            <td class="list">
+                iAssembly</td>
+            <td class="list">
+                DWF</td>
+            <td class="list">
+                Specify whether to publish all the iAssembly members.</td>
+        </tr>
+        <tr>
+            <td class="list">
+                iAssembly_3D_Models</td>
+            <td class="list">
+                Boolean</td>
+            <td class="list">
+                False</td>
+            <td class="list">
+                iAssembly</td>
+            <td class="list">
+                DWF</td>
+            <td class="list">
+                Specify whether to publish all the 3D models for all the iAssembly members.</td>
+        </tr>
+        <tr>
+            <td class="list">
+                iAssemblies</td>
+            <td class="list">
+                NameValueMap</td>
+            <td class="list">
+            </td>
+            <td class="list">
+                iAssembly</td>
+            <td class="list">
+                DWF</td>
+            <td class="list">
+                Specify which of the iAssembly members will be published.</td>
+        </tr>
+        <tr>
+            <td class="list">
+                <div class="Element68">
+                    iPart_All_Members&nbsp;</div>
+            </td>
+            <td class="list">
+                Boolean</td>
+            <td class="list">
+                False</td>
+            <td class="list">
+                iPart</td>
+            <td class="list">
+                DWF</td>
+            <td class="list">
+                Specify whether to publish all the iPart members.</td>
+        </tr>
+        <tr>
+            <td class="list">
+                <div class="Element68">
+                    iPart_3D_Models&nbsp;</div>
+            </td>
+            <td class="list">
+                Boolean</td>
+            <td class="list">
+                False</td>
+            <td class="list">
+                iPart</td>
+            <td class="list">
+                DWF</td>
+            <td class="list">
+                Specify whether to publish all the 3D models for all the iPart members.</td>
+        </tr>
+        <tr>
+            <td class="list">
+                <div class="Element68">
+                    iParts&nbsp;</div>
+            </td>
+            <td class="list">
+                NameValueMap</td>
+            <td class="list">
+            </td>
+            <td class="list">
+                iPart</td>
+            <td class="list">
+                DWF</td>
+            <td class="list">
+                Specify which of the iPart members will be published.</td>
+        </tr>
+        <tr>
+            <td class="list">
+                <div class="Element68">
+                    Include_Empty_Properties</div>
+            </td>
+            <td class="list">
+                Boolean</td>
+            <td class="list">
+                False</td>
+            <td class="list">
+                Part, Assembly, Drawing,Presentation</td>
+            <td class="list">
+                DWF</td>
+            <td class="list">
+                Specify whether publish the empty properties</td>
+        </tr>
+        </table>
+    <h3>
+        &nbsp;</h3>
+    <h3>
+        Definitions of Export Values</h3>
+    <table class="list">
+        <tr class="header">
+            <td class="style1">
+                Option Name
+            </td>
+            <td class="style1">
+                Name</td>
+            <td class="style1">
+                Value
+            </td>
+            <td class="style1">
+                Supported Documents
+            </td>
+            <td class="style1">
+                Notes</td>
+        </tr>
+        <tr>
+            <td class="list">
+                Sheets</td>
+            <td class="list">
+                Sheet1</td>
+            <td class="list">
+                NameValueMap</td>
+            <td class="list">
+                Drawing</td>
+            <td class="list">
+                Create a NameValueMap(&quot;Sheet1&quot;,NameValueMap) to specify options for a sheet, the name should start from Sheet1 and the number increases one by one.</td>
+        </tr>
+        <tr>
+            <td class="list">
+                &nbsp;</td>
+            <td class="list">
+                Sheet2</td>
+            <td class="list">
+                NameValueMap</td>
+            <td class="list">
+                Drawing</td>
+            <td class="list">
+                See above.</td>
+        </tr>
+        <tr>
+            <td class="list">
+                &nbsp;</td>
+            <td class="list">
+                Sheet#</td>
+            <td class="list">
+                NameValueMap</td>
+            <td class="list">
+                Drawing</td>
+            <td class="list">
+                See above.</td>
+        </tr>
+        <tr>
+            <td class="list">
+                Sheet1</td>
+            <td class="list">
+                Name</td>
+            <td class="list">
+                String</td>
+            <td class="list">
+                Drawing</td>
+            <td class="list">
+                The name of a sheet in drawing, this can be any sheet name but not just for Sheet:1.</td>
+        </tr>
+        <tr>
+            <td class="list">
+                &nbsp;</td>
+            <td class="list">
+                3DModel</td>
+            <td class="list">
+                Boolean</td>
+            <td class="list">
+                Drawing</td>
+            <td class="list">
+                Specify whether to publish the 3D model for the sheet.</td>
+        </tr>
+        <tr>
+            <td class="list">
+                Sheet2</td>
+            <td class="list">
+                Name</td>
+            <td class="list">
+                String</td>
+            <td class="list">
+                Drawing</td>
+            <td class="list">
+                The name of a sheet in drawing, this can be any sheet name but not just for Sheet:2.</td>
+        </tr>
+        <tr>
+            <td class="list">
+                &nbsp;</td>
+            <td class="list">
+                3DModel</td>
+            <td class="list">
+                Boolean</td>
+            <td class="list">
+                Drawing</td>
+            <td class="list">
+                Specify whether to publish the 3D model for the sheet.</td>
+        </tr>
+        <tr>
+            <td class="list">
+                Sheet#</td>
+            <td class="list">
+                Name</td>
+            <td class="list">
+                String</td>
+            <td class="list">
+                Drawing</td>
+            <td class="list">
+                The name of a sheet in drawing, this can be any sheet name but not just for Sheet:#.</td>
+        </tr>
+        <tr>
+            <td class="list">
+                &nbsp;</td>
+            <td class="list">
+                3DModel</td>
+            <td class="list">
+                Boolean</td>
+            <td class="list">
+                Drawing</td>
+            <td class="list">
+                Specify whether to publish the 3D model for the sheet.</td>
+        </tr>
+        <tr>
+            <td class="list">
+                Design_Views</td>
+            <td class="list">
+                Design_View1</td>
+            <td class="list">
+                NameValueMap</td>
+            <td class="list">
+                Assembly</td>
+            <td class="list">
+                Create a NameValueMap(&quot;Design_View1&quot;,NameValueMap) to specify a design view to publish, the name should start from Design_View1 and the number increases one by one.</td>
+        </tr>
+        <tr>
+            <td class="list">
+                &nbsp;</td>
+            <td class="list">
+                Design_View2</td>
+            <td class="list">
+                NameValueMap</td>
+            <td class="list">
+                Assembly</td>
+            <td class="list">
+                See above.</td>
+        </tr>
+        <tr>
+            <td class="list">
+                &nbsp;</td>
+            <td class="list">
+                Design_View#</td>
+            <td class="list">
+                NameValueMap</td>
+            <td class="list">
+                Assembly</td>
+            <td class="list">
+                See above.</td>
+        </tr>
+        <tr>
+            <td class="list">
+                Design_View1</td>
+            <td class="list">
+                Name</td>
+            <td class="list">
+                String</td>
+            <td class="list">
+                Assembly</td>
+            <td class="list">
+                The name of a design view.</td>
+        </tr>
+        <tr>
+            <td class="list">
+                Design_View2</td>
+            <td class="list">
+                Name</td>
+            <td class="list">
+                String</td>
+            <td class="list">
+                Assembly</td>
+            <td class="list">
+                The name of a design view.</td>
+        </tr>
+        <tr>
+            <td class="list">
+                Design_View#</td>
+            <td class="list">
+                Name</td>
+            <td class="list">
+                String</td>
+            <td class="list">
+                Assembly</td>
+            <td class="list">
+                The name of a design view.</td>
+        </tr>
+        <tr>
+            <td class="list">
+                <div class="Element68">
+                    Positional_Representations&nbsp;</div>
+            </td>
+            <td class="list">
+                <div class="Element68">
+                    Positional_Representation1&nbsp;</div>
+            </td>
+            <td class="list">
+                NameValueMap</td>
+            <td class="list">
+                Assembly</td>
+            <td class="list">
+                Create a NameValueMap(&quot;Positional_Representation1&quot;,NameValueMap) to specify a positional representation to publish, the name should start from Positional_Representation1 and the number increases one by one.</td>
+        </tr>
+        <tr>
+            <td class="list">
+                &nbsp;</td>
+            <td class="list">
+                <div class="Element68">
+                    Positional_Representation2</div>
+            </td>
+            <td class="list">
+                NameValueMap</td>
+            <td class="list">
+                Assembly</td>
+            <td class="list">
+                See above.</td>
+        </tr>
+        <tr>
+            <td class="list">
+                &nbsp;</td>
+            <td class="list">
+                <div class="Element68">
+                    Positional_Representation1#</div>
+            </td>
+            <td class="list">
+                NameValueMap</td>
+            <td class="list">
+                Assembly</td>
+            <td class="list">
+                See above.</td>
+        </tr>
+        <tr>
+            <td class="list">
+                Positional_Representation1&nbsp;</td>
+            <td class="list">
+                Name</td>
+            <td class="list">
+                String</td>
+            <td class="list">
+                Assembly</td>
+            <td class="list">
+                The name of a positional representation.</td>
+        </tr>
+        <tr>
+            <td class="list">
+                Positional_Representation2</td>
+            <td class="list">
+                Name</td>
+            <td class="list">
+                String</td>
+            <td class="list">
+                Assembly</td>
+            <td class="list">
+                The name of a positional representation.</td>
+        </tr>
+        <tr>
+            <td class="list">
+                Positional_Representation1#</td>
+            <td class="list">
+                Name</td>
+            <td class="list">
+                String</td>
+            <td class="list">
+                Assembly</td>
+            <td class="list">
+                The name of a positional representation.</td>
+        </tr>
+        <tr>
+            <td class="list">
+                <div class="Element68">
+                    Presentations&nbsp;</div>
+            </td>
+            <td class="list">
+                <div class="Element68">
+                    Presentation1</div>
+            </td>
+            <td class="list">
+                NameValueMap</td>
+            <td class="list">
+                Presentation</td>
+            <td class="list">
+                Create a NameValueMap(&quot;Presentation1&quot;,NameValueMap) to specify a presentation view to publish, the name should start from Presentation1 and the number increases one by one.</td>
+        </tr>
+        <tr>
+            <td class="list">
+                &nbsp;</td>
+            <td class="list">
+                <div class="Element68">
+                    Presentation1</div>
+            </td>
+            <td class="list">
+                NameValueMap</td>
+            <td class="list">
+                Presentation</td>
+            <td class="list">
+                See above.</td>
+        </tr>
+        <tr>
+            <td class="list">
+                &nbsp;</td>
+            <td class="list">
+                <div class="Element68">
+                    Presentation#</div>
+            </td>
+            <td class="list">
+                NameValueMap</td>
+            <td class="list">
+                Presentation</td>
+            <td class="list">
+                See above.</td>
+        </tr>
+        <tr>
+            <td class="list">
+                Presentation1</td>
+            <td class="list">
+                Name</td>
+            <td class="list">
+                String</td>
+            <td class="list">
+                Presentation</td>
+            <td class="list">
+                The name of a presentation explosion view.</td>
+        </tr>
+        <tr>
+            <td class="list">
+                Presentation2</td>
+            <td class="list">
+                Name</td>
+            <td class="list">
+                String</td>
+            <td class="list">
+                Presentation</td>
+            <td class="list">
+                The name of a presentation explosion view.</td>
+        </tr>
+        <tr>
+            <td class="list">
+                Presentation#</td>
+            <td class="list">
+                Name</td>
+            <td class="list">
+                String</td>
+            <td class="list">
+                Presentation</td>
+            <td class="list">
+                The name of a presentation explosion view.</td>
+        </tr>
+        <tr>
+            <td class="list">
+                iAssemblies</td>
+            <td class="list">
+                Member1</td>
+            <td class="list">
+                NameValueMap</td>
+            <td class="list">
+                iAssembly</td>
+            <td class="list">
+                Create a NameValueMap(&quot;Member1&quot;,NameValueMap) to specify options for an iAssembly member, the name should start from Member1 and the number increases one by one.</td>
+        </tr>
+        <tr>
+            <td class="list">
+                &nbsp;</td>
+            <td class="list">
+                Member2</td>
+            <td class="list">
+                NameValueMap</td>
+            <td class="list">
+                iAssembly</td>
+            <td class="list">
+                See above.</td>
+        </tr>
+        <tr>
+            <td class="list">
+                &nbsp;</td>
+            <td class="list">
+                Member#</td>
+            <td class="list">
+                NameValueMap</td>
+            <td class="list">
+                iAssembly</td>
+            <td class="list">
+                See above.</td>
+        </tr>
+        <tr>
+            <td class="list">
+                Member1</td>
+            <td class="list">
+                Name</td>
+            <td class="list">
+                String</td>
+            <td class="list">
+                iAssembly</td>
+            <td class="list">
+                The name of an iAssembly member, this can be any iAssebly member name.</td>
+        </tr>
+        <tr>
+            <td class="list">
+                &nbsp;</td>
+            <td class="list">
+                3DModel</td>
+            <td class="list">
+                Boolean</td>
+            <td class="list">
+                iAssembly</td>
+            <td class="list">
+                Specify whether to publish the 3D model for the iAssembly member.</td>
+        </tr>
+        <tr>
+            <td class="list">
+                Member2</td>
+            <td class="list">
+                Name</td>
+            <td class="list">
+                String</td>
+            <td class="list">
+                iAssembly</td>
+            <td class="list">
+                The name of an iAssembly member, this can be any iAssebly member name.</td>
+        </tr>
+        <tr>
+            <td class="list">
+                &nbsp;</td>
+            <td class="list">
+                3DModel</td>
+            <td class="list">
+                Boolean</td>
+            <td class="list">
+                iAssembly</td>
+            <td class="list">
+                Specify whether to publish the 3D model for the iAssembly member.</td>
+        </tr>
+        <tr>
+            <td class="list">
+                Member#</td>
+            <td class="list">
+                Name</td>
+            <td class="list">
+                String</td>
+            <td class="list">
+                iAssembly</td>
+            <td class="list">
+                The name of an iAssembly member, this can be any iAssebly member name.</td>
+        </tr>
+        <tr>
+            <td class="list">
+                &nbsp;</td>
+            <td class="list">
+                3DModel</td>
+            <td class="list">
+                Boolean</td>
+            <td class="list">
+                iAssembly</td>
+            <td class="list">
+                Specify whether to publish the 3D model for the iAssembly member.</td>
+        </tr>
+        <tr>
+            <td class="list">
+                iParts</td>
+            <td class="list">
+                Member1</td>
+            <td class="list">
+                NameValueMap</td>
+            <td class="list">
+                iPart</td>
+            <td class="list">
+                Create a NameValueMap(&quot;Member1&quot;,NameValueMap) to specify options for an iPart member, the name should start from Member1 and the number increases one by one.</td>
+        </tr>
+        <tr>
+            <td class="list">
+                &nbsp;</td>
+            <td class="list">
+                Member2</td>
+            <td class="list">
+                NameValueMap</td>
+            <td class="list">
+                iPart</td>
+            <td class="list">
+                See above.</td>
+        </tr>
+        <tr>
+            <td class="list">
+                &nbsp;</td>
+            <td class="list">
+                Member#</td>
+            <td class="list">
+                NameValueMap</td>
+            <td class="list">
+                iPart</td>
+            <td class="list">
+                See above.</td>
+        </tr>
+        <tr>
+            <td class="list">
+                Member1</td>
+            <td class="list">
+                Name</td>
+            <td class="list">
+                String</td>
+            <td class="list">
+                iPart</td>
+            <td class="list">
+                The name of an iPart member, this can be any iPart member name.</td>
+        </tr>
+        <tr>
+            <td class="list">
+                &nbsp;</td>
+            <td class="list">
+                3DModel</td>
+            <td class="list">
+                Boolean</td>
+            <td class="list">
+                iPart</td>
+            <td class="list">
+                Specify whether to publish the 3D model for the iPart member.</td>
+        </tr>
+        <tr>
+            <td class="list">
+                Member2</td>
+            <td class="list">
+                Name</td>
+            <td class="list">
+                String</td>
+            <td class="list">
+                iPart</td>
+            <td class="list">
+                The name of an iPart member, this can be any iPart member name.</td>
+        </tr>
+        <tr>
+            <td class="list">
+                &nbsp;</td>
+            <td class="list">
+                3DModel</td>
+            <td class="list">
+                Boolean</td>
+            <td class="list">
+                iPart</td>
+            <td class="list">
+                Specify whether to publish the 3D model for the iPart member.</td>
+        </tr>
+        <tr>
+            <td class="list">
+                Member#</td>
+            <td class="list">
+                Name</td>
+            <td class="list">
+                String</td>
+            <td class="list">
+                iPart</td>
+            <td class="list">
+                The name of an iPart member, this can be any iPart member name.</td>
+        </tr>
+        <tr>
+            <td class="list">
+                &nbsp;</td>
+            <td class="list">
+                3DModel</td>
+            <td class="list">
+                Boolean</td>
+            <td class="list">
+                iPart</td>
+            <td class="list">
+                Specify whether to publish the 3D model for the iPart member.</td>
+        </tr>
+        </table>
+    <hr />
+
+    <h3>
+        Export options for 3D PDF.</h3>
+    <table class="list">
+        <tr class="header">
+            <td class="style1">
+                Option Name
+            </td>
+            <td class="style1">
+                Value Type
+            </td>
+            <td class="style1">
+                Default Value
+            </td>
+            <td class="style1">
+                Supported Documents
+            </td>
+            <td class="style1">
+                Supported Translators
+            </td>
+            <td class="style1">
+                Notes</td>
+        </tr>
+        <tr>
+            <td class="list">
+                AttachedFiles</td>
+            <td class="list">
+                String array
+            </td>
+            <td class="list">
+                &nbsp;</td>
+            <td class="list">
+                Part, Assembly</td>
+            <td class="list">
+                3D PDF</td>
+            <td class="list">
+                An array of string values indicating the full file paths.</td>
+        </tr>
+        <tr>
+            <td class="list">
+                ExportAllProperties</td>
+            <td class="list">
+                Boolean</td>
+            <td class="list">
+                True</td>
+            <td class="list">
+                Part, Assembly</td>
+            <td class="list">
+                3D PDF</td>
+            <td class="list">
+                Use this to publish ALL component properties. If set this to False, the 
+                ExportProperties can be used to specify which properties to export.</td>
+        </tr>
+        <tr>
+            <td class="list">
+                ExportDesignViewRepresentations</td>
+            <td class="list">
+                String array
+            </td>
+            <td class="list">
+                &nbsp;</td>
+            <td class="list">
+                Part, Assembly</td>
+            <td class="list">
+                3D PDF</td>
+            <td class="list">
+                <div class="Element68">
+                    An array of string values indicating the names of the design view 
+                    representations.</div>
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                <div class="Element68">
+                    ExportProperties&nbsp;</div>
+            </td>
+            <td class="list">
+                String array
+            </td>
+            <td class="list">
+                &nbsp;</td>
+            <td class="list">
+                Part, Assembly</td>
+            <td class="list">
+                3D PDF</td>
+            <td class="list">
+                <div class="Element68">
+                    &nbsp;A string array that indicates the properties to be exported. Use below 
+                    format to specify a property to export: 
+                    “PropertySet.InternalName:Property.Name”. A sample is 
+                    “{F29F85E0-4FF9-1068-AB91-08002B27B3D9}:Title” which indicates the Title 
+                    property in “Summary Information” property set.</div>
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                ExportTemplate</td>
+            <td class="list">
+                String
+            </td>
+            <td class="list">
+                &nbsp;</td>
+            <td class="list">
+                Part, Assembly</td>
+            <td class="list">
+                3D PDF</td>
+            <td class="list">
+                <div class="Element68">
+                    Specify the template PDF full file name.</div>
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                FileOutputLocation</td>
+            <td class="list">
+                String
+            </td>
+            <td class="list">
+                &nbsp;</td>
+            <td class="list">
+                Part, Assembly</td>
+            <td class="list">
+                3D PDF</td>
+            <td class="list">
+                <div class="Element68">
+                    A string value indicates the PDF full filename to export the document to.</div>
+            </td>
+        </tr>
+        <tr>
+            <td class="list">
+                <div class="Element68">
+                    <div class="Element68">
+                        GenerateAndAttachSTEPFile</div>
+                </div>
+            </td>
+            <td class="list">
+                Boolean
+            </td>
+            <td class="list">
+                False</td>
+            <td class="list">
+                Part, Assembly</td>
+            <td class="list">
+                3D PDF</td>
+            <td class="list">
+                Specify whether to generate the STEP file and attach it in PDF.</td>
+        </tr>
+        <tr>
+            <td class="list">
+                <div class="Element68">
+                    LimitToEntitiesInDVRs&nbsp;</div>
+            </td>
+            <td class="list">
+                Boolean
+            </td>
+            <td class="list">
+                True
+            </td>
+            <td class="list">
+                Part, Assembly</td>
+            <td class="list">
+                3D PDF</td>
+            <td class="list">
+                Specify whether the export scope is limited to the selected design view 
+                representations.</td>
+        </tr>
+        <tr>
+            <td class="list">
+                <div class="Element68">
+                    STEPFileOptions&nbsp;</div>
+            </td>
+            <td class="list">
+                NameValueMap
+            </td>
+            <td class="list">
+                &nbsp;</td>
+            <td class="list">
+                Part, Assembly</td>
+            <td class="list">
+                3D PDF</td>
+            <td class="list">
+                Specify the STEP save options when generate the STEP file.</td>
+        </tr>
+        <tr>
+            <td class="list">
+                <div class="Element68">
+                    ViewPDFWhenFinished&nbsp;</div>
+            </td>
+            <td class="list">
+                Boolean
+            </td>
+            <td class="list">
+                True
+            </td>
+            <td class="list">
+                Part, Assembly</td>
+            <td class="list">
+                3D PDF</td>
+            <td class="list">
+                Specify whether to view the PDF after the export is finished.</td>
+        </tr>
+        <tr>
+            <td class="list">
+                VisualizationQuality
+            </td>
+            <td class="list">
+                AccuracyEnum
+            </td>
+            <td class="list">
+                kMedium</td>
+            <td class="list">
+                Part, Assembly</td>
+            <td class="list">
+                3D PDF</td>
+            <td class="list">
+                Specify the visualization quality.</td>
+        </tr>
+        </table>
+    <h3>
+        &nbsp;</h3>
+    <h3>
+        Definitions of Export Values</h3>
+    <table class="list">
+        <tr class="header">
+            <td class="style1">
+                Option Name
+            </td>
+            <td class="style1">
+                Name</td>
+            <td class="style1">
+                Value
+            </td>
+            <td class="style1">
+                Supported Documents
+            </td>
+            <td class="style1">
+                Notes</td>
+        </tr>
+        <tr>
+            <td class="list">
+                STEPFileOptions</td>
+            <td class="list">
+                ApplicationProtocolType</td>
+            <td class="list">
+                Integer value that indicates the application protocol type. Valid values are: 
+                eAP203 = 2, eAP214IS = 4 and eAP242 = 5.</td>
+            <td class="list">
+                Part, Assembly</td>
+            <td class="list">
+                </td>
+        </tr>
+        <tr>
+            <td class="list">
+                &nbsp;</td>
+            <td class="list">
+                Author</td>
+            <td class="list">
+                String value that specifies the author.</td>
+            <td class="list">
+                Part, Assembly</td>
+            <td class="list">
+                &nbsp;</td>
+        </tr>
+        <tr>
+            <td class="list">
+                &nbsp;</td>
+            <td class="list">
+                Authorization</td>
+            <td class="list">
+                String value that specifies authorization.</td>
+            <td class="list">
+                Part, Assembly</td>
+            <td class="list">
+                </td>
+        </tr>
+        <tr>
+            <td class="list">
+                &nbsp;</td>
+            <td class="list">
+                Description</td>
+            <td class="list">
+                String value that specifies description. </td>
+            <td class="list">
+                Part, Assembly</td>
+            <td class="list">
+                </td>
+        </tr>
+        <tr>
+            <td class="list">
+                &nbsp;</td>
+            <td class="list">
+                ExportFitTolerance</td>
+            <td class="list">
+                Double value that specifies export fit tolerance</td>
+            <td class="list">
+                Part, Assembly</td>
+            <td class="list">
+                &nbsp;</td>
+        </tr>
+        <tr>
+            <td class="list">
+                &nbsp;</td>
+            <td class="list">
+                Organization</td>
+            <td class="list">
+                String value that specifies organization</td>
+            <td class="list">
+                Part, Assembly</td>
+            <td class="list">
+                &nbsp;</td>
+        </tr>
+        <tr>
+            <td class="list">
+                &nbsp;</td>
+            <td class="list">
+                IncludeSketches</td>
+            <td class="list">
+                Boolean value that specifies whether include sketches or not.</td>
+            <td class="list">
+                Part, Assembly</td>
+            <td class="list">
+                &nbsp;</td>
+        </tr>
+        </table>
+    <hr />
+
+    <h2>STL Export Format</h2>
+<p Class="Normal">When exporting an STL through the user-interface or using the API, you have an option of whether to include color information.  Color information is not part of the STL standard but companies have figured out ways to add color information into the file in ways that allows standard STL readers to continue to be able to read the file and ignore the colors.  If you have an STL reader and want to support colors from Inventor STL files you need to understand how the color is encoded within the binary STL file.  Color is not supported in STL ASCII files. Inventor uses a format designed by Materialise and is described on <a href="http://en.wikipedia.org/wiki/STL_format" target="_blank">Wikipedia</a>.
+<hr>
+
+  <table width="100%" style="font-size:15">
+	<tr>
+	  <td align="left">
+		&copy; Copyright 2025 Autodesk, Inc.
+	  </td>
+	  <td align="right">
+                <a href="mailto:inventor.dss@autodesk.com&subject=Inventor%20Inventor2026%20API%20Help%20(Ballons_Overview)">
+                    Comment on this page.</a>
+	  </td>
+	</tr>
+  </table>
+</body>
+</html>

@@ -1,0 +1,158 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/iPartMember.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="iPartMember">
+    <meta name="description" content="iPartMember Object">
+    <meta name="topicid" content="GUID-iPartMember">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>iPartMember Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">iPartMember Object
+			</h1>
+              Derived from: <a href="ReferenceComponent.htm">ReferenceComponent</a> Object
+            <br><h2 class="api">
+          Description
+        </h2>The iPartMember object provides access to the iPart.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="iPartMember_BreakLinkToFactory.htm">BreakLinkToFactory</a></td>
+        <td class="api-list">Method that breaks the link to the parent factory and converts the iPart member to a derived part.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="iPartMember_BreakLinkToFile.htm">BreakLinkToFile</a></td>
+        <td class="api-list">Method that breaks the connection of the derived component with the part or assembly from which it was created. When the link is broken the ReferencedFile property will return Nothing.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="iPartMember_ChangeRow.htm">ChangeRow</a></td>
+        <td class="api-list">Method that changes the row in the iPartTable that this custom iPartMember represents. This method is only valid for custom members. This can be determined using the CustomMember property.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="iPartMember_Delete.htm">Delete</a></td>
+        <td class="api-list">Method that deletes the ReferenceComponent.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="iPartMember_GetReferenceKey.htm">GetReferenceKey</a></td>
+        <td class="api-list">Method that generates and returns the reference key for this entity.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="iPartMember_SetEndOfPart.htm">SetEndOfPart</a></td>
+        <td class="api-list">Method that repositions the end-of-part marker relative to the object this method is called from.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="iPartMember_Application.htm">Application</a></td>
+        <td class="api-list">Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="iPartMember_AttributeSets.htm">AttributeSets</a></td>
+        <td class="api-list">Property that returns the AttributeSets collection object associated with this object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="iPartMember_CustomMember.htm">CustomMember</a></td>
+        <td class="api-list">Property that specifies whether this iPartMember represents a custom member or a standard member. This property is True if the iPartMember is a CustomMember.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="iPartMember_HealthStatus.htm">HealthStatus</a></td>
+        <td class="api-list">Property that returns an enum indicating the current state of the object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="iPartMember_IsEmbedded.htm">IsEmbedded</a></td>
+        <td class="api-list">Property that returns whether the reference component refers to an embedded document or a linked document.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="iPartMember_LinkedToFile.htm">LinkedToFile</a></td>
+        <td class="api-list">Property that returns whether the derived component is still linked to the base part or assembly document. If True, the link still exists. If False, the link has been broken and the ReferencedFile property will return Nothing.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="iPartMember_Name.htm">Name</a></td>
+        <td class="api-list">Property that returns the component's name.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="iPartMember_Parent.htm">Parent</a></td>
+        <td class="api-list">Property that returns the parent object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="iPartMember_ParentFactory.htm">ParentFactory</a></td>
+        <td class="api-list">Property that returns the iPart factory that created this iPartMember.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="iPartMember_PrimaryBody.htm">PrimaryBody</a></td>
+        <td class="api-list">Property that returns the primary body as a solid body. The solid body corresponds to the resultant body obtained from the iPartFactory.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="iPartMember_ReferencedDocumentDescriptor.htm">ReferencedDocumentDescriptor</a></td>
+        <td class="api-list">Property that returns the DocumentDescriptor object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="iPartMember_Row.htm">Row</a></td>
+        <td class="api-list">Property that returns the row in the iPart table that this iPartMember represents.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="iPartMember_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="iPartFactory_CreateCustomMember.htm">iPartFactory.CreateCustomMember</a>, <a href="iPartFactory_CreateMember.htm">iPartFactory.CreateMember</a>, <a href="PartComponentDefinition_iPartMember.htm">PartComponentDefinition.iPartMember</a>, <a href="SheetMetalComponentDefinition_iPartMember.htm">SheetMetalComponentDefinition.iPartMember</a><h2 class="api">
+            Version
+          </h2>
+        Introduced in version 6<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(iPartMember%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,208 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/MoveFeatureProxy.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="MoveFeatureProxy">
+    <meta name="description" content="MoveFeatureProxy Object">
+    <meta name="topicid" content="GUID-MoveFeatureProxy">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>MoveFeatureProxy Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">MoveFeatureProxy Object
+			</h1>
+              Derived from: <a href="MoveFeature.htm">MoveFeature</a> Object
+            <br><h2 class="api">
+          Description
+        </h2>This is an assembly-context proxy object derived from its native definition-context object.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="MoveFeatureProxy_Delete.htm">Delete</a></td>
+        <td class="api-list">Method that deletes the feature. The arguments allow control over which dependent objects are also deleted.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="MoveFeatureProxy_GetReferenceKey.htm">GetReferenceKey</a></td>
+        <td class="api-list">Method that generates and returns the reference key for this entity.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="MoveFeatureProxy_GetSuppressionCondition.htm">GetSuppressionCondition</a></td>
+        <td class="api-list">Method that gets the suppression condition for the feature. The method returns False if no condition has been applied.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="MoveFeatureProxy_RemoveParticipant.htm">RemoveParticipant</a></td>
+        <td class="api-list">Method that removes the specified participant from the assembly feature. This method fails for features in a part.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="MoveFeatureProxy_SetAffectedBodies.htm">SetAffectedBodies</a></td>
+        <td class="api-list">Method that sets a collection of SurfaceBody objects affected by this feature.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="MoveFeatureProxy_SetEndOfPart.htm">SetEndOfPart</a></td>
+        <td class="api-list">Method that repositions the end-of-part marker relative to the object this method is called from.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="MoveFeatureProxy_SetSuppressionCondition.htm">SetSuppressionCondition</a></td>
+        <td class="api-list">Method that sets the suppression condition for the feature.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="MoveFeatureProxy_Adaptive.htm">Adaptive</a></td>
+        <td class="api-list">Gets and sets whether this feature is adaptive or not.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="MoveFeatureProxy_Appearance.htm">Appearance</a></td>
+        <td class="api-list">Gets and sets the current appearance of the feature.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="MoveFeatureProxy_AppearanceSourceType.htm">AppearanceSourceType</a></td>
+        <td class="api-list">Gets and sets the source of the appearance for the feature.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="MoveFeatureProxy_Application.htm">Application</a></td>
+        <td class="api-list">Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="MoveFeatureProxy_AttributeSets.htm">AttributeSets</a></td>
+        <td class="api-list">Property that returns the AttributeSets collection object associated with this object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="MoveFeatureProxy_ConsumeInputs.htm">ConsumeInputs</a></td>
+        <td class="api-list">Gets and sets whether the inputs to this feature should be nested under this feature in the browser.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="MoveFeatureProxy_ContainingOccurrence.htm">ContainingOccurrence</a></td>
+        <td class="api-list">Property that returns the ComponentOccurrence that the native object is being referenced through. The returned occurrence is the containing occurrence.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="MoveFeatureProxy_Definition.htm">Definition</a></td>
+        <td class="api-list">Gets and sets the definition for the move feature.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="MoveFeatureProxy_ExtendedName.htm">ExtendedName</a></td>
+        <td class="api-list">Read-only property that returns the full feature name including any extended information.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="MoveFeatureProxy_Faces.htm">Faces</a></td>
+        <td class="api-list">Property that returns a collection that provides access to all of the faces of the feature. The Faces collection object will return the faces that still currently exist in the part. For example, if a face has been consumed by additional modeling operations it will not be returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="MoveFeatureProxy_FeatureDimensions.htm">FeatureDimensions</a></td>
+        <td class="api-list">Property that returns the FeatureDimensions collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="MoveFeatureProxy_HealthStatus.htm">HealthStatus</a></td>
+        <td class="api-list">Property that returns an enum indicating the current state of the object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="MoveFeatureProxy_IsOwnedByFeature.htm">IsOwnedByFeature</a></td>
+        <td class="api-list">Property that returns whether this object is owned by a feature. If True, the OwnedBy property returns the owning feature.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="MoveFeatureProxy_Name.htm">Name</a></td>
+        <td class="api-list">Gets/Sets the name of this Part Feature within the scope of this Document.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="MoveFeatureProxy_NativeObject.htm">NativeObject</a></td>
+        <td class="api-list">Gets the object in the context of the definition instead of the containing assembly.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="MoveFeatureProxy_OwnedBy.htm">OwnedBy</a></td>
+        <td class="api-list">Property that returns the owning PartFeature object. This property returns Nothing if the IsOwnedByFeature property returns False.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="MoveFeatureProxy_Parameters.htm">Parameters</a></td>
+        <td class="api-list">Property that returns all the parameters associated with the feature.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="MoveFeatureProxy_Parent.htm">Parent</a></td>
+        <td class="api-list">Property that returns the parent of the feature.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="MoveFeatureProxy_Participants.htm">Participants</a></td>
+        <td class="api-list">Property that returns the list of participants for an assembly feature. This list is empty for features in a part.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="MoveFeatureProxy_RangeBox.htm">RangeBox</a></td>
+        <td class="api-list">Property that returns a Box object which contains the opposing points of a rectangular box that is guaranteed to enclose this object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="MoveFeatureProxy_Shared.htm">Shared</a></td>
+        <td class="api-list">Gets and sets whether the part feature is shared or not, applies only to surface features.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="MoveFeatureProxy_Suppressed.htm">Suppressed</a></td>
+        <td class="api-list">Gets and sets whether this feature is suppressed or not.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="MoveFeatureProxy_SurfaceBodies.htm">SurfaceBodies</a></td>
+        <td class="api-list">Property that returns the bodies that this feature has created or modified.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="MoveFeatureProxy_Transformation.htm">Transformation</a></td>
+        <td class="api-list">A transformation matrix that moves an extrude, revolve, or sweep feature to a new location.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="MoveFeatureProxy_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2010<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(MoveFeatureProxy%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

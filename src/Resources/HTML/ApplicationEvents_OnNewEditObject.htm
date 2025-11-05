@@ -1,0 +1,104 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/ApplicationEvents_OnNewEditObject.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="ApplicationEvents_OnNewEditObject">
+    <meta name="description" content="ApplicationEvents.OnNewEditObject Event">
+    <meta name="topicid" content="ApplicationEvents_OnNewEditObject">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>ApplicationEvents.OnNewEditObject Event</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">ApplicationEvents.OnNewEditObject Event</h1>
+
+          Parent Object: <a href="ApplicationEvents.htm">ApplicationEvents</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">The OnNewEditObject event notifies a client when the edit object is changing.</p>
+    <h2 class="api">
+            Remarks
+          </h2>This event is useful in many cases but is particularly critical when adding additional tabs to the browser. This event serves as the notification of when to add the browser tab. The OnOpenDocument event is not satisfactory for this case because this event is fired for documents that are opened as a result of being referenced in an assembly. In this context, most of the documents will not be directly edited, so adding the browser information is a waste of resources. The OnActivateDocument event is also unsatisfactory because when a document is edited in the context of an assembly, it is not activated. The assembly remains the active document. What does change is the current edit object. The edit object is the container object that is being edited by the end-user. For example when an assembly document is opened, the assembly document is the active document and the active edit object. If the end-user in-place activates a part in the assembly, the part becomes the active edit object, although the assembly is still the active document because the edit is taking place in the context of the assembly. If the end-user creates or edits a sketch within the part, the sketch becomes the active edit object. Valid objects for edit objects are documents, 2d and 3d sketches, and drawing sheets.<h2 class="api">
+          Syntax
+        </h2>
+        
+            ApplicationEvents.<b>OnNewEditObject</b>( <b><i>EditObject</i></b> As Object, <b><i>BeforeOrAfter</i></b> As <a href="EventTimingEnum.htm">EventTimingEnum</a>, <b><i>Context</i></b> As <a href="NameValueMap.htm">NameValueMap</a>, <b><i>HandlingCode</i></b> As <a href="HandlingCodeEnum.htm">HandlingCodeEnum</a> )
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">EditObject</td>
+        <td class="api-list">Object</td>
+        <td class="api-list">The new edit object. When the BeforeOrAfter argument is kBefore this is the object that will become the edit object. When the argument is kAfter this is the current edit object.</td>
+      </tr>
+      <tr>
+        <td class="api-list">BeforeOrAfter</td>
+        <td class="api-list"><a href="EventTimingEnum.htm">EventTimingEnum</a></td>
+        <td class="api-list">Input indicating if the event is being fired before (kBefore) or after (kAfter) there is a new edit object. Notification is sent before and after the edit object change is made.</td>
+      </tr>
+      <tr>
+        <td class="api-list">Context</td>
+        <td class="api-list"><a href="NameValueMap.htm">NameValueMap</a></td>
+        <td class="api-list">Input object that can be used to determine the context of why the event fired. When an object is activated for edit within the context of an assembly some additional information is provided through the Context argument, as described below: Name = "ActiveDocument", Value = The AssemblyDocument object that the edit is within the context of. Name = "ActiveEditObject", Value = The ComponentOccurrence object in the assembly the edit is through.</td>
+      </tr>
+      <tr>
+        <td class="api-list">HandlingCode</td>
+        <td class="api-list"><a href="HandlingCodeEnum.htm">HandlingCodeEnum</a></td>
+        <td class="api-list">Output that indicates how you are handling the event. This argument is ignored for this event.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Notes
+          </h2>A scenario that users need to be aware of is when you use this event to monitor opening a drawing document, the active edit object(i.e. active sheet in the drawing in this case) will be available but its parent drawing document still not becomes the active document, in this case users need to get the parent drawing document from the Sheet.Parent.<h2 class="api">
+            Version
+          </h2>
+        Introduced in version 5<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(ApplicationEvents.OnNewEditObject%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

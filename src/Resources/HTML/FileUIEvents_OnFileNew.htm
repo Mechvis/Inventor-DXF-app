@@ -1,0 +1,100 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/FileUIEvents_OnFileNew.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="FileUIEvents_OnFileNew">
+    <meta name="description" content="FileUIEvents.OnFileNew Event">
+    <meta name="topicid" content="FileUIEvents_OnFileNew">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>FileUIEvents.OnFileNew Event</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">FileUIEvents.OnFileNew Event</h1>
+
+          Parent Object: <a href="FileUIEvents.htm">FileUIEvents</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Fires before a File New from standard template is executed.</p>
+    <h2 class="api">
+          Syntax
+        </h2>
+        
+            FileUIEvents.<b>OnFileNew</b>( <b><i>DocumentType</i></b> As <a href="DocumentTypeEnum.htm">DocumentTypeEnum</a>, <b><i>TemplateFileName</i></b> As String, <b><i>Context</i></b> As <a href="NameValueMap.htm">NameValueMap</a>, <b><i>HandlingCode</i></b> As <a href="HandlingCodeEnum.htm">HandlingCodeEnum</a> )
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">DocumentType</td>
+        <td class="api-list"><a href="DocumentTypeEnum.htm">DocumentTypeEnum</a></td>
+        <td class="api-list">DocumentTypeEnum indicating the document's type. Possible values include kUnknownDocumentObject,<p />kPartDocumentObject, kAssemblyDocumentObject, kDrawingDocumentObject, kPresentationDocumentObject, kDesignElementDocumentObject, kForeignModelDocumentObject, and kSATFileDocumentObject.</td>
+      </tr>
+      <tr>
+        <td class="api-list">TemplateFileName</td>
+        <td class="api-list">String</td>
+        <td class="api-list">The full filename of the file to use as the template when creating the new file. This can be any existing file and is not restricted to the files within the default template path. This argument must be set if the HandlingCode is set to kEventHandled.</td>
+      </tr>
+      <tr>
+        <td class="api-list">Context</td>
+        <td class="api-list"><a href="NameValueMap.htm">NameValueMap</a></td>
+        <td class="api-list">Input object that, if populated, can be used to determine the context of why the event fired.</td>
+      </tr>
+      <tr>
+        <td class="api-list">HandlingCode</td>
+        <td class="api-list"><a href="HandlingCodeEnum.htm">HandlingCodeEnum</a></td>
+        <td class="api-list">Output that indicates how you are handling the event. Can supply any of the following three values\: * kEventNotHandled\: Inventor continues with its standard behavior and displays the "Open" dialog to allow the end&#45;user to select a template. * kEventHandled\: Indicates that the client is handling getting the template. Requires that the client also set the TemplateFileName argument. * kEventCanceled\: Cancels the operation. <todo /></td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2009<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(FileUIEvents.OnFileNew%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

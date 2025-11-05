@@ -1,0 +1,127 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/ModelDatums_CreateDefinition.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="ModelDatums_CreateDefinition">
+    <meta name="description" content="ModelDatums.CreateDefinition Method">
+    <meta name="topicid" content="ModelDatums_CreateDefinition">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>ModelDatums.CreateDefinition Method</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">ModelDatums.CreateDefinition Method</h1>
+
+          Parent Object: <a href="ModelDatums.htm">ModelDatums</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Method that creates a model datum definition.</p>
+    <h2 class="api">
+          Syntax
+        </h2>
+        
+            ModelDatums.<b>CreateDefinition</b>( <b><i>DatumTargetPoints</i></b> As <a href="ObjectCollection.htm">ObjectCollection</a>, [<b><i>DatumTargetPlanes</i></b>] As Variant, [<b><i>DatumTargetTextPositions</i></b>] As Variant, [<b><i>DatumTargetIndices</i></b>] As Variant, [<b><i>DatumTargetType</i></b>] As Variant, [<b><i>DatumTargetAreaValueOne</i></b>] As Variant, [<b><i>DatumTargetAreaValueTwo</i></b>] As Variant, [<b><i>DatumText</i></b>] As Variant ) As <a href="ModelDatumDefinition.htm">ModelDatumDefinition</a>
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">DatumTargetPoints</td>
+        <td class="api-list"><a href="ObjectCollection.htm">ObjectCollection</a></td>
+        <td class="api-list">Input ObjectCollection including the points that define the datum target points.&nbsp;
+Valid entities for the datum target points are:
+<ul><li>WorkPoint</li>
+<li>SketchPoint(the SketchPoint should be on the sketch that was created from a planar Face)</li>
+<li>GeometryIntent (When GeometryIntent&nbsp;is provided, the point should be on a planar Face. The GeometryIntent object can be created using the CreateGeometryIntent method on the PartComponentDefinition or AssemblyComponentDefinition object.).</li>
+</ul>
+</br>
+When provide the datum target points base on WorkPoint, the WorkPoint objects can not be on the same plane, and no datum target points base on other type of object can be provided. When provide the datum target points base on planar Face, all the datum target points should attach to the same Face or the Faces that are coplanar and from the same feature. When provide SketchPoint as datum target points they should be from the same planar sketch and the sketch should depend on a planar Face.</td>
+      </tr>
+      <tr>
+        <td class="api-list">DatumTargetPlanes</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional input ObjectCollection including the AnnotationPlaneDefinition objects that define the datum target planes that control the datum target texts’ orientation.<br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+      <tr>
+        <td class="api-list">DatumTargetTextPositions</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional input ObjectCollection including the Point objects that define the datum target texts’ positions.<br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+      <tr>
+        <td class="api-list">DatumTargetIndices</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional input Long array to specify the indices of the datum targets. The item count of this array should be the same as the item count of the DatumTargetPoints.<br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+      <tr>
+        <td class="api-list">DatumTargetType</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional input the ModelDatumTargetTypeEnum that specifies the datum target type. If not specified the default ModelDatumTargetTypePoint is used.<br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+      <tr>
+        <td class="api-list">DatumTargetAreaValueOne</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional input Double array that specifies the datum target area size. If not specified the default values will be used. If the DatumTargetType is specified as kModelDatumTargetTypeCircle the values indicate the area diameter, If the DatumTargetType is kModelDatumTargetTypeRectangle the values indicate the area width. For other DatumTargetType values this is ignored.<br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+      <tr>
+        <td class="api-list">DatumTargetAreaValueTwo</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional input Double array that specifies the datum target area size. If not specified the default values will be used. If the DatumTargetType is specified as kModelDatumTargetTypeRectangle the values indicate the area height. For other DatumTargetType values this is ignored.<br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+      <tr>
+        <td class="api-list">DatumText</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional input String that specifies the datum label. If not specified an available label will be used.<br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2023<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(ModelDatums.CreateDefinition%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

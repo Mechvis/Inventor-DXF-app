@@ -1,0 +1,107 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/ApplicationEvents_OnOpenDocument.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="ApplicationEvents_OnOpenDocument">
+    <meta name="description" content="ApplicationEvents.OnOpenDocument Event">
+    <meta name="topicid" content="ApplicationEvents_OnOpenDocument">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>ApplicationEvents.OnOpenDocument Event</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">ApplicationEvents.OnOpenDocument Event</h1>
+
+          Parent Object: <a href="ApplicationEvents.htm">ApplicationEvents</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">The OnOpenDocument event notifies a client when a document is opened.</p>
+    <h2 class="api">
+            Remarks
+          </h2>Documents are opened directly by the end-user using the Open command, but they are also opened indirectly as a result of being referenced by another document. For example, if an assembly is opened all of the documents referenced by the assembly are also opened. This notification is sent in all cases. The Context argument provides information that can help determine the context of the open. <b>You should not assume that the events will always arrive in the same sequence.</b> As an example, let us say you are writing an Addin that listens to both the OnOpenDocument event and the OnDocumentChange event. You are interested in a document called MyFavoriteDocument. Your Addin assumes that the OnOpenDocument event will arrive before the OnDocumentChange event. In its OnOpenDocument event handler it checks for MyFavoriteDocument and sets a global variable MyFavoriteDocumentIsOpen as true. In the OnDocumentChange event handler, it first checks whether MyFavoriteDocumentIsOpen is true, and only then takes any action. In your testing that code may work, <i>but fail on a customer's machine</i>. This can happen when another Addin receives the OnOpenDocument event before your Addin, and in its event handler makes a change to the document - causing an OnDocumentChange event to be fired. So you will get OnDocumentChange event before you get an OnOpenDocument event. So in this instance, the assumption that OnOpenDocument event will always arrive before OnDocumentChange event on the same document, results in a very hard to find problem. As a general rule, it's safer not to make any assumption about the order in which these events will be received.<h2 class="api">
+          Syntax
+        </h2>
+        
+            ApplicationEvents.<b>OnOpenDocument</b>( <b><i>DocumentObject</i></b> As <a href="Document.htm">Document</a>, <b><i>FullDocumentName</i></b> As String, <b><i>BeforeOrAfter</i></b> As <a href="EventTimingEnum.htm">EventTimingEnum</a>, <b><i>Context</i></b> As <a href="NameValueMap.htm">NameValueMap</a>, <b><i>HandlingCode</i></b> As <a href="HandlingCodeEnum.htm">HandlingCodeEnum</a> )
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">DocumentObject</td>
+        <td class="api-list"><a href="Document.htm">Document</a></td>
+        <td class="api-list">The Document object being opened. When the BeforeOrAfter argument is kBefore, this argument will be nothing because the document does not yet exist.<p /></td>
+      </tr>
+      <tr>
+        <td class="api-list">FullDocumentName</td>
+        <td class="api-list">String</td>
+        <td class="api-list">Output string that specifies the fully qualified name of the document being opened. This is supplied both before and after.<p /></td>
+      </tr>
+      <tr>
+        <td class="api-list">BeforeOrAfter</td>
+        <td class="api-list"><a href="EventTimingEnum.htm">EventTimingEnum</a></td>
+        <td class="api-list">Output EventTimingEnum indicating if the event is being fired before (kBefore) or after (kAfter) the document is opened. Notification is sent before and after the document is opened.<p /></td>
+      </tr>
+      <tr>
+        <td class="api-list">Context</td>
+        <td class="api-list"><a href="NameValueMap.htm">NameValueMap</a></td>
+        <td class="api-list">Output NameValueMap object that can be used to determine the context of why the event fired. Additional information is provided through this argument to help in understanding the context of how the document is being opened. Name = "TopLevelFilename", Value = The full filename of the top-level file that was opened that's causing this file to be opened. For example, if an assembly is opened and a document referenced by that assembly is opened as a result, the TopLevelFilename will be the full filename of the assembly. This value can be the same as the FullDocumentName argument which indicates this document was opened by itself.</td>
+      </tr>
+      <tr>
+        <td class="api-list">HandlingCode</td>
+        <td class="api-list"><a href="HandlingCodeEnum.htm">HandlingCodeEnum</a></td>
+        <td class="api-list">Output HandlingCodeEnum that indicates how you are handling the event. The value of this argument is currently ignored for this event.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 4<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(ApplicationEvents.OnOpenDocument%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,90 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/ChangeDefinition_OnReplay.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="ChangeDefinition_OnReplay">
+    <meta name="description" content="ChangeDefinition.OnReplay Event">
+    <meta name="topicid" content="ChangeDefinition_OnReplay">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>ChangeDefinition.OnReplay Event</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">ChangeDefinition.OnReplay Event</h1>
+
+          Parent Object: <a href="ChangeDefinition.htm">ChangeDefinition</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Event that is fired by Inventor in a script replay scenario. In the handler of this event (typically, written by the client who created this ChangeDefinition), it is expected that a new ChangeProcessor will be generated using the CreateChangeProcessor method of this object, followed by the client proceeding to 'hook up' its ChangeProcessor handler code, and returning this hooked-up processor back. Inventor will then use this returned ChangeProcessor to replay the scripted command.</p>
+    <h2 class="api">
+          Syntax
+        </h2>
+        
+            ChangeDefinition.<b>OnReplay</b>( <b><i>Context</i></b> As <a href="NameValueMap.htm">NameValueMap</a>, <b><i>ResultProcessor</i></b> As <a href="ChangeProcessor.htm">ChangeProcessor</a> )
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">Context</td>
+        <td class="api-list"><a href="NameValueMap.htm">NameValueMap</a></td>
+        <td class="api-list">Input object that can be used to determine the context of why the event fired.</td>
+      </tr>
+      <tr>
+        <td class="api-list">ResultProcessor</td>
+        <td class="api-list"><a href="ChangeProcessor.htm">ChangeProcessor</a></td>
+        <td class="api-list">The client returns this ChangeProcessor which Autodesk Inventor will use to replay the scripted command.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 9<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(ChangeDefinition.OnReplay%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

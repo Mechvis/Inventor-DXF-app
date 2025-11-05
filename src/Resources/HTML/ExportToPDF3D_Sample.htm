@@ -1,0 +1,558 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/ExportToPDF3D_Sample.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="ExportToPDF3D_Sample">
+    <meta name="description" content="Export to 3D PDF Sample">
+    <meta name="topicid" content="ExportToPDF3D_Sample">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>Export to 3D PDF</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body><script>
+          function copyCode(language) {
+          // Get the pre element for the specified language.
+          var preElement = document.getElementById(language);
+
+          // Get the text from the element and copy it to the clipboard.
+          var preText = preElement.innerText;
+
+          var isIE = /*@cc_on!@*/false || !!document.documentMode;
+
+          if (isIE)
+          {
+            window.clipboardData.setData('Text', preText);
+          }
+          else
+          {
+            navigator.clipboard.writeText(preText);
+          }
+
+          //alert("Code copied to clipboard");
+          }
+        </script><link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">Export to 3D PDF</h1>
+    <h2 class="api">
+          Description
+        </h2>The 3D PDF converter is to translate Inventor model to 3D PDF format, but not like the other  translators this function is implemented in an ApplicationAddin, so it is a bit different to be used via API. Below sample demonstrates how to use the ApplicationAddin.Automation to get the function to export Inventor model to 3D PDF.<h2 class="api">
+          Code Samples
+        </h2>
+    <div id="tabs">
+      <ul>
+        <li><a href="#VBA">VBA</a></li>
+        <li><a href="#iLogic">iLogic</a></li>
+        <li><a href="#C#">C#</a></li>
+        <li><a href="#C++">C++</a></li>
+      </ul>
+      <div id="VBA" class="api-code">Open a part document, and new a design view named "View1", and run below VBA code:<table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('VBA_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="VBA_code">Public Sub PublishTo3DPDF()
+    <span style="color:blue">' Get the 3D PDF Add-In.</span>
+    Dim oPDFAddIn As ApplicationAddIn
+    Dim oAddin As ApplicationAddIn
+    For Each oAddin In ThisApplication.ApplicationAddIns
+        If oAddin.ClassIdString = "{3EE52B28-D6E0-4EA4-8AA6-C2A266DEBB88}" Then
+            Set oPDFAddIn = oAddin
+            Exit For
+        End If
+    Next
+    
+    If oPDFAddIn Is Nothing Then
+        MsgBox "Inventor 3D PDF Addin not loaded."
+        Exit Sub
+    End If
+    
+    Dim oPDFConvertor3D
+    Set oPDFConvertor3D = oPDFAddIn.Automation
+    
+    <span style="color:blue">'Set a reference to the active document (the document to be published).</span>
+    Dim oDocument As Document
+    Set oDocument = ThisApplication.ActiveDocument
+    
+    <span style="color:blue">' Create a NameValueMap object as Options</span>
+    Dim oOptions As NameValueMap
+    Set oOptions = ThisApplication.TransientObjects.CreateNameValueMap
+  
+    <span style="color:blue">' Options</span>
+    oOptions.Value("FileOutputLocation") = "c:\temp\test.pdf"
+    oOptions.Value("ExportAnnotations") = 1
+    oOptions.Value("ExportWokFeatures") = 1
+    oOptions.Value("GenerateAndAttachSTEPFile") = True
+    oOptions.Value("VisualizationQuality") = kHigh
+    
+    <span style="color:blue">' Set the properties to export</span>
+    Dim sProps(0) As String
+    sProps(0) = "{F29F85E0-4FF9-1068-AB91-08002B27B3D9}:Title"  <span style="color:blue">' Title</span>
+    
+    oOptions.Value("ExportAllProperties") = False
+    oOptions.Value("ExportProperties") = sProps
+ 
+    <span style="color:blue">' Set the design views to export</span>
+    Dim sDesignViews(1) As String
+    sDesignViews(0) = "Master"
+    sDesignViews(1) = "View1"
+    
+    oOptions.Value("ExportDesignViewRepresentations") = sDesignViews
+    
+    <span style="color:blue">'Publish document.</span>
+    Call oPDFConvertor3D.Publish(oDocument, oOptions)
+End Sub</pre>
+      </div>
+      <div id="iLogic" class="api-code">Open a part document, and new a design view named "View1", and run below VBA code:<table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('iLogic_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="iLogic_code">    <span style="color:blue">' Get the 3D PDF Add-In.</span>
+    Dim oPDFAddIn As ApplicationAddIn
+    Dim oAddin As ApplicationAddIn
+    For Each oAddin In ThisApplication.ApplicationAddIns
+        If oAddin.ClassIdString = "{3EE52B28-D6E0-4EA4-8AA6-C2A266DEBB88}" Then
+            oPDFAddIn = oAddin
+            Exit For
+        End If
+    Next
+    
+    If oPDFAddIn Is Nothing Then
+        MsgBox("Inventor 3D PDF Addin not loaded.")
+        Exit Sub
+    End If
+    
+    Dim oPDFConvertor3D
+    oPDFConvertor3D = oPDFAddIn.Automation
+    
+    <span style="color:blue">'Set a reference to the active document (the document to be published).</span>
+    Dim oDocument As Document
+    oDocument = ThisApplication.ActiveDocument
+    
+    <span style="color:blue">' Create a NameValueMap object as Options</span>
+    Dim oOptions As NameValueMap
+    oOptions = ThisApplication.TransientObjects.CreateNameValueMap
+  
+    <span style="color:blue">' Options</span>
+    oOptions.Value("FileOutputLocation") = "c:\temp\test.pdf"
+    oOptions.Value("ExportAnnotations") = 1
+    oOptions.Value("ExportWokFeatures") = 1
+    oOptions.Value("GenerateAndAttachSTEPFile") = True
+    oOptions.Value("VisualizationQuality") = kHigh
+    
+    <span style="color:blue">' Set the properties to export</span>
+    Dim sProps(0) As String
+    sProps(0) = "{F29F85E0-4FF9-1068-AB91-08002B27B3D9}:Title"  <span style="color:blue">' Title</span>
+    
+    oOptions.Value("ExportAllProperties") = False
+    oOptions.Value("ExportProperties") = sProps
+ 
+    <span style="color:blue">' Set the design views to export</span>
+    Dim sDesignViews(1) As String
+    sDesignViews(0) = "Master"
+    sDesignViews(1) = "View1"
+    
+    oOptions.Value("ExportDesignViewRepresentations") = sDesignViews
+    
+    <span style="color:blue">'Publish document.</span>
+    Call oPDFConvertor3D.Publish(oDocument, oOptions)</pre>
+      </div>
+      <div id="C#" class="api-code">Open a part document, and new a design view named "View1", and copy below C# code to a project to run it.<table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('C#_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="C#_code">public void Export3DPdf()
+        {
+            Inventor.Application InvApp = mApp;
+
+            Inventor.ApplicationAddIn  PDFAddin = null ;
+
+            foreach (ApplicationAddIn appAddin in mApp.ApplicationAddIns )
+            {
+                if (appAddin.ClassIdString == "{3EE52B28-D6E0-4EA4-8AA6-C2A266DEBB88}")
+                {
+                    PDFAddin =  appAddin;
+                    break;
+                }
+            }
+
+            dynamic pdfConvertor3d = PDFAddin.Automation;
+
+            Document oDoc = mApp.ActiveDocument;
+            <span style="color:blue">// Create a NameValueMap object</span>
+            Inventor.NameValueMap oOptions = InvApp.TransientObjects.CreateNameValueMap();
+            
+            oOptions.Value["FileOutputLocation"] = @"c:\temp\3DPDF.pdf";
+            oOptions.Value["ExportAllProperties"] = true;
+            oOptions.Value["GenerateAndAttachSTEPFile"] = true ;
+            oOptions.Value["ExportTemplate"] = @"C:\Users\Public\Documents\Autodesk\Inventor 2019\Templates\Sample Part Template.pdf";
+            oOptions.Value["VisualizationQuality"] = AccuracyEnum.kHigh;
+
+            <span style="color:blue">//string[] sProps = new string[1];</span>
+            <span style="color:blue">//sProps[0] = "{F29F85E0-4FF9-1068-AB91-08002B27B3D9}:Title";</span>
+            <span style="color:blue">//oOptions.Value["ExportAllProperties"] = false; </span>
+            <span style="color:blue">//oOptions.Value["ExportProperties"] = sProps;</span>
+
+            String[] sDesignViews = new string[] { "Master", "View1" }; 
+            oOptions.Value["ExportDesignViewRepresentations"] = sDesignViews;
+
+            pdfConvertor3d.Publish(oDoc, oOptions);
+
+        }</pre>
+      </div>
+      <div id="C++" class="api-code">Copy the C++ code to your project, and change the hardcoded file names for the sFileName in ExportToPDF3D   to set the document path in your machine, and update the sTemplatePath to specify a proper template according to the doucment type. Then call the ExportToPDF3D to export the document to 3D PDF.<table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('C++_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="C++_code">static HRESULT ExportToPDF3D();
+DesignViewRepresentationsPtr GetDesignViewRepresentations(Document* pDocument);
+HRESULT GetDesignViews(DesignViewRepresentationsPtr pDVRepresentations, CComSafeArray&lt;BSTR&gt;& sDVs);
+HRESULT CreateStepFileOption(NameValueMap *pOptionsStep);
+
+
+static HRESULT ExportToPDF3D()
+{
+	HRESULT hr = NOERROR;
+
+	TCHAR Str[_MAX_PATH];
+	
+	CLSID InvAppClsid;
+	hr = CLSIDFromProgID (L"Inventor.Application", &InvAppClsid);
+	if (FAILED(hr)) return hr;
+
+	<span style="color:blue">// Either create a new instance of the application or latch on to the currently active one.</span>
+	_tprintf_s (_T("Would you like to create a new Inventor application? (y/n) _: "));
+	_tscanf_s (_T("%ls"), Str, _MAX_PATH);
+
+	CComPtr&lt;IUnknown&gt; pInvAppUnk;
+	if (toupper (Str[0]) == _T('Y'))
+	{
+		hr = CoCreateInstance (InvAppClsid, NULL, CLSCTX_LOCAL_SERVER, __uuidof(IUnknown), (void **) &pInvAppUnk);
+		if (FAILED (hr))
+			_tprintf_s (_T("*** Failed to create a new Inventor application ***\n"));
+	}
+	else
+	{ 
+		hr = ::GetActiveObject (InvAppClsid, NULL, &pInvAppUnk);
+		if (FAILED (hr))
+			_tprintf_s (_T("*** Could not get hold of an active Inventor application ***\n"));
+	}
+	if (FAILED(hr)) return hr;
+
+	CComPtr&lt;Application&gt; m_pApplication;<span style="color:blue">//m_pApplication;</span>
+	hr = pInvAppUnk-&gt;QueryInterface (__uuidof(Application), (void **) &m_pApplication);
+	if (FAILED(hr)) return hr;
+
+	hr = m_pApplication-&gt;put_Visible(-1);
+	if (FAILED(hr)) return hr;
+
+	TransientObjectsPtr pTransObj;
+	hr = m_pApplication-&gt;get_TransientObjects(&pTransObj);
+	if (FAILED(hr))		return hr;
+
+	CComBSTR sFileName = "C:\\Temp\\Assembly1.iam";
+
+	CComPtr&lt;Documents&gt; pDocs;
+	hr = m_pApplication-&gt;get_Documents(&pDocs);
+	if (FAILED(hr)) return hr;
+
+	DocumentPtr pDoc = nullptr;
+	hr = pDocs-&gt;Open(sFileName, VARIANT_TRUE, &pDoc);
+	if (FAILED(hr)) return hr;
+
+	<span style="color:blue">//get NameValueMap</span>
+	CComPtr&lt;NameValueMap&gt; pOptionsPDF = nullptr;
+	hr = pTransObj-&gt;CreateNameValueMap(&pOptionsPDF);
+	if (FAILED(hr))			return hr;
+	
+	<span style="color:blue">// Set the option "FileOutputLocation" to NameValueMap</span>
+	CComBSTR sOutputFilePath = "C:\\Users\\Temp\\Assembly1.pdf";
+	hr = pOptionsPDF-&gt;MethodAdd(_T("FileOutputLocation"), CComVariant(sOutputFilePath));
+	if (FAILED(hr))			return hr;
+	
+
+	<span style="color:blue">// Set the option "ExportTemplate" to NameValueMap</span>
+	CComBSTR sTemplatePath = "C:\\Users\\Public\\Documents\\Autodesk\\Inventor 2019\\Templates\\Sample Assembly Template.pdf";
+	hr = pOptionsPDF-&gt;MethodAdd(_T("ExportTemplate"), CComVariant(sTemplatePath));
+	if (FAILED(hr))		return hr;
+	
+	<span style="color:blue">// Set the option "VisualizationQuality" to NameValueMap</span>
+	AccuracyEnum eVisualizationQuality = kHigh; <span style="color:blue">// kLow  kMedium</span>
+
+	hr = pOptionsPDF-&gt;MethodAdd(_T("VisualizationQuality"), CComVariant(eVisualizationQuality));
+	if (FAILED(hr))		return hr;
+	
+	<span style="color:blue">// Set the option "LimitToEntitiesInDVRs" to NameValueMap</span>
+	bool  m_bPublishAllEntities = false;
+	hr = pOptionsPDF-&gt;MethodAdd(_T("LimitToEntitiesInDVRs"), CComVariant(m_bPublishAllEntities));
+	if (FAILED(hr))		return hr;
+	
+	<span style="color:blue">// Set the option "ExportAllProperties" to NameValueMap</span>
+	bool bExportAllProperties = true;
+	hr = pOptionsPDF-&gt;MethodAdd(_T("ExportAllProperties"), CComVariant(bExportAllProperties));
+	if (FAILED(hr))		return hr;
+	
+	if (!bExportAllProperties)
+	{
+		<span style="color:blue">// Set the option "ExportProperties" to NameValueMap</span>
+		CComSafeArray&lt;BSTR&gt; saProperties;
+		saProperties.Add(CComBSTR("{F29F85E0-4FF9-1068-AB91-08002B27B3D9}:Title"));
+		saProperties.Add(CComBSTR("{D5CDD502-2E9C-101B-9397-08002B2CF9AE}:Company"));
+		saProperties.Add(CComBSTR("{32853F0F-3444-11D1-9E93-0060B03C1CA6}:Part Number"));
+
+		hr = pOptionsPDF-&gt;MethodAdd(_T("ExportProperties"), CComVariant(saProperties));
+		if (FAILED(hr))			return hr;
+	}
+
+	<span style="color:blue">// Set the option "ExportDesignViewRepresentations" to NameValueMap</span>
+	DesignViewRepresentationsPtr spDVReps = GetDesignViewRepresentations(pDoc);
+	CComSafeArray&lt;BSTR&gt; sDesignViews;
+
+	hr = GetDesignViews(spDVReps, sDesignViews);
+	if (FAILED(hr))		return hr;
+	
+	if (sDesignViews != nullptr)
+	{
+		hr = pOptionsPDF-&gt;MethodAdd(_T("ExportDesignViewRepresentations"), CComVariant(sDesignViews));
+		if (FAILED(hr))			return hr;
+	}
+
+	<span style="color:blue">// Set the option "GenerateAndAttachSTEPFile" to NameValueMap</span>
+	bool bAttachSTEPFile = true;
+	hr = pOptionsPDF-&gt;MethodAdd(_T("GenerateAndAttachSTEPFile"), CComVariant(bAttachSTEPFile));
+	if (FAILED(hr))		return hr;
+	
+	if (bAttachSTEPFile)
+	{
+		<span style="color:blue">//get NameValueMap</span>
+		CComPtr&lt;NameValueMap&gt; pOptionsStep = nullptr;
+		hr = pTransObj-&gt;CreateNameValueMap(&pOptionsStep);
+		if (FAILED(hr))			return hr;
+
+		hr = CreateStepFileOption(pOptionsStep);
+		if (FAILED(hr))			return hr;
+		
+		<span style="color:blue">// Set the option "STEPFileOptions" to NameValueMap</span>
+		hr = pOptionsPDF-&gt;MethodAdd(_T("STEPFileOptions"), CComVariant(pOptionsStep));
+		if (FAILED(hr))			return hr;
+	}
+
+	<span style="color:blue">// Set the option "AttachedFiles" to NameValueMap</span>
+	CComSafeArray&lt;BSTR&gt; aAttachFiles;
+	hr = aAttachFiles.Add(CComBSTR("C:\\temp\\log.pdf"));
+	if (FAILED(hr))			return hr;
+
+	hr = pOptionsPDF-&gt;MethodAdd(_T("AttachedFiles"), CComVariant(aAttachFiles));
+	if (FAILED(hr))			return hr;
+
+	CComPtr&lt;ApplicationAddIns&gt; pInvAppAddIns = nullptr;
+	hr = m_pApplication-&gt;get_ApplicationAddIns(&pInvAppAddIns);
+	if (FAILED(hr))		return hr;
+	
+	<span style="color:blue">// Client id of 3D PDf addin</span>
+	CComBSTR clsidAddin = CComBSTR(_T("{3EE52B28-D6E0-4EA4-8AA6-C2A266DEBB88}"));
+	
+	CComPtr&lt;ApplicationAddIn&gt; pAddin = nullptr;
+	hr = pInvAppAddIns-&gt;get_ItemById(clsidAddin, &pAddin);
+	 
+	if (pAddin) 
+	{
+		CComPtr&lt;IDispatch&gt; pAddinAutomaton;
+		pAddin-&gt;get_Automation(&pAddinAutomaton);
+
+		if (pAddinAutomaton) 
+		{
+			DISPID dispId;
+			OLECHAR* name(OLESTR("Publish"));
+			hr = pAddinAutomaton-&gt;GetIDsOfNames(IID_NULL, &name, 1, LOCALE_SYSTEM_DEFAULT, &dispId);
+			
+			if (SUCCEEDED(hr)) 
+			{
+				CComVariant varArgs[2];
+				varArgs[1] = pDoc.GetInterfacePtr();
+				varArgs[0] = pOptionsPDF;
+				DISPPARAMS params = { &varArgs[0], NULL, 2, 0 };
+				CComVariant vRes;
+
+				hr = pAddinAutomaton-&gt;Invoke(dispId, IID_NULL, LOCALE_SYSTEM_DEFAULT, DISPATCH_METHOD, &params, &vRes, NULL, NULL);
+			}
+		}
+	}
+	
+	return hr;
+}
+
+DesignViewRepresentationsPtr GetDesignViewRepresentations(Document* pDocument)
+{
+	if (pDocument == nullptr)
+		return nullptr;
+
+	HRESULT hr = S_OK;
+	RepresentationsManagerPtr pRepsMgr;
+
+	AssemblyDocumentPtr spAsmDoc = pDocument;
+	if (spAsmDoc != nullptr)
+	{
+		AssemblyComponentDefinitionPtr pAsmDef;
+		hr = spAsmDoc-&gt;get_ComponentDefinition(&pAsmDef);
+		if (FAILED(hr))
+			return nullptr;
+
+		hr = pAsmDef-&gt;get_RepresentationsManager(&pRepsMgr);
+		if (FAILED(hr))
+			return nullptr;
+	}
+	else
+	{
+		PartDocumentPtr pPartDoc = pDocument;
+		if (pPartDoc != nullptr)
+		{
+			PartComponentDefinitionPtr pPartDef;
+			hr = pPartDoc-&gt;get_ComponentDefinition(&pPartDef);
+			if (FAILED(hr))
+				return nullptr;
+
+			hr = pPartDef-&gt;get_RepresentationsManager(&pRepsMgr);
+			if (FAILED(hr))
+				return nullptr;
+		}
+	}
+
+	if (pRepsMgr != nullptr)
+	{
+		DesignViewRepresentationsPtr pDVRepresentations;
+		hr = pRepsMgr-&gt;get_DesignViewRepresentations(&pDVRepresentations);
+		if (FAILED(hr))
+			return nullptr;
+
+		return pDVRepresentations;
+	}
+
+	return nullptr;
+}
+
+HRESULT GetDesignViews(DesignViewRepresentationsPtr pDVRepresentations, CComSafeArray&lt;BSTR&gt;& sDVs)
+{
+	HRESULT hr = S_OK;
+
+	 
+	 
+	long lCountDV = 0;
+	hr = pDVRepresentations-&gt;get_Count(&lCountDV);
+	if (FAILED(hr))
+		return hr;
+
+	for (int i = 0; i &lt; lCountDV; i++)
+	{
+		DesignViewRepresentationPtr pDV = nullptr;
+		CComVariant varIndex(i + 1);
+		hr = pDVRepresentations-&gt;get_Item(varIndex, &pDV);
+		if (FAILED(hr))
+			continue;
+
+		DesignViewTypeEnum viewType;
+		pDV-&gt;get_DesignViewType(&viewType);
+		if (viewType == kTransientDesignViewType)
+			continue;
+
+		if (VARIANT_TRUE) {
+			VARIANT_BOOL bPublishDV;
+			hr = pDV-&gt;get_Publish(&bPublishDV);
+
+			if (FAILED(hr) || bPublishDV == VARIANT_FALSE)
+				continue;
+		}
+
+		CComBSTR bstrNameDV;
+		pDV-&gt;get_Name(&bstrNameDV);
+		sDVs.Add(CComBSTR(bstrNameDV));
+	}
+
+	return S_OK;
+}
+
+HRESULT CreateStepFileOption(NameValueMap *pOptionsStep)
+{
+	HRESULT hr = S_OK;
+
+	<span style="color:blue">// check input map pointer</span>
+	if (pOptionsStep == nullptr)
+		return S_FALSE;
+
+	<span style="color:blue">// Set the option "ApplicationProtocolType" to NameValueMap</span>
+	<span style="color:blue">// Valid values: eAP203 = 2, eAP214IS = 4 and eAP242 = 5</span>
+	int iApplicationProtocolType = 5;
+	hr = pOptionsStep-&gt;MethodAdd(_T("ApplicationProtocolType"), CComVariant(iApplicationProtocolType));
+	if (FAILED(hr))		return hr;
+
+	<span style="color:blue">// Set the option "Author" to NameValueMap</span>
+	CComBSTR sAuthor = "";
+	hr = pOptionsStep-&gt;MethodAdd(_T("Author"), CComVariant(sAuthor));
+	if (FAILED(hr))		return hr;
+
+	<span style="color:blue">// Set the option "Authorization" to NameValueMap</span>
+	CComBSTR sAuthorization = "";
+	hr = pOptionsStep-&gt;MethodAdd(_T("Authorization"), CComVariant(sAuthorization));
+	if (FAILED(hr))		return hr;
+
+	<span style="color:blue">// Set the option "Description" to NameValueMap</span>
+	CComBSTR sDescription = "";
+	hr = pOptionsStep-&gt;MethodAdd(_T("Description"), CComVariant(sDescription));
+	if (FAILED(hr))
+		return hr;
+
+	<span style="color:blue">// Set the option "ExportFitTolerance" to NameValueMap</span>
+	double dTolerance = 0.001;
+	hr = pOptionsStep-&gt;MethodAdd(_T("ExportFitTolerance"), CComVariant(dTolerance));
+	if (FAILED(hr))		return hr;
+
+	<span style="color:blue">// Set the option "Organization" to NameValueMap</span>
+	CComBSTR sOrganization = "";
+	hr = pOptionsStep-&gt;MethodAdd(_T("Organization"), CComVariant(sOrganization));
+	if (FAILED(hr))		return hr;
+
+	<span style="color:blue">// Set the option "IncludeSketches" to NameValueMap</span>
+	bool bExportSketches = true;
+	hr = pOptionsStep-&gt;MethodAdd(_T("IncludeSketches"), CComVariant(bExportSketches));
+	if (FAILED(hr))		return hr;
+
+	return hr;
+}</pre>
+      </div>
+    </div><br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(ExportToPDF3D%20Sample%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

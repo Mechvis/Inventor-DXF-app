@@ -1,0 +1,223 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/DisplayOptions.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="DisplayOptions">
+    <meta name="description" content="DisplayOptions Object">
+    <meta name="topicid" content="GUID-DisplayOptions">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>DisplayOptions Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">DisplayOptions Object
+			</h1><br><h2 class="api">
+          Description
+        </h2>The DisplayOptions object provides access to properties that provide read and write access of the display related application options. This is somewhat equivalent to the Display tab of the Application Options dialog.<h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DisplayOptions_Application.htm">Application</a></td>
+        <td class="api-list">Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DisplayOptions_AreTexturesOn.htm">AreTexturesOn</a></td>
+        <td class="api-list">Gets and sets whether to turn textures on.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DisplayOptions_AutoUpdateReferringDocuments.htm">AutoUpdateReferringDocuments</a></td>
+        <td class="api-list">Enable/Disable automatically update referring documents.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DisplayOptions_DefaultOrbitType.htm">DefaultOrbitType</a></td>
+        <td class="api-list">Gets/sets the default behavior for the orbit command.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DisplayOptions_DepthDimming.htm">DepthDimming</a></td>
+        <td class="api-list">Read-write property that enables or disables the depth dimming effect that displays entities that are nearer with a brighter light to better convey the depth of the model. Setting this property to True enables the depth dimming effect.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DisplayOptions_DisplayQuality.htm">DisplayQuality</a></td>
+        <td class="api-list">Specifies the resolution quality to apply to the display of the model.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DisplayOptions_DisplaySilhouettes.htm">DisplaySilhouettes</a></td>
+        <td class="api-list">Read-write property that specifies whether to display silhouette edges for active components.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DisplayOptions_EdgeColor.htm">EdgeColor</a></td>
+        <td class="api-list">Read-write property that gets and sets the color for the edge display (including silhouettes) for active components.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DisplayOptions_EnableSmoothSketchLines.htm">EnableSmoothSketchLines</a></td>
+        <td class="api-list">Gets/sets whether to use the smooth sketch line.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DisplayOptions_HiddenLineDimmingPercent.htm">HiddenLineDimmingPercent</a></td>
+        <td class="api-list">Gets/sets the dimming factor (expressed as a percentage) applied to the display of hidden lines in the model.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DisplayOptions_InactiveComponentsEdgeColor.htm">InactiveComponentsEdgeColor</a></td>
+        <td class="api-list">Read-write property that gets and sets the color for the edge display (including silhouettes) for inactive components.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DisplayOptions_InactiveComponentsEdgeDisplay.htm">InactiveComponentsEdgeDisplay</a></td>
+        <td class="api-list">Read-write property that specifies whether edges should be displayed for inactive components.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DisplayOptions_InactiveComponentsEdgeDisplayFollowVisibility.htm">InactiveComponentsEdgeDisplayFollowVisibility</a></td>
+        <td class="api-list">Read-write property that specifies whether inactive component edges display should follow the visibility setting of visual styles.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DisplayOptions_InactiveComponentsShaded.htm">InactiveComponentsShaded</a></td>
+        <td class="api-list">Read-write property that enables or disables contrasting shading for the display of inactive components.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DisplayOptions_InactiveComponentsShadeOpacity.htm">InactiveComponentsShadeOpacity</a></td>
+        <td class="api-list">Read-write property that gets and sets the opacity level (expressed as a percentage) for the shading of inactive components.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DisplayOptions_MinimumFrameRate.htm">MinimumFrameRate</a></td>
+        <td class="api-list">Gets/sets the number of frames to display for the model during interactive viewing operations like Rotate, Pan and Zoom.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DisplayOptions_NewWindowDisplayMode.htm">NewWindowDisplayMode</a></td>
+        <td class="api-list">Gets/sets the default display mode for new windows.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DisplayOptions_NewWindowProjectionType.htm">NewWindowProjectionType</a></td>
+        <td class="api-list">Gets/sets the default projection type for new windows.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DisplayOptions_NewWindowShowAmbientShadows.htm">NewWindowShowAmbientShadows</a></td>
+        <td class="api-list">Gets and sets whether to display ambient shadows (occlusions) for new windows.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DisplayOptions_NewWindowShowGroundPlane.htm">NewWindowShowGroundPlane</a></td>
+        <td class="api-list">Read-write property that gets and sets whether to display ground planes for new windows.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DisplayOptions_NewWindowShowGroundReflections.htm">NewWindowShowGroundReflections</a></td>
+        <td class="api-list">Read-write property that gets and sets whether to display ground plane reflections for new windows.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DisplayOptions_NewWindowShowGroundShadows.htm">NewWindowShowGroundShadows</a></td>
+        <td class="api-list">Gets and sets whether to display ground shadows for new windows.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DisplayOptions_NewWindowShowObjectShadows.htm">NewWindowShowObjectShadows</a></td>
+        <td class="api-list">Gets and sets whether to display object shadows for new windows.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DisplayOptions_RayTracingQuality.htm">RayTracingQuality</a></td>
+        <td class="api-list">Gets and sets the quality used when ray tracing is enabled.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DisplayOptions_ReverseZoomDirection.htm">ReverseZoomDirection</a></td>
+        <td class="api-list">Gets/sets the zoom direction with respect to the movement of the mouse cursor or mouse wheel.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DisplayOptions_Show3DIndicator.htm">Show3DIndicator</a></td>
+        <td class="api-list">Show/Hide 3D indicator.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DisplayOptions_ShowXYZAxisLabels.htm">ShowXYZAxisLabels</a></td>
+        <td class="api-list">Gets and sets whether to show axis labels for the 3D indicator (triad).</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DisplayOptions_SolidLinesForHiddenEdges.htm">SolidLinesForHiddenEdges</a></td>
+        <td class="api-list">Gets/sets whether the hidden model edges should be displayed as solid lines.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DisplayOptions_TransparentComponentsEdgeColor.htm">TransparentComponentsEdgeColor</a></td>
+        <td class="api-list">Read-write property that gets and sets the color for the edge display (including silhouettes) for transparent components.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DisplayOptions_TransparentComponentsEdgeDisplay.htm">TransparentComponentsEdgeDisplay</a></td>
+        <td class="api-list">Read-write property that specifies whether edges should be displayed for transparent components.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DisplayOptions_TransparentComponentsEdgeDisplayFollowVisibility.htm">TransparentComponentsEdgeDisplayFollowVisibility</a></td>
+        <td class="api-list">Read-write property that specifies whether transparent component edges display should follow the visibility setting of visual styles.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DisplayOptions_TransparentComponentsShaded.htm">TransparentComponentsShaded</a></td>
+        <td class="api-list">Read-write property that enables or disables contrasting shading for the display of transparent components.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DisplayOptions_TransparentComponentsShadeOpacity.htm">TransparentComponentsShadeOpacity</a></td>
+        <td class="api-list">Read-write property that gets and sets the opacity level (expressed as a percentage) for the shading of transparent components.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DisplayOptions_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DisplayOptions_UseDocumentDisplaySettings.htm">UseDocumentDisplaySettings</a></td>
+        <td class="api-list">Read-write property that gets and sets whether to use the display appearance settings defined in the document.&nbsp;If set to False, the application level display settings are used.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DisplayOptions_UseNearestModelPointForOrbit.htm">UseNearestModelPointForOrbit</a></td>
+        <td class="api-list">Gets/sets whether to use the nearest model point to the mouse position as orbit pivot.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DisplayOptions_UseRayTracingForRealisticDisplay.htm">UseRayTracingForRealisticDisplay</a></td>
+        <td class="api-list">Gets and sets whether to enable ray tracing in realistic visual styles for new windows.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DisplayOptions_ViewTransitionTime.htm">ViewTransitionTime</a></td>
+        <td class="api-list">Gets/sets the time taken to transition between views of a model.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DisplayOptions_ZoomToCursor.htm">ZoomToCursor</a></td>
+        <td class="api-list">Gets/sets whether the cursor position is the focus point for the zoom operation.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="Application_DisplayOptions.htm">Application.DisplayOptions</a>, <a href="ApprenticeServerComponent_DisplayOptions.htm">ApprenticeServerComponent.DisplayOptions</a>, <a href="InventorServer_DisplayOptions.htm">InventorServer.DisplayOptions</a>, <a href="InventorServerObject_DisplayOptions.htm">InventorServerObject.DisplayOptions</a><h2 class="api">
+            Version
+          </h2>
+        Introduced in version 11<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(DisplayOptions%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

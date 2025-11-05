@@ -1,0 +1,157 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/UserInputEvents.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="UserInputEvents">
+    <meta name="description" content="UserInputEvents Object">
+    <meta name="topicid" content="GUID-UserInputEvents">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>UserInputEvents Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">UserInputEvents Object
+			</h1><br><h2 class="api">
+          Description
+        </h2>The UserInputEvents object provides input event notification. For example, use of the context menu.<h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UserInputEvents_Application.htm">Application</a></td>
+        <td class="api-list">Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UserInputEvents_Parent.htm">Parent</a></td>
+        <td class="api-list">Gets the parent object from whom this object can logically be reached.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UserInputEvents_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Events
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UserInputEvents_OnActivateCommand.htm">OnActivateCommand</a></td>
+        <td class="api-list">The OnActivateCommand event notifies the client when a command has been invoked.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UserInputEvents_OnContextualMiniToolbar.htm">OnContextualMiniToolbar</a></td>
+        <td class="api-list">Fires before contextual commands are displayed to the user in the graphics window when the user selects an object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UserInputEvents_OnDeleteKeyUp.htm">OnDeleteKeyUp</a></td>
+        <td class="api-list">Fires when the user performs a delete key click when no command is active.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UserInputEvents_OnDoubleClick.htm">OnDoubleClick</a></td>
+        <td class="api-list">Event that is sent when the user double-clicks in the window.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UserInputEvents_OnDrag.htm">OnDrag</a></td>
+        <td class="api-list">The OnDrag event notifies the client whenever the end-user performs a drag operation in the graphics window. Using this event, the client can override Inventor's standard drag behavior.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UserInputEvents_OnLinearMarkingMenu.htm">OnLinearMarkingMenu</a></td>
+        <td class="api-list">Fires before the overflow context menu is displayed to the user.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UserInputEvents_OnPreSelect.htm">OnPreSelect</a></td>
+        <td class="api-list">Fires when the user hovers over an Inventor object, and it is a potential candidate for selection.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UserInputEvents_OnRadialMarkingMenu.htm">OnRadialMarkingMenu</a></td>
+        <td class="api-list">Fires before the marking menu is displayed to the user or before the user gestures using the right mouse button.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UserInputEvents_OnSelect.htm">OnSelect</a></td>
+        <td class="api-list">Fires when the user selects an object by clicking.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UserInputEvents_OnStopPreSelect.htm">OnStopPreSelect</a></td>
+        <td class="api-list">Fires when the user hovers away from an Inventor object and it is no longer highlighted.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UserInputEvents_OnTerminateCommand.htm">OnTerminateCommand</a></td>
+        <td class="api-list">The OnTerminateCommand event notifies the client when a command has been terminated.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UserInputEvents_OnUnSelect.htm">OnUnSelect</a></td>
+        <td class="api-list">Event that occurs when the user unselects an entity. This is done in the user interface by pressing the Shift button and selecting a previously selected entity.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="CommandManager_UserInputEvents.htm">CommandManager.UserInputEvents</a><h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UserInputEventsSink_OnDrag_Sample.htm">OnDrag Event - dragging a WorkPoint</a></td>
+        <td class="api-list">This sample demonstrates the use of the OnDrag event to drag fixed work points when no command is active. This sample only allows drags parallel to the X-Y plane. This sample is dependent on events and VB only supports events within a class module.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 4<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(UserInputEvents%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

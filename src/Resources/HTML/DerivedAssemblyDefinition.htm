@@ -1,0 +1,217 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/DerivedAssemblyDefinition.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="DerivedAssemblyDefinition">
+    <meta name="description" content="DerivedAssemblyDefinition Object">
+    <meta name="topicid" content="GUID-DerivedAssemblyDefinition">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>DerivedAssemblyDefinition Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">DerivedAssemblyDefinition Object
+			</h1><br><h2 class="api">
+          Description
+        </h2>The DerivedAssemblyDefinition object is used to describe which parts in an assembly will be used during the creation of the DerivedAssemblyComponent. It is also used when querying and editing an existing derived assembly.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DerivedAssemblyDefinition_GetHolePatchingOptions.htm">GetHolePatchingOptions</a></td>
+        <td class="api-list">Method that returns the hole patching options for the derived assembly.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DerivedAssemblyDefinition_GetRemoveBySizeOptions.htm">GetRemoveBySizeOptions</a></td>
+        <td class="api-list">Method that returns the simplification options specifying geometry to remove based on size.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DerivedAssemblyDefinition_GetRemoveByVisibilityOptions.htm">GetRemoveByVisibilityOptions</a></td>
+        <td class="api-list">Method that returns the simplification options specifying geometry to remove based on visibility.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DerivedAssemblyDefinition_IncludeAllParameters.htm">IncludeAllParameters</a></td>
+        <td class="api-list">Method that includes all parameters from the source assembly.&nbsp;This includes top level parameters in the source assembly as well as parameters in sub-assemblies and parts.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DerivedAssemblyDefinition_IncludeAllSketches.htm">IncludeAllSketches</a></td>
+        <td class="api-list">Method that includes all sketches from the source assembly. This includes top level sketches in the source assembly as well as sketches in sub-assemblies and parts.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DerivedAssemblyDefinition_IncludeAllWorkFeatures.htm">IncludeAllWorkFeatures</a></td>
+        <td class="api-list">Method that includes all work features from the source assembly. This includes top level work features in the source assembly as well as work features in sub-assemblies and parts.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DerivedAssemblyDefinition_SetHolePatchingOptions.htm">SetHolePatchingOptions</a></td>
+        <td class="api-list">Method that sets the hole patching options for the derived assembly.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DerivedAssemblyDefinition_SetRemoveBySizeOptions.htm">SetRemoveBySizeOptions</a></td>
+        <td class="api-list">Method that sets the simplification options specifying geometry to remove based on size.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DerivedAssemblyDefinition_SetRemoveByVisibilityOptions.htm">SetRemoveByVisibilityOptions</a></td>
+        <td class="api-list">Method that sets the simplification options specifying geometry to remove based on visibility.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DerivedAssemblyDefinition_ActiveDesignViewRepresentation.htm">ActiveDesignViewRepresentation</a></td>
+        <td class="api-list">Read-write property that gets and sets the name of the active Design View Representation for the derived part.&nbsp;An empty string indicates the Master design view is used.&nbsp;The IsAssociativeDesignView property indicates if an associate link to the design view is created or not.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DerivedAssemblyDefinition_ActiveModelState.htm">ActiveModelState</a></td>
+        <td class="api-list">Read-write property that gets or sets the name of active model state for the derived assembly.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DerivedAssemblyDefinition_ActivePositionalRepresentation.htm">ActivePositionalRepresentation</a></td>
+        <td class="api-list">Gets and sets the name of the active Positional Representation for the derived assembly.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DerivedAssemblyDefinition_Application.htm">Application</a></td>
+        <td class="api-list">Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DerivedAssemblyDefinition_DeriveStyle.htm">DeriveStyle</a></td>
+        <td class="api-list">Gets and sets how bodies are derived. Valid options are kDeriveAsSingleBodyWithSeams, kDeriveAsSingleBodyNoSeams and kDeriveAsMultipleBodies.&nbsp;kDeriveAsWorkSurface is not a valid option for derived assemblies.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DerivedAssemblyDefinition_IncludeAllTopLeveliMateDefinitions.htm">IncludeAllTopLeveliMateDefinitions</a></td>
+        <td class="api-list">Read-write property that defines whether all top level iMates in the source assembly are included in the derived assembly.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DerivedAssemblyDefinition_IncludeAllTopLevelParameters.htm">IncludeAllTopLevelParameters</a></td>
+        <td class="api-list">Read-write property that defines whether all top level parameters in the source assembly are included in the derived assembly.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DerivedAssemblyDefinition_IncludeAllTopLevelSketches.htm">IncludeAllTopLevelSketches</a></td>
+        <td class="api-list">Read-write property that defines whether all top level sketches in the source assembly are included in the derived assembly.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DerivedAssemblyDefinition_IncludeAllTopLevelWorkFeatures.htm">IncludeAllTopLevelWorkFeatures</a></td>
+        <td class="api-list">Read-write property that defines whether all top level work features in the source assembly are included in the derived assembly.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DerivedAssemblyDefinition_InclusionOption.htm">InclusionOption</a></td>
+        <td class="api-list">Property that defines the inclusion status for all of the occurrences in the assembly. Valid options are kDerivedIncludeAll, kDerivedSubtractAll, kDerivedExcludeAll, kDerivedBoundingBox, kDerivedIntersect and kDerivedIndividualDefined.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DerivedAssemblyDefinition_IndependentSolidsOnFailedBoolean.htm">IndependentSolidsOnFailedBoolean</a></td>
+        <td class="api-list">Read-write property that gets and sets whether to create independent solids in the derived part when a Boolean operation fails.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DerivedAssemblyDefinition_IsAssociativeDesignView.htm">IsAssociativeDesignView</a></td>
+        <td class="api-list">Read-write property that gets and sets if there is an associative link to the specified design view.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DerivedAssemblyDefinition_LinkFaceColorFromSource.htm">LinkFaceColorFromSource</a></td>
+        <td class="api-list">Read-write property that gets and sets whether color override should be removed from the resulting derived part.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DerivedAssemblyDefinition_LinkSketchFormattingFromSource.htm">LinkSketchFormattingFromSource</a></td>
+        <td class="api-list">Read-write property that gets and sets whether color override should be removed from the resulting derived part.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DerivedAssemblyDefinition_MirrorPlane.htm">MirrorPlane</a></td>
+        <td class="api-list">Gets and sets the plane about which the base assembly will be mirrored to create the derived assembly.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DerivedAssemblyDefinition_Occurrences.htm">Occurrences</a></td>
+        <td class="api-list">Property that gets the available in the selected assembly. This returns the top-level occurrences in the assembly. You can use the SubOccurrences of the DerivedAssemblyOccurrence object to traverse through the entire occurrence tree.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DerivedAssemblyDefinition_ReducedMemoryMode.htm">ReducedMemoryMode</a></td>
+        <td class="api-list">Gets and sets reduced memory mode for the derived Assembly.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DerivedAssemblyDefinition_RemoveInternalVoids.htm">RemoveInternalVoids</a></td>
+        <td class="api-list">Read-write property that gets and sets whether internal voids should be removed from the resulting derived part.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DerivedAssemblyDefinition_ScaleFactor.htm">ScaleFactor</a></td>
+        <td class="api-list">Gets or sets the scale factor for the derived Assembly.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DerivedAssemblyDefinition_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DerivedAssemblyDefinition_UseOrientedMinimumBoundingBox.htm">UseOrientedMinimumBoundingBox</a></td>
+        <td class="api-list">Read-write Boolean property that specifies whether to use the oriented minimum bounding box or orthogonal bounding box for the components that are included as bounding box.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="DerivedAssemblyComponent_Definition.htm">DerivedAssemblyComponent.Definition</a>, <a href="DerivedAssemblyComponentProxy_Definition.htm">DerivedAssemblyComponentProxy.Definition</a>, <a href="DerivedAssemblyComponents_CreateDefinition.htm">DerivedAssemblyComponents.CreateDefinition</a><h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Shrinkwrap_Sample.htm">Shrink wrap substitute in assembly</a></td>
+        <td class="api-list">The following sample demonstrates the creation of a shrinkwrap substitute within an assembly.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 5.3<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(DerivedAssemblyDefinition%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

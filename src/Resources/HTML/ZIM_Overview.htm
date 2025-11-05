@@ -1,0 +1,126 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU">
+    <link rel="canonical" href="http://help.autodesk.com/cloudhelp/2026/ENU/Inventor-API/files/ZIM_Overview.htm">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="27/4/2016">
+    <meta name="user-comments" content="enable">
+    <meta name="description" content="">
+    <meta name="topicid" content="GUID-AD459970-CDD6-4266-B131-09022977B1D5">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>Zero Impact Migration</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"/>
+    <script type="text/javascript" src="/view/clientframework/client.js"><!--filler--></script>
+	<script>
+	  // This turns on the display of the copyright notice which is not visible by default.
+	  // Because the head is removed when used in the web help, this function will only exists
+	  // when the chm help is being created.
+	  window.onload = function() {
+		copyrightElement = document.getElementById('CopyrightNotice');
+		copyrightElement.style.display = 'block';
+	  };
+	</script>
+</head>
+<body>
+<link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+
+<h1>Zero Impact Migration</h1>
+<h3>Zero Impact Migration</h3>
+<br>
+
+<p Class="Normal">The idea behind Zero Impact Migration (ZIM) is to eliminate the performance and memory cost in opening 
+Inventor files saved with earlier versions of the software. The Document Interests mechanism has been 
+added to Inventor to aid ZIM.</p>
+
+<br>
+<table cellspacing="4" cellpadding="4" border="1">
+<tr>
+    <td  bgcolor="Yellow"><b>Note:</b> Document Interests are the recommended means of marking schema versions for application 
+custom data in a document, and in fact is now the preferred method for an Add-in to implement a document sub-type. However, it is 
+not recommended that applications rely on DocumentInterests when querying a document type. An application should not draw any meaning 
+from DocumentInterests that it did not add. In other words, application A should not infer anything from application B's DocumentInterests.
+</td>
+</tr>
+</table>
+<br><br>
+
+<p Class="Normal">The following table lists APIs available to implement Zero Impact Migration.</p>
+<br>
+
+<table border="1" cellpadding="3">
+	<tr bgcolor="Yellow"><td><b>ZIM related APIs</b></td></tr>
+	<tr><td><A href="Document_DocumentInterests.htm" data-topic-id="Document_DocumentInterests">Document.DocumentInterests</A> property</td></tr>
+	<tr><td><A href="Document_NeedsMigrating.htm" data-topic-id="Document_NeedsMigrating">Document.NeedsMigrating</A> property</td></tr>
+	<tr><td><A href="ApprenticeServerDocument_DocumentInterests.htm" data-topic-id="ApprenticeServerDocument_DocumentInterests">ApprenticeServerDocument.DocumentInterests</A> property</td></tr>
+	<tr><td><A href="DocumentInterests.htm" data-topic-id="GUID-DocumentInterests">DocumentInterests</A> collection object</td></tr>
+	<tr><td><A href="DocumentInterest.htm" data-topic-id="GUID-DocumentInterest">DocumentInterest</A> object</td></tr>
+	<tr><td><A href="ApplicationAddin_DataVersion.htm" data-topic-id="ApplicationAddIn_DataVersion">ApplicationAddin.DataVersion</A> property</td></tr>
+	<tr><td><A href="ApplicationEvents_OnMigrateDocument.htm" data-topic-id="ApplicationEvents_OnMigrateDocument">ApplicationEvent.OnMigrateDocument</A> event</td></tr>
+</table>
+<br><br>
+
+<h3>Requirements</h3>
+<br>
+
+<p Class="Normal">Here are the set of tasks that must be performed by an application to participate in ZIM:</p>
+
+<ol>
+	<li>During registration, create a DWORD key called DataVersion under 
+	the same key (viz. <font face="Courier New">'HKEY_CLASSES_ROOT\CLSID\{CLSID}\Settings'</font>) where the other keys such as 
+	LoadOnStartUp are currently being created for the Add-in application. The value of the DataVersion 
+	key is the data or schema version for the Add-in application's custom data.</li> 
+	<li>In all code paths where the Add-in application creates any custom data for the first time and 
+	hence intends to mark the document as one containing its data, check whether the Add-in's Document 
+	Interest exists and that its DataVersion property value is correct.<br><br>If a Document Interest does 
+	not already exist, register a new DocumentInterest on the document by using the DocumentInterests.Add 
+	method. Make sure that the DataVersion value is correct and matches the one in the add-in application's 
+	registry key set in step 1 and also available through the ApplicationAddin.DataVersion 
+	property.<br><br>The 'Name' argument supplied during creation of the Document Interest can be used 
+	to define an application specific document sub-type e.g. "Application Top Level Assembly document".</li>
+	<li>Move any existing migration code to the OnMigrateDocument event handler.</li>
+	<li>Create a ChangeProcessor with ChangeType as kSchemaChangeCmdType to wrap the migration code in the 
+	OnMigrateDocument event handler.</li>
+	<li>In the OnMigrateDocument event handler, after the migration code is executed, update the value of 
+	the DataVersion property of the add-in application's Document Interest to match the one in the add-in 
+	application's registry key set in step 1 and also available through ApplicationAddin.DataVersion property.</li>
+</ol>
+<br>
+
+<h3>Migration Event</h3>
+<br>
+
+<p Class="Normal">The migration event is fired when the 'File->Migrate' menu item is clicked or when an edit operation 
+in requested on a non-migrated document.</p>
+
+<p Class="Normal">Whether an application's data needs migration is decided by 
+Inventor by comparing the DataVersion stored in the DocumentInterest registered by the application and 
+the DataVersion set in the registry by the application during its registration. If the DataVersion in 
+the registry is greater than that in the DocumentInterest in the document, a migration event will be 
+fired that the application can react to and migrate its data.</p>
+
+<br />
+<br />
+<div id="CopyrightNotice" style="display:none;">
+  <hr />
+  <table width="100%" style="font-size:15">
+	<tr>
+	  <td align="left">
+		&copy; Copyright 2025 Autodesk, Inc.
+	  </td>
+	  <td align="right">
+		<a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(ZIM_Overview)">Comment on this page.</a>
+	  </td>
+	</tr>
+  </table>
+</div>
+
+</body>
+</html>

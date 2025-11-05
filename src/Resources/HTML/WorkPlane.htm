@@ -1,0 +1,311 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/WorkPlane.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="WorkPlane">
+    <meta name="description" content="WorkPlane Object">
+    <meta name="topicid" content="GUID-WorkPlane">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>WorkPlane Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">WorkPlane Object
+			</h1><br><h2 class="api">
+          Description
+        </h2>Represents a work plane. See <a href="WorkFeatures_Overview.htm">here</a> for an overview.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="WorkPlane_Delete.htm">Delete</a></td>
+        <td class="api-list">Method that deletes the work plane. Optionally the dependent objects will be deleted. This method will fail in the case where this object was created as a result of a derived part. The HasReferenceComponent property can be used to determine when this is the case.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="WorkPlane_FlipNormal.htm">FlipNormal</a></td>
+        <td class="api-list">Method that reverses the normal of the work plane. The current normal direction can be determined by using the Plane object returned by Plane property of the work plane.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="WorkPlane_GetPosition.htm">GetPosition</a></td>
+        <td class="api-list">Method that returns the position and orientation of a work plane. When sketches are created on a work plane they inherit the work plane's origin and orientation. This method is useful to predetermine what the orientation will be before the sketch is created.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="WorkPlane_GetReferenceKey.htm">GetReferenceKey</a></td>
+        <td class="api-list">Method that generates and returns the reference key for this entity.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="WorkPlane_GetSize.htm">GetSize</a></td>
+        <td class="api-list">Method that gets the current size of the displayed graphics for the work plane. The returned points are in the coordinate space of the workplane.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="WorkPlane_SetByLineAndTangent.htm">SetByLineAndTangent</a></td>
+        <td class="api-list">Method that redefines the work plane to be through the input line and tangent to the input surface.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="WorkPlane_SetByLinePlaneAndAngle.htm">SetByLinePlaneAndAngle</a></td>
+        <td class="api-list">Method that redefines the work plane to be through the input line at the specified angle from the input plane.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="WorkPlane_SetByNormalToCurve.htm">SetByNormalToCurve</a></td>
+        <td class="api-list">Method that redefines the work plane to pass through the input point and normal to the input curve.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="WorkPlane_SetByPlaneAndOffset.htm">SetByPlaneAndOffset</a></td>
+        <td class="api-list">Method that redefines the work plane to be parallel to the input plane at a specified distance in the specified direction.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="WorkPlane_SetByPlaneAndPoint.htm">SetByPlaneAndPoint</a></td>
+        <td class="api-list">Method that redefines the work plane to be parallel to the input plane and passing through the input point.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="WorkPlane_SetByPlaneAndTangent.htm">SetByPlaneAndTangent</a></td>
+        <td class="api-list">Method that redefines the work plane to be parallel to the input plane and tangent to the input surface.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="WorkPlane_SetByPointAndTangent.htm">SetByPointAndTangent</a></td>
+        <td class="api-list">Method that redefines the work plane to pass through the input point and tangent to the input surface.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="WorkPlane_SetByThreePoints.htm">SetByThreePoints</a></td>
+        <td class="api-list">Method that redefines the work plane to be based on the three input points.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="WorkPlane_SetByTorusMidPlane.htm">SetByTorusMidPlane</a></td>
+        <td class="api-list">Method that redefines the work plane to be at the mid-plane of the torus specified by the input face.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="WorkPlane_SetByTwoLines.htm">SetByTwoLines</a></td>
+        <td class="api-list">Method that redefines the work plane to be based on the two input lines.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="WorkPlane_SetByTwoPlanes.htm">SetByTwoPlanes</a></td>
+        <td class="api-list">Method that redefines a bisection work plane to be based on the two planes.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="WorkPlane_SetEndOfPart.htm">SetEndOfPart</a></td>
+        <td class="api-list">Method that repositions the end-of-part marker relative to the object this method is called from. The argument defines if the end-of-part marker will be positioned just before or just after the object. If the object is contained within another object and is not in the top level of the browser, the positioning of the marker will be relative to the top-level object the calling object is contained within. An example of this case is a sketch that has not been shared and has been consumed by a feature. Another example is a nested work feature.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="WorkPlane_SetFixed.htm">SetFixed</a></td>
+        <td class="api-list">Method that redefines the work plane at the position and orientation defined by the point and X and Y axis vectors.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="WorkPlane_SetSize.htm">SetSize</a></td>
+        <td class="api-list">Method that sets the current size of the displayed graphics for the work plane.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="WorkPlane_Adaptive.htm">Adaptive</a></td>
+        <td class="api-list">Specifies whether the work plane is adaptive.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="WorkPlane_Application.htm">Application</a></td>
+        <td class="api-list">Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="WorkPlane_AttributeSets.htm">AttributeSets</a></td>
+        <td class="api-list">Property that returns the AttributeSets collection object associated with this object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="WorkPlane_AutoResize.htm">AutoResize</a></td>
+        <td class="api-list">Gets and sets whether this work plane should be resized automatically based on the component size.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="WorkPlane_Construction.htm">Construction</a></td>
+        <td class="api-list">Boolean property that returns whether the work plane is a construction work plane or not. A construction work plane is hidden from the user and is not displayed graphically or listed in the browser. Some properties and methods of the WorkPlane object will behave differently for a construction work plane. These are Adaptive, Name, Visible, GetSize, and SetSize.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="WorkPlane_Consumed.htm">Consumed</a></td>
+        <td class="api-list">Gets whether the WorkPlane is consumed or not.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="WorkPlane_ConsumeInputs.htm">ConsumeInputs</a></td>
+        <td class="api-list">Gets and sets whether the inputs to this feature should be nested under this feature in the browser.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="WorkPlane_Definition.htm">Definition</a></td>
+        <td class="api-list">Property that returns one of the work plane definition objects. Which definition object returned will depend on how the work plane is defined. The DefinitionType property can be used to determine the type of definition the Definition property will return.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="WorkPlane_DefinitionType.htm">DefinitionType</a></td>
+        <td class="api-list">Property that returns the type of definition that is used to define the work plane. This can be kThreePointsWorkPlane, kTwoLinesWorkPlane, kLineAndPointWorkPlane, kPlaneAndPointWorkPlane, kLinePlaneAndAngleWorkPlane, kPlaneAndOffsetWorkPlane, kLineAndTangentWorkPlane, kPlaneAndTangentWorkPlane, kSketchWorkPlane, kFixedWorkPlane, kNormalToCurveWorkPlane, kTwoPlanesWorkPlane, kTorusMidPlaneWorkPlane, or AssemblyWorkPlane.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="WorkPlane_Dependents.htm">Dependents</a></td>
+        <td class="api-list">Property that returns the collection of objects that have a direct dependency on the work plane.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="WorkPlane_DrivenBy.htm">DrivenBy</a></td>
+        <td class="api-list">Property that returns the collection of objects that the work plane is dependent on.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="WorkPlane_Exported.htm">Exported</a></td>
+        <td class="api-list">Read-write property that gets and sets whether the object is exported. Objects must be marked for export in order for them to be derived.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="WorkPlane_Grounded.htm">Grounded</a></td>
+        <td class="api-list">Gets/Sets the Boolean flag that specifies whether this work plane is grounded or not.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="WorkPlane_HasReferenceComponent.htm">HasReferenceComponent</a></td>
+        <td class="api-list">Property that specifies if the object was created as the result of a derived part.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="WorkPlane_HealthStatus.htm">HealthStatus</a></td>
+        <td class="api-list">Property that returns an enum indicating the current state of the object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="WorkPlane_IsCoordinateSystemElement.htm">IsCoordinateSystemElement</a></td>
+        <td class="api-list">Property that returns whether the work plane belongs to a coordinate system. If so, edits and delete are not allowed.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="WorkPlane_IsOwnedByFeature.htm">IsOwnedByFeature</a></td>
+        <td class="api-list">Property that returns whether this object is owned by a feature. If True, the OwnedBy property returns the owning feature.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="WorkPlane_IsParentSketch.htm">IsParentSketch</a></td>
+        <td class="api-list">Property that indicates whether the work plane belongs to a 3d sketch.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="WorkPlane_IsPatternElement.htm">IsPatternElement</a></td>
+        <td class="api-list">Property that gets whether the work plane was created by a pattern. If so, edits and delete are not allowed.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="WorkPlane_Name.htm">Name</a></td>
+        <td class="api-list">Specifies the name of the work plane.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="WorkPlane_OwnedBy.htm">OwnedBy</a></td>
+        <td class="api-list">Read-only property that returns the client feature that owns this object.&nbsp;This property returns Nothing if the IsOwnedByFeature property returns False.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="WorkPlane_Parent.htm">Parent</a></td>
+        <td class="api-list">Property returning the parent <link Inventor::ComponentDefinition, ComponentDefinition> object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="WorkPlane_ParentSketch.htm">ParentSketch</a></td>
+        <td class="api-list">Gets the parent 3d sketch if this work plane belongs to a 3d sketch, Gets Nothing otherwise.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="WorkPlane_Plane.htm">Plane</a></td>
+        <td class="api-list">Property that returns a Plane's geometry. The Plane object returned provides information about the position and normal of the work plane.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="WorkPlane_ReferenceComponent.htm">ReferenceComponent</a></td>
+        <td class="api-list">Property that returns the ReferenceComponent that resulted in the creation of this feature.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="WorkPlane_ReferencedEntity.htm">ReferencedEntity</a></td>
+        <td class="api-list">Property that returns the referenced WorkPlane in the case where this work plane was created using a referenced component. An example of this is when a work plane is selected as part of a derived part. The HasReferenceComponent property indicates if this work plane is based on a referenced component or not. This property returns Nothing in the case where it is not based on a referenced component.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="WorkPlane_Shared.htm">Shared</a></td>
+        <td class="api-list">Gets and sets whether the work plane is shared or not.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="WorkPlane_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="WorkPlane_Visible.htm">Visible</a></td>
+        <td class="api-list">Specifies the visibility of the work plane.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="AssemblyWorkPlaneDef_Parent.htm">AssemblyWorkPlaneDef.Parent</a>, <a href="FixedWorkPlaneDef_Parent.htm">FixedWorkPlaneDef.Parent</a>, <a href="LineAndPointWorkPlaneDef_Parent.htm">LineAndPointWorkPlaneDef.Parent</a>, <a href="LineAndTangentWorkPlaneDef_Parent.htm">LineAndTangentWorkPlaneDef.Parent</a>, <a href="LinePlaneAndAngleWorkPlaneDef_Parent.htm">LinePlaneAndAngleWorkPlaneDef.Parent</a>, <a href="NormalToCurveWorkPlaneDef_Parent.htm">NormalToCurveWorkPlaneDef.Parent</a>, <a href="PlaneAndOffsetWorkPlaneDef_Parent.htm">PlaneAndOffsetWorkPlaneDef.Parent</a>, <a href="PlaneAndPointWorkPlaneDef_Parent.htm">PlaneAndPointWorkPlaneDef.Parent</a>, <a href="PlaneAndTangentWorkPlaneDef_Parent.htm">PlaneAndTangentWorkPlaneDef.Parent</a>, <a href="PointAndTangentWorkPlaneDef_Parent.htm">PointAndTangentWorkPlaneDef.Parent</a>, <a href="ThreePointsWorkPlaneDef_Parent.htm">ThreePointsWorkPlaneDef.Parent</a>, <a href="TorusMidPlaneWorkPlaneDef_Parent.htm">TorusMidPlaneWorkPlaneDef.Parent</a>, <a href="TwoLinesWorkPlaneDef_Parent.htm">TwoLinesWorkPlaneDef.Parent</a>, <a href="TwoPlanesWorkPlaneDef_Parent.htm">TwoPlanesWorkPlaneDef.Parent</a>, <a href="UserCoordinateSystem_XYPlane.htm">UserCoordinateSystem.XYPlane</a>, <a href="UserCoordinateSystem_XZPlane.htm">UserCoordinateSystem.XZPlane</a>, <a href="UserCoordinateSystem_YZPlane.htm">UserCoordinateSystem.YZPlane</a>, <a href="UserCoordinateSystemProxy_XYPlane.htm">UserCoordinateSystemProxy.XYPlane</a>, <a href="UserCoordinateSystemProxy_XZPlane.htm">UserCoordinateSystemProxy.XZPlane</a>, <a href="UserCoordinateSystemProxy_YZPlane.htm">UserCoordinateSystemProxy.YZPlane</a>, <a href="WorkPlane_ReferencedEntity.htm">WorkPlane.ReferencedEntity</a>, <a href="WorkPlaneProxy_NativeObject.htm">WorkPlaneProxy.NativeObject</a>, <a href="WorkPlaneProxy_ReferencedEntity.htm">WorkPlaneProxy.ReferencedEntity</a>, <a href="WorkPlanes_AddByLineAndTangent.htm">WorkPlanes.AddByLineAndTangent</a>, <a href="WorkPlanes_AddByLinePlaneAndAngle.htm">WorkPlanes.AddByLinePlaneAndAngle</a>, <a href="WorkPlanes_AddByNormalToCurve.htm">WorkPlanes.AddByNormalToCurve</a>, <a href="WorkPlanes_AddByPlaneAndOffset.htm">WorkPlanes.AddByPlaneAndOffset</a>, <a href="WorkPlanes_AddByPlaneAndPoint.htm">WorkPlanes.AddByPlaneAndPoint</a>, <a href="WorkPlanes_AddByPlaneAndTangent.htm">WorkPlanes.AddByPlaneAndTangent</a>, <a href="WorkPlanes_AddByPointAndTangent.htm">WorkPlanes.AddByPointAndTangent</a>, <a href="WorkPlanes_AddByThreePoints.htm">WorkPlanes.AddByThreePoints</a>, <a href="WorkPlanes_AddByTorusMidPlane.htm">WorkPlanes.AddByTorusMidPlane</a>, <a href="WorkPlanes_AddByTwoLines.htm">WorkPlanes.AddByTwoLines</a>, <a href="WorkPlanes_AddByTwoPlanes.htm">WorkPlanes.AddByTwoPlanes</a>, <a href="WorkPlanes_AddFixed.htm">WorkPlanes.AddFixed</a>, <a href="WorkPlanes_Item.htm">WorkPlanes.Item</a><h2 class="api">
+            Derived Classes
+          </h2><a href="WorkPlaneProxy.htm">WorkPlaneProxy</a><h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AssemblyConstraints_AddMateConstraint2_Sample.htm">Add mate constraint using work planes in parts</a></td>
+        <td class="api-list">This sample demonstrates creating a mate constraint between two occurrences using the work planes within those occurrences.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BrowserPanes_GetNativeBrowserNodeDefinition_Sample.htm">Navigation between browser and data</a></td>
+        <td class="api-list">This sample demonstrates the navigation between a browser node and it's corresponding data model object and vice versa. This sample creates a work plane, finds its browser node and gets the work plane object back from the browser node.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="CopyBodyFeature_Sample.htm">SurfaceBody Copy</a></td>
+        <td class="api-list">This sample demonstrates copying a surface body from one part to another. This is equivalent to the Promote command, but the API is much more flexible. In order for the sample to be self-contained, it creates two parts on the fly that will be used to demonstrate copying a body from one part to another. When copying a body into a part, you provide the surface body and a matrix to define its position in the new part. This sample creates a matrix based on the position of these parts within an assembly.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LoftedFlangeFeatures_Add_Sample.htm">Create sheet metal lofted flange feature</a></td>
+        <td class="api-list">The following sample demonstrates the creation of a sheet metal lofted flange feature.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchFixedSpline_Sample.htm">Spline - create NURBS</a></td>
+        <td class="api-list">This sample demonstrates the creation of a sketch spline using a geometry definition (a NURB). The API also supports creation of 3D sketch splines in a similar way.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SweepFeature_Sample.htm">Sweep Feature Add</a></td>
+        <td class="api-list">This sample demonstrates the creation of a sweep feature. The profile is a circle, but the path is made up of a 3D sketch and a 2D sketch.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 4<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(WorkPlane%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

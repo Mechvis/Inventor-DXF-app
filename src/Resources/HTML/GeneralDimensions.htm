@@ -1,0 +1,136 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/GeneralDimensions.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="GeneralDimensions">
+    <meta name="description" content="GeneralDimensions Object">
+    <meta name="topicid" content="GUID-GeneralDimensions">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>GeneralDimensions Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">GeneralDimensions Object
+			</h1><br><h2 class="api">
+          Description
+        </h2>The GeneralDimensions collection object provides access to all of the general dimensions ( objects) on the sheet.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="GeneralDimensions_AddAngular.htm">AddAngular</a></td>
+        <td class="api-list">Method that creates an angular dimension. Valid intent combinations are Three points, Two non-parallel linear curves, One arc curve.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="GeneralDimensions_AddAngularForeshortened.htm">AddAngularForeshortened</a></td>
+        <td class="api-list">Creates an angular foreshortened dimension on the drawing sheet.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="GeneralDimensions_AddAngularSum.htm">AddAngularSum</a></td>
+        <td class="api-list">Creates an angular sum general dimension on the drawing sheet.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="GeneralDimensions_AddArcLengthForeshortened.htm">AddArcLengthForeshortened</a></td>
+        <td class="api-list">Creates an arc length foreshortened dimension on the drawing sheet.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="GeneralDimensions_AddDiameter.htm">AddDiameter</a></td>
+        <td class="api-list">Method that creates a diameter dimension.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="GeneralDimensions_AddLinear.htm">AddLinear</a></td>
+        <td class="api-list">Method that creates a linear dimension. Valid intent combinations are: Two points, Two curves, Point and a curve, One linear curve, One arc curve (with DimensionType set to kAlignedDimensionType for chord length and kArcLengthDimensionType for arc length).</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="GeneralDimensions_AddLinear2.htm">AddLinear2</a></td>
+        <td class="api-list">Creates a linear dimension on the drawing sheet.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="GeneralDimensions_AddLinearForeshortened.htm">AddLinearForeshortened</a></td>
+        <td class="api-list">Creates a linear foreshortened dimension on the drawing sheet.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="GeneralDimensions_AddLinearSum.htm">AddLinearSum</a></td>
+        <td class="api-list">Creates an linear sum dimension on the drawing sheet.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="GeneralDimensions_AddRadius.htm">AddRadius</a></td>
+        <td class="api-list">Method that creates a radius dimension.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="GeneralDimensions_Application.htm">Application</a></td>
+        <td class="api-list">Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="GeneralDimensions_Count.htm">Count</a></td>
+        <td class="api-list">Property that returns the number of items in the collection.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="GeneralDimensions_Item.htm">Item</a></td>
+        <td class="api-list">Method that returns the specified dimension object from the collection.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="GeneralDimensions_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="DrawingDimensions_GeneralDimensions.htm">DrawingDimensions.GeneralDimensions</a><h2 class="api">
+            Version
+          </h2>
+        Introduced in version 9<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(GeneralDimensions%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,512 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/WhatsNew.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="10/06/2025">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="APIWhatsNew">
+    <meta name="description" content="">
+    <meta name="topicid" content="WhatsNew">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>
+          What's New
+        </title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <div class="body">
+      <h1 class="api">
+          What's New For the  Release
+        </h1><h2 class="api">New Features of Inventor 2026</h2>
+<ol>
+<li>
+<p>Since Inventor 2026 the Apprentice Server function is no longer provided within Inventor 2026 installer, users should install the Apprentice Server standalone installer to get Apprentice Server function. Users can search "Apprentice Server 2026" in the search box on top of <a href="https://knowledge.autodesk.com/support/inventor/downloads" target="_blank">Autodesk website</a> to download the Apprentice Server standalone installer.</p>
+</li>
+<li>
+<p>Updated the step #11 for Port to .Net 8 process (C# and VB.net projects)
+ in article <a href="PortToNetCore_Overview.htm" data-topic-id="GUID-522FF5BC-7CC5-43D5-99B1-14840CF54A82">Port .Net Framework-based project to .Net</a> to embed manifest with a simpler way.</p>
+</li>
+<li>
+<p>New DrawingViewAnnotation object that allows to access the drawing view annotation information for detail and section drawing view.</p><div align="center">
+<img src="../images/DrawingViewAnnotation.png" width="873" height="660" border="0" align="middle" alt="DrawingViewAnnotation">
+</div>
+</li>
+<li>
+<p>Hide Sketch3dOptions object, move the Sketch3dOptions.AutoBendWithLineCreation to SketchOptions, and exposed SketchOptions.SketchOpacity property.</p><div align="center">
+<img src="../images/SketchOptions.png" width="542" height="393" border="0" align="middle" alt="SketchOptions">
+</div>
+</li>
+<li>
+<p>New SimplifyFeature object allows to create, edit and delete the simplify features in part documents.</p><div align="center">
+<img src="../images/SimplifyFeature.png" width="332" height="764" border="0" align="middle" alt="SimplifyFeature">
+</div>
+</li>
+<li>
+<p>ContourFlangeDefinition is enhanced to make use of edge sets to set the extent, some functions are hidden to keep legacy behavior and new functions are exposed for the enhancement.</p><div align="center">
+<img src="../images/ContourFlangeEdgeSet.png" width="535" height="495" border="0" align="middle" alt="ContourFlangeEdgeSet">
+</div>
+</li>
+<li>
+<p>New ShellFeatures.CreateDefinition method to replace ShellFeatures.CreateShellDefinition method to enhance the ShellDefinition with AffectedBodies and Method functions. </p><div align="center">
+<img src="../images/ShellDefinition.png" width="267" height="386" border="0" align="middle" alt="ShellDefinition">
+</div>
+</li>
+<li>
+<p>New BreakOperation.AddBySketch function allows to create a break operation using an existing drawing sketch. And new BreakOperation.BreakLineSketch property can be used to return the drawing sketch that is used to create the break operation.</p><div align="center">
+<img src="../images/BreakOperationOnSketch.png" width="965" height="664" border="0" align="middle" alt="BreakOperationOnSketch">
+</div>
+</li>
+<li>
+<p>New ClientFeature.ClientGraphicsVisible property allows to get and set the visibility of client graphics in a client feature. </p>
+</li>
+<li>
+<p>Public the ComponentOccurrence.ActiveDesignViewRepresentation property. </p>
+</li>
+<li>
+<p>Public the CosmeticWelds.Add and CreateDefinition methods. </p>
+</li>
+<li>
+<p>New DrawingView.ShowTrails property allows to show or hide the trails for a drawing view of a presentation.</p><div align="center">
+<img src="../images/ShowTrails.png" width="471" height="376" border="0" align="middle" alt="ShowTrails">
+</div>
+</li>
+<li>
+<p>New DimensionStyle.ExtendBeyondTicks property allows to set the extend distance beyond ticks. New DimensionStyle.ExtensionLine property allows to set the extention line distance. New  DimensionStyle.UseCapitalXForEquallySpacedFeatures property allows to set whether to use captical X in equally spaced features or not. </p><div align="center">
+<img src="../images/DimensionStyle2026.png" width="1158" height="519" border="0" align="middle" alt="DimensionStyle2026">
+</div>
+</li>
+<li>
+<p>New DrawingStandardStyle.GetAvailableStyles and SetAvailableStyles allow to get and set the available styles. </p><div align="center">
+<img src="../images/AvailableStyles.png" width="836" height="269" border="0" align="middle" alt="AvailableStyles">
+</div>
+</li>
+<li>
+<p>New DrawingStandardStyle.GetViewAnnotationDefaults and SetViewAnnotationDefaults functions allow to get and set the view annotation defaults for detail and section view. </p><div align="center">
+<img src="../images/ViewAnnotationDefaults.png" width="584" height="540" border="0" align="middle" alt="ViewAnnotationDefaults">
+</div>
+</li>
+<li>
+<p>New FileDialogEvents.OnOptionsReset event allows to notify you when the options requires to be reset(e.g. when change the file types). </p>
+</li>
+<li>
+<p>New FileManager.GetRevitFileVersionCreated method returns the Revit file version when it was created.</p>
+</li>
+<li>
+<p>New ModelStates.ModelStatesInEdit property allows to get and set the model states that are in edit mode, and the MemberEditScope will return kEditMultipleMembers in this case. </p><div align="center">
+<img src="../images/ModelStatesInEdit.png" width="302" height="271" border="0" align="middle" alt="ModelStatesInEdit">
+</div>
+</li>
+<li>
+<p>New Parameters.ExportToXML and ImportFromXML methods allow to import and export parameters. </p><div align="center">
+<img src="../images/ParameterImportExport.png" width="826" height="245" border="0" align="middle" alt="ParameterImportExport">
+</div>
+</li>
+<li>
+<p>New RevitExportDefinition.RevitTemplate property allows to set the template when export to Revit. </p><div align="center">
+<img src="../images/RevitTemplate.png" width="269" height="566" border="0" align="middle" alt="RevitTemplate">
+</div>
+</li>
+<li>
+<p>Change ContourFlangeFeature.Definition and PunchToolFeature.iFeatureDefinition properties as read-write properties so a definition object can be assigned to them to make multple changes with one recomputation. </p>
+</li>
+<li>
+<p>Hide BIMComponentDescription.ComponentType as the OmniClass is not supported. New BIMComponentDescription.RevitFamilyCategory property allows to get and set the Revit family category. New FileManager.GetRevitFamilyCategories, GetRFAFamilyCategories, GetRevitFamilyCategoryIds and GetRFAFamilyCategoryIds methods allow to query the Revit/RFA family category information.</p><div align="center">
+<img src="../images/RevitFamilyCategory.png" width="890" height="716" border="0" align="middle" alt="RevitFamilyCategory">
+</div>
+</li>
+<li>
+<p>New RevitExportStructureTypeEnum.kPartsOnlyStructure value that supports to set new part only structure when create RevitExport. </p>
+</li>
+</ol>																							
+
+<h2 class="api">New Features of Inventor 2026.1</h2>
+<ol>
+<li>
+<p>New iLogic code samples are provided. The iLogic code samples were converted from the VBA code samples in Inventor 2026.1 so usually they demonstrate the same workflow and should give the same result. For the printed results they can be found in the iLogic Log window for iLogic samples. For example you can click iLogic sample <a href="ExtrudeFeature_Sample.htm" data-topic-id="ExtrudeFeature_Sample">Extrude Feature - Create Block with Pocket Sample</a> to view the code snippet.</p>
+</li>
+<li>
+<p>Enhance the SAT TranslatorAddin.SaveCopyAs to support to save FlatPattern to SAT format.</p>
+</li>
+<li>
+<p>Hide Document.DisplayName property and expose two new properties: Document.FullDisplayName and DisplayNameBasis. The DisplayNameBasis is read-write property that allows to set the editable part of the display name and returns exact string that is set to it. The Document.FullDisplayName will return the full display name which is the same as the label of the top node in the model browser.</p><div align="center">
+<img src="../images/DisplayName.png" width="307" height="250" border="0" align="middle" alt="DisplayName">
+</div>
+</li>
+<li>
+<p>Hide Sheet.RetrieveAnnotations and GetRetrievableAnnotations methods and expose new Sheet. RetrieveAnnotations2 and GetRetrievableAnnotations2 methods for the enhancement that allows to recover the model dimensions from multiple drawing views in a family.</p>
+</li>
+<li>
+<p>New GeneralDimensions.AddAngularSum and AddLinearSum methods that allow to add angular and linear sum dimensions in drawing document.</p><div align="center">
+<img src="../images/EqualSpaceDimension.png" width="1190" height="564" border="0" align="middle" alt="EqualSpaceDimension">
+</div>
+</li>
+<li>
+<p>The &lt;Property&gt; tag for Document properties supports a new attribute ModelFileName which is applicable for FormattedText property of LeaderNote and DimensionText.</p>
+</li>
+<li>
+<p>New Camera.SaveAsBitmapWithOptions method allows to create a bitmap file with options from Camera object.</p>
+</li>
+<li>
+<p>Support new version type(IFC4x3) when export to IFC file using BIMComponet.ExportBuildingComponentWithOptions. </p><div align="center">
+<img src="../images/IFCExport.png" width="780" height="472" border="0" align="middle" alt="IFCExport">
+</div>
+</li>
+<li>
+<p>New Documents.AddWithOptions method to support the PresentationSceneModelFileName option so you can create a new presentation document with the specified model file to be inserted.</p>
+</li>
+</ol>												<h2 class="api">
+          New Objects
+        </h2>
+      <Table class="api-list">
+        <tr class="header">
+          <td class="api-list" style="width:1%;">
+              Name
+            </td>
+          <td class="api-list">
+              Description
+            </td>
+        </tr>
+        <tr>
+          <td class="api-list"><a href="DrawingViewAnnotation.htm">DrawingViewAnnotation</a></td>
+          <td class="api-list">DrawingViewAnnotation Object.</td>
+        </tr>
+        <tr>
+          <td class="api-list"><a href="SimplifyDefinition.htm">SimplifyDefinition</a></td>
+          <td class="api-list">The SimplifyDefinition object represents all of the information that defines a part simplify feature.</td>
+        </tr>
+        <tr>
+          <td class="api-list"><a href="SimplifyFeature.htm">SimplifyFeature</a></td>
+          <td class="api-list">Part Simplify Feature Object.</td>
+        </tr>
+        <tr>
+          <td class="api-list"><a href="SimplifyFeatureProxy.htm">SimplifyFeatureProxy</a></td>
+          <td class="api-list">Part Simplify Feature Proxy Object.</td>
+        </tr>
+        <tr>
+          <td class="api-list"><a href="SimplifyFeatures.htm">SimplifyFeatures</a></td>
+          <td class="api-list">Part Simplify Features Collection Object.</td>
+        </tr>
+      </Table>
+      <h2 class="api">
+          New Methods, Properties and Events
+        </h2>
+      <Table class="api-list">
+        <tr class="header">
+          <td class="api-list" style="width:1%;">
+              Name
+            </td>
+          <td class="api-list">
+              Description
+            </td>
+        </tr>
+        <tr>
+          <td class="api-list"><a href="AngularGeneralDimension_SpacingDimension.htm">AngularGeneralDimension.SpacingDimension</a></td>
+          <td class="api-list">Gets and sets spacing dimension for the angular sum dimension.</td>
+        </tr>
+        <tr>
+          <td class="api-list"><a href="AssemblyDocument_DisplayNameBasis.htm">AssemblyDocument.DisplayNameBasis</a></td>
+          <td class="api-list">Gets and sets the display name basis of this document. This defaults to file name.</td>
+        </tr>
+        <tr>
+          <td class="api-list"><a href="AssemblyDocument_FullDisplayName.htm">AssemblyDocument.FullDisplayName</a></td>
+          <td class="api-list">Read-only property that returns the full display name of this document.</td>
+        </tr>
+        <tr>
+          <td class="api-list"><a href="BIMComponent_ExportBuildingComponentWithOptions.htm">BIMComponent.ExportBuildingComponentWithOptions</a></td>
+          <td class="api-list">Method that exports the BIM component as an adsk, ifc or rfa file.</td>
+        </tr>
+        <tr>
+          <td class="api-list"><a href="BIMComponentDescription_RevitFamilyCategory.htm">BIMComponentDescription.RevitFamilyCategory</a></td>
+          <td class="api-list">Read-write property that gets and sets the Revit family category Id.</td>
+        </tr>
+        <tr>
+          <td class="api-list"><a href="BreakOperation_BreakLineSketch.htm">BreakOperation.BreakLineSketch</a></td>
+          <td class="api-list">Read-only property that returns the DrawingSketch object containing the break lines.</td>
+        </tr>
+        <tr>
+          <td class="api-list"><a href="BreakOperations_AddBySketch.htm">BreakOperations.AddBySketch</a></td>
+          <td class="api-list">Method that adds a break to a drawing view. The newly created BreakOperation object is returned.</td>
+        </tr>
+        <tr>
+          <td class="api-list"><a href="Camera_SaveAsBitmapWithOptions.htm">Camera.SaveAsBitmapWithOptions</a></td>
+          <td class="api-list">Method that saves the view as a bitmap with more options.</td>
+        </tr>
+        <tr>
+          <td class="api-list"><a href="ClientFeature_ClientGraphicsVisible.htm">ClientFeature.ClientGraphicsVisible</a></td>
+          <td class="api-list">Read-write property that gets and sets whether all the client graphics in this client feature are visible or not.</td>
+        </tr>
+        <tr>
+          <td class="api-list"><a href="ClientFeatureProxy_ClientGraphicsVisible.htm">ClientFeatureProxy.ClientGraphicsVisible</a></td>
+          <td class="api-list">Read-write property that gets and sets whether all the client graphics in this client feature are visible or not.</td>
+        </tr>
+        <tr>
+          <td class="api-list"><a href="ComponentOccurrence_ActiveDesignViewRepresentation.htm">ComponentOccurrence.ActiveDesignViewRepresentation</a></td>
+          <td class="api-list">Gets the active Design View Representation for an assembly occurrence.&nbsp;This property returns Nothing in the case where a design view representation was set for the occurrence non-associatively (i.e. with the 'Associative' flag turned off).</td>
+        </tr>
+        <tr>
+          <td class="api-list"><a href="ComponentOccurrenceProxy_ActiveDesignViewRepresentation.htm">ComponentOccurrenceProxy.ActiveDesignViewRepresentation</a></td>
+          <td class="api-list">Gets the active Design View Representation for an assembly occurrence.&nbsp;This property returns Nothing in the case where a design view representation was set for the occurrence non-associatively (i.e. with the 'Associative' flag turned off).</td>
+        </tr>
+        <tr>
+          <td class="api-list"><a href="ContourFlangeDefinition_AddContourFlangeEdgeSet.htm">ContourFlangeDefinition.AddContourFlangeEdgeSet</a></td>
+          <td class="api-list">Method that adds a new contour flange edge set.&nbsp;The new FlangeEdgeSet is returned. This is applicable when the WidthExtentsFromSketchPlane is set to False.</td>
+        </tr>
+        <tr>
+          <td class="api-list"><a href="ContourFlangeDefinition_BendEdges.htm">ContourFlangeDefinition.BendEdges</a></td>
+          <td class="api-list">Read-write property that gets and sets the EdgeCollection object that contains the edges that are used to define the adjoining edges for new face. This is applicable when the WidthExtentsFromSketchPlane property is True.</td>
+        </tr>
+        <tr>
+          <td class="api-list"><a href="ContourFlangeDefinition_BendExtensionType.htm">ContourFlangeDefinition.BendExtensionType</a></td>
+          <td class="api-list">Read-write property that gets and sets the bend extension type. This is applicable when the BendEdges is configured.</td>
+        </tr>
+        <tr>
+          <td class="api-list"><a href="ContourFlangeDefinition_ContourFlangeEdgeSetCount.htm">ContourFlangeDefinition.ContourFlangeEdgeSetCount</a></td>
+          <td class="api-list">Read-only property that returns the contour flange edge set count currently defined in this contour flange definition.</td>
+        </tr>
+        <tr>
+          <td class="api-list"><a href="ContourFlangeDefinition_ContourFlangeEdgeSetItem.htm">ContourFlangeDefinition.ContourFlangeEdgeSetItem</a></td>
+          <td class="api-list">Method that returns the specified FlangeEdgeSet object from the collection.</td>
+        </tr>
+        <tr>
+          <td class="api-list"><a href="ContourFlangeDefinition_SetFromToExtent.htm">ContourFlangeDefinition.SetFromToExtent</a></td>
+          <td class="api-list">Method that sets the width extent to define a contour flange whose width is defined as being between two entities.&nbsp;Calling this method will set WidthExtentsFromSketchPlane to True when the Operation is kJoinOperation.</td>
+        </tr>
+        <tr>
+          <td class="api-list"><a href="ContourFlangeDefinition_SetToExtent.htm">ContourFlangeDefinition.SetToExtent</a></td>
+          <td class="api-list">Method that sets the width extent to define a contour flange whose width is defined as being between original sketch plane and another entity.&nbsp;This is applicable when the WidthExtentsFromSketchPlane is True or when Operation is kJoinOperation.</td>
+        </tr>
+        <tr>
+          <td class="api-list"><a href="ContourFlangeDefinition_WidthExtent.htm">ContourFlangeDefinition.WidthExtent</a></td>
+          <td class="api-list">Read-only property that returns the PartFeatureExtent object that defines how the width extent of the contour flange feature is defined.&nbsp;This is applicable when the WidthExtentsFromSketchPlane is True.</td>
+        </tr>
+        <tr>
+          <td class="api-list"><a href="ContourFlangeDefinition_WidthExtentsFromSketchPlane.htm">ContourFlangeDefinition.WidthExtentsFromSketchPlane</a></td>
+          <td class="api-list">Read-only property that get and sets the width extents type is from sketch plane or along selected edge. This is applicable when the Operation is kJoinOperation.</td>
+        </tr>
+        <tr>
+          <td class="api-list"><a href="ContourFlangeDefinition_WidthExtentType.htm">ContourFlangeDefinition.WidthExtentType</a></td>
+          <td class="api-list">Read-only property that returns the width extent type.&nbsp;The valid values for this property are kDistanceExten, kFromToExtent, and kToExtent. This is applicable when the WidthExtentsFromSketchPlane property is True.</td>
+        </tr>
+        <tr>
+          <td class="api-list"><a href="ContourFlangeFeatures_CreateDefinition.htm">ContourFlangeFeatures.CreateDefinition</a></td>
+          <td class="api-list">Creates a new ContourFlangeDefinition object.</td>
+        </tr>
+        <tr>
+          <td class="api-list"><a href="CosmeticWelds_Add.htm">CosmeticWelds.Add</a></td>
+          <td class="api-list">Method that creates a CosmeticWeld and returns the newly created CosmeticWeld object.</td>
+        </tr>
+        <tr>
+          <td class="api-list"><a href="CosmeticWelds_CreateDefinition.htm">CosmeticWelds.CreateDefinition</a></td>
+          <td class="api-list">Method that creates a CosmeticWeldDefinition object.</td>
+        </tr>
+        <tr>
+          <td class="api-list"><a href="DetailDrawingView_ShowTrails.htm">DetailDrawingView.ShowTrails</a></td>
+          <td class="api-list">Gets and set whether to show the trails or not for a drawing view of a presentation.</td>
+        </tr>
+        <tr>
+          <td class="api-list"><a href="DetailDrawingView_ViewAnnotation.htm">DetailDrawingView.ViewAnnotation</a></td>
+          <td class="api-list">Read-only property that returns the drawing view annotation object.</td>
+        </tr>
+        <tr>
+          <td class="api-list"><a href="DimensionStyle_ExtendBeyondTicks.htm">DimensionStyle.ExtendBeyondTicks</a></td>
+          <td class="api-list">Gets and sets the distance extend the dimension line past the extension line in centimeters when the arrowheads is specified as oblique or no marks.</td>
+        </tr>
+        <tr>
+          <td class="api-list"><a href="DimensionStyle_ExtensionLine.htm">DimensionStyle.ExtensionLine</a></td>
+          <td class="api-list">Gets and sets the length of the extension line in centimeters.</td>
+        </tr>
+        <tr>
+          <td class="api-list"><a href="DimensionStyle_UseCapitalXForEquallySpacedFeatures.htm">DimensionStyle.UseCapitalXForEquallySpacedFeatures</a></td>
+          <td class="api-list">Gets and sets whether to use capital X for equally spaced features or not.</td>
+        </tr>
+        <tr>
+          <td class="api-list"><a href="Document_DisplayNameBasis.htm">Document.DisplayNameBasis</a></td>
+          <td class="api-list">Gets and sets the display name basis of this document. This defaults to file name.</td>
+        </tr>
+        <tr>
+          <td class="api-list"><a href="Document_FullDisplayName.htm">Document.FullDisplayName</a></td>
+          <td class="api-list">Read-only property that returns the full display name of this document.</td>
+        </tr>
+        <tr>
+          <td class="api-list"><a href="Documents_AddWithOptions.htm">Documents.AddWithOptions</a></td>
+          <td class="api-list">Creates a new Document of the specified type.The options are passed in as a NameValueMap object.</td>
+        </tr>
+        <tr>
+          <td class="api-list"><a href="DrawingDocument_DisplayNameBasis.htm">DrawingDocument.DisplayNameBasis</a></td>
+          <td class="api-list">Gets and sets the display name basis of this document. This defaults to file name.</td>
+        </tr>
+        <tr>
+          <td class="api-list"><a href="DrawingDocument_FullDisplayName.htm">DrawingDocument.FullDisplayName</a></td>
+          <td class="api-list">Read-only property that returns the full display name of this document.</td>
+        </tr>
+        <tr>
+          <td class="api-list"><a href="DrawingStandardStyle_GetAvailableStyles.htm">DrawingStandardStyle.GetAvailableStyles</a></td>
+          <td class="api-list">Method that returns the ObjectCollection containing the styles which are available for the standard style.</td>
+        </tr>
+        <tr>
+          <td class="api-list"><a href="DrawingStandardStyle_GetViewAnnotationDefaults.htm">DrawingStandardStyle.GetViewAnnotationDefaults</a></td>
+          <td class="api-list">Method that gets the drawing view annotation defaults for the specified view type.</td>
+        </tr>
+        <tr>
+          <td class="api-list"><a href="DrawingStandardStyle_SetAvailableStyles.htm">DrawingStandardStyle.SetAvailableStyles</a></td>
+          <td class="api-list">Method that sets the styles which are available for the standard style.</td>
+        </tr>
+        <tr>
+          <td class="api-list"><a href="DrawingStandardStyle_SetViewAnnotationDefaults.htm">DrawingStandardStyle.SetViewAnnotationDefaults</a></td>
+          <td class="api-list">Method that sets the drawing view annotation defaults for the specified view type.</td>
+        </tr>
+        <tr>
+          <td class="api-list"><a href="DrawingView_ShowTrails.htm">DrawingView.ShowTrails</a></td>
+          <td class="api-list">Gets and set whether to show the trails or not for a drawing view of a presentation.</td>
+        </tr>
+        <tr>
+          <td class="api-list"><a href="DrawingView_ViewAnnotation.htm">DrawingView.ViewAnnotation</a></td>
+          <td class="api-list">Read-only property that returns the drawing view annotation object.</td>
+        </tr>
+        <tr>
+          <td class="api-list"><a href="FileDialogEvents_OnOptionsReset.htm">FileDialogEvents.OnOptionsReset</a></td>
+          <td class="api-list">Fires when the action to reset options on the file dialog occurs, e.g. file filter type changes, etc.</td>
+        </tr>
+        <tr>
+          <td class="api-list"><a href="FileManager_GetRevitFamilyCategories.htm">FileManager.GetRevitFamilyCategories</a></td>
+          <td class="api-list">Method and returns an array of string that contains the names of Revit family categories.</td>
+        </tr>
+        <tr>
+          <td class="api-list"><a href="FileManager_GetRevitFamilyCategoryIds.htm">FileManager.GetRevitFamilyCategoryIds</a></td>
+          <td class="api-list">Method and returns an array of Long values that contains the unique Ids of Revit family categories.</td>
+        </tr>
+        <tr>
+          <td class="api-list"><a href="FileManager_GetRevitFileVersionCreated.htm">FileManager.GetRevitFileVersionCreated</a></td>
+          <td class="api-list">Method that returns the Revit version that the Revit file was created with.</td>
+        </tr>
+        <tr>
+          <td class="api-list"><a href="FileManager_GetRFAFamilyCategories.htm">FileManager.GetRFAFamilyCategories</a></td>
+          <td class="api-list">Method and returns an array of string that contains the names of RFA family categories.</td>
+        </tr>
+        <tr>
+          <td class="api-list"><a href="FileManager_GetRFAFamilyCategoryIds.htm">FileManager.GetRFAFamilyCategoryIds</a></td>
+          <td class="api-list">Method and returns an array of Long values that contains the unique Ids of RFA family categories.</td>
+        </tr>
+        <tr>
+          <td class="api-list"><a href="GeneralDimensions_AddAngularSum.htm">GeneralDimensions.AddAngularSum</a></td>
+          <td class="api-list">Creates an angular sum general dimension on the drawing sheet.</td>
+        </tr>
+        <tr>
+          <td class="api-list"><a href="GeneralDimensions_AddLinearSum.htm">GeneralDimensions.AddLinearSum</a></td>
+          <td class="api-list">Creates an linear sum dimension on the drawing sheet.</td>
+        </tr>
+        <tr>
+          <td class="api-list"><a href="LinearGeneralDimension_SpacingDimension.htm">LinearGeneralDimension.SpacingDimension</a></td>
+          <td class="api-list">Gets and sets spacing dimension for the linear sum dimension.</td>
+        </tr>
+        <tr>
+          <td class="api-list"><a href="ModelStates_ModelStatesInEdit.htm">ModelStates.ModelStatesInEdit</a></td>
+          <td class="api-list">Read-write property that gets and sets the model states in edit.</td>
+        </tr>
+        <tr>
+          <td class="api-list"><a href="Parameters_ExportToXML.htm">Parameters.ExportToXML</a></td>
+          <td class="api-list">Exports parameters to XML file.</td>
+        </tr>
+        <tr>
+          <td class="api-list"><a href="Parameters_ImportFromXML.htm">Parameters.ImportFromXML</a></td>
+          <td class="api-list">Imports parameters from XML file.</td>
+        </tr>
+        <tr>
+          <td class="api-list"><a href="PartDocument_DisplayNameBasis.htm">PartDocument.DisplayNameBasis</a></td>
+          <td class="api-list">Gets and sets the display name basis of this document. This defaults to file name.</td>
+        </tr>
+        <tr>
+          <td class="api-list"><a href="PartDocument_FullDisplayName.htm">PartDocument.FullDisplayName</a></td>
+          <td class="api-list">Read-only property that returns the full display name of this document.</td>
+        </tr>
+        <tr>
+          <td class="api-list"><a href="PartFeatures_SimplifyFeatures.htm">PartFeatures.SimplifyFeatures</a></td>
+          <td class="api-list">Read-only property that returns the SimplifyFeatures collection object.</td>
+        </tr>
+        <tr>
+          <td class="api-list"><a href="PresentationDocument_DisplayNameBasis.htm">PresentationDocument.DisplayNameBasis</a></td>
+          <td class="api-list">Gets and sets the display name basis of this document. This defaults to file name.</td>
+        </tr>
+        <tr>
+          <td class="api-list"><a href="PresentationDocument_FullDisplayName.htm">PresentationDocument.FullDisplayName</a></td>
+          <td class="api-list">Read-only property that returns the full display name of this document.</td>
+        </tr>
+        <tr>
+          <td class="api-list"><a href="RevitExportDefinition_RevitTemplate.htm">RevitExportDefinition.RevitTemplate</a></td>
+          <td class="api-list">Read-write property that gets and sets the Revit template file used to create the RevitExport.</td>
+        </tr>
+        <tr>
+          <td class="api-list"><a href="SectionDrawingView_ShowTrails.htm">SectionDrawingView.ShowTrails</a></td>
+          <td class="api-list">Gets and set whether to show the trails or not for a drawing view of a presentation.</td>
+        </tr>
+        <tr>
+          <td class="api-list"><a href="SectionDrawingView_ViewAnnotation.htm">SectionDrawingView.ViewAnnotation</a></td>
+          <td class="api-list">Read-only property that returns the drawing view annotation object.</td>
+        </tr>
+        <tr>
+          <td class="api-list"><a href="Sheet_GetRetrievableAnnotations2.htm">Sheet.GetRetrievableAnnotations2</a></td>
+          <td class="api-list">Returns a collection of objects that represent the valid set of model dimensions that can be retrieved into the input drawing view.</td>
+        </tr>
+        <tr>
+          <td class="api-list"><a href="Sheet_RetrieveAnnotations2.htm">Sheet.RetrieveAnnotations2</a></td>
+          <td class="api-list">Retrieves sketch and/or model annotations into the drawing.</td>
+        </tr>
+        <tr>
+          <td class="api-list"><a href="SheetMetalFeatures_SimplifyFeatures.htm">SheetMetalFeatures.SimplifyFeatures</a></td>
+          <td class="api-list">Read-only property that returns the SimplifyFeatures collection object.</td>
+        </tr>
+        <tr>
+          <td class="api-list"><a href="ShellDefinition_AffectedBodies.htm">ShellDefinition.AffectedBodies</a></td>
+          <td class="api-list">Read-write property that specifies the solid bodies to be hollowed out.</td>
+        </tr>
+        <tr>
+          <td class="api-list"><a href="ShellDefinition_Method.htm">ShellDefinition.Method</a></td>
+          <td class="api-list">Read-write property that gets and sets the shell method. This defaults to kSharpShellMethod when the definition is just created.</td>
+        </tr>
+        <tr>
+          <td class="api-list"><a href="ShellFeatures_CreateDefinition.htm">ShellFeatures.CreateDefinition</a></td>
+          <td class="api-list">Method that creates a new ShellDefinition object. The object returned by this method isused to define the inputs for a shell feature and is provided as the argument to the Add method of the ShellFeatures collection.</td>
+        </tr>
+        <tr>
+          <td class="api-list"><a href="SketchOptions_AutoBendWithLineCreation.htm">SketchOptions.AutoBendWithLineCreation</a></td>
+          <td class="api-list">Enables/disables automatically creating corner bends on 3D lines.</td>
+        </tr>
+        <tr>
+          <td class="api-list"><a href="SketchOptions_SketchOpacity.htm">SketchOptions.SketchOpacity</a></td>
+          <td class="api-list">Gets/sets the opacity of the sketch displayed through shaded model, valid value is from 0 to 100 indicating the opacity percentage.</td>
+        </tr>
+      </Table><br><p>
+        <font size="1">
+          Help created: Tuesday, June 10, 2025 4:06 PM</font>
+      </p><br><br><div id="CopyrightNotice" style="display:none;">
+        <hr>
+        <table width="100%" style="font-size:15">
+          <tr>
+            <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+            <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(Whats%20New)">Comment on this page.</a></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>

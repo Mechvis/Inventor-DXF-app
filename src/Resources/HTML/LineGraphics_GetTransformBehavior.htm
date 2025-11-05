@@ -1,0 +1,95 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/LineGraphics_GetTransformBehavior.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="LineGraphics_GetTransformBehavior">
+    <meta name="description" content="LineGraphics.GetTransformBehavior Method">
+    <meta name="topicid" content="LineGraphics_GetTransformBehavior">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>LineGraphics.GetTransformBehavior Method</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">LineGraphics.GetTransformBehavior Method</h1>
+
+          Parent Object: <a href="LineGraphics.htm">LineGraphics</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Returns the current view transformation settings (e.g. pixel scaling and front facing).</p>
+    <h2 class="api">
+          Syntax
+        </h2>
+        
+            LineGraphics.<b>GetTransformBehavior</b>( <b><i>TextAnchor</i></b> As <a href="Point.htm">Point</a>, <b><i>BehaviorType</i></b> As <a href="DisplayTransformBehaviorEnum.htm">DisplayTransformBehaviorEnum</a>, <b><i>PixelScale</i></b> As Double )
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">TextAnchor</td>
+        <td class="api-list"><a href="Point.htm">Point</a></td>
+        <td class="api-list">Output Point that returns the point that is unaffected by the transform behavior.</td>
+      </tr>
+      <tr>
+        <td class="api-list">BehaviorType</td>
+        <td class="api-list"><a href="DisplayTransformBehaviorEnum.htm">DisplayTransformBehaviorEnum</a></td>
+        <td class="api-list">Output DisplayTransformBehaviorEnum that returns the transform behaviors currently being used.</td>
+      </tr>
+      <tr>
+        <td class="api-list">PixelScale</td>
+        <td class="api-list">Double</td>
+        <td class="api-list">Output Double that returns the number of pixels that are used to draw one model unit when pixel scaling is used.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 5<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(LineGraphics.GetTransformBehavior%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

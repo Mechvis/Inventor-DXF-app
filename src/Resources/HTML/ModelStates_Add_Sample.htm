@@ -1,0 +1,162 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/ModelStates_Add_Sample.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="ModelStates_Add_Sample">
+    <meta name="description" content="Create a model state Sample">
+    <meta name="topicid" content="ModelStates_Add_Sample">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>Create a model state</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body><script>
+          function copyCode(language) {
+          // Get the pre element for the specified language.
+          var preElement = document.getElementById(language);
+
+          // Get the text from the element and copy it to the clipboard.
+          var preText = preElement.innerText;
+
+          var isIE = /*@cc_on!@*/false || !!document.documentMode;
+
+          if (isIE)
+          {
+            window.clipboardData.setData('Text', preText);
+          }
+          else
+          {
+            navigator.clipboard.writeText(preText);
+          }
+
+          //alert("Code copied to clipboard");
+          }
+        </script><link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">Create a model state</h1>
+    <h2 class="api">
+          Description
+        </h2>This sample demonstrates creation of a model state in an assembly.<h2 class="api">
+          Code Samples
+        </h2>
+    <div id="tabs">
+      <ul>
+        <li><a href="#VBA">VBA</a></li>
+        <li><a href="#iLogic">iLogic</a></li>
+      </ul>
+      <div id="VBA" class="api-code">Before running the sample, you need to open an assembly and create two part files called C:\Temp\Part1.ipt and C:\Temp\Part2.ipt, or edit the sample code to point to different part files if desired.<table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('VBA_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="VBA_code">Public Sub CreateModelState()
+    <span style="color:blue">' Set a reference to the assembly component definintion.</span>
+    <span style="color:blue">' This assumes an assembly document is open.</span>
+    Dim oAsmCompDef As AssemblyComponentDefinition
+    Set oAsmCompDef = ThisApplication.ActiveDocument.ComponentDefinition
+
+    <span style="color:blue">' Set a reference to the transient geometry object.</span>
+    Dim oTG As TransientGeometry
+    Set oTG = ThisApplication.TransientGeometry
+
+    <span style="color:blue">' Create a matrix. A new matrix is initialized with an identity matrix.</span>
+    Dim oMatrix As Matrix
+    Set oMatrix = oTG.CreateMatrix
+
+    <span style="color:blue">' Add the first occurrence.</span>
+    Dim oOcc1 As ComponentOccurrence
+    Set oOcc1 = oAsmCompDef.Occurrences.Add("C:\Temp\Part1.ipt", oMatrix)
+    
+    <span style="color:blue">' Set the translation portion of the matrix so the</span>
+    <span style="color:blue">' second part will be positioned at (3,2,1).</span>
+    Call oMatrix.SetTranslation(oTG.CreateVector(3, 2, 1))
+    
+    <span style="color:blue">' Add the second occurrence.</span>
+    Dim oOcc2 As ComponentOccurrence
+    Set oOcc2 = oAsmCompDef.Occurrences.Add("C:\Temp\Part2.ipt", oMatrix)
+    
+    <span style="color:blue">' Create a new level of detail representation.</span>
+    <span style="color:blue">' The new representation is automatically activated.</span>
+    Dim oModelState As ModelState
+    Set oModelState = oAsmCompDef.ModelStates.Add("Part2Suppressed")
+    
+    <span style="color:blue">' Suppress the second component in the new model state.</span>
+    <span style="color:blue">' If the document "C:\Temp\Part2.ipt" is not currently referenced</span>
+    <span style="color:blue">' elsewhere, it will be closed.</span>
+    oOcc2.Suppress
+End Sub</pre>
+      </div>
+      <div id="iLogic" class="api-code">Before running the sample, you need to open an assembly and create two part files called C:\Temp\Part1.ipt and C:\Temp\Part2.ipt, or edit the sample code to point to different part files if desired.<table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('iLogic_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="iLogic_code">    <span style="color:blue">' Set a reference to the assembly component definintion.</span>
+    <span style="color:blue">' This assumes an assembly document is open.</span>
+    Dim oAsmCompDef As AssemblyComponentDefinition
+    oAsmCompDef = ThisApplication.ActiveDocument.ComponentDefinition
+
+    <span style="color:blue">' Set a reference to the transient geometry object.</span>
+    Dim oTG As TransientGeometry
+    oTG = ThisApplication.TransientGeometry
+
+    <span style="color:blue">' Create a matrix. A new matrix is initialized with an identity matrix.</span>
+    Dim oMatrix As Matrix
+    oMatrix = oTG.CreateMatrix
+
+    <span style="color:blue">' Add the first occurrence.</span>
+    Dim oOcc1 As ComponentOccurrence
+    oOcc1 = oAsmCompDef.Occurrences.Add("C:\Temp\Part1.ipt", oMatrix)
+    
+    <span style="color:blue">' Set the translation portion of the matrix so the</span>
+    <span style="color:blue">' second part will be positioned at (3,2,1).</span>
+    Call oMatrix.SetTranslation(oTG.CreateVector(3, 2, 1))
+    
+    <span style="color:blue">' Add the second occurrence.</span>
+    Dim oOcc2 As ComponentOccurrence
+    oOcc2 = oAsmCompDef.Occurrences.Add("C:\Temp\Part2.ipt", oMatrix)
+    
+    <span style="color:blue">' Create a new level of detail representation.</span>
+    <span style="color:blue">' The new representation is automatically activated.</span>
+    Dim oModelState As ModelState
+    oModelState = oAsmCompDef.ModelStates.Add("Part2Suppressed")
+    
+    <span style="color:blue">' Suppress the second component in the new model state.</span>
+    <span style="color:blue">' If the document "C:\Temp\Part2.ipt" is not currently referenced</span>
+    <span style="color:blue">' elsewhere, it will be closed.</span>
+    oOcc2.Suppress</pre>
+      </div>
+    </div><br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(ModelStates_Add%20Sample%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

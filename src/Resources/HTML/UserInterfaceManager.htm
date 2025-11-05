@@ -1,0 +1,245 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/UserInterfaceManager.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="UserInterfaceManager">
+    <meta name="description" content="UserInterfaceManager Object">
+    <meta name="topicid" content="GUID-UserInterfaceManager">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>UserInterfaceManager Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">UserInterfaceManager Object
+			</h1><br><h2 class="api">
+          Description
+        </h2>The UserInterfaceManager object, through which all UI customization objects can be accessed. See <a href="RibbonUI_Overview.htm">Ribbon Customization</a> for an overview.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UserInterfaceManager_AllReferencedControls.htm">AllReferencedControls</a></td>
+        <td class="api-list">Method that returns all command controls in Inventor's ribbon interface that reference the input ControlDefinition. Controls from ribbons panels, Quick Access Toolbar and the File Browser (application menu) are returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UserInterfaceManager_DoEvents.htm">DoEvents</a></td>
+        <td class="api-list">Allows Inventor to process all Windows messages currently in the message queue.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UserInterfaceManager_GetCommandPaths.htm">GetCommandPaths</a></td>
+        <td class="api-list">Method that returns all the paths that the given command is found in, optionally filtered to an environment.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UserInterfaceManager_ResetRibbonInterface.htm">ResetRibbonInterface</a></td>
+        <td class="api-list">Method that removes all customizations from the ribbon user interface.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UserInterfaceManager_ActiveEnvironment.htm">ActiveEnvironment</a></td>
+        <td class="api-list">Property that returns the Environment that is currently active.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UserInterfaceManager_Application.htm">Application</a></td>
+        <td class="api-list">Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UserInterfaceManager_BalloonTips.htm">BalloonTips</a></td>
+        <td class="api-list">Read-only property that returns the BalloonTips collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UserInterfaceManager_CapacityMeterEnabled.htm">CapacityMeterEnabled</a></td>
+        <td class="api-list">Gets and sets whether to enable the capacity meter display in Inventor's status bar.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UserInterfaceManager_DockableWindows.htm">DockableWindows</a></td>
+        <td class="api-list">Property that returns the DockableWindows collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UserInterfaceManager_Environments.htm">Environments</a></td>
+        <td class="api-list">Property that returns the Environments collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UserInterfaceManager_ExpertMode.htm">ExpertMode</a></td>
+        <td class="api-list">Gets/Sets the Boolean flag indicating whether the UI is in Expert mode.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UserInterfaceManager_FileBrowserControls.htm">FileBrowserControls</a></td>
+        <td class="api-list">Property that returns a CommandControls collection containing the controls in the File Browser (a.k.a Application Menu).</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UserInterfaceManager_HelpControls.htm">HelpControls</a></td>
+        <td class="api-list">Property that returns a CommandControls collection containing the controls in the Help Menu.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UserInterfaceManager_OverflowMenuBehavior.htm">OverflowMenuBehavior</a></td>
+        <td class="api-list">Read-write property that gets and sets the behavior of the overflow menu.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UserInterfaceManager_ParallelEnvironments.htm">ParallelEnvironments</a></td>
+        <td class="api-list">Property that returns the list of Environments valid for the edit target or the environment being switched to. Environments can be added to or removed from the list as seen appropriate by the client when an OnNewEditObject or an OnEnvironmentChange event is received. This list of environments will show in the Applications menu item. This list may only contain non-built-in environments.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UserInterfaceManager_Parent.htm">Parent</a></td>
+        <td class="api-list">Property that returns the parent object from whom this object can logically be reached.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UserInterfaceManager_PinMiniToolbarPosition.htm">PinMiniToolbarPosition</a></td>
+        <td class="api-list">Read-only property that gets whether the MiniToolbar position is pinned or not.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UserInterfaceManager_RibbonAppearance.htm">RibbonAppearance</a></td>
+        <td class="api-list">Gets and sets the appearance of the ribbon.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UserInterfaceManager_RibbonDockingState.htm">RibbonDockingState</a></td>
+        <td class="api-list">Gets and sets the docking state of the ribbon.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UserInterfaceManager_Ribbons.htm">Ribbons</a></td>
+        <td class="api-list">Property that returns the Ribbons collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UserInterfaceManager_RibbonState.htm">RibbonState</a></td>
+        <td class="api-list">Gets and sets the display state of the ribbon.&nbsp;Valid values are kFullRibbon, kMinimizeToTabs, kMinimizeToPanelTitles and kMinimizeToPanelButtons.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UserInterfaceManager_ShowBrowser.htm">ShowBrowser</a></td>
+        <td class="api-list">Show/Hide Browser.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UserInterfaceManager_ShowCleanScreen.htm">ShowCleanScreen</a></td>
+        <td class="api-list">Gets sets whether the viewed screen area is maximized.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UserInterfaceManager_ShowDocumentTabs.htm">ShowDocumentTabs</a></td>
+        <td class="api-list">Gets and sets whether document tabs are displayed.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UserInterfaceManager_ShowMarkingMenu.htm">ShowMarkingMenu</a></td>
+        <td class="api-list">Property that gets and sets whether to use the marking menu.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UserInterfaceManager_ShowNavigationBar.htm">ShowNavigationBar</a></td>
+        <td class="api-list">Read-write property that gets and sets whether the navigation bar is displayed.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UserInterfaceManager_ShowQuickAccessControlsBelowRibbon.htm">ShowQuickAccessControlsBelowRibbon</a></td>
+        <td class="api-list">Gets and sets whether the Quick Access Toolbar (QAT) is shown below or above the ribbon.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UserInterfaceManager_ShowStatusBar.htm">ShowStatusBar</a></td>
+        <td class="api-list">Show/Hide StatusBar.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UserInterfaceManager_ShowSteeringWheel.htm">ShowSteeringWheel</a></td>
+        <td class="api-list">Read-write property that gets and sets whether the steering wheel control is displayed.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UserInterfaceManager_ShowViewCube.htm">ShowViewCube</a></td>
+        <td class="api-list">Read-write property that gets and sets whether the view cube is displayed.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UserInterfaceManager_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UserInterfaceManager_UserInteractionDisabled.htm">UserInteractionDisabled</a></td>
+        <td class="api-list">Enable/Disable user interaction.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UserInterfaceManager_UserInterfaceEvents.htm">UserInterfaceEvents</a></td>
+        <td class="api-list">Property returning the UserInterfaceEvents object.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="Application_UserInterfaceManager.htm">Application.UserInterfaceManager</a>, <a href="BalloonTip_Parent.htm">BalloonTip.Parent</a>, <a href="DockableWindow_Parent.htm">DockableWindow.Parent</a>, <a href="Ribbon_Parent.htm">Ribbon.Parent</a>, <a href="UserInterfaceEvents_Parent.htm">UserInterfaceEvents.Parent</a>, <a href="WebBrowserDockableWindow_Parent.htm">WebBrowserDockableWindow.Parent</a><h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AddButtonToAppMenu_Sample.htm">Add commands to the application menu</a></td>
+        <td class="api-list">Demonstrates adding command to the application menu.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="CreateParallelEnvironment_Sample.htm">Add parallel environment with contextual tabs</a></td>
+        <td class="api-list">The following sample demonstrates the use of parallel environments and contextual ribbon tabs.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DockableWindows_Add_Sample.htm">Dockable window</a></td>
+        <td class="api-list">This sample demonstrates creating a dockable window and adding a dialog into it.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DumpRibbons_Sample.htm">Print information about all available ribbons.</a></td>
+        <td class="api-list">This sample prints out all of the elements of the ribbons.  This output is very useful when customizing the ribbon to be able to get the names of the various existing ribbons, tabs, and panels.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="EnvironmentManager_OverrideEnvironment_Sample.htm">Creation of an override environment for a document</a></td>
+        <td class="api-list">A new ribbon tab is created and associated with the override environment.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 9<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(UserInterfaceManager%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

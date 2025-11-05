@@ -1,0 +1,190 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/PromptMessages_Add.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="PromptMessages_Add">
+    <meta name="description" content="PromptMessages.Add Method">
+    <meta name="topicid" content="PromptMessages_Add">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>PromptMessages.Add Method</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">PromptMessages.Add Method</h1>
+
+          Parent Object: <a href="PromptMessages.htm">PromptMessages</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Method that creates a new custom PromptMessage.</p>
+    <h2 class="api">
+          Syntax
+        </h2>
+        
+            PromptMessages.<b>Add</b>( <b><i>Id</i></b> As String, <b><i>PromptText</i></b> As String, <b><i>Buttons</i></b> As Long, <b><i>Icon</i></b> As Long, [<b><i>Title</i></b>] As Variant, [<b><i>DisplayedPromptText</i></b>] As Variant, [<b><i>DefaultAnswer</i></b>] As Variant, [<b><i>Restrictions</i></b>] As Variant, [<b><i>PromptSettings</i></b>] As Variant ) As <a href="PromptMessage.htm">PromptMessage</a>
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">Id</td>
+        <td class="api-list">String</td>
+        <td class="api-list">Input the String value to specify the Id of&nbsp;PromptMessage. The Id should be unique in the collection of the PromptMessage objects.</td>
+      </tr>
+      <tr>
+        <td class="api-list">PromptText</td>
+        <td class="api-list">String</td>
+        <td class="api-list">Input the String value to specify the formatted prompt text of&nbsp;PromptMessage. The string can include “%s” to indicate a string placeholder that you can specify the string value for the placeholder using the PromptStrings argument in PromprMessage.Display method. Currently you can specify up to three placeholders. The string can also specify the hyperlink with XML tags.</td>
+      </tr>
+      <tr>
+        <td class="api-list">Buttons</td>
+        <td class="api-list">Long</td>
+        <td class="api-list">Input the Long value to specify the buttons to use for PromptMessage. Valid values are: 
+<ol><li>vbOKOnly or 0.</li>
+<li>vbOKCancel or 1.</li>
+<li>vbAbortRetryIgnore or 2.</li>
+<li>vbYesNoCancel or 3.</li>
+<li>vbYesNo or 4.</li>
+<li>vbRetryCancel or 5.</li>
+</ol></td>
+      </tr>
+      <tr>
+        <td class="api-list">Icon</td>
+        <td class="api-list">Long</td>
+        <td class="api-list">Input Long that specifies the icon type. This can be vbCritical (16), vbExclamation (48), vbInformation(64) or vbQuestion (32).</td>
+      </tr>
+      <tr>
+        <td class="api-list">Title</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional input String value to specify the title for PromptMessage.&nbsp;If not supplied, the title will default to "Inventor x", where x is the release number.<br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+      <tr>
+        <td class="api-list">DisplayedPromptText</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional input String value to specify the displayed prompt text of&nbsp;PromptMessage. If not specified the PromptText will be used as DisplayedPromptText and displayed on Prompt Text column onto Prompts option, otherwise this DisplayedPromptText will be displayed instead. This can be set when the PromptText contains special chars that is not suitable to display in UI.<br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+      <tr>
+        <td class="api-list">DefaultAnswer</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional input Long value to specify the default response for the PromptMessage dialog. Valid values are: 
+<ol>
+ <li>vbDefaultButton1 (or 0) indicating the first button is set as default response button. This is also default value if not specified.
+</li>
+ <li>vbDefaultButton2 (or 256) indicating the second button is set as default response button.
+</li>
+<li>vbDefaultButton3 (or 512) indicating the third button is set as default response button.
+</li>
+</ol>
+If not supplied the first button will be set as default answer.<br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+      <tr>
+        <td class="api-list">Restrictions</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional input Long(PromptMessageRestrictionsEnum) value to specify the “Controls when you will see this prompt” option for PromptMessage(grey out the options).&nbsp;Zero or more of the following, in combination (can be added together with +): 
+<ul>
+&nbsp;<li>kNoRestrictions (Allow all of the radio button options in the dialog "Do not show this message again ever", "Do not show this message again this session", "Prompt only once per operation", "Always show this message ", for all buttons)</li>
+&nbsp;<li>kDontAllowNeverAgain (Disable the "Do not show this message again ever" option) 
+</li>
+&nbsp;<li>kDontAllowNoMoreThisSession (Disable the "Do not show this message again this session" option) 
+</li>
+</ul>
+Button 1 options (i.e. what is allowed/not allowed if button 1 is picked) :
+
+ <ul><li>kDontAllowButton1NeverAgain (Disable the "Do not show this message again ever" option if button 1 is selected) 
+</li>
+ <li>kDontAllowButton1NoMoreThisSession (Disable the "Do not show this message again this session" option if button 1 is selected) 
+</li>
+</ul>
+
+Button 2 options (i.e. what is allowed/not allowed if button 2 is picked) :
+
+ <ul><li>kDontAllowButton2NeverAgain (Disable the "Do not show this message again ever" option if button 2 is selected) 
+</li>
+ <li>kDontAllowButton2NoMoreThisSession (Disable the "Do not show this message again this session" option if button 2 is selected) 
+</li>
+</ul>
+
+Button 3 options (i.e. what is allowed/not allowed if button 3 is picked) :
+
+ <ul><li>kDontAllowButton3NeverAgain (Disable the "Do not show this message again ever" option if button 3 is selected) 
+</li>
+ <li>kDontAllowButton3NoMoreThisSession (Disable the "Do not show this message again this session" option if button 3 is selected) 
+</li>
+</ul><br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+      <tr>
+        <td class="api-list">PromptSettings</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional input NameValueMap object that specifies more prompt settings. 
+
+This is reserved for future use.<br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PromptMessageCreationSample_Sample.htm">Prompt message creation sample</a></td>
+        <td class="api-list">This sample demonstrates how to creat a custom prompt message.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2025.1<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(PromptMessages.Add%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

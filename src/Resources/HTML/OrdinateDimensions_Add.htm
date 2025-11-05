@@ -1,0 +1,153 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/OrdinateDimensions_Add.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="OrdinateDimensions_Add">
+    <meta name="description" content="OrdinateDimensions.Add Method">
+    <meta name="topicid" content="OrdinateDimensions_Add">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>OrdinateDimensions.Add Method</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">OrdinateDimensions.Add Method</h1>
+
+          Parent Object: <a href="OrdinateDimensions.htm">OrdinateDimensions</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Method that creates an ordinate dimension.</p>
+    <h2 class="api">
+            Remarks
+          </h2><p>The ordinate dimension will be placed with respect to an origin point defined on the view. If an origin point has not been already defined on the view, this method will fail. The DrawingView.HasOriginIndicator property can be used to verify if the origin has already been created. If it has not been created, the DrawingView.CreateOriginIndicator method can be used to create it. The difference in behavior when placing ordinate dimensions using the API (when compared to placing them interactively using the user interface) is that ordinate dimensions have to be placed only one at a time using the API. To illustrate this difference, consider the drawing view shown in the figure below which shows ordinate dimensions placed on a curve.</p>
+<center>
+<img src="../images/OrdinateDimensions_Add_OrdinateDimensionsPlacedOnACurve.png" /></center>
+<p><b>Ordinate dimensions placed on a curve</b></p>
+<p>The figure shows three ordinate dimensions placed on the start point, center point and end point of the curve. When using the user interface, all three dimensions can be placed at the same time by starting the ordinate dimension command and just selecting the curve entity (assuming that the origin for the ordinate dimensions has already been selected, otherwise this has to be selected first). After the dimensions have been placed, each one of them can be edited or deleted individually. Therefore, these dimensions are independent without any relationship or grouping between them. Similarly, if the line is selected for placing ordinate dimensions, two ordinate dimensions will be placed at the start point and end point of the line respectively. The user interface merely allows the convenience of placing multiple dimensions simultaneously, although they are independent. When placing these ordinate dimensions using the API, they can only be placed one at a time. If the three dimensions shown in the figure need to be placed using the API, this method needs to be called three times and the start point, center point and end point of the curve has to be specified as input geometry intent. Therefore, the only acceptable input geometry intent for placing an ordinate dimension is a point to which the ordinate dimension can be attached.</p><h2 class="api">
+          Syntax
+        </h2>
+        
+            OrdinateDimensions.<b>Add</b>( <b><i>Intent</i></b> As <a href="GeometryIntent.htm">GeometryIntent</a>, <b><i>TextOrigin</i></b> As <a href="Point2d.htm">Point2d</a>, <b><i>DimensionType</i></b> As <a href="DimensionTypeEnum.htm">DimensionTypeEnum</a>, [<b><i>DimensionStyle</i></b>] As Variant, [<b><i>Layer</i></b>] As Variant ) As <a href="OrdinateDimension.htm">OrdinateDimension</a>
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">Intent</td>
+        <td class="api-list"><a href="GeometryIntent.htm">GeometryIntent</a></td>
+        <td class="api-list">Input GeometryIntent object that specifies the geometry to dimension. The GeometryIntent object can be created using the Sheet.CreateGeometryIntent method. Valid intent values are points that specify geometry to which an ordinate dimension can be attached. For example, the start, mid, end point of lines and start, end, center point of curves are valid intent values. If an invalid intent is specified, this method will fail.<p /></td>
+      </tr>
+      <tr>
+        <td class="api-list">TextOrigin</td>
+        <td class="api-list"><a href="Point2d.htm">Point2d</a></td>
+        <td class="api-list"><p> Input Point2d object that specifies the position of the dimension text on the sheet. The specified position of the dimension text together with the dimension alignment type (specified by the DimensionType argument) will determine the actual resulting position for the dimension text. If the specified dimension text position lies along the dimension line implied by the DimensionType argument, the dimension text will be placed exactly at the specified position. On the other hand, if the specified dimension text position does not lie along the dimension line implied by the DimensionType argument, the specified point will be projected onto the dimension line and the dimension text will be placed at this projected point. The following figures show how the specified position will be interpreted. In the first figure, the dimension type is specified to be a horizontal ordinate dimension and the specified point (P) lies on the horizontal line (L), therefore the dimension text will be placed exactly at the specified point (P).</p>
+<center>
+&nbsp;&nbsp;&nbsp;<img src="../images/OrdinateDimensions_Add_TextOrigin_PointOnTheLine.png" /></center>
+<p>
+&nbsp;&nbsp;&nbsp;In the second figure (shown below), the dimension type is specified to be a horizontal ordinate dimension and the specified point (P) does not lie on the horizontal line (L), therefore the point P will be first projected onto the dimension line and this projected point (P') will be used as the placement point for the dimension text.</p>
+<center>
+&nbsp;&nbsp;&nbsp;<img src="../images/OrdinateDimensions_Add_TextOrigin_PointNotOnTheLine.png" /></center></td>
+      </tr>
+      <tr>
+        <td class="api-list">DimensionType</td>
+        <td class="api-list"><a href="DimensionTypeEnum.htm">DimensionTypeEnum</a></td>
+        <td class="api-list"><p>Input DimensionTypeEnum that specifies the ordinate dimension type. Valid values
+kHorizontalDimensionType, kVerticalDimensionType and kAlignedDimensionType. The
+value kAlignedDimensionType can be specified only if the geometry of the specified
+input intent represents a line in which case an ordinate dimension that is aligned
+along the direction of the line will be created. An error will occur if an invalid
+dimension type is specified. For instance, kArcLengthDimensionType, kDiametricDimensionType
+and kSymmetricDimensionType are invalid for all types of intent and kAlignedDimensionType
+is invalid if the geometry of the specified input intent does not represent a line.
+The following figures show the aligned, horizontal and vertical ordinate dimensions
+for the same input intent (the geometry of the intent represents a line whose direction
+is used to place the aligned ordinate dimension).</p>
+<p><b>Aligned Ordinate Dimension</b></p>
+<center><img src="../images/OrdinateDimensions_Add_DimensionType_AlignedOrdinateDimension.png" alt="" /></center>
+
+<p><b>Horizontal Ordinate Dimension</b></p>
+
+<center><img src="../images/OrdinateDimensions_Add_DimensionType_HorizontalOrdinateDimension.png" alt="" /></center>
+
+<p><b>Vertical Ordinate Dimension</b></p>
+<center><img src="../images/OrdinateDimensions_Add_DimensionType_VerticalOrdinateDimension.png" alt="" /></center></td>
+      </tr>
+      <tr>
+        <td class="api-list">DimensionStyle</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional input DimensionStyle object that specifies the dimension style to use for the dimension. If not specified, the style defined by the active standard is used.<p /><br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+      <tr>
+        <td class="api-list">Layer</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional input Layer object that specifies the layer to use for the dimension. If not specified, the layer defined by the active standard is used.<br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="OrdinateDimensions_Add_Sample.htm">Create ordinate dimension</a></td>
+        <td class="api-list">This sample demonstrates the creation of ordinate dimensions in a drawing document.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2009<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(OrdinateDimensions.Add%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,179 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/CreateLinearForeshortenedDimSample_Sample.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="CreateLinearForeshortenedDimSample_Sample">
+    <meta name="description" content="Create linear foreshortened dimension sample Sample">
+    <meta name="topicid" content="CreateLinearForeshortenedDimSample_Sample">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>Create linear foreshortened dimension sample</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body><script>
+          function copyCode(language) {
+          // Get the pre element for the specified language.
+          var preElement = document.getElementById(language);
+
+          // Get the text from the element and copy it to the clipboard.
+          var preText = preElement.innerText;
+
+          var isIE = /*@cc_on!@*/false || !!document.documentMode;
+
+          if (isIE)
+          {
+            window.clipboardData.setData('Text', preText);
+          }
+          else
+          {
+            navigator.clipboard.writeText(preText);
+          }
+
+          //alert("Code copied to clipboard");
+          }
+        </script><link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">Create linear foreshortened dimension sample</h1>
+    <h2 class="api">
+          Description
+        </h2>This sample demonstrates the creation of a linear foreshortened dimension.<h2 class="api">
+          Code Samples
+        </h2>
+    <div id="tabs">
+      <ul>
+        <li><a href="#VBA">VBA</a></li>
+        <li><a href="#iLogic">iLogic</a></li>
+      </ul>
+      <div id="VBA" class="api-code">Have a drawing document open and select two paralell linear drawing curve segments in the same drawing view and run the following macro.<table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('VBA_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="VBA_code">Sub CreateLinearForeshortenedDimSample()
+    <span style="color:blue">' Open a drawing document and select two parallel linear curves in same drawing view first.</span>
+    Dim oApp As Inventor.Application
+    Set oApp = ThisApplication
+    
+    Dim oDoc As Document
+    Set oDoc = oApp.ActiveDocument
+    If Not (oDoc Is Nothing) Then
+        If Not (oDoc.DocumentType = kDrawingDocumentObject) Then
+            MsgBox "Please activate a drawing document for this sample.", vbCritical, "Inventor"
+            Exit Sub
+        End If
+    Else
+        MsgBox "Please open a drawing document for this sample.", vbCritical, "Inventor"
+        Exit Sub
+    End If
+    
+    If Not (oDoc.SelectSet.Count = 2) Then
+        MsgBox "Please select two parallel linear drawing curves from same drawing view for this sample.", vbCritical, "Inventor"
+        Exit Sub
+    ElseIf (oDoc.SelectSet(1).Type &lt;&gt; kDrawingCurveSegmentObject Or oDoc.SelectSet(1).Type &lt;&gt; kDrawingCurveSegmentObject) Then
+        MsgBox "Please select two parallel linear drawing curves from same drawing view for this sample.", vbCritical, "Inventor"
+        Exit Sub
+    End If
+   
+    Dim oCurve1 As DrawingCurve, oCurve2 As DrawingCurve
+    Set oCurve1 = oDoc.SelectSet(1).Parent
+    Set oCurve2 = oDoc.SelectSet(2).Parent
+    
+    Dim oSheet As Sheet
+    Set oSheet = oCurve1.Parent.Parent
+    
+    <span style="color:blue">' Create two GeometryIntent based on the selected drawing curve segments.</span>
+    Dim oIntent1 As GeometryIntent, oIntent2 As GeometryIntent
+    Set oIntent1 = oSheet.CreateGeometryIntent(oCurve1)
+    Set oIntent2 = oSheet.CreateGeometryIntent(oCurve2)
+    
+    Dim oTextPos As Point2d
+    Set oTextPos = oApp.TransientGeometry.CreatePoint2d(12, 12)
+    
+    <span style="color:blue">' Create the linear foreshortened dimension</span>
+    Dim oLinearForeshortenedDim As LinearGeneralDimension
+    Set oLinearForeshortenedDim = oSheet.DrawingDimensions.GeneralDimensions.AddLinearForeshortened(oTextPos, oIntent1, oIntent2, True)
+    
+End Sub</pre>
+      </div>
+      <div id="iLogic" class="api-code">Have a drawing document open and select two paralell linear drawing curve segments in the same drawing view and run the following macro.<table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('iLogic_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="iLogic_code">    <span style="color:blue">' Open a drawing document and select two parallel linear curves in same drawing view first.</span>
+    Dim oApp As Inventor.Application
+    oApp = ThisApplication
+    
+    Dim oDoc As Document
+    oDoc = oApp.ActiveDocument
+    If Not (oDoc Is Nothing) Then
+        If Not (oDoc.DocumentType = kDrawingDocumentObject) Then
+            MsgBox("Please activate a drawing document for this sample.", vbCritical, "Inventor")
+            Exit Sub
+        End If
+    Else
+        MsgBox("Please open a drawing document for this sample.", vbCritical, "Inventor")
+        Exit Sub
+    End If
+    
+    If Not (oDoc.SelectSet.Count = 2) Then
+        MsgBox("Please select two parallel linear drawing curves from same drawing view for this sample.", vbCritical, "Inventor")
+        Exit Sub
+    ElseIf (oDoc.SelectSet(1).Type &lt;&gt; kDrawingCurveSegmentObject Or oDoc.SelectSet(1).Type &lt;&gt; kDrawingCurveSegmentObject) Then
+        MsgBox("Please select two parallel linear drawing curves from same drawing view for this sample.", vbCritical, "Inventor")
+        Exit Sub
+    End If
+   
+    Dim oCurve1 As DrawingCurve, oCurve2 As DrawingCurve
+    oCurve1 = oDoc.SelectSet(1).Parent
+    oCurve2 = oDoc.SelectSet(2).Parent
+    
+    Dim oSheet As Sheet
+    oSheet = oCurve1.Parent.Parent
+    
+    <span style="color:blue">' Create two GeometryIntent based on the selected drawing curve segments.</span>
+    Dim oIntent1 As GeometryIntent, oIntent2 As GeometryIntent
+    oIntent1 = oSheet.CreateGeometryIntent(oCurve1)
+    oIntent2 = oSheet.CreateGeometryIntent(oCurve2)
+    
+    Dim oTextPos As Point2d
+    oTextPos = oApp.TransientGeometry.CreatePoint2d(12, 12)
+    
+    <span style="color:blue">' Create the linear foreshortened dimension</span>
+    Dim oLinearForeshortenedDim As LinearGeneralDimension
+    oLinearForeshortenedDim = oSheet.DrawingDimensions.GeneralDimensions.AddLinearForeshortened(oTextPos, oIntent1, oIntent2, True)</pre>
+      </div>
+    </div><br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(CreateLinearForeshortenedDimSample%20Sample%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

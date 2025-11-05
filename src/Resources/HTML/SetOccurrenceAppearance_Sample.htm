@@ -1,0 +1,172 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/SetOccurrenceAppearance_Sample.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="SetOccurrenceAppearance_Sample">
+    <meta name="description" content="Set the appearance of an occurrence. Sample">
+    <meta name="topicid" content="SetOccurrenceAppearance_Sample">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>Set the appearance of an occurrence.</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body><script>
+          function copyCode(language) {
+          // Get the pre element for the specified language.
+          var preElement = document.getElementById(language);
+
+          // Get the text from the element and copy it to the clipboard.
+          var preText = preElement.innerText;
+
+          var isIE = /*@cc_on!@*/false || !!document.documentMode;
+
+          if (isIE)
+          {
+            window.clipboardData.setData('Text', preText);
+          }
+          else
+          {
+            navigator.clipboard.writeText(preText);
+          }
+
+          //alert("Code copied to clipboard");
+          }
+        </script><link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">Set the appearance of an occurrence.</h1>
+    <h2 class="api">
+          Description
+        </h2>Sets the appearance of a selected occurrence in an assembly.<h2 class="api">
+          Code Samples
+        </h2>
+    <div id="tabs">
+      <ul>
+        <li><a href="#VBA">VBA</a></li>
+        <li><a href="#iLogic">iLogic</a></li>
+      </ul>
+      <div id="VBA" class="api-code">
+        <table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('VBA_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="VBA_code">Public Sub SetOccurrenceAppearance()
+    Dim asmDoc As AssemblyDocument
+    Set asmDoc = ThisApplication.ActiveDocument
+    
+    <span style="color:blue">' Get an appearance from the document.  To assign an appearance is must</span>
+    <span style="color:blue">' exist in the document.  This looks for a local appearance and if that</span>
+    <span style="color:blue">' fails it copies the appearance from a library to the document.</span>
+    Dim localAsset As Asset
+    On Error Resume Next
+    Set localAsset = asmDoc.Assets.Item("Bamboo")
+    If Err Then
+        On Error GoTo 0
+        
+        <span style="color:blue">' Failed to get the appearance in the document, so import it.</span>
+        
+        <span style="color:blue">' Get an asset library by name.  Either the displayed name (which</span>
+        <span style="color:blue">' can changed based on the current language) or the internal name</span>
+        <span style="color:blue">' (which is always the same) can be used.</span>
+        Dim assetLib As AssetLibrary
+        Set assetLib = ThisApplication.AssetLibraries.Item("Autodesk Appearance Library")
+        <span style="color:blue">'Set assetLib = ThisApplication.AssetLibraries.Item("314DE259-5443-4621-BFBD-1730C6CC9AE9")</span>
+        
+        <span style="color:blue">' Get an asset in the library.  Again, either the displayed name or the internal</span>
+        <span style="color:blue">' name can be used.</span>
+        Dim libAsset As Asset
+        Set libAsset = assetLib.AppearanceAssets.Item("Bamboo")
+        <span style="color:blue">'Set libAsset = assetLib.AppearanceAssets.Item("ACADGen-082")</span>
+        
+        <span style="color:blue">' Copy the asset locally.</span>
+        Set localAsset = libAsset.CopyTo(asmDoc)
+    End If
+    On Error GoTo 0
+           
+    <span style="color:blue">' Have an occurrence selected.</span>
+    Dim occ As ComponentOccurrence
+    Set occ = ThisApplication.CommandManager.Pick(kAssemblyOccurrenceFilter, "Select an occurrence.")
+    
+    <span style="color:blue">' Assign the asset to the occurrence.</span>
+    occ.appearance = localAsset
+End Sub</pre>
+      </div>
+      <div id="iLogic" class="api-code">
+        <table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('iLogic_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="iLogic_code">    Dim asmDoc As AssemblyDocument
+    asmDoc = ThisApplication.ActiveDocument
+    
+    <span style="color:blue">' Get an appearance from the document.  To assign an appearance is must</span>
+    <span style="color:blue">' exist in the document.  This looks for a local appearance and if that</span>
+    <span style="color:blue">' fails it copies the appearance from a library to the document.</span>
+    Dim localAsset As Asset
+    On Error Resume Next
+    localAsset = asmDoc.Assets.Item("Bamboo")
+    If Err.Number &gt; 0 Then
+        On Error GoTo 0
+        
+        <span style="color:blue">' Failed to get the appearance in the document, so import it.</span>
+        
+        <span style="color:blue">' Get an asset library by name.  Either the displayed name (which</span>
+        <span style="color:blue">' can changed based on the current language) or the internal name</span>
+        <span style="color:blue">' (which is always the same) can be used.</span>
+        Dim assetLib As AssetLibrary
+        assetLib = ThisApplication.AssetLibraries.Item("Autodesk Appearance Library")
+        <span style="color:blue">'assetLib = ThisApplication.AssetLibraries.Item("314DE259-5443-4621-BFBD-1730C6CC9AE9")</span>
+        
+        <span style="color:blue">' Get an asset in the library.  Again, either the displayed name or the internal</span>
+        <span style="color:blue">' name can be used.</span>
+        Dim libAsset As Asset
+        libAsset = assetLib.AppearanceAssets.Item("Bamboo")
+        <span style="color:blue">'libAsset = assetLib.AppearanceAssets.Item("ACADGen-082")</span>
+        
+        <span style="color:blue">' Copy the asset locally.</span>
+        localAsset = libAsset.CopyTo(asmDoc)
+    End If
+    On Error GoTo 0
+           
+    <span style="color:blue">' Have an occurrence selected.</span>
+    Dim occ As ComponentOccurrence
+    occ = ThisApplication.CommandManager.Pick(kAssemblyOccurrenceFilter, "Select an occurrence.")
+    
+    <span style="color:blue">' Assign the asset to the occurrence.</span>
+    occ.appearance = localAsset</pre>
+      </div>
+    </div><br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(SetOccurrenceAppearance%20Sample%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

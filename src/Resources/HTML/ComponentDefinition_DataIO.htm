@@ -1,0 +1,118 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/ComponentDefinition_DataIO.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="ComponentDefinition_DataIO">
+    <meta name="description" content="ComponentDefinition.DataIO Property">
+    <meta name="topicid" content="ComponentDefinition_DataIO">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>ComponentDefinition.DataIO Property</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">ComponentDefinition.DataIO Property</h1>
+
+          Parent Object: <a href="ComponentDefinition.htm">ComponentDefinition</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Gets the object that directly deals with I/O to and from a storage-medium, including Streams(IStream).</p>
+    <h2 class="api">
+          Syntax
+        </h2>
+        
+            ComponentDefinition.<b>DataIO</b>() As <a href="DataIO.htm">DataIO</a>
+        
+    <h2 class="api">
+            Property Value
+          </h2>This is a read only property whose value is a <a href="DataIO.htm">DataIO</a>.<h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="WriteFlatPatternAsDXF_Sample.htm">Translate - Sheet Metal to DXF</a></td>
+        <td class="api-list">The sample code below writes a sheet metal file out as DXF. DWG is also supported. Use either the FLAT PATTERN DWG or FLAT PATTERN DXF formats.There are several optional arguments that can be specified as part of the format string. E.g. 'FLAT PATTERN DXF?TangentLayer=Tangents&amp;SimplifySplines=True'). Below are the names of these arguments and relevant default values. The output will use these values unless you override them as part of the input string.
+<table>
+<tr><td><b>Argument</b></td><td><b>Type</b></td><td><b>Default Value</b></td><td><b>Note</b></td></tr>
+<tr><td>TangentLayer</td><td>String</td><td>IV_TANGENT</td><td></td></tr>
+<tr><td>OuterProfileLayer</td><td>String</td><td>IV_OUTER_PROFILE</td><td></td></tr>
+<tr><td>ArcCentersLayer</td><td>String</td><td>IV_ARC_CENTERS</td><td></td></tr>
+<tr><td>InteriorProfilesLayer</td><td>String</td><td>IV_INTERIOR_PROFILES</td><td></td></tr>
+<tr><td>BendLayer</td><td>String</td><td>IV_BEND</td><td>BendUpLayer + BendDownLayer (legacy support)</td></tr>
+<tr><td>BendUpLayer</td><td>String</td><td>IV_BEND</td><td></td></tr>
+<tr><td>BendDownLayer</td><td>String</td><td>IV_BEND_DOWN</td><td></td></tr>
+<tr><td>ToolCenterLayer</td><td>String</td><td>IV_TOOL_CENTER</td><td>ToolCenterUpLayer + ToolCenterDownLayer (legacy support)</td></tr>
+<tr><td>ToolCenterUpLayer</td><td>String</td><td>IV_TOOL_CENTER</td><td></td></tr>
+<tr><td>ToolCenterDownLayer</td><td>String</td><td>IV_TOOL_CENTER_DOWN</td><td></td></tr>
+<tr><td>FeatureProfilesLayer</td><td>String</td><td>IV_FEATURE_PROFILES</td><td>FeatureProfilesUpLayer + FeatureProfilesDownLayer (legacy support)</td></tr>
+<tr><td>FeatureProfilesUpLayer</td><td>String</td><td>IV_FEATURE_PROFILES</td><td></td></tr>
+<tr><td>FeatureProfilesDownLayer</td><td>String</td><td>IV_FEATURE_PROFILES_DOWN</td><td></td></tr>
+<tr><td>AltRepFrontLayer</td><td>String</td><td>IV_ALTREP_FRONT</td><td></td></tr>
+<tr><td>AltRepBackLayer</td><td>String</td><td>IV_ALTREP_BACK</td><td></td></tr>
+<tr><td>UnconsumedSketchesLayer</td><td>String</td><td>IV_UNCONSUMED_SKETCHES</td><td></td></tr>
+<tr><td>UnconsumedSketchConstructionLayer</td><td>String</td><td>IV_UNCONSUMED_SKETCH_CONSTRUCTION</td><td></td></tr>
+<tr><td>TangentRollLinesLayer</td><td>String</td><td>IV_ROLL_TANGENT</td><td></td></tr>
+<tr><td>RollLinesLayer</td><td>String</td><td>IV_ROLL</td><td></td></tr>
+<tr><td>***Color</td><td>String</td><td></td><td>*** indicates name of layer from the argument column. RGB values separated by ;. Example: TangentLayerColor=255;0;0</td></tr>
+<tr><td>***LineType</td><td>Long</td><td></td><td>*** indicates name of layer from the argument column. Long value from LineTypeEnum. Example: TangentLayerLineType=37644</td></tr>
+<tr><td>***LineWeight</td><td>Double</td><td></td><td>*** indicates name of layer from the argument column. Value in centimeters. Example: TangentLayerLineWeight=.1016</td></tr>
+<tr><td>CustomizeFilename</td><td>String</td><td></td><td></td></tr>
+<tr><td>AcadVersion</td><td>String</td><td></td><td>2018, 2013, 2010, 2007, 2004, 2000, or R12 (for DXF only)</td></tr>
+<tr><td>SimplifySplines</td><td>Boolean</td><td>True</td><td>Enable spline replacement(by linear segments or arcs).</td></tr>
+<tr><td>SplineTolerance</td><td>Double</td><td>0.01</td><td>Chord tolerance for spline replacement</td></tr>
+<tr><td>AdvancedLegacyExport</td><td>Boolean</td><td>True</td><td></td></tr>
+<tr><td>MergeProfilesIntoPolyline</td><td>Boolean</td><td>False</td><td>Build a polyline of the exterior profiles</td></tr>
+<tr><td>RebaseGeometry</td><td>Boolean</td><td>False</td><td>Move geometry to 1st quadrant</td></tr>
+<tr><td>InvisibleLayers</td><td>String</td><td></td><td>List of layer names to make invisible, separated by ;</td></tr>
+<tr><td>TrimCenterlinesAtContour</td><td>Boolean</td><td>False</td><td>Trim the centerlines at contour.</td></tr>
+<tr><td>SimplifyAsTangentArcs</td><td>Boolean</td><td>False</td><td>True: Replace splines by tangent arcs. False: Replace splines by line segments. The SimplifySplines should be specified to True otherwise this option is ignored.</td></tr>
+</table></td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 4<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(ComponentDefinition.DataIO%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

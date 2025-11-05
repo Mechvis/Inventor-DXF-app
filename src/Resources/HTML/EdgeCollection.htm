@@ -1,0 +1,139 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/EdgeCollection.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="EdgeCollection">
+    <meta name="description" content="EdgeCollection Object">
+    <meta name="topicid" content="GUID-EdgeCollection">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>EdgeCollection Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">EdgeCollection Object
+			</h1>
+              Derived from: <a href="ObjectCollection.htm">ObjectCollection</a> Object
+            <br><h2 class="api">
+          Description
+        </h2>The EdgeCollection object provides access to all of the and EdgeCollection objects in a collection and provides methods to add Edge and EdgeCollection objects to the collection.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="EdgeCollection_Add.htm">Add</a></td>
+        <td class="api-list">Adds an object to the generic collection.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="EdgeCollection_Clear.htm">Clear</a></td>
+        <td class="api-list">Removes all objects from the generic collection.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="EdgeCollection_Remove.htm">Remove</a></td>
+        <td class="api-list">Method that removes the specified object from the generic collection.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="EdgeCollection_RemoveByObject.htm">RemoveByObject</a></td>
+        <td class="api-list">Method that removes the specified object from the generic object collection.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="EdgeCollection_CollectionType.htm">CollectionType</a></td>
+        <td class="api-list">Property that returns how the edge collection was constructed. Valid returns are kAllConcave, kAllConvex, kTangentiallyConnected, and kUndefined. This property is set when the EdgeCollection object is originally created. When the ConcaveEdges property of the SurfaceBody object is used, it is set to kAllConcave. When the ConvexEdges property of the SurfaceBody object is used, it is set to kAllConvex. When the TangentiallyConnectedEdges property of the Edge object is used, it is set to kTangentiallyConnected. When it is created using the CreateEdgeCollection method of the TransientObjects it is set to kUndefined. If an EdgeCollection has a collection type other than kUndefined and the contents are changed by adding or removing items from the collection, the CollectionType will be reset to kUndefined.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="EdgeCollection_Count.htm">Count</a></td>
+        <td class="api-list">Property that returns the number of items in this collection.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="EdgeCollection_Item.htm">Item</a></td>
+        <td class="api-list">Allows integer-indexed access to items in the collection.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="EdgeCollection_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="BendDefinition_Edges.htm">BendDefinition.Edges</a>, <a href="ChamferDefinition_ChamferedEdges.htm">ChamferDefinition.ChamferedEdges</a>, <a href="ContourFlangeDefinition_BendEdges.htm">ContourFlangeDefinition.BendEdges</a>, <a href="CornerChamferDefinition_CornerEdges.htm">CornerChamferDefinition.CornerEdges</a>, <a href="CornerDefinition_Edges.htm">CornerDefinition.Edges</a>, <a href="CornerRoundEdgeSet_Edges.htm">CornerRoundEdgeSet.Edges</a>, <a href="CornerRoundFeatures_GetEdgesFromFeature.htm">CornerRoundFeatures.GetEdgesFromFeature</a>, <a href="CosmeticWeldDefinition_Edges.htm">CosmeticWeldDefinition.Edges</a>, <a href="DerivedAssemblyDefinition_GetHolePatchingOptions.htm">DerivedAssemblyDefinition.GetHolePatchingOptions</a>, <a href="Edge_TangentiallyConnectedEdges.htm">Edge.TangentiallyConnectedEdges</a>, <a href="EdgeProxy_TangentiallyConnectedEdges.htm">EdgeProxy.TangentiallyConnectedEdges</a>, <a href="FaceDraftDefinition_FixedEdges.htm">FaceDraftDefinition.FixedEdges</a>, <a href="FilletConstantRadiusEdgeSet_Edges.htm">FilletConstantRadiusEdgeSet.Edges</a>, <a href="FilletRadiusEdgeSet_Edges.htm">FilletRadiusEdgeSet.Edges</a>, <a href="FilletVariableRadiusEdgeSet_Edges.htm">FilletVariableRadiusEdgeSet.Edges</a>, <a href="FlangeEdgeSet_Edges.htm">FlangeEdgeSet.Edges</a>, <a href="HemDefinition_Edges.htm">HemDefinition.Edges</a>, <a href="PartialChamferEdge_Edge.htm">PartialChamferEdge.Edge</a>, <a href="SurfaceBody_ConcaveEdges.htm">SurfaceBody.ConcaveEdges</a>, <a href="SurfaceBody_ConvexEdges.htm">SurfaceBody.ConvexEdges</a>, <a href="SurfaceBodyProxy_ConcaveEdges.htm">SurfaceBodyProxy.ConcaveEdges</a>, <a href="SurfaceBodyProxy_ConvexEdges.htm">SurfaceBodyProxy.ConvexEdges</a>, <a href="TransientObjects_CreateEdgeCollection.htm">TransientObjects.CreateEdgeCollection</a>, <a href="UnwrapDefinition_LinearResult.htm">UnwrapDefinition.LinearResult</a>, <a href="UnwrapDefinition_RigidResult.htm">UnwrapDefinition.RigidResult</a>, <a href="UnwrapDefinition_SeamEdges.htm">UnwrapDefinition.SeamEdges</a><h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BoundaryPatchFeatures_Add_Sample.htm">Delete Face, Boundary Patch and Stitch features</a></td>
+        <td class="api-list">Demonstrates creating Face, Boundary Patch and Stitch features.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="RipFeatures_Add_Sample.htm">Create sheet metal rip feature</a></td>
+        <td class="api-list">This sample demonstrates the creation of a rip sheet metal feature.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalFeatures_FlangeFeatures_Sample.htm">Create sheet metal face and flange features</a></td>
+        <td class="api-list">This sample demonstrates the creation of sheet metal face and flange features.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 5.3<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(EdgeCollection%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

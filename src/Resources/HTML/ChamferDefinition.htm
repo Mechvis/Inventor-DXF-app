@@ -1,0 +1,157 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/ChamferDefinition.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="ChamferDefinition">
+    <meta name="description" content="ChamferDefinition Object">
+    <meta name="topicid" content="GUID-ChamferDefinition">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>ChamferDefinition Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">ChamferDefinition Object
+			</h1><br><h2 class="api">
+          Description
+        </h2>The ChamferDefinition object is the base class that defines the variables for chamfer features<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ChamferDefinition_CreatePartialChamferEdges.htm">CreatePartialChamferEdges</a></td>
+        <td class="api-list">Create a new transient PartialChamferEdges collection object which can be used to define the partially chamfered edges info.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ChamferDefinition_Angle.htm">Angle</a></td>
+        <td class="api-list">Returns the parameter that controls the angle used for the chamfer feature. This is applicable when the DefinitionType is kDistanceAndAngle.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ChamferDefinition_Application.htm">Application</a></td>
+        <td class="api-list">Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ChamferDefinition_AutomaticEdgeChain.htm">AutomaticEdgeChain</a></td>
+        <td class="api-list">Gets whether or not to use all tangentially connected edges.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ChamferDefinition_ChamferedEdges.htm">ChamferedEdges</a></td>
+        <td class="api-list">Gets the collection of edges that are chamfered by this feature.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ChamferDefinition_CornerSetback.htm">CornerSetback</a></td>
+        <td class="api-list">Gets and sets whether a setback is to be applied to the chamfer feature.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ChamferDefinition_DefinitionType.htm">DefinitionType</a></td>
+        <td class="api-list">Gets the type of the definition object used to hold data for chamfer feature.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ChamferDefinition_Distance.htm">Distance</a></td>
+        <td class="api-list">Returns the parameter that controls the distance used for the chamfer feature. This is applicable when the DefinitionType is kDistance.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ChamferDefinition_DistanceOne.htm">DistanceOne</a></td>
+        <td class="api-list">Returns the parameter that controls the first distance used for the chamfer feature. This is applicable when the DefinitionType is kTwoDistances.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ChamferDefinition_DistanceTwo.htm">DistanceTwo</a></td>
+        <td class="api-list">Returns the parameter that controls the second distance used for the chamfer feature. This is applicable when the DefinitionType is kTwoDistances.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ChamferDefinition_Face.htm">Face</a></td>
+        <td class="api-list">Returns the face used to define the chamfer feature created using a distance and an angle or two distances.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ChamferDefinition_Parent.htm">Parent</a></td>
+        <td class="api-list">Property that returns the parent ChamferFeature of the definition.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ChamferDefinition_PartialChamferEdges.htm">PartialChamferEdges</a></td>
+        <td class="api-list">Gets and sets the PartialChamferEdges collection object which defines the partially chamfered edges info.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ChamferDefinition_PreserveAllFeatures.htm">PreserveAllFeatures</a></td>
+        <td class="api-list">Gets whether or not to preserve all features.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ChamferDefinition_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="ChamferFeature_Definition.htm">ChamferFeature.Definition</a>, <a href="ChamferFeatureProxy_Definition.htm">ChamferFeatureProxy.Definition</a>, <a href="CornerChamferDefinition_ChamferDefinition.htm">CornerChamferDefinition.ChamferDefinition</a>, <a href="PartialChamferEdge_Parent.htm">PartialChamferEdge.Parent</a><h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PartialChamferSample_Sample.htm">Partial Chamfer Sample</a></td>
+        <td class="api-list">This sample demonstrates how to edit a chamfer feature to set the partial chamfer on a chamfered edge.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 5.3<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(ChamferDefinition%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

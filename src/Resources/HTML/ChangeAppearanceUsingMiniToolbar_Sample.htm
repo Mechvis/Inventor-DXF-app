@@ -1,0 +1,901 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/ChangeAppearanceUsingMiniToolbar_Sample.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="ChangeAppearanceUsingMiniToolbar_Sample">
+    <meta name="description" content="Change color of part, features or faces Sample">
+    <meta name="topicid" content="ChangeAppearanceUsingMiniToolbar_Sample">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>Change color of part, features or faces</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body><script>
+          function copyCode(language) {
+          // Get the pre element for the specified language.
+          var preElement = document.getElementById(language);
+
+          // Get the text from the element and copy it to the clipboard.
+          var preText = preElement.innerText;
+
+          var isIE = /*@cc_on!@*/false || !!document.documentMode;
+
+          if (isIE)
+          {
+            window.clipboardData.setData('Text', preText);
+          }
+          else
+          {
+            navigator.clipboard.writeText(preText);
+          }
+
+          //alert("Code copied to clipboard");
+          }
+        </script><link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">Change color of part, features or faces</h1>
+    <h2 class="api">
+          Description
+        </h2>This sample demonstrates how to use MiniToolBar to change appearance color of part or features or faces.<h2 class="api">
+          Code Samples
+        </h2>
+    <div id="tabs">
+      <ul>
+        <li><a href="#VBA">VBA</a></li>
+        <li><a href="#iLogic">iLogic</a></li>
+      </ul>
+      <div id="VBA" class="api-code">You can either run below sample with an open part document or it will create a new part document.<table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('VBA_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="VBA_code"><span style="color:blue">' This sample demonstrates how to change colors using mini-toolbar</span>
+Sub ChangeAppearanceMiniToolbarSample()
+    Dim oDoc As PartDocument
+    If Not (ThisApplication.ActiveDocument Is Nothing) Then
+        If ThisApplication.ActiveDocument.DocumentType = kPartDocumentObject Then
+            If (MsgBox("Would you like to create new appearance assets with active document?", vbYesNo, "Autodesk Inventor Prompt") = vbYes) Then
+                Set oDoc = ThisApplication.ActiveDocument
+            Else
+                Set oDoc = ThisApplication.Documents.Add(kPartDocumentObject)
+        
+                <span style="color:blue">' Create a block</span>
+                Call CreateSolids(oDoc)
+            End If
+        End If
+    Else
+        Set oDoc = ThisApplication.Documents.Add(kPartDocumentObject)
+        
+        <span style="color:blue">' Create a block</span>
+        Call CreateSolids(oDoc)
+    End If
+        
+    <span style="color:blue">' Create seven appearances for use</span>
+    Call CreateColors(oDoc)
+    Dim oCamera As Camera
+    Set oCamera = oDoc.Views(1).Camera
+    
+    oCamera.Fit
+    oCamera.Apply
+    
+    Dim oMiniToolbarEvents As New clsColorChange
+    
+    Call oMiniToolbarEvents.Init(oDoc)
+
+End Sub
+
+Private Sub CreateSolids(oDoc As PartDocument)
+    Dim oSk As PlanarSketch
+    Set oSk = oDoc.ComponentDefinition.Sketches.Add(oDoc.ComponentDefinition.WorkPlanes(3))
+    
+    Call oSk.SketchLines.AddAsTwoPointRectangle(ThisApplication.TransientGeometry.CreatePoint2d(-2, -2), ThisApplication.TransientGeometry.CreatePoint2d(2, 2))
+    
+    Dim oProfile As Profile
+    Set oProfile = oSk.Profiles.AddForSolid
+    
+    Dim oBlockDef As ExtrudeDefinition
+    Set oBlockDef = oDoc.ComponentDefinition.Features.ExtrudeFeatures.CreateExtrudeDefinition(oProfile, kJoinOperation)
+    Call oBlockDef.SetDistanceExtent(4, kSymmetricExtentDirection)
+    Dim oBlock As ExtrudeFeature
+    Set oBlock = oDoc.ComponentDefinition.Features.ExtrudeFeatures.Add(oBlockDef)
+    
+    Set oSk = oDoc.ComponentDefinition.Sketches.Add(oBlock.EndFaces(1))
+    Call oSk.SketchCircles.AddByCenterRadius(ThisApplication.TransientGeometry.CreatePoint2d(12, 12), 2)
+    
+    Set oProfile = oSk.Profiles.AddForSolid
+    Dim oCylinderDef As ExtrudeDefinition, oCylinder As ExtrudeFeature
+    Set oCylinderDef = oDoc.ComponentDefinition.Features.ExtrudeFeatures.CreateExtrudeDefinition(oProfile, kNewBodyOperation)
+    Call oCylinderDef.SetDistanceExtent(4, kSymmetricExtentDirection)
+    Set oCylinder = oDoc.ComponentDefinition.Features.ExtrudeFeatures.Add(oCylinderDef)
+End Sub
+
+Private Sub CreateColors(oDoc As PartDocument)
+    Dim bCreateNewAppearance As Boolean: bCreateNewAppearance = False
+    
+    Dim oCreateColors As Transaction
+    Set oCreateColors = ThisApplication.TransactionManager.StartTransaction(oDoc, "Create custom colors")
+        On Error Resume Next
+        Dim oAsset As Asset, oColor As Color
+        Set oAsset = oDoc.Assets.Item("Red")
+        If Err Then
+            Set oAsset = oDoc.Assets.Add(kAssetTypeAppearance, "Generic", "Red", "Red")
+            <span style="color:blue">' Add Red</span>
+            Set oColor = ThisApplication.TransientObjects.CreateColor(255, 0, 0)
+            oAsset.Item("generic_diffuse").Value = oColor
+            bCreateNewAppearance = True
+            Err.Clear
+        End If
+        
+        Set oAsset = oDoc.Assets.Item("Orange")
+        If Err Then
+            Set oAsset = oDoc.Assets.Add(kAssetTypeAppearance, "Generic", "Orange", "Orange")
+            <span style="color:blue">' Add Orange</span>
+            Set oColor = ThisApplication.TransientObjects.CreateColor(255, 165, 0)
+            oAsset.Item("generic_diffuse").Value = oColor
+        
+            bCreateNewAppearance = True
+            Err.Clear
+        End If
+        
+        Set oAsset = oDoc.Assets.Item("Yellow")
+        If Err Then
+            Set oAsset = oDoc.Assets.Add(kAssetTypeAppearance, "Generic", "Yellow", "Yellow")
+            <span style="color:blue">' Add Yellow</span>
+            Set oColor = ThisApplication.TransientObjects.CreateColor(255, 255, 0)
+            oAsset.Item("generic_diffuse").Value = oColor
+        
+            bCreateNewAppearance = True
+            Err.Clear
+        End If
+
+        Set oAsset = oDoc.Assets.Item("Green")
+        If Err Then
+            Set oAsset = oDoc.Assets.Add(kAssetTypeAppearance, "Generic", "Green", "Green")
+            <span style="color:blue">' Add Green</span>
+            Set oColor = ThisApplication.TransientObjects.CreateColor(0, 255, 0)
+            oAsset.Item("generic_diffuse").Value = oColor
+        
+            bCreateNewAppearance = True
+            Err.Clear
+        End If
+
+        Set oAsset = oDoc.Assets.Item("Blue")
+        If Err Then
+            Set oAsset = oDoc.Assets.Add(kAssetTypeAppearance, "Generic", "Blue", "Blue")
+            <span style="color:blue">' Add Blue</span>
+            Set oColor = ThisApplication.TransientObjects.CreateColor(0, 0, 255)
+            oAsset.Item("generic_diffuse").Value = oColor
+        
+            bCreateNewAppearance = True
+            Err.Clear
+        End If
+  
+        Set oAsset = oDoc.Assets.Item("Indigo")
+        If Err Then
+            Set oAsset = oDoc.Assets.Add(kAssetTypeAppearance, "Generic", "Indigo", "Indigo")
+            <span style="color:blue">' Add Indigo</span>
+            Set oColor = ThisApplication.TransientObjects.CreateColor(75, 0, 130)
+            oAsset.Item("generic_diffuse").Value = oColor
+            bCreateNewAppearance = True
+            Err.Clear
+        End If
+
+        Set oAsset = oDoc.Assets.Item("Purple")
+        If Err Then
+            Set oAsset = oDoc.Assets.Add(kAssetTypeAppearance, "Generic", "Purple", "Purple")
+            <span style="color:blue">' Add Purple</span>
+            Set oColor = ThisApplication.TransientObjects.CreateColor(160, 32, 240)
+            oAsset.Item("generic_diffuse").Value = oColor
+        
+            bCreateNewAppearance = True
+            Err.Clear
+        End If
+        
+        If bCreateNewAppearance Then
+            oCreateColors.End
+        Else
+            oCreateColors.Abort
+        End If
+    
+End Sub
+
+<span style="color:blue">'*************************************************************</span>
+<span style="color:blue">' The declarations and functions below need to be copied into</span>
+<span style="color:blue">' a class module whose name is "clsColorChange".  The name</span>
+<span style="color:blue">' can be changed but you'll need to change the declaration in</span>
+<span style="color:blue">' the calling function "ChangeAppearanceMiniToolbarSample" to use the new name.</span>
+Private WithEvents m_MiniToolbar As MiniToolbar
+Private WithEvents m_Colors As MiniToolbarComboBox
+Private WithEvents m_Filter As MiniToolbarDropdown
+Private WithEvents m_Preview As MiniToolbarCheckBox
+Private m_PreviewColor As MiniToolbarCheckBox
+
+Private WithEvents oInteractionEvents As InteractionEvents
+Private WithEvents m_SelectEvents As SelectEvents
+Private m_ChangeColorTransaction As Transaction
+
+Private m_Doc As PartDocument
+Private m_DefaultColor As Asset
+
+Private bIsinteractionStarted As Boolean
+
+Private bNeedTransaction As Boolean
+Private bStop As Boolean
+
+Public Sub Init(oDoc As PartDocument)
+    Set m_Doc = oDoc
+    Set m_DefaultColor = m_Doc.ActiveAppearance
+    
+    <span style="color:blue">' Create interaction events</span>
+    Set oInteractionEvents = ThisApplication.CommandManager.CreateInteractionEvents
+    <span style="color:blue">'oInteractionEvents.InteractionDisabled = False</span>
+
+    Set m_SelectEvents = oInteractionEvents.SelectEvents
+    <span style="color:blue">'m_SelectEvents.ClearSelectionFilter</span>
+    <span style="color:blue">'m_SelectEvents.SingleSelectEnabled = False</span>
+    <span style="color:blue">'m_SelectEvents.Enabled = True</span>
+    
+    <span style="color:blue">' Create mini-tool bar for changing appearance</span>
+    Set m_MiniToolbar = oInteractionEvents.CreateMiniToolbar
+    Call InitiateMiniToolbar
+    
+    bStop = False
+    Set m_ChangeColorTransaction = ThisApplication.TransactionManager.StartTransaction(m_Doc, "Change Appearance")
+    
+    Do
+        ThisApplication.UserInterfaceManager.DoEvents
+    Loop Until bStop
+    
+End Sub
+
+Private Sub InitiateMiniToolbar()
+    m_MiniToolbar.ShowOK = True
+    m_MiniToolbar.ShowApply = True
+    m_MiniToolbar.ShowCancel = True
+    
+    Dim oControls As MiniToolbarControls
+    Set oControls = m_MiniToolbar.Controls
+    oControls.Item("MTB_Options").Visible = False
+        
+    Set m_Filter = m_MiniToolbar.Controls.AddDropdown("Filter", False, True, True, False)
+    Call m_Filter.AddItem("Part", "Part", "Filter_Part", False, False)
+    Call m_Filter.AddItem("Feature", "Feature", "Filter_Feature", False, False)
+    Call m_Filter.AddItem("Face", "Face", "Filter_Face", False, False)
+    
+    
+    Set m_Colors = oControls.AddComboBox("Colors", True, True, 50)
+    Call m_Colors.AddItem("Default", "Use default color", "Default", False)
+    Call m_Colors.AddItem("Red", "Red", "Red", False)
+    Call m_Colors.AddItem("Orange", "Orange", "Orange", False)
+    Call m_Colors.AddItem("Yellow", "Yellow", "Yellow", False)
+    Call m_Colors.AddItem("Green", "Green", "Green", False)
+    Call m_Colors.AddItem("Blue", "Blue", "Blue", False)
+    Call m_Colors.AddItem("Indigo", "Indigo", "Indigo", False)
+    Call m_Colors.AddItem("Purple", "Purple", "Purple", False)
+    
+    oControls.AddNewLine
+    
+    <span style="color:blue">' Specify if preview the color when hover a color item</span>
+    Set m_PreviewColor = m_MiniToolbar.Controls.AddCheckBox("PreviewColor", "Hover color preview", "Whether preview color when hover on it", True)
+    
+    <span style="color:blue">' Position the mini-tool bar to the top-left.</span>
+    Dim oPosition As Point2d
+    Set oPosition = ThisApplication.TransientGeometry.CreatePoint2d(0, 0)
+    
+    m_MiniToolbar.Visible = True
+    m_MiniToolbar.Position = oPosition
+End Sub
+
+Private Sub m_Colors_OnItemHoverStart(ByVal ListItem As MiniToolbarListItem)
+    <span style="color:blue">' Preview the color when hover on it.</span>
+    If m_PreviewColor.Checked Then
+        Call ChangeColor(ListItem.Text)
+    End If
+End Sub
+
+Private Sub m_Colors_OnSelect(ByVal ListItem As MiniToolbarListItem)
+    <span style="color:blue">' Check if the selected color is already used for the part/objects</span>
+    If m_Filter.SelectedItem.Text = "Part" Then
+        If m_Doc.ActiveAppearance.Name = ListItem.Text Then
+            bNeedTransaction = False
+        Else
+            bNeedTransaction = True
+        End If
+    Else
+        bNeedTransaction = True
+    End If
+    
+    Call ChangeColor(ListItem.Text)
+    
+End Sub
+<span style="color:blue">' Change filter for assigning color</span>
+Private Sub m_Filter_OnSelect(ByVal ListItem As MiniToolbarListItem)
+    If ThisApplication.TransactionManager.CurrentTransaction.DisplayName = "Change Appearance" Then
+        ThisApplication.TransactionManager.CurrentTransaction.Abort
+    End If
+    
+    Set m_ChangeColorTransaction = ThisApplication.TransactionManager.StartTransaction(m_Doc, "Change Appearance")
+    
+    Select Case ListItem.Text
+        Case "Part"
+            m_Doc.SelectSet.Clear
+            m_SelectEvents.ResetSelections
+            m_SelectEvents.ClearSelectionFilter
+            m_SelectEvents.AddSelectionFilter kPartDefaultFilter
+            oInteractionEvents.SetCursor kCursorTypeDefault
+        Case "Feature"
+            m_Doc.SelectSet.Clear
+             
+            m_SelectEvents.ResetSelections
+            m_SelectEvents.ClearSelectionFilter
+            m_SelectEvents.AddSelectionFilter kPartFeatureFilter
+             
+            If Not bIsinteractionStarted Then
+                oInteractionEvents.Start
+                bIsinteractionStarted = True
+            End If
+        Case "Face"
+            m_Doc.SelectSet.Clear
+            m_SelectEvents.ResetSelections
+            m_SelectEvents.ClearSelectionFilter
+            m_SelectEvents.AddSelectionFilter kPartFaceFilter
+            If Not bIsinteractionStarted Then
+                oInteractionEvents.Start
+                bIsinteractionStarted = True
+            End If
+            
+    End Select
+    m_Doc.Views(1).Update
+    Call ChangeColor(ListItem.Text)
+    
+End Sub
+
+Private Sub m_MiniToolbar_OnApply()
+    
+    If (m_Filter.SelectedItem.Text = "Feature" Or m_Filter.SelectedItem.Text = "Face") And (m_SelectEvents.SelectedEntities.Count = 0) Then
+        m_ChangeColorTransaction.Abort
+        m_Doc.Views(1).Update
+        Set m_ChangeColorTransaction = ThisApplication.TransactionManager.StartTransaction(m_Doc, "Change Appearance")
+        Exit Sub
+    Else
+        If bNeedTransaction Then <span style="color:blue">' Change color style</span>
+            Call ChangeColor(m_Colors.SelectedItem.Text)
+            m_ChangeColorTransaction.End
+        Else <span style="color:blue">' If no change to the color style</span>
+            m_ChangeColorTransaction.Abort
+        End If
+        
+        <span style="color:blue">' Clear current selection for Feature and Face filter.</span>
+        If (m_Filter.SelectedItem.Text = "Feature" Or m_Filter.SelectedItem.Text = "Face") Then
+            m_Doc.SelectSet.Clear
+            m_SelectEvents.ResetSelections
+        End If
+    End If
+
+    Set m_ChangeColorTransaction = ThisApplication.TransactionManager.StartTransaction(m_Doc, "Change Appearance")
+End Sub
+
+Private Sub m_MiniToolbar_OnCancel()
+    bStop = True
+    If ThisApplication.TransactionManager.CurrentTransaction Is m_ChangeColorTransaction Then
+        m_ChangeColorTransaction.Abort
+    End If
+    m_SelectEvents.AddSelectionFilter kPartDefaultFilter
+    If bIsinteractionStarted Then oInteractionEvents.Stop
+    m_Doc.Views(1).Update
+    
+End Sub
+
+Private Sub m_MiniToolbar_OnOK()
+    bStop = True
+    If bNeedTransaction Then <span style="color:blue">' Change color</span>
+        Call ChangeColor(m_Colors.SelectedItem.Text)
+        m_ChangeColorTransaction.End
+    Else <span style="color:blue">' If no change to the color style</span>
+        m_ChangeColorTransaction.Abort
+    End If
+End Sub
+ 
+Private Sub oInteractionEvents_OnTerminate()
+  
+    If ThisApplication.TransactionManager.CurrentTransaction Is m_ChangeColorTransaction Then
+        m_ChangeColorTransaction.Abort
+    End If
+    If bIsinteractionStarted Then
+        oInteractionEvents.Stop
+    End If
+    m_Doc.Views(1).Update
+End Sub
+
+Private Sub ChangeColor(sColor As String)
+        Debug.Print "Passed in:" & sColor
+        If m_Filter.SelectedItem.Text = "Part" Then
+            Select Case sColor
+                Case "Default"
+                    m_Doc.ActiveAppearance = m_DefaultColor
+                Case "Red", "Orange", "Yellow", "Green", "Blue", "Indigo", "Purple"
+                    m_Doc.ActiveAppearance = m_Doc.AppearanceAssets.Item(sColor)
+            End Select
+        ElseIf m_Filter.SelectedItem.Text = "Feature" Then
+            If m_SelectEvents.SelectedEntities.Count Then
+                Dim oFeature As PartFeature, oSelectedObj As Object
+                
+                For Each oSelectedObj In m_SelectEvents.SelectedEntities
+                    If InStr(1, TypeName(oSelectedObj), "Feature") Then
+                        Set oFeature = oSelectedObj
+                        
+                        Select Case sColor <span style="color:blue">'m_Colors.SelectedItem.Text</span>
+                            Case "Default"
+                                oFeature.Appearance = m_DefaultColor
+                            Case "Red", "Orange", "Yellow", "Green", "Blue", "Indigo", "Purple"
+                                oFeature.Appearance = m_Doc.AppearanceAssets.Item(sColor)
+                        End Select
+                    End If
+                Next
+            End If
+        ElseIf m_Filter.SelectedItem.Text = "Face" Then
+            If m_SelectEvents.SelectedEntities.Count Then
+                Dim oFace As Face
+                
+                For Each oSelectedObj In m_SelectEvents.SelectedEntities
+                    If InStr(1, TypeName(oSelectedObj), "Face") Then
+                        Set oFace = oSelectedObj
+                        
+                        Select Case sColor
+                            Case "Default"
+                                oFace.Appearance = m_DefaultColor
+                            Case "Red", "Orange", "Yellow", "Green", "Blue", "Indigo", "Purple"
+                                oFace.Appearance = m_Doc.AppearanceAssets.Item(sColor)
+                        End Select
+                    End If
+                Next
+            End If
+        End If
+End Sub</pre>
+      </div>
+      <div id="iLogic" class="api-code">You can either run below sample with an open part document or it will create a new part document.<table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('iLogic_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="iLogic_code"><span style="color:blue">' This sample demonstrates how to change colors using mini-toolbar</span>
+Sub Main
+    Dim oDoc As PartDocument
+    If Not (ThisApplication.ActiveDocument Is Nothing) Then
+        If ThisApplication.ActiveDocument.DocumentType = kPartDocumentObject Then
+            If (MsgBox("Would you like to create new appearance assets with active document?", vbYesNo, "Autodesk Inventor Prompt") = vbYes) Then
+                oDoc = ThisApplication.ActiveDocument
+            Else
+                oDoc = ThisApplication.Documents.Add(kPartDocumentObject)
+        
+                <span style="color:blue">' Create a block</span>
+                Call CreateSolids(oDoc)
+            End If
+        End If
+    Else
+        oDoc = ThisApplication.Documents.Add(kPartDocumentObject)
+        
+        <span style="color:blue">' Create a block</span>
+        Call CreateSolids(oDoc)
+    End If
+        
+    <span style="color:blue">' Create seven appearances for use</span>
+    Call CreateColors(oDoc)
+    Dim oCamera As Camera
+    oCamera = oDoc.Views(1).Camera
+    
+    oCamera.Fit
+    oCamera.Apply
+    
+    Dim oMiniToolbarEvents As New clsColorChange
+    
+    Call oMiniToolbarEvents.Init(oDoc, ThisApplication, Logger)
+
+End Sub
+
+Private Sub CreateSolids(oDoc As PartDocument)
+    Dim oSk As PlanarSketch
+    oSk = oDoc.ComponentDefinition.Sketches.Add(oDoc.ComponentDefinition.WorkPlanes(3))
+    
+    Call oSk.SketchLines.AddAsTwoPointRectangle(ThisApplication.TransientGeometry.CreatePoint2d(-2, -2), ThisApplication.TransientGeometry.CreatePoint2d(2, 2))
+    
+    Dim oProfile As Profile
+    oProfile = oSk.Profiles.AddForSolid
+    
+    Dim oBlockDef As ExtrudeDefinition
+    oBlockDef = oDoc.ComponentDefinition.Features.ExtrudeFeatures.CreateExtrudeDefinition(oProfile, kJoinOperation)
+    Call oBlockDef.SetDistanceExtent(4, kSymmetricExtentDirection)
+    Dim oBlock As ExtrudeFeature
+    oBlock = oDoc.ComponentDefinition.Features.ExtrudeFeatures.Add(oBlockDef)
+    
+    oSk = oDoc.ComponentDefinition.Sketches.Add(oBlock.EndFaces(1))
+    Call oSk.SketchCircles.AddByCenterRadius(ThisApplication.TransientGeometry.CreatePoint2d(12, 12), 2)
+    
+    oProfile = oSk.Profiles.AddForSolid
+    Dim oCylinderDef As ExtrudeDefinition, oCylinder As ExtrudeFeature
+    oCylinderDef = oDoc.ComponentDefinition.Features.ExtrudeFeatures.CreateExtrudeDefinition(oProfile, kNewBodyOperation)
+    Call oCylinderDef.SetDistanceExtent(4, kSymmetricExtentDirection)
+    oCylinder = oDoc.ComponentDefinition.Features.ExtrudeFeatures.Add(oCylinderDef)
+End Sub
+
+Private Sub CreateColors(oDoc As PartDocument)
+    Dim bCreateNewAppearance As Boolean: bCreateNewAppearance = False
+    
+    Dim oCreateColors As Transaction
+    oCreateColors = ThisApplication.TransactionManager.StartTransaction(oDoc, "Create custom colors")
+        On Error Resume Next
+        Dim oAsset As Asset, oColor As Color
+        oAsset = oDoc.Assets.Item("Red")
+        If Err.Number &gt; 0 Then
+            oAsset = oDoc.Assets.Add(kAssetTypeAppearance, "Generic", "Red", "Red")
+            <span style="color:blue">' Add Red</span>
+            oColor = ThisApplication.TransientObjects.CreateColor(255, 0, 0)
+            oAsset.Item("generic_diffuse").Value = oColor
+            bCreateNewAppearance = True
+            Err.Clear
+        End If
+        
+        oAsset = oDoc.Assets.Item("Orange")
+        If Err.Number &gt; 0 Then
+            oAsset = oDoc.Assets.Add(kAssetTypeAppearance, "Generic", "Orange", "Orange")
+            <span style="color:blue">' Add Orange</span>
+            oColor = ThisApplication.TransientObjects.CreateColor(255, 165, 0)
+            oAsset.Item("generic_diffuse").Value = oColor
+        
+            bCreateNewAppearance = True
+            Err.Clear
+        End If
+        
+        oAsset = oDoc.Assets.Item("Yellow")
+        If Err.Number &gt; 0 Then
+            oAsset = oDoc.Assets.Add(kAssetTypeAppearance, "Generic", "Yellow", "Yellow")
+            <span style="color:blue">' Add Yellow</span>
+            oColor = ThisApplication.TransientObjects.CreateColor(255, 255, 0)
+            oAsset.Item("generic_diffuse").Value = oColor
+        
+            bCreateNewAppearance = True
+            Err.Clear
+        End If
+
+        oAsset = oDoc.Assets.Item("Green")
+        If Err.Number &gt; 0 Then
+            oAsset = oDoc.Assets.Add(kAssetTypeAppearance, "Generic", "Green", "Green")
+            <span style="color:blue">' Add Green</span>
+            oColor = ThisApplication.TransientObjects.CreateColor(0, 255, 0)
+            oAsset.Item("generic_diffuse").Value = oColor
+        
+            bCreateNewAppearance = True
+            Err.Clear
+        End If
+
+        oAsset = oDoc.Assets.Item("Blue")
+        If Err.Number &gt; 0 Then
+            oAsset = oDoc.Assets.Add(kAssetTypeAppearance, "Generic", "Blue", "Blue")
+            <span style="color:blue">' Add Blue</span>
+            oColor = ThisApplication.TransientObjects.CreateColor(0, 0, 255)
+            oAsset.Item("generic_diffuse").Value = oColor
+        
+            bCreateNewAppearance = True
+            Err.Clear
+        End If
+  
+        oAsset = oDoc.Assets.Item("Indigo")
+        If Err.Number &gt; 0 Then
+            oAsset = oDoc.Assets.Add(kAssetTypeAppearance, "Generic", "Indigo", "Indigo")
+            <span style="color:blue">' Add Indigo</span>
+            oColor = ThisApplication.TransientObjects.CreateColor(75, 0, 130)
+            oAsset.Item("generic_diffuse").Value = oColor
+            bCreateNewAppearance = True
+            Err.Clear
+        End If
+
+        oAsset = oDoc.Assets.Item("Purple")
+        If Err.Number &gt; 0 Then
+            oAsset = oDoc.Assets.Add(kAssetTypeAppearance, "Generic", "Purple", "Purple")
+            <span style="color:blue">' Add Purple</span>
+            oColor = ThisApplication.TransientObjects.CreateColor(160, 32, 240)
+            oAsset.Item("generic_diffuse").Value = oColor
+        
+            bCreateNewAppearance = True
+            Err.Clear
+        End If
+        
+        If bCreateNewAppearance Then
+            oCreateColors.End
+        Else
+            oCreateColors.Abort
+        End If
+    
+End Sub
+
+Class clsColorChange
+	Private ThisApplication As Inventor.Application
+	Private Logger As Object
+	Private WithEvents m_MiniToolbar As MiniToolbar
+	Private WithEvents m_Colors As MiniToolbarComboBox
+	Private WithEvents m_Filter As MiniToolbarDropdown
+	Private WithEvents m_Preview As MiniToolbarCheckBox
+	Private m_PreviewColor As MiniToolbarCheckBox
+	
+	Private WithEvents oInteractionEvents As InteractionEvents
+	Private WithEvents m_SelectEvents As SelectEvents
+	Private m_ChangeColorTransaction As Transaction
+	
+	Private m_Doc As PartDocument
+	Private m_DefaultColor As Asset
+	
+	Private bIsinteractionStarted As Boolean
+	
+	Private bNeedTransaction As Boolean
+	Private bStop As Boolean
+	
+	Public Sub Init(oDoc As PartDocument, oApp As Inventor.Application, oLogger As Object)
+		ThisApplication = oApp
+		Logger = oLogger
+		
+		m_Doc = oDoc
+		m_DefaultColor = m_Doc.ActiveAppearance
+		
+		<span style="color:blue">' Create interaction events</span>
+		oInteractionEvents = ThisApplication.CommandManager.CreateInteractionEvents
+		<span style="color:blue">'oInteractionEvents.InteractionDisabled = False</span>
+	
+		m_SelectEvents = oInteractionEvents.SelectEvents
+		<span style="color:blue">'m_SelectEvents.ClearSelectionFilter</span>
+		<span style="color:blue">'m_SelectEvents.SingleSelectEnabled = False</span>
+		<span style="color:blue">'m_SelectEvents.Enabled = True</span>
+		
+		<span style="color:blue">' Create mini-tool bar for changing appearance</span>
+		m_MiniToolbar = oInteractionEvents.CreateMiniToolbar
+		Call InitiateMiniToolbar
+		
+		bStop = False
+		m_ChangeColorTransaction = ThisApplication.TransactionManager.StartTransaction(m_Doc, "Change Appearance")
+		
+		Do
+			ThisApplication.UserInterfaceManager.DoEvents
+		Loop Until bStop
+		
+	End Sub
+	
+	Private Sub InitiateMiniToolbar()
+		m_MiniToolbar.ShowOK = True
+		m_MiniToolbar.ShowApply = True
+		m_MiniToolbar.ShowCancel = True
+		
+		Dim oControls As MiniToolbarControls
+		oControls = m_MiniToolbar.Controls
+		oControls.Item("MTB_Options").Visible = False
+			
+		m_Filter = m_MiniToolbar.Controls.AddDropdown("Filter", False, True, True, False)
+		Call m_Filter.AddItem("Part", "Part", "Filter_Part", False, False)
+		Call m_Filter.AddItem("Feature", "Feature", "Filter_Feature", False, False)
+		Call m_Filter.AddItem("Face", "Face", "Filter_Face", False, False)
+		
+		
+		m_Colors = oControls.AddComboBox("Colors", True, True, 50)
+		Call m_Colors.AddItem("Default", "Use default color", "Default", False)
+		Call m_Colors.AddItem("Red", "Red", "Red", False)
+		Call m_Colors.AddItem("Orange", "Orange", "Orange", False)
+		Call m_Colors.AddItem("Yellow", "Yellow", "Yellow", False)
+		Call m_Colors.AddItem("Green", "Green", "Green", False)
+		Call m_Colors.AddItem("Blue", "Blue", "Blue", False)
+		Call m_Colors.AddItem("Indigo", "Indigo", "Indigo", False)
+		Call m_Colors.AddItem("Purple", "Purple", "Purple", False)
+		
+		oControls.AddNewLine
+		
+		<span style="color:blue">' Specify if preview the color when hover a color item</span>
+		m_PreviewColor = m_MiniToolbar.Controls.AddCheckBox("PreviewColor", "Hover color preview", "Whether preview color when hover on it", True)
+		
+		<span style="color:blue">' Position the mini-tool bar to the top-left.</span>
+		Dim oPosition As Point2d
+		oPosition = ThisApplication.TransientGeometry.CreatePoint2d(0, 0)
+		
+		m_MiniToolbar.Visible = True
+		m_MiniToolbar.Position = oPosition
+	End Sub
+	
+	Private Sub m_Colors_OnItemHoverStart(ByVal ListItem As MiniToolbarListItem)
+		<span style="color:blue">' Preview the color when hover on it.</span>
+		If m_PreviewColor.Checked Then
+			Call ChangeColor(ListItem.Text)
+		End If
+	End Sub
+	
+	Private Sub m_Colors_OnSelect(ByVal ListItem As MiniToolbarListItem)
+		<span style="color:blue">' Check if the selected color is already used for the part/objects</span>
+		If m_Filter.SelectedItem.Text = "Part" Then
+			If m_Doc.ActiveAppearance.Name = ListItem.Text Then
+				bNeedTransaction = False
+			Else
+				bNeedTransaction = True
+			End If
+		Else
+			bNeedTransaction = True
+		End If
+		
+		Call ChangeColor(ListItem.Text)
+		
+	End Sub
+	<span style="color:blue">' Change filter for assigning color</span>
+	Private Sub m_Filter_OnSelect(ByVal ListItem As MiniToolbarListItem)
+		If ThisApplication.TransactionManager.CurrentTransaction.DisplayName = "Change Appearance" Then
+			ThisApplication.TransactionManager.CurrentTransaction.Abort
+		End If
+		
+		m_ChangeColorTransaction = ThisApplication.TransactionManager.StartTransaction(m_Doc, "Change Appearance")
+		
+		Select Case ListItem.Text
+			Case "Part"
+				m_Doc.SelectSet.Clear
+				m_SelectEvents.ResetSelections
+				m_SelectEvents.ClearSelectionFilter
+				m_SelectEvents.AddSelectionFilter(kPartDefaultFilter)
+				oInteractionEvents.SetCursor(kCursorTypeDefault)
+			Case "Feature"
+				m_Doc.SelectSet.Clear
+				 
+				m_SelectEvents.ResetSelections
+				m_SelectEvents.ClearSelectionFilter
+				m_SelectEvents.AddSelectionFilter(kPartFeatureFilter)
+				 
+				If Not bIsinteractionStarted Then
+					oInteractionEvents.Start
+					bIsinteractionStarted = True
+				End If
+			Case "Face"
+				m_Doc.SelectSet.Clear
+				m_SelectEvents.ResetSelections
+				m_SelectEvents.ClearSelectionFilter
+				m_SelectEvents.AddSelectionFilter(kPartFaceFilter)
+				If Not bIsinteractionStarted Then
+					oInteractionEvents.Start
+					bIsinteractionStarted = True
+				End If
+				
+		End Select
+		m_Doc.Views(1).Update
+		Call ChangeColor(ListItem.Text)
+		
+	End Sub
+	
+	Private Sub m_MiniToolbar_OnApply()
+		
+		If (m_Filter.SelectedItem.Text = "Feature" Or m_Filter.SelectedItem.Text = "Face") And (m_SelectEvents.SelectedEntities.Count = 0) Then
+			m_ChangeColorTransaction.Abort
+			m_Doc.Views(1).Update
+			m_ChangeColorTransaction = ThisApplication.TransactionManager.StartTransaction(m_Doc, "Change Appearance")
+			Exit Sub
+		Else
+			If bNeedTransaction Then <span style="color:blue">' Change color style</span>
+				Call ChangeColor(m_Colors.SelectedItem.Text)
+				m_ChangeColorTransaction.End
+			Else <span style="color:blue">' If no change to the color style</span>
+				m_ChangeColorTransaction.Abort
+			End If
+			
+			<span style="color:blue">' Clear current selection for Feature and Face filter.</span>
+			If (m_Filter.SelectedItem.Text = "Feature" Or m_Filter.SelectedItem.Text = "Face") Then
+				m_Doc.SelectSet.Clear
+				m_SelectEvents.ResetSelections
+			End If
+		End If
+	
+		m_ChangeColorTransaction = ThisApplication.TransactionManager.StartTransaction(m_Doc, "Change Appearance")
+	End Sub
+	
+	Private Sub m_MiniToolbar_OnCancel()
+		bStop = True
+		If ThisApplication.TransactionManager.CurrentTransaction Is m_ChangeColorTransaction Then
+			m_ChangeColorTransaction.Abort
+		End If
+		m_SelectEvents.AddSelectionFilter(kPartDefaultFilter)
+		If bIsinteractionStarted Then oInteractionEvents.Stop
+		m_Doc.Views(1).Update
+		
+	End Sub
+	
+	Private Sub m_MiniToolbar_OnOK()
+		bStop = True
+		If bNeedTransaction Then <span style="color:blue">' Change color</span>
+			Call ChangeColor(m_Colors.SelectedItem.Text)
+			m_ChangeColorTransaction.End
+		Else <span style="color:blue">' If no change to the color style</span>
+			m_ChangeColorTransaction.Abort
+		End If
+	End Sub
+	 
+	Private Sub oInteractionEvents_OnTerminate()
+	  
+		If ThisApplication.TransactionManager.CurrentTransaction Is m_ChangeColorTransaction Then
+			m_ChangeColorTransaction.Abort
+		End If
+		If bIsinteractionStarted Then
+			oInteractionEvents.Stop
+		End If
+		m_Doc.Views(1).Update
+	End Sub
+	
+	Private Sub ChangeColor(sColor As String)
+			Logger.Info("Passed in:" & sColor)
+	
+			If m_Filter.SelectedItem.Text = "Part" Then
+				Select Case sColor
+					Case "Default"
+						m_Doc.ActiveAppearance = m_DefaultColor
+					Case "Red", "Orange", "Yellow", "Green", "Blue", "Indigo", "Purple"
+						m_Doc.ActiveAppearance = m_Doc.AppearanceAssets.Item(sColor)
+				End Select
+			ElseIf m_Filter.SelectedItem.Text = "Feature" Then
+				If m_SelectEvents.SelectedEntities.Count Then
+					Dim oFeature As PartFeature, oSelectedObj As Object
+					
+					For Each oSelectedObj In m_SelectEvents.SelectedEntities
+						If InStr(1, TypeName(oSelectedObj), "Feature") Then
+							oFeature = oSelectedObj
+							
+							Select Case sColor <span style="color:blue">'m_Colors.SelectedItem.Text</span>
+								Case "Default"
+									oFeature.Appearance = m_DefaultColor
+								Case "Red", "Orange", "Yellow", "Green", "Blue", "Indigo", "Purple"
+									oFeature.Appearance = m_Doc.AppearanceAssets.Item(sColor)
+							End Select
+						End If
+					Next
+				End If
+			ElseIf m_Filter.SelectedItem.Text = "Face" Then
+				If m_SelectEvents.SelectedEntities.Count Then
+					Dim oFace As Face
+					
+					For Each oSelectedObj In m_SelectEvents.SelectedEntities
+						If InStr(1, TypeName(oSelectedObj), "Face") Then
+							oFace = oSelectedObj
+							
+							Select Case sColor
+								Case "Default"
+									oFace.Appearance = m_DefaultColor
+								Case "Red", "Orange", "Yellow", "Green", "Blue", "Indigo", "Purple"
+									oFace.Appearance = m_Doc.AppearanceAssets.Item(sColor)
+							End Select
+						End If
+					Next
+				End If
+			End If
+	End Sub
+End Class</pre>
+      </div>
+    </div><br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(ChangeAppearanceUsingMiniToolbar%20Sample%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

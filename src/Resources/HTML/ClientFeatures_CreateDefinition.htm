@@ -1,0 +1,100 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/ClientFeatures_CreateDefinition.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="ClientFeatures_CreateDefinition">
+    <meta name="description" content="ClientFeatures.CreateDefinition Method">
+    <meta name="topicid" content="ClientFeatures_CreateDefinition">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>ClientFeatures.CreateDefinition Method</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">ClientFeatures.CreateDefinition Method</h1>
+
+          Parent Object: <a href="ClientFeatures.htm">ClientFeatures</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Method that creates a new ClientFeatureDefinition. The newly created ClientFeatureDefinition is returned.</p>
+    <h2 class="api">
+          Syntax
+        </h2>
+        
+            ClientFeatures.<b>CreateDefinition</b>( [<b><i>FeatureType</i></b>] As String, [<b><i>StartElement</i></b>] As Variant, [<b><i>EndElement</i></b>] As Variant, [<b><i>FeatureInputs</i></b>] As Variant ) As <a href="ClientFeatureDefinition.htm">ClientFeatureDefinition</a>
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">FeatureType</td>
+        <td class="api-list">String</td>
+        <td class="api-list">Optional input string that defines the naming of the client feature in the browser. If not specified, a default string 'ClientFeature' is used.<br /><br /> This is an optional argument whose default value is "".</td>
+      </tr>
+      <tr>
+        <td class="api-list">StartElement</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional input object that specifies the first element to be composited in this feature. This object must correspond to a node in the browser. This can be a PartFeature, DerivedPartComponent, DerivedAssemblyComponent, iFeatureComponent, Sketch, Sketch3D, WorkPoint, WorkPlane, or a WorkAxis.<br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+      <tr>
+        <td class="api-list">EndElement</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional input object that specifies the last element to be composited in this feature. This object must correspond to a node in the browser. An error occurs if the EndElement is not at the same level as the StartElement in the browser tree. If the StartElement argument is specified and this argument is not specified, the feature just composites the StartElement. If both StartElement and EndElement arguments are specified and they are the same, the feature just composites the StartElement. This argument is ignored if the StartElement argument is not specified. This can be a PartFeature, DerivedPartComponent, DerivedAssemblyComponent, iFeatureComponent, Sketch, Sketch3D, WorkPoint, WorkPlane, or a WorkAxis.<br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+      <tr>
+        <td class="api-list">FeatureInputs</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional input ObjectCollection that specifies the inputs use to create this feature. The inputs are currently limited to 2D & 3D sketches. The inputs must be above the feature in the browser. When sketches are specified as inputs, the behavior is the same as a regular Inventor feature (such as Extrude) consuming a sketch. The sketch appears under the client feature and can be 'shared' by the user so it is usable in other downstream features. The input objects are not 'strongly owned' by the client feature. i.e. when the client feature is deleted, the user has the option to retain the feature inputs. The feature inputs do not highlight with the client feature.<br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2008<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(ClientFeatures.CreateDefinition%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,286 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/BrightnessAdjustSample_Sample.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="BrightnessAdjustSample_Sample">
+    <meta name="description" content="Adjust the brightness of lighting Sample">
+    <meta name="topicid" content="BrightnessAdjustSample_Sample">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>Adjust the brightness of lighting</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body><script>
+          function copyCode(language) {
+          // Get the pre element for the specified language.
+          var preElement = document.getElementById(language);
+
+          // Get the text from the element and copy it to the clipboard.
+          var preText = preElement.innerText;
+
+          var isIE = /*@cc_on!@*/false || !!document.documentMode;
+
+          if (isIE)
+          {
+            window.clipboardData.setData('Text', preText);
+          }
+          else
+          {
+            navigator.clipboard.writeText(preText);
+          }
+
+          //alert("Code copied to clipboard");
+          }
+        </script><link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">Adjust the brightness of lighting</h1>
+    <h2 class="api">
+          Description
+        </h2>This sample demonstrates how to adjust lighting brightness with mini-toolbar slider.<h2 class="api">
+          Code Samples
+        </h2>
+    <div id="tabs">
+      <ul>
+        <li><a href="#VBA">VBA</a></li>
+        <li><a href="#iLogic">iLogic</a></li>
+      </ul>
+      <div id="VBA" class="api-code">
+        <table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('VBA_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="VBA_code">Sub BrightnessAdjustSample()
+    <span style="color:blue">' Open a part/assembly document before running below code</span>
+    If Not (ThisApplication.ActiveDocument Is Nothing) Then
+        If ThisApplication.ActiveDocument.DocumentType = kPartDocumentObject Or ThisApplication.ActiveDocument.DocumentType = kAssemblyDocumentObject Then
+            Dim ocls As New clsBrightnessAdjust
+            ocls.Init
+        Else
+            MsgBox "Please activate/open a part or assembly for the demo!"
+        End If
+    Else
+        MsgBox "Please open a part or assembly document first for the demo!"
+    End If
+End Sub
+
+<span style="color:blue">'*************************************************************</span>
+<span style="color:blue">' The declarations and functions below need to be copied into</span>
+<span style="color:blue">' a class module whose name is "clsBrightnessAdjust".  The name</span>
+<span style="color:blue">' can be changed but you'll need to change the declaration in</span>
+<span style="color:blue">' the calling function "BrightnessAdjustSample" to use the new name.</span>
+Private WithEvents m_MiniToolbar As MiniToolbar
+Private WithEvents m_Brightness As MiniToolbarSlider
+Private WithEvents m_AppEvents As ApplicationEvents
+
+Private m_BrightAdjustTransaction As Transaction
+Private m_LastBrightnessVal As Double
+
+Private m_Doc As Document
+Private m_ActiveLightingStyle As LightingStyle
+Private bStop As Boolean
+Private bInitSliderVal As Boolean
+
+Public Sub Init()
+    Set m_AppEvents = ThisApplication.ApplicationEvents
+    
+    Set m_Doc = ThisApplication.ActiveDocument
+    Set m_ActiveLightingStyle = m_Doc.ActiveLightingStyle
+    
+    Set m_MiniToolbar = ThisApplication.CommandManager.CreateMiniToolbar
+    Set m_Brightness = m_MiniToolbar.Controls.AddSlider("Light_Brightness", "Brightness", "Adjust light brightness", kDoubleType, 1, 0, 9, 10, 100)
+    m_Brightness.AutoHide = True
+    
+    <span style="color:blue">' Hide the Apply button.</span>
+    m_MiniToolbar.ShowApply = False
+    
+    <span style="color:blue">' Display the minitoobar and place it to the top-left of the view.</span>
+    m_MiniToolbar.Visible = True
+    m_MiniToolbar.Position = ThisApplication.TransientGeometry.CreatePoint2d(0, 0)
+    
+    bInitSliderVal = True
+    
+    <span style="color:blue">' Remember the last brightness value</span>
+    m_LastBrightnessVal = m_ActiveLightingStyle.Brightness
+    
+    bStop = False
+    
+    Set m_BrightAdjustTransaction = ThisApplication.TransactionManager.StartTransaction(m_Doc, "Adjust brightness")
+    
+    Do
+        If bInitSliderVal Then
+            m_Brightness.Value = m_ActiveLightingStyle.Brightness
+        End If
+        ThisApplication.UserInterfaceManager.DoEvents
+    Loop Until bStop
+    
+End Sub
+    
+Private Sub m_Brightness_OnValueChange()
+    <span style="color:blue">' Ignore this event when the MiniToolbar value change is initialized by switching active LightingStyle</span>
+    If Not bInitSliderVal Then
+        <span style="color:blue">'bChangedBySlider = True</span>
+        m_ActiveLightingStyle.Brightness = m_Brightness.Value
+    End If
+    bInitSliderVal = False
+    m_Doc.Views(1).Update
+    
+End Sub
+
+<span style="color:blue">' Cancel the brightness change</span>
+Private Sub m_MiniToolbar_OnCancel()
+    bStop = True
+    m_BrightAdjustTransaction.Abort
+    m_Doc.Views(1).Update
+End Sub
+
+<span style="color:blue">' If the brightness is changed, update the LightingStyle for this value.</span>
+Private Sub m_MiniToolbar_OnOK()
+    bStop = True
+        
+    If m_LastBrightnessVal = m_ActiveLightingStyle.Brightness Then
+        m_BrightAdjustTransaction.Abort
+        m_Doc.Views(1).Update
+    Else
+        m_BrightAdjustTransaction.End
+        m_Doc.Views(1).Update
+    End If
+End Sub</pre>
+      </div>
+      <div id="iLogic" class="api-code">
+        <table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('iLogic_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="iLogic_code">Sub Main
+    <span style="color:blue">' Open a part/assembly document before running below code</span>
+    If Not (ThisApplication.ActiveDocument Is Nothing) Then
+        If ThisApplication.ActiveDocument.DocumentType = kPartDocumentObject Or ThisApplication.ActiveDocument.DocumentType = kAssemblyDocumentObject Then
+            Dim ocls As New clsBrightnessAdjust
+			
+            ocls.Init(ThisApplication)
+        Else
+            MsgBox("Please activate/open a part or assembly for the demo!")
+        End If
+    Else
+        MsgBox("Please open a part or assembly document first for the demo!")
+    End If
+End Sub
+
+Class clsBrightnessAdjust
+	Private WithEvents m_MiniToolbar As MiniToolbar
+	Private WithEvents m_Brightness As MiniToolbarSlider
+	Private WithEvents m_AppEvents As ApplicationEvents
+	
+	Private m_BrightAdjustTransaction As Transaction
+	Private m_LastBrightnessVal As Double
+	
+	Private m_Doc As Document
+	Private m_ActiveLightingStyle As LightingStyle
+	Private bStop As Boolean
+	Private bInitSliderVal As Boolean
+	Private ThisApplication As Inventor.Application
+	
+	Public Sub Init(oApp As Inventor.Application)
+		ThisApplication = oApp
+	    m_AppEvents = ThisApplication.ApplicationEvents
+	    
+	    m_Doc = ThisApplication.ActiveDocument
+	    m_ActiveLightingStyle = m_Doc.ActiveLightingStyle
+	    
+	    m_MiniToolbar = ThisApplication.CommandManager.CreateMiniToolbar
+	    m_Brightness = m_MiniToolbar.Controls.AddSlider("Light_Brightness", "Brightness", "Adjust light brightness", kDoubleType, 1, 0, 9, 10, 100)
+	    m_Brightness.AutoHide = True
+	    
+	    <span style="color:blue">' Hide the Apply button.</span>
+	    m_MiniToolbar.ShowApply = False
+	    
+	    <span style="color:blue">' Display the minitoobar and place it to the top-left of the view.</span>
+	    m_MiniToolbar.Visible = True
+	    m_MiniToolbar.Position = ThisApplication.TransientGeometry.CreatePoint2d(0, 0)
+	    
+	    bInitSliderVal = True
+	    
+	    <span style="color:blue">' Remember the last brightness value</span>
+	    m_LastBrightnessVal = m_ActiveLightingStyle.Brightness
+	    
+	    bStop = False
+	    
+	    m_BrightAdjustTransaction = ThisApplication.TransactionManager.StartTransaction(m_Doc, "Adjust brightness")
+	    
+	    Do
+	        If bInitSliderVal Then
+	            m_Brightness.Value = m_ActiveLightingStyle.Brightness
+	        End If
+	        ThisApplication.UserInterfaceManager.DoEvents
+	    Loop Until bStop
+	    
+	End Sub
+	    
+	Private Sub m_Brightness_OnValueChange() Handles m_Brightness.OnValueChange
+	    <span style="color:blue">' Ignore this event when the MiniToolbar value change is initialized by switching active LightingStyle</span>
+	    If Not bInitSliderVal Then
+	        <span style="color:blue">'bChangedBySlider = True</span>
+	        m_ActiveLightingStyle.Brightness = m_Brightness.Value
+	    End If
+	    bInitSliderVal = False
+	    m_Doc.Views(1).Update
+	    
+	End Sub
+	
+	<span style="color:blue">' Cancel the brightness change</span>
+	Private Sub m_MiniToolbar_OnCancel() Handles m_MiniToolbar.OnCancel
+	    bStop = True
+	    m_BrightAdjustTransaction.Abort
+	    m_Doc.Views(1).Update
+	End Sub
+	
+	<span style="color:blue">' If the brightness is changed, update the LightingStyle for this value.</span>
+	Private Sub m_MiniToolbar_OnOK() Handles m_MiniToolbar.OnOK
+	    bStop = True
+	        
+	    If m_LastBrightnessVal = m_ActiveLightingStyle.Brightness Then
+	        m_BrightAdjustTransaction.Abort
+	        m_Doc.Views(1).Update
+	    Else
+	        m_BrightAdjustTransaction.End
+	        m_Doc.Views(1).Update
+	    End If
+	End Sub
+End Class</pre>
+      </div>
+    </div><br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(BrightnessAdjustSample%20Sample%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,204 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/NonParametricBaseFeatures_AddByDefinition_Sample.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="NonParametricBaseFeatures_AddByDefinition_Sample">
+    <meta name="description" content="Associative body copy Sample">
+    <meta name="topicid" content="NonParametricBaseFeatures_AddByDefinition_Sample">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>Associative body copy</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body><script>
+          function copyCode(language) {
+          // Get the pre element for the specified language.
+          var preElement = document.getElementById(language);
+
+          // Get the text from the element and copy it to the clipboard.
+          var preText = preElement.innerText;
+
+          var isIE = /*@cc_on!@*/false || !!document.documentMode;
+
+          if (isIE)
+          {
+            window.clipboardData.setData('Text', preText);
+          }
+          else
+          {
+            navigator.clipboard.writeText(preText);
+          }
+
+          //alert("Code copied to clipboard");
+          }
+        </script><link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">Associative body copy</h1>
+    <h2 class="api">
+          Description
+        </h2>The following sample demonstrates copying bodies (associatively and non-associatively) across parts in an assembly.<h2 class="api">
+          Code Samples
+        </h2>
+    <div id="tabs">
+      <ul>
+        <li><a href="#VBA">VBA</a></li>
+        <li><a href="#iLogic">iLogic</a></li>
+      </ul>
+      <div id="VBA" class="api-code">Before running the sample, create an assembly with two parts in it. The sample copies the body from the first part into the second part.<table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('VBA_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="VBA_code">Sub AssociativeBodyCopy()
+    <span style="color:blue">' Set a reference to the active assembly document.</span>
+    Dim oAssemblyDoc As AssemblyDocument
+    Set oAssemblyDoc = ThisApplication.ActiveDocument
+
+    Dim oAssemblyDef As AssemblyComponentDefinition
+    Set oAssemblyDef = oAssemblyDoc.ComponentDefinition
+
+    Dim oOccurrence1 As ComponentOccurrence
+    Set oOccurrence1 = oAssemblyDef.Occurrences.Item(1)
+
+    Dim oPartDef1 As PartComponentDefinition
+    Set oPartDef1 = oOccurrence1.Definition
+
+    Dim oOccurrence2 As ComponentOccurrence
+    Set oOccurrence2 = oAssemblyDef.Occurrences.Item(2)
+
+    Dim oPartDef2 As PartComponentDefinition
+    Set oPartDef2 = oOccurrence2.Definition
+
+    <span style="color:blue">' Get the source solid body from the first part.</span>
+    Dim oSourceBody As SurfaceBody
+    Set oSourceBody = oPartDef1.SurfaceBodies.Item(1)
+
+    Dim oSourceBodyProxy As SurfaceBodyProxy
+    Call oOccurrence1.CreateGeometryProxy(oSourceBody, oSourceBodyProxy)
+
+    <span style="color:blue">' Create an associative surface base feature in the second part.</span>
+    Dim oFeatureDef1 As NonParametricBaseFeatureDefinition
+    Set oFeatureDef1 = oPartDef2.Features.NonParametricBaseFeatures.CreateDefinition
+
+    Dim oCollection As ObjectCollection
+    Set oCollection = ThisApplication.TransientObjects.CreateObjectCollection
+
+    oCollection.Add oSourceBodyProxy
+
+    oFeatureDef1.BRepEntities = oCollection
+    oFeatureDef1.OutputType = kSurfaceOutputType
+    oFeatureDef1.TargetOccurrence = oOccurrence2
+    oFeatureDef1.IsAssociative = True
+
+    Dim oBaseFeature1 As NonParametricBaseFeature
+    Set oBaseFeature1 = oPartDef2.Features.NonParametricBaseFeatures.AddByDefinition(oFeatureDef1)
+
+    <span style="color:blue">' Create a non-associative solid base feature in the second part.</span>
+    Dim oFeatureDef2 As NonParametricBaseFeatureDefinition
+    Set oFeatureDef2 = oPartDef2.Features.NonParametricBaseFeatures.CreateDefinition
+
+    oFeatureDef2.BRepEntities = oCollection
+    oFeatureDef2.OutputType = kSolidOutputType
+    oFeatureDef2.TargetOccurrence = oOccurrence2
+
+    Dim oBaseFeature2 As NonParametricBaseFeature
+    Set oBaseFeature2 = oPartDef2.Features.NonParametricBaseFeatures.AddByDefinition(oFeatureDef2)
+
+    oAssemblyDoc.Update
+End Sub</pre>
+      </div>
+      <div id="iLogic" class="api-code">Before running the sample, create an assembly with two parts in it. The sample copies the body from the first part into the second part.<table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('iLogic_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="iLogic_code">    <span style="color:blue">' Set a reference to the active assembly document.</span>
+    Dim oAssemblyDoc As AssemblyDocument
+    oAssemblyDoc = ThisApplication.ActiveDocument
+
+    Dim oAssemblyDef As AssemblyComponentDefinition
+    oAssemblyDef = oAssemblyDoc.ComponentDefinition
+
+    Dim oOccurrence1 As ComponentOccurrence
+    oOccurrence1 = oAssemblyDef.Occurrences.Item(1)
+
+    Dim oPartDef1 As PartComponentDefinition
+    oPartDef1 = oOccurrence1.Definition
+
+    Dim oOccurrence2 As ComponentOccurrence
+    oOccurrence2 = oAssemblyDef.Occurrences.Item(2)
+
+    Dim oPartDef2 As PartComponentDefinition
+    oPartDef2 = oOccurrence2.Definition
+
+    <span style="color:blue">' Get the source solid body from the first part.</span>
+    Dim oSourceBody As SurfaceBody
+    oSourceBody = oPartDef1.SurfaceBodies.Item(1)
+
+    Dim oSourceBodyProxy As SurfaceBodyProxy
+    Call oOccurrence1.CreateGeometryProxy(oSourceBody, oSourceBodyProxy)
+
+    <span style="color:blue">' Create an associative surface base feature in the second part.</span>
+    Dim oFeatureDef1 As NonParametricBaseFeatureDefinition
+    oFeatureDef1 = oPartDef2.Features.NonParametricBaseFeatures.CreateDefinition
+
+    Dim oCollection As ObjectCollection
+    oCollection = ThisApplication.TransientObjects.CreateObjectCollection
+
+    oCollection.Add(oSourceBodyProxy)
+
+    oFeatureDef1.BRepEntities = oCollection
+    oFeatureDef1.OutputType = kSurfaceOutputType
+    oFeatureDef1.TargetOccurrence = oOccurrence2
+    oFeatureDef1.IsAssociative = True
+
+    Dim oBaseFeature1 As NonParametricBaseFeature
+    oBaseFeature1 = oPartDef2.Features.NonParametricBaseFeatures.AddByDefinition(oFeatureDef1)
+
+    <span style="color:blue">' Create a non-associative solid base feature in the second part.</span>
+    Dim oFeatureDef2 As NonParametricBaseFeatureDefinition
+    oFeatureDef2 = oPartDef2.Features.NonParametricBaseFeatures.CreateDefinition
+
+    oFeatureDef2.BRepEntities = oCollection
+    oFeatureDef2.OutputType = kSolidOutputType
+    oFeatureDef2.TargetOccurrence = oOccurrence2
+
+    Dim oBaseFeature2 As NonParametricBaseFeature
+    oBaseFeature2 = oPartDef2.Features.NonParametricBaseFeatures.AddByDefinition(oFeatureDef2)
+
+    oAssemblyDoc.Update</pre>
+      </div>
+    </div><br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(NonParametricBaseFeatures_AddByDefinition%20Sample%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

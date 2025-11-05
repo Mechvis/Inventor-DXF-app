@@ -1,0 +1,248 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/TransientBRepRuledSurf1_Sample.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="TransientBRepRuledSurf1_Sample">
+    <meta name="description" content="Transient B-Rep Ruled Surface with Lines Sample">
+    <meta name="topicid" content="TransientBRepRuledSurf1_Sample">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>Transient B-Rep Ruled Surface with Lines</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body><script>
+          function copyCode(language) {
+          // Get the pre element for the specified language.
+          var preElement = document.getElementById(language);
+
+          // Get the text from the element and copy it to the clipboard.
+          var preText = preElement.innerText;
+
+          var isIE = /*@cc_on!@*/false || !!document.documentMode;
+
+          if (isIE)
+          {
+            window.clipboardData.setData('Text', preText);
+          }
+          else
+          {
+            navigator.clipboard.writeText(preText);
+          }
+
+          //alert("Code copied to clipboard");
+          }
+        </script><link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">Transient B-Rep Ruled Surface with Lines</h1>
+    <h2 class="api">
+          Description
+        </h2>Demonstrate creating a transient ruled surface.  This sample uses all straight line segments for each of the sections. A part document must be open.<h2 class="api">
+          Code Samples
+        </h2>
+    <div id="tabs">
+      <ul>
+        <li><a href="#VBA">VBA</a></li>
+        <li><a href="#iLogic">iLogic</a></li>
+      </ul>
+      <div id="VBA" class="api-code">To use this sample a part must be active.<table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('VBA_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="VBA_code">Public Sub RuledSurf()
+    <span style="color:blue">' Get the transient B-Rep and Geometry objects.</span>
+    Dim tBRep As TransientBRep
+    Set tBRep = ThisApplication.TransientBRep
+    
+    Dim tg As TransientGeometry
+    Set tg = ThisApplication.TransientGeometry
+    
+    <span style="color:blue">' Create a new surface body definition.</span>
+    Dim bodyDef As SurfaceBodyDefinition
+    Set bodyDef = tBRep.CreateSurfaceBodyDefinition
+    
+    <span style="color:blue">' Add a lump, shell, and wire.</span>
+    Dim lumpDef As LumpDefinition
+    Set lumpDef = bodyDef.LumpDefinitions.Add
+    
+    Dim shellDef As FaceShellDefinition
+    Set shellDef = lumpDef.FaceShellDefinitions.Add
+    
+    Dim wireDef As WireDefinition
+    Set wireDef = shellDef.WireDefinitions.Add
+    
+    <span style="color:blue">' Create coordinate points and use those to create vertex definitions.</span>
+    Dim pnts(2) As Point
+    Set pnts(0) = tg.CreatePoint(0, 0, 0)
+    Set pnts(1) = tg.CreatePoint(10, 3, 0)
+    Set pnts(2) = tg.CreatePoint(20, 0, 0)
+
+    Dim vertexDefs(2) As VertexDefinition
+    Set vertexDefs(0) = bodyDef.VertexDefinitions.Add(pnts(0))
+    Set vertexDefs(1) = bodyDef.VertexDefinitions.Add(pnts(1))
+    Set vertexDefs(2) = bodyDef.VertexDefinitions.Add(pnts(2))
+    
+    <span style="color:blue">' Create two wire edges, passing through the three vertices.</span>
+    Call wireDef.WireEdgeDefinitions.Add(vertexDefs(0), vertexDefs(1), tg.CreateLineSegment(pnts(0), pnts(1)))
+    Call wireDef.WireEdgeDefinitions.Add(vertexDefs(1), vertexDefs(2), tg.CreateLineSegment(pnts(1), pnts(2)))
+    
+    <span style="color:blue">' Create a second wire definition.</span>
+    Dim wireDef2 As WireDefinition
+    Set wireDef2 = shellDef.WireDefinitions.Add
+    
+    <span style="color:blue">' Create coordinate points and use those to create vertex definitions.</span>
+    Set pnts(0) = tg.CreatePoint(-5, 0, 10)
+    Set pnts(1) = tg.CreatePoint(10, 6, 10)
+    Set pnts(2) = tg.CreatePoint(25, 0, 10)
+
+    Set vertexDefs(0) = bodyDef.VertexDefinitions.Add(pnts(0))
+    Set vertexDefs(1) = bodyDef.VertexDefinitions.Add(pnts(1))
+    Set vertexDefs(2) = bodyDef.VertexDefinitions.Add(pnts(2))
+    
+    <span style="color:blue">' Create two edges, passing through the three vertices.</span>
+    Call wireDef2.WireEdgeDefinitions.Add(vertexDefs(0), vertexDefs(1), tg.CreateLineSegment(pnts(0), pnts(1)))
+    Call wireDef2.WireEdgeDefinitions.Add(vertexDefs(1), vertexDefs(2), tg.CreateLineSegment(pnts(1), pnts(2)))
+    
+    <span style="color:blue">' Create a body using the defined wires.</span>
+    Dim errors As NameValueMap
+    Set errors = ThisApplication.TransientObjects.CreateNameValueMap
+    Dim body1 As SurfaceBody
+    Set body1 = bodyDef.CreateTransientSurfaceBody(errors)
+    
+    <span style="color:blue">' Create a ruled surface between the two wire bodies.</span>
+    Dim ruled As SurfaceBody
+    Set ruled = tBRep.CreateRuledSurface(body1.Wires.Item(1), body1.Wires.Item(2))
+    
+    <span style="color:blue">' Get the part component definition of the active document.</span>
+    Dim partDoc As PartDocument
+    Set partDoc = ThisApplication.ActiveDocument
+    Dim partDef As PartComponentDefinition
+    Set partDef = partDoc.ComponentDefinition
+    
+    <span style="color:blue">' Create a base body feature of the transient body.</span>
+    Dim baseBody As NonParametricBaseFeature
+    Set baseBody = partDef.Features.NonParametricBaseFeatures.Add(ruled)
+    
+    <span style="color:blue">' Change the result work surface so it's not translucent.</span>
+    baseBody.SurfaceBodies.Item(1).Parent.Translucent = False
+    
+    ThisApplication.ActiveView.Fit
+End Sub</pre>
+      </div>
+      <div id="iLogic" class="api-code">To use this sample a part must be active.<table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('iLogic_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="iLogic_code">    <span style="color:blue">' Get the transient B-Rep and Geometry objects.</span>
+    Dim tBRep As TransientBRep
+    tBRep = ThisApplication.TransientBRep
+    
+    Dim tg As TransientGeometry
+    tg = ThisApplication.TransientGeometry
+    
+    <span style="color:blue">' Create a new surface body definition.</span>
+    Dim bodyDef As SurfaceBodyDefinition
+    bodyDef = tBRep.CreateSurfaceBodyDefinition
+    
+    <span style="color:blue">' Add a lump, shell, and wire.</span>
+    Dim lumpDef As LumpDefinition
+    lumpDef = bodyDef.LumpDefinitions.Add
+    
+    Dim shellDef As FaceShellDefinition
+    shellDef = lumpDef.FaceShellDefinitions.Add
+    
+    Dim wireDef As WireDefinition
+    wireDef = shellDef.WireDefinitions.Add
+    
+    <span style="color:blue">' Create coordinate points and use those to create vertex definitions.</span>
+    Dim pnts(2) As Point
+    pnts(0) = tg.CreatePoint(0, 0, 0)
+    pnts(1) = tg.CreatePoint(10, 3, 0)
+    pnts(2) = tg.CreatePoint(20, 0, 0)
+
+    Dim vertexDefs(2) As VertexDefinition
+    vertexDefs(0) = bodyDef.VertexDefinitions.Add(pnts(0))
+    vertexDefs(1) = bodyDef.VertexDefinitions.Add(pnts(1))
+    vertexDefs(2) = bodyDef.VertexDefinitions.Add(pnts(2))
+    
+    <span style="color:blue">' Create two wire edges, passing through the three vertices.</span>
+    Call wireDef.WireEdgeDefinitions.Add(vertexDefs(0), vertexDefs(1), tg.CreateLineSegment(pnts(0), pnts(1)))
+    Call wireDef.WireEdgeDefinitions.Add(vertexDefs(1), vertexDefs(2), tg.CreateLineSegment(pnts(1), pnts(2)))
+    
+    <span style="color:blue">' Create a second wire definition.</span>
+    Dim wireDef2 As WireDefinition
+    wireDef2 = shellDef.WireDefinitions.Add
+    
+    <span style="color:blue">' Create coordinate points and use those to create vertex definitions.</span>
+    pnts(0) = tg.CreatePoint(-5, 0, 10)
+    pnts(1) = tg.CreatePoint(10, 6, 10)
+    pnts(2) = tg.CreatePoint(25, 0, 10)
+
+    vertexDefs(0) = bodyDef.VertexDefinitions.Add(pnts(0))
+    vertexDefs(1) = bodyDef.VertexDefinitions.Add(pnts(1))
+    vertexDefs(2) = bodyDef.VertexDefinitions.Add(pnts(2))
+    
+    <span style="color:blue">' Create two edges, passing through the three vertices.</span>
+    Call wireDef2.WireEdgeDefinitions.Add(vertexDefs(0), vertexDefs(1), tg.CreateLineSegment(pnts(0), pnts(1)))
+    Call wireDef2.WireEdgeDefinitions.Add(vertexDefs(1), vertexDefs(2), tg.CreateLineSegment(pnts(1), pnts(2)))
+    
+    <span style="color:blue">' Create a body using the defined wires.</span>
+    Dim errors As NameValueMap
+    errors = ThisApplication.TransientObjects.CreateNameValueMap
+    Dim body1 As SurfaceBody
+    body1 = bodyDef.CreateTransientSurfaceBody(errors)
+    
+    <span style="color:blue">' Create a ruled surface between the two wire bodies.</span>
+    Dim ruled As SurfaceBody
+    ruled = tBRep.CreateRuledSurface(body1.Wires.Item(1), body1.Wires.Item(2))
+    
+    <span style="color:blue">' Get the part component definition of the active document.</span>
+    Dim partDoc As PartDocument
+    partDoc = ThisApplication.ActiveDocument
+    Dim partDef As PartComponentDefinition
+    partDef = partDoc.ComponentDefinition
+    
+    <span style="color:blue">' Create a base body feature of the transient body.</span>
+    Dim baseBody As NonParametricBaseFeature
+    baseBody = partDef.Features.NonParametricBaseFeatures.Add(ruled)
+    
+    <span style="color:blue">' Change the result work surface so it's not translucent.</span>
+    baseBody.SurfaceBodies.Item(1).Parent.Translucent = False
+    
+    ThisApplication.ActiveView.Fit</pre>
+      </div>
+    </div><br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(TransientBRepRuledSurf1%20Sample%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

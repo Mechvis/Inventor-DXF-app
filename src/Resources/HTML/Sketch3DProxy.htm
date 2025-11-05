@@ -1,0 +1,276 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/Sketch3DProxy.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="Sketch3DProxy">
+    <meta name="description" content="Sketch3DProxy Object">
+    <meta name="topicid" content="GUID-Sketch3DProxy">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>Sketch3DProxy Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">Sketch3DProxy Object
+			</h1>
+              Derived from: <a href="Sketch3D.htm">Sketch3D</a> Object
+            <br><h2 class="api">
+          Description
+        </h2>This is an assembly-context proxy object derived from its native definition-context object.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch3DProxy_Delete.htm">Delete</a></td>
+        <td class="api-list">Method that deletes the 3D sketch. This method will fail in the cases where the sketch is active, and when there are dependents on the sketch. In the cases where other geometry, besides a feature, is dependent on the sketch, the dependent geometry will be deleted or modified.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch3DProxy_Edit.htm">Edit</a></td>
+        <td class="api-list">Method that causes the Sketch environment to be invoked with this sketch available for interactive edit.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch3DProxy_ExitEdit.htm">ExitEdit</a></td>
+        <td class="api-list">Method that causes the Sketch environment to be closed and the user interface to return to the previous environment. This is equivalent to the Return command. This method is only valid in the case where this sketch is open for edit within the user interface. Calling this method in other cases will not do anything.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch3DProxy_GetReferenceKey.htm">GetReferenceKey</a></td>
+        <td class="api-list">Method that generates and returns the reference key for this entity.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch3DProxy_Include.htm">Include</a></td>
+        <td class="api-list">Method that creates a new sketch entity by copying other entities into the sketch.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch3DProxy_SetEndOfPart.htm">SetEndOfPart</a></td>
+        <td class="api-list">Method that repositions the end-of-part marker relative to the object this method is called from. The argument defines if the end-of-part marker will be positioned just before or just after the object. If the object is contained within another object and is not in the top level of the browser, the positioning of the marker will be relative to the top-level object the calling object is contained within. An example of this case is a sketch that has not been shared and has been consumed by a feature. Another example is a nested work feature.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch3DProxy_Solve.htm">Solve</a></td>
+        <td class="api-list">Method that causes the sketch to solve.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch3DProxy_Application.htm">Application</a></td>
+        <td class="api-list">Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch3DProxy_AttributeSets.htm">AttributeSets</a></td>
+        <td class="api-list">Property that returns the AttributeSets collection object associated with this object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch3DProxy_CheckSumValue.htm">CheckSumValue</a></td>
+        <td class="api-list">Gets sketch checksum value.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch3DProxy_Consumed.htm">Consumed</a></td>
+        <td class="api-list">Gets whether the 3D Sketch is consumed or not.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch3DProxy_ContainingOccurrence.htm">ContainingOccurrence</a></td>
+        <td class="api-list">Property that returns the ComponentOccurrence that the native object is being referenced through. The returned occurrence is the containing occurrence.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch3DProxy_DeferUpdates.htm">DeferUpdates</a></td>
+        <td class="api-list">Gets and sets whether to defer the solving of the sketch.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch3DProxy_Dependents.htm">Dependents</a></td>
+        <td class="api-list">Property that returns a collection of the objects that are dependent on the 3D sketch. Examples of objects that can be returned are profiles, features, work features, other sketches, and assembly constraints.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch3DProxy_DimensionConstraints3D.htm">DimensionConstraints3D</a></td>
+        <td class="api-list">Property that returns a collection of all dimension constraints on the 3D sketch.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch3DProxy_DimensionsVisible.htm">DimensionsVisible</a></td>
+        <td class="api-list">Gets and sets whether the dimensions on the sketch are visible.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch3DProxy_DisabledActionTypes.htm">DisabledActionTypes</a></td>
+        <td class="api-list">Gets and sets the action types valid for this sketch.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch3DProxy_Exported.htm">Exported</a></td>
+        <td class="api-list">Read-write property that gets and sets whether the object is exported. Objects must be marked for export in order for them to be derived.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch3DProxy_GeometricConstraints3D.htm">GeometricConstraints3D</a></td>
+        <td class="api-list">Property that returns a collection of all geometric constraints on the 3D sketch.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch3DProxy_HasReferenceComponent.htm">HasReferenceComponent</a></td>
+        <td class="api-list">Property that specifies if the object was created as the result of a derived part.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch3DProxy_HealthStatus.htm">HealthStatus</a></td>
+        <td class="api-list">Property that returns an enum indicating the current state of the object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch3DProxy_HelicalCurves.htm">HelicalCurves</a></td>
+        <td class="api-list">Gets the HelicalCurves collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch3DProxy_IntersectionCurves.htm">IntersectionCurves</a></td>
+        <td class="api-list">Read-only property that returns the IntersectionCurves collection object.&nbsp;This collection provides access to the existing intersection curves in the sketch and provides functionality to create new intersection curves.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch3DProxy_IsOwnedByFeature.htm">IsOwnedByFeature</a></td>
+        <td class="api-list">Property that returns whether this object is owned by a feature. If True, the OwnedBy property returns the owning feature.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch3DProxy_Name.htm">Name</a></td>
+        <td class="api-list">Gets and sets name of the 3D sketch.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch3DProxy_NativeObject.htm">NativeObject</a></td>
+        <td class="api-list">Gets the object in the context of the definition instead of the containing assembly.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch3DProxy_OnFaceCurves.htm">OnFaceCurves</a></td>
+        <td class="api-list">Gets the 3D Sketch OnFaceCurves collection Object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch3DProxy_OverrideColor.htm">OverrideColor</a></td>
+        <td class="api-list">Specifies the override color, if any, for this sketch.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch3DProxy_OwnedBy.htm">OwnedBy</a></td>
+        <td class="api-list">Read-only property that returns the client feature that owns this object.&nbsp;This property returns Nothing if the IsOwnedByFeature property returns False.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch3DProxy_Parent.htm">Parent</a></td>
+        <td class="api-list">Property that returns the parent of the object. This will return the parent PartComponentDefinition.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch3DProxy_Profiles3D.htm">Profiles3D</a></td>
+        <td class="api-list">Property that returns the Profiles3D collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch3DProxy_ProjectToSurfaceCurves.htm">ProjectToSurfaceCurves</a></td>
+        <td class="api-list">Read-only property that returns the ProjectToSurfaceCurves collection object. This object provides access to all the existing ProjectToSurfaceCurve objects in the sketch and also provides methods to create new ProjectToSurfaceCurve objects.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch3DProxy_ReferenceComponent.htm">ReferenceComponent</a></td>
+        <td class="api-list">Property that returns the ReferenceComponent that resulted in the creation of this feature.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch3DProxy_ReferencedEntity.htm">ReferencedEntity</a></td>
+        <td class="api-list">Property that returns the referenced 3D sketch, if there is one. Currently this property always returns 'Nothing'; it was implemented to support future functionality.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch3DProxy_Shared.htm">Shared</a></td>
+        <td class="api-list">Gets and sets whether the sketch is shared or not.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch3DProxy_SilhouetteCurves.htm">SilhouetteCurves</a></td>
+        <td class="api-list">Gets the SilhouetteCurve collection Object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch3DProxy_SketchArcs3D.htm">SketchArcs3D</a></td>
+        <td class="api-list">Property that returns the SketchArcs3D collection object. This collection provides access to the existing arcs and bends in the sketch and provides functionality to create new bends.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch3DProxy_SketchCircles3D.htm">SketchCircles3D</a></td>
+        <td class="api-list">Property that returns the SketchCircles3D collection object. This collection provides access to the existing circles in the sketch.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch3DProxy_SketchControlPointSplines3D.htm">SketchControlPointSplines3D</a></td>
+        <td class="api-list">Read-only property that returns the SketchControlPointSplines3D collection object.&nbsp;This collection provides access to the existing control point splines in the sketch and provides functionality to create new control point curves.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch3DProxy_SketchEllipses3D.htm">SketchEllipses3D</a></td>
+        <td class="api-list">Property that returns the SketchEllipses3D collection object. This collection provides access to the existing ellipses in the sketch.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch3DProxy_SketchEllipticalArcs3D.htm">SketchEllipticalArcs3D</a></td>
+        <td class="api-list">Property that returns the SketchEllipticalArcs3D collection object. This collection provides access to the existing elliptical arcs in the sketch.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch3DProxy_SketchEntities3D.htm">SketchEntities3D</a></td>
+        <td class="api-list">Property that returns a collection of all geometric entities on the sketch, regardless of their type.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch3DProxy_SketchEquationCurves3D.htm">SketchEquationCurves3D</a></td>
+        <td class="api-list">Read-only property that returns the SketchEquationCurves3D collection object.&nbsp;This collection provides access to the existing equation curves in the sketch and provides functionality to create new equation curves.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch3DProxy_SketchFixedSplines3D.htm">SketchFixedSplines3D</a></td>
+        <td class="api-list">Property that gets the collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch3DProxy_SketchLines3D.htm">SketchLines3D</a></td>
+        <td class="api-list">Property that returns the SketchLines3D collection object. This collection provides access to the existing lines in the sketch and provides functionality to create new lines.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch3DProxy_SketchPoints3D.htm">SketchPoints3D</a></td>
+        <td class="api-list">Property that returns the SketchPoints3D collection object. This collection provides access to the existing points in the sketch.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch3DProxy_SketchSplines3D.htm">SketchSplines3D</a></td>
+        <td class="api-list">Property that returns the SketchSplines3D collection object. This collection provides access to the existing splines in the sketch.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch3DProxy_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch3DProxy_Visible.htm">Visible</a></td>
+        <td class="api-list">Gets and sets the visibility of the sketch.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 6<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(Sketch3DProxy%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

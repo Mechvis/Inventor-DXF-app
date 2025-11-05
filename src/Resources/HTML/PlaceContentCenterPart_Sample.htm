@@ -1,0 +1,194 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/PlaceContentCenterPart_Sample.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="PlaceContentCenterPart_Sample">
+    <meta name="description" content="Place Content Center Parts Sample">
+    <meta name="topicid" content="PlaceContentCenterPart_Sample">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>Place Content Center Parts</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body><script>
+          function copyCode(language) {
+          // Get the pre element for the specified language.
+          var preElement = document.getElementById(language);
+
+          // Get the text from the element and copy it to the clipboard.
+          var preText = preElement.innerText;
+
+          var isIE = /*@cc_on!@*/false || !!document.documentMode;
+
+          if (isIE)
+          {
+            window.clipboardData.setData('Text', preText);
+          }
+          else
+          {
+            navigator.clipboard.writeText(preText);
+          }
+
+          //alert("Code copied to clipboard");
+          }
+        </script><link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">Place Content Center Parts</h1>
+    <h2 class="api">
+          Description
+        </h2>Places all of the items in a specified family within an assembly.  The specific family is identified by the strings where it's setting the HexHeadNode variable.<h2 class="api">
+          Code Samples
+        </h2>
+    <div id="tabs">
+      <ul>
+        <li><a href="#VBA">VBA</a></li>
+        <li><a href="#iLogic">iLogic</a></li>
+      </ul>
+      <div id="VBA" class="api-code">
+        <table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('VBA_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="VBA_code">Public Sub PlaceFromContentCenter()
+    Dim asmDoc As AssemblyDocument
+    Set asmDoc = ThisApplication.Documents.Add(kAssemblyDocumentObject)
+    
+    Dim asmDef As AssemblyComponentDefinition
+    Set asmDef = asmDoc.ComponentDefinition
+    
+    <span style="color:blue">' Get the node in the content browser based on the names of the nodes in the hierarchy.</span>
+    Dim hexHeadNode As ContentTreeViewNode
+    Set hexHeadNode = ThisApplication.ContentCenter.TreeViewTopNode.ChildNodes.Item("Fasteners").ChildNodes.Item("Bolts").ChildNodes.Item("Hex Head")
+    
+    <span style="color:blue">' Find a specific family.  In this case it's using the display name, but any family</span>
+    <span style="color:blue">' characteristic could be searched for.</span>
+    Dim family As ContentFamily
+    Dim checkFamily As ContentFamily
+    For Each checkFamily In hexHeadNode.Families
+        If checkFamily.DisplayName = "DIN EN 24016" Then
+            Set family = checkFamily
+            Exit For
+        End If
+    Next
+    
+    Dim i As Integer
+    If Not family Is Nothing Then
+        <span style="color:blue">' Place one instance of each member.</span>
+        Dim offset As Double
+        offset = 0
+        Dim row As ContentTableRow
+        For Each row In family.TableRows
+            <span style="color:blue">' Create the member (part file) from the table.</span>
+            Dim failureReason As MemberManagerErrorsEnum
+            Dim failureMessage As String
+            Dim memberFilename As String
+            memberFilename = family.CreateMember(row, failureReason, failureMessage, kRefreshOutOfDateParts)
+            
+            <span style="color:blue">' Place the part into the assembly.</span>
+            Dim transMatrix As matrix
+            Set transMatrix = ThisApplication.TransientGeometry.CreateMatrix
+            transMatrix.Cell(2, 4) = offset
+            Dim Occ As ComponentOccurrence
+            Set Occ = asmDef.Occurrences.Add(memberFilename, transMatrix)
+            
+            <span style="color:blue">' Compute the position for the next placement based on the size of the part just placed.</span>
+            Dim minY As Double
+            Dim maxY As Double
+            minY = Occ.RangeBox.minPoint.y
+            maxY = Occ.RangeBox.maxPoint.y
+            offset = offset + ((maxY - minY) * 1.1)
+        Next
+    End If
+End Sub</pre>
+      </div>
+      <div id="iLogic" class="api-code">
+        <table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('iLogic_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="iLogic_code">    Dim asmDoc As AssemblyDocument
+    asmDoc = ThisApplication.Documents.Add(kAssemblyDocumentObject)
+    
+    Dim asmDef As AssemblyComponentDefinition
+    asmDef = asmDoc.ComponentDefinition
+    
+    <span style="color:blue">' Get the node in the content browser based on the names of the nodes in the hierarchy.</span>
+    Dim hexHeadNode As ContentTreeViewNode
+    hexHeadNode = ThisApplication.ContentCenter.TreeViewTopNode.ChildNodes.Item("Fasteners").ChildNodes.Item("Bolts").ChildNodes.Item("Hex Head")
+    
+    <span style="color:blue">' Find a specific family.  In this case it's using the display name, but any family</span>
+    <span style="color:blue">' characteristic could be searched for.</span>
+    Dim family As ContentFamily
+    Dim checkFamily As ContentFamily
+    For Each checkFamily In hexHeadNode.Families
+        If checkFamily.DisplayName = "DIN EN 24016" Then
+            family = checkFamily
+            Exit For
+        End If
+    Next
+    
+    Dim i As Integer
+    If Not family Is Nothing Then
+        <span style="color:blue">' Place one instance of each member.</span>
+        Dim offset As Double
+        offset = 0
+        Dim row As ContentTableRow
+        For Each row In family.TableRows
+            <span style="color:blue">' Create the member (part file) from the table.</span>
+            Dim failureReason As MemberManagerErrorsEnum
+            Dim failureMessage As String
+            Dim memberFilename As String
+            memberFilename = family.CreateMember(row, failureReason, failureMessage, kRefreshOutOfDateParts)
+            
+            <span style="color:blue">' Place the part into the assembly.</span>
+            Dim transMatrix As matrix
+            transMatrix = ThisApplication.TransientGeometry.CreateMatrix
+            transMatrix.Cell(2, 4) = offset
+            Dim Occ As ComponentOccurrence
+            Occ = asmDef.Occurrences.Add(memberFilename, transMatrix)
+            
+            <span style="color:blue">' Compute the position for the next placement based on the size of the part just placed.</span>
+            Dim minY As Double
+            Dim maxY As Double
+            minY = Occ.RangeBox.minPoint.y
+            maxY = Occ.RangeBox.maxPoint.y
+            offset = offset + ((maxY - minY) * 1.1)
+        Next
+    End If</pre>
+      </div>
+    </div><br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(PlaceContentCenterPart%20Sample%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

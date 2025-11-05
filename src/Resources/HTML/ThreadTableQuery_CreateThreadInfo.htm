@@ -1,0 +1,122 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/ThreadTableQuery_CreateThreadInfo.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="ThreadTableQuery_CreateThreadInfo">
+    <meta name="description" content="ThreadTableQuery.CreateThreadInfo Method">
+    <meta name="topicid" content="ThreadTableQuery_CreateThreadInfo">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>ThreadTableQuery.CreateThreadInfo Method</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">ThreadTableQuery.CreateThreadInfo Method</h1>
+
+          Parent Object: <a href="ThreadTableQuery.htm">ThreadTableQuery</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Method that creates a new ThreadInfo object that can be used in creating thread features. The object returned is a StandardThreadInfo for parallel threads and TaperedThreadInfo for tapered threads. See the Thread.xls file that is delivered with Autodesk Inventor for examples of valid input for these arguments.</p>
+    <h2 class="api">
+          Syntax
+        </h2>
+        
+            ThreadTableQuery.<b>CreateThreadInfo</b>( <b><i>Internal</i></b> As Boolean, <b><i>RightHanded</i></b> As Boolean, <b><i>ThreadType</i></b> As String, <b><i>ThreadDesignation</i></b> As String, [<b><i>Class</i></b>] As String ) As <a href="ThreadInfo.htm">ThreadInfo</a>
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">Internal</td>
+        <td class="api-list">Boolean</td>
+        <td class="api-list">Input Boolean that indicates if the thread is an internal or external thread.&nbsp;A value of True indicates an Internal thread.</td>
+      </tr>
+      <tr>
+        <td class="api-list">RightHanded</td>
+        <td class="api-list">Boolean</td>
+        <td class="api-list">Input Boolean that indicates if the thread is right or left\-handed thread. A value of True indicates a right\-handed thread.</td>
+      </tr>
+      <tr>
+        <td class="api-list">ThreadType</td>
+        <td class="api-list">String</td>
+        <td class="api-list">Input String that specifies the thread type. The thread type is the name of the sheet in the Thread.xls file that is used by the Thread command to define valid thread definitions.</td>
+      </tr>
+      <tr>
+        <td class="api-list">ThreadDesignation</td>
+        <td class="api-list">String</td>
+        <td class="api-list">Input String that contains the thread designation. This is input as the full thread designation that will be used in a drawing for the thread callout. The nominal size and pitch information are extracted from the designation. For \example valid inch thread designations are '10\-24 UNC' and '7/16\-20 UNF'. Examples of valid metric designations are 'M16x1.5' and 'M55x1.5'.</td>
+      </tr>
+      <tr>
+        <td class="api-list">Class</td>
+        <td class="api-list">String</td>
+        <td class="api-list">Optional input String that defines the thread class. For example a valid class for an inch internal thread is '2B'. A valid class for a metric external thread is '6g'. Null strings are valid for some thread types.<br /><br /> This is an optional argument whose default value is "".</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ThreadTableQuery_CreateThreadInfo_Sample.htm">Creating a ThreadInfo object</a></td>
+        <td class="api-list">Demonstrates the use of a ThreadInfo object.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2008<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(ThreadTableQuery.CreateThreadInfo%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

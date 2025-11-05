@@ -1,0 +1,153 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/RegionProperties.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="RegionProperties">
+    <meta name="description" content="RegionProperties Object">
+    <meta name="topicid" content="GUID-RegionProperties">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>RegionProperties Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">RegionProperties Object
+			</h1><br><h2 class="api">
+          Description
+        </h2>The RegionProperties object. This object provides information relating to a profile region, including centroid, perimeter, rotation angle, moments of inertia, and axes.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="RegionProperties_CentroidMomentsOfInertia.htm">CentroidMomentsOfInertia</a></td>
+        <td class="api-list">Method that returns the moments of inertia about the centroid of the section.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="RegionProperties_GetTorsionProperties.htm">GetTorsionProperties</a></td>
+        <td class="api-list">Method that returns torsion coefficients of sketch profile.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="RegionProperties_MomentsOfInertia.htm">MomentsOfInertia</a></td>
+        <td class="api-list">Method that returns the moments of inertia about the sketch origin.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="RegionProperties_PrincipalAxes.htm">PrincipalAxes</a></td>
+        <td class="api-list">Method that returns the principal axes.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="RegionProperties_PrincipalMomentsOfInertia.htm">PrincipalMomentsOfInertia</a></td>
+        <td class="api-list">Method that returns the moments of inertia about the principal axes.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="RegionProperties_RadiusOfGyration.htm">RadiusOfGyration</a></td>
+        <td class="api-list">Method that returns the radius of gyration about the principal axes.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="RegionProperties_Accuracy.htm">Accuracy</a></td>
+        <td class="api-list">Get and sets the desired accuracy of calculations.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="RegionProperties_Application.htm">Application</a></td>
+        <td class="api-list">Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="RegionProperties_Area.htm">Area</a></td>
+        <td class="api-list">Property that returns the area of the section in database units.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="RegionProperties_Centroid.htm">Centroid</a></td>
+        <td class="api-list">Property that returns the centroid of the section.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="RegionProperties_Parent.htm">Parent</a></td>
+        <td class="api-list">Gets the parent object from whom this object can logically be reached.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="RegionProperties_Perimeter.htm">Perimeter</a></td>
+        <td class="api-list">Property that returns the perimeter of the section in database units.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="RegionProperties_RotationAngle.htm">RotationAngle</a></td>
+        <td class="api-list">Property that returns the angle of rotation of the principal axes.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="RegionProperties_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="Profile_RegionProperties.htm">Profile.RegionProperties</a>, <a href="ProfileProxy_RegionProperties.htm">ProfileProxy.RegionProperties</a><h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Profile_RegionProperties_Sample.htm">Querying a sketch profile to get regions.</a></td>
+        <td class="api-list">This sample demonstrates getting region properties from a sketch profile.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2008<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(RegionProperties%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

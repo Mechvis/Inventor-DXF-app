@@ -1,0 +1,169 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/FeatureControlFrame.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="FeatureControlFrame">
+    <meta name="description" content="FeatureControlFrame Object">
+    <meta name="topicid" content="GUID-FeatureControlFrame">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>FeatureControlFrame Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">FeatureControlFrame Object
+			</h1><br><h2 class="api">
+          Description
+        </h2>The FeatureControlFrame object represents a feature control frame symbol on a sheet.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FeatureControlFrame_Delete.htm">Delete</a></td>
+        <td class="api-list">Method that deletes the FeatureControlFrame.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FeatureControlFrame_GetReferenceKey.htm">GetReferenceKey</a></td>
+        <td class="api-list">Method that generates and returns the reference key for this entity.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FeatureControlFrame_Application.htm">Application</a></td>
+        <td class="api-list">Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FeatureControlFrame_AttributeSets.htm">AttributeSets</a></td>
+        <td class="api-list">Property that returns the AttributeSets collection object associated with this object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FeatureControlFrame_DatumIdentifier.htm">DatumIdentifier</a></td>
+        <td class="api-list">Gets and sets a datum identifier for the feature control frame. Setting this property fails if the associated style does not allow the specification of a datum identifier.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FeatureControlFrame_FeatureControlFrameRows.htm">FeatureControlFrameRows</a></td>
+        <td class="api-list">Gets and sets the FeatureControlFrameRows object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FeatureControlFrame_Layer.htm">Layer</a></td>
+        <td class="api-list">Gets and sets the layer associated with this object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FeatureControlFrame_Leader.htm">Leader</a></td>
+        <td class="api-list">Property that returns the leader associated with the feature control frame symbol.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FeatureControlFrame_MergeSymbolOverridden.htm">MergeSymbolOverridden</a></td>
+        <td class="api-list">Gets whether the OverrideMergeSymbol is set to override the MergeSymbol setting in FeatureControlFrameStyle. Set this to False will clear the override setting.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FeatureControlFrame_Notes.htm">Notes</a></td>
+        <td class="api-list">Gets and sets notes for the feature control frame.&nbsp;The string can contain symbols specified using the StyleOverride tag. For instance, use '<StyleOverride Font='AIGDT'>m</StyleOverride>' to specify (M).</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FeatureControlFrame_OverrideMergeSymbol.htm">OverrideMergeSymbol</a></td>
+        <td class="api-list">Gets and sets the merge symbol override value. Set this property will set the MergeSymbolOverridden to True.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FeatureControlFrame_Parent.htm">Parent</a></td>
+        <td class="api-list">Property that returns the parent Sheet object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FeatureControlFrame_Position.htm">Position</a></td>
+        <td class="api-list">Gets and sets the position of the symbol on the sheet.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FeatureControlFrame_ProfileType.htm">ProfileType</a></td>
+        <td class="api-list">Gets and sets the profile type for the feature control frame.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FeatureControlFrame_Rotation.htm">Rotation</a></td>
+        <td class="api-list">Gets and sets the absolute rotation angle of the symbol in radians. The value can either be positive (counter-clockwise rotation) or negative (clockwise rotation).</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FeatureControlFrame_Style.htm">Style</a></td>
+        <td class="api-list">Gets and sets the associated FeatureControlFrameStyle object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FeatureControlFrame_TopNotes.htm">TopNotes</a></td>
+        <td class="api-list">Gets and sets top notes for the feature control frame.&nbsp;The string can contain symbols specified using the StyleOverride tag. For instance, use '<StyleOverride Font='AIGDT'>m</StyleOverride>' to specify (M).</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FeatureControlFrame_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="AuxiliaryFeatureIndicator_Parent.htm">AuxiliaryFeatureIndicator.Parent</a>, <a href="FeatureControlFrameRow_Parent.htm">FeatureControlFrameRow.Parent</a>, <a href="FeatureControlFrames_Add.htm">FeatureControlFrames.Add</a>, <a href="FeatureControlFrames_Item.htm">FeatureControlFrames.Item</a><h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FeatureControlFrame_FeatureControlFrameRows_Sample.htm">Adding and editing a feature control frame</a></td>
+        <td class="api-list">These samples demonstrate editing an existing feature control frame symbol. The first sample adds a row to an existing symbol. The second sample replaces all rows of an existing symbol.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2009<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(FeatureControlFrame%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

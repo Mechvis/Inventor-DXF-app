@@ -1,0 +1,117 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/SelectEvents_OnPreSelect.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="SelectEvents_OnPreSelect">
+    <meta name="description" content="SelectEvents.OnPreSelect Event">
+    <meta name="topicid" content="SelectEvents_OnPreSelect">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>SelectEvents.OnPreSelect Event</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">SelectEvents.OnPreSelect Event</h1>
+
+          Parent Object: <a href="SelectEvents.htm">SelectEvents</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Fires signaling that a particular object has been indicated as a potential candidate for selection.</p>
+    <h2 class="api">
+            Remarks
+          </h2>This event is fired before the object is highlighted, giving the programmer the opportunity to apply further custom filtering. By responding with False to the DoHighlight argument, the object will not be available for selection and the UI behaves as if the object was never considered for selection.<h2 class="api">
+          Syntax
+        </h2>
+        
+            SelectEvents.<b>OnPreSelect</b>( <b><i>PreSelectEntity</i></b> As Object, <b><i>DoHighlight</i></b> As Boolean, <b><i>MorePreSelectEntities</i></b> As <a href="ObjectCollection.htm">ObjectCollection</a>, <b><i>SelectionDevice</i></b> As <a href="SelectionDeviceEnum.htm">SelectionDeviceEnum</a>, <b><i>ModelPosition</i></b> As <a href="Point.htm">Point</a>, <b><i>ViewPosition</i></b> As <a href="Point2d.htm">Point2d</a>, <b><i>View</i></b> As <a href="View.htm">View</a> )
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">PreSelectEntity</td>
+        <td class="api-list">Object</td>
+        <td class="api-list">Input/Output. When called, Inventor returns the entity the mouse is currently over. The client though has a chance to change this entity to some other, if so desired. The entity passed back from the call is the one Inventor will highlight for the pre-select.</td>
+      </tr>
+      <tr>
+        <td class="api-list">DoHighlight</td>
+        <td class="api-list">Boolean</td>
+        <td class="api-list">Input value that specifies whether the entity should be available for selection or not. If True, this signifies a successful pre-selection and the entity is highlighted by Inventor.</td>
+      </tr>
+      <tr>
+        <td class="api-list">MorePreSelectEntities</td>
+        <td class="api-list"><a href="ObjectCollection.htm">ObjectCollection</a></td>
+        <td class="api-list">Input argument through which you can supply a group of objects that are logically pre-selected along with the one that Inventor found on its own. This argument is ignored if DoHighLight is False. Inventor passes in an empty collection that you can add additional entities to.</td>
+      </tr>
+      <tr>
+        <td class="api-list">SelectionDevice</td>
+        <td class="api-list"><a href="SelectionDeviceEnum.htm">SelectionDeviceEnum</a></td>
+        <td class="api-list">Returns a constant denoting whether the selection was made via a pick in a graphics window or was it by a pick in the browser or by some other means. An object can also be selected programmatically by calling the selection simulation methods on the CommandManager. A value of kGraphicsWindowSelection indicates it was selected in a graphic window. For all other values the View, ModelPosition, and ViewPosition arguments are meaningless.</td>
+      </tr>
+      <tr>
+        <td class="api-list">ModelPosition</td>
+        <td class="api-list"><a href="Point.htm">Point</a></td>
+        <td class="api-list">Returns the coordinates that result from projecting the click point onto the selected entity. This is returned in centimeters relative to model space. Applicable only when the SelectionDevice argument is kGraphicsWindowSelection.</td>
+      </tr>
+      <tr>
+        <td class="api-list">ViewPosition</td>
+        <td class="api-list"><a href="Point2d.htm">Point2d</a></td>
+        <td class="api-list">Returns the coordinates that specify the current location of the mouse pointer in window space and are returned in pixels. Applicable only when the SelectionDevice argument is kGraphicsWindowSelection.</td>
+      </tr>
+      <tr>
+        <td class="api-list">View</td>
+        <td class="api-list"><a href="View.htm">View</a></td>
+        <td class="api-list">Returns the View <Inventor__View.html> object where the selection took place. Applicable only when the SelectionDevice argument is kGraphicsWindowSelection.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 5<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(SelectEvents.OnPreSelect%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

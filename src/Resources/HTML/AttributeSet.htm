@@ -1,0 +1,140 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/AttributeSet.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="AttributeSet">
+    <meta name="description" content="AttributeSet Object">
+    <meta name="topicid" content="GUID-AttributeSet">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>AttributeSet Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">AttributeSet Object
+			</h1><br><h2 class="api">
+          Description
+        </h2>The AttributeSet object provides the ability to create new attributes and access existing attributes. See the article in the overviews section.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AttributeSet_Add.htm">Add</a></td>
+        <td class="api-list">Method that creates a new attribute in the attribute set. The created Attribute object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AttributeSet_AddAttributes.htm">AddAttributes</a></td>
+        <td class="api-list">Adds attributes to the AttributeSet using the arrays that specify the names, valuetypes and values of the desired attributes</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AttributeSet_CopyTo.htm">CopyTo</a></td>
+        <td class="api-list">Copies the Attribute Set to another object. Returns reference to the copied Attribute Set.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AttributeSet_Delete.htm">Delete</a></td>
+        <td class="api-list">Method that deletes this AttributeSet.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AttributeSet_GetReferenceKey.htm">GetReferenceKey</a></td>
+        <td class="api-list">Method that generates and returns the reference key for this entity.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AttributeSet_Copy.htm">Copy</a></td>
+        <td class="api-list">Gets the Boolean flag that indicates whether this set was created as a result of a operation that copied the owner Inventor Object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AttributeSet_CopyWithOwner.htm">CopyWithOwner</a></td>
+        <td class="api-list">Gets the Boolean flag that controls the behavior of whether this set will copied onto this Inventor Object's copy.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AttributeSet_Count.htm">Count</a></td>
+        <td class="api-list">Property that returns the number of attributes within this attribute set.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AttributeSet_DataIO.htm">DataIO</a></td>
+        <td class="api-list">Property that returns the object that allows you to write the contents of the AttributeSet as XML. The DataIO object returned supports the WriteDataToFile method with the format "XML." The AttributeSet name is used as a tag name in the XML data. Because of this, the name must be a valid XML tag name. This means it must begin with a letter and can contain the following characters '_', '-', '.'. Spaces are not allowed.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AttributeSet_Item.htm">Item</a></td>
+        <td class="api-list">Returns the specified Attribute object from the attribute set. This is the default property of the AttributeSet object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AttributeSet_Name.htm">Name</a></td>
+        <td class="api-list">Gets/Sets the name of the Attribute Set.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AttributeSet_NameIsUsed.htm">NameIsUsed</a></td>
+        <td class="api-list">Property that returns whether an existing attribute has the specific name or not. Returns True if the name is already being used.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AttributeSet_Parent.htm">Parent</a></td>
+        <td class="api-list">Property that returns the Autodesk Inventor object being attributed with this AttributeSet. If this AttributeSet is being shared by more than one Autodesk Inventor object, then an ObjectCollection is returned that contains all of the Autodesk Inventor objects attributed with this AttributeSet.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AttributeSet_Transient.htm">Transient</a></td>
+        <td class="api-list">Gets the Boolean flag indicating whether this Attribute set is transient. (Meaning it is available only during this session).</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AttributeSet_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="AttributeSet_CopyTo.htm">AttributeSet.CopyTo</a>, <a href="AttributeSets_Add.htm">AttributeSets.Add</a>, <a href="AttributeSets_AddTransient.htm">AttributeSets.AddTransient</a>, <a href="AttributeSets_Item.htm">AttributeSets.Item</a>, <a href="AttributeSetsEnumerator_Item.htm">AttributeSetsEnumerator.Item</a><h2 class="api">
+            Version
+          </h2>
+        Introduced in version 5<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(AttributeSet%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

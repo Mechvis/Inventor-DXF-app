@@ -1,0 +1,175 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/SketchLines_AddAsTwoPointRectangle.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="SketchLines_AddAsTwoPointRectangle">
+    <meta name="description" content="SketchLines.AddAsTwoPointRectangle Method">
+    <meta name="topicid" content="SketchLines_AddAsTwoPointRectangle">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>SketchLines.AddAsTwoPointRectangle Method</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">SketchLines.AddAsTwoPointRectangle Method</h1>
+
+          Parent Object: <a href="SketchLines.htm">SketchLines</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Method that creates four lines to represent a rectangle where the diagonal corners of the rectangle are defined by the two input points and the rectangle is aligned with the sketch X and Y axes. The four new sketch lines are returned in an SketchEntitiesEnumerator object.</p>
+    <h2 class="api">
+          Syntax
+        </h2>
+        
+            SketchLines.<b>AddAsTwoPointRectangle</b>( <b><i>CornerPointOne</i></b> As Object, <b><i>CornerPointTwo</i></b> As Object ) As <a href="SketchEntitiesEnumerator.htm">SketchEntitiesEnumerator</a>
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">CornerPointOne</td>
+        <td class="api-list">Object</td>
+        <td class="api-list">Input object that defines a corner of the rectangle. This can be a SketchPoint or a Point2d object. If an existing sketch point is input, the lines become connected to that point and the point becomes the corner point of the rectangle.</td>
+      </tr>
+      <tr>
+        <td class="api-list">CornerPointTwo</td>
+        <td class="api-list">Object</td>
+        <td class="api-list">Input object that defines the diagonal corner of the rectangle. This can be a SketchPoint or a Point2d object. If an existing sketch point is input, the lines become connected to that point and the point becomes the corner point of the rectangle.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BoundaryPatchFeatures_Add_Sample.htm">Delete Face, Boundary Patch and Stitch features</a></td>
+        <td class="api-list">Demonstrates creating Face, Boundary Patch and Stitch features.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="CopyBodyFeature_Sample.htm">SurfaceBody Copy</a></td>
+        <td class="api-list">This sample demonstrates copying a surface body from one part to another. This is equivalent to the Promote command, but the API is much more flexible. In order for the sample to be self-contained, it creates two parts on the fly that will be used to demonstrate copying a body from one part to another. When copying a body into a part, you provide the surface body and a matrix to define its position in the new part. This sample creates a matrix based on the position of these parts within an assembly.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DerivedAssemblyComponents_Add_Sample.htm">Derived Parts and Assemblies</a></td>
+        <td class="api-list">This sample demonstrates the use of the API to create derived parts and assemblies.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDocument_BorderDefinitions_Sample.htm">Border Create and Insert</a></td>
+        <td class="api-list">This sample illustrates creating a new border definition object and using it for a sheet.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ErrorManager_Sample.htm">Using Inventor's error dialog</a></td>
+        <td class="api-list">Demonstrates using Inventor's error dialog.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ExtrudeFeature_Sample.htm">Extrude Feature - Create Block with Pocket</a></td>
+        <td class="api-list">This sample demonstrates creating a simple solid consisting a block with a pocket. It shows how to create a sketch plane at a specified orientation to existing geometry.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ExtrudeFeature_Profile_Sample.htm">Edit profile of an extrude feature</a></td>
+        <td class="api-list">This sample demonstrates editing the profile of an extrude feature.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FoldFeatures_Add_Sample.htm">Create sheet metal face and fold features</a></td>
+        <td class="api-list">This sample demonstrates the creation of sheet metal face and fold features.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="HoleFeature_Sample.htm">Hole Feature - Through holes (RegularAndTapped)</a></td>
+        <td class="api-list">This sample demonstrates the creation of through holes, both regular and tapped.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LoftedFlangeFeatures_Add_Sample.htm">Create sheet metal lofted flange feature</a></td>
+        <td class="api-list">The following sample demonstrates the creation of a sheet metal lofted flange feature.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PartFeature_SetEndOfPart_Sample.htm">Create and Edit an Extrude Feature with a pocket</a></td>
+        <td class="api-list">This sample demonstrates how to edit an extrude feature. It shows how to create a sketch plane at a specified orientation to existing geometry.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalFeatures_Sample.htm">Create sheet metal face and cut features</a></td>
+        <td class="api-list">This sample demonstrates the creation of sheet metal face and cut features.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalFeatures_FlangeFeatures_Sample.htm">Create sheet metal face and flange features</a></td>
+        <td class="api-list">This sample demonstrates the creation of sheet metal face and flange features.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch_OffsetSketchEntitiesUsingDistance_Sample.htm">Offset a 2D sketch</a></td>
+        <td class="api-list">This sample demonstrates the creation of offsets in 2d sketches. Two ways of creating the offset are shown - one uses a distance and the other uses the input point.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch_SketchLines_Sample.htm">Sketch Lines</a></td>
+        <td class="api-list">This sample demonstrates creating lines. It uses all of the various methods to create lines, both singly and as rectangles.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlockDefinition_Sample.htm">Create and insert a sketch block definition into a part sketch</a></td>
+        <td class="api-list">This sample demonstrates inserting a sketch block into a part sketch.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchBlocks_Add_Sample.htm">Create sketch block from an existing sketch</a></td>
+        <td class="api-list">This sample demonstrates creating a sketch block from an existing sketch.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TitleBlockDefinition_Sample.htm">Title Block Definition Create and Insert</a></td>
+        <td class="api-list">This sample illustrates creating a new title block definition object and inserting it into the active sheet. This sample consists of two subs. The first demonstrates the creation of a title block definition and the second inserts it into the active sheet.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 5<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(SketchLines.AddAsTwoPointRectangle%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

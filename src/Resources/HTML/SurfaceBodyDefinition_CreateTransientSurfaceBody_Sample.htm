@@ -1,0 +1,410 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/SurfaceBodyDefinition_CreateTransientSurfaceBody_Sample.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="SurfaceBodyDefinition_CreateTransientSurfaceBody_Sample">
+    <meta name="description" content="Transient solid body creation Sample">
+    <meta name="topicid" content="SurfaceBodyDefinition_CreateTransientSurfaceBody_Sample">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>Transient solid body creation</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body><script>
+          function copyCode(language) {
+          // Get the pre element for the specified language.
+          var preElement = document.getElementById(language);
+
+          // Get the text from the element and copy it to the clipboard.
+          var preText = preElement.innerText;
+
+          var isIE = /*@cc_on!@*/false || !!document.documentMode;
+
+          if (isIE)
+          {
+            window.clipboardData.setData('Text', preText);
+          }
+          else
+          {
+            navigator.clipboard.writeText(preText);
+          }
+
+          //alert("Code copied to clipboard");
+          }
+        </script><link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">Transient solid body creation</h1>
+    <h2 class="api">
+          Description
+        </h2>The following sample demonstrates the creation of a transient solid block body. The newly created body is then displayed using client graphics in a part.<h2 class="api">
+          Code Samples
+        </h2>
+    <div id="tabs">
+      <ul>
+        <li><a href="#VBA">VBA</a></li>
+        <li><a href="#iLogic">iLogic</a></li>
+      </ul>
+      <div id="VBA" class="api-code">
+        <table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('VBA_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="VBA_code">Public Sub CreateBlock()
+    Dim oTransBRep As TransientBRep
+    Set oTransBRep = ThisApplication.TransientBRep
+
+    Dim oSurfaceBodyDef As SurfaceBodyDefinition
+    Set oSurfaceBodyDef = oTransBRep.CreateSurfaceBodyDefinition
+
+    Dim oTG As TransientGeometry
+    Set oTG = ThisApplication.TransientGeometry
+
+    <span style="color:blue">' Create a lump.</span>
+    Dim oLumpDef As LumpDefinition
+    Set oLumpDef = oSurfaceBodyDef.LumpDefinitions.Add
+
+    <span style="color:blue">' Create a shell.</span>
+    Dim oShell As FaceShellDefinition
+    Set oShell = oLumpDef.FaceShellDefinitions.Add
+
+    <span style="color:blue">' Define the six planes of the box.</span>
+    Dim oPosX As Plane
+    Dim oNegX As Plane
+    Dim oPosY As Plane
+    Dim oNegY As Plane
+    Dim oPosZ As Plane
+    Dim oNegZ As Plane
+    Set oPosX = oTG.CreatePlane(oTG.CreatePoint(1, 0, 0), oTG.CreateVector(1, 0, 0))
+    Set oNegX = oTG.CreatePlane(oTG.CreatePoint(-1, 0, 0), oTG.CreateVector(-1, 0, 0))
+    Set oPosY = oTG.CreatePlane(oTG.CreatePoint(0, 1, 0), oTG.CreateVector(0, 1, 0))
+    Set oNegY = oTG.CreatePlane(oTG.CreatePoint(0, -1, 0), oTG.CreateVector(0, -1, 0))
+    Set oPosZ = oTG.CreatePlane(oTG.CreatePoint(0, 0, 1), oTG.CreateVector(0, 0, 1))
+    Set oNegZ = oTG.CreatePlane(oTG.CreatePoint(0, 0, -1), oTG.CreateVector(0, 0, -1))
+
+    <span style="color:blue">' Create the six faces.</span>
+    Dim oFaceDefPosX As FaceDefinition
+    Dim oFaceDefNegX As FaceDefinition
+    Dim oFaceDefPosY As FaceDefinition
+    Dim oFaceDefNegY As FaceDefinition
+    Dim oFaceDefPosZ As FaceDefinition
+    Dim oFaceDefNegZ As FaceDefinition
+    Set oFaceDefPosX = oShell.FaceDefinitions.Add(oPosX, False)
+    Set oFaceDefNegX = oShell.FaceDefinitions.Add(oNegX, False)
+    Set oFaceDefPosY = oShell.FaceDefinitions.Add(oPosY, False)
+    Set oFaceDefNegY = oShell.FaceDefinitions.Add(oNegY, False)
+    Set oFaceDefPosZ = oShell.FaceDefinitions.Add(oPosZ, False)
+    Set oFaceDefNegZ = oShell.FaceDefinitions.Add(oNegZ, False)
+
+    <span style="color:blue">' Create the vertices.</span>
+    Dim oVertex1 As VertexDefinition
+    Dim oVertex2 As VertexDefinition
+    Dim oVertex3 As VertexDefinition
+    Dim oVertex4 As VertexDefinition
+    Dim oVertex5 As VertexDefinition
+    Dim oVertex6 As VertexDefinition
+    Dim oVertex7 As VertexDefinition
+    Dim oVertex8 As VertexDefinition
+    Set oVertex1 = oSurfaceBodyDef.VertexDefinitions.Add(oTG.CreatePoint(1, 1, 1))
+    Set oVertex2 = oSurfaceBodyDef.VertexDefinitions.Add(oTG.CreatePoint(1, 1, -1))
+    Set oVertex3 = oSurfaceBodyDef.VertexDefinitions.Add(oTG.CreatePoint(-1, 1, -1))
+    Set oVertex4 = oSurfaceBodyDef.VertexDefinitions.Add(oTG.CreatePoint(-1, 1, 1))
+    Set oVertex5 = oSurfaceBodyDef.VertexDefinitions.Add(oTG.CreatePoint(1, -1, 1))
+    Set oVertex6 = oSurfaceBodyDef.VertexDefinitions.Add(oTG.CreatePoint(1, -1, -1))
+    Set oVertex7 = oSurfaceBodyDef.VertexDefinitions.Add(oTG.CreatePoint(-1, -1, -1))
+    Set oVertex8 = oSurfaceBodyDef.VertexDefinitions.Add(oTG.CreatePoint(-1, -1, 1))
+
+    <span style="color:blue">' Define the edges at intersections of the defined planes.</span>
+    Dim oEdgeDefPosXPosY As EdgeDefinition
+    Dim oEdgeDefPosXNegZ As EdgeDefinition
+    Dim oEdgeDefPosXNegY As EdgeDefinition
+    Dim oEdgeDefPosXPosZ As EdgeDefinition
+    Dim oEdgeDefNegXPosY As EdgeDefinition
+    Dim oEdgeDefNegXNegZ As EdgeDefinition
+    Dim oEdgeDefNegXNegY As EdgeDefinition
+    Dim oEdgeDefNegXPosZ As EdgeDefinition
+    Dim oEdgeDefPosYNegZ As EdgeDefinition
+    Dim oEdgeDefPosYPosZ As EdgeDefinition
+    Dim oEdgeDefNegYNegZ As EdgeDefinition
+    Dim oEdgeDefNegYPosZ As EdgeDefinition
+    Set oEdgeDefPosXPosY = oSurfaceBodyDef.EdgeDefinitions.Add(oVertex1, oVertex2, oTG.CreateLineSegment(oVertex1.Position, oVertex2.Position))
+    Set oEdgeDefPosXNegZ = oSurfaceBodyDef.EdgeDefinitions.Add(oVertex2, oVertex6, oTG.CreateLineSegment(oVertex2.Position, oVertex6.Position))
+    Set oEdgeDefPosXNegY = oSurfaceBodyDef.EdgeDefinitions.Add(oVertex6, oVertex5, oTG.CreateLineSegment(oVertex6.Position, oVertex5.Position))
+    Set oEdgeDefPosXPosZ = oSurfaceBodyDef.EdgeDefinitions.Add(oVertex5, oVertex1, oTG.CreateLineSegment(oVertex5.Position, oVertex1.Position))
+    Set oEdgeDefNegXPosY = oSurfaceBodyDef.EdgeDefinitions.Add(oVertex4, oVertex3, oTG.CreateLineSegment(oVertex4.Position, oVertex3.Position))
+    Set oEdgeDefNegXNegZ = oSurfaceBodyDef.EdgeDefinitions.Add(oVertex3, oVertex7, oTG.CreateLineSegment(oVertex3.Position, oVertex7.Position))
+    Set oEdgeDefNegXNegY = oSurfaceBodyDef.EdgeDefinitions.Add(oVertex7, oVertex8, oTG.CreateLineSegment(oVertex7.Position, oVertex8.Position))
+    Set oEdgeDefNegXPosZ = oSurfaceBodyDef.EdgeDefinitions.Add(oVertex8, oVertex4, oTG.CreateLineSegment(oVertex8.Position, oVertex4.Position))
+    Set oEdgeDefPosYNegZ = oSurfaceBodyDef.EdgeDefinitions.Add(oVertex2, oVertex3, oTG.CreateLineSegment(oVertex2.Position, oVertex3.Position))
+    Set oEdgeDefPosYPosZ = oSurfaceBodyDef.EdgeDefinitions.Add(oVertex4, oVertex1, oTG.CreateLineSegment(oVertex4.Position, oVertex1.Position))
+    Set oEdgeDefNegYNegZ = oSurfaceBodyDef.EdgeDefinitions.Add(oVertex7, oVertex6, oTG.CreateLineSegment(oVertex7.Position, oVertex6.Position))
+    Set oEdgeDefNegYPosZ = oSurfaceBodyDef.EdgeDefinitions.Add(oVertex5, oVertex8, oTG.CreateLineSegment(oVertex5.Position, oVertex8.Position))
+
+    <span style="color:blue">' Define the loops on the faces.</span>
+    Dim oPosXLoop As EdgeLoopDefinition
+    Set oPosXLoop = oFaceDefPosX.EdgeLoopDefinitions.Add
+    Call oPosXLoop.EdgeUseDefinitions.Add(oEdgeDefPosXPosY, True)
+    Call oPosXLoop.EdgeUseDefinitions.Add(oEdgeDefPosXNegZ, True)
+    Call oPosXLoop.EdgeUseDefinitions.Add(oEdgeDefPosXNegY, True)
+    Call oPosXLoop.EdgeUseDefinitions.Add(oEdgeDefPosXPosZ, True)
+
+    Dim oNegXLoop As EdgeLoopDefinition
+    Set oNegXLoop = oFaceDefNegX.EdgeLoopDefinitions.Add
+    Call oNegXLoop.EdgeUseDefinitions.Add(oEdgeDefNegXPosY, False)
+    Call oNegXLoop.EdgeUseDefinitions.Add(oEdgeDefNegXNegZ, False)
+    Call oNegXLoop.EdgeUseDefinitions.Add(oEdgeDefNegXNegY, False)
+    Call oNegXLoop.EdgeUseDefinitions.Add(oEdgeDefNegXPosZ, False)
+
+    Dim oPosYLoop As EdgeLoopDefinition
+    Set oPosYLoop = oFaceDefPosY.EdgeLoopDefinitions.Add
+    Call oPosYLoop.EdgeUseDefinitions.Add(oEdgeDefPosXPosY, False)
+    Call oPosYLoop.EdgeUseDefinitions.Add(oEdgeDefPosYNegZ, False)
+    Call oPosYLoop.EdgeUseDefinitions.Add(oEdgeDefNegXPosY, True)
+    Call oPosYLoop.EdgeUseDefinitions.Add(oEdgeDefPosYPosZ, False)
+
+    Dim oNegYLoop As EdgeLoopDefinition
+    Set oNegYLoop = oFaceDefNegY.EdgeLoopDefinitions.Add
+    Call oNegYLoop.EdgeUseDefinitions.Add(oEdgeDefPosXNegY, False)
+    Call oNegYLoop.EdgeUseDefinitions.Add(oEdgeDefNegYPosZ, False)
+    Call oNegYLoop.EdgeUseDefinitions.Add(oEdgeDefNegXNegY, True)
+    Call oNegYLoop.EdgeUseDefinitions.Add(oEdgeDefNegYNegZ, False)
+
+    Dim oPosZLoop As EdgeLoopDefinition
+    Set oPosZLoop = oFaceDefPosZ.EdgeLoopDefinitions.Add
+    Call oPosZLoop.EdgeUseDefinitions.Add(oEdgeDefNegXPosZ, True)
+    Call oPosZLoop.EdgeUseDefinitions.Add(oEdgeDefNegYPosZ, True)
+    Call oPosZLoop.EdgeUseDefinitions.Add(oEdgeDefPosXPosZ, False)
+    Call oPosZLoop.EdgeUseDefinitions.Add(oEdgeDefPosYPosZ, True)
+
+    Dim oNegZLoop As EdgeLoopDefinition
+    Set oNegZLoop = oFaceDefNegZ.EdgeLoopDefinitions.Add
+    Call oNegZLoop.EdgeUseDefinitions.Add(oEdgeDefNegXNegZ, True)
+    Call oNegZLoop.EdgeUseDefinitions.Add(oEdgeDefNegYNegZ, True)
+    Call oNegZLoop.EdgeUseDefinitions.Add(oEdgeDefPosXNegZ, False)
+    Call oNegZLoop.EdgeUseDefinitions.Add(oEdgeDefPosYNegZ, True)
+
+    <span style="color:blue">' Create a transient surface body.</span>
+    Dim oErrors As NameValueMap
+    Dim oNewBody As SurfaceBody
+    Set oNewBody = oSurfaceBodyDef.CreateTransientSurfaceBody(oErrors)
+
+    <span style="color:blue">' Create client graphics to display the transient body.</span>
+    Dim oDoc As PartDocument
+    Set oDoc = ThisApplication.Documents.Add(kPartDocumentObject)
+
+    Dim oDef As PartComponentDefinition
+    Set oDef = oDoc.ComponentDefinition
+
+    Dim oClientGraphics As ClientGraphics
+    Set oClientGraphics = oDef.ClientGraphicsCollection.Add("Sample3DGraphicsID")
+
+    <span style="color:blue">' Create a new graphics node within the client graphics objects.</span>
+    Dim oSurfacesNode As GraphicsNode
+    Set oSurfacesNode = oClientGraphics.AddNode(1)
+
+    <span style="color:blue">' Create client graphics based on the transient body</span>
+    Dim oSurfaceGraphics As SurfaceGraphics
+    Set oSurfaceGraphics = oSurfacesNode.AddSurfaceGraphics(oNewBody)
+
+    <span style="color:blue">' Update the view.</span>
+    ThisApplication.ActiveView.Update
+End Sub</pre>
+      </div>
+      <div id="iLogic" class="api-code">
+        <table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('iLogic_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="iLogic_code">    Dim oTransBRep As TransientBRep
+    oTransBRep = ThisApplication.TransientBRep
+
+    Dim oSurfaceBodyDef As SurfaceBodyDefinition
+    oSurfaceBodyDef = oTransBRep.CreateSurfaceBodyDefinition
+
+    Dim oTG As TransientGeometry
+    oTG = ThisApplication.TransientGeometry
+
+    <span style="color:blue">' Create a lump.</span>
+    Dim oLumpDef As LumpDefinition
+    oLumpDef = oSurfaceBodyDef.LumpDefinitions.Add
+
+    <span style="color:blue">' Create a shell.</span>
+    Dim oShell As FaceShellDefinition
+    oShell = oLumpDef.FaceShellDefinitions.Add
+
+    <span style="color:blue">' Define the six planes of the box.</span>
+    Dim oPosX As Plane
+    Dim oNegX As Plane
+    Dim oPosY As Plane
+    Dim oNegY As Plane
+    Dim oPosZ As Plane
+    Dim oNegZ As Plane
+    oPosX = oTG.CreatePlane(oTG.CreatePoint(1, 0, 0), oTG.CreateVector(1, 0, 0))
+    oNegX = oTG.CreatePlane(oTG.CreatePoint(-1, 0, 0), oTG.CreateVector(-1, 0, 0))
+    oPosY = oTG.CreatePlane(oTG.CreatePoint(0, 1, 0), oTG.CreateVector(0, 1, 0))
+    oNegY = oTG.CreatePlane(oTG.CreatePoint(0, -1, 0), oTG.CreateVector(0, -1, 0))
+    oPosZ = oTG.CreatePlane(oTG.CreatePoint(0, 0, 1), oTG.CreateVector(0, 0, 1))
+    oNegZ = oTG.CreatePlane(oTG.CreatePoint(0, 0, -1), oTG.CreateVector(0, 0, -1))
+
+    <span style="color:blue">' Create the six faces.</span>
+    Dim oFaceDefPosX As FaceDefinition
+    Dim oFaceDefNegX As FaceDefinition
+    Dim oFaceDefPosY As FaceDefinition
+    Dim oFaceDefNegY As FaceDefinition
+    Dim oFaceDefPosZ As FaceDefinition
+    Dim oFaceDefNegZ As FaceDefinition
+    oFaceDefPosX = oShell.FaceDefinitions.Add(oPosX, False)
+    oFaceDefNegX = oShell.FaceDefinitions.Add(oNegX, False)
+    oFaceDefPosY = oShell.FaceDefinitions.Add(oPosY, False)
+    oFaceDefNegY = oShell.FaceDefinitions.Add(oNegY, False)
+    oFaceDefPosZ = oShell.FaceDefinitions.Add(oPosZ, False)
+    oFaceDefNegZ = oShell.FaceDefinitions.Add(oNegZ, False)
+
+    <span style="color:blue">' Create the vertices.</span>
+    Dim oVertex1 As VertexDefinition
+    Dim oVertex2 As VertexDefinition
+    Dim oVertex3 As VertexDefinition
+    Dim oVertex4 As VertexDefinition
+    Dim oVertex5 As VertexDefinition
+    Dim oVertex6 As VertexDefinition
+    Dim oVertex7 As VertexDefinition
+    Dim oVertex8 As VertexDefinition
+    oVertex1 = oSurfaceBodyDef.VertexDefinitions.Add(oTG.CreatePoint(1, 1, 1))
+    oVertex2 = oSurfaceBodyDef.VertexDefinitions.Add(oTG.CreatePoint(1, 1, -1))
+    oVertex3 = oSurfaceBodyDef.VertexDefinitions.Add(oTG.CreatePoint(-1, 1, -1))
+    oVertex4 = oSurfaceBodyDef.VertexDefinitions.Add(oTG.CreatePoint(-1, 1, 1))
+    oVertex5 = oSurfaceBodyDef.VertexDefinitions.Add(oTG.CreatePoint(1, -1, 1))
+    oVertex6 = oSurfaceBodyDef.VertexDefinitions.Add(oTG.CreatePoint(1, -1, -1))
+    oVertex7 = oSurfaceBodyDef.VertexDefinitions.Add(oTG.CreatePoint(-1, -1, -1))
+    oVertex8 = oSurfaceBodyDef.VertexDefinitions.Add(oTG.CreatePoint(-1, -1, 1))
+
+    <span style="color:blue">' Define the edges at intersections of the defined planes.</span>
+    Dim oEdgeDefPosXPosY As EdgeDefinition
+    Dim oEdgeDefPosXNegZ As EdgeDefinition
+    Dim oEdgeDefPosXNegY As EdgeDefinition
+    Dim oEdgeDefPosXPosZ As EdgeDefinition
+    Dim oEdgeDefNegXPosY As EdgeDefinition
+    Dim oEdgeDefNegXNegZ As EdgeDefinition
+    Dim oEdgeDefNegXNegY As EdgeDefinition
+    Dim oEdgeDefNegXPosZ As EdgeDefinition
+    Dim oEdgeDefPosYNegZ As EdgeDefinition
+    Dim oEdgeDefPosYPosZ As EdgeDefinition
+    Dim oEdgeDefNegYNegZ As EdgeDefinition
+    Dim oEdgeDefNegYPosZ As EdgeDefinition
+    oEdgeDefPosXPosY = oSurfaceBodyDef.EdgeDefinitions.Add(oVertex1, oVertex2, oTG.CreateLineSegment(oVertex1.Position, oVertex2.Position))
+    oEdgeDefPosXNegZ = oSurfaceBodyDef.EdgeDefinitions.Add(oVertex2, oVertex6, oTG.CreateLineSegment(oVertex2.Position, oVertex6.Position))
+    oEdgeDefPosXNegY = oSurfaceBodyDef.EdgeDefinitions.Add(oVertex6, oVertex5, oTG.CreateLineSegment(oVertex6.Position, oVertex5.Position))
+    oEdgeDefPosXPosZ = oSurfaceBodyDef.EdgeDefinitions.Add(oVertex5, oVertex1, oTG.CreateLineSegment(oVertex5.Position, oVertex1.Position))
+    oEdgeDefNegXPosY = oSurfaceBodyDef.EdgeDefinitions.Add(oVertex4, oVertex3, oTG.CreateLineSegment(oVertex4.Position, oVertex3.Position))
+    oEdgeDefNegXNegZ = oSurfaceBodyDef.EdgeDefinitions.Add(oVertex3, oVertex7, oTG.CreateLineSegment(oVertex3.Position, oVertex7.Position))
+    oEdgeDefNegXNegY = oSurfaceBodyDef.EdgeDefinitions.Add(oVertex7, oVertex8, oTG.CreateLineSegment(oVertex7.Position, oVertex8.Position))
+    oEdgeDefNegXPosZ = oSurfaceBodyDef.EdgeDefinitions.Add(oVertex8, oVertex4, oTG.CreateLineSegment(oVertex8.Position, oVertex4.Position))
+    oEdgeDefPosYNegZ = oSurfaceBodyDef.EdgeDefinitions.Add(oVertex2, oVertex3, oTG.CreateLineSegment(oVertex2.Position, oVertex3.Position))
+    oEdgeDefPosYPosZ = oSurfaceBodyDef.EdgeDefinitions.Add(oVertex4, oVertex1, oTG.CreateLineSegment(oVertex4.Position, oVertex1.Position))
+    oEdgeDefNegYNegZ = oSurfaceBodyDef.EdgeDefinitions.Add(oVertex7, oVertex6, oTG.CreateLineSegment(oVertex7.Position, oVertex6.Position))
+    oEdgeDefNegYPosZ = oSurfaceBodyDef.EdgeDefinitions.Add(oVertex5, oVertex8, oTG.CreateLineSegment(oVertex5.Position, oVertex8.Position))
+
+    <span style="color:blue">' Define the loops on the faces.</span>
+    Dim oPosXLoop As EdgeLoopDefinition
+    oPosXLoop = oFaceDefPosX.EdgeLoopDefinitions.Add
+    Call oPosXLoop.EdgeUseDefinitions.Add(oEdgeDefPosXPosY, True)
+    Call oPosXLoop.EdgeUseDefinitions.Add(oEdgeDefPosXNegZ, True)
+    Call oPosXLoop.EdgeUseDefinitions.Add(oEdgeDefPosXNegY, True)
+    Call oPosXLoop.EdgeUseDefinitions.Add(oEdgeDefPosXPosZ, True)
+
+    Dim oNegXLoop As EdgeLoopDefinition
+    oNegXLoop = oFaceDefNegX.EdgeLoopDefinitions.Add
+    Call oNegXLoop.EdgeUseDefinitions.Add(oEdgeDefNegXPosY, False)
+    Call oNegXLoop.EdgeUseDefinitions.Add(oEdgeDefNegXNegZ, False)
+    Call oNegXLoop.EdgeUseDefinitions.Add(oEdgeDefNegXNegY, False)
+    Call oNegXLoop.EdgeUseDefinitions.Add(oEdgeDefNegXPosZ, False)
+
+    Dim oPosYLoop As EdgeLoopDefinition
+    oPosYLoop = oFaceDefPosY.EdgeLoopDefinitions.Add
+    Call oPosYLoop.EdgeUseDefinitions.Add(oEdgeDefPosXPosY, False)
+    Call oPosYLoop.EdgeUseDefinitions.Add(oEdgeDefPosYNegZ, False)
+    Call oPosYLoop.EdgeUseDefinitions.Add(oEdgeDefNegXPosY, True)
+    Call oPosYLoop.EdgeUseDefinitions.Add(oEdgeDefPosYPosZ, False)
+
+    Dim oNegYLoop As EdgeLoopDefinition
+    oNegYLoop = oFaceDefNegY.EdgeLoopDefinitions.Add
+    Call oNegYLoop.EdgeUseDefinitions.Add(oEdgeDefPosXNegY, False)
+    Call oNegYLoop.EdgeUseDefinitions.Add(oEdgeDefNegYPosZ, False)
+    Call oNegYLoop.EdgeUseDefinitions.Add(oEdgeDefNegXNegY, True)
+    Call oNegYLoop.EdgeUseDefinitions.Add(oEdgeDefNegYNegZ, False)
+
+    Dim oPosZLoop As EdgeLoopDefinition
+    oPosZLoop = oFaceDefPosZ.EdgeLoopDefinitions.Add
+    Call oPosZLoop.EdgeUseDefinitions.Add(oEdgeDefNegXPosZ, True)
+    Call oPosZLoop.EdgeUseDefinitions.Add(oEdgeDefNegYPosZ, True)
+    Call oPosZLoop.EdgeUseDefinitions.Add(oEdgeDefPosXPosZ, False)
+    Call oPosZLoop.EdgeUseDefinitions.Add(oEdgeDefPosYPosZ, True)
+
+    Dim oNegZLoop As EdgeLoopDefinition
+    oNegZLoop = oFaceDefNegZ.EdgeLoopDefinitions.Add
+    Call oNegZLoop.EdgeUseDefinitions.Add(oEdgeDefNegXNegZ, True)
+    Call oNegZLoop.EdgeUseDefinitions.Add(oEdgeDefNegYNegZ, True)
+    Call oNegZLoop.EdgeUseDefinitions.Add(oEdgeDefPosXNegZ, False)
+    Call oNegZLoop.EdgeUseDefinitions.Add(oEdgeDefPosYNegZ, True)
+
+    <span style="color:blue">' Create a transient surface body.</span>
+    Dim oErrors As NameValueMap
+    Dim oNewBody As SurfaceBody
+    oNewBody = oSurfaceBodyDef.CreateTransientSurfaceBody(oErrors)
+
+    <span style="color:blue">' Create client graphics to display the transient body.</span>
+    Dim oDoc As PartDocument
+    oDoc = ThisApplication.Documents.Add(kPartDocumentObject)
+
+    Dim oDef As PartComponentDefinition
+    oDef = oDoc.ComponentDefinition
+
+    Dim oClientGraphics As ClientGraphics
+    oClientGraphics = oDef.ClientGraphicsCollection.Add("Sample3DGraphicsID")
+
+    <span style="color:blue">' Create a new graphics node within the client graphics objects.</span>
+    Dim oSurfacesNode As GraphicsNode
+    oSurfacesNode = oClientGraphics.AddNode(1)
+
+    <span style="color:blue">' Create client graphics based on the transient body</span>
+    Dim oSurfaceGraphics As SurfaceGraphics
+    oSurfaceGraphics = oSurfacesNode.AddSurfaceGraphics(oNewBody)
+
+    <span style="color:blue">' Update the view.</span>
+    ThisApplication.ActiveView.Update</pre>
+      </div>
+    </div><br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(SurfaceBodyDefinition_CreateTransientSurfaceBody%20Sample%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

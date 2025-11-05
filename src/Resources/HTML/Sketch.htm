@@ -1,0 +1,327 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/Sketch.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="Sketch">
+    <meta name="description" content="Sketch Object">
+    <meta name="topicid" content="GUID-Sketch">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>Sketch Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">Sketch Object
+			</h1><br><h2 class="api">
+          Description
+        </h2>The generic Sketch object. All types of Sketch objects derive from this object. See the article in the overviews section.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch_AddArcSlotByCenterPointArc.htm">AddArcSlotByCenterPointArc</a></td>
+        <td class="api-list">Method that creates an arc slot. The sketch entities represent the sketch slot are returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch_AddArcSlotByThreePointArc.htm">AddArcSlotByThreePointArc</a></td>
+        <td class="api-list">Method that creates an arc slot. The sketch entities represent the sketch slot are returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch_AddByProjectingEntity.htm">AddByProjectingEntity</a></td>
+        <td class="api-list">Method that creates a new sketch entity by projecting other entities onto the sketch plane. This method performs the same function as the Project Geometry or Project DWG Geometry command according to the Entity you specified.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch_AddStraightSlotByCenterToCenter.htm">AddStraightSlotByCenterToCenter</a></td>
+        <td class="api-list">Method that creates a straight slot. The sketch entities represent the sketch slot are returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch_AddStraightSlotByOverall.htm">AddStraightSlotByOverall</a></td>
+        <td class="api-list">Method that creates a straight slot. The sketch entities represent the sketch slot are returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch_AddStraightSlotBySlotCenter.htm">AddStraightSlotBySlotCenter</a></td>
+        <td class="api-list">Method that creates a straight slot. The sketch entities represent the sketch slot are returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch_CopyContentsTo.htm">CopyContentsTo</a></td>
+        <td class="api-list">Method that copies all the contents of the sketch to the \input target sketch.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch_CopyEntitiesTo.htm">CopyEntitiesTo</a></td>
+        <td class="api-list">Method that copies sketch entities of the sketch to the input target sketch.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch_Delete.htm">Delete</a></td>
+        <td class="api-list">Method that deletes the sketch. This method is only valid for sketches that are not used by a feature.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch_Edit.htm">Edit</a></td>
+        <td class="api-list">Method that causes the Sketch environment to be invoked with this sketch available for interactive edit.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch_ExitEdit.htm">ExitEdit</a></td>
+        <td class="api-list">Causes the Sketch environment to be closed and the user interface to return to the previous environment. This is equivalent to the Return command. This method is only valid in the case where this sketch is open for edit within the user interface.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch_GetCustomLineType.htm">GetCustomLineType</a></td>
+        <td class="api-list">Method that returns information regarding the custom line type in use. The method returns a failure if the return value of the LineType property is not kCustomLineType.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch_GetReferenceKey.htm">GetReferenceKey</a></td>
+        <td class="api-list">Method that generates and returns the reference key for this entity.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch_MoveSketchObjects.htm">MoveSketchObjects</a></td>
+        <td class="api-list">Method that moves a collection of sketch objects by a specified vector. If the Copy argument is set to True, the newly created objects are returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch_OffsetSketchEntitiesUsingDistance.htm">OffsetSketchEntitiesUsingDistance</a></td>
+        <td class="api-list">Method that offsets a sketch entity or a group of connected sketch entities. In both cases, the base sketch entity is first offset by the specified distance and along the specified direction. The base sketch entity is determined as follows: 	*	If only one sketch entity needs to be offset, it will be treated as the base sketch entity. 	*	If a group of end-to-end connected entities need to be offset, the first entity in the group will be treated as the base sketch entity. If this method successfully offsets the specified input sketch entities, the newly created sketch entities are returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch_OffsetSketchEntitiesUsingPoint.htm">OffsetSketchEntitiesUsingPoint</a></td>
+        <td class="api-list">Method that offsets a sketch entity or a group of end-to-end connected sketch entities. In both cases, the offset is first applied to the base sketch entity such that the offset of the base sketch entity passes through the specified offset point on the sketch. The shortest distance of this offset point from the original base sketch entity determines the offset distance.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch_RotateSketchObjects.htm">RotateSketchObjects</a></td>
+        <td class="api-list">Method that rotates a collection of sketch objects by a specified angle. If the Copy argument is set to True, the newly created objects are returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch_SetCustomLineType.htm">SetCustomLineType</a></td>
+        <td class="api-list">Method that sets a custom line type to the curve from the specified .lin file. The method automatically changes the value of LineType property to kCustomLineType.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch_Solve.htm">Solve</a></td>
+        <td class="api-list">Method that causes the sketch to solve.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch_Application.htm">Application</a></td>
+        <td class="api-list">Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch_AttributeSets.htm">AttributeSets</a></td>
+        <td class="api-list">Property that returns the AttributeSets collection object associated with this object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch_CircularPatterns.htm">CircularPatterns</a></td>
+        <td class="api-list">Gets the SketchCircularPatterns collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch_Color.htm">Color</a></td>
+        <td class="api-list">Gets and Sets the color for the sketch.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch_ConstraintStatus.htm">ConstraintStatus</a></td>
+        <td class="api-list">Property that returns an enum indicating the constraint status of the sketch entity, signifying whether it is fully constrained, over constrained, or under constrained.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch_DataIO.htm">DataIO</a></td>
+        <td class="api-list">Gets the object through which this sketch's data content can be persisted.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch_DeferUpdates.htm">DeferUpdates</a></td>
+        <td class="api-list">Gets and Sets whether to defer the solving of the sketch or not.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch_DimensionConstraints.htm">DimensionConstraints</a></td>
+        <td class="api-list">Gets the collection of all dimension constraints on the sketch.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch_DisabledActionTypes.htm">DisabledActionTypes</a></td>
+        <td class="api-list">Gets and sets the action types valid for this sketch.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch_GeometricConstraints.htm">GeometricConstraints</a></td>
+        <td class="api-list">Property that returns the collection of all geometric constraints on the sketch.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch_LineType.htm">LineType</a></td>
+        <td class="api-list">Gets and Sets the line type override for the sketch.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch_LineWeight.htm">LineWeight</a></td>
+        <td class="api-list">Gets and Sets the line weight override for the sketch.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch_Name.htm">Name</a></td>
+        <td class="api-list">Gets and sets name of the sketch.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch_Parent.htm">Parent</a></td>
+        <td class="api-list">Property that gets the parent object from whom this object can logically be reached.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch_RectangularPatterns.htm">RectangularPatterns</a></td>
+        <td class="api-list">Gets the SketchRectangularPatterns collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch_SketchArcs.htm">SketchArcs</a></td>
+        <td class="api-list">Property that returns the SketchArcs collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch_SketchCircles.htm">SketchCircles</a></td>
+        <td class="api-list">Property that returns the SketchArcs collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch_SketchControlPointSplines.htm">SketchControlPointSplines</a></td>
+        <td class="api-list">Read-only property that returns the SketchControlPointSplines collection object.&nbsp;This collection provides access to the existing control point splines in the sketch and provides functionality to create new control point splines.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch_SketchEllipses.htm">SketchEllipses</a></td>
+        <td class="api-list">Property that returns the SketchEllipses collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch_SketchEllipticalArcs.htm">SketchEllipticalArcs</a></td>
+        <td class="api-list">Property that returns the SketchEllipticalArcs collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch_SketchEntities.htm">SketchEntities</a></td>
+        <td class="api-list">Property that returns the collection of all entities on the sketch, regardless of their type.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch_SketchEquationCurves.htm">SketchEquationCurves</a></td>
+        <td class="api-list">Read-only property that returns the SketchEquationCurves collection object.&nbsp;This collection provides access to the existing equation curves in the sketch and provides functionality to create new equation curves.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch_SketchFixedSplines.htm">SketchFixedSplines</a></td>
+        <td class="api-list">Property that gets the collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch_SketchImages.htm">SketchImages</a></td>
+        <td class="api-list">Property that returns a collection of all images on the sketch.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch_SketchLines.htm">SketchLines</a></td>
+        <td class="api-list">Property that returns the SketchLines collection object. This collection provides access to the existing lines in the sketch and provides functionality to create new lines.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch_SketchOffsetSplines.htm">SketchOffsetSplines</a></td>
+        <td class="api-list">Property that returns the collection object. This collection provides access to the existing offset splines in the sketch.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch_SketchPoints.htm">SketchPoints</a></td>
+        <td class="api-list">Property that returns the SketchPoints collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch_SketchSplines.htm">SketchSplines</a></td>
+        <td class="api-list">Property that returns the SketchSplines collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch_TextBoxes.htm">TextBoxes</a></td>
+        <td class="api-list">Gets the TextBoxes collection associated with this Sketch.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch_Visible.htm">Visible</a></td>
+        <td class="api-list">Gets and sets the visibility of the sketch.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="ArcLengthDimConstraint_Parent.htm">ArcLengthDimConstraint.Parent</a>, <a href="ArcLengthDimConstraintProxy_Parent.htm">ArcLengthDimConstraintProxy.Parent</a>, <a href="CoincidentConstraint_Parent.htm">CoincidentConstraint.Parent</a>, <a href="CoincidentConstraintProxy_Parent.htm">CoincidentConstraintProxy.Parent</a>, <a href="CollinearConstraint_Parent.htm">CollinearConstraint.Parent</a>, <a href="CollinearConstraintProxy_Parent.htm">CollinearConstraintProxy.Parent</a>, <a href="ConcentricConstraint_Parent.htm">ConcentricConstraint.Parent</a>, <a href="ConcentricConstraintProxy_Parent.htm">ConcentricConstraintProxy.Parent</a>, <a href="DiameterDimConstraint_Parent.htm">DiameterDimConstraint.Parent</a>, <a href="DiameterDimConstraintProxy_Parent.htm">DiameterDimConstraintProxy.Parent</a>, <a href="DimensionConstraint_Parent.htm">DimensionConstraint.Parent</a>, <a href="EllipseRadiusDimConstraint_Parent.htm">EllipseRadiusDimConstraint.Parent</a>, <a href="EllipseRadiusDimConstraintProxy_Parent.htm">EllipseRadiusDimConstraintProxy.Parent</a>, <a href="EqualLengthConstraint_Parent.htm">EqualLengthConstraint.Parent</a>, <a href="EqualLengthConstraintProxy_Parent.htm">EqualLengthConstraintProxy.Parent</a>, <a href="EqualRadiusConstraint_Parent.htm">EqualRadiusConstraint.Parent</a>, <a href="EqualRadiusConstraintProxy_Parent.htm">EqualRadiusConstraintProxy.Parent</a>, <a href="GeometricConstraint_Parent.htm">GeometricConstraint.Parent</a>, <a href="GroundConstraint_Parent.htm">GroundConstraint.Parent</a>, <a href="GroundConstraintProxy_Parent.htm">GroundConstraintProxy.Parent</a>, <a href="HorizontalAlignConstraint_Parent.htm">HorizontalAlignConstraint.Parent</a>, <a href="HorizontalAlignConstraintProxy_Parent.htm">HorizontalAlignConstraintProxy.Parent</a>, <a href="HorizontalConstraint_Parent.htm">HorizontalConstraint.Parent</a>, <a href="HorizontalConstraintProxy_Parent.htm">HorizontalConstraintProxy.Parent</a>, <a href="MidpointConstraint_Parent.htm">MidpointConstraint.Parent</a>, <a href="MidpointConstraintProxy_Parent.htm">MidpointConstraintProxy.Parent</a>, <a href="OffsetConstraint_Parent.htm">OffsetConstraint.Parent</a>, <a href="OffsetConstraintProxy_Parent.htm">OffsetConstraintProxy.Parent</a>, <a href="OffsetDimConstraint_Parent.htm">OffsetDimConstraint.Parent</a>, <a href="OffsetDimConstraintProxy_Parent.htm">OffsetDimConstraintProxy.Parent</a>, <a href="OffsetSplineDimConstraint_Parent.htm">OffsetSplineDimConstraint.Parent</a>, <a href="OffsetSplineDimConstraintProxy_Parent.htm">OffsetSplineDimConstraintProxy.Parent</a>, <a href="ParallelConstraint_Parent.htm">ParallelConstraint.Parent</a>, <a href="ParallelConstraintProxy_Parent.htm">ParallelConstraintProxy.Parent</a>, <a href="PatternConstraint_Parent.htm">PatternConstraint.Parent</a>, <a href="PatternConstraintProxy_Parent.htm">PatternConstraintProxy.Parent</a>, <a href="PerpendicularConstraint_Parent.htm">PerpendicularConstraint.Parent</a>, <a href="PerpendicularConstraintProxy_Parent.htm">PerpendicularConstraintProxy.Parent</a>, <a href="Profile_Parent.htm">Profile.Parent</a>, <a href="ProfileProxy_Parent.htm">ProfileProxy.Parent</a>, <a href="RadiusDimConstraint_Parent.htm">RadiusDimConstraint.Parent</a>, <a href="RadiusDimConstraintProxy_Parent.htm">RadiusDimConstraintProxy.Parent</a>, <a href="SketchArc_Parent.htm">SketchArc.Parent</a>, <a href="SketchArcProxy_Parent.htm">SketchArcProxy.Parent</a>, <a href="SketchBlock_Parent.htm">SketchBlock.Parent</a>, <a href="SketchBlockProxy_Parent.htm">SketchBlockProxy.Parent</a>, <a href="SketchCircle_Parent.htm">SketchCircle.Parent</a>, <a href="SketchCircleProxy_Parent.htm">SketchCircleProxy.Parent</a>, <a href="SketchCircularPattern_Parent.htm">SketchCircularPattern.Parent</a>, <a href="SketchControlPointSpline_Parent.htm">SketchControlPointSpline.Parent</a>, <a href="SketchControlPointSplineProxy_Parent.htm">SketchControlPointSplineProxy.Parent</a>, <a href="SketchEllipse_Parent.htm">SketchEllipse.Parent</a>, <a href="SketchEllipseProxy_Parent.htm">SketchEllipseProxy.Parent</a>, <a href="SketchEllipticalArc_Parent.htm">SketchEllipticalArc.Parent</a>, <a href="SketchEllipticalArcProxy_Parent.htm">SketchEllipticalArcProxy.Parent</a>, <a href="SketchEntity_Parent.htm">SketchEntity.Parent</a>, <a href="SketchEquationCurve_Parent.htm">SketchEquationCurve.Parent</a>, <a href="SketchEquationCurveProxy_Parent.htm">SketchEquationCurveProxy.Parent</a>, <a href="SketchesEnumerator_Item.htm">SketchesEnumerator.Item</a>, <a href="SketchFillRegion_Parent.htm">SketchFillRegion.Parent</a>, <a href="SketchFixedSpline_Parent.htm">SketchFixedSpline.Parent</a>, <a href="SketchFixedSplineProxy_Parent.htm">SketchFixedSplineProxy.Parent</a>, <a href="SketchLine_Parent.htm">SketchLine.Parent</a>, <a href="SketchLineProxy_Parent.htm">SketchLineProxy.Parent</a>, <a href="SketchOffsetSpline_Parent.htm">SketchOffsetSpline.Parent</a>, <a href="SketchOffsetSplineProxy_Parent.htm">SketchOffsetSplineProxy.Parent</a>, <a href="SketchPoint_Parent.htm">SketchPoint.Parent</a>, <a href="SketchPointProxy_Parent.htm">SketchPointProxy.Parent</a>, <a href="SketchRectangularPattern_Parent.htm">SketchRectangularPattern.Parent</a>, <a href="SketchSpline_Parent.htm">SketchSpline.Parent</a>, <a href="SketchSplineHandle_Parent.htm">SketchSplineHandle.Parent</a>, <a href="SketchSplineHandleProxy_Parent.htm">SketchSplineHandleProxy.Parent</a>, <a href="SketchSplineProxy_Parent.htm">SketchSplineProxy.Parent</a>, <a href="SmoothConstraint_Parent.htm">SmoothConstraint.Parent</a>, <a href="SmoothConstraintProxy_Parent.htm">SmoothConstraintProxy.Parent</a>, <a href="SplineFitPointConstraint_Parent.htm">SplineFitPointConstraint.Parent</a>, <a href="SplineFitPointConstraintProxy_Parent.htm">SplineFitPointConstraintProxy.Parent</a>, <a href="SymmetryConstraint_Parent.htm">SymmetryConstraint.Parent</a>, <a href="SymmetryConstraintProxy_Parent.htm">SymmetryConstraintProxy.Parent</a>, <a href="TangentDistanceDimConstraint_Parent.htm">TangentDistanceDimConstraint.Parent</a>, <a href="TangentDistanceDimConstraintProxy_Parent.htm">TangentDistanceDimConstraintProxy.Parent</a>, <a href="TangentSketchConstraint_Parent.htm">TangentSketchConstraint.Parent</a>, <a href="TangentSketchConstraintProxy_Parent.htm">TangentSketchConstraintProxy.Parent</a>, <a href="TextBox_Parent.htm">TextBox.Parent</a>, <a href="TextBoxConstraint_Parent.htm">TextBoxConstraint.Parent</a>, <a href="TextBoxConstraintProxy_Parent.htm">TextBoxConstraintProxy.Parent</a>, <a href="TextBoxProxy_Parent.htm">TextBoxProxy.Parent</a>, <a href="ThreePointAngleDimConstraint_Parent.htm">ThreePointAngleDimConstraint.Parent</a>, <a href="ThreePointAngleDimConstraintProxy_Parent.htm">ThreePointAngleDimConstraintProxy.Parent</a>, <a href="TwoLineAngleDimConstraint_Parent.htm">TwoLineAngleDimConstraint.Parent</a>, <a href="TwoLineAngleDimConstraintProxy_Parent.htm">TwoLineAngleDimConstraintProxy.Parent</a>, <a href="TwoPointDistanceDimConstraint_Parent.htm">TwoPointDistanceDimConstraint.Parent</a>, <a href="TwoPointDistanceDimConstraintProxy_Parent.htm">TwoPointDistanceDimConstraintProxy.Parent</a>, <a href="VerticalAlignConstraint_Parent.htm">VerticalAlignConstraint.Parent</a>, <a href="VerticalAlignConstraintProxy_Parent.htm">VerticalAlignConstraintProxy.Parent</a>, <a href="VerticalConstraint_Parent.htm">VerticalConstraint.Parent</a>, <a href="VerticalConstraintProxy_Parent.htm">VerticalConstraintProxy.Parent</a><h2 class="api">
+            Derived Classes
+          </h2><a href="DrawingSketch.htm">DrawingSketch</a>, <a href="PlanarSketch.htm">PlanarSketch</a><h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="CopySketch_Sample.htm">Copy a sketch</a></td>
+        <td class="api-list">This sample demonstrates copying the contents of a sketch into another sketch via the API.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ProfilePath_AddsMaterial_Sample.htm">Sketch profile control</a></td>
+        <td class="api-list">This sample demonstrates the usage of the Profiles API to control the shape of the profile. The sample creates three concntric circles and creates an extrusion of the region between the inner circles.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch_CopyContentsTo_Sample.htm">Copy sketch contents</a></td>
+        <td class="api-list">This sample shows how to copy the contents of one sketch to another.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch_DeferUpdates_Sample.htm">Defer sketch updates</a></td>
+        <td class="api-list">This sample demonstrates the sketch defer update functionality.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch_MoveSketchObjects_Sample.htm">Move sketch entities</a></td>
+        <td class="api-list">This sample demonstrates the translation of all the objects on the active sketch by a certain distance.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchedSymbolDefinition_Sample.htm">Create SketchedSymbol Definition</a></td>
+        <td class="api-list">This sample illustrates creating a new sketched symbol definition object and inserting it into the active sheet.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchSlots_Sample.htm">Create slots in sketch.</a></td>
+        <td class="api-list">This sample demonstrates several new methods to create sketch entities that represent slots. These are the equivalent to new sketch commands that were added in Inventor 2014.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TextBoxes_Sample.htm">Sketch Text Add</a></td>
+        <td class="api-list">This sample illustrates creating text in a sketch.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 4<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(Sketch%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

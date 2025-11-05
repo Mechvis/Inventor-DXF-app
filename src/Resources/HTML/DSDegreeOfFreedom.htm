@@ -1,0 +1,171 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/DSDegreeOfFreedom.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="DSDegreeOfFreedom">
+    <meta name="description" content="DSDegreeOfFreedom Object">
+    <meta name="topicid" content="GUID-DSDegreeOfFreedom">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>DSDegreeOfFreedom Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">DSDegreeOfFreedom Object
+			</h1><br><h2 class="api">
+          Description
+        </h2>The DSDegreeOfFreedom object represents a degree of freedom associated with a joint.<h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DSDegreeOfFreedom_Application.htm">Application</a></td>
+        <td class="api-list">Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DSDegreeOfFreedom_DegreeOfFreedomType.htm">DegreeOfFreedomType</a></td>
+        <td class="api-list">Read-only property that indicates if this degree of freedom is for a rotation or translation.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DSDegreeOfFreedom_ImposedMotionType.htm">ImposedMotionType</a></td>
+        <td class="api-list">Gets and sets the type of imposed motion defined on a degree of freedom.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DSDegreeOfFreedom_ImposedMotionValue.htm">ImposedMotionValue</a></td>
+        <td class="api-list">Read-only property returning a DSValue object that you can use to get and set the imposed motion.&nbsp;This property returns nothing in the case where the ImposedMotionType property is set to kNoImposedMotion.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DSDegreeOfFreedom_InitialPosition.htm">InitialPosition</a></td>
+        <td class="api-list">Gets and sets the initial position. This property is writable when the DSDegreeOfFreedom object is transient and not associated with an existing joint.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DSDegreeOfFreedom_InitialVelocity.htm">InitialVelocity</a></td>
+        <td class="api-list">Gets and sets the initial position. This property is writable when the DSDegreeOfFreedom object is transient and not associated with an existing joint.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DSDegreeOfFreedom_IsLoadEnabled.htm">IsLoadEnabled</a></td>
+        <td class="api-list">Gets and sets if the load settings for this joint are enabled.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DSDegreeOfFreedom_IsMaxBoundsEnabled.htm">IsMaxBoundsEnabled</a></td>
+        <td class="api-list">Gets and sets if the maximum bounds of the joint are defined.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DSDegreeOfFreedom_IsMinBoundsEnabled.htm">IsMinBoundsEnabled</a></td>
+        <td class="api-list">Gets and sets if the minimum bounds of the joint are defined.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DSDegreeOfFreedom_IsPositionLocked.htm">IsPositionLocked</a></td>
+        <td class="api-list">Gets and sets if the position of this joint is locked.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DSDegreeOfFreedom_IsVelocityComputed.htm">IsVelocityComputed</a></td>
+        <td class="api-list">Gets and sets if the velocity is computed.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DSDegreeOfFreedom_LoadDamping.htm">LoadDamping</a></td>
+        <td class="api-list">Gets a DSValue object that you can use to get and set the load damping. This property returns Nothing in the case where IsLoadEnabled is False.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DSDegreeOfFreedom_LoadDryFrictionCoefficient.htm">LoadDryFrictionCoefficient</a></td>
+        <td class="api-list">Gets a DSValue object that you can use to get and set the load dry friction coefficient. This property returns Nothing in the case where IsLoadEnabled is False.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DSDegreeOfFreedom_LoadDryFrictionRadius.htm">LoadDryFrictionRadius</a></td>
+        <td class="api-list">Gets a DSValue object that you can use to get and set the load dry friction radius. This property returns Nothing in the case where IsLoadEnabled is False.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DSDegreeOfFreedom_LoadForce.htm">LoadForce</a></td>
+        <td class="api-list">Gets a DSValue object that you can use to get and set the load force. This property returns Nothing in the case where IsLoadEnabled is False.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DSDegreeOfFreedom_LoadSpringElasticStiffness.htm">LoadSpringElasticStiffness</a></td>
+        <td class="api-list">Gets a DSValue object that you can use to get and set the load spring free position. This property returns Nothing in the case where IsLoadEnabled is False.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DSDegreeOfFreedom_LoadSpringFreePosition.htm">LoadSpringFreePosition</a></td>
+        <td class="api-list">Gets a DSValue object that you can use to get and set the load spring free position. This property returns Nothing in the case where IsLoadEnabled is False.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DSDegreeOfFreedom_MaxBoundsDamping.htm">MaxBoundsDamping</a></td>
+        <td class="api-list">Gets the maximum damping value. The value is in database units, where lengths are is always expressed in centimeters, angles in radians, and time in seconds.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DSDegreeOfFreedom_MaxBoundsStiffness.htm">MaxBoundsStiffness</a></td>
+        <td class="api-list">Gets the maximum stiffness value. The value is in database units, where lengths are is always expressed in centimeters, angles in radians, and time in seconds.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DSDegreeOfFreedom_MaxBoundsValue.htm">MaxBoundsValue</a></td>
+        <td class="api-list">Gets the maximum value of the joint. The value is in database units, which for linear bounds is centimeters and radial bounds is radians.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DSDegreeOfFreedom_MinBoundsDamping.htm">MinBoundsDamping</a></td>
+        <td class="api-list">Gets the minimuim damping value. The value is in database units, which for linear bounds is centimeters and radial bounds is radians.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DSDegreeOfFreedom_MinBoundsStiffness.htm">MinBoundsStiffness</a></td>
+        <td class="api-list">Gets the minimum stiffness value.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DSDegreeOfFreedom_MinBoundsValue.htm">MinBoundsValue</a></td>
+        <td class="api-list">Gets the minimum value of the joint.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DSDegreeOfFreedom_Parent.htm">Parent</a></td>
+        <td class="api-list">Returns the DSJointDefinition object this degree of freedom is associated with.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DSDegreeOfFreedom_Results.htm">Results</a></td>
+        <td class="api-list">Gets the DSResults object that provides access to the simulation results associated with this degree of freedom.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DSDegreeOfFreedom_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="DSDegreesOfFreedom_Item.htm">DSDegreesOfFreedom.Item</a>, <a href="DSResult_Parent.htm">DSResult.Parent</a><h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2013<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(DSDegreeOfFreedom%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

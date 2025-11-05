@@ -1,0 +1,142 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/EdgeSymbols_CreateDefinition.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="EdgeSymbols_CreateDefinition">
+    <meta name="description" content="EdgeSymbols.CreateDefinition Method">
+    <meta name="topicid" content="EdgeSymbols_CreateDefinition">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>EdgeSymbols.CreateDefinition Method</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">EdgeSymbols.CreateDefinition Method</h1>
+
+          Parent Object: <a href="EdgeSymbols.htm">EdgeSymbols</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Method that creates a new edge symbol definition.</p>
+    <h2 class="api">
+          Syntax
+        </h2>
+        
+            EdgeSymbols.<b>CreateDefinition</b>( [<b><i>ValuePositionType</i></b>] As Variant, [<b><i>IndicationType</i></b>] As Variant, [<b><i>SymbolOptions</i></b>] As Variant ) As <a href="EdgeSymbolDefinition.htm">EdgeSymbolDefinition</a>
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">ValuePositionType</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional input EdgeSymbolValuePositionTypeEnum&nbsp;&nbsp;indicating the text position type of the edge symbol. If not provided, this defaults to kEdgeSymbolValueDirectionVertical.<br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+      <tr>
+        <td class="api-list">IndicationType</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional input EdgeSymbolIndicationTypeEnum&nbsp;&nbsp;indicating the indication type. If not provided, this defaults to kAllEdgesIndicationType.<br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+      <tr>
+        <td class="api-list">SymbolOptions</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional input NameValueMap to specify more options for the definition.
+
+Below are the options can be specified:
+</br></br>
+Name = RangeOfValues. Value = Boolean indicating if use the range of values. If not provided, this defaults to False.
+</br></br>
+Name = StatesOfAllEdgesAroundProfile. Value = Boolean indicating the states of all edges around the profile of a part. If not provided, this defaults to False.
+</br></br>
+Name = SidesDefined. Value = Boolean indicating the states of all edges around the profile of a part with sides clearly defined. If not provided, this defaults to False.
+</br></br>
+Name = ReferenceToISO. Value = Boolean indicating whether to reference to ISO 13715. If not provided, this defaults to False.
+</br></br>
+Name = VerticalValue. Value = String value indicating the vertical value. This is applicable when the ValuePositionType is set to kEdgeSymbolValueVerticalDirectionDefined or kEdgeSymbolValueVerticalAndHorizontalDirectionDefined. The value should contain at least a sign “+”, “-” or “±”, and if “±” is specified a number should be specified along with it.
+</br></br>
+Name = VerticalValueLower. Value = String value indicating the vertical value lower. This is applicable when the RangeOfValues is set to True and ValuePositionType is set to kEdgeSymbolValueVerticalDirectionDefined or kEdgeSymbolValueVerticalAndHorizontalDirectionDefined. The value should contain at least a sign “+”, “-” or “±”, and if “±” is specified a number should be specified along with it.
+</br></br>
+Name = HorizontalValue. Value = String value indicating the horizontal value. This is applicable when the ValuePositionType is set to 
+kEdgeSymbolValueHorizontalDirectionDefined or
+kEdgeSymbolValueVerticalAndHorizontalDirectionDefined. The value should contain at least a sign “+”, “-” or “±”, and if “±” is specified a number should be specified along with it.
+</br></br>
+Name = HorizontalValueLower. Value = String value indicating the horizontal value lower. This is applicable when the RangeOfValues is set to True and the ValuePositionType is set to 
+kEdgeSymbolValueHorizontalDirectionDefined or
+kEdgeSymbolValueVerticalAndHorizontalDirectionDefined. The value should contain at least a sign “+”, “-” or “±”, and if “±” is specified a number should be specified along with it.
+</br></br>
+Name = UndefinedValue. Value = String value indicating the direction undefined value. This is applicable when the ValuePositionType is set to 
+kEdgeSymbolValueDirectionUndefined. The value should contain at least a sign “+”, “-” or “±”, and if “±” is specified a number should be specified along with it.
+</br></br>
+Name = UndefinedValueLower. Value = String value indicating the direction undefined value lower. This is applicable when the RangeOfValues is set to True and ValuePositionType is set to 
+kEdgeSymbolValueDirectionUndefined. The value should contain at least a sign “+”, “-” or “±”, and if “±” is specified a number should be specified along with it.
+</br></br>
+Name = Edges. Value = String value indicating the edges text. This is applicable when the SidesDefined is set to True.<br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="EdgeSymbolCreation_Sample.htm">EdgeSymbol Creation Sample</a></td>
+        <td class="api-list">This sample is to demonstrate how to create a EdgeSymbol in drawing document.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2024<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(EdgeSymbols.CreateDefinition%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,197 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/SelectSet.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="SelectSet">
+    <meta name="description" content="SelectSet Object">
+    <meta name="topicid" content="GUID-SelectSet">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>SelectSet Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">SelectSet Object
+			</h1><br><h2 class="api">
+          Description
+        </h2>The SelectSet object acts as a container for all of the objects that are currently selected using the Select command. See the article in the overviews section.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SelectSet_Clear.htm">Clear</a></td>
+        <td class="api-list">Method that removes all objects from the select set.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SelectSet_Delete.htm">Delete</a></td>
+        <td class="api-list">Method that deletes all deletable objects in the select set. This is the equivalent of the Delete command. Not all objects that are selectable can be deleted. For example, you can select an edge, but it cannot be deleted. Any undeletable objects in the select set are ignored.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SelectSet_Remove.htm">Remove</a></td>
+        <td class="api-list">Method that removes the specified object from the select set.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SelectSet_Select.htm">Select</a></td>
+        <td class="api-list">Method that adds an entity to the select set.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SelectSet_SelectMultiple.htm">SelectMultiple</a></td>
+        <td class="api-list">Adds multiple entities to the select set.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SelectSet_Count.htm">Count</a></td>
+        <td class="api-list">Property that returns the number of objects in the select set.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SelectSet_Item.htm">Item</a></td>
+        <td class="api-list">Returns the specified object from the select set.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SelectSet_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="AssemblyDocument_SelectSet.htm">AssemblyDocument.SelectSet</a>, <a href="Document_SelectSet.htm">Document.SelectSet</a>, <a href="DrawingDocument_SelectSet.htm">DrawingDocument.SelectSet</a>, <a href="PartDocument_SelectSet.htm">PartDocument.SelectSet</a>, <a href="PresentationDocument_SelectSet.htm">PresentationDocument.SelectSet</a><h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AssemblyComponentDefinition_AnalyzeInterference_Sample.htm">Interference Analysis</a></td>
+        <td class="api-list">This sample demonstrates the functions used to calculate interference analysis in an assembly.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AssemblyConstraints_AddMateConstraint3_Sample.htm">Add mate constraint with limits</a></td>
+        <td class="api-list">This sample demonstrates the creation of an assembly mate constraint with maximum and minimum limits defined.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BalloonValueSet_ReferencedRow_Sample.htm">Find component referenced by balloon</a></td>
+        <td class="api-list">This sample demonstrates how to find the component that a balloon references.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BendNotes_Add_Sample.htm">Create bend note</a></td>
+        <td class="api-list">This sample demonstrates the creation of a bend note on the drawing view of a flat pattern.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BreakOperations_Add_Sample.htm">Creation of a break operation in a drawing view</a></td>
+        <td class="api-list">Demonstrates the creation of a break operation.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BrowserPanes_GetNativeBrowserNodeDefinition_Sample.htm">Navigation between browser and data</a></td>
+        <td class="api-list">This sample demonstrates the navigation between a browser node and it's corresponding data model object and vice versa. This sample creates a work plane, finds its browser node and gets the work plane object back from the browser node.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ClientGraphics_Sample.htm">Client Graphics - Draw Range Box</a></td>
+        <td class="api-list">This sample demonstrates the use of client graphics to draw the range box of selected entities.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="CopySketch_Sample.htm">Copy a sketch</a></td>
+        <td class="api-list">This sample demonstrates copying the contents of a sketch into another sketch via the API.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FeatureControlFrame_FeatureControlFrameRows_Sample.htm">Adding and editing a feature control frame</a></td>
+        <td class="api-list">These samples demonstrate editing an existing feature control frame symbol. The first sample adds a row to an existing symbol. The second sample replaces all rows of an existing symbol.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="HighlightSet_Sample.htm">Highlight Feature Faces</a></td>
+        <td class="api-list">This sample highlights the faces of an extrusion, revolution, or hole feature. It differentiates the faces on the start cap, end cap, and side faces by highlighting them in different colors. The HighlightFeatureFaces sub highlights the feature faces. Since the highlight set objects are declared outside of this sub, the highlighting remains after the sub has finished executing. Use the ClearHighlight sub to clear the highlighting that does so by releasing the HighlightSet objects.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="HoleThreadNotes_Add_Sample.htm">Create thread note</a></td>
+        <td class="api-list">This sample demonstrates the creation of a thread note on a drawing view.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PunchNotes_Add_Sample.htm">create punch note</a></td>
+        <td class="api-list">This sample demonstrates the creation of a punch note on the drawing view of a flat pattern.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PunchToolFeatures_Add_Sample.htm">Add a punch tool feature</a></td>
+        <td class="api-list">This program demonstrates the creation of a punch tool feature. It uses one of the punch features that's delivered with Inventor. It assumes you already have an existing sheet metal part and have selected a face to place the punch feature on. The selected face should be large so there is room for the punch features.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SectionDrawingView_Sample.htm">Break alignment of a section view</a></td>
+        <td class="api-list">Sample showing how to break the alignment of a drawing section view by calling the DrawingBreakViewAlignment command.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchEntity_Sample.htm">Sketch Display Entities</a></td>
+        <td class="api-list">This sample demonstrates the query functionality available for sketch entities.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SurfaceTextureSymbols_Add_Sample.htm">Add surface texture symbol to dimension</a></td>
+        <td class="api-list">This sample demonstrates the creation of a surface texture symbol attached to the extension line of a drawing dimension.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TransformOccurrence_Sample.htm">Assembly Move Occurrence</a></td>
+        <td class="api-list">This sample demonstrates moving a component occurrence. This sample performs a translate, but a rotate can also be performed since the transform is defined using a matrix.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UserInputEventsSink_OnDrag_Sample.htm">OnDrag Event - dragging a WorkPoint</a></td>
+        <td class="api-list">This sample demonstrates the use of the OnDrag event to drag fixed work points when no command is active. This sample only allows drags parallel to the X-Y plane. This sample is dependent on events and VB only supports events within a class module.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 5<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(SelectSet%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

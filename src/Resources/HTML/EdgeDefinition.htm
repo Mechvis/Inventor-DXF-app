@@ -1,0 +1,128 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/EdgeDefinition.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="EdgeDefinition">
+    <meta name="description" content="EdgeDefinition Object">
+    <meta name="topicid" content="GUID-EdgeDefinition">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>EdgeDefinition Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">EdgeDefinition Object
+			</h1><br><h2 class="api">
+          Description
+        </h2>The EdgeDefinition represents a transient definition of an Edge object.<h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="EdgeDefinition_Application.htm">Application</a></td>
+        <td class="api-list">Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="EdgeDefinition_AssociativeID.htm">AssociativeID</a></td>
+        <td class="api-list">Gets and sets the associate ID of this edge.&nbsp;This ID will be transferred to the corresponding edge when this SurfaceBodyDefinition is used to create a SurfaceBody.&nbsp;It is used by Inventor as the identifier for the edge and is used for tracking this geometry f.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="EdgeDefinition_EndVertex.htm">EndVertex</a></td>
+        <td class="api-list">Gets and sets the end vertex of the edge.&nbsp;This can be Nothing where no end vertex is specifically defined.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="EdgeDefinition_FaceOne.htm">FaceOne</a></td>
+        <td class="api-list">Gets and sets the associated FaceDefinition object.&nbsp;This is used in two cases.&nbsp;The first case is where the edge is being defined by a parameter space curve and this face defines the parameter space of the curve provided through the ParameterSpaceCurveOne pro.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="EdgeDefinition_FaceTwo.htm">FaceTwo</a></td>
+        <td class="api-list">Gets and sets the associated FaceDefinition object.&nbsp;This is used in two cases.&nbsp;The first case is where the edge is being defined by a parameter space curve and this face defines the parameter space of the curve provided through the ParameterSpaceCurveTwo pro.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="EdgeDefinition_IsParamReversed.htm">IsParamReversed</a></td>
+        <td class="api-list">Gets and sets if the orientation of this EdgeUse is in the same direction or not relative to the associated EdgeDefinition object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="EdgeDefinition_ModelSpaceCurve.htm">ModelSpaceCurve</a></td>
+        <td class="api-list">Gets and sets the definition of the edge in model space.&nbsp;This can be Nothing in the case where no model space geometry is specified for this edge.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="EdgeDefinition_ParameterSpaceCurveOne.htm">ParameterSpaceCurveOne</a></td>
+        <td class="api-list">Gets and sets the definition of the edge in parameter space.&nbsp;If this is provided then the FaceOne property must also be set to define the parameter space this curve is defined within. This can be Nothing in the case where no parameter space curve is defined f.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="EdgeDefinition_ParameterSpaceCurveTwo.htm">ParameterSpaceCurveTwo</a></td>
+        <td class="api-list">Gets and sets the definition of the edge in parameter space.&nbsp;If this is provided then the FaceTwo property must also be set to define the parameter space this curve is defined within. This can be Nothing in the case where no parameter space curve is defined f.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="EdgeDefinition_StartVertex.htm">StartVertex</a></td>
+        <td class="api-list">Gets and sets the starting vertex of the edge.&nbsp;This can be Nothing where no start vertex is specifically defined.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="EdgeDefinition_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="EdgeDefinitions_Add.htm">EdgeDefinitions.Add</a>, <a href="EdgeDefinitions_Item.htm">EdgeDefinitions.Item</a>, <a href="EdgeUseDefinition_EdgeDefinition.htm">EdgeUseDefinition.EdgeDefinition</a><h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SurfaceBodyDefinition_CreateTransientSurfaceBody_Sample.htm">Transient solid body creation</a></td>
+        <td class="api-list">The following sample demonstrates the creation of a transient solid block body. The newly created body is then displayed using client graphics in a part.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2011<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(EdgeDefinition%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

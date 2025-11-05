@@ -1,0 +1,832 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/GraphicsColorMapper_Sample.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="GraphicsColorMapper_Sample">
+    <meta name="description" content="Client graphics texture-based color mapping Sample">
+    <meta name="topicid" content="GraphicsColorMapper_Sample">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>Client graphics texture-based color mapping</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body><script>
+          function copyCode(language) {
+          // Get the pre element for the specified language.
+          var preElement = document.getElementById(language);
+
+          // Get the text from the element and copy it to the clipboard.
+          var preText = preElement.innerText;
+
+          var isIE = /*@cc_on!@*/false || !!document.documentMode;
+
+          if (isIE)
+          {
+            window.clipboardData.setData('Text', preText);
+          }
+          else
+          {
+            navigator.clipboard.writeText(preText);
+          }
+
+          //alert("Code copied to clipboard");
+          }
+        </script><link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">Client graphics texture-based color mapping</h1>
+    <h2 class="api">
+          Description
+        </h2>This test applies texture coordinates expressing distance from the origin to 'the triangle mesh of whatever Part you have open. It then creates either a discrete-band or continuous color mapper and allows you to adjust the values of the mapper to change the range of values that map to various colors.<h2 class="api">
+          Code Samples
+        </h2>
+    <div id="tabs">
+      <ul>
+        <li><a href="#VBA">VBA</a></li>
+        <li><a href="#iLogic">iLogic</a></li>
+      </ul>
+      <div id="VBA" class="api-code">To operate:   1. Open a part   2. Run Demo - it should show discrete bands moving across the model   3. Click on any of the other "convenience functions" and hit F5 to exercise them.<table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('VBA_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="VBA_code">Dim lastOffset As Double
+Dim mapperType As Integer
+
+<span style="color:blue">'convenience "links"</span>
+Sub Demo()
+    ThisApplication.ActiveView.DisplayMode = kWireframeRendering
+    Call OffsetSurfaceBy(0#)
+    Call UpdateValues(1 / 1.01, 0, 30)
+    Call UpdateValues(1, -0.01, 20)
+    Call UpdateValues(1, 0.01, 20)
+    Call UpdateValues(1 / 1.01, 0, 50)
+    Call UpdateValues(1, -0.01, 20)
+    Call UpdateValues(1, 0.01, 20)
+    Call UpdateValues(1 * 1.01, 0, 50)
+End Sub
+
+Sub narrowBands()
+    Call UpdateValues(1 / 1.01, 0, 1)
+End Sub
+
+Sub widenBands()
+    Call UpdateValues(1 * 1.01, 0, 1)
+End Sub
+
+Sub slideBandsUp()
+    Call UpdateValues(1, 0.01, 1)
+End Sub
+
+Sub slideBandsDown()
+    Call UpdateValues(1, -0.01, 1)
+End Sub
+
+Sub setContinuousMode()
+    mapperType = 1
+    Call OffsetSurfaceBy(0#)
+End Sub
+
+Sub setDiscreteMode()
+    mapperType = 0
+    Call OffsetSurfaceBy(0#)
+End Sub
+
+<span style="color:blue">'internal functions</span>
+<span style="color:blue">'randomly change colors in ColorMapper</span>
+Sub UpdateColors()
+    Dim oDoc As Document
+    Set oDoc = ThisApplication.ActiveDocument
+
+    Dim oDataSets As GraphicsDataSets
+    Set oDataSets = oDoc.GraphicsDataSetsCollection.Item("CG_Test")
+
+    Dim oCompDef As ComponentDefinition
+    Set oCompDef = oDoc.ComponentDefinition
+
+    Dim oClientGraphics As ClientGraphics
+    Set oClientGraphics = oCompDef.ClientGraphicsCollection.Item("CG_Test")
+
+    Dim oGraphicsNode As GraphicsNode
+    Set oGraphicsNode = oClientGraphics.ItemById(100)
+
+    Dim oTriangleSet As TriangleGraphics
+    Set oTriangleSet = oGraphicsNode.Item(1)
+    Dim oColorMapper As GraphicsColorMapper
+    Set oColorMapper = oTriangleSet.ColorMapper
+
+    For i = 1 To 100
+        Dim cmColors() As Byte
+        Call oColorMapper.GetColors(cmColors)
+        For j = 0 To oColorMapper.ColorCount * 3 - 1
+            cmColors(j) = 255 * Rnd() * i / 100#
+        Next
+        Call oColorMapper.PutColors(cmColors)
+        ThisApplication.ActiveView.Update
+    Next
+End Sub
+
+<span style="color:blue">'change values in ColorMapper</span>
+Sub UpdateValues(factor As Double, offset As Double, count As Integer)
+    Dim oDoc As Document
+    Set oDoc = ThisApplication.ActiveDocument
+
+    Dim oDataSets As GraphicsDataSets
+    Set oDataSets = oDoc.GraphicsDataSetsCollection.Item("CG_Test")
+
+    Dim oCompDef As ComponentDefinition
+    Set oCompDef = oDoc.ComponentDefinition
+
+    Dim oClientGraphics As ClientGraphics
+    Set oClientGraphics = oCompDef.ClientGraphicsCollection.Item("CG_Test")
+
+    Dim oGraphicsNode As GraphicsNode
+    Set oGraphicsNode = oClientGraphics.ItemById(100)
+
+    Dim oTriangleSet As TriangleGraphics
+    Set oTriangleSet = oGraphicsNode.Item(1)
+    Dim oColorMapper As GraphicsColorMapper
+    Set oColorMapper = oTriangleSet.ColorMapper
+
+    For i = 1 To count
+        Dim v() As Double
+        Call oColorMapper.GetValues(v)
+        Dim vMid As Double
+        vMid = v(oColorMapper.ValueCount / 2)
+        For j = 0 To oColorMapper.ValueCount - 1
+            v(j) = (v(j) - vMid) * factor + vMid + offset * (v(oColorMapper.ValueCount - 1) - v(0))
+        Next
+        Call oColorMapper.PutValues(v)
+        ThisApplication.ActiveView.Update
+    Next
+End Sub
+
+Function min(a, b)
+    min = a
+    If (b &lt; a) Then
+        min = b
+    End If
+End Function
+
+Function max(a, b)
+    max = a
+    If (b &gt; a) Then
+        max = b
+    End If
+End Function
+
+<span style="color:blue">'display part thickness by adding display of surfaces offset by given distance --</span>
+<span style="color:blue">'wherever they stick through the part, it's thinner than that distance at that point</span>
+Public Sub OffsetSurfaceBy(offset As Double)
+    <span style="color:blue">' Get the surface body from the active document.</span>
+    Dim oPartDoc As PartDocument
+    Set oPartDoc = ThisApplication.ActiveDocument
+    Dim oSurfBody As SurfaceBody
+    Set oSurfBody = oPartDoc.ComponentDefinition.SurfaceBodies.Item(1)
+    Set oSurfBody = oPartDoc.ComponentDefinitions.Item(1).SurfaceBodies.Item(1)
+
+    <span style="color:blue">' Delete the graphics data set and client graphics, if they exist.</span>
+    Dim oDataSets As GraphicsDataSets
+    On Error Resume Next
+    Set oDataSets = oPartDoc.GraphicsDataSetsCollection.Item("CG_Test")
+    If Err.Number = 0 Then
+        oDataSets.Delete
+        oPartDoc.ComponentDefinition.ClientGraphicsCollection.Item("CG_Test").Delete
+        oSurfBody.Visible = True
+        ThisApplication.ActiveView.Update
+    End If
+    On Error GoTo 0
+
+<span style="color:blue">'    If offset = 0 Then</span>
+<span style="color:blue">'        Exit Sub</span>
+<span style="color:blue">'    End If</span>
+
+    <span style="color:blue">' Determine the highest tolerance of the existing facet sets.</span>
+    Dim ToleranceCount As Long
+    Dim ExistingTolerances() As Double
+    Call oSurfBody.GetExistingFacetTolerances(ToleranceCount, ExistingTolerances)
+
+    Dim i As Long
+    Dim BestTolerance As Double
+    For i = 0 To ToleranceCount - 1
+        If i = 0 Then
+            BestTolerance = ExistingTolerances(i)
+        ElseIf ExistingTolerances(i) &lt; BestTolerance Then
+            BestTolerance = ExistingTolerances(i)
+        End If
+    Next
+
+    <span style="color:blue">' Get a set of existing facets.</span>
+    Dim iVertexCount As Long
+    Dim iFacetCount As Long
+    Dim adVertexCoords() As Double
+    Dim adNormalVectors() As Double
+    Dim aiVertexIndices() As Long
+    Call oSurfBody.GetExistingFacets(BestTolerance, iVertexCount, iFacetCount, _
+                                    adVertexCoords, adNormalVectors, aiVertexIndices)
+
+    <span style="color:blue">' Offset vertices by given distance along anti-normals</span>
+    For i = 0 To (iVertexCount * 3 - 1)
+        adVertexCoords(i) = adVertexCoords(i) - adNormalVectors(i) * offset
+    Next
+
+    <span style="color:blue">' Start a transaction.</span>
+    Dim oTrans As Transaction
+    Set oTrans = ThisApplication.TransactionManager.StartTransaction(oPartDoc, "Z Height Colors")
+
+    <span style="color:blue">' Create the graphics data sets collection.</span>
+    Set oDataSets = oPartDoc.GraphicsDataSetsCollection.Add("CG_Test")
+
+    <span style="color:blue">' Create the coordinate set and set it using the coordinates from the facets.</span>
+    Dim oGraphicsCoordSet As GraphicsCoordinateSet
+    Set oGraphicsCoordSet = oDataSets.CreateCoordinateSet(1)
+    Call oGraphicsCoordSet.PutCoordinates(adVertexCoords)
+
+    <span style="color:blue">' Create the index set and set it using the indices from the facets.</span>
+    Dim oGraphicsIndexSet As GraphicsIndexSet
+    Set oGraphicsIndexSet = oDataSets.CreateIndexSet(2)
+    Call oGraphicsIndexSet.PutIndices(aiVertexIndices)
+
+    <span style="color:blue">' Create the normal set and set it using the normals from the facets.</span>
+    Dim oGraphicsNormalSet As GraphicsNormalSet
+    Set oGraphicsNormalSet = oDataSets.CreateNormalSet(3)
+    Call oGraphicsNormalSet.PutNormals(adNormalVectors)
+
+    <span style="color:blue">' Allocate the array that will contain the color information.</span>
+    <span style="color:blue">' This array contains RGB values for each vertex.</span>
+    Dim abtColors() As Byte
+    ReDim abtColors(0 To iVertexCount * 3 - 1) As Byte
+
+    <span style="color:blue">' Load the array with color information for each vertex.</span>
+    For i = 0 To iVertexCount - 1
+        <span style="color:blue">' Set the color information for the current vertex.</span>
+        <span style="color:blue">' currently, all vertices are a constant color, but ...</span>
+        abtColors(i * 3) = 200
+        abtColors(i * 3 + 1) = 0
+        abtColors(i * 3 + 2) = 0
+    Next
+
+    <span style="color:blue">' Create the color set and set it using the array of rgb values just created.</span>
+    Dim oGraphicsColorSet As GraphicsColorSet
+    Set oGraphicsColorSet = oDataSets.CreateColorSet(4)
+    Call oGraphicsColorSet.PutColors(abtColors)
+
+    <span style="color:blue">' Create a scalar data texture coordinate set representing distance from origin</span>
+    Dim oTCSet As GraphicsTextureCoordinateSet
+    Set oTCSet = oDataSets.CreateTextureCoordinateSet(5)
+    Dim tc() As Double
+    ReDim tc(1 To iVertexCount) As Double
+    Dim tcMax As Double
+    tcMax = 0
+    Dim tcMin As Double
+    tcMin = 1000000#
+    For i = 1 To iVertexCount
+        tc(i) = Sqr(adVertexCoords(3 * (i - 1)) * adVertexCoords(3 * (i - 1)) + adVertexCoords(3 * (i - 1) + 1) * adVertexCoords(3 * (i - 1) + 1) + adVertexCoords(3 * (i - 1) + 2) * adVertexCoords(3 * (i - 1) + 2))
+        tcMin = min(tcMin, tc(i))
+        tcMax = max(tcMax, tc(i))
+    Next
+    Call oTCSet.PutCoordinates(tc)
+
+    <span style="color:blue">' Create the client graphics collection.</span>
+    Dim oClientGraphics As ClientGraphics
+    Set oClientGraphics = oPartDoc.ComponentDefinition.ClientGraphicsCollection.Add("CG_Test")
+
+    <span style="color:blue">' Create a graphics node.</span>
+    Dim oGraphicNode As GraphicsNode
+    Set oGraphicNode = oClientGraphics.AddNode(100)
+
+    <span style="color:blue">' Create the triangle graphics.</span>
+    Dim oTriangles As TriangleGraphics
+    Set oTriangles = oGraphicNode.AddTriangleGraphics
+
+    <span style="color:blue">'============================================</span>
+
+    Dim oColorMapper As GraphicsColorMapper
+    Set oColorMapper = oDataSets.CreateColorMapper
+
+    <span style="color:blue">'============================================</span>
+
+    <span style="color:blue">'construct ColorMapper:</span>
+    <span style="color:blue">'  black - red - orange - yellow - green - cyan - blue - magenta - black</span>
+    <span style="color:blue">'      minV                          ...                        maxV</span>
+    Dim nColors As Integer
+    nColors = 9
+
+    Dim cmColors() As Byte
+    ReDim cmColors(1 To nColors * 3) As Byte
+    For i = 1 To nColors * 3
+        cmColors(i) = 0
+    Next
+    <span style="color:blue">'black</span>
+    cmColors(4) = 255       <span style="color:blue">'red</span>
+    cmColors(7) = 255       <span style="color:blue">'orange</span>
+    cmColors(7 + 1) = 125
+    cmColors(10) = 255      <span style="color:blue">'yellow</span>
+    cmColors(10 + 1) = 255
+    cmColors(13 + 1) = 255  <span style="color:blue">'green</span>
+    cmColors(16 + 1) = 255  <span style="color:blue">'cyan</span>
+    cmColors(16 + 2) = 255
+    cmColors(19 + 2) = 255  <span style="color:blue">'blue</span>
+    cmColors(22) = 255      <span style="color:blue">'magenta</span>
+    cmColors(22 + 2) = 255
+    <span style="color:blue">'black</span>
+
+    Dim nValues As Integer
+    If (mapperType = 0) Then
+        nValues = nColors - 1   <span style="color:blue">'discrete value boundaries</span>
+    Else
+        nValues = nColors       <span style="color:blue">'continuous value points</span>
+    End If
+
+    Dim cmValues() As Double
+    ReDim cmValues(1 To nValues) As Double
+    For i = 1 To nValues
+        cmValues(i) = tcMin + (tcMax - tcMin) * (i - 1#) / (nValues - 1#)
+    Next
+
+    <span style="color:blue">'============================================</span>
+
+    Call oColorMapper.PutColors(cmColors)
+    Call oColorMapper.PutValues(cmValues)
+
+
+    <span style="color:blue">' Set various properties of the triangle graphics.</span>
+    oTriangles.CoordinateSet = oGraphicsCoordSet
+    oTriangles.CoordinateIndexSet = oGraphicsIndexSet
+    oTriangles.NormalSet = oGraphicsNormalSet
+    oTriangles.NormalBinding = kPerVertexNormals
+    oTriangles.NormalIndexSet = oGraphicsIndexSet
+<span style="color:blue">'    oTriangles.ColorSet = oGraphicsColorSet</span>
+<span style="color:blue">'    oTriangles.ColorBinding = kPerVertexColors</span>
+<span style="color:blue">'    oTriangles.ColorIndexSet = oGraphicsIndexSet</span>
+    oTriangles.TextureCoordinateSet = oTCSet
+    oTriangles.TextureCoordinateIndexSet = oGraphicsIndexSet
+    oTriangles.ColorMapper = oColorMapper
+
+    <span style="color:blue">' End the transaction.</span>
+    oTrans.End
+
+    <span style="color:blue">' Update the view.</span>
+    ThisApplication.ActiveView.Update
+End Sub
+
+Public Sub increaseOffset()
+    lastOffset = lastOffset * 1.1
+    Dim offset As Double
+    offset = lastOffset
+    Call OffsetSurfaceBy(offset)
+End Sub
+
+Public Sub DecreaseOffset()
+    lastOffset = lastOffset * 0.9
+    Dim offset As Double
+    offset = lastOffset
+    Call OffsetSurfaceBy(offset)
+End Sub
+
+Public Sub OffsetSurface()
+    Dim oPartDoc As PartDocument
+    Set oPartDoc = ThisApplication.ActiveDocument
+
+    Dim lenunits As UnitsTypeEnum
+    lenunits = oPartDoc.UnitsOfMeasure.LengthUnits
+    Dim unitscale As Double
+    Dim unitname As String
+    If lenunits = kInchLengthUnits Then
+        unitscale = 2.54
+        unitname = "inches"
+    Else
+    If lenunits = kMillimeterLengthUnits Then
+        unitscale = 0.1
+        unitname = "millimeters"
+    Else
+    If lenunits = kCentimeterLengthUnits Then
+        unitscale = 1#
+        unitname = "centimeters"
+    End If
+    End If
+    End If
+
+    Dim offset As Double
+    offset = 0
+    On Error Resume Next
+    offset = InputBox("Enter offset (in " + unitname + "):", "Offset", lastOffset / unitscale)
+    On Error GoTo 0
+
+    lastOffset = offset * unitscale
+
+    Call OffsetSurfaceBy(lastOffset)
+End Sub</pre>
+      </div>
+      <div id="iLogic" class="api-code">To operate:   1. Open a part   2. Run the sample - it should show discrete bands moving across the model.<table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('iLogic_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="iLogic_code">Class Test
+	Dim lastOffset As Double
+	Dim mapperType As Integer
+	
+	<span style="color:blue">'convenience "links"</span>
+	Sub Main
+	    ThisApplication.ActiveView.DisplayMode = kWireframeRendering
+	    Call OffsetSurfaceBy(0#)
+	    Call UpdateValues(1 / 1.01, 0, 30)
+	    Call UpdateValues(1, -0.01, 20)
+	    Call UpdateValues(1, 0.01, 20)
+	    Call UpdateValues(1 / 1.01, 0, 50)
+	    Call UpdateValues(1, -0.01, 20)
+	    Call UpdateValues(1, 0.01, 20)
+	    Call UpdateValues(1 * 1.01, 0, 50)
+		
+		narrowBands()
+	  	widenBands()
+	  	slideBandsUp()
+	  	slideBandsDown()
+	 	setContinuousMode()
+		setDiscreteMode()
+ 
+	End Sub
+	
+	Sub narrowBands()
+	    Call UpdateValues(1 / 1.01, 0, 1)
+	End Sub
+	
+	Sub widenBands()
+	    Call UpdateValues(1 * 1.01, 0, 1)
+	End Sub
+	
+	Sub slideBandsUp()
+	    Call UpdateValues(1, 0.01, 1)
+	End Sub
+	
+	Sub slideBandsDown()
+	    Call UpdateValues(1, -0.01, 1)
+	End Sub
+	
+	Sub setContinuousMode()
+	    mapperType = 1
+	    Call OffsetSurfaceBy(0#)
+	End Sub
+	
+	Sub setDiscreteMode()
+	    mapperType = 0
+	    Call OffsetSurfaceBy(0#)
+	End Sub
+	
+	<span style="color:blue">'internal functions</span>
+	<span style="color:blue">'randomly change colors in ColorMapper</span>
+	Sub UpdateColors()
+	    Dim oDoc As Document
+	    oDoc = ThisApplication.ActiveDocument
+	
+	    Dim oDataSets As GraphicsDataSets
+	    oDataSets = oDoc.GraphicsDataSetsCollection.Item("CG_Test")
+	
+	    Dim oCompDef As ComponentDefinition
+	    oCompDef = oDoc.ComponentDefinition
+	
+	    Dim oClientGraphics As ClientGraphics
+	    oClientGraphics = oCompDef.ClientGraphicsCollection.Item("CG_Test")
+	
+	    Dim oGraphicsNode As GraphicsNode
+	    oGraphicsNode = oClientGraphics.ItemById(100)
+	
+	    Dim oTriangleSet As TriangleGraphics
+	    oTriangleSet = oGraphicsNode.Item(1)
+	    Dim oColorMapper As GraphicsColorMapper
+	    oColorMapper = oTriangleSet.ColorMapper
+	
+	    For i = 1 To 100
+	        Dim cmColors() As Byte
+	        Call oColorMapper.GetColors(cmColors)
+	        For j = 0 To oColorMapper.ColorCount * 3 - 1
+	            cmColors(j) = 255 * Rnd() * i / 100#
+	        Next
+	        Call oColorMapper.PutColors(cmColors)
+	        ThisApplication.ActiveView.Update
+	    Next
+	End Sub
+	
+	<span style="color:blue">'change values in ColorMapper</span>
+	Sub UpdateValues(factor As Double, offset As Double, count As Integer)
+	    Dim oDoc As Document
+	    oDoc = ThisApplication.ActiveDocument
+	
+	    Dim oDataSets As GraphicsDataSets
+	    oDataSets = oDoc.GraphicsDataSetsCollection.Item("CG_Test")
+	
+	    Dim oCompDef As ComponentDefinition
+	    oCompDef = oDoc.ComponentDefinition
+	
+	    Dim oClientGraphics As ClientGraphics
+	    oClientGraphics = oCompDef.ClientGraphicsCollection.Item("CG_Test")
+	
+	    Dim oGraphicsNode As GraphicsNode
+	    oGraphicsNode = oClientGraphics.ItemById(100)
+	
+	    Dim oTriangleSet As TriangleGraphics
+	    oTriangleSet = oGraphicsNode.Item(1)
+	    Dim oColorMapper As GraphicsColorMapper
+	    oColorMapper = oTriangleSet.ColorMapper
+	
+	    For i = 1 To count
+	        Dim v() As Double = New Double() {}
+	        Call oColorMapper.GetValues(v)
+	        Dim vMid As Double
+	        vMid = v(oColorMapper.ValueCount / 2)
+	        For j = 0 To oColorMapper.ValueCount - 1
+	            v(j) = (v(j) - vMid) * factor + vMid + offset * (v(oColorMapper.ValueCount - 1) - v(0))
+	        Next
+	        Call oColorMapper.PutValues(v)
+	        ThisApplication.ActiveView.Update
+	    Next
+	End Sub
+	
+	Function min(a, b)
+	    min = a
+	    If (b &lt; a) Then
+	        min = b
+	    End If
+	End Function
+	
+	Function max(a, b)
+	    max = a
+	    If (b &gt; a) Then
+	        max = b
+	    End If
+	End Function
+	
+	<span style="color:blue">'display part thickness by adding display of surfaces offset by given distance --</span>
+	<span style="color:blue">'wherever they stick through the part, it's thinner than that distance at that point</span>
+	Public Sub OffsetSurfaceBy(offset As Double)
+	    <span style="color:blue">' Get the surface body from the active document.</span>
+	    Dim oPartDoc As PartDocument
+	    oPartDoc = ThisApplication.ActiveDocument
+	    Dim oSurfBody As SurfaceBody
+	    oSurfBody = oPartDoc.ComponentDefinition.SurfaceBodies.Item(1)
+	    oSurfBody = oPartDoc.ComponentDefinitions.Item(1).SurfaceBodies.Item(1)
+	
+	    <span style="color:blue">' Delete the graphics data set and client graphics, if they exist.</span>
+	    Dim oDataSets As GraphicsDataSets
+	    On Error Resume Next
+	    oDataSets = oPartDoc.GraphicsDataSetsCollection.Item("CG_Test")
+	    If Err.Number = 0 Then
+	        oDataSets.Delete
+	        oPartDoc.ComponentDefinition.ClientGraphicsCollection.Item("CG_Test").Delete
+	        oSurfBody.Visible = True
+	        ThisApplication.ActiveView.Update
+	    End If
+	    On Error GoTo 0
+	
+	<span style="color:blue">'    If offset = 0 Then</span>
+	<span style="color:blue">'        Exit Sub</span>
+	<span style="color:blue">'    End If</span>
+	
+	    <span style="color:blue">' Determine the highest tolerance of the existing facet sets.</span>
+	    Dim ToleranceCount As Long
+	    Dim ExistingTolerances() As Double = New Double() {}
+	    Call oSurfBody.GetExistingFacetTolerances(ToleranceCount, ExistingTolerances)
+	
+	    Dim i As Long
+	    Dim BestTolerance As Double
+	    For i = 0 To ToleranceCount - 1
+	        If i = 0 Then
+	            BestTolerance = ExistingTolerances(i)
+	        ElseIf ExistingTolerances(i) &lt; BestTolerance Then
+	            BestTolerance = ExistingTolerances(i)
+	        End If
+	    Next
+	
+	    <span style="color:blue">' Get a set of existing facets.</span>
+	    Dim iVertexCount As Integer
+	    Dim iFacetCount As Integer
+	    Dim adVertexCoords() As Double = New Double() {}
+	    Dim adNormalVectors() As Double = New Double() {}
+	    Dim aiVertexIndices() As Integer = New Integer() {}
+	    Call oSurfBody.GetExistingFacets(BestTolerance, iVertexCount, iFacetCount, _
+	                                    adVertexCoords, adNormalVectors, aiVertexIndices)
+	
+	    <span style="color:blue">' Offset vertices by given distance along anti-normals</span>
+	    For i = 0 To (iVertexCount * 3 - 1)
+	        adVertexCoords(i) = adVertexCoords(i) - adNormalVectors(i) * offset
+	    Next
+	
+	    <span style="color:blue">' Start a transaction.</span>
+	    Dim oTrans As Transaction
+	    oTrans = ThisApplication.TransactionManager.StartTransaction(oPartDoc, "Z Height Colors")
+	
+	    <span style="color:blue">' Create the graphics data sets collection.</span>
+	    oDataSets = oPartDoc.GraphicsDataSetsCollection.Add("CG_Test")
+	
+	    <span style="color:blue">' Create the coordinate set and set it using the coordinates from the facets.</span>
+	    Dim oGraphicsCoordSet As GraphicsCoordinateSet
+	    oGraphicsCoordSet = oDataSets.CreateCoordinateSet(1)
+	    Call oGraphicsCoordSet.PutCoordinates(adVertexCoords)
+	
+	    <span style="color:blue">' Create the index set and set it using the indices from the facets.</span>
+	    Dim oGraphicsIndexSet As GraphicsIndexSet
+	    oGraphicsIndexSet = oDataSets.CreateIndexSet(2)
+	    Call oGraphicsIndexSet.PutIndices(aiVertexIndices)
+	
+	    <span style="color:blue">' Create the normal set and set it using the normals from the facets.</span>
+	    Dim oGraphicsNormalSet As GraphicsNormalSet
+	    oGraphicsNormalSet = oDataSets.CreateNormalSet(3)
+	    Call oGraphicsNormalSet.PutNormals(adNormalVectors)
+	
+	    <span style="color:blue">' Allocate the array that will contain the color information.</span>
+	    <span style="color:blue">' This array contains RGB values for each vertex.</span>
+	    Dim abtColors(0 To iVertexCount * 3 - 1) As Byte
+	
+	    <span style="color:blue">' Load the array with color information for each vertex.</span>
+	    For i = 0 To iVertexCount - 1
+	        <span style="color:blue">' Set the color information for the current vertex.</span>
+	        <span style="color:blue">' currently, all vertices are a constant color, but ...</span>
+	        abtColors(i * 3) = 200
+	        abtColors(i * 3 + 1) = 0
+	        abtColors(i * 3 + 2) = 0
+	    Next
+	
+	    <span style="color:blue">' Create the color set and set it using the array of rgb values just created.</span>
+	    Dim oGraphicsColorSet As GraphicsColorSet
+	    oGraphicsColorSet = oDataSets.CreateColorSet(4)
+	    Call oGraphicsColorSet.PutColors(abtColors)
+	
+	    <span style="color:blue">' Create a scalar data texture coordinate set representing distance from origin</span>
+	    Dim oTCSet As GraphicsTextureCoordinateSet
+	    oTCSet = oDataSets.CreateTextureCoordinateSet(5)
+	    Dim tc(0 To iVertexCount-1) As Double
+	    Dim tcMax As Double
+	    tcMax = 0
+	    Dim tcMin As Double
+	    tcMin = 1000000#
+	    For i = 0 To iVertexCount - 1
+	        tc(i) = Math.Sqrt(adVertexCoords(3 * (i)) * adVertexCoords(3 * (i)) + adVertexCoords(3 * (i) + 1) * adVertexCoords(3 * (i) + 1) + adVertexCoords(3 * (i) + 2) * adVertexCoords(3 * (i) + 2))
+	        tcMin = min(tcMin, tc(i))
+	        tcMax = max(tcMax, tc(i))
+	    Next
+	    Call oTCSet.PutCoordinates(tc)
+	
+	    <span style="color:blue">' Create the client graphics collection.</span>
+	    Dim oClientGraphics As ClientGraphics
+	    oClientGraphics = oPartDoc.ComponentDefinition.ClientGraphicsCollection.Add("CG_Test")
+	
+	    <span style="color:blue">' Create a graphics node.</span>
+	    Dim oGraphicNode As GraphicsNode
+	    oGraphicNode = oClientGraphics.AddNode(100)
+	
+	    <span style="color:blue">' Create the triangle graphics.</span>
+	    Dim oTriangles As TriangleGraphics
+	    oTriangles = oGraphicNode.AddTriangleGraphics
+	
+	    <span style="color:blue">'============================================</span>
+	
+	    Dim oColorMapper As GraphicsColorMapper
+	    oColorMapper = oDataSets.CreateColorMapper
+	
+	    <span style="color:blue">'============================================</span>
+	
+	    <span style="color:blue">'construct ColorMapper:</span>
+	    <span style="color:blue">'  black - red - orange - yellow - green - cyan - blue - magenta - black</span>
+	    <span style="color:blue">'      minV                          ...                        maxV</span>
+	    Dim nColors As Integer
+	    nColors = 9
+	
+	    Dim cmColors(0 To nColors * 3 -1) As Byte
+	    For i = 0 To nColors * 3 - 1
+	        cmColors(i) = 0
+	    Next
+	    <span style="color:blue">'black</span>
+	    cmColors(3) = 255       <span style="color:blue">'red</span>
+	    cmColors(6) = 255       <span style="color:blue">'orange</span>
+	    cmColors(6 + 1) = 125
+	    cmColors(9) = 255      <span style="color:blue">'yellow</span>
+	    cmColors(9 + 1) = 255
+	    cmColors(12 + 1) = 255  <span style="color:blue">'green</span>
+	    cmColors(15 + 1) = 255  <span style="color:blue">'cyan</span>
+	    cmColors(15 + 2) = 255
+	    cmColors(18 + 2) = 255  <span style="color:blue">'blue</span>
+	    cmColors(21) = 255      <span style="color:blue">'magenta</span>
+	    cmColors(21 + 2) = 255
+	    <span style="color:blue">'black</span>
+	
+	    Dim nValues As Integer
+	    If (mapperType = 0) Then
+	        nValues = nColors - 1   <span style="color:blue">'discrete value boundaries</span>
+	    Else
+	        nValues = nColors       <span style="color:blue">'continuous value points</span>
+	    End If
+	
+	    Dim cmValues(0 To nValues - 1) As Double
+	    For i = 0 To nValues - 1
+	        cmValues(i) = tcMin + (tcMax - tcMin) * i / (nValues - 1#)
+	    Next
+	
+	    <span style="color:blue">'============================================</span>
+	
+	    Call oColorMapper.PutColors(cmColors)
+	    Call oColorMapper.PutValues(cmValues)
+	
+	
+	    <span style="color:blue">' Set various properties of the triangle graphics.</span>
+	    oTriangles.CoordinateSet = oGraphicsCoordSet
+	    oTriangles.CoordinateIndexSet = oGraphicsIndexSet
+	    oTriangles.NormalSet = oGraphicsNormalSet
+	    oTriangles.NormalBinding = kPerVertexNormals
+	    oTriangles.NormalIndexSet = oGraphicsIndexSet
+	<span style="color:blue">'    oTriangles.ColorSet = oGraphicsColorSet</span>
+	<span style="color:blue">'    oTriangles.ColorBinding = kPerVertexColors</span>
+	<span style="color:blue">'    oTriangles.ColorIndexSet = oGraphicsIndexSet</span>
+	    oTriangles.TextureCoordinateSet = oTCSet
+	    oTriangles.TextureCoordinateIndexSet = oGraphicsIndexSet
+	    oTriangles.ColorMapper = oColorMapper
+	
+	    <span style="color:blue">' End the transaction.</span>
+	    oTrans.End
+	
+	    <span style="color:blue">' Update the view.</span>
+	    ThisApplication.ActiveView.Update
+	End Sub
+	
+	Public Sub increaseOffset()
+	    lastOffset = lastOffset * 1.1
+	    Dim offset As Double
+	    offset = lastOffset
+	    Call OffsetSurfaceBy(offset)
+	End Sub
+	
+	Public Sub DecreaseOffset()
+	    lastOffset = lastOffset * 0.9
+	    Dim offset As Double
+	    offset = lastOffset
+	    Call OffsetSurfaceBy(offset)
+	End Sub
+	
+	Public Sub OffsetSurface()
+	    Dim oPartDoc As PartDocument
+	    oPartDoc = ThisApplication.ActiveDocument
+	
+	    Dim lenunits As UnitsTypeEnum
+	    lenunits = oPartDoc.UnitsOfMeasure.LengthUnits
+	    Dim unitscale As Double
+	    Dim unitname As String
+	    If lenunits = kInchLengthUnits Then
+	        unitscale = 2.54
+	        unitname = "inches"
+	    Else
+	    If lenunits = kMillimeterLengthUnits Then
+	        unitscale = 0.1
+	        unitname = "millimeters"
+	    Else
+	    If lenunits = kCentimeterLengthUnits Then
+	        unitscale = 1#
+	        unitname = "centimeters"
+	    End If
+	    End If
+	    End If
+	
+	    Dim offset As Double
+	    offset = 0
+	    On Error Resume Next
+	    offset = InputBox("Enter offset (in " + unitname + "):", "Offset", lastOffset / unitscale)
+	    On Error GoTo 0
+	
+	    lastOffset = offset * unitscale
+	
+	    Call OffsetSurfaceBy(lastOffset)
+	End Sub
+End Class</pre>
+      </div>
+    </div><br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(GraphicsColorMapper%20Sample%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,259 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU">
+    <link rel="canonical" href="http://help.autodesk.com/cloudhelp/2026/ENU/Inventor-API/files/BOM_Overview.htm">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="27/4/2016">
+    <meta name="user-comments" content="enable">
+    <meta name="description" content="">
+    <meta name="topicid" content="GUID-445993C4-420A-4F54-9E8A-26AE86546706">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>Bill of Materials</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"/>
+    <script type="text/javascript" src="/view/clientframework/client.js"><!--filler--></script>
+	<script>
+	  // This turns on the display of the copyright notice which is not visible by default.
+	  // Because the head is removed when used in the web help, this function will only exists
+	  // when the chm help is being created.
+	  window.onload = function() {
+		copyrightElement = document.getElementById('CopyrightNotice');
+		copyrightElement.style.display = 'block';
+	  };
+	</script>
+</head>
+<body>
+<link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+
+		<h1>Bill of Materials</h1>
+ 
+		<h3>Introduction to the BOM</h3>
+		
+		<p Class="Normal">Autodesk Inventor keeps track of which parts comprise an assembly. This information can be tabulated into a bill 
+		of materials report, commonly used in the manufacturing and assembly processes.  Minimally, a BOM lists components, 
+		quantity, and relevant totals. Additionally, a BOM likely includes part or stock numbers, cut length figures, and so on.  
+		Autodesk Inventor can add all this information to a drawing in the form of a table.</p>
+		
+		<BR>
+		<h3>The purpose of the BOM API</h3>
+		
+<p Class="Normal">		The API allows the following actions on BOM data.</p>
+
+<ul>
+	<li>Data can be queried and exported.</li>
+	<li>Quantity totals can be modified - for example, overriding a value or setting a quantity to be a parameter value.</li>
+	<li>The BOM component type (the BOM structure) can be modified.</li>
+</ul>
+
+<p Class="Normal">A typical use for the BOM API is to query and export data for a specific use, perhaps to be read by other software downstream.</p>
+
+<p Class="Normal">The BOM Structure defines the status of the component in the BOM. BOM Structure has five basic options: </p>
+<ul>
+	<li>Normal</li>
+	<li>Phantom</li>
+	<li>Reference</li>
+	<li>Purchased</li>
+	<li>Inseparable</li>
+</ul>
+<p Class="Normal">Phantom components exist in the design but are not separate line items in the BOM. Reference components are 
+excluded from the BOM entirely, existing only to augment the content of a design. A Purchased component is 
+considered a single BOM line item, even if it is a subassembly. An Inseparable component is similar to a 
+Purchased component, in that it is considered a single item, except that it is typically fabricated.</p>
+	
+	<BR>
+		<h3>BOM Object Model Diagram</h3>
+		
+		<div align="center" valign="bottom">
+			<img src="../images/ov.BOM_diag.png" border="0"></div>
+		
+		<BR>
+		<h3>Working with the BOM through the API</h3>
+		
+<p Class="Normal">Autodesk Inventor maintains the BOM internally, updating types and quantities as changes are made to an 
+assembly. These changes may be implemented through the user interface or through the modeling functions of 
+the Autodesk Inventor API.  The BOM API can make additional changes to the BOM data, and can query and 
+export that data. Autodesk Inventor makes use of PropertySet objects to store some BOM data for a 
+component. Client code can access this data directly.</p>
+		
+		<BR>
+		<h3>Querying the BOM</h3>
+		
+<p Class="Normal">The following sample code demonstrates use of the API to query an assembly for BOM data. The code assumes that the sample assembly, Arbor_Press.iam, is open in Autodesk Inventor.
+The code omits error checking for the sake of clarity and brevity.  Always check that return values are of the expected type.  </p>
+
+<p Class="Normal">First, obtain the BOM object for this assembly's ComponentDefinition.</p>
+
+<DIV valign="bottom">
+			<table Class="Code">
+				<tr valign="middle">
+					<td Class="Code">
+						<pre>
+Dim oBOM As BOM
+Set oBOM = ThisApplication.ActiveDocument.ComponentDefinition.BOM</pre>
+					</td>
+				</tr>
+			</table>
+		</DIV><BR>
+
+<p Class="Normal">From the BOM object, get the base BOMView object, named "Structured."  A BOM may also contain 
+views where the items have been reordered or renumbered.</p>
+
+<DIV valign="bottom">
+			<table Class="Code">
+				<tr valign="middle">
+					<td Class="Code">
+						<pre>
+Dim oBOMView As BOMView
+Set oBOMView = oBOM.BOMViews.Item("Structured")</pre>
+</td>
+				</tr>
+			</table>
+		</DIV><BR>
+
+<p Class="Normal">Iterate through the rows in the BOM view, obtaining each BOMRow object.</p>
+
+<DIV valign="bottom">
+			<table Class="Code">
+				<tr valign="middle">
+					<td Class="Code">
+						<pre>
+Dim i As Long
+For i = 1 To oBOMView.BOMRows.Count
+
+  Dim oRow As BOMRow
+  Set oRow = oBOMView.BOMRows.Item(i)</pre>
+</td>
+				</tr>
+			</table>
+		</DIV><BR>
+
+<p Class="Normal">For some of the BOM data, we'll need to query a property set of the component referenced by 
+each row. The PropertySets collections are accessed through the parent document of the 
+ComponentDefinition, so obtain the ComponentDefinition of the component.</p>
+
+<DIV valign="bottom">
+			<table Class="Code">
+				<tr valign="middle">
+					<td Class="Code">
+						<pre>
+  Dim oCompDef As ComponentDefinition
+  Set oCompDef = oRow.ComponentDefinitions.Item(1)</pre>
+</td>
+				</tr>
+			</table>
+		</DIV><BR>
+
+<p Class="Normal">The required property set is named "Design Tracking Properties." Obtain this from the owning document of the component.</p>
+
+<DIV valign="bottom">
+			<table Class="Code">
+				<tr valign="middle">
+					<td Class="Code">
+						<pre>
+  Dim oPropSet As PropertySet
+  Set oPropSet = oCompDef.Document.PropertySets.Item("Design Tracking Properties")</pre>
+</td>
+				</tr>
+			</table>
+		</DIV><BR>
+
+<p Class="Normal">Now we have all the information necessary to list the BOM content. Obtain variable information such as the 
+item number and quantity from the BOMRow object, and the part number and description from the property set.</p>
+
+<DIV valign="bottom">
+			<table Class="Code">
+				<tr valign="middle">
+					<td Class="Code">
+						<pre>
+  Debug.Print "#: "; oRow.ItemNumber; _
+              " Quantity:"; oRow.ItemQuantity; _
+              "Part: "; oPropSet.Item("Part Number").Value; _
+              " Desc: "; oPropSet.Item("Description").Value
+Next</pre>
+</td>
+				</tr>
+			</table>
+		</DIV><BR>
+
+<p Class="Normal">The preceding code iterates through all the BOMRows in the BOMView object, printing BOM data to the 
+VBA debug window. The output should appear something like the following example.</p>
+
+<DIV valign="bottom">
+			<table Class="Code">
+				<tr valign="middle">
+					<td Class="Code">
+						<pre>
+#: 1 Quantity: 1 Part: Arbor Press Desc: 
+#: 2 Quantity: 1 Part: FACE PLATE Desc: 
+#: 3 Quantity: 1 Part: PINION SHAFT Desc: 
+#: 4 Quantity: 1 Part: LEVER ARM Desc: 
+#: 5 Quantity: 1 Part: THUMB SCREW Desc: 
+#: 6 Quantity: 1 Part: TABLE PLATE Desc: 
+#: 7 Quantity: 1 Part: RAM Desc: 
+#: 8 Quantity: 2 Part: HANDLE CAPipt Desc: 
+#: 9 Quantity: 1 Part: COLLAR Desc: 
+#: 10 Quantity: 1 Part: GIB PLATE Desc: 
+#: 11 Quantity: 1 Part: GROOVE PIN Desc: 
+#: 12 Quantity: 4 Part: ANSI B18.3 - 1/4 - 20 - 7/8 Desc: Hexagon Socket Head Cap Screw
+#: 13 Quantity: 4 Part: ANSI B18.3 - 10-32 UNF x 0.58 Desc: Hexagon Socket Set Screw - Flat Point
+#: 14 Quantity: 1 Part: ANSI B18.6.2 - 10-32 UNF - 0.1875 Desc: Slotted Headless Set Screw - Flat Point - UNF (Fine Thread - Inch)</pre>
+</td>
+				</tr>
+			</table>
+		</DIV><BR>
+<!--
+<p Class="Normal">The BOMView object has the Export method.  This method can export to a file. Currently, the following file types are supported:</p>
+
+<ul>
+	<li>Microsoft Access </li>
+	<li>Microsoft Excel </li>
+	<li>dBASE III </li>
+	<li>dBASE IV </li>
+	<li>Microsoft Fox Pro 2.5 </li>
+	<li>Text File (Tab Delimited)</li>
+	<li>Text File (Comma Delimited)</li>
+	<li>Unicode Text File (Tab Delimited) </li>
+	<li>Unicode Text File (Comma Delimited)</li>
+</ul>
+-->
+
+
+		
+<h3>Summary</h3>
+
+<p Class="Normal">Autodesk Inventor can keep track of components in an assembly for the purposed of producing a bill or materials. 
+Components referenced by the BOM can be assigned specific types indicating whether - and how - they should be 
+incorporated into the BOM. Views of the BOM can be renumbered and reordered.  The API allows this data to 
+be queried and exported, either in predefined file formats or by reading and manipulating the BOM data directly.</p>
+		
+<h3>Also consider</h3>
+
+<p Class="Normal">The BOM objects described previously are global in nature. The API also supports the PartsList 
+object in the drawing environment. This can be considered a local snapshot of the parts of the 
+BOM relevant to that drawing's parts list.</p>
+				
+<br />
+<br />
+<div id="CopyrightNotice" style="display:none;">
+  <hr />
+  <table width="100%" style="font-size:15">
+	<tr>
+	  <td align="left">
+		&copy; Copyright 2025 Autodesk, Inc.
+	  </td>
+	  <td align="right">
+		<a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(BOM_Overview)">Comment on this page.</a>
+	  </td>
+	</tr>
+  </table>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,138 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/GraphicsDataSetsCollection.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="GraphicsDataSetsCollection">
+    <meta name="description" content="GraphicsDataSetsCollection Object">
+    <meta name="topicid" content="GUID-GraphicsDataSetsCollection">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>GraphicsDataSetsCollection Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">GraphicsDataSetsCollection Object
+			</h1><br><h2 class="api">
+          Description
+        </h2>The ClientGraphicsCollection object allows you to create new objects and supports access to existing GraphicsDataSets objects. See the article in the overview section for more information.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="GraphicsDataSetsCollection_Add.htm">Add</a></td>
+        <td class="api-list">Method that creates a new GraphicsDataSets object. When the GraphicsDataSetsCollection object is obtained from a Document, this will always create a transient graphics data object.&nbsp;That is, its lifetime is only for the period of time the document is open.&nbsp;<p></p>
+When the GraphicsDataSetsCollection object is obtained from a ClientFeatureDefinition object, the graphics data objects created are persistent and will be saved with the document.&nbsp;In that case it is only intended to be used for graphics that are associated with a client feature.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="GraphicsDataSetsCollection_Application.htm">Application</a></td>
+        <td class="api-list">Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="GraphicsDataSetsCollection_Count.htm">Count</a></td>
+        <td class="api-list">Property that returns the number of coordinates defined within the set.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="GraphicsDataSetsCollection_Item.htm">Item</a></td>
+        <td class="api-list">Returns an existing GraphicsDataSets object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="GraphicsDataSetsCollection_NonTransacting.htm">NonTransacting</a></td>
+        <td class="api-list">Read-only property that returns whether the creation of this GraphicsDataSetsCollection object and all its associated data is non-transacting.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="GraphicsDataSetsCollection_Parent.htm">Parent</a></td>
+        <td class="api-list">Property returns the parent document of this object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="GraphicsDataSetsCollection_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="AssemblyDocument_GraphicsDataSetsCollection.htm">AssemblyDocument.GraphicsDataSetsCollection</a>, <a href="AssemblyDocument_NonTransactingGraphicsDataSetsCollection.htm">AssemblyDocument.NonTransactingGraphicsDataSetsCollection</a>, <a href="ClientFeatureDefinition_GraphicsDataSetsCollection.htm">ClientFeatureDefinition.GraphicsDataSetsCollection</a>, <a href="DetailDrawingView_GraphicsDataSetsCollection.htm">DetailDrawingView.GraphicsDataSetsCollection</a>, <a href="Document_GraphicsDataSetsCollection.htm">Document.GraphicsDataSetsCollection</a>, <a href="Document_NonTransactingGraphicsDataSetsCollection.htm">Document.NonTransactingGraphicsDataSetsCollection</a>, <a href="DrawingDocument_GraphicsDataSetsCollection.htm">DrawingDocument.GraphicsDataSetsCollection</a>, <a href="DrawingDocument_NonTransactingGraphicsDataSetsCollection.htm">DrawingDocument.NonTransactingGraphicsDataSetsCollection</a>, <a href="DrawingView_GraphicsDataSetsCollection.htm">DrawingView.GraphicsDataSetsCollection</a>, <a href="FlatPattern_GraphicsDataSetsCollection.htm">FlatPattern.GraphicsDataSetsCollection</a>, <a href="GraphicsDataSets_Parent.htm">GraphicsDataSets.Parent</a>, <a href="PartDocument_GraphicsDataSetsCollection.htm">PartDocument.GraphicsDataSetsCollection</a>, <a href="PartDocument_NonTransactingGraphicsDataSetsCollection.htm">PartDocument.NonTransactingGraphicsDataSetsCollection</a>, <a href="PresentationDocument_GraphicsDataSetsCollection.htm">PresentationDocument.GraphicsDataSetsCollection</a>, <a href="PresentationDocument_NonTransactingGraphicsDataSetsCollection.htm">PresentationDocument.NonTransactingGraphicsDataSetsCollection</a>, <a href="PresentationScene_GraphicsDataSetsCollection.htm">PresentationScene.GraphicsDataSetsCollection</a>, <a href="Publication_GraphicsDataSetsCollection.htm">Publication.GraphicsDataSetsCollection</a>, <a href="SectionDrawingView_GraphicsDataSetsCollection.htm">SectionDrawingView.GraphicsDataSetsCollection</a>, <a href="Sheet_GraphicsDataSetsCollection.htm">Sheet.GraphicsDataSetsCollection</a><h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="GraphicsDataSets_CreateColorSet_Sample.htm">Client Graphics - Vertex Color by Z Height</a></td>
+        <td class="api-list">This sample demonstrates using client graphics and some other functions that help to support display control. It uses the currently active part and replaces the part display with a display where the part's color varies from blue to red where blue is assigned to the lowest Z portion of the part and red is assigned to the highest Z portion of the part. Areas in between are represented by a smooth blend of color from blue to red.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="GraphicsNode_AddLineGraphics_Sample.htm">Client Graphics - Line</a></td>
+        <td class="api-list">This sample demonstrates the creation of custom graphics using LineGraphics and LineStripGraphics. The same set of coordinate data is used for both types of graphics. Line graphics use two coordinates to define a line, and then the next two coordinates to define the next line, and so on through the defined coordinates. For the data provided, this results in gaps in the drawn curve. Line strips use the first two coordinates to define the first line and then the last point of the first line becomes the first point of the second line and the next coordinate is used as the end point of the second line. This results in the set of points being connected by a continuous set of lines, drawing a continuous curve. This sample also demonstrates two methods of defining the color for client graphics. In one case it uses an existing appearance asset, and in the other, it explicitly defines a color and assigns it. To use the sample you need to have an assembly or part document open. The program has two behaviors: the first time it is run it will draw the graphics. The second time it is run it deletes the previously drawn graphics.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="GraphicsNode_AddTriangleFanGraphics_Sample.htm">Client Graphics - Triangle</a></td>
+        <td class="api-list">This sample demonstrates the creation of client graphics triangles using triange fans and strips. It does this by drawing a cylinder. The end caps are triangle fans and the cylinder is made from a triangle strip.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PointGraphics_SetCustomImage_Sample.htm">Client graphics - image in point graphics</a></td>
+        <td class="api-list">The following sample demonstrates creation of point client graphics with a custom image.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 5<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(GraphicsDataSetsCollection%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

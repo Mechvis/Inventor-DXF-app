@@ -1,0 +1,105 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/HoleFeatures_AddCSinkByThroughAllExtent.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="HoleFeatures_AddCSinkByThroughAllExtent">
+    <meta name="description" content="HoleFeatures.AddCSinkByThroughAllExtent Method">
+    <meta name="topicid" content="HoleFeatures_AddCSinkByThroughAllExtent">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>HoleFeatures.AddCSinkByThroughAllExtent Method</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">HoleFeatures.AddCSinkByThroughAllExtent Method</h1>
+
+          Parent Object: <a href="HoleFeatures.htm">HoleFeatures</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Method that creates a new counter sink HoleFeature using 'through all' extents. The new HoleFeature is returned.</p>
+    <h2 class="api">
+          Syntax
+        </h2>
+        
+            HoleFeatures.<b>AddCSinkByThroughAllExtent</b>( <b><i>PlacementDefinition</i></b> As Object, <b><i>DiameterOrTapInfo</i></b> As Variant, <b><i>ExtentDirection</i></b> As <a href="PartFeatureExtentDirectionEnum.htm">PartFeatureExtentDirectionEnum</a>, <b><i>CSinkDiameter</i></b> As Variant, <b><i>CSinkAngle</i></b> As Variant ) As <a href="HoleFeature.htm">HoleFeature</a>
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">PlacementDefinition</td>
+        <td class="api-list">Object</td>
+        <td class="api-list">Object that defines the centerpoint(s) of the hole feature. This object can be one of the following four objects that derive from the HolePlacementDefinition object: SketchHolePlacementDefinition, LinearHolePlacementDefinition, ConcentricHolePlacementDefinition, PointHolePlacementDefinition. These objects can be created using methods provided on this HoleFeatures object. This argument also supports an ObjectCollection of SketchPoints for compatibility with the older version of this method.</td>
+      </tr>
+      <tr>
+        <td class="api-list">DiameterOrTapInfo</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Defines either the diameter of the hole or the tap information (using a HoleTapInfo or a TaperedThreadInfo object). In the case of a tapped hole, the tap information defines the diameter of the hole. When the diameter is supplied, this can be either a numeric value or a string. A parameter for this value will be created and the supplied string or value is assigned to the parameter. If a value is input, the units are centimeters. If a string is input, the units can be specified as part of the string or it will default to the current length units of the document.</td>
+      </tr>
+      <tr>
+        <td class="api-list">ExtentDirection</td>
+        <td class="api-list"><a href="PartFeatureExtentDirectionEnum.htm">PartFeatureExtentDirectionEnum</a></td>
+        <td class="api-list">Input constant that indicates which side of the sketch plane to extrude toward. Valid input is kPositive or kNegative. kPositive defines the offset direction to be in the same direction as the normal of the sketch plane.</td>
+      </tr>
+      <tr>
+        <td class="api-list">CSinkDiameter</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Input Variant that defines the diameter of the countersink. This can be either a numeric value or a string. A parameter for this value will be created and the supplied string or value is assigned to the parameter. If a value is input, the units are centimeters. If a string is input, the units can be specified as part of the string or it will default to the current length units of the document.</td>
+      </tr>
+      <tr>
+        <td class="api-list">CSinkAngle</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Input Variant that defines the angle of the countersink. This can be either a numeric value or a string. A parameter for this value will be created and the supplied string or value is assigned to the parameter. If a value is input, the units are radians. If a string is input, the units can be specified as part of the string or it will default to the current angle units of the document.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 5<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(HoleFeatures.AddCSinkByThroughAllExtent%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

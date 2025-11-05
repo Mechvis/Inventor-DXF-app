@@ -1,0 +1,114 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/View_SaveAsBitmapWithOptions.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="View_SaveAsBitmapWithOptions">
+    <meta name="description" content="View.SaveAsBitmapWithOptions Method">
+    <meta name="topicid" content="View_SaveAsBitmapWithOptions">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>View.SaveAsBitmapWithOptions Method</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">View.SaveAsBitmapWithOptions Method</h1>
+
+          Parent Object: <a href="View.htm">View</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Method that saves the view as a bitmap with more options. The width and height arguments define the aspect ratio and the number of pixels in the output image. The Options argument allow you to define more effects for the bitmap.</p>
+    <h2 class="api">
+          Syntax
+        </h2>
+        
+            View.<b>SaveAsBitmapWithOptions</b>( <b><i>FullFileName</i></b> As String, <b><i>Width</i></b> As Long, <b><i>Height</i></b> As Long, <b><i>Options</i></b> As <a href="NameValueMap.htm">NameValueMap</a> )
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">FullFileName</td>
+        <td class="api-list">String</td>
+        <td class="api-list">Input String value that specifies the full filename of the file to which to save the view.&nbsp;The extension of this filename controls the type of file that’s created.&nbsp;Valid extensions are bmp, jpg, png, tiff, and gif.</td>
+      </tr>
+      <tr>
+        <td class="api-list">Width</td>
+        <td class="api-list">Long</td>
+        <td class="api-list">Input Long that specifies the width of the view.&nbsp;A value of 0 will use the current width of the view.</td>
+      </tr>
+      <tr>
+        <td class="api-list">Height</td>
+        <td class="api-list">Long</td>
+        <td class="api-list">Input Long that specifies the height of the view.&nbsp;A value of 0 will use the current height of the view.</td>
+      </tr>
+      <tr>
+        <td class="api-list">Options</td>
+        <td class="api-list"><a href="NameValueMap.htm">NameValueMap</a></td>
+        <td class="api-list">Input NameValueMap that specifies more options to create the bitmap. The valid values for the options are:
+
+<table border="1">
+<tr>
+<th>Name</th>
+<th>Value Type</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>TransparentBackground</td>
+<td>Boolean</td>
+<td>Specifies whether the saved bitmap will have transparent background. If not specified this will default to False. </td>
+ 
+</tr>
+</table></td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2019<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(View.SaveAsBitmapWithOptions%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

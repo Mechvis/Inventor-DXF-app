@@ -1,0 +1,126 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/UserInputEventsSink_OnDoubleClick_Sample.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="UserInputEventsSink_OnDoubleClick_Sample">
+    <meta name="description" content="Cancel a double click Sample">
+    <meta name="topicid" content="UserInputEventsSink_OnDoubleClick_Sample">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>Cancel a double click</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body><script>
+          function copyCode(language) {
+          // Get the pre element for the specified language.
+          var preElement = document.getElementById(language);
+
+          // Get the text from the element and copy it to the clipboard.
+          var preText = preElement.innerText;
+
+          var isIE = /*@cc_on!@*/false || !!document.documentMode;
+
+          if (isIE)
+          {
+            window.clipboardData.setData('Text', preText);
+          }
+          else
+          {
+            navigator.clipboard.writeText(preText);
+          }
+
+          //alert("Code copied to clipboard");
+          }
+        </script><link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">Cancel a double click</h1>
+    <h2 class="api">
+          Description
+        </h2>Demonstrates how to receive (and in this case, cancel) a double click from a user. Run the sample code and double click a browser node to trigger the event.<h2 class="api">
+          Code Samples
+        </h2>
+    <div id="tabs">
+      <ul>
+        <li><a href="#VBA">VBA</a></li>
+        <li><a href="#iLogic">iLogic</a></li>
+      </ul>
+      <div id="VBA" class="api-code">
+        <table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('VBA_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="VBA_code">Option Explicit
+   Private WithEvents oUIEvents As UserInputEvents
+   
+   Private Sub Class_Initialize()
+       Set oUIEvents = ThisApplication.CommandManager.UserInputEvents
+   End Sub
+
+Private Sub oUIEvents_OnDoubleClick(ByVal SelectedEntities As ObjectsEnumerator, ByVal SelectionDevice As SelectionDeviceEnum, ByVal Button As MouseButtonEnum, ByVal ShiftKeys As ShiftStateEnum, ByVal ModelPosition As Point, ByVal ViewPosition As Point2d, ByVal View As View, ByVal AdditionalInfo As NameValueMap, HandlingCode As HandlingCodeEnum)
+       Debug.Print "OnDoubleClick: "; SelectedEntities.Count; SelectionDevice; ShiftKeys; View.Caption
+       If SelectionDevice = kBrowserSelection Then
+           MsgBox "Hello there! I<span style="color:blue">'m not letting you activate this"</span>
+           ThisApplication.CommandManager.ControlDefinitions("AppAboutInventorCmd").Execute2 (False)
+           HandlingCode = kEventCanceled
+       End If
+   End Sub</pre>
+      </div>
+      <div id="iLogic" class="api-code">
+        <table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('iLogic_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="iLogic_code">Class Test
+	Private WithEvents oUIEvents As UserInputEvents
+   
+	Sub Main
+	       oUIEvents = ThisApplication.CommandManager.UserInputEvents
+        End Sub
+	
+	Private Sub oUIEvents_OnDoubleClick(SelectedEntities As Inventor.ObjectsEnumerator, SelectionDevice As Inventor.SelectionDeviceEnum, Button As Inventor.MouseButtonEnum, ShiftKeys As Inventor.ShiftStateEnum, ModelPosition As Inventor.Point, ViewPosition As Inventor.Point2d, View As Inventor.View, AdditionalInfo As Inventor.NameValueMap, ByRef HandlingCode As Inventor.HandlingCodeEnum) Handles oUIEvents.OnDoubleClick
+	       Logger.Info("OnDoubleClick: "& SelectedEntities.Count & SelectionDevice & ShiftKeys & View.Caption)
+	
+	       If SelectionDevice = kBrowserSelection Then
+	           MsgBox( "Hello there! I<span style="color:blue">'m not letting you activate this")</span>
+	           ThisApplication.CommandManager.ControlDefinitions("AppAboutInventorCmd").Execute2 (False)
+	           HandlingCode = kEventCanceled
+	       End If
+	End Sub
+End Class</pre>
+      </div>
+    </div><br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(UserInputEventsSink_OnDoubleClick%20Sample%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,284 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/AssemblyComponentDefinition_AnalyzeInterference_Sample.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="AssemblyComponentDefinition_AnalyzeInterference_Sample">
+    <meta name="description" content="Interference Analysis Sample">
+    <meta name="topicid" content="AssemblyComponentDefinition_AnalyzeInterference_Sample">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>Interference Analysis</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body><script>
+          function copyCode(language) {
+          // Get the pre element for the specified language.
+          var preElement = document.getElementById(language);
+
+          // Get the text from the element and copy it to the clipboard.
+          var preText = preElement.innerText;
+
+          var isIE = /*@cc_on!@*/false || !!document.documentMode;
+
+          if (isIE)
+          {
+            window.clipboardData.setData('Text', preText);
+          }
+          else
+          {
+            navigator.clipboard.writeText(preText);
+          }
+
+          //alert("Code copied to clipboard");
+          }
+        </script><link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">Interference Analysis</h1>
+    <h2 class="api">
+          Description
+        </h2>This sample demonstrates the functions used to calculate interference analysis in an assembly.<h2 class="api">
+          Code Samples
+        </h2>
+    <div id="tabs">
+      <ul>
+        <li><a href="#VBA">VBA</a></li>
+        <li><a href="#iLogic">iLogic</a></li>
+      </ul>
+      <div id="VBA" class="api-code">To use this sample have an assembly open that contains mutiple parts. Depending on preselected parts when running the sample, you'll get different results. If one part is selected, that one part will be checked against the rest of the assembly. If more than one part is selected you have the choice of checking for interference among the selected parts or checking the selected parts against the rest of the assembly. If no parts are selected it will check every part against every other part.<table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('VBA_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="VBA_code">Public Sub Interference()
+    Dim oDoc As AssemblyDocument
+    Set oDoc = ThisApplication.ActiveDocument
+    
+    <span style="color:blue">' Find all selected occurrences and add them to an ObjectCollection.</span>
+    Dim oSelectedOccs As ObjectCollection
+    Set oSelectedOccs = ThisApplication.TransientObjects.CreateObjectCollection
+    Dim i As Long
+    For i = 1 To oDoc.SelectSet.Count
+        If oDoc.SelectSet.Item(i).Type = kComponentOccurrenceObject Then
+            oSelectedOccs.Add oDoc.SelectSet.Item(i)
+        End If
+    Next
+    
+    <span style="color:blue">' If no occurrences are selected check for interference of</span>
+    <span style="color:blue">' all parts against all parts.  If one occurrence is selected, check</span>
+    <span style="color:blue">' for interference between that occurrence and the rest of the assembly.</span>
+    <span style="color:blue">' If more than one occurrence is selected let the user decide if it</span>
+    <span style="color:blue">' should check for interference between the parts in the selection or</span>
+    <span style="color:blue">' between the selected parts and the rest of the assembly.</span>
+    Dim oResults As InterferenceResults
+    Dim oCheckSet As ObjectCollection
+    Set oCheckSet = ThisApplication.TransientObjects.CreateObjectCollection
+    If oSelectedOccs.Count = 0 Then
+        <span style="color:blue">' Add all occurrences to the object collection</span>
+        Dim oOcc As ComponentOccurrence
+        For Each oOcc In oDoc.ComponentDefinition.Occurrences
+            oCheckSet.Add oOcc
+        Next
+        
+        <span style="color:blue">' Get the interference between everything.</span>
+        Set oResults = oDoc.ComponentDefinition.AnalyzeInterference(oCheckSet)
+    ElseIf oSelectedOccs.Count = 1 Then
+        <span style="color:blue">' Add all occurrences except the selected occurrence to the object collection.</span>
+        For Each oOcc In oDoc.ComponentDefinition.Occurrences
+            If Not oOcc Is oSelectedOccs.Item(1) Then
+                oCheckSet.Add oOcc
+            End If
+        Next
+        
+        <span style="color:blue">' Get the interference between the selected occurrence everything else.</span>
+        Set oResults = oDoc.ComponentDefinition.AnalyzeInterference(oSelectedOccs, oCheckSet)
+    Else
+        If MsgBox("Check interference between selected occurrences and all other occurrences?", vbYesNo + vbQuestion) = vbYes Then
+            <span style="color:blue">' Add all occurrences except the selected occurrences to the object collection.</span>
+            For Each oOcc In oDoc.ComponentDefinition.Occurrences
+                <span style="color:blue">' Check to see if this occurrences is already selected.</span>
+                Dim bSelected As Boolean
+                bSelected = False
+                For i = 1 To oSelectedOccs.Count
+                    If oSelectedOccs.Item(i) Is oOcc Then
+                        bSelected = True
+                        Exit For
+                    End If
+                Next
+                
+                If Not bSelected Then
+                    oCheckSet.Add oOcc
+                End If
+            Next
+           
+            <span style="color:blue">' Check interference between the selected items.</span>
+            Set oResults = oDoc.ComponentDefinition.AnalyzeInterference(oSelectedOccs, oCheckSet)
+        Else
+            <span style="color:blue">' Check interference between the selected items.</span>
+            Set oResults = oDoc.ComponentDefinition.AnalyzeInterference(oSelectedOccs)
+        End If
+    End If
+    
+    If oResults.Count = 1 Then
+        MsgBox "There is 1 interference."
+    ElseIf oResults.Count &gt; 1 Then
+        MsgBox "There are " & oResults.Count & " interferences."
+    End If
+    
+    If oResults.Count &gt; 0 Then
+        Dim oHS1 As HighlightSet
+        Set oHS1 = oDoc.HighlightSets.Add
+        oHS1.Color = ThisApplication.TransientObjects.CreateColor(255, 0, 0)
+        Dim oHS2 As HighlightSet
+        Set oHS2 = oDoc.HighlightSets.Add
+        oHS2.Color = ThisApplication.TransientObjects.CreateColor(0, 255, 0)
+        
+        For i = 1 To oResults.Count
+            oHS1.Clear
+            oHS2.Clear
+            oHS1.AddItem oResults.Item(i).OccurrenceOne
+            oHS2.AddItem oResults.Item(i).OccurrenceTwo
+            MsgBox "Occurrences are highlighted from interference " & i
+        Next
+        
+        oHS1.Clear
+        oHS2.Clear
+    Else
+        MsgBox "There is no interference."
+    End If
+End Sub</pre>
+      </div>
+      <div id="iLogic" class="api-code">To use this sample have an assembly open that contains mutiple parts. Depending on preselected parts when running the sample, you'll get different results. If one part is selected, that one part will be checked against the rest of the assembly. If more than one part is selected you have the choice of checking for interference among the selected parts or checking the selected parts against the rest of the assembly. If no parts are selected it will check every part against every other part.<table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('iLogic_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="iLogic_code">    Dim oDoc As AssemblyDocument
+    oDoc = ThisApplication.ActiveDocument
+    
+    <span style="color:blue">' Find all selected occurrences and add them to an ObjectCollection.</span>
+    Dim oSelectedOccs As ObjectCollection
+    oSelectedOccs = ThisApplication.TransientObjects.CreateObjectCollection
+    Dim i As Long
+    For i = 1 To oDoc.SelectSet.Count
+        If oDoc.SelectSet.Item(i).Type = kComponentOccurrenceObject Then
+            oSelectedOccs.Add(oDoc.SelectSet.Item(i))
+        End If
+    Next
+    
+    <span style="color:blue">' If no occurrences are selected check for interference of</span>
+    <span style="color:blue">' all parts against all parts.  If one occurrence is selected, check</span>
+    <span style="color:blue">' for interference between that occurrence and the rest of the assembly.</span>
+    <span style="color:blue">' If more than one occurrence is selected let the user decide if it</span>
+    <span style="color:blue">' should check for interference between the parts in the selection or</span>
+    <span style="color:blue">' between the selected parts and the rest of the assembly.</span>
+    Dim oResults As InterferenceResults
+    Dim oCheckSet As ObjectCollection
+    oCheckSet = ThisApplication.TransientObjects.CreateObjectCollection
+    If oSelectedOccs.Count = 0 Then
+        <span style="color:blue">' Add all occurrences to the object collection</span>
+        Dim oOcc As ComponentOccurrence
+        For Each oOcc In oDoc.ComponentDefinition.Occurrences
+            oCheckSet.Add(oOcc)
+        Next
+        
+        <span style="color:blue">' Get the interference between everything.</span>
+        oResults = oDoc.ComponentDefinition.AnalyzeInterference(oCheckSet)
+    ElseIf oSelectedOccs.Count = 1 Then
+        <span style="color:blue">' Add all occurrences except the selected occurrence to the object collection.</span>
+        For Each oOcc In oDoc.ComponentDefinition.Occurrences
+            If Not oOcc Is oSelectedOccs.Item(1) Then
+                oCheckSet.Add(oOcc)
+            End If
+        Next
+        
+        <span style="color:blue">' Get the interference between the selected occurrence everything else.</span>
+        oResults = oDoc.ComponentDefinition.AnalyzeInterference(oSelectedOccs, oCheckSet)
+    Else
+        If MsgBox("Check interference between selected occurrences and all other occurrences?", vbYesNo + vbQuestion) = vbYes Then
+            <span style="color:blue">' Add all occurrences except the selected occurrences to the object collection.</span>
+            For Each oOcc In oDoc.ComponentDefinition.Occurrences
+                <span style="color:blue">' Check to see if this occurrences is already selected.</span>
+                Dim bSelected As Boolean
+                bSelected = False
+                For i = 1 To oSelectedOccs.Count
+                    If oSelectedOccs.Item(i) Is oOcc Then
+                        bSelected = True
+                        Exit For
+                    End If
+                Next
+                
+                If Not bSelected Then
+                    oCheckSet.Add(oOcc)
+                End If
+            Next
+           
+            <span style="color:blue">' Check interference between the selected items.</span>
+            oResults = oDoc.ComponentDefinition.AnalyzeInterference(oSelectedOccs, oCheckSet)
+        Else
+            <span style="color:blue">' Check interference between the selected items.</span>
+            oResults = oDoc.ComponentDefinition.AnalyzeInterference(oSelectedOccs)
+        End If
+    End If
+    
+    If oResults.Count = 1 Then
+        MsgBox("There is 1 interference.")
+    ElseIf oResults.Count &gt; 1 Then
+        MsgBox("There are " & oResults.Count & " interferences.")
+    End If
+    
+    If oResults.Count &gt; 0 Then
+        Dim oHS1 As HighlightSet
+        oHS1 = oDoc.HighlightSets.Add
+        oHS1.Color = ThisApplication.TransientObjects.CreateColor(255, 0, 0)
+        Dim oHS2 As HighlightSet
+        oHS2 = oDoc.HighlightSets.Add
+        oHS2.Color = ThisApplication.TransientObjects.CreateColor(0, 255, 0)
+        
+        For i = 1 To oResults.Count
+            oHS1.Clear
+            oHS2.Clear
+            oHS1.AddItem(oResults.Item(i).OccurrenceOne)
+            oHS2.AddItem(oResults.Item(i).OccurrenceTwo)
+            MsgBox("Occurrences are highlighted from interference " & i)
+        Next
+        
+        oHS1.Clear
+        oHS2.Clear
+    Else
+        MsgBox("There is no interference.")
+    End If</pre>
+      </div>
+    </div><br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(AssemblyComponentDefinition_AnalyzeInterference%20Sample%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

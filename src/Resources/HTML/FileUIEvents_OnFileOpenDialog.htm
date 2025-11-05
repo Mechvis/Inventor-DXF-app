@@ -1,0 +1,206 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/FileUIEvents_OnFileOpenDialog.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="FileUIEvents_OnFileOpenDialog">
+    <meta name="description" content="FileUIEvents.OnFileOpenDialog Event">
+    <meta name="topicid" content="FileUIEvents_OnFileOpenDialog">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>FileUIEvents.OnFileOpenDialog Event</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">FileUIEvents.OnFileOpenDialog Event</h1>
+
+          Parent Object: <a href="FileUIEvents.htm">FileUIEvents</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">The OnFileOpenDialog event notifies the client when the end-user executes the Open command to open an existing file.
+By responding to this event the client can override Inventor's standard behavior of displaying the Open dialog and provide their own interface to determine the file to open. This notification is only made in cases where the Open dialog is displayed to allow the end-user to select a file. If the end-user uses the most recently used list in the File menu to open a file the Open dialog is bypassed and the file is opened directly and because the Open dialog is not used this notification is not sent.</p>
+    <h2 class="api">
+            Remarks
+          </h2>Valid values for the NameValueMap in the Context argument:
+<table border="1">
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Document type being opened</th>
+<th>Notes</th>
+</tr>
+<tr>
+<td>DesignViewRepresentation</td>
+<td>String</td>
+<td>Part, Assembly</td>
+<td>The name of the design view representation.</td>
+</tr>
+<tr>
+<td>DesignViewAssociative</td>
+<td>Boolean</td>
+<td>Assembly</td>
+<td>Specifies whether the design view is associative or not.</td>
+</tr>
+<tr>
+<td>PrivateRepresentationFile</td>
+<td>String</td>
+<td>Assembly</td>
+<td>Specifies the private representation file.</td>
+</tr>
+<tr>
+<td>PositionalRepresentation</td>
+<td>String</td>
+<td>Assembly</td>
+<td>The name of the positional representation.</td>
+</tr>
+<tr>
+<td>ModelState</td>
+<td>String</td>
+<td>Part,Assembly</td>
+<td>Typically, the ModelState to use should be provided in the form of a FulDocumentName (first argument). But if this is provided separately, you should make sure that it does not conflict with the FullDocumentName argument by providing FullFileName as the first argument rather than a FullDocumentName.</td>
+</tr>
+<tr>
+<td>DeferUpdates</td>
+<td>Boolean</td>
+<td>Drawing</td>
+<td>Indicates if any pending updates for the drawing will be deferred when the drawing is opened.</td>
+</tr>
+<tr>
+<td>FileVersionOption</td>
+<td>Value from FileVersionEnum</td>
+<td>All</td>
+<td>Valid values for FileVersionEnum are kOpenOldVersion, kOpenCurrentVersion and kRestoreOldVersionToCurrent. If set to kOpenOldVersion, save will not be allowed on the opened document. kRestoreOldVersionToCurrent is valid only if no other versions are open and the current version is not checked out.</td>
+</tr>
+<tr>
+<td>ImportNonInventorDWG</td>
+<td>Boolean</td>
+<td>Imports the DWG file to an IDW if True, Opens it into Inventor DWG if False</td>
+<td>When opening non-Inventor DWG files, this method honors the application option to decide between open and import, unless an override is specified in the Options argument.</td>
+</tr>
+<tr>
+<td>Password</td>
+<td>String</td>
+<td>Protected DWG</td>
+<td>&nbsp</td>
+</tr>
+<tr>
+<td>ExpressModeBehavior</td>
+<td>String</td>
+<td>Assembly</td>
+<td>The following values are valid for this setting:<br><br>
+&emsp; OpenExpress - Open the assembly in express mode.<br><br>
+&emsp; OpenFull - Open the assembly in full mode.<br><br>
+&emsp; OpenDefault - Open the assembly in the mode it was saved in.
+</td>
+</tr>
+<tr>
+<td>FastOpen</td>
+<td>Boolean</td>
+<td>Drawing</td>
+<td>Specifies whether skip all referenced files when open a drawing document.
+</td>
+</tr>
+<tr>
+<td>SkipAllUnresolvedFiles</td>
+<td>Boolean</td>
+<td>All</td>
+<td>Specifies whether skip all unresolved referenced files when open a document.
+</td>
+</tr>
+<tr>
+<td>DeferFlatPatternUpdate</td>
+<td>Boolean</td>
+<td>Part(SheetMetal)</td>
+<td>Specifies whether defer the flat pattern update when open a sheet metal document.
+</td>
+</tr>
+
+</table><h2 class="api">
+          Syntax
+        </h2>
+        
+            FileUIEvents.<b>OnFileOpenDialog</b>( <b><i>FileTypes</i></b>() As String, <b><i>ParentHWND</i></b> As Long, <b><i>FileName</i></b> As String, <b><i>Context</i></b> As <a href="NameValueMap.htm">NameValueMap</a>, <b><i>HandlingCode</i></b> As <a href="HandlingCodeEnum.htm">HandlingCodeEnum</a> )
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">FileTypes</td>
+        <td class="api-list">String</td>
+        <td class="api-list">A list of the file types displayed in the "Files of Type" combo box on the Open dialog. Examples of some strings that could be provided by this arguments are: "Inventor Files (*.iam;*.idw;*.ipt;*.ipn;*.ide)|*.iam;*.idw;*.ipt;*.ipn;*.ide" "Assembly Files (*.iam)|*.iam" "Drawing Files (*.idw)|*.idw" "Part Files (*.ipt)|*.ipt" "STEP Files (*.stp;*.ste;*.step)|*.stp;*.ste;*.step" "All Files (*.*)|*.*"</td>
+      </tr>
+      <tr>
+        <td class="api-list">ParentHWND</td>
+        <td class="api-list">Long</td>
+        <td class="api-list">The Windows handle of the Inventor Application window. If the client displays their own dialog they can use this to associate their dialog to the Inventor window. This results in better behavior between the client dialog and Inventor. For example, the client window will stay on top of Inventor and if the Inventor window is collapsed the client dialog will also be collapsed.</td>
+      </tr>
+      <tr>
+        <td class="api-list">FileName</td>
+        <td class="api-list">String</td>
+        <td class="api-list">The full filename of the file to open. This must be an existing valid file and the HandlingCode must be set to kEventHandled in order to override the standard open behavior.</td>
+      </tr>
+      <tr>
+        <td class="api-list">Context</td>
+        <td class="api-list"><a href="NameValueMap.htm">NameValueMap</a></td>
+        <td class="api-list">See Remarks for valid NameValueMap values that can be passed back when responding to event.&nbsp;These control how the document will be opened.</td>
+      </tr>
+      <tr>
+        <td class="api-list">HandlingCode</td>
+        <td class="api-list"><a href="HandlingCodeEnum.htm">HandlingCodeEnum</a></td>
+        <td class="api-list">Output that indicates how you are handling the event. Can supply any of the following three values:
+<ul>
+<li>kEventNotHandled: Inventor continues with its standard behavior and displays the "Open" dialog to allow the end-user to select a file.</li>
+<li>kEventHandled: Indicates that the you are handling getting the filename. Requires that you also set the FileName argument.</li>
+<li>kEventCanceled: Cancels the operation.</li></td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 4<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(FileUIEvents.OnFileOpenDialog%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

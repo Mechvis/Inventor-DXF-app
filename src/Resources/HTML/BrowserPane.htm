@@ -1,0 +1,222 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/BrowserPane.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="BrowserPane">
+    <meta name="description" content="BrowserPane Object">
+    <meta name="topicid" content="GUID-BrowserPane">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>BrowserPane Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">BrowserPane Object
+			</h1><br><h2 class="api">
+          Description
+        </h2>The BrowserPane object represents an independent window or panel inside the browser that is currently associated with the active document.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BrowserPane_Activate.htm">Activate</a></td>
+        <td class="api-list">Method that causes the pane to become the active browser pane.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BrowserPane_AddBrowserFolder.htm">AddBrowserFolder</a></td>
+        <td class="api-list">Creates a new browser folder at the location specified by the input nodes.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BrowserPane_ClearPreSelect.htm">ClearPreSelect</a></td>
+        <td class="api-list">Clears any pre-selection(s) for this pane.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BrowserPane_Delete.htm">Delete</a></td>
+        <td class="api-list">Method that deletes the browser pane. If this pane is currently active, the default Inventor pane will become active. This method will fail for built-in browser panes.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BrowserPane_GetBrowserNodeFromObject.htm">GetBrowserNodeFromObject</a></td>
+        <td class="api-list">Returns the browser node that corresponds to the input object.&nbsp;The method returns an error if no corresponding node is found within this pane. If multiple matches are found, the method returns the first match.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BrowserPane_GetDockingState.htm">GetDockingState</a></td>
+        <td class="api-list">Method that gets the docking state of the browser pane.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BrowserPane_Refresh.htm">Refresh</a></td>
+        <td class="api-list">Rebuilds assembly browser by incorporating information from sub-doc(s) default browser pane into the top level document's 'Model' pane. Should be used on a top level assembly's 'Model' pane after a sub-doc's default pane is changed via BrowserPane::Default.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BrowserPane_Reorder.htm">Reorder</a></td>
+        <td class="api-list">Moves a node or group of nodes to a new target position within the browser pane.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BrowserPane_SetDockingState.htm">SetDockingState</a></td>
+        <td class="api-list">Method that sets the docking state of the browser pane.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BrowserPane_Update.htm">Update</a></td>
+        <td class="api-list">Refreshes the browser view. Should be used after changing browser node status (e.g. DisplayState).</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BrowserPane_Application.htm">Application</a></td>
+        <td class="api-list">Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BrowserPane_BuiltIn.htm">BuiltIn</a></td>
+        <td class="api-list">Property that specifies if the pane is a standard Inventor pane or not. Built-in panes have restrictions in the edits that can be performed.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BrowserPane_Control.htm">Control</a></td>
+        <td class="api-list">Property that returns the ActiveX control that may be associated with the pane. This property will return Nothing in the case this is a Tree Browser Pane.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BrowserPane_Default.htm">Default</a></td>
+        <td class="api-list">Specifies if this pane is set as the default when the document is opened.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BrowserPane_InternalName.htm">InternalName</a></td>
+        <td class="api-list">Gets either control identifier or the internal identifier depending on whether this browser pane is a ActiveX control identifier or an Inventor tree browser.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BrowserPane_Name.htm">Name</a></td>
+        <td class="api-list">Property that gets and sets the name of the pane. When setting the name, an error will occur if the name is not unique with respect to the other panes of the document. The name of built-in panes cannot be set.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BrowserPane_Parent.htm">Parent</a></td>
+        <td class="api-list">Gets the parent object from whom this object can logically be reached.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BrowserPane_SearchBox.htm">SearchBox</a></td>
+        <td class="api-list">Read-only property that gets SearchBox object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BrowserPane_TopNode.htm">TopNode</a></td>
+        <td class="api-list">Gets the top browser node.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BrowserPane_TreeBrowser.htm">TreeBrowser</a></td>
+        <td class="api-list">Gets the property that specifies if the pane hosts TreeBrowser nodes constructed by Inventor.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BrowserPane_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BrowserPane_Visible.htm">Visible</a></td>
+        <td class="api-list">Gets and sets the boolean flag which can turn the availability of browser pane in the UI, off or on.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Events
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BrowserPane_OnActivate.htm">OnActivate</a></td>
+        <td class="api-list">The OnActivate event notifies a client when the BrowserPane has become the active pane.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BrowserPane_OnDeactivate.htm">OnDeactivate</a></td>
+        <td class="api-list">The OnDeactivate event notifies a client when a BrowserPane is deactivated.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BrowserPane_OnHelp.htm">OnHelp</a></td>
+        <td class="api-list">The OnHelp event notifies a client when the end-user clicks the help button on the browser pane.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="BrowserPanes_ActivePane.htm">BrowserPanes.ActivePane</a>, <a href="BrowserPanes_Add.htm">BrowserPanes.Add</a>, <a href="BrowserPanes_AddByManifest.htm">BrowserPanes.AddByManifest</a>, <a href="BrowserPanes_AddTreeBrowserPane.htm">BrowserPanes.AddTreeBrowserPane</a>, <a href="BrowserPanes_Item.htm">BrowserPanes.Item</a><h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BrowserPaneObject_AddBrowserFolder_Sample.htm">Add assembly occurrences to a new folder</a></td>
+        <td class="api-list">Demonstrates assembly occurrences to a new folder</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BrowserPaneObject_Reorder_Demote_Sample.htm">Demote occurence</a></td>
+        <td class="api-list">This sample demonstrates how to demote a top level occurrence in an assembly into a new sub-assembly occurrence.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BrowserPaneObject_Reorder_Promote_Sample.htm">Promote occurence</a></td>
+        <td class="api-list">This sample demonstrates how to promote an occurrence.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DockBrowserPaneSample_Sample.htm">Dock browser pane to a custom ViewFrame</a></td>
+        <td class="api-list">This sample demonstrates how to dock the browser pane to a custom ViewFrame.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 5<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(BrowserPane%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

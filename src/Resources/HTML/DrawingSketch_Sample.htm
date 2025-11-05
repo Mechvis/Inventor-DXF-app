@@ -1,0 +1,172 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/DrawingSketch_Sample.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="DrawingSketch_Sample">
+    <meta name="description" content="Drawing Sketches - editing line type and color Sample">
+    <meta name="topicid" content="DrawingSketch_Sample">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>Drawing Sketches - editing line type and color</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body><script>
+          function copyCode(language) {
+          // Get the pre element for the specified language.
+          var preElement = document.getElementById(language);
+
+          // Get the text from the element and copy it to the clipboard.
+          var preText = preElement.innerText;
+
+          var isIE = /*@cc_on!@*/false || !!document.documentMode;
+
+          if (isIE)
+          {
+            window.clipboardData.setData('Text', preText);
+          }
+          else
+          {
+            navigator.clipboard.writeText(preText);
+          }
+
+          //alert("Code copied to clipboard");
+          }
+        </script><link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">Drawing Sketches - editing line type and color</h1>
+    <h2 class="api">
+          Description
+        </h2>This sample demonstrates the modification of sketch entity line type and color in drawings.<h2 class="api">
+          Code Samples
+        </h2>
+    <div id="tabs">
+      <ul>
+        <li><a href="#VBA">VBA</a></li>
+        <li><a href="#iLogic">iLogic</a></li>
+      </ul>
+      <div id="VBA" class="api-code">Open a drawing document and run the following sample.<table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('VBA_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="VBA_code">Public Sub ModifyDrawingSketchEntityProperties()
+    <span style="color:blue">' Set a reference to the active document.  This assumes it</span>
+    <span style="color:blue">' is a drawing document.</span>
+    Dim oDoc As DrawingDocument
+    Set oDoc = ThisApplication.ActiveDocument
+
+    <span style="color:blue">' Set a reference to the drawing view on the active sheet.</span>
+    Dim oDrawView As DrawingView
+    Set oDrawView = oDoc.ActiveSheet.DrawingViews.AddDraftView
+    
+    <span style="color:blue">' Set a reference to the sketch of the draft view.</span>
+    Dim oSketch As DrawingSketch
+    Set oSketch = oDrawView.Sketches.Item(1)
+    
+    <span style="color:blue">' Set a reference to the transient geometry object.</span>
+    Dim oTG As TransientGeometry
+    Set oTG = ThisApplication.TransientGeometry
+
+    <span style="color:blue">' Draw two lines in the sketch.</span>
+    Call oSketch.SketchLines.AddByTwoPoints(oTG.CreatePoint2d(10, 10), oTG.CreatePoint2d(30, 30))
+    Call oSketch.SketchLines.AddByTwoPoints(oTG.CreatePoint2d(10, 30), oTG.CreatePoint2d(30, 10))
+
+    <span style="color:blue">' Create a transient color object.</span>
+    Dim oColor As Color
+    Set oColor = ThisApplication.TransientObjects.CreateColor(255, 0, 0) <span style="color:blue">'Red</span>
+    
+    <span style="color:blue">' Override the color of the first line.</span>
+    oSketch.SketchLines(1).OverrideColor = oColor
+   
+    <span style="color:blue">' Override the line type of the second line.</span>
+    oSketch.SketchLines(2).LineType = kDashedLineType
+    
+    <span style="color:blue">' Override the line weight of the second line.</span>
+    oSketch.SketchLines(2).LineWeight = 0.11
+    
+    <span style="color:blue">' Override the line scale of the second line.</span>
+    oSketch.SketchLines(2).LineScale = 0.5
+        
+    <span style="color:blue">' Exit from editing the sketch.</span>
+    oSketch.ExitEdit
+End Sub</pre>
+      </div>
+      <div id="iLogic" class="api-code">Open a drawing document and run the following sample.<table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('iLogic_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="iLogic_code">    <span style="color:blue">' Set a reference to the active document.  This assumes it</span>
+    <span style="color:blue">' is a drawing document.</span>
+    Dim oDoc As DrawingDocument
+    oDoc = ThisApplication.ActiveDocument
+
+    <span style="color:blue">' Set a reference to the drawing view on the active sheet.</span>
+    Dim oDrawView As DrawingView
+    oDrawView = oDoc.ActiveSheet.DrawingViews.AddDraftView
+    
+    <span style="color:blue">' Set a reference to the sketch of the draft view.</span>
+    Dim oSketch As DrawingSketch
+    oSketch = oDrawView.Sketches.Item(1)
+    
+    <span style="color:blue">' Set a reference to the transient geometry object.</span>
+    Dim oTG As TransientGeometry
+    oTG = ThisApplication.TransientGeometry
+
+    <span style="color:blue">' Draw two lines in the sketch.</span>
+    Call oSketch.SketchLines.AddByTwoPoints(oTG.CreatePoint2d(10, 10), oTG.CreatePoint2d(30, 30))
+    Call oSketch.SketchLines.AddByTwoPoints(oTG.CreatePoint2d(10, 30), oTG.CreatePoint2d(30, 10))
+
+    <span style="color:blue">' Create a transient color object.</span>
+    Dim oColor As Color
+    oColor = ThisApplication.TransientObjects.CreateColor(255, 0, 0) <span style="color:blue">'Red</span>
+    
+    <span style="color:blue">' Override the color of the first line.</span>
+    oSketch.SketchLines(1).OverrideColor = oColor
+   
+    <span style="color:blue">' Override the line type of the second line.</span>
+    oSketch.SketchLines(2).LineType = kDashedLineType
+    
+    <span style="color:blue">' Override the line weight of the second line.</span>
+    oSketch.SketchLines(2).LineWeight = 0.11
+    
+    <span style="color:blue">' Override the line scale of the second line.</span>
+    oSketch.SketchLines(2).LineScale = 0.5
+        
+    <span style="color:blue">' Exit from editing the sketch.</span>
+    oSketch.ExitEdit</pre>
+      </div>
+    </div><br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(DrawingSketch%20Sample%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

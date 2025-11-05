@@ -1,0 +1,409 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/AssemblyComponentDefinition.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="AssemblyComponentDefinition">
+    <meta name="description" content="AssemblyComponentDefinition Object">
+    <meta name="topicid" content="GUID-AssemblyComponentDefinition">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>AssemblyComponentDefinition Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">AssemblyComponentDefinition Object
+			</h1>
+              Derived from: <a href="ComponentDefinition.htm">ComponentDefinition</a> Object
+            <br><h2 class="api">
+          Description
+        </h2>The AssemblyComponentDefinition object provides access to all of the assembly information of an assembly.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AssemblyComponentDefinition_AdjustProxyContext.htm">AdjustProxyContext</a></td>
+        <td class="api-list">Returns the specified object proxy scoped into this assembly, trimming any portion of the context from any assembly in which this assembly is a subassembly. In other words, for the given object proxy, this method makes a new object proxy which has this component definition as the context definition.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AssemblyComponentDefinition_AnalyzeInterference.htm">AnalyzeInterference</a></td>
+        <td class="api-list">Method that analyzes the interference between two components. The input ObjectCollections contain the component occurrences that are to be checked for interference. If only one set is provided then interference checking is performed between all occurrences provided in the set. If two sets are provided then the overlap between the components of the two collections are calculated.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AssemblyComponentDefinition_ClearAppearanceOverrides.htm">ClearAppearanceOverrides</a></td>
+        <td class="api-list">Clears the appearance overrides on the provided objects. The objects can include faces, features, work surfaces, surface bodies and occurrences.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AssemblyComponentDefinition_CreateFactory.htm">CreateFactory</a></td>
+        <td class="api-list">Method that converts an assembly to an iAssemblyFactory. The newly created iAssemblyFactory object will have an empty excel spreadsheet.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AssemblyComponentDefinition_CreateGeometryIntent.htm">CreateGeometryIntent</a></td>
+        <td class="api-list">Method that creates a GeometryIntent object.&nbsp;GeometryIntent objects are used as input when creating assembly joints.&nbsp;They are used to identify geometry and specific locations on that geometry.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AssemblyComponentDefinition_CreateVisibleOccurrenceFinder.htm">CreateVisibleOccurrenceFinder</a></td>
+        <td class="api-list">Method that creates an occurrence finder object that allows you to find all occurrences that are visible or hidden by a defined amount. By default, visible is defined by a portion of the part being visible from any view of the part. Optionally you can specify a camera to limit the viewing angle and the extents.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AssemblyComponentDefinition_ExportObjects.htm">ExportObjects</a></td>
+        <td class="api-list">Method that marks all the input objects as exported.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AssemblyComponentDefinition_FindUsingPoint.htm">FindUsingPoint</a></td>
+        <td class="api-list">Method that finds all the entities of the specified type at the specified location.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AssemblyComponentDefinition_FindUsingRay.htm">FindUsingRay</a></td>
+        <td class="api-list">Method that fires a ray through the part or assembly and returns the entities intersected by the ray. The objects intersected by the ray are returned in the order in which they are intersected, with the first entities returned being those closest to the clipping plane.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AssemblyComponentDefinition_FindUsingVector.htm">FindUsingVector</a></td>
+        <td class="api-list">Method that finds all the entities of the specified type along the specified vector using either a cylinder or cone that to define the tolerance within the defined vector.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AssemblyComponentDefinition_GetEndOfFeaturesPosition.htm">GetEndOfFeaturesPosition</a></td>
+        <td class="api-list">Gets the current end of Features position in the browser in an assembly.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AssemblyComponentDefinition_GetUnusedGeometries.htm">GetUnusedGeometries</a></td>
+        <td class="api-list">Method that gets the unused sketches and work features.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AssemblyComponentDefinition_HideAllRelationships.htm">HideAllRelationships</a></td>
+        <td class="api-list">Method that hides all of the assembly constraints, joints and iMate objects in the document.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AssemblyComponentDefinition_PurgeUnusedGeometries.htm">PurgeUnusedGeometries</a></td>
+        <td class="api-list">Method that purges unused sketches and work features.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AssemblyComponentDefinition_RepositionObject.htm">RepositionObject</a></td>
+        <td class="api-list">Method that repositions the specifies object(s) to the new position within the collection of the object in the document.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AssemblyComponentDefinition_SetEndOfFeaturesToTopOrBottom.htm">SetEndOfFeaturesToTopOrBottom</a></td>
+        <td class="api-list">Sets the End of Part marker to the top or bottom of the browser.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AssemblyComponentDefinition_SetOccurrencesProperty.htm">SetOccurrencesProperty</a></td>
+        <td class="api-list">Method that process the property of a collection of occurrences.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AssemblyComponentDefinition_SuppressFeatures.htm">SuppressFeatures</a></td>
+        <td class="api-list">Property that returns the SurfaceBodies collection. Surface bodies within the assembly is not currently supported by Inventor. The returned SurfaceBodies collection will be a collection of zero.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AssemblyComponentDefinition_TransformOccurrences.htm">TransformOccurrences</a></td>
+        <td class="api-list">Method that transforms a collection of occurrences.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AssemblyComponentDefinition_UnsuppressFeatures.htm">UnsuppressFeatures</a></td>
+        <td class="api-list">Method that unsuppresses previously suppressed features.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AssemblyComponentDefinition_ActiveOccurrence.htm">ActiveOccurrence</a></td>
+        <td class="api-list">Property that returns the that is currently in edit.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AssemblyComponentDefinition_AppearanceOverridesObjects.htm">AppearanceOverridesObjects</a></td>
+        <td class="api-list">Property that returns the objects that have appearance overrides in the active design view. The objects returned in the collection can include occurrences.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AssemblyComponentDefinition_Application.htm">Application</a></td>
+        <td class="api-list">Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AssemblyComponentDefinition_AssemblyEvents.htm">AssemblyEvents</a></td>
+        <td class="api-list">Property returning an AssemblyEvents collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AssemblyComponentDefinition_AttributeSets.htm">AttributeSets</a></td>
+        <td class="api-list">Property that returns the AttributeSets collection object associated with this object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AssemblyComponentDefinition_BIMComponent.htm">BIMComponent</a></td>
+        <td class="api-list">Read-only property that returns the BIMComponent object associated with this component definition.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AssemblyComponentDefinition_BOM.htm">BOM</a></td>
+        <td class="api-list">Property that returns the BOM object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AssemblyComponentDefinition_BOMQuantity.htm">BOMQuantity</a></td>
+        <td class="api-list">Property that returns the BOMQuantity object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AssemblyComponentDefinition_BOMStructure.htm">BOMStructure</a></td>
+        <td class="api-list">Gets and sets how the component is used/viewed in a BOM.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AssemblyComponentDefinition_ClientGraphicsCollection.htm">ClientGraphicsCollection</a></td>
+        <td class="api-list">Property that returns the ClientGraphicsCollection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AssemblyComponentDefinition_Constraints.htm">Constraints</a></td>
+        <td class="api-list">Property that returns the AssemblyConstraints collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AssemblyComponentDefinition_DataIO.htm">DataIO</a></td>
+        <td class="api-list">Gets the object that directly deals with I/O to and from a storage-medium, including Streams(IStream).</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AssemblyComponentDefinition_DefaultVirtualComponentMaterial.htm">DefaultVirtualComponentMaterial</a></td>
+        <td class="api-list">Gets and sets the default material associated with the assembly component. This is the material that is used for newly created virtual components.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AssemblyComponentDefinition_Document.htm">Document</a></td>
+        <td class="api-list">Property that returns the containing Document object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AssemblyComponentDefinition_FactoryDocument.htm">FactoryDocument</a></td>
+        <td class="api-list">Read-only property that returns the model state factory document when IsModelStateMember returns True.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AssemblyComponentDefinition_Features.htm">Features</a></td>
+        <td class="api-list">Gets the Features collection for this assembly (assembly features).</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AssemblyComponentDefinition_iAssemblyFactory.htm">iAssemblyFactory</a></td>
+        <td class="api-list">Property that returns the iAssemblyFactory object. This property will return Nothing in the case where the assembly is not an iAssembly Factory. You can determine this by using the IsiAssemblyFactory property.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AssemblyComponentDefinition_iAssemblyMember.htm">iAssemblyMember</a></td>
+        <td class="api-list">Property that returns the iAssemblyMember object. This property will return Nothing in the case where the assembly is not an iAssembly Member. You can determine this by using the IsiAssemblyMember property.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AssemblyComponentDefinition_iMateDefinitions.htm">iMateDefinitions</a></td>
+        <td class="api-list">Property that returns the iMateDefinitions collection object associated with this assembly.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AssemblyComponentDefinition_iMateResults.htm">iMateResults</a></td>
+        <td class="api-list">Property that returns the iMateResults collection object associated with this assembly.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AssemblyComponentDefinition_ImportedComponents.htm">ImportedComponents</a></td>
+        <td class="api-list">Read-only property that returns the ImportedComponents collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AssemblyComponentDefinition_IsiAssemblyFactory.htm">IsiAssemblyFactory</a></td>
+        <td class="api-list">Property that returns if the assembly is an iAssembly factory or not. It returns True in the case where the assembly is a factory. If True, the factory can be obtained using the iAssemblyFactory property.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AssemblyComponentDefinition_IsiAssemblyMember.htm">IsiAssemblyMember</a></td>
+        <td class="api-list">Property that returns if the assembly is an iAssembly Member or not. It returns True in the case where the assembly is a member. If True, the member can be obtained using the iAssemblyMember property.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AssemblyComponentDefinition_IsModelStateFactory.htm">IsModelStateFactory</a></td>
+        <td class="api-list">Read-only property that returns whether the document is a model state factory document or not.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AssemblyComponentDefinition_IsModelStateMember.htm">IsModelStateMember</a></td>
+        <td class="api-list">Read-only property that returns whether the document is a model state member document or not.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AssemblyComponentDefinition_Joints.htm">Joints</a></td>
+        <td class="api-list">Read-only property that returns the AssemblyJoints collection object which provides access to the existing joints in the assembly and provides the capability to create new joints.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AssemblyComponentDefinition_MassProperties.htm">MassProperties</a></td>
+        <td class="api-list">Property that returns the MassProperties object. This supports performing mass properties calculations for the entire assembly.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AssemblyComponentDefinition_ModelAnnotations.htm">ModelAnnotations</a></td>
+        <td class="api-list">Read-only property that returns the ModelAnnotations collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AssemblyComponentDefinition_ModelGeometryVersion.htm">ModelGeometryVersion</a></td>
+        <td class="api-list">Property that returns a string that can be used to determine if the document has been modified. This version string is changed every time the assembly is modified. By saving a previous version string, you can compare the current version string to see if the assembly has been modified.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AssemblyComponentDefinition_ModelStates.htm">ModelStates</a></td>
+        <td class="api-list">Read-only property that returns the ModelStates object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AssemblyComponentDefinition_OccurrencePatterns.htm">OccurrencePatterns</a></td>
+        <td class="api-list">Method that returns the pattern element this occurrence represents.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AssemblyComponentDefinition_Occurrences.htm">Occurrences</a></td>
+        <td class="api-list">Property that returns the collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AssemblyComponentDefinition_OrientedMinimumRangeBox.htm">OrientedMinimumRangeBox</a></td>
+        <td class="api-list">Read-only property that returns the oriented minimum range box for this object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AssemblyComponentDefinition_Parameters.htm">Parameters</a></td>
+        <td class="api-list">Property that returns the parameters collection.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AssemblyComponentDefinition_Parent.htm">Parent</a></td>
+        <td class="api-list">Property that returns the parent of the object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AssemblyComponentDefinition_PointClouds.htm">PointClouds</a></td>
+        <td class="api-list">Gets the PointClouds collection object that encapsulates all of the point clouds defined in this Component Definition.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AssemblyComponentDefinition_PreciseRangeBox.htm">PreciseRangeBox</a></td>
+        <td class="api-list">Gets a bounding box that tightly encloses all the solid and surface bodies under the ComponentDefinition.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AssemblyComponentDefinition_RangeBox.htm">RangeBox</a></td>
+        <td class="api-list">Property that returns a Box object which contains the opposing points of a rectangular box that is guaranteed to enclose this object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AssemblyComponentDefinition_RepresentationsManager.htm">RepresentationsManager</a></td>
+        <td class="api-list">Property that returns the RepresentationsManager object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AssemblyComponentDefinition_RevitExports.htm">RevitExports</a></td>
+        <td class="api-list">Read-only property that returns the RevitExports collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AssemblyComponentDefinition_SimulationManager.htm">SimulationManager</a></td>
+        <td class="api-list">Read-only property that returns the SimulationManager object.&nbsp;This object provides access to the various simulation API’s.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AssemblyComponentDefinition_Sketches.htm">Sketches</a></td>
+        <td class="api-list">Gets the Sketches collection for this assembly component.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AssemblyComponentDefinition_SurfaceBodies.htm">SurfaceBodies</a></td>
+        <td class="api-list">Property that returns all of the <i>result</i> SurfaceBody objects contained within this ComponentDefinition.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AssemblyComponentDefinition_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AssemblyComponentDefinition_UserCoordinateSystems.htm">UserCoordinateSystems</a></td>
+        <td class="api-list">Property that returns the UserCoordinateSystems collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AssemblyComponentDefinition_WorkAxes.htm">WorkAxes</a></td>
+        <td class="api-list">Property that returns the WorkAxes collection object that encapsulates all of the work axes defined in this ComponentDefinition.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AssemblyComponentDefinition_WorkPlanes.htm">WorkPlanes</a></td>
+        <td class="api-list">Property that returns the WorkPlanes collection object that encapsulates all of the work planes defined in this ComponentDefinition.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AssemblyComponentDefinition_WorkPoints.htm">WorkPoints</a></td>
+        <td class="api-list">Property that returns the WorkPoints collection object that encapsulates all of the work points defined in this ComponentDefinition.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="AngleConstraint_Parent.htm">AngleConstraint.Parent</a>, <a href="AngleConstraintProxy_Parent.htm">AngleConstraintProxy.Parent</a>, <a href="AssemblyComponentDefinitions_Item.htm">AssemblyComponentDefinitions.Item</a>, <a href="AssemblyConstraint_Parent.htm">AssemblyConstraint.Parent</a>, <a href="AssemblyConstraints_Parent.htm">AssemblyConstraints.Parent</a>, <a href="AssemblyDocument_ComponentDefinition.htm">AssemblyDocument.ComponentDefinition</a>, <a href="AssemblyJoint_Parent.htm">AssemblyJoint.Parent</a>, <a href="AssemblyJointProxy_Parent.htm">AssemblyJointProxy.Parent</a>, <a href="AssemblySymmetryConstraint_Parent.htm">AssemblySymmetryConstraint.Parent</a>, <a href="AssemblySymmetryConstraintProxy_Parent.htm">AssemblySymmetryConstraintProxy.Parent</a>, <a href="CircularOccurrencePattern_Parent.htm">CircularOccurrencePattern.Parent</a>, <a href="CircularOccurrencePatternProxy_Parent.htm">CircularOccurrencePatternProxy.Parent</a>, <a href="ComponentOccurrence_Parent.htm">ComponentOccurrence.Parent</a>, <a href="ComponentOccurrenceProxy_Parent.htm">ComponentOccurrenceProxy.Parent</a>, <a href="CustomConstraint_Parent.htm">CustomConstraint.Parent</a>, <a href="CustomConstraintProxy_Parent.htm">CustomConstraintProxy.Parent</a>, <a href="FeatureBasedOccurrencePattern_Parent.htm">FeatureBasedOccurrencePattern.Parent</a>, <a href="FeatureBasedOccurrencePatternProxy_Parent.htm">FeatureBasedOccurrencePatternProxy.Parent</a>, <a href="FlushConstraint_Parent.htm">FlushConstraint.Parent</a>, <a href="FlushConstraintProxy_Parent.htm">FlushConstraintProxy.Parent</a>, <a href="iAssemblyFactory_Parent.htm">iAssemblyFactory.Parent</a>, <a href="iAssemblyMember_Parent.htm">iAssemblyMember.Parent</a>, <a href="InsertConstraint_Parent.htm">InsertConstraint.Parent</a>, <a href="InsertConstraintProxy_Parent.htm">InsertConstraintProxy.Parent</a>, <a href="LayoutConstraint_Parent.htm">LayoutConstraint.Parent</a>, <a href="LayoutConstraintProxy_Parent.htm">LayoutConstraintProxy.Parent</a>, <a href="MateConstraint_Parent.htm">MateConstraint.Parent</a>, <a href="MateConstraintProxy_Parent.htm">MateConstraintProxy.Parent</a>, <a href="OccurrencePattern_Parent.htm">OccurrencePattern.Parent</a>, <a href="OccurrencePatterns_Parent.htm">OccurrencePatterns.Parent</a>, <a href="RectangularOccurrencePattern_Parent.htm">RectangularOccurrencePattern.Parent</a>, <a href="RectangularOccurrencePatternProxy_Parent.htm">RectangularOccurrencePatternProxy.Parent</a>, <a href="RevitExport_Parent.htm">RevitExport.Parent</a>, <a href="RigidBodyResults_Parent.htm">RigidBodyResults.Parent</a>, <a href="RotateRotateConstraint_Parent.htm">RotateRotateConstraint.Parent</a>, <a href="RotateRotateConstraintProxy_Parent.htm">RotateRotateConstraintProxy.Parent</a>, <a href="RotateTranslateConstraint_Parent.htm">RotateTranslateConstraint.Parent</a>, <a href="RotateTranslateConstraintProxy_Parent.htm">RotateTranslateConstraintProxy.Parent</a>, <a href="TangentConstraint_Parent.htm">TangentConstraint.Parent</a>, <a href="TangentConstraintProxy_Parent.htm">TangentConstraintProxy.Parent</a>, <a href="TransitionalConstraint_Parent.htm">TransitionalConstraint.Parent</a>, <a href="TransitionalConstraintProxy_Parent.htm">TransitionalConstraintProxy.Parent</a>, <a href="TranslateTranslateConstraint_Parent.htm">TranslateTranslateConstraint.Parent</a>, <a href="TranslateTranslateConstraintProxy_Parent.htm">TranslateTranslateConstraintProxy.Parent</a><h2 class="api">
+            Derived Classes
+          </h2><a href="WeldmentComponentDefinition.htm">WeldmentComponentDefinition</a><h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AddiAssemblyMember_Sample.htm">Adding iAssembly occurrences</a></td>
+        <td class="api-list">This sample demonstrates adding iAssembly occurrences to an assembly.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AddOccurrence_Sample.htm">Assembly Add Occurrence</a></td>
+        <td class="api-list">This sample demonstrates placing an assembly occurrence.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AddUsingiMates_Sample.htm">iMate Creation During Occurrence Placement</a></td>
+        <td class="api-list">This sample demonstrates creating multiple iMate results when adding an occurrence into an assembly. This uses the AddUsingiMate method which is the equivalent of using the Place Component command and checking the Use iMate check box on the dialog.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AssemblyConstraints_AddInsertConstraint_Sample.htm">Add assembly insert constraint</a></td>
+        <td class="api-list">This sample demonstrates the creation of an assembly insert constraint.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AssemblyConstraints_AddMateConstraint_Sample.htm">Add assembly mate constraint</a></td>
+        <td class="api-list">This sample demonstrates the creation of an assembly mate constraint.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AssemblyConstraints_AddMateConstraint2_Sample.htm">Add mate constraint using work planes in parts</a></td>
+        <td class="api-list">This sample demonstrates creating a mate constraint between two occurrences using the work planes within those occurrences.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AssemblyConstraints_AddMateConstraint3_Sample.htm">Add mate constraint with limits</a></td>
+        <td class="api-list">This sample demonstrates the creation of an assembly mate constraint with maximum and minimum limits defined.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ComponentOccurrence_Grounded_Sample.htm">Assembly Ground Occurrences</a></td>
+        <td class="api-list">This sample demonstrates grounding an assembly occurrence.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ExportToIFCFormatSample_Sample.htm">Export to IFC Format Sample</a></td>
+        <td class="api-list">This sample demonstrates how to export an assembly to IFC format.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="OccurrenceAddWithOptions_Sample.htm">Create assembly occurrence with representations</a></td>
+        <td class="api-list">This sample demonstrates how to create an assembly occurrence by specifying various representations.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 4<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(AssemblyComponentDefinition%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

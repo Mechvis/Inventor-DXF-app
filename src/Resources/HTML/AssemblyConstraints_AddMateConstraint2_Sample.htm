@@ -1,0 +1,160 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/AssemblyConstraints_AddMateConstraint2_Sample.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="AssemblyConstraints_AddMateConstraint2_Sample">
+    <meta name="description" content="Add mate constraint using work planes in parts Sample">
+    <meta name="topicid" content="AssemblyConstraints_AddMateConstraint2_Sample">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>Add mate constraint using work planes in parts</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body><script>
+          function copyCode(language) {
+          // Get the pre element for the specified language.
+          var preElement = document.getElementById(language);
+
+          // Get the text from the element and copy it to the clipboard.
+          var preText = preElement.innerText;
+
+          var isIE = /*@cc_on!@*/false || !!document.documentMode;
+
+          if (isIE)
+          {
+            window.clipboardData.setData('Text', preText);
+          }
+          else
+          {
+            navigator.clipboard.writeText(preText);
+          }
+
+          //alert("Code copied to clipboard");
+          }
+        </script><link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">Add mate constraint using work planes in parts</h1>
+    <h2 class="api">
+          Description
+        </h2>This sample demonstrates creating a mate constraint between two occurrences using the work planes within those occurrences.<h2 class="api">
+          Code Samples
+        </h2>
+    <div id="tabs">
+      <ul>
+        <li><a href="#VBA">VBA</a></li>
+        <li><a href="#iLogic">iLogic</a></li>
+      </ul>
+      <div id="VBA" class="api-code">To use the sample, have an assembly open that contains at least two occurrences, (part or subassembly), and run the program.<table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('VBA_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="VBA_code">Public Sub MateConstraintOfWorkPlanes()
+    Dim oAsmCompDef As AssemblyComponentDefinition
+    Set oAsmCompDef = ThisApplication.ActiveDocument.ComponentDefinition
+
+    <span style="color:blue">' Get references to the two occurrences to constrain.</span>
+    <span style="color:blue">' This arbitrarily gets the first and second occurrence.</span>
+    Dim oOcc1 As ComponentOccurrence
+    Set oOcc1 = oAsmCompDef.Occurrences.Item(1)
+
+    Dim oOcc2 As ComponentOccurrence
+    Set oOcc2 = oAsmCompDef.Occurrences.Item(2)
+
+    <span style="color:blue">' Get the XY plane from each occurrence.  This goes to the</span>
+    <span style="color:blue">' component definition of the part to get this information.</span>
+    <span style="color:blue">' This is the same as accessing the part document directly.</span>
+    <span style="color:blue">' The work plane obtained is in the context of the part,</span>
+    <span style="color:blue">' not the assembly.</span>
+    Dim oPartPlane1 As WorkPlane
+    Set oPartPlane1 = oOcc1.Definition.WorkPlanes.Item(3)
+
+    Dim oPartPlane2 As WorkPlane
+    Set oPartPlane2 = oOcc2.Definition.WorkPlanes.Item(3)
+
+    <span style="color:blue">' Because we need the work plane in the context of the assembly</span>
+    <span style="color:blue">' we need to create proxies for the work planes.  The proxies</span>
+    <span style="color:blue">' represent the work planes in the context of the assembly.</span>
+    Dim oAsmPlane1 As WorkPlaneProxy
+    Call oOcc1.CreateGeometryProxy(oPartPlane1, oAsmPlane1)
+
+    Dim oAsmPlane2 As WorkPlaneProxy
+    Call oOcc2.CreateGeometryProxy(oPartPlane2, oAsmPlane2)
+
+    <span style="color:blue">' Create the constraint using the work plane proxies.</span>
+    Call oAsmCompDef.Constraints.AddMateConstraint(oAsmPlane1, oAsmPlane2, 0)
+End Sub</pre>
+      </div>
+      <div id="iLogic" class="api-code">To use the sample, have an assembly open that contains at least two occurrences, (part or subassembly), and run the program.<table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('iLogic_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="iLogic_code">    Dim oAsmCompDef As AssemblyComponentDefinition
+    oAsmCompDef = ThisApplication.ActiveDocument.ComponentDefinition
+
+    <span style="color:blue">' Get references to the two occurrences to constrain.</span>
+    <span style="color:blue">' This arbitrarily gets the first and second occurrence.</span>
+    Dim oOcc1 As ComponentOccurrence
+    oOcc1 = oAsmCompDef.Occurrences.Item(1)
+
+    Dim oOcc2 As ComponentOccurrence
+    oOcc2 = oAsmCompDef.Occurrences.Item(2)
+
+    <span style="color:blue">' Get the XY plane from each occurrence.  This goes to the</span>
+    <span style="color:blue">' component definition of the part to get this information.</span>
+    <span style="color:blue">' This is the same as accessing the part document directly.</span>
+    <span style="color:blue">' The work plane obtained is in the context of the part,</span>
+    <span style="color:blue">' not the assembly.</span>
+    Dim oPartPlane1 As WorkPlane
+    oPartPlane1 = oOcc1.Definition.WorkPlanes.Item(3)
+
+    Dim oPartPlane2 As WorkPlane
+    oPartPlane2 = oOcc2.Definition.WorkPlanes.Item(3)
+
+    <span style="color:blue">' Because we need the work plane in the context of the assembly</span>
+    <span style="color:blue">' we need to create proxies for the work planes.  The proxies</span>
+    <span style="color:blue">' represent the work planes in the context of the assembly.</span>
+    Dim oAsmPlane1 As WorkPlaneProxy
+    Call oOcc1.CreateGeometryProxy(oPartPlane1, oAsmPlane1)
+
+    Dim oAsmPlane2 As WorkPlaneProxy
+    Call oOcc2.CreateGeometryProxy(oPartPlane2, oAsmPlane2)
+
+    <span style="color:blue">' Create the constraint using the work plane proxies.</span>
+    Call oAsmCompDef.Constraints.AddMateConstraint(oAsmPlane1, oAsmPlane2, 0)</pre>
+      </div>
+    </div><br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(AssemblyConstraints_AddMateConstraint2%20Sample%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,187 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/ModelHoleThreadNoteDefinition.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="ModelHoleThreadNoteDefinition">
+    <meta name="description" content="ModelHoleThreadNoteDefinition Object">
+    <meta name="topicid" content="GUID-ModelHoleThreadNoteDefinition">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>ModelHoleThreadNoteDefinition Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">ModelHoleThreadNoteDefinition Object
+			</h1><br><h2 class="api">
+          Description
+        </h2>The ModelHoleThreadNoteDefinition provides access to all of the information that defines a hole or thread note.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelHoleThreadNoteDefinition_Copy.htm">Copy</a></td>
+        <td class="api-list">Method that creates a copy of this ModelHoleThreadNoteDefinition object. The new ModelHoleThreadNoteDefinition object is independent of any note. It can be edited and used as input to edit an existing note or to create a new note.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelHoleThreadNoteDefinition_GetHolePropertyTolerance.htm">GetHolePropertyTolerance</a></td>
+        <td class="api-list">Method that gets the tolerance for the specified hole property.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelHoleThreadNoteDefinition_GetHolePropertyTolerancePrecision.htm">GetHolePropertyTolerancePrecision</a></td>
+        <td class="api-list">Method that gets the tolerance precision for the specified hole property.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelHoleThreadNoteDefinition_GetHolePropertyToleranceStatus.htm">GetHolePropertyToleranceStatus</a></td>
+        <td class="api-list">Method that returns whether the tolerance for the specified hole property is enabled or not. This returns True if the hole property tolerance is enabled.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelHoleThreadNoteDefinition_IsValidAnnotationPlane.htm">IsValidAnnotationPlane</a></td>
+        <td class="api-list">Method that returns the wheather a planer object is valid to be used as an annotation plane for this hole or thread note.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelHoleThreadNoteDefinition_SetHolePropertyTolerancePrecision.htm">SetHolePropertyTolerancePrecision</a></td>
+        <td class="api-list">Method that sets the tolerance precision for the specified hole property.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelHoleThreadNoteDefinition_SetHolePropertyToleranceStatus.htm">SetHolePropertyToleranceStatus</a></td>
+        <td class="api-list">Method that enables/disables the tolerance for the specified hole property.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelHoleThreadNoteDefinition_AnnotationPlane.htm">AnnotationPlane</a></td>
+        <td class="api-list">Read-write property that gets and sets the annotation plane for the hole or thread note. Will return nothing in case where the ModelHoleThreadNodeDefinition object is transient and not associated with a hole or thread note.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelHoleThreadNoteDefinition_AnnotationPlaneDefinition.htm">AnnotationPlaneDefinition</a></td>
+        <td class="api-list">Read-write property that gets and sets the annotation plane definition for the hole or thread note.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelHoleThreadNoteDefinition_Application.htm">Application</a></td>
+        <td class="api-list">Gets the root Application object. Where the property is weakly-typed, it can be set to (QueryInterfaced for) 'Application' when running with Inventor whereas, 'ApprenticeServer' when running with the Apprentice Server.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelHoleThreadNoteDefinition_ArrowheadType.htm">ArrowheadType</a></td>
+        <td class="api-list">Read-write property that gets and sets the type of the arrowhead. This is a style override.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelHoleThreadNoteDefinition_FormattedHoleThreadNote.htm">FormattedHoleThreadNote</a></td>
+        <td class="api-list">Read-write property that gets and sets the fully formatted string that defines the contents of the hole or thread text.
+
+The formatting is specified using XML tags within the string. By default, all text in the string will be displayed using the defaults specified in the dimension style. You can use the XML tags to override the default style and apply style overrides for all or portions of the text. 
+
+The formatting overrides are defined using tags. There is an opening tag and closing tag for each formatting override you define. The text between the opening and closing tags is affected by the override.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelHoleThreadNoteDefinition_Intent.htm">Intent</a></td>
+        <td class="api-list">Read-write property that gets and sets the geometry associated with the hole or thread note.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelHoleThreadNoteDefinition_IsHoleNote.htm">IsHoleNote</a></td>
+        <td class="api-list">Read-write property that indicates if this note is for a hole or thread feature. Returns True if it is for a hole note. This is true even in the case where the hole is tapped and has threads. Returns False in the case where the note is for a thread feature. Th.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelHoleThreadNoteDefinition_IsTapDrill.htm">IsTapDrill</a></td>
+        <td class="api-list">Read-write property that gets and sets whether to set the hole note as tap drill type. This property only applies to tapped hole features. In other cases the value of this property should be ignored and setting it will fail.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelHoleThreadNoteDefinition_LandingPosition.htm">LandingPosition</a></td>
+        <td class="api-list">Read-write property that gets and sets the landing position of the dimension. The point is projected onto the orientation plane.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelHoleThreadNoteDefinition_Parent.htm">Parent</a></td>
+        <td class="api-list">Read-only property that returns the parent model annotation that the definition is associated with.&nbsp;This property will return Nothing in the case where the definition is not associated with any annotation.&nbsp;This is the case when it’s been created using one of the create definition methods and when it’s been copied from another definition object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelHoleThreadNoteDefinition_RightHandedThread.htm">RightHandedThread</a></td>
+        <td class="api-list">Gets and sets whether to show RH for right handed thread.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelHoleThreadNoteDefinition_Text.htm">Text</a></td>
+        <td class="api-list">Read-only property that gets the text of the dimension.&nbsp;Properties on the returned ModelAnnotationText object can be edited to change the displayed text.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelHoleThreadNoteDefinition_TextPosition.htm">TextPosition</a></td>
+        <td class="api-list">Read-write property that controls the position of the hole or thread note text.&nbsp;When being set, the input point will be projected onto the orientation plane.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelHoleThreadNoteDefinition_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelHoleThreadNoteDefinition_UseCustomThreadDesignation.htm">UseCustomThreadDesignation</a></td>
+        <td class="api-list">Gets and sets whether to use the custom thread designation, as defined in the Thread.xls spreadsheet for thread notes.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelHoleThreadNoteDefinition_UseDefaultFormat.htm">UseDefaultFormat</a></td>
+        <td class="api-list">Gets and sets whether to use the default format for hole notes.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelHoleThreadNoteDefinition_UseModelUnits.htm">UseModelUnits</a></td>
+        <td class="api-list">Read-write property that gets and sets whether to use the model measurement units for hole note.
+
+This is only valid for notes to hole features and not notes to thread features. This can easily be determined by checking the value of IsHoleNote property. In other cases the value of this property should be ignored and setting it will fail.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ModelHoleThreadNoteDefinition_UseParameterTolerance.htm">UseParameterTolerance</a></td>
+        <td class="api-list">Read-write property that gets and sets whether to use the format and tolerance information from parameters for hole note.
+This is only valid for notes to hole features and not notes to thread features. This can easily be determined by checking the value of IsHoleNote property. In other cases the value of this property should be ignored and setting it will fail.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="ModelHoleThreadNote_Definition.htm">ModelHoleThreadNote.Definition</a>, <a href="ModelHoleThreadNoteDefinition_Copy.htm">ModelHoleThreadNoteDefinition.Copy</a>, <a href="ModelHoleThreadNoteProxy_Definition.htm">ModelHoleThreadNoteProxy.Definition</a>, <a href="ModelHoleThreadNotes_CreateDefinition.htm">ModelHoleThreadNotes.CreateDefinition</a><h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2018<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(ModelHoleThreadNoteDefinition%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

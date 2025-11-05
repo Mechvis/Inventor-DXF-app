@@ -1,0 +1,234 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU">
+    <link rel="canonical" href="http://help.autodesk.com/cloudhelp/2026/ENU/Inventor-API/files/PortToNetCore_Overview.htm">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="11/1/2024">
+    <meta name="user-comments" content="enable">
+    <meta name="description" content="">
+    <meta name="topicid" content="GUID-522FF5BC-7CC5-43D5-99B1-14840CF54A82">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>Port .Net Framework-based project to .Net</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"/>
+    <script type="text/javascript" src="/view/clientframework/client.js"><!--filler--></script>
+	<script>
+	  // This turns on the display of the copyright notice which is not visible by default.
+	  // Because the head is removed when used in the web help, this function will only exists
+	  // when the chm help is being created.
+	  window.onload = function() {
+		copyrightElement = document.getElementById('CopyrightNotice');
+		copyrightElement.style.display = 'block';
+	  };
+	</script>
+</head>
+<body>
+<link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+
+    <h1>
+        Port .Net Framework-based project to .Net</h1>
+    <p class="normal">
+        Inventor 2025&nbsp; has migrated from .Net Framework to .Net 8, it is 
+        recommended to port the .Net Framework-based projects to .Net 8 to keep 
+        compatibility. This article demonstrates how to port Inventor VB.net/C# projects 
+        from .Net Framework-based to .Net 8-based, and also C++/CLI settings for C++ projects which use managed code.</p>
+    <h2>
+        Environment Preparation:</h2>
+    <ol class="indent">
+<li>
+    <b>Visual Studio:</b><p />
+    Install Visual Studio 17.8 or later version which supports targeting .Net 8.0 
+    SDK, refer to the <a href="https://learn.microsoft.com/en-us/dotnet/core/compatibility/sdk/8.0/version-requirements" target="_blank">Version 
+    requirements for .NET 8 SDK</a>.<br><br>
+</li>
+<li>
+    <b>.Net 8.0 SDK:</b>
+    <p />
+    Install .Net 8.0 SDK, refer to the <a href="https://dotnet.microsoft.com/en-us/download/visual-studio-sdks" target="_blank">Download .NET SDKs for Visual Studio</a>.<br>
+    <br>
+</li>
+
+<li>
+    <b>.NET 
+    Upgrade Assistant:</b>
+    <p />
+    Install the Visual Studio extension “.NET Upgrade Assistant”, refer to <a href="https://learn.microsoft.com/en-us/dotnet/core/porting/upgrade-assistant-install" target="_blank">Install the .NET Upgrade Assistant</a>:
+    <br><br>            
+    <div align="center"> <img src="../images/NETUpgradeAssistant.png" alt="" border=0></div>
+    <br>
+</li>
+ 
+</ol>
+
+<h2>Port to .Net 8 process (C# and VB.net projects)</h2>
+
+<ol class="indent">
+<li>
+   <b> Open an Inventor project (below is based on a simple VB.net Inventor addin as 
+    example, which is targeted to .Net Framework 4.8).</b>
+ <br><br>
+<div align="center"> <img src="../images/NetFrameworkProperties.png" alt="" border=0></div>
+<br>
+</li>
+<li>
+    <b>Right click the project, and choose Upgrade command:</b>
+<br><br>
+<div align="center"> <img src="../images/UpgradeNetStep1.png" alt="" border=0></div>
+
+</li>
+<li>
+    <b>Choose “Upgrade project to a newer .NET version”:</b>
+<br><br>
+<div align="center"> <img src="../images/UpgradeNetStep2.png" alt="" border=0></div>
+</li>
+<li>
+    <b>Choose 
+    “In-place project upgrade”, and click Next:</b>
+<br><br>
+<div align="center"> <img src="../images/UpgradeNetStep3.png" alt="" border=0></div>
+</li>
+</li>
+<li>
+    <b>Choose “.NET 8.0” and click Next:</b>
+<br><br>
+<div align="center"> <img src="../images/UpgradeNetStep4.png" alt="" border=0></div>
+</li>
+<li>
+    <b>Select all if you are not sure which ones need to migrate and click Upgrade selection:</b>
+<br><br>
+<div align="center"> <img src="../images/UpgradeNetStep5.png" alt="" border=0></div>
+</li>
+ <li>
+    <b>Now the migration result is as below:</b>
+<br><br>
+<div align="center"> <img src="../images/UpgradeNetStep6.png" alt="" border=0></div>
+</li>
+<li>
+    <b>Check the Project Properties the Target framework is .NET 8.0 now:</b>
+<br><br>
+<div align="center"> <img src="../images/UpgradeNetStep7.png" alt="" border=0></div>
+</li>
+<li>
+    <b>Re-reference Autodesk.Inventor.interop.dll from C:\Program Files\Autodesk\Inventor 2025\Bin\ folder, and set the “Embed Interop Types” to False, “Copy Local” to True:</b>
+<br><br>
+<div align="center"> <img src="../images/UpgradeNetStep8.png" alt="" border=0></div>
+</li>
+<li>
+    <b>Edit the InventorAddinSample.vbproj using a text editor, and delete the below &lt;PostBuildEvent&gt; tag for Post Build Event:</b>
+<br><br>
+<div align="center"> <img src="../images/UpgradeNetStep9.png" alt="" border=0></div>
+</li>
+
+<li>
+    <b>Add below &lt;PropertyGroup&gt; tag to &lt;Project&gt; for embedding manifest file to the result binary:</b><br> <table class="code"><td class="code">                 
+<pre><code>&lt;PropertyGroup&gt;
+  &lt;ApplicationManifest&gt;$projectname$.X.manifest&lt;/ApplicationManifest&gt;
+&lt;/PropertyGroup&gt;</code></pre></td></table>
+<div align="center"> <img src="../images/UpgradeNetStep10.png" alt="" border=0></div>
+</li>
+<li>
+    <b>Recompile the project:</b>
+<br><br>
+<div align="center"> <img src="../images/UpgradeNetStep11.png" alt="" border=0></div>
+</li><br>
+<li>
+    <b>Deploy your addin to proper locations:</b>
+<br><br>
+Place the Autodesk.InventorAddinSample.Inventor.addin to C:\Program Files\Autodesk\Inventor 2025\Bin\Addins\ folder.
+<br><br>
+Place the binary \InventorAddinSample\bin\Debug\net8.0-windows7.0\InventorAddinSample.dll to C:\Program Files\Autodesk\Inventor 2025\Bin\ folder.
+<br><br>
+</li>
+<li>
+    <b>Launch Inventor and check if the addin now can be loaded successfully.</b>
+<br><br>
+</li>
+</ol>
+
+<h2>Port to .Net 8 process (C++/CLI properties in C++ projects)</h2>
+<p><i>This is for a C++ project has C++/CLI properties set for managed code. As the “.NET Upgrade Assistant” tool doesn’t work for C++/CLI upgrade in C++ projects, below steps demonstrate how to upgrade the C++/CLI properties manually.</i></p>
+<ol class="indent">
+<li>
+<b>Open project in Visual Studio, right click the project and choose Properties command.</b>
+<p />
+<li>
+    <b>Navigate to <span style="color:blue">Advanced</span>:</b>
+<br><br>
+<div align="center"> <img src="../images/UpgradeCLIStep1.png" alt="" border=0></div>
+</li><br>
+<li>
+    <b>Change the <span style="color:blue">Common Language Runtime Support</span> to <span style="color:blue"> .NET Core Runtime Support (/clr:netcore)</span> from the dropdown list, then click <span style="color:blue">Apply</span> button:</b>
+<br><br>
+<div align="center"> <img src="../images/UpgradeCLIStep2.png" alt="" border=0></div>
+</li><br>                    
+<li>
+    <b>Change the <span style="color:blue">.Net Core Target Framework</span> to <span style="color:blue"> .NET 8.0</span>  from the dropdown list, and click <span style="color:blue">OK</span> button:</b>
+<br><br>
+<div align="center"> <img src="../images/UpgradeCLIStep3.png" alt="" border=0></div>
+</li><br>  
+<li>
+    <b>Open the project file using text editor, delete the system references:</b>
+<br><br>
+<div align="center"> <img src="../images/UpgradeCLIStep4.png" alt="" border=0></div>
+</li><br> 
+ <li>
+    <b>Add framework references to WPF/WinForm is necessary, such as:</b><br>
+   <p> <table class="code"><td class="code">                 
+<pre><code>&lt;!-- Reference all of WPF --&gt;
+&lt;FrameworkReference Include="Microsoft.WindowsDesktop.App.WPF" /&gt;
+</code></pre></td></table></p>
+</li>  
+ <li>
+    <b>Search if there are individual files have the “CompileAsManaged” property. Remove it as this property will cause build error and the files are compiled as managed by default:</b><br>
+   <p> <table class="code"><td class="code">                 
+<pre><code>&lt;CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|x64'"&gt;true&lt;/CompileAsManaged&gt;
+</code></pre></td></table></p>
+</li>
+<li>
+    <b>Navigate to project properties page, and go to <span style="color:blue">C/C++</span>-&gt;<span style="color:blue">General</span>, and choose <span style="color:blue">No Common Language Runtime Support</span> for <span style="color:blue">Common Language Runtime</span>:</b>
+<br><br>
+<div align="center"> <img src="../images/UpgradeCLIStep5.png" alt="" border=0></div>
+</li><br> 
+<li>
+    <b>Navigate to <span style="color:blue">Precompiled Headers</span>, choose <span style="color:blue">Not Using Precompiled Headers</span> for <span style="color:blue">Precompiled Header</span>:</b>
+<br><br>
+<div align="center"> <img src="../images/UpgradeCLIStep6.png" alt="" border=0></div>
+</li><br> 
+<li>
+    <b>Reference Autodesk.Inventor.interop.dll from C:\Program Files\Autodesk\Inventor 2025\Bin\.</b>
+<br><br>
+</li><br> 
+<li>
+    <b>Rebuild project and deploy the binaries and check if everything works.</b>
+<br><br>
+</li><br> 
+ 
+</ol>
+<h2>More infomation:</h2>
+<p>More infomation can be found from Autodesk Beta Forum page :<a href="https://feedback.autodesk.com/project/forum/thread.html?cap=fb14413735ee42c99624e3793b19a0b2&forid=%7Bdeb2224c-a845-44a8-a857-a54f58c97618%7D&topid=%257B5677A04A-F17E-4EAE-B1BF-8983ADD137E5%257D&j=5677a04af17e4eaeb1bf8983add137e5" target="_blank">.Net Framework based Inventor projects upgrade to .Net 8 - (Inventor 2025)</a>
+</p>
+<br />
+<br />
+<div id="CopyrightNotice" style="display:none;">
+  <hr />
+  <table width="100%" style="font-size:15">
+	<tr>
+	  <td align="left">
+		&copy; Copyright 2025 Autodesk, Inc.
+	  </td>
+	  <td align="right">
+		<a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(PortToNetCore_Overview)">Comment on this page.</a>
+	  </td>
+	</tr>
+  </table>
+</div>
+
+</body>
+</html>

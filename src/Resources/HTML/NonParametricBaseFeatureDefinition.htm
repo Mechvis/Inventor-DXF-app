@@ -1,0 +1,116 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/NonParametricBaseFeatureDefinition.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="NonParametricBaseFeatureDefinition">
+    <meta name="description" content="NonParametricBaseFeatureDefinition Object">
+    <meta name="topicid" content="GUID-NonParametricBaseFeatureDefinition">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>NonParametricBaseFeatureDefinition Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">NonParametricBaseFeatureDefinition Object
+			</h1><br><h2 class="api">
+          Description
+        </h2>The NonParametricBaseFeatureDefinition is a utility object used for creating, querying, and editing non-parametric base features. A NonParametricBaseFeatureDefinition object can be created using the CreateDefinition method of the NonParametricBaseFeatures collection object. They can also be obtained from existing NonParametricBaseFeature objects.<h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="NonParametricBaseFeatureDefinition_Application.htm">Application</a></td>
+        <td class="api-list">Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="NonParametricBaseFeatureDefinition_BRepEntities.htm">BRepEntities</a></td>
+        <td class="api-list">Read-write property that defines the geometry to be used for creating the non-parametric base feature.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="NonParametricBaseFeatureDefinition_DeleteOriginal.htm">DeleteOriginal</a></td>
+        <td class="api-list">Read-write property that defines if the original geometry in the construction environment is deleted.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="NonParametricBaseFeatureDefinition_IsAssociative.htm">IsAssociative</a></td>
+        <td class="api-list">Read-write property that defines if the copied geometry should be associative to the original geometry.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="NonParametricBaseFeatureDefinition_OutputType.htm">OutputType</a></td>
+        <td class="api-list">Read-write property that specifies the desired result type.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="NonParametricBaseFeatureDefinition_TargetOccurrence.htm">TargetOccurrence</a></td>
+        <td class="api-list">Read-write property that specifies the desired target Occurrence.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="NonParametricBaseFeatures_CreateDefinition.htm">NonParametricBaseFeatures.CreateDefinition</a><h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ImprintingAndMatching_Sample.htm">Body Imprinting and matching the results</a></td>
+        <td class="api-list">This sample is intended to demonstrate a technique of finding the matching surfaces between the original input bodies and output imprinted bodies.  This relies on transient keys, which is a unique ID associated with each B-Rep entity.  A transient key is only good as long as the model is not recomputed.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="NonParametricBaseFeatures_AddByDefinition_Sample.htm">Associative body copy</a></td>
+        <td class="api-list">The following sample demonstrates copying bodies (associatively and non-associatively) across parts in an assembly.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SurfaceBodyDefinition_CreateTransientSurfaceBody2_Sample.htm">Transient surface body creation</a></td>
+        <td class="api-list">The following sample demonstrates the creation of a transient surface body consisting of a single rectangular face. The body is created in transient space and then copied over to a part document as a base feature.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2011<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(NonParametricBaseFeatureDefinition%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

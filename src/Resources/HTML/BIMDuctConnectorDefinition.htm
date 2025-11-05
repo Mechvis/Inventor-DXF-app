@@ -1,0 +1,209 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/BIMDuctConnectorDefinition.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="BIMDuctConnectorDefinition">
+    <meta name="description" content="BIMDuctConnectorDefinition Object">
+    <meta name="topicid" content="GUID-BIMDuctConnectorDefinition">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>BIMDuctConnectorDefinition Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">BIMDuctConnectorDefinition Object
+			</h1>
+              Derived from: <a href="BIMConnectorDefinition.htm">BIMConnectorDefinition</a> Object
+            <br><h2 class="api">
+          Description
+        </h2>BIMDuctConnectorDefinition object.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BIMDuctConnectorDefinition_ReverseDirection.htm">ReverseDirection</a></td>
+        <td class="api-list">Method that will reverse the direction of the connection.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BIMDuctConnectorDefinition_SetShape.htm">SetShape</a></td>
+        <td class="api-list">Method that used to set the shape of the connector.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BIMDuctConnectorDefinition_Application.htm">Application</a></td>
+        <td class="api-list">Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BIMDuctConnectorDefinition_ConnectionType.htm">ConnectionType</a></td>
+        <td class="api-list">Read-write property that gets and sets the connection type for this connector.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BIMDuctConnectorDefinition_ConnectorShape.htm">ConnectorShape</a></td>
+        <td class="api-list">Read-only property that specifies the shape of the connector.&nbsp;To change the shape, use the SetShape method.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BIMDuctConnectorDefinition_Description.htm">Description</a></td>
+        <td class="api-list">Read-write property that gets and sets the description of this connector.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BIMDuctConnectorDefinition_DescriptionParameter.htm">DescriptionParameter</a></td>
+        <td class="api-list">Read-write property that gets and sets the description with expression or parameter.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BIMDuctConnectorDefinition_Diameter.htm">Diameter</a></td>
+        <td class="api-list"><p>Read-only property that provides access to the connector diameter.&nbsp;When the BIMDuctConnectorDefinition object has been created using the CreateBIMDuctConnectorDefinition method, this property returns a Double indicating the diameter, (in centimeters), of the connector as defined by the input geometry.&nbsp;After the definition object has been used to create a connector, this property returns a parameter that defines the diameter of the connector.</p>
+<p>To change the diameter of an existing connector you can either edit the geometry that’s controlling the diameter or set the override diameter using the DiameterOverride property.</p></td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BIMDuctConnectorDefinition_DiameterOverride.htm">DiameterOverride</a></td>
+        <td class="api-list">Read-write property that gets and sets the diameter override for this connector.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BIMDuctConnectorDefinition_Direction.htm">Direction</a></td>
+        <td class="api-list">Read-only property that indicates the direction of the connection.&nbsp;This property will return Nothing in the case where a valid set of referenced geometries have not yet been defined.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BIMDuctConnectorDefinition_ExposeDescriptionAsParameter.htm">ExposeDescriptionAsParameter</a></td>
+        <td class="api-list">Read-write property that gets and sets if expose the description as parameter.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BIMDuctConnectorDefinition_ExposeFlowValueAsParameter.htm">ExposeFlowValueAsParameter</a></td>
+        <td class="api-list">Read-write property that gets and sets if expose the flow value as parameter.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BIMDuctConnectorDefinition_ExposeLossValueAsParameter.htm">ExposeLossValueAsParameter</a></td>
+        <td class="api-list">Read-write property that gets and sets if expose the loss value as parameter.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BIMDuctConnectorDefinition_FlowConfiguration.htm">FlowConfiguration</a></td>
+        <td class="api-list">Read-write property that gets and sets the flow configuration used for this connector.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BIMDuctConnectorDefinition_FlowDirection.htm">FlowDirection</a></td>
+        <td class="api-list">Read-write property that gets and sets the flow direction for this Duct connector.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BIMDuctConnectorDefinition_FlowValue.htm">FlowValue</a></td>
+        <td class="api-list">Read-write property that gets and sets the value for the flow.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BIMDuctConnectorDefinition_FlowValueParameter.htm">FlowValueParameter</a></td>
+        <td class="api-list">Read-write property that gets and sets the flow value with expression or parameter.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BIMDuctConnectorDefinition_Geometry.htm">Geometry</a></td>
+        <td class="api-list">Read-only property that gets the geometry that defines the shape of the connection.&nbsp;The returned collection is independent of the connector and any changes made to the contents of the collection will not affect the connector.&nbsp;To change the geometry or the shape of the connector use the SetShape method.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BIMDuctConnectorDefinition_Height.htm">Height</a></td>
+        <td class="api-list"><p>Read-only property that provides access to the connector height.&nbsp;When the BIMDuctConnectorDefinition object has been created using the CreateBIMDuctConnectorDefinition method, this property returns a Double indicating the height, (in centimeters), of the connector as defined by the input geometry.&nbsp;After the definition object has been used to create a connector, this property returns a parameter that defines the height of the connector.</p>
+<p>To change the height of an existing connector you can either edit the geometry that’s controlling the height or set the override height using the HeightOverride property.</p></td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BIMDuctConnectorDefinition_HeightDirection.htm">HeightDirection</a></td>
+        <td class="api-list">Read-only property that returns the direction of the connector height. This returns Nothing in the case where the height has not yet been defined.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BIMDuctConnectorDefinition_HeightOverride.htm">HeightOverride</a></td>
+        <td class="api-list">Read-write property that gets and sets the height override for this connector.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BIMDuctConnectorDefinition_LossMethod.htm">LossMethod</a></td>
+        <td class="api-list">Read-write property that gets and sets the loss method used for this connector.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BIMDuctConnectorDefinition_LossValue.htm">LossValue</a></td>
+        <td class="api-list">Read-write property that gets and sets the value for the loss method.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BIMDuctConnectorDefinition_LossValueParameter.htm">LossValueParameter</a></td>
+        <td class="api-list">Read-write property that gets and sets the loss value with expression or parameter.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BIMDuctConnectorDefinition_Origin.htm">Origin</a></td>
+        <td class="api-list">Read-only property that returns the origin of the connector.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BIMDuctConnectorDefinition_Parent.htm">Parent</a></td>
+        <td class="api-list">Property that returns the parent BIMConnector that this definition is associated with.&nbsp;If the definition was created using one of the Create methods this property will return Nothing since the definition isn’t associated with a connector yet.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BIMDuctConnectorDefinition_SystemType.htm">SystemType</a></td>
+        <td class="api-list">Read-write property that specifies the system type for this connector.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BIMDuctConnectorDefinition_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BIMDuctConnectorDefinition_Width.htm">Width</a></td>
+        <td class="api-list"><p>Read-only property that provides access to the connector width.&nbsp;When the BIMDuctConnectorDefinition object has been created using the CreateBIMDuctConnectorDefinition method, this property returns a Double indicating the width, (in centimeters), of the connector as defined by the input geometry.&nbsp;After the definition object has been used to create a connector, this property returns a parameter that defines the width of the connector.</p>
+<p>To change the width of an existing connector you can either edit the geometry that’s controlling the width or set the override width using the WidthOverride property.</p></td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BIMDuctConnectorDefinition_WidthDirection.htm">WidthDirection</a></td>
+        <td class="api-list">Read-only property that returns the direction of the connector width. This returns Nothing in the case where the width has not yet been defined.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BIMDuctConnectorDefinition_WidthOverride.htm">WidthOverride</a></td>
+        <td class="api-list">Read-write property that gets and sets the width override for this connector.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="BIMConnectors_CreateDuctConnectorDefinition.htm">BIMConnectors.CreateDuctConnectorDefinition</a><h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2011<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(BIMDuctConnectorDefinition%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

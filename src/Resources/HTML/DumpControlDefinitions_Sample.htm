@@ -1,0 +1,129 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/DumpControlDefinitions_Sample.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="DumpControlDefinitions_Sample">
+    <meta name="description" content="Print list of all Inventor Commands Sample">
+    <meta name="topicid" content="DumpControlDefinitions_Sample">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>Print list of all Inventor Commands</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body><script>
+          function copyCode(language) {
+          // Get the pre element for the specified language.
+          var preElement = document.getElementById(language);
+
+          // Get the text from the element and copy it to the clipboard.
+          var preText = preElement.innerText;
+
+          var isIE = /*@cc_on!@*/false || !!document.documentMode;
+
+          if (isIE)
+          {
+            window.clipboardData.setData('Text', preText);
+          }
+          else
+          {
+            navigator.clipboard.writeText(preText);
+          }
+
+          //alert("Code copied to clipboard");
+          }
+        </script><link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">Print list of all Inventor Commands</h1>
+    <h2 class="api">
+          Description
+        </h2>This sample prints the internal names and descriptions of all commands (aka ControlDefinitions) in Inventor.<h2 class="api">
+          Code Samples
+        </h2>
+    <div id="tabs">
+      <ul>
+        <li><a href="#VBA">VBA</a></li>
+        <li><a href="#iLogic">iLogic</a></li>
+      </ul>
+      <div id="VBA" class="api-code">The sample prints the names and descriptions to a text file (CommandNames.txt) created in C:\Temp directory. You should either have the C:\Temp directory or change the path in the sample.<table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('VBA_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="VBA_code">Sub PrintCommandNames()
+    Dim oControlDefs As ControlDefinitions
+    Set oControlDefs = ThisApplication.CommandManager.ControlDefinitions
+
+    Dim oControlDef As ControlDefinition
+    
+    Open "C:\temp\CommandNames.txt" For Output As #1
+
+    Print #1, "Command Name"; Space(49); "Description"; vbNewLine
+    
+    For Each oControlDef In oControlDefs
+        If Len(Trim(oControlDef.InternalName)) &lt; 60 Then
+            sName = Trim(oControlDef.InternalName) & Space(60 - Len(Trim(oControlDef.InternalName)))
+        Else
+            sName = Trim(oControlDef.InternalName)
+        End If
+        
+        Print #1, sName; " "; Replace(Trim(oControlDef.DescriptionText), vbCr, "")
+    Next
+    Close #1
+End Sub</pre>
+      </div>
+      <div id="iLogic" class="api-code">The sample prints the names and descriptions to a text file (CommandNames.txt) created in C:\Temp directory. You should either have the C:\Temp directory or change the path in the sample.<table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('iLogic_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="iLogic_code">    Imports System.IO
+
+    Dim oControlDefs As ControlDefinitions
+    oControlDefs = ThisApplication.CommandManager.ControlDefinitions
+
+    Dim oControlDef As ControlDefinition
+    Dim oWriter As System.IO.StreamWriter
+	oWriter = New StreamWriter("C:\Temp\CommandNames.txt")
+ 	
+    oWriter.WriteLine("Command Name".PadRight(60) & " Description")
+    oWriter.WriteLine()
+	
+    For Each oControlDef In oControlDefs
+        oWriter.WriteLine(Trim(oControlDef.InternalName).PadRight(60) &" " & Replace(Trim(oControlDef.DescriptionText),vbCr,""))
+    Next
+    oWriter.Close()</pre>
+      </div>
+    </div><br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(DumpControlDefinitions%20Sample%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

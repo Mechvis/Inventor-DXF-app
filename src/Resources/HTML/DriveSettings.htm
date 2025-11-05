@@ -1,0 +1,212 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/DriveSettings.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="DriveSettings">
+    <meta name="description" content="DriveSettings Object">
+    <meta name="topicid" content="GUID-DriveSettings">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>DriveSettings Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">DriveSettings Object
+			</h1><br><h2 class="api">
+          Description
+        </h2>The DriveSettings object provides access to various drive relationship related settings for assembly constraints and joints.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DriveSettings_GetIncrement.htm">GetIncrement</a></td>
+        <td class="api-list">Method that returns how the increment was specified and the value.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DriveSettings_GoToEnd.htm">GoToEnd</a></td>
+        <td class="api-list">Method that got to the ending frame of the animation.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DriveSettings_GoToStart.htm">GoToStart</a></td>
+        <td class="api-list">Method that got to the starting frame of the animation.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DriveSettings_PlayForward.htm">PlayForward</a></td>
+        <td class="api-list">Method that drives the relationship forward. This will fail if start and end values are not set.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DriveSettings_PlayReverse.htm">PlayReverse</a></td>
+        <td class="api-list">Read-write property that gets and sets the delay between steps in seconds.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DriveSettings_SetIncrement.htm">SetIncrement</a></td>
+        <td class="api-list">Method that sets the increment type and the value.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DriveSettings_StartAVIRecording.htm">StartAVIRecording</a></td>
+        <td class="api-list">Method that starts recording the drive relationship animation for saving to an avi file. Use the StopRecording method to stop recording and generate the animation file.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DriveSettings_StartWMVRecording.htm">StartWMVRecording</a></td>
+        <td class="api-list">Method that starts recording the drive relationship animation for saving to a wmv file. Use the StopRecording method to stop recording and generate the animation file.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DriveSettings_StepForward.htm">StepForward</a></td>
+        <td class="api-list">Method that advances the animation by one step.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DriveSettings_StepReverse.htm">StepReverse</a></td>
+        <td class="api-list">Method that reverses the animation by one step.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DriveSettings_StopRecording.htm">StopRecording</a></td>
+        <td class="api-list">Method that stops recording the drive relationship animation and generates the animation file. Use the StartWMVRecording or StartAVIRecording method to start recording the animation.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DriveSettings_Application.htm">Application</a></td>
+        <td class="api-list">Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DriveSettings_CollisionDetection.htm">CollisionDetection</a></td>
+        <td class="api-list">Read-write property that gets and sets whether to drive the constrained assembly until a collision is detected.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DriveSettings_DriveAdaptivity.htm">DriveAdaptivity</a></td>
+        <td class="api-list">Read-write property that gets and sets whether to adapt components while maintaining constraint or connection relationships.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DriveSettings_DriveType.htm">DriveType</a></td>
+        <td class="api-list">Read-write property that gets and sets the drive type to specify which value to drive.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DriveSettings_EndValue.htm">EndValue</a></td>
+        <td class="api-list">Read-write property that gets and sets the expression for the end value.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DriveSettings_FrameRate.htm">FrameRate</a></td>
+        <td class="api-list">Read-write property that gets and sets the increments at which a snapshot is taken for inclusion as a frame in a recorded animation.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DriveSettings_IsInitialized.htm">IsInitialized</a></td>
+        <td class="api-list">Read-only property that returns whether the drive parameters have been set for this relationship. If this property returns False, the properties on this object will return hard-coded default values and the methods will fail.&nbsp;Calling properties and methods to set drive parameters will automatically toggle this property to True.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DriveSettings_Parent.htm">Parent</a></td>
+        <td class="api-list">Read-only property that returns the parent assembly constraint or joint object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DriveSettings_PauseDelay.htm">PauseDelay</a></td>
+        <td class="api-list">Read-write property that gets and sets the delay between steps in seconds.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DriveSettings_RepetitionCount.htm">RepetitionCount</a></td>
+        <td class="api-list">Read-write property that gets and sets the number of repetitions for the Start/End sequence and the number of cycles for the Start/End/Start sequence.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DriveSettings_RepetitionStartEndStart.htm">RepetitionStartEndStart</a></td>
+        <td class="api-list">Read-write property that gets and sets whether to drive the relationship from the start value to the end value and then in reverse to the start value.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DriveSettings_StartValue.htm">StartValue</a></td>
+        <td class="api-list">Read-write property that gets and sets the expression for the start value.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DriveSettings_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Events
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DriveSettings_OnCollision.htm">OnCollision</a></td>
+        <td class="api-list">Event that is fired whenever a collision occurs during the animation/play of the relationship.&nbsp;The event only fires if the CollisionDetection property is set to True.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="AngleConstraint_DriveSettings.htm">AngleConstraint.DriveSettings</a>, <a href="AngleConstraintProxy_DriveSettings.htm">AngleConstraintProxy.DriveSettings</a>, <a href="AssemblyConstraint_DriveSettings.htm">AssemblyConstraint.DriveSettings</a>, <a href="AssemblyJoint_DriveSettings.htm">AssemblyJoint.DriveSettings</a>, <a href="AssemblyJointProxy_DriveSettings.htm">AssemblyJointProxy.DriveSettings</a>, <a href="AssemblySymmetryConstraint_DriveSettings.htm">AssemblySymmetryConstraint.DriveSettings</a>, <a href="AssemblySymmetryConstraintProxy_DriveSettings.htm">AssemblySymmetryConstraintProxy.DriveSettings</a>, <a href="CustomConstraint_DriveSettings.htm">CustomConstraint.DriveSettings</a>, <a href="CustomConstraintProxy_DriveSettings.htm">CustomConstraintProxy.DriveSettings</a>, <a href="FlushConstraint_DriveSettings.htm">FlushConstraint.DriveSettings</a>, <a href="FlushConstraintProxy_DriveSettings.htm">FlushConstraintProxy.DriveSettings</a>, <a href="InsertConstraint_DriveSettings.htm">InsertConstraint.DriveSettings</a>, <a href="InsertConstraintProxy_DriveSettings.htm">InsertConstraintProxy.DriveSettings</a>, <a href="MateConstraint_DriveSettings.htm">MateConstraint.DriveSettings</a>, <a href="MateConstraintProxy_DriveSettings.htm">MateConstraintProxy.DriveSettings</a>, <a href="RotateRotateConstraint_DriveSettings.htm">RotateRotateConstraint.DriveSettings</a>, <a href="RotateRotateConstraintProxy_DriveSettings.htm">RotateRotateConstraintProxy.DriveSettings</a>, <a href="RotateTranslateConstraint_DriveSettings.htm">RotateTranslateConstraint.DriveSettings</a>, <a href="RotateTranslateConstraintProxy_DriveSettings.htm">RotateTranslateConstraintProxy.DriveSettings</a>, <a href="TangentConstraint_DriveSettings.htm">TangentConstraint.DriveSettings</a>, <a href="TangentConstraintProxy_DriveSettings.htm">TangentConstraintProxy.DriveSettings</a>, <a href="TransitionalConstraint_DriveSettings.htm">TransitionalConstraint.DriveSettings</a>, <a href="TransitionalConstraintProxy_DriveSettings.htm">TransitionalConstraintProxy.DriveSettings</a>, <a href="TranslateTranslateConstraint_DriveSettings.htm">TranslateTranslateConstraint.DriveSettings</a>, <a href="TranslateTranslateConstraintProxy_DriveSettings.htm">TranslateTranslateConstraintProxy.DriveSettings</a><h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AssemblyRotationalJoint_Sample.htm">Create rotational assembly joint</a></td>
+        <td class="api-list"><p>This sample demonstrates creating an assembly joint. It connects the midpoints of the edges of two faces using a rotational joint. To do this it first creates a geometry intent object of the midpoint of the edge and then creates another intent using the face and the midpoint intent.  It does this to create to midpoint intents which it then uses to create the rotational connection.</p>
+
+<p>The sample uses and existing part that must be set up to allow it to work correctly.  To create the sample part you can use any part that has a planar face and a linear edge connected to that planar face.  A simple box is sufficient.  In this part Add a mate iMate to the planar face and rename the iMate to "Face1".  Also add a mate iMate to a linear edge that is on the face previously named and rename this iMate to "Edge1".  Save the part to "C:\Temp\SamplePart.ipt" or any other name and edit the code below to reference the file.  You can then run the sample code which will create a new assembly, insert two instances of the part and create a rotational connection between them.  Then it will animation the rotation by driving the connection.</p></td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2014<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(DriveSettings%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

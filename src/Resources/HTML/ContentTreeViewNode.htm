@@ -1,0 +1,124 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/ContentTreeViewNode.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="ContentTreeViewNode">
+    <meta name="description" content="ContentTreeViewNode Object">
+    <meta name="topicid" content="GUID-ContentTreeViewNode">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>ContentTreeViewNode Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">ContentTreeViewNode Object
+			</h1><br><h2 class="api">
+          Description
+        </h2>The ContentTreeViewNode object represents nodes within the Content Center tree structure.<h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ContentTreeViewNode_Application.htm">Application</a></td>
+        <td class="api-list">Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ContentTreeViewNode_ChildNodes.htm">ChildNodes</a></td>
+        <td class="api-list">Property that returns a collection containing the child ContentTreeViewNode objects of this node.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ContentTreeViewNode_DisplayName.htm">DisplayName</a></td>
+        <td class="api-list">Property that returns the display name of this node. This is the name that the end-user sees and is localized for different languages.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ContentTreeViewNode_Families.htm">Families</a></td>
+        <td class="api-list">Property that returns the set of families associated with this node. The collection returned may have a count of zero indicating there aren't any families associated with this node.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ContentTreeViewNode_FullTreeViewPath.htm">FullTreeViewPath</a></td>
+        <td class="api-list">Property that provides the full path in the tree view for this node. For example, this can return 'Fasteners:Bolts:Countersunk:Oval Countersunk Head Metric Machine Screws' where a colon is used as the delimiter.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ContentTreeViewNode_Icon.htm">Icon</a></td>
+        <td class="api-list">Property that returns the icon used for this node.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ContentTreeViewNode_InternalName.htm">InternalName</a></td>
+        <td class="api-list">Property that returns the internal name of this node. This will be consistent regardless of the language version of Inventor.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ContentTreeViewNode_ParentNode.htm">ParentNode</a></td>
+        <td class="api-list">Property that returns the parent ContentTreeViewNode object. This property will return Nothing for the top node.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ContentTreeViewNode_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="ContentCenter_TreeViewTopNode.htm">ContentCenter.TreeViewTopNode</a>, <a href="ContentTreeViewNode_ParentNode.htm">ContentTreeViewNode.ParentNode</a>, <a href="ContentTreeViewNodesEnumerator_Item.htm">ContentTreeViewNodesEnumerator.Item</a><h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ContentCenterPartReplace_Sample.htm">Replace content center part</a></td>
+        <td class="api-list">This sample demonstrates how to replace the content part referenced by an assembly occurrence.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PlaceContentCenterPart_Sample.htm">Place Content Center Parts</a></td>
+        <td class="api-list">Places all of the items in a specified family within an assembly.  The specific family is identified by the strings where it's setting the HexHeadNode variable.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2010<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(ContentTreeViewNode%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

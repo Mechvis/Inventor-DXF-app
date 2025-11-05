@@ -1,0 +1,244 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/InteractionEventsSink_Sample.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="InteractionEventsSink_Sample">
+    <meta name="description" content="Basic Selection Using Interaction Events Sample">
+    <meta name="topicid" content="InteractionEventsSink_Sample">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>Basic Selection Using Interaction Events</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body><script>
+          function copyCode(language) {
+          // Get the pre element for the specified language.
+          var preElement = document.getElementById(language);
+
+          // Get the text from the element and copy it to the clipboard.
+          var preText = preElement.innerText;
+
+          var isIE = /*@cc_on!@*/false || !!document.documentMode;
+
+          if (isIE)
+          {
+            window.clipboardData.setData('Text', preText);
+          }
+          else
+          {
+            navigator.clipboard.writeText(preText);
+          }
+
+          //alert("Code copied to clipboard");
+          }
+        </script><link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">Basic Selection Using Interaction Events</h1>
+    <h2 class="api">
+          Description
+        </h2>This sample demonstrates using the selection events to select a face. Selection is dependent on events and VB only supports events within a class module.<h2 class="api">
+          Code Samples
+        </h2>
+    <div id="tabs">
+      <ul>
+        <li><a href="#VBA">VBA</a></li>
+        <li><a href="#iLogic">iLogic</a></li>
+      </ul>
+      <div id="VBA" class="api-code">To use the sample copy the TestSelection sub into a code module. Create a new class module called clsSelect and copy all of the rest of the code into it. To run the sample, have a part document open that contains some geometry and run the TestSelection sub. Select a face and it will display its area.<table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('VBA_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="VBA_code"><span style="color:blue">'*************************************************************</span>
+<span style="color:blue">' The declarations and functions below need to be copied into</span>
+<span style="color:blue">' a class module whose name is "clsSelect". The name can be</span>
+<span style="color:blue">' changed but you'll need to change the declaration in the</span>
+<span style="color:blue">' calling function "TestSelection" to use the new name.</span>
+
+<span style="color:blue">' Declare the event objects</span>
+Private WithEvents oInteractEvents As InteractionEvents
+Private WithEvents oSelectEvents As SelectEvents
+
+<span style="color:blue">' Declare a flag that's used to determine when selection stops.</span>
+Private bStillSelecting As Boolean
+
+Public Function Pick(filter As SelectionFilterEnum) As Object
+    <span style="color:blue">' Initialize flag.</span>
+    bStillSelecting = True
+
+    <span style="color:blue">' Create an InteractionEvents object.</span>
+    Set oInteractEvents = ThisApplication.CommandManager.CreateInteractionEvents
+
+    <span style="color:blue">' Ensure interaction is enabled.</span>
+    oInteractEvents.InteractionDisabled = False
+
+    <span style="color:blue">' Set a reference to the select events.</span>
+    Set oSelectEvents = oInteractEvents.SelectEvents
+
+    <span style="color:blue">' Set the filter using the value passed in.</span>
+    oSelectEvents.AddSelectionFilter filter
+
+    <span style="color:blue">' Start the InteractionEvents object.</span>
+    oInteractEvents.Start
+
+    <span style="color:blue">' Loop until a selection is made.</span>
+    Do While bStillSelecting
+        ThisApplication.UserInterfaceManager.DoEvents
+    Loop
+
+    <span style="color:blue">' Get the selected item. If more than one thing was selected,</span>
+    <span style="color:blue">' just get the first item and ignore the rest.</span>
+    Dim oSelectedEnts As ObjectsEnumerator
+    Set oSelectedEnts = oSelectEvents.SelectedEntities
+    If oSelectedEnts.Count &gt; 0 Then
+        Set Pick = oSelectedEnts.Item(1)
+    Else
+        Set Pick = Nothing
+    End If
+
+    <span style="color:blue">' Stop the InteractionEvents object.</span>
+    oInteractEvents.Stop
+
+    <span style="color:blue">' Clean up.</span>
+    Set oSelectEvents = Nothing
+    Set oInteractEvents = Nothing
+End Function
+
+Private Sub oInteractEvents_OnTerminate()
+    <span style="color:blue">' Set the flag to indicate we're done.</span>
+    bStillSelecting = False
+End Sub
+
+Private Sub oSelectEvents_OnSelect(ByVal JustSelectedEntities As ObjectsEnumerator, ByVal SelectionDevice As SelectionDeviceEnum, ByVal ModelPosition As Point, ByVal ViewPosition As Point2d, ByVal View As View)
+    Dim oFace As Face
+    Set oFace = JustSelectedEntities(1)
+    
+    <span style="color:blue">' Check to make sure an object was selected.</span>
+    If Not oFace Is Nothing Then
+        <span style="color:blue">' Display the area of the selected face.</span>
+        MsgBox "Face area: " & oFace.Evaluator.Area & " cm^2"
+    End If
+End Sub</pre>
+      </div>
+      <div id="iLogic" class="api-code">To run the sample, have a part document open that contains some geometry and run the code. Select a face and it will display its area.<table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('iLogic_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="iLogic_code">Sub Main
+    <span style="color:blue">' Create a new clsSelect object.</span>
+    Dim oSelect As New clsSelect
+	oSelect.Init(ThisApplication)
+	
+    <span style="color:blue">' Call the pick method of the clsSelect object and set</span>
+    <span style="color:blue">' the filter to pick any face.</span>
+    Dim oFace As Face
+    oFace = oSelect.Pick(kPartFaceFilter)
+End Sub
+
+Class clsSelect
+	<span style="color:blue">' Declare the event objects</span>
+	Private WithEvents oInteractEvents As InteractionEvents
+	Private WithEvents oSelectEvents As SelectEvents
+	Private ThisApplication As Inventor.Application
+	
+	<span style="color:blue">' Declare a flag that's used to determine when selection stops.</span>
+	Private bStillSelecting As Boolean
+	
+	Public Sub Init(oApp As Inventor.Application)
+		ThisApplication = oApp
+	End Sub
+	
+	Public Function Pick(filter As SelectionFilterEnum) As Object
+	    <span style="color:blue">' Initialize flag.</span>
+	    bStillSelecting = True
+	
+	    <span style="color:blue">' Create an InteractionEvents object.</span>
+	    oInteractEvents = ThisApplication.CommandManager.CreateInteractionEvents
+	
+	    <span style="color:blue">' Ensure interaction is enabled.</span>
+	    oInteractEvents.InteractionDisabled = False
+	
+	    <span style="color:blue">' Set a reference to the select events.</span>
+	    oSelectEvents = oInteractEvents.SelectEvents
+	
+	    <span style="color:blue">' Set the filter using the value passed in.</span>
+	    oSelectEvents.AddSelectionFilter(filter)
+	
+	    <span style="color:blue">' Start the InteractionEvents object.</span>
+	    oInteractEvents.Start
+	
+	    <span style="color:blue">' Loop until a selection is made.</span>
+	    Do While bStillSelecting
+	        ThisApplication.UserInterfaceManager.DoEvents
+	    Loop
+	
+	    <span style="color:blue">' Get the selected item. If more than one thing was selected,</span>
+	    <span style="color:blue">' just get the first item and ignore the rest.</span>
+	    Dim oSelectedEnts As ObjectsEnumerator
+	    oSelectedEnts = oSelectEvents.SelectedEntities
+	    If oSelectedEnts.Count &gt; 0 Then
+	        Pick = oSelectedEnts.Item(1)
+	    Else
+	        Pick = Nothing
+	    End If
+	
+	    <span style="color:blue">' Stop the InteractionEvents object.</span>
+	    oInteractEvents.Stop
+	
+	    <span style="color:blue">' Clean up.</span>
+	    oSelectEvents = Nothing
+	    oInteractEvents = Nothing
+	End Function
+	
+	Private Sub oInteractEvents_OnTerminate() Handles oInteractEvents.OnTerminate
+	    <span style="color:blue">' Set the flag to indicate we're done.</span>
+	    bStillSelecting = False
+	End Sub
+	
+	Private Sub oSelectEvents_OnSelect(ByVal JustSelectedEntities As ObjectsEnumerator, ByVal SelectionDevice As SelectionDeviceEnum, ByVal ModelPosition As Point, ByVal ViewPosition As Point2d, ByVal View As View) Handles oSelectEvents.OnSelect
+		Dim oFace As Face
+    	oFace = JustSelectedEntities(1) <span style="color:blue">'oSelect.Pick(kPartFaceFilter)</span>
+
+	    <span style="color:blue">' Check to make sure an object was selected.</span>
+	    If Not oFace Is Nothing Then
+	        <span style="color:blue">' Display the area of the selected face.</span>
+	        MsgBox("Face area: " & oFace.Evaluator.Area & " cm^2")
+	    End If
+	End Sub
+End Class</pre>
+      </div>
+    </div><br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(InteractionEventsSink%20Sample%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

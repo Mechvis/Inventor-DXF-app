@@ -1,0 +1,107 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/AssemblyEvents_OnOccurrenceChange.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="AssemblyEvents_OnOccurrenceChange">
+    <meta name="description" content="AssemblyEvents.OnOccurrenceChange Event">
+    <meta name="topicid" content="AssemblyEvents_OnOccurrenceChange">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>AssemblyEvents.OnOccurrenceChange Event</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">AssemblyEvents.OnOccurrenceChange Event</h1>
+
+          Parent Object: <a href="AssemblyEvents.htm">AssemblyEvents</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Event that is fired whenever an occurrence changes.</p>
+    <h2 class="api">
+            Remarks
+          </h2>The changes reported by this event are if any of the following states of an occurrence change: grounded, adaptive, visible, enabled, suppressed, and repositioned (transformed). The type of change and information related to the change is passed through the context argument.<h2 class="api">
+          Syntax
+        </h2>
+        
+            AssemblyEvents.<b>OnOccurrenceChange</b>( <b><i>DocumentObject</i></b> As <a href="AssemblyDocument.htm">AssemblyDocument</a>, <b><i>Occurrence</i></b> As <a href="ComponentOccurrence.htm">ComponentOccurrence</a>, <b><i>BeforeOrAfter</i></b> As <a href="EventTimingEnum.htm">EventTimingEnum</a>, <b><i>Context</i></b> As <a href="NameValueMap.htm">NameValueMap</a>, <b><i>HandlingCode</i></b> As <a href="HandlingCodeEnum.htm">HandlingCodeEnum</a> )
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">DocumentObject</td>
+        <td class="api-list"><a href="AssemblyDocument.htm">AssemblyDocument</a></td>
+        <td class="api-list">Input AssemblyDocument object that indicates the document in which the change occurred.<p /></td>
+      </tr>
+      <tr>
+        <td class="api-list">Occurrence</td>
+        <td class="api-list"><a href="ComponentOccurrence.htm">ComponentOccurrence</a></td>
+        <td class="api-list">Input ComponentOccurrence object that indicates the occurrence that changed.<p /></td>
+      </tr>
+      <tr>
+        <td class="api-list">BeforeOrAfter</td>
+        <td class="api-list"><a href="EventTimingEnum.htm">EventTimingEnum</a></td>
+        <td class="api-list">Input EventTimingEnum indicating if the event is being fired before (kBefore) or after (kAfter) the occurrence is changed.<p /></td>
+      </tr>
+      <tr>
+        <td class="api-list">Context</td>
+        <td class="api-list"><a href="NameValueMap.htm">NameValueMap</a></td>
+        <td class="api-list">Input NameValueMap object that can be used to determine the context of why the event fired. Information describing the change is passed through the context argument, as described below: Name = "Grounded", Value = True or False. Indicates the grounded state is changing. The value indicates the new grounded state of the occurrence. Name = "Adaptive", Value = True or False. Indicates the adaptive state is changing. The value indicates the new adaptive state of the occurrence. Name = "Visible", Value = True or False. Indicates the visibility state is changing. The value indicates the new visibility state of the occurrence. Name = "Enabled", Value = True or False. Indicates the enabled state is changing. The value indicates the new enabled state of the occurrence. Name = "Suppressed", Value = True or False. Indicates the suppressed state is changing. The value indicates the new suppressed state of the occurrence. Name = "Transformation", Value = Matrix object. Indicates the occurrence is being transformed. The Matrix object provided specifies the new transformation of the occurrence. If the original transformation is needed, you can obtain it using the Transformation property of the ComponentOccurrence object provided by the Occurrence argument of this event when the timing is kBefore.</td>
+      </tr>
+      <tr>
+        <td class="api-list">HandlingCode</td>
+        <td class="api-list"><a href="HandlingCodeEnum.htm">HandlingCodeEnum</a></td>
+        <td class="api-list">Output HandlingCodeEnum that indicates how you are handling the event. The value of this argument is currently ignored for this event.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 11<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(AssemblyEvents.OnOccurrenceChange%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

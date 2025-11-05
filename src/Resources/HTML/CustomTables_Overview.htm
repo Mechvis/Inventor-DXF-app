@@ -1,0 +1,259 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU">
+    <link rel="canonical" href="http://help.autodesk.com/cloudhelp/2026/ENU/Inventor-API/files/CustomTables_Overview.htm">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="27/4/2016">
+    <meta name="user-comments" content="enable">
+    <meta name="description" content="">
+    <meta name="topicid" content="GUID-C15AC636-5D84-40A8-88A4-B2AEDD0A3DDB">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>Custom Tables</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"/>
+    <script type="text/javascript" src="/view/clientframework/client.js"><!--filler--></script>
+	<script>
+	  // This turns on the display of the copyright notice which is not visible by default.
+	  // Because the head is removed when used in the web help, this function will only exists
+	  // when the chm help is being created.
+	  window.onload = function() {
+		copyrightElement = document.getElementById('CopyrightNotice');
+		copyrightElement.style.display = 'block';
+	  };
+	</script>
+</head>
+<body>
+<link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+	
+<H1>Custom Tables</h1>
+	
+<h3>Introduction to Custom Tables</h3>
+
+<p Class="Normal">Tables in Autodesk Inventor are typically associated with automated parts lists and bubble annotation. However, tables can also be considered general annotation, distinct from parts lists. Tables can be created with custom content. Also, custom tables can be assigned colors and specific line weights and text styles, and can be positioned anywhere on a drawing sheet.</p>
+
+<p Class="Normal">Custom tables are designed so the developer can present and maintain tabulated data as annotation in a drawing document.
+</p>
+
+<h3>Custom Tables Object Model Diagram</h3>
+
+<br>
+<div align="center"> <img src="../images/ov.Custom_Tables_diag.png" border=0 ></div>
+<br>
+
+<h3>Working with Custom Tables through the API</h3>
+
+<p Class="Normal">Custom tables are defined by specifying a number of rows and columns. Columns have header names which can optionally be part of the table.  The following sample code adds a new table to the current sheet of an open drawing.  The table will appear as follows.</p>
+
+<br>
+<div align="center"> <img src="../images/ov.Custom_Tables_shot1.png" border=0 ></div>
+<br>
+
+<h3>Creating a Custom Table</h3>
+
+<p Class="Normal">The table is added to the active sheet, so first get this sheet from the active document. Note that this code omits error checking for the sake of clarity and brevity.  Always check that return values are of the expected type.</p>
+
+<br>
+<table Class="Code">
+<tr valign="middle">
+	<td Class="Code">
+	<pre>
+Public Sub CreateTable()
+    
+    Dim oDrawDoc As DrawingDocument
+    Set oDrawDoc = ThisApplication.ActiveDocument
+    
+    Dim oSheet As Sheet
+    Set oSheet = oDrawDoc.ActiveSheet
+
+</pre></td></tr>
+</table>
+<br>
+
+<p Class="Normal">Set up a string array to contain the column titles (headers).  This table has two columns, so the array contains two strings.</p>
+
+<br>
+<table Class="Code">
+<tr valign="middle">
+	<td Class="Code">
+	<pre>
+    Dim oTitles(1 To 2) As String
+    oTitles(1) = "Desk Number"
+    oTitles(2) = "Employee"
+</pre></td></tr>
+</table>
+<br>
+
+<p Class="Normal">Now add the content by setting up an array for the two rows and two columns ( 2 x 2 = 4, so the array contains four strings).  The table cell order is left-to-right, top-to-bottom.</p>
+
+<br>
+<table cellspacing="4" cellpadding="4" border="1">
+<tr>
+    <td  bgcolor="Yellow"><b>Note:</b> 
+An empty table can be constructed by not passing content to the CustomTables.Add method, but if an array <em>is</em> passed, it must contain string entries for <em>all</em> cells, otherwise an error occurs.
+</td>
+</tr>
+</table>
+<br>
+
+<br>
+<table Class="Code">
+<tr valign="middle">
+	<td Class="Code">
+	<pre>
+    Dim oContents(1 To 4) As String
+    oContents(1) = "103"
+    oContents(2) = "Peter Heald"
+    oContents(3) = "107"
+    oContents(4) = "Jamie Foss"
+</pre></td></tr>
+</table>
+<br>
+
+<p Class="Normal">The column width can be left at its default, to fit the content, but here the width is set a little wider for a neater appearance.</p>
+
+<br>
+<table Class="Code">
+<tr valign="middle">
+	<td Class="Code">
+	<pre>
+    Dim oColumnWidths(1 To 2) As Double
+    oColumnWidths(1) = 3
+    oColumnWidths(2) = 3
+</pre></td></tr>
+</table>
+<br>
+
+<p Class="Normal">For this example the table is placed in an arbitrary position, at x=15 y=15.</p>
+
+<br>
+<table Class="Code">
+<tr valign="middle">
+	<td Class="Code">
+	<pre>
+    Dim InsP As Point2d
+    Set InsP = ThisApplication.TransientGeometry.CreatePoint2d(15, 15)
+</pre></td></tr>
+</table>
+<br>
+
+<p Class="Normal">Add the table to the sheet through the CustomTables.Add method, specifying a two-row, two-column table named "Employees".  Pass the values defined previously.</p>
+
+<br>
+<table Class="Code">
+<tr valign="middle">
+	<td Class="Code">
+	<pre>
+    Dim oCustomTable As CustomTable
+    Set oCustomTable = oSheet.CustomTables.Add("Employees", InsP, 2, 2, oTitles, oContents, oColumnWidths)
+</pre></td></tr>
+</table>
+<br>
+
+<p Class="Normal">At this point the table appears on the sheet.  However, we can continue to make changes to its appearance.  The following code changes the justification of the second column to center-justified.</p>
+
+<br>
+<table Class="Code">
+<tr valign="middle">
+	<td Class="Code">
+	<pre>
+    oCustomTable.Columns.Item(2).ValueHorizontalJustification = kAlignTextCenter
+</pre></td></tr>
+</table>
+<br>
+
+<p Class="Normal">To make format changes, set up a TableFormat object that can then be applied to the table.</p>
+
+<br>
+<table Class="Code">
+<tr valign="middle">
+	<td Class="Code">
+	<pre>
+    Dim oFormat As TableFormat
+    Set oFormat = oSheet.CustomTables.CreateTableFormat
+</pre></td></tr>
+</table>
+<br>
+
+<p Class="Normal">Change some properties of the TableFormat object (for example, the color of the inside grid lines, and the line weight of the inside and outside grid lines).</p>
+
+<br>
+<table Class="Code">
+<tr valign="middle">
+	<td Class="Code">
+	<pre>
+    oFormat.InsideLineColor = ThisApplication.TransientObjects.CreateColor(0, 0, 255)
+    oFormat.InsideLineWeight = 0.1
+    oFormat.OutsideLineWeight = 0.2
+</pre></td></tr>
+</table>
+<br>
+
+<p Class="Normal">Apply the new format to the table.  The line weights and color are updated.</p>
+
+<br>
+<table Class="Code">
+<tr valign="middle">
+	<td Class="Code">
+	<pre>
+    oCustomTable.OverrideFormat = oFormat
+</pre></td></tr>
+</table>
+<br>
+
+<p Class="Normal">The following code demonstrates the ability to access values of individual cells based on their row and column intersection.  Note that the column can be specified by its name.</p>
+
+<br>
+<table Class="Code">
+<tr valign="middle">
+	<td Class="Code">
+	<pre>
+    Dim oCell As Cell
+    Set oCell = oCustomTable.Rows.Item(2).Item("Employee")
+    
+    Debug.Print oCell.Value
+            
+End Sub
+</pre></td></tr>
+</table>
+<br>
+
+<p Class="Normal">The cell value "Jamie Foss" prints to the VBA "immediate" debug screen, if enabled.</p>
+
+<br>
+
+<h3>Summary</h3>
+
+<p Class="Normal">The Custom Tables API allows tabulated data to be added to drawing sheets, complete with column headers and table formatting.  Table grid line colors and weights can be specified, and cell contents can be accessed and modified.</p>
+
+<h3>Also consider</h3>
+
+<p Class="Normal">Autodesk Inventor has the ability to link to other documents through OLE. Add links to other documents through the Add method of the Document.ReferencedOLEFileDescriptors collection object. This gives developers the ability to add (for example) a Microsoft Excel file link to a drawing document.
+</p>
+
+<p Class="Normal">Standard drawing sheet constructs such as a border and title block can be added to a sheet through the AddBorder, AddDefaultBorder and AddTitleBlock methods of the Sheet object.</p>
+
+<br />
+<br />
+<div id="CopyrightNotice" style="display:none;">
+  <hr />
+  <table width="100%" style="font-size:15">
+	<tr>
+	  <td align="left">
+		&copy; Copyright 2025 Autodesk, Inc.
+	  </td>
+	  <td align="right">
+		<a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(CustomTables_Overview)">Comment on this page.</a>
+	  </td>
+	</tr>
+  </table>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,134 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/ApprenticePrintManager.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="ApprenticePrintManager">
+    <meta name="description" content="ApprenticePrintManager Object">
+    <meta name="topicid" content="GUID-ApprenticePrintManager">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>ApprenticePrintManager Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">ApprenticePrintManager Object
+			</h1><br><h2 class="api">
+          Description
+        </h2>The ApprenticePrintManager object supports properties and methods that allow you to get and set the printing parameters and submit the print job.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ApprenticePrintManager_PrintToFile.htm">PrintToFile</a></td>
+        <td class="api-list">Method that prints to the specified file using the current property settings defined by the ApprenticePrintManager object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ApprenticePrintManager_SetCurrentView.htm">SetCurrentView</a></td>
+        <td class="api-list">Property to set the current view, to be used for printing.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ApprenticePrintManager_SubmitPrint.htm">SubmitPrint</a></td>
+        <td class="api-list">Method that prints using the current property settings defined by the ApprenticePrintManager object.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ApprenticePrintManager_ColorMode.htm">ColorMode</a></td>
+        <td class="api-list">Gets/Sets the color mode to be used for printing. Defaults to using kPrintGrayScale.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ApprenticePrintManager_NumberOfCopies.htm">NumberOfCopies</a></td>
+        <td class="api-list">Gets/Sets the number of copies to be printed. Defaults to 1.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ApprenticePrintManager_Orientation.htm">Orientation</a></td>
+        <td class="api-list">Gets/Sets the orientation of the printer. Defaults to the printer's default.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ApprenticePrintManager_PaperHeight.htm">PaperHeight</a></td>
+        <td class="api-list">Gets/Sets the height of the paper to be printed. Setting this, sets PaperSize to kPaperSizeCustom.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ApprenticePrintManager_PaperSize.htm">PaperSize</a></td>
+        <td class="api-list">Gets/Sets the size of the paper to be printed. Defaults to the printer's default.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ApprenticePrintManager_PaperSource.htm">PaperSource</a></td>
+        <td class="api-list">Gets/Sets the paper source (tray) on the printer. This is printer specific. Defaults to printer's default (denoted by -1).</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ApprenticePrintManager_PaperWidth.htm">PaperWidth</a></td>
+        <td class="api-list">Gets/Sets the width of the paper to be printed. Setting this, sets PaperSize to kPaperSizeCustom.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ApprenticePrintManager_Printer.htm">Printer</a></td>
+        <td class="api-list">Gets/Sets the name of the printer. This is the printer's identifier. Defaults to default printer for this machine.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ApprenticePrintManager_PrinterDeviceContext.htm">PrinterDeviceContext</a></td>
+        <td class="api-list">Gets/Sets the printer's device context.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ApprenticePrintManager_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="ApprenticeServerDocument_PrintManager.htm">ApprenticeServerDocument.PrintManager</a>, <a href="ApprenticeServerDrawingDocument_PrintManager.htm">ApprenticeServerDrawingDocument.PrintManager</a><h2 class="api">
+            Derived Classes
+          </h2><a href="ApprenticeDrawingPrintManager.htm">ApprenticeDrawingPrintManager</a><h2 class="api">
+            Version
+          </h2>
+        Introduced in version 9<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(ApprenticePrintManager%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

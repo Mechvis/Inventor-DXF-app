@@ -1,0 +1,90 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/BreakOutOperation_GetDepth.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="BreakOutOperation_GetDepth">
+    <meta name="description" content="BreakOutOperation.GetDepth Method">
+    <meta name="topicid" content="BreakOutOperation_GetDepth">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>BreakOutOperation.GetDepth Method</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">BreakOutOperation.GetDepth Method</h1>
+
+          Parent Object: <a href="BreakOutOperation.htm">BreakOutOperation</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Method that returns the information controlling the depth of the break out.</p>
+    <h2 class="api">
+          Syntax
+        </h2>
+        
+            BreakOutOperation.<b>GetDepth</b>( <b><i>DepthSource</i></b> As Object, <b><i>DepthValue</i></b> As Double )
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">DepthSource</td>
+        <td class="api-list">Object</td>
+        <td class="api-list">Graphic object that defines the depth of the break out. Several different types of objects can be returned depending on how the depth of the break out has been defined. The DepthType property can be used to know what type(s) of objects will be returned by this method. Based on the depth type here are the object types you can expect to be returned.<p /><p /><b>kFromPointBreakOutType</b> * An Edge or Vertex object from the model being displayed in the view is returned. This is different than the GeometryIntent object that would have been provided during creation. Model geometry is returned in this case because in many cases the drawing curve that defines the depth is not visible, and so does not exist in the view containing the break out. * The DepthValue argument is applicable in this case and gives the offset from this point. <p /><b>kToSketchBreakOutType</b> * A DrawingSketch object which is associated with a dependant projected view. <p /><b>kToHoleBreakOutType</b> * A DrawingCurve object that is used to specify a 'hole'. A hole in this case is defined as any geometry from a HoleFeature object or any cylinder or cone in the model. The axis of the hole, cylinder, or cone is parallel to the sheet plane and defines the depth of the hole. <p /><b>kThroughPartBreakOutType</b> * A PartComponentDefinition object indicates that the entire part is cut. This is only applicable when the drawing view contains a part, not an assembly. * A ComponentOccurrence (or a ComponentOccurrenceProxy) object in the context of the parent drawing view. The depth is defined by the depth of the associated part. * An ObjectCollection containing multiple ComponentOccurrence (or ComponentOccurrenceProxy) objects. The depth is defined by the depths of the associated parts.</td>
+      </tr>
+      <tr>
+        <td class="api-list">DepthValue</td>
+        <td class="api-list">Double</td>
+        <td class="api-list">This argument is only applicable when the DepthType is kFromPointBreakOutType otherwise it should be ignored. The depth value is always returned as centimeters.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2010<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(BreakOutOperation.GetDepth%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

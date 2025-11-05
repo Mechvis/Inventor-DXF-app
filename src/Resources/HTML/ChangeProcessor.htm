@@ -1,0 +1,165 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/ChangeProcessor.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="ChangeProcessor">
+    <meta name="description" content="ChangeProcessor Object">
+    <meta name="topicid" content="GUID-ChangeProcessor">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>ChangeProcessor Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">ChangeProcessor Object
+			</h1><br><h2 class="api">
+          Description
+        </h2>The ChangeProcessor object is at the heart of Inventor's transaction and transcripting mechanism, exposed via its public API.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ChangeProcessor_Execute.htm">Execute</a></td>
+        <td class="api-list">Executes the ChangeProcessor on the specified document.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ChangeProcessor_SetAffectedDocuments.htm">SetAffectedDocuments</a></td>
+        <td class="api-list">Sets the FullDocumentNames, and optionally the change types, of the documents that will be affected by this change.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ChangeProcessor_SetMessageDialogOptions.htm">SetMessageDialogOptions</a></td>
+        <td class="api-list">Method that specifies the buttons that should be available on the message dialog.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ChangeProcessor_SuppressChangeNotifications.htm">SuppressChangeNotifications</a></td>
+        <td class="api-list">Method that sets whether the changes notifications within this change processor should be suppressed or not.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ChangeProcessor_Application.htm">Application</a></td>
+        <td class="api-list">Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ChangeProcessor_ChangeType.htm">ChangeType</a></td>
+        <td class="api-list">Gets and sets the type of change (shape edit, query only, etc.) that this ChangeProcessor will make. Defaults to the type set on the ChangeDefinition, but can be overridden.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ChangeProcessor_DisplayMessages.htm">DisplayMessages</a></td>
+        <td class="api-list">Read-write property that gets and sets whether or not to display error/warning messages during the change process. A value of False indicates that all the messages will be suppressed. Initially set to False. This property should be set before the Execute metho.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ChangeProcessor_GlobalChangeProcess.htm">GlobalChangeProcess</a></td>
+        <td class="api-list">Gets and sets whether or not to execute the change process as a global transaction (can be viewed as a top-level transaction). If True, a global transaction will be created. Initially False; this property should be set before the Execute method is called.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ChangeProcessor_GlobalChangeProcessAborted.htm">GlobalChangeProcessAborted</a></td>
+        <td class="api-list">Gets whether the global transaction for this change had to be aborted.&nbsp;This only applies if GlobalChangeProcess is True and an Execute is in progress.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ChangeProcessor_MergeWithPrevious.htm">MergeWithPrevious</a></td>
+        <td class="api-list">Gets and sets whether to merge this change process with the previously committed transaction.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ChangeProcessor_MessageDialogUserChoice.htm">MessageDialogUserChoice</a></td>
+        <td class="api-list">Read-only property that returns a ButtonTypeEnum value indicating the user’s choice in the message dialog.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ChangeProcessor_Parent.htm">Parent</a></td>
+        <td class="api-list">Gets the parent object from whom this object can logically be reached.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ChangeProcessor_Transact.htm">Transact</a></td>
+        <td class="api-list">Gets and sets whether to execute the change process as a transacting one. A non-transacting change process cannot be undone or redone.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ChangeProcessor_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Events
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ChangeProcessor_OnExecute.htm">OnExecute</a></td>
+        <td class="api-list">Event that is fired when Inventor is in a state to accept changes to data. This is the event where the client application executes its logic on the specified document.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ChangeProcessor_OnReadFromScript.htm">OnReadFromScript</a></td>
+        <td class="api-list">Event that is fired in a replay scenario supplying the cached Inputs string. The client application interprets the inputs and converts them into meaningful data for use in the execution of logic in the OnExecute event. This event is always followed by the OnExecute event.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ChangeProcessor_OnTerminate.htm">OnTerminate</a></td>
+        <td class="api-list">Event that is fired when this ChangeProcessor is done being used for the current execution.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ChangeProcessor_OnWriteToScript.htm">OnWriteToScript</a></td>
+        <td class="api-list">Event that is fired before the execution of and commit of the change. The return string should be set with a formatted string of the arguments. The string may be persisted for eventual replay, such as a transcript replay. A semicolon (';') character should be considered a reserved character used as a separator between individual arguments. The recommended format would be a variable name value pair separated by an equal character, with arguments separated by semicolons. For example "Argument1Name=Value1;Argument2Name=Value2"</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="ChangeDefinition_CreateChangeProcessor.htm">ChangeDefinition.CreateChangeProcessor</a>, <a href="ChangeDefinition_OnReplay.htm">ChangeDefinition.OnReplay</a><h2 class="api">
+            Version
+          </h2>
+        Introduced in version 9<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(ChangeProcessor%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,134 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/ReferenceComponent.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="ReferenceComponent">
+    <meta name="description" content="ReferenceComponent Object">
+    <meta name="topicid" content="GUID-ReferenceComponent">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>ReferenceComponent Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">ReferenceComponent Object
+			</h1><br><h2 class="api">
+          Description
+        </h2>The ReferenceComponent object is the base class for the DerivedPartComponent and DerivedAssemblyComponent objects.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ReferenceComponent_BreakLinkToFile.htm">BreakLinkToFile</a></td>
+        <td class="api-list">Method that breaks the connection of the derived component with the part or assembly from which it was created. When the link is broken the ReferencedFile property will return Nothing.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ReferenceComponent_Delete.htm">Delete</a></td>
+        <td class="api-list">Method that deletes the ReferenceComponent.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ReferenceComponent_GetReferenceKey.htm">GetReferenceKey</a></td>
+        <td class="api-list">Method that generates and returns the reference key for this entity.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ReferenceComponent_SetEndOfPart.htm">SetEndOfPart</a></td>
+        <td class="api-list">Method that repositions the end-of-part marker relative to the object this method is called from.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ReferenceComponent_Application.htm">Application</a></td>
+        <td class="api-list">Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ReferenceComponent_AttributeSets.htm">AttributeSets</a></td>
+        <td class="api-list">Property that returns the AttributeSets collection object associated with this object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ReferenceComponent_HealthStatus.htm">HealthStatus</a></td>
+        <td class="api-list">Property that returns an enum indicating the current state of the object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ReferenceComponent_IsEmbedded.htm">IsEmbedded</a></td>
+        <td class="api-list">Property that returns whether the reference component refers to an embedded document or a linked document.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ReferenceComponent_LinkedToFile.htm">LinkedToFile</a></td>
+        <td class="api-list">Property that returns whether the derived component is still linked to the base part or assembly document. If True, the link still exists. If False, the link has been broken and the ReferencedFile property will return Nothing.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ReferenceComponent_Name.htm">Name</a></td>
+        <td class="api-list">Property that returns the component's name.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ReferenceComponent_Parent.htm">Parent</a></td>
+        <td class="api-list">Property that returns the parent object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ReferenceComponent_ReferencedDocumentDescriptor.htm">ReferencedDocumentDescriptor</a></td>
+        <td class="api-list">Property that returns the DocumentDescriptor object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ReferenceComponent_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="AngleiMateDefinition_ReferenceComponent.htm">AngleiMateDefinition.ReferenceComponent</a>, <a href="AngleiMateDefinitionProxy_ReferenceComponent.htm">AngleiMateDefinitionProxy.ReferenceComponent</a>, <a href="CompositeiMateDefinition_ReferenceComponent.htm">CompositeiMateDefinition.ReferenceComponent</a>, <a href="CompositeiMateDefinitionProxy_ReferenceComponent.htm">CompositeiMateDefinitionProxy.ReferenceComponent</a>, <a href="DerivedParameterTable_ReferenceComponent.htm">DerivedParameterTable.ReferenceComponent</a>, <a href="Face_ReferenceComponent.htm">Face.ReferenceComponent</a>, <a href="FaceProxy_ReferenceComponent.htm">FaceProxy.ReferenceComponent</a>, <a href="FlushiMateDefinition_ReferenceComponent.htm">FlushiMateDefinition.ReferenceComponent</a>, <a href="FlushiMateDefinitionProxy_ReferenceComponent.htm">FlushiMateDefinitionProxy.ReferenceComponent</a>, <a href="HelicalCurve_ReferenceComponent.htm">HelicalCurve.ReferenceComponent</a>, <a href="HelicalCurveProxy_ReferenceComponent.htm">HelicalCurveProxy.ReferenceComponent</a>, <a href="iFeature_ReferenceComponent.htm">iFeature.ReferenceComponent</a>, <a href="iFeatureProxy_ReferenceComponent.htm">iFeatureProxy.ReferenceComponent</a>, <a href="iMateDefinition_ReferenceComponent.htm">iMateDefinition.ReferenceComponent</a>, <a href="InsertiMateDefinition_ReferenceComponent.htm">InsertiMateDefinition.ReferenceComponent</a>, <a href="InsertiMateDefinitionProxy_ReferenceComponent.htm">InsertiMateDefinitionProxy.ReferenceComponent</a>, <a href="MateiMateDefinition_ReferenceComponent.htm">MateiMateDefinition.ReferenceComponent</a>, <a href="MateiMateDefinitionProxy_ReferenceComponent.htm">MateiMateDefinitionProxy.ReferenceComponent</a>, <a href="PlanarSketch_ReferenceComponent.htm">PlanarSketch.ReferenceComponent</a>, <a href="PlanarSketchProxy_ReferenceComponent.htm">PlanarSketchProxy.ReferenceComponent</a>, <a href="ReferenceFeature_ReferenceComponent.htm">ReferenceFeature.ReferenceComponent</a>, <a href="ReferenceFeatureProxy_ReferenceComponent.htm">ReferenceFeatureProxy.ReferenceComponent</a>, <a href="RotateRotateiMateDefinition_ReferenceComponent.htm">RotateRotateiMateDefinition.ReferenceComponent</a>, <a href="RotateRotateiMateDefinitionProxy_ReferenceComponent.htm">RotateRotateiMateDefinitionProxy.ReferenceComponent</a>, <a href="RotateTranslateiMateDefinition_ReferenceComponent.htm">RotateTranslateiMateDefinition.ReferenceComponent</a>, <a href="RotateTranslateiMateDefinitionProxy_ReferenceComponent.htm">RotateTranslateiMateDefinitionProxy.ReferenceComponent</a>, <a href="Sketch3D_ReferenceComponent.htm">Sketch3D.ReferenceComponent</a>, <a href="Sketch3DProxy_ReferenceComponent.htm">Sketch3DProxy.ReferenceComponent</a>, <a href="SketchArc_ReferenceComponent.htm">SketchArc.ReferenceComponent</a>, <a href="SketchArc3D_ReferenceComponent.htm">SketchArc3D.ReferenceComponent</a>, <a href="SketchArc3DProxy_ReferenceComponent.htm">SketchArc3DProxy.ReferenceComponent</a>, <a href="SketchArcProxy_ReferenceComponent.htm">SketchArcProxy.ReferenceComponent</a>, <a href="SketchBlock_ReferenceComponent.htm">SketchBlock.ReferenceComponent</a>, <a href="SketchBlockDefinition_ReferenceComponent.htm">SketchBlockDefinition.ReferenceComponent</a>, <a href="SketchBlockDefinitionProxy_ReferenceComponent.htm">SketchBlockDefinitionProxy.ReferenceComponent</a>, <a href="SketchBlockProxy_ReferenceComponent.htm">SketchBlockProxy.ReferenceComponent</a>, <a href="SketchCircle_ReferenceComponent.htm">SketchCircle.ReferenceComponent</a>, <a href="SketchCircle3D_ReferenceComponent.htm">SketchCircle3D.ReferenceComponent</a>, <a href="SketchCircle3DProxy_ReferenceComponent.htm">SketchCircle3DProxy.ReferenceComponent</a>, <a href="SketchCircleProxy_ReferenceComponent.htm">SketchCircleProxy.ReferenceComponent</a>, <a href="SketchControlPointSpline_ReferenceComponent.htm">SketchControlPointSpline.ReferenceComponent</a>, <a href="SketchControlPointSpline3D_ReferenceComponent.htm">SketchControlPointSpline3D.ReferenceComponent</a>, <a href="SketchControlPointSpline3DProxy_ReferenceComponent.htm">SketchControlPointSpline3DProxy.ReferenceComponent</a>, <a href="SketchControlPointSplineProxy_ReferenceComponent.htm">SketchControlPointSplineProxy.ReferenceComponent</a>, <a href="SketchEllipse_ReferenceComponent.htm">SketchEllipse.ReferenceComponent</a>, <a href="SketchEllipse3D_ReferenceComponent.htm">SketchEllipse3D.ReferenceComponent</a>, <a href="SketchEllipse3DProxy_ReferenceComponent.htm">SketchEllipse3DProxy.ReferenceComponent</a>, <a href="SketchEllipseProxy_ReferenceComponent.htm">SketchEllipseProxy.ReferenceComponent</a>, <a href="SketchEllipticalArc_ReferenceComponent.htm">SketchEllipticalArc.ReferenceComponent</a>, <a href="SketchEllipticalArc3D_ReferenceComponent.htm">SketchEllipticalArc3D.ReferenceComponent</a>, <a href="SketchEllipticalArc3DProxy_ReferenceComponent.htm">SketchEllipticalArc3DProxy.ReferenceComponent</a>, <a href="SketchEllipticalArcProxy_ReferenceComponent.htm">SketchEllipticalArcProxy.ReferenceComponent</a>, <a href="SketchEntity_ReferenceComponent.htm">SketchEntity.ReferenceComponent</a>, <a href="SketchEntity3D_ReferenceComponent.htm">SketchEntity3D.ReferenceComponent</a>, <a href="SketchEquationCurve_ReferenceComponent.htm">SketchEquationCurve.ReferenceComponent</a>, <a href="SketchEquationCurve3D_ReferenceComponent.htm">SketchEquationCurve3D.ReferenceComponent</a>, <a href="SketchEquationCurve3DProxy_ReferenceComponent.htm">SketchEquationCurve3DProxy.ReferenceComponent</a>, <a href="SketchEquationCurveProxy_ReferenceComponent.htm">SketchEquationCurveProxy.ReferenceComponent</a>, <a href="SketchFixedSpline_ReferenceComponent.htm">SketchFixedSpline.ReferenceComponent</a>, <a href="SketchFixedSpline3D_ReferenceComponent.htm">SketchFixedSpline3D.ReferenceComponent</a>, <a href="SketchFixedSpline3DProxy_ReferenceComponent.htm">SketchFixedSpline3DProxy.ReferenceComponent</a>, <a href="SketchFixedSplineProxy_ReferenceComponent.htm">SketchFixedSplineProxy.ReferenceComponent</a>, <a href="SketchLine_ReferenceComponent.htm">SketchLine.ReferenceComponent</a>, <a href="SketchLine3D_ReferenceComponent.htm">SketchLine3D.ReferenceComponent</a>, <a href="SketchLine3DProxy_ReferenceComponent.htm">SketchLine3DProxy.ReferenceComponent</a>, <a href="SketchLineProxy_ReferenceComponent.htm">SketchLineProxy.ReferenceComponent</a>, <a href="SketchOffsetSpline_ReferenceComponent.htm">SketchOffsetSpline.ReferenceComponent</a>, <a href="SketchOffsetSplineProxy_ReferenceComponent.htm">SketchOffsetSplineProxy.ReferenceComponent</a>, <a href="SketchPoint_ReferenceComponent.htm">SketchPoint.ReferenceComponent</a>, <a href="SketchPoint3D_ReferenceComponent.htm">SketchPoint3D.ReferenceComponent</a>, <a href="SketchPoint3DProxy_ReferenceComponent.htm">SketchPoint3DProxy.ReferenceComponent</a>, <a href="SketchPointProxy_ReferenceComponent.htm">SketchPointProxy.ReferenceComponent</a>, <a href="SketchSpline_ReferenceComponent.htm">SketchSpline.ReferenceComponent</a>, <a href="SketchSpline3D_ReferenceComponent.htm">SketchSpline3D.ReferenceComponent</a>, <a href="SketchSpline3DProxy_ReferenceComponent.htm">SketchSpline3DProxy.ReferenceComponent</a>, <a href="SketchSplineHandle_ReferenceComponent.htm">SketchSplineHandle.ReferenceComponent</a>, <a href="SketchSplineHandle3D_ReferenceComponent.htm">SketchSplineHandle3D.ReferenceComponent</a>, <a href="SketchSplineHandle3DProxy_ReferenceComponent.htm">SketchSplineHandle3DProxy.ReferenceComponent</a>, <a href="SketchSplineHandleProxy_ReferenceComponent.htm">SketchSplineHandleProxy.ReferenceComponent</a>, <a href="SketchSplineProxy_ReferenceComponent.htm">SketchSplineProxy.ReferenceComponent</a>, <a href="TangentiMateDefinition_ReferenceComponent.htm">TangentiMateDefinition.ReferenceComponent</a>, <a href="TangentiMateDefinitionProxy_ReferenceComponent.htm">TangentiMateDefinitionProxy.ReferenceComponent</a>, <a href="WorkAxis_ReferenceComponent.htm">WorkAxis.ReferenceComponent</a>, <a href="WorkAxisProxy_ReferenceComponent.htm">WorkAxisProxy.ReferenceComponent</a>, <a href="WorkPlane_ReferenceComponent.htm">WorkPlane.ReferenceComponent</a>, <a href="WorkPlaneProxy_ReferenceComponent.htm">WorkPlaneProxy.ReferenceComponent</a>, <a href="WorkPoint_ReferenceComponent.htm">WorkPoint.ReferenceComponent</a>, <a href="WorkPointProxy_ReferenceComponent.htm">WorkPointProxy.ReferenceComponent</a><h2 class="api">
+            Derived Classes
+          </h2><a href="DerivedAliasComponent.htm">DerivedAliasComponent</a>, <a href="DerivedAssemblyComponent.htm">DerivedAssemblyComponent</a>, <a href="DerivedFutureAssemblyComponent.htm">DerivedFutureAssemblyComponent</a>, <a href="DerivedFuturePartComponent.htm">DerivedFuturePartComponent</a>, <a href="DerivedPartComponent.htm">DerivedPartComponent</a>, <a href="ImportedComponent.htm">ImportedComponent</a>, <a href="iPartMember.htm">iPartMember</a>, <a href="ShrinkwrapComponent.htm">ShrinkwrapComponent</a><h2 class="api">
+            Version
+          </h2>
+        Introduced in version 5.3<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(ReferenceComponent%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

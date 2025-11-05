@@ -1,0 +1,107 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/UserInterfaceEvents_OnEnvironmentChange.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="UserInterfaceEvents_OnEnvironmentChange">
+    <meta name="description" content="UserInterfaceEvents.OnEnvironmentChange Event">
+    <meta name="topicid" content="UserInterfaceEvents_OnEnvironmentChange">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>UserInterfaceEvents.OnEnvironmentChange Event</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">UserInterfaceEvents.OnEnvironmentChange Event</h1>
+
+          Parent Object: <a href="UserInterfaceEvents.htm">UserInterfaceEvents</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">The OnEnvironmentChange event notifies the client when the active environment switches from one environment to another.</p>
+    <h2 class="api">
+            Remarks
+          </h2>Many end-user actions can cause the environment to change. This notification is sent regardless of what triggered the environment change. When the environment changes, this notification will be sent four times; a before and after notification for the environment that was active before the change and is being suspended or terminated and a before and after notification for the environment that is becoming the active environment. In the context of environment change, Inventor considers an environment to be tied with a particular document. For example, Inventor defines a single Part environment but if you have two part documents open there is a unique Part environment associated with each document. This means that the OnEnvironmentChange event notification is sent if the end-user should switch between the two part documents.<h2 class="api">
+          Syntax
+        </h2>
+        
+            UserInterfaceEvents.<b>OnEnvironmentChange</b>( <b><i>Environment</i></b> As <a href="Environment.htm">Environment</a>, <b><i>EnvironmentState</i></b> As <a href="EnvironmentStateEnum.htm">EnvironmentStateEnum</a>, <b><i>BeforeOrAfter</i></b> As <a href="EventTimingEnum.htm">EventTimingEnum</a>, <b><i>Context</i></b> As <a href="NameValueMap.htm">NameValueMap</a>, <b><i>HandlingCode</i></b> As <a href="HandlingCodeEnum.htm">HandlingCodeEnum</a> )
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">Environment</td>
+        <td class="api-list"><a href="Environment.htm">Environment</a></td>
+        <td class="api-list">The environment object whose state is changing.</td>
+      </tr>
+      <tr>
+        <td class="api-list">EnvironmentState</td>
+        <td class="api-list"><a href="EnvironmentStateEnum.htm">EnvironmentStateEnum</a></td>
+        <td class="api-list">Indicates the transition state the environment is going through.</td>
+      </tr>
+      <tr>
+        <td class="api-list">BeforeOrAfter</td>
+        <td class="api-list"><a href="EventTimingEnum.htm">EventTimingEnum</a></td>
+        <td class="api-list">Input EventTimingEnum indicating when the event is being fired. Notification is sent before and after the environment change.</td>
+      </tr>
+      <tr>
+        <td class="api-list">Context</td>
+        <td class="api-list"><a href="NameValueMap.htm">NameValueMap</a></td>
+        <td class="api-list">Input NameValueMap object that contains additional information about the event. Name = "Document". Value = The Document object this environment is associated with. Name = "Reason for event". Value = "Undo" or "Redo". The activation of environments is transacted so environments can be activated as a result of an undo or redo operation. If this value is " " then the activation is occurring from an explicit action either from the end-user or through the API. If this value is "Undo" then the activation occurred as the result of an undo operation and if it is "Redo" then it is the result of a redo operation.</td>
+      </tr>
+      <tr>
+        <td class="api-list">HandlingCode</td>
+        <td class="api-list"><a href="HandlingCodeEnum.htm">HandlingCodeEnum</a></td>
+        <td class="api-list">Output HandlingCodeEnum that indicates how you are handling the event. You can cancel the environment change by changing this value to kEventCanceled.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 10<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(UserInterfaceEvents.OnEnvironmentChange%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

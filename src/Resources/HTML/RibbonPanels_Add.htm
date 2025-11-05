@@ -1,0 +1,130 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/RibbonPanels_Add.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="RibbonPanels_Add">
+    <meta name="description" content="RibbonPanels.Add Method">
+    <meta name="topicid" content="RibbonPanels_Add">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>RibbonPanels.Add Method</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">RibbonPanels.Add Method</h1>
+
+          Parent Object: <a href="RibbonPanels.htm">RibbonPanels</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Method that creates a new RibbonPanel within a ribbon tab. The newly created RibbonPanel is returned.</p>
+    <h2 class="api">
+          Syntax
+        </h2>
+        
+            RibbonPanels.<b>Add</b>( <b><i>DisplayName</i></b> As String, <b><i>InternalName</i></b> As String, <b><i>ClientId</i></b> As String, [<b><i>TargetPanelInternalName</i></b>] As String, [<b><i>InsertBeforeTargetPanel</i></b>] As Boolean ) As <a href="RibbonPanel.htm">RibbonPanel</a>
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">DisplayName</td>
+        <td class="api-list">String</td>
+        <td class="api-list">Input string that defines the display name of the ribbon panel. This is the name that is displayed to the user and should be localized for different locales.</td>
+      </tr>
+      <tr>
+        <td class="api-list">InternalName</td>
+        <td class="api-list">String</td>
+        <td class="api-list">Input string that defines the unique internal name of the ribbon panel. This is the internal name and is not displayed to the user. The name must be unique with respect to all other ribbon panels within the tab. The name should remain constant in all locales so it can be used to find a specific panel.</td>
+      </tr>
+      <tr>
+        <td class="api-list">ClientId</td>
+        <td class="api-list">String</td>
+        <td class="api-list">Input String that uniquely identifies the client. This is the CLSID of the AddIn in a string form, e.g. <c>"{C9A6C580\-3817\-11D0\-BE4E\-080036E87B02}"</c>. If supplied, this string is used at Inventor start up time to determine whether the AddIn that created this ribbon panel has since been uninstalled. If so, the panel is deleted.The string is also used to find all the panels to delete when the associated Add\-in is unloaded. A 'dummy' string or a null string can be specified, but is not recommended.</td>
+      </tr>
+      <tr>
+        <td class="api-list">TargetPanelInternalName</td>
+        <td class="api-list">String</td>
+        <td class="api-list">Optional input String that specifies the internal name of an existing panel to position the new panel next to. If specified, the InsertBeforeTargetPanel argument indicates whether to place the new panel before or after the target panel. If not specified, the new panel is positioned at the end.<br /><br /> This is an optional argument whose default value is "".</td>
+      </tr>
+      <tr>
+        <td class="api-list">InsertBeforeTargetPanel</td>
+        <td class="api-list">Boolean</td>
+        <td class="api-list">Optional input Boolean that specifies whether to position the new panel before or after the target ribbon panel. The argument defaults to False and is not used if the TargetPanelInternalName argument is not specified.<br /><br /> This is an optional argument whose default value is False.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="CreateParallelEnvironment_Sample.htm">Add parallel environment with contextual tabs</a></td>
+        <td class="api-list">The following sample demonstrates the use of parallel environments and contextual ribbon tabs.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="EnvironmentManager_OverrideEnvironment_Sample.htm">Creation of an override environment for a document</a></td>
+        <td class="api-list">A new ribbon tab is created and associated with the override environment.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="RibbonPanels_Add_Sample.htm">Create a ribbon panel in an existing tab</a></td>
+        <td class="api-list">Demonstrates creating a new ribbon panel within an existing ribbon tab.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2010<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(RibbonPanels.Add%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

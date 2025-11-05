@@ -1,0 +1,186 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/Profiles_AddForSolid.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="Profiles_AddForSolid">
+    <meta name="description" content="Profiles.AddForSolid Method">
+    <meta name="topicid" content="Profiles_AddForSolid">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>Profiles.AddForSolid Method</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">Profiles.AddForSolid Method</h1>
+
+          Parent Object: <a href="Profiles.htm">Profiles</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Method that creates a profile containing multiple paths for creating solid features. The paths can include sketch curves as well as text boxes. Individual paths in the returned profile may be deleted to obtain the desired profile.</p>
+    <h2 class="api">
+            Remarks
+          </h2>If sketch curves are included in the profile, the topological information defined by the intersection and connection of sketch entities with one another is used to define the various profile paths. A profile path consists of one or more profile entities. If a profile path contains only one profile entity, then it implies that a single sketch curve (e.g. a sketch circle) defines the profile path. If the profile path comprises of multiple profile entities, then a set of connected sketch curves defines the profile path with each profile entity representing an entire sketch curve or a portion of it. If text boxes are included in the profile, then each text box will be associated with a single profile path. Since a single instance of a text box that contains some text essentially consists of a group of one or more characters which have a certain thickness, the outline of each character in the text can be considered to form a closed loop. All the characters in a given text box will be treated as a single entity and grouped to form a single profile path. The profile paths defined by the sketch curves will be independently determined from the profile paths defined by the text boxes. The sketch curves will be evaluated based on their topological information to define a set of profile paths that comprises of only the sketch curves. The text boxes will be used to define a different set of profile paths such that each text box will correspond to a unique profile path. Therefore, a given profile path will either include sketch curves or a single text box but not both.<h2 class="api">
+          Syntax
+        </h2>
+        
+            Profiles.<b>AddForSolid</b>( [<b><i>Combine</i></b>] As Boolean, [<b><i>ProfilePathSegments</i></b>] As Variant, [<b><i>Reserved</i></b>] As Variant ) As <a href="Profile.htm">Profile</a>
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">Combine</td>
+        <td class="api-list">Boolean</td>
+        <td class="api-list">Optional input Boolean that specifies whether to combine the profile paths obtained when this method is used to create a new profile. For instance, let us take the example of a sketch containing two concentric circles. If this argument is specified to be true, the resulting profile will contain 2 profile paths, and the profile path corresponding to the inner circle will have its AddsMaterial flag set to False. Hence, the resulting profile is a circular disc with a circular cut\-out. If the Combine flag is specified to be False, the resulting profile will contain 2 profile paths with the AddsMaterial flag set to True for both paths. If the sketch contains text boxes, then the profile paths corresponding to them will always have the AddsMaterial flag set to True irrespective of whether the Combine flag is specified to be True or False.<p /><br /><br /> This is an optional argument whose default value is True.</td>
+      </tr>
+      <tr>
+        <td class="api-list">ProfilePathSegments</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional input ObjectCollection that can contain sketch curves as well as text boxes. If sketch curves are specified, then the profile created by this method will include profile paths that are comprised of the exact set of sketch curves specified in the ObjectCollection. If text boxes are specified, then the profile created by this method will include profile paths that correspond to the exact set of text boxes specified in the ObjectCollection. Each text box in the collection will correspond to a unique profile path. If not specified, all the possible profile paths including sketch curves as well as text boxes will be included. This argument is ignored if the Combine argument is specified to be True.<p /><br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+      <tr>
+        <td class="api-list">Reserved</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional input Variant reserved for future use. This argument is currently ignored.<br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="BoundaryPatchFeatures_Add_Sample.htm">Delete Face, Boundary Patch and Stitch features</a></td>
+        <td class="api-list">Demonstrates creating Face, Boundary Patch and Stitch features.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="CopyBodyFeature_Sample.htm">SurfaceBody Copy</a></td>
+        <td class="api-list">This sample demonstrates copying a surface body from one part to another. This is equivalent to the Promote command, but the API is much more flexible. In order for the sample to be self-contained, it creates two parts on the fly that will be used to demonstrate copying a body from one part to another. When copying a body into a part, you provide the surface body and a matrix to define its position in the new part. This sample creates a matrix based on the position of these parts within an assembly.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DerivedAssemblyComponents_Add_Sample.htm">Derived Parts and Assemblies</a></td>
+        <td class="api-list">This sample demonstrates the use of the API to create derived parts and assemblies.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingSketch_SketchFillRegions_Sample.htm">Sketch fill region</a></td>
+        <td class="api-list">This sample demonstrates the sketch fill functionality in drawing sketches.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ErrorManager_Sample.htm">Using Inventor's error dialog</a></td>
+        <td class="api-list">Demonstrates using Inventor's error dialog.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ExtrudeFeature_Sample.htm">Extrude Feature - Create Block with Pocket</a></td>
+        <td class="api-list">This sample demonstrates creating a simple solid consisting a block with a pocket. It shows how to create a sketch plane at a specified orientation to existing geometry.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ExtrudeFeature_Profile_Sample.htm">Edit profile of an extrude feature</a></td>
+        <td class="api-list">This sample demonstrates editing the profile of an extrude feature.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ExtrudeFeatures_AddByDistanceExtent_Sample.htm">Extrude sketch text</a></td>
+        <td class="api-list">This sample demonstrates the creation of an extrude feature from sketch text.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FoldFeatures_Add_Sample.htm">Create sheet metal face and fold features</a></td>
+        <td class="api-list">This sample demonstrates the creation of sheet metal face and fold features.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="HoleFeature_Sample.htm">Hole Feature - Through holes (RegularAndTapped)</a></td>
+        <td class="api-list">This sample demonstrates the creation of through holes, both regular and tapped.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PartFeature_SetEndOfPart_Sample.htm">Create and Edit an Extrude Feature with a pocket</a></td>
+        <td class="api-list">This sample demonstrates how to edit an extrude feature. It shows how to create a sketch plane at a specified orientation to existing geometry.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PlanarSketch_AddBySilhouette_Sample.htm">Sketch from Face Silhouette</a></td>
+        <td class="api-list">This sample creates a cylindrical solid, creates a new sketch plane and creates some new sketch lines from the actual edges and the apparent (silhouette) edges of the cylinder.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Profile_RegionProperties_Sample.htm">Querying a sketch profile to get regions.</a></td>
+        <td class="api-list">This sample demonstrates getting region properties from a sketch profile.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ProfilePath_AddsMaterial_Sample.htm">Sketch profile control</a></td>
+        <td class="api-list">This sample demonstrates the usage of the Profiles API to control the shape of the profile. The sample creates three concntric circles and creates an extrusion of the region between the inner circles.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="RipFeatures_Add_Sample.htm">Create sheet metal rip feature</a></td>
+        <td class="api-list">This sample demonstrates the creation of a rip sheet metal feature.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalFeatures_Sample.htm">Create sheet metal face and cut features</a></td>
+        <td class="api-list">This sample demonstrates the creation of sheet metal face and cut features.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalFeatures_FlangeFeatures_Sample.htm">Create sheet metal face and flange features</a></td>
+        <td class="api-list">This sample demonstrates the creation of sheet metal face and flange features.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SweepFeature_Sample.htm">Sweep Feature Add</a></td>
+        <td class="api-list">This sample demonstrates the creation of a sweep feature. The profile is a circle, but the path is made up of a 3D sketch and a 2D sketch.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ThreadFeature_Sample.htm">Thread Feature Create</a></td>
+        <td class="api-list">This sample demonstrates the creation of a thread feature. It creates a cylinder in a new part document and creates a thread feature on the cylinder.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 5<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(Profiles.AddForSolid%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

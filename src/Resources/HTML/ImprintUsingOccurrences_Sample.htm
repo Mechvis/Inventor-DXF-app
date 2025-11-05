@@ -1,0 +1,204 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/ImprintUsingOccurrences_Sample.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="ImprintUsingOccurrences_Sample">
+    <meta name="description" content="Imprint bodies within an assembly. Sample">
+    <meta name="topicid" content="ImprintUsingOccurrences_Sample">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>Imprint bodies within an assembly.</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body><script>
+          function copyCode(language) {
+          // Get the pre element for the specified language.
+          var preElement = document.getElementById(language);
+
+          // Get the text from the element and copy it to the clipboard.
+          var preText = preElement.innerText;
+
+          var isIE = /*@cc_on!@*/false || !!document.documentMode;
+
+          if (isIE)
+          {
+            window.clipboardData.setData('Text', preText);
+          }
+          else
+          {
+            navigator.clipboard.writeText(preText);
+          }
+
+          //alert("Code copied to clipboard");
+          }
+        </script><link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">Imprint bodies within an assembly.</h1>
+    <h2 class="api">
+          Description
+        </h2>This sample demonstrates creating imprinted bodies from two selected occurrences in an assembly.<h2 class="api">
+          Code Samples
+        </h2>
+    <div id="tabs">
+      <ul>
+        <li><a href="#VBA">VBA</a></li>
+        <li><a href="#iLogic">iLogic</a></li>
+      </ul>
+      <div id="VBA" class="api-code">
+        <table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('VBA_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="VBA_code">Public Sub CreateImprintFromAssembly()
+    <span style="color:blue">' Get the active assembly document and its definition.</span>
+    Dim asmDoc As AssemblyDocument
+    Set asmDoc = ThisApplication.ActiveDocument
+    
+    <span style="color:blue">' Have two parts selected in the assembly.</span>
+    Dim part1 As ComponentOccurrence
+    Dim part2 As ComponentOccurrence
+    Set part1 = ThisApplication.CommandManager.Pick(kAssemblyLeafOccurrenceFilter, "Select part 1")
+    Set part2 = ThisApplication.CommandManager.Pick(kAssemblyLeafOccurrenceFilter, "Select part 2")
+    
+    <span style="color:blue">' Get the bodies associated with the occurrences.  Because of a problem when</span>
+    <span style="color:blue">' this sample was written the ImprintBodies method fails when used with SurfaceBodyProxy</span>
+    <span style="color:blue">' objects.  The code below works around this by creating new transformed bodies that</span>
+    <span style="color:blue">' will provide the equivalent result.</span>
+    
+    <span style="color:blue">' Get the bodies in part space as transient bodies.</span>
+    Dim transBrep As TransientBRep
+    Set transBrep = ThisApplication.TransientBRep
+    Dim body1 As SurfaceBody
+    Dim body2 As SurfaceBody
+    Set body1 = transBrep.Copy(part1.Definition.SurfaceBodies.Item(1))
+    Set body2 = transBrep.Copy(part2.Definition.SurfaceBodies.Item(1))
+    
+    <span style="color:blue">' Transform the bodies to be in the location represented in the assembly.</span>
+    Call transBrep.Transform(body1, part1.Transformation)
+    Call transBrep.Transform(body2, part2.Transformation)
+    
+    <span style="color:blue">' Imprint the bodies.</span>
+    Dim newBody1 As SurfaceBody
+    Dim newBody2 As SurfaceBody
+    Dim body1OverlapFaces As Faces
+    Dim body2OverlapFaces As Faces
+    Dim body1OverlapEdges As Edges
+    Dim body2OverlapEdges As Edges
+    Call ThisApplication.TransientBRep.ImprintBodies(body1, body2, True, newBody1, newBody2, _
+                                                     body1OverlapFaces, body2OverlapFaces, _
+                                                     body1OverlapEdges, body2OverlapEdges)
+
+    <span style="color:blue">' Create a new part document to show the resulting bodies in.</span>
+    Dim partDoc As PartDocument
+    Set partDoc = ThisApplication.Documents.Add(kPartDocumentObject, _
+                  ThisApplication.FileManager.GetTemplateFile(kPartDocumentObject))
+    Dim partDef As PartComponentDefinition
+    Set partDef = partDoc.ComponentDefinition
+
+    <span style="color:blue">' Create a new feature from the first imprinted body.</span>
+    Dim non1 As NonParametricBaseFeature
+    Set non1 = partDef.Features.NonParametricBaseFeatures.Add(newBody1)
+    Set newBody1 = non1.SurfaceBodies.Item(1)
+
+    <span style="color:blue">' Create a new feature from the second imprinted body.</span>
+    Dim non2 As NonParametricBaseFeature
+    Set non2 = partDef.Features.NonParametricBaseFeatures.Add(newBody2)
+    Set newBody2 = non2.SurfaceBodies.Item(1)
+End Sub</pre>
+      </div>
+      <div id="iLogic" class="api-code">
+        <table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('iLogic_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="iLogic_code">    <span style="color:blue">' Get the active assembly document and its definition.</span>
+    Dim asmDoc As AssemblyDocument
+    asmDoc = ThisApplication.ActiveDocument
+    
+    <span style="color:blue">' Have two parts selected in the assembly.</span>
+    Dim part1 As ComponentOccurrence
+    Dim part2 As ComponentOccurrence
+    part1 = ThisApplication.CommandManager.Pick(kAssemblyLeafOccurrenceFilter, "Select part 1")
+    part2 = ThisApplication.CommandManager.Pick(kAssemblyLeafOccurrenceFilter, "Select part 2")
+    
+    <span style="color:blue">' Get the bodies associated with the occurrences.  Because of a problem when</span>
+    <span style="color:blue">' this sample was written the ImprintBodies method fails when used with SurfaceBodyProxy</span>
+    <span style="color:blue">' objects.  The code below works around this by creating new transformed bodies that</span>
+    <span style="color:blue">' will provide the equivalent result.</span>
+    
+    <span style="color:blue">' Get the bodies in part space as transient bodies.</span>
+    Dim transBrep As TransientBRep
+    transBrep = ThisApplication.TransientBRep
+    Dim body1 As SurfaceBody
+    Dim body2 As SurfaceBody
+    body1 = transBrep.Copy(part1.Definition.SurfaceBodies.Item(1))
+    body2 = transBrep.Copy(part2.Definition.SurfaceBodies.Item(1))
+    
+    <span style="color:blue">' Transform the bodies to be in the location represented in the assembly.</span>
+    Call transBrep.Transform(body1, part1.Transformation)
+    Call transBrep.Transform(body2, part2.Transformation)
+    
+    <span style="color:blue">' Imprint the bodies.</span>
+    Dim newBody1 As SurfaceBody
+    Dim newBody2 As SurfaceBody
+    Dim body1OverlapFaces As Faces
+    Dim body2OverlapFaces As Faces
+    Dim body1OverlapEdges As Edges
+    Dim body2OverlapEdges As Edges
+    Call ThisApplication.TransientBRep.ImprintBodies(body1, body2, True, newBody1, newBody2, _
+                                                     body1OverlapFaces, body2OverlapFaces, _
+                                                     body1OverlapEdges, body2OverlapEdges)
+
+    <span style="color:blue">' Create a new part document to show the resulting bodies in.</span>
+    Dim partDoc As PartDocument
+    partDoc = ThisApplication.Documents.Add(kPartDocumentObject, _
+                  ThisApplication.FileManager.GetTemplateFile(kPartDocumentObject))
+    Dim partDef As PartComponentDefinition
+    partDef = partDoc.ComponentDefinition
+
+    <span style="color:blue">' Create a new feature from the first imprinted body.</span>
+    Dim non1 As NonParametricBaseFeature
+    non1 = partDef.Features.NonParametricBaseFeatures.Add(newBody1)
+    newBody1 = non1.SurfaceBodies.Item(1)
+
+    <span style="color:blue">' Create a new feature from the second imprinted body.</span>
+    Dim non2 As NonParametricBaseFeature
+    non2 = partDef.Features.NonParametricBaseFeatures.Add(newBody2)
+    newBody2 = non2.SurfaceBodies.Item(1)</pre>
+      </div>
+    </div><br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(ImprintUsingOccurrences%20Sample%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

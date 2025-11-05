@@ -1,0 +1,288 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU">
+    <link rel="canonical" href="http://help.autodesk.com/cloudhelp/2026/ENU/Inventor-API/files/EventContext_Overview.htm">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="27/4/2016">
+    <meta name="user-comments" content="enable">
+    <meta name="description" content="">
+    <meta name="topicid" content="GUID-715BCB5C-FBAA-4c7f-BBE7-FDA854B2788A">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>Event Context Information</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"/>
+    <script type="text/javascript" src="/view/clientframework/client.js"><!--filler--></script>
+	<script>
+	  // This turns on the display of the copyright notice which is not visible by default.
+	  // Because the head is removed when used in the web help, this function will only exists
+	  // when the chm help is being created.
+	  window.onload = function() {
+		copyrightElement = document.getElementById('CopyrightNotice');
+		copyrightElement.style.display = 'block';
+	  };
+	</script>
+</head>
+<body>
+<link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+
+<H1>Event Context Information</h1>
+<h3>Introduction to Event Context Information</h3>
+
+<p Class="Normal">The Autodesk Inventor API supports notification of many events.  These events range across the entire API. Examples include notification of:</p>
+<ul type="disc">
+	<li>When a file is opened or closed.
+	<li>When a browser node is activated or renamed.
+	<li>When the mouse position is updated or keyboard input is received.
+	<li>When a view or assembly is changed.
+	<li>When objects are selected.
+</ul>
+
+<p Class="Normal">Currently there are more than 80 types of events fired, accessible from the API.</p>
+
+<p Class="Normal">Events are the means through which your application is made aware of and reacts to actions outside its control. Events are also the basis for user
+ interaction. If you want to trace mouse movement or know when a key has been pressed, your application must set up a handler for these specific events.</p>
+
+<!--<br>
+<div align="center"> <img src="ov.browsernodes_shot1.gif" border=0 ></div>
+<br>-->
+
+<br>
+<h3>The Purpose of Event Context Information</h3>
+
+<p Class="Normal">The majority of events are straightforward - they simply provide notification that something has occurred.  However, there are some situations when a little more
+ information is required or some contextual information is helpful.</p>
+
+<p Class="Normal">Consider when a file is dirtied, for example. The terms "dirtied" and "smudged" refer to the edit state of the document, somewhat analagous
+ to paper drawings that have been manually revised. If changes have occured that would cause Autodesk Inventor to ask if you wish to save the
+  file before exiting, that file is considered dirtied until saved. But some actions - a rebuild or the addition of client graphics, for example - do not affect
+   the shape of the model, but can still be considered a change, or a "smudging" of the document. It can be useful to know such contextual information when an event occurs.</p>
+
+<br>
+<h3>Interpreting Event Context Information</h3>
+
+<p Class="Normal">Few events provide context information. The following arguments and their content will be meaningless except for those specific events that do provide some
+ context. </p>
+ 
+ <p Class="Normal">Those that do provide context information populate most or all of the following arguments.</p>
+
+<ul type="disc">
+	<li><em>BeforeOrAfter</em> - Input EventTimingEnum indicating if the event notification is being fired before (kBefore) or after (kAfter) the event occurs.
+	<li><em>ReasonsForChange</em> - Input bit-encoded field indicating why the event occurred.
+	<li><em>Context</em> - Input NameValueMap object that contains additional information about the event.  Think of this object as a list of names mapped to values (for example the name FileName might be paired with a qualified file reference).
+</ul>
+
+<p Class="Normal">Sometimes, if the notification occurs just before the event actually takes place, you have an opportunity to veto the event or specify some alternate action specific to that event. In such cases, the following argument will be present.</p>
+
+<ul type="disc">
+	<li><em>HandlingCode</em> ?When the event notification is fired before the event, you can often specify an alternate action using this parameter. 
+</ul>
+
+<p Class="Normal">
+The reference guide identifies which events provide additional context information. Another way to determine this is to use the "locals" or "watch" window in VB to view the contents of the object in question (the NameValueMap object, for example).</p>
+
+<h3>An example of Event Context Information</h3>
+
+<p Class="Normal">The following VB code sets up an event handler for the OnFileDirty event. Create a new .exe project in VB (not VBA), create a blank form, and then paste this code into the form's code module. This sample omits error checking for the sake of clarity and brevity. This code runs outside of Autodesk Inventor but expects to connect to it, and so assumes Autodesk Inventor is already running.</p>
+
+<p Class="Normal">First, declare the FileAccessEvents object (which supports the OnFileDirty event) and the Autodesk Inventor Application object.  These are global declarations and so are outside of a Sub.</p>
+
+<!--<br>
+<table cellspacing="4" cellpadding="4" border="1">
+<tr>
+    <td  bgcolor="Yellow"><b>Note:</b> something</td>
+</tr>
+</table>
+<br>-->
+
+<br>
+<table Class="Code">
+<tr valign="middle">
+	<td Class="Code">
+	<pre>
+Dim WithEvents eFA As inventor.FileAccessEvents
+Dim oApp As inventor.Application
+</pre></td></tr>
+</table>
+<br>
+
+<p Class="Normal">The following Sub is executed when the form is loaded (when the application is first run). It gets the Application object, and then the FileAccessEvents object is obtained from it.</p>
+
+<br>
+<table Class="Code">
+<tr valign="middle">
+	<td Class="Code">
+	<pre>
+Private Sub Form_Load()
+Set oApp = GetObject(, "Inventor.Application")
+Set eFA = oApp.FileAccessEvents
+End Sub
+</pre></td></tr>
+</table>
+<br>
+
+<p Class="Normal">The following Sub defines the handler for the OnFileDirty event of the FileAccessEvents object.  This code is called if the OnFileDirty event is fired.  Note the various arguments, including BeforeOrAfter, Context, and HandlingCode.</p>
+
+<br>
+<table Class="Code">
+<tr valign="middle">
+	<td Class="Code">
+	<pre>
+Private Sub eFA_OnFileDirty(ByVal RelativeFileName As String, _
+   ByVal LibraryName As String, CustomLogicalName() As Byte, _
+   ByVal FullFileName As String, _
+   ByVal DocumentObject As inventor.Document, _
+   ByVal BeforeOrAfter As inventor.EventTimingEnum, _
+   ByVal Context As inventor.NameValueMap, _
+   HandlingCode As inventor.HandlingCodeEnum)
+</pre></td></tr>
+</table>
+<br>
+
+<p Class="Normal">Print the filename of the file that became dirtied.</p>
+
+<br>
+<table Class="Code">
+<tr valign="middle">
+	<td Class="Code">
+	<pre>
+Debug.Print "  Event: OnFileDirty", RelativeFileName
+</pre></td></tr>
+</table>
+<br>
+
+<p Class="Normal">Loop through the items in the NameValueMap, printing their name and value.</p>
+
+<br>
+<table Class="Code">
+<tr valign="middle">
+	<td Class="Code">
+	<pre>
+Dim I As Long
+For I = 1 To Context.Count
+   Debug.Print "Context: ", Context.Name(I), _
+      Context.Value(Context.Name(I))
+Next I
+</pre></td></tr>
+</table>
+<br>
+
+<p Class="Normal">Print the meaning of the BeforeOrAfter enum.</p>
+
+<br>
+<table Class="Code">
+<tr valign="middle">
+	<td Class="Code">
+	<pre>
+Select Case (BeforeOrAfter)
+    Case kAfter
+        Debug.Print " Timing: After"
+    Case kBefore
+        Debug.Print " Timing: After"
+    Case Else
+        Debug.Print " Timing: Aborted"
+End Select
+</pre></td></tr>
+</table>
+<br>
+
+<p Class="Normal">This handler is not going to take any specific action (this is not an event we would attempt to veto) so let Autodesk Inventor know by setting HandlingCode to the appropriate HandlingCodeEnum.</p>
+
+<br>
+<table Class="Code">
+<tr valign="middle">
+	<td Class="Code">
+	<pre>
+HandlingCode = kEventNotHandled
+End Sub
+</pre></td></tr>
+</table>
+<br>
+
+<p Class="Normal">An example of an event that does make use of the HandlingCode argument is the OnFileResolution event. This is fired when Autodesk Inventor cannot find a referenced file, but before it displays an error. Developer code can handle this event and identify the required file, so the error is prevented from being displayed.</p>
+
+<br>
+<h3>Running the sample code</h3>
+
+<p Class="Normal">In Autodesk Inventor, open a part document.  In VB, run the code. (If asked, specify the form as the starting module).</p>
+
+<p Class="Normal">Now the OnFileDirty event handler is set up and ready to handle this one event.  In Autodesk Inventor, modify the part in some way (for example, change the extent of an extrusion).  The event is fired and the code prints some information to the VB "Immediate" window. If you don't have this window visible, enable it from the View &gt; Immediate Window menu.</p>
+
+<p Class="Normal">The information printed will be something like the following.</p>
+
+<br>
+<table Class="Code">
+<tr valign="middle">
+	<td Class="Code">
+	<pre>
+  Event: OnFileDirty   test.ipt
+Context: ReasonsForChange 1
+ Timing: After
+</pre></td></tr>
+</table>
+<br>
+
+<p Class="Normal">In this case, the OnFileDirty event was called when test.ipt was dirtied (i.e. modified). The context NameValueMap
+ object contained just one item, the ReasonsForChange flag (discussed in the next section). The
+  BeforeOrAfter EventTimingEnum indicates the notification occurred after the event took place.</p>
+
+<br>
+<h3>The ReasonsForChange flag</h3>
+
+<p Class="Normal">The preceding section indicates that the context NameValueMap may contain a ReasonsForChange flag.  This is a bit
+ coded flag, whose value is comprised of any applicable CommandTypesEnum values. In
+  this case the value is 1, or kShapeEditCmdType, indicating the change occurred as a result of a command that affected the design intent - the shape of the model.</p>
+
+<p Class="Normal">As another example - if the ReasonsForChange flag value was 65, this would mean that
+ both kShapeEditCmdType (value 1) and kReferencesChangeCmdType (value 64) apply.</p>
+
+<br>
+<h3>Special considerations</h3>
+
+<p Class="Normal">Since Autodesk Inventor 9, an application that is listening to both the OnFileDirty event and OnChange event should take into account Autodesk Inventor's new "smudged" state.</p>
+
+<p Class="Normal">OnFileDirty is fired only when the document is dirtied (including as a result of adaptivity). It is not fired when the document is only smudged.</p>
+
+<p Class="Normal">OnChange (and the corresponding application event) is fired when a document is changed. If the change would dirty the document, the event's context has a NameValueMap pair of ConsideredDirty = 1. </p>
+
+<br>
+<table cellspacing="4" cellpadding="4" border="1">
+<tr>
+    <td  bgcolor="Yellow"><b>Note:</b> There are some exceptions. The OnChange event will not be fired due to an update of a drawing or presentation document, or due to audit or migration during the opening of documents. In such cases only OnFileDirty is fired, and cannot be vetoed. </td>
+</tr>
+</table>
+<br>
+
+<p Class="Normal">Since Autodesk Inventor 9, a PDM system Add-in should listen to the OnFileDirty event (FileAccessEvent) to check out a file due to a document change. The Add-in should use the context to determine whether the event can be vetoed. </p>
+
+<p Class="Normal">To keep its file reference information up to date, the PDM Add-in should listen to the OnDocumentChange event. Upon receiving the event, the Add-in should examine the ReasonsForChange argument for the kReferencesChangeCmdType bit.</p>
+
+<br>
+<h3>Summary</h3>
+
+<p Class="Normal">The Autodesk Inventor API support notification of many events. Some of these events provide additional information, such as the timing of the event notification - whether it was fired before or after the event took place (the EventTimingEnum).  A small number of events provide further information to qualify the context in which the event took place, through the NameValueMap object. Some events support the HandlingCode argument, which allows developer code to specify alternate actions other than the default.</p>
+
+<br />
+<br />
+<div id="CopyrightNotice" style="display:none;">
+  <hr />
+  <table width="100%" style="font-size:15">
+	<tr>
+	  <td align="left">
+		&copy; Copyright 2025 Autodesk, Inc.
+	  </td>
+	  <td align="right">
+		<a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(EventContext_Overview)">Comment on this page.</a>
+	  </td>
+	</tr>
+  </table>
+</div>
+
+</body>
+</html>

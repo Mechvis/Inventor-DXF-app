@@ -1,0 +1,120 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/PathEntityProxy.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="PathEntityProxy">
+    <meta name="description" content="PathEntityProxy Object">
+    <meta name="topicid" content="GUID-PathEntityProxy">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>PathEntityProxy Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">PathEntityProxy Object
+			</h1>
+              Derived from: <a href="PathEntity.htm">PathEntity</a> Object
+            <br><h2 class="api">
+          Description
+        </h2>This is an assembly-context proxy object derived from its native definition-context object.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PathEntityProxy_GetReferenceKey.htm">GetReferenceKey</a></td>
+        <td class="api-list">Method that generates and returns the reference key for this entity.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PathEntityProxy_Application.htm">Application</a></td>
+        <td class="api-list">Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PathEntityProxy_ContainingOccurrence.htm">ContainingOccurrence</a></td>
+        <td class="api-list">Property that returns the ComponentOccurrence that the native object is being referenced through. The returned occurrence is the containing occurrence.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PathEntityProxy_Curve.htm">Curve</a></td>
+        <td class="api-list">Property that returns the geometry of the entity. The geometry is returned such that the entities are connected in a head-to-tail fashion.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PathEntityProxy_CurveType.htm">CurveType</a></td>
+        <td class="api-list">Property that returns the type of the curve referenced by the path entity. This property allows you to determine what type of object will be returned by the Curve property.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PathEntityProxy_NativeObject.htm">NativeObject</a></td>
+        <td class="api-list">Gets the object in the context of the definition instead of the containing assembly.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PathEntityProxy_OpposedToSketchEntity.htm">OpposedToSketchEntity</a></td>
+        <td class="api-list">Property that returns a Boolean indicating if the parametric flow of the path entity is in the same direction as the sketch entity it was derived from.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PathEntityProxy_Parent.htm">Parent</a></td>
+        <td class="api-list">Property that returns the parent Path of the entity.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PathEntityProxy_SketchEntity.htm">SketchEntity</a></td>
+        <td class="api-list">Property that gets the sketch entity (2D or 3D) this entity was derived from.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PathEntityProxy_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 9<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(PathEntityProxy%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,225 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/CommandManager.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="CommandManager">
+    <meta name="description" content="CommandManager Object">
+    <meta name="topicid" content="GUID-CommandManager">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>CommandManager Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">CommandManager Object
+			</h1><br><h2 class="api">
+          Description
+        </h2>The CommandManager object provides functionality that interacts with the various user interaction events. See here for an overview.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="CommandManager_ClearPrivateEvents.htm">ClearPrivateEvents</a></td>
+        <td class="api-list">Clears the contents of Autodesk Inventor's internal clipboard.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="CommandManager_CreateDragContext.htm">CreateDragContext</a></td>
+        <td class="api-list">Method that creates a new DragContext object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="CommandManager_CreateInteractionEvents.htm">CreateInteractionEvents</a></td>
+        <td class="api-list">Method that creates and returns a new InteractionEvents object. The InteractionEvents object is created for document that is currently active.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="CommandManager_CreateMiniToolbar.htm">CreateMiniToolbar</a></td>
+        <td class="api-list">Method that creates a MiniToolbar object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="CommandManager_DoPreSelect.htm">DoPreSelect</a></td>
+        <td class="api-list">Method that causes Autodesk Inventor to go through the pre-selection protocol, including firing of corresponding event out the active InteractionEvents object if one is active. If a native Autodesk Inventor command is active and is in a selection mode, it gets the pre-select notification just like a native pre-selection happened. This method is useful when you want to perform picking outside of the graphic window. For example if you have a browser that has icons that represent selectable objects you can cause the selection behavior to happen as the user navigates through your browser and selects objects.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="CommandManager_DoSelect.htm">DoSelect</a></td>
+        <td class="api-list">Method that causes Autodesk Inventor to go through the selection protocol, including firing of corresponding event out the active InteractionEvents object if one is active. If a native Autodesk Inventor command is active and is in a selection mode, it gets the select notification just like a native selection happened. This method is useful when you want to perform picking outside of the graphic window. For example if you have a browser that has icons that represent selectable objects you can cause the selection behavior to happen as the user navigates through your browser and selects objects.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="CommandManager_DoStopPreSelect.htm">DoStopPreSelect</a></td>
+        <td class="api-list">Method that causes Autodesk Inventor to go through the stop pre-selection protocol, including firing of corresponding event out the active InteractionEvents object if one is active. If a native Autodesk Inventor command is active and is in a selection mode, it gets the stop pre-select notification just like a native stop pre-selection happened. This method is useful when you want to perform picking outside of the graphic window. For example if you have a browser that has icons that represent selectable objects you can cause the selection behavior to happen as the user navigates through your browser and selects objects.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="CommandManager_DoUnSelect.htm">DoUnSelect</a></td>
+        <td class="api-list">Method that causes Autodesk Inventor to go through the de-selection protocol, including firing of corresponding event out the active InteractionEvents object if one is active. If a native Autodesk Inventor command is active and is in a selection mode, it gets the de-select notification just like a native de-selection happened. This method is useful when you want to perform picking outside of the graphic window. For example if you have a browser that has icons that represent selectable objects you can cause the selection behavior to happen as the user navigates through your browser and selects objects.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="CommandManager_PeekPrivateEvent.htm">PeekPrivateEvent</a></td>
+        <td class="api-list">Method that queries data contained by Autodesk Inventor's internal clipboard.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="CommandManager_Pick.htm">Pick</a></td>
+        <td class="api-list">Method that allows the user to pick a single entity.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="CommandManager_PostPrivateEvent.htm">PostPrivateEvent</a></td>
+        <td class="api-list">Method that posts data onto Autodesk Inventor's internal clipboard. Certain commands that usually obtain information using a dialog, i.e. Open, Save, etc., look first to see if data is on the clipboard before displaying the dialog. If valid information is on the clipboard the command will use it instead of displaying the dialog and asking the user to specify the filename.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="CommandManager_PromptMessage.htm">PromptMessage</a></td>
+        <td class="api-list">This method allows the developer to put up prompt messages (unless the user has suppressed this prompt) much like the Visual Basic MsgBox functionality.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="CommandManager_StartExecutable.htm">StartExecutable</a></td>
+        <td class="api-list">Method that causes the specified executable to be run. Using the Parameters argument you can also pass arguments to the executable.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="CommandManager_StopActiveCommand.htm">StopActiveCommand</a></td>
+        <td class="api-list">Method that causes the currently running command to be terminated.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="CommandManager_ActiveCommand.htm">ActiveCommand</a></td>
+        <td class="api-list">Gets the active command (one that is currently running).</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="CommandManager_CommandCategories.htm">CommandCategories</a></td>
+        <td class="api-list">Property that returns the collection.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="CommandManager_ControlDefinitions.htm">ControlDefinitions</a></td>
+        <td class="api-list">Property that returns the ControlDefinitions collection.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="CommandManager_Parent.htm">Parent</a></td>
+        <td class="api-list">Property that returns the parent document of the object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="CommandManager_SelectionActive.htm">SelectionActive</a></td>
+        <td class="api-list">Property that informs the client if Autodesk Inventor is currently in selection mode or not. This may be used, for example, by clients to test if calling the DoSelect (and related) methods will have any effect or not.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="CommandManager_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="CommandManager_UserInputEvents.htm">UserInputEvents</a></td>
+        <td class="api-list">Property that returns the object that fires events on all user input (commands, keyboard, mouse, etc.).</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="Application_CommandManager.htm">Application.CommandManager</a>, <a href="ButtonDefinition_Parent.htm">ButtonDefinition.Parent</a>, <a href="ComboBoxDefinition_Parent.htm">ComboBoxDefinition.Parent</a>, <a href="CommandCategory_Parent.htm">CommandCategory.Parent</a>, <a href="ControlDefinition_Parent.htm">ControlDefinition.Parent</a>, <a href="InteractionEvents_Parent.htm">InteractionEvents.Parent</a>, <a href="MacroControlDefinition_Parent.htm">MacroControlDefinition.Parent</a>, <a href="UserInputEvents_Parent.htm">UserInputEvents.Parent</a><h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="AddButtonToAppMenu_Sample.htm">Add commands to the application menu</a></td>
+        <td class="api-list">Demonstrates adding command to the application menu.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="CommandManager_Pick_Sample.htm">Single selection - simple</a></td>
+        <td class="api-list">The following sample demonstrates getting a single selection from the user.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ContentCenterPartReplace_Sample.htm">Replace content center part</a></td>
+        <td class="api-list">This sample demonstrates how to replace the content part referenced by an assembly occurrence.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="CopySketch_Sample.htm">Copy a sketch</a></td>
+        <td class="api-list">This sample demonstrates copying the contents of a sketch into another sketch via the API.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DumpControlDefinitions_Sample.htm">Print list of all Inventor Commands</a></td>
+        <td class="api-list">This sample prints the internal names and descriptions of all commands (aka ControlDefinitions) in Inventor.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="EnvironmentManager_OverrideEnvironment_Sample.htm">Creation of an override environment for a document</a></td>
+        <td class="api-list">A new ribbon tab is created and associated with the override environment.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PostPrivateEventSample_Sample.htm">Post Private Event Sample</a></td>
+        <td class="api-list">This sample demonstrates how to use the PostPrivateEvent to configure the options for placing a part component.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="RibbonPanels_Add_Sample.htm">Create a ribbon panel in an existing tab</a></td>
+        <td class="api-list">Demonstrates creating a new ribbon panel within an existing ribbon tab.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SelectEventsObject_WindowSelectEnabled_Sample.htm">Window Selection</a></td>
+        <td class="api-list">This sample demonstrates using the selection events to window-select multiple edges. Selection is dependent on events and VB only supports events within a class module.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Sketch_CopyContentsTo_Sample.htm">Copy sketch contents</a></td>
+        <td class="api-list">This sample shows how to copy the contents of one sketch to another.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UserInputEventsSink_OnDoubleClick_Sample.htm">Cancel a double click</a></td>
+        <td class="api-list">Demonstrates how to receive (and in this case, cancel) a double click from a user. Run the sample code and double click a browser node to trigger the event.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="UserInputEventsSink_OnDrag_Sample.htm">OnDrag Event - dragging a WorkPoint</a></td>
+        <td class="api-list">This sample demonstrates the use of the OnDrag event to drag fixed work points when no command is active. This sample only allows drags parallel to the X-Y plane. This sample is dependent on events and VB only supports events within a class module.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 4<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(CommandManager%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

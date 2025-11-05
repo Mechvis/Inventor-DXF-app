@@ -1,0 +1,575 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/DimensionStyle.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="DimensionStyle">
+    <meta name="description" content="DimensionStyle Object">
+    <meta name="topicid" content="GUID-DimensionStyle">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>DimensionStyle Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">DimensionStyle Object
+			</h1>
+              Derived from: <a href="Style.htm">Style</a> Object
+            <br><h2 class="api">
+          Description
+        </h2>The DimensionStyle object represents a dimension style in a drawing.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_ConvertToLocal.htm">ConvertToLocal</a></td>
+        <td class="api-list">Method that creates a local cached copy of a global style and returns the local style.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_Copy.htm">Copy</a></td>
+        <td class="api-list">Method that creates a new local Style object. The newly created style is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_Delete.htm">Delete</a></td>
+        <td class="api-list">Method that deletes the Style/Layer/UnfoldMethod.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_GetCustomLineType.htm">GetCustomLineType</a></td>
+        <td class="api-list">Method that returns information regarding the custom line type in use. The method returns a failure if the return value of the LineType property is not kCustomLineType.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_GetHoleThreadNoteOptionValue.htm">GetHoleThreadNoteOptionValue</a></td>
+        <td class="api-list">Gets the option value for hole thread notes.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_GetReferenceKey.htm">GetReferenceKey</a></td>
+        <td class="api-list">Method that generates and returns the reference key for this entity.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_SaveToGlobal.htm">SaveToGlobal</a></td>
+        <td class="api-list">Method that saves this style to the global repository. If a style with the same name is found in the repository, that style is updated.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_SetCustomLineType.htm">SetCustomLineType</a></td>
+        <td class="api-list">Method that sets a custom line type to the style from the specified .lin file. The method automatically changes the value of LineType property to kCustomLineType.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_SetHoleThreadNoteOptionValue.htm">SetHoleThreadNoteOptionValue</a></td>
+        <td class="api-list">Sets the option value for hole thread notes.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_UpdateFromGlobal.htm">UpdateFromGlobal</a></td>
+        <td class="api-list">Method that updates this style from the global repository.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_AlignedDimensionTextOrientation.htm">AlignedDimensionTextOrientation</a></td>
+        <td class="api-list">Gets and sets the orientation of the text in an aligned dimension.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_AlternateDecimalMarkerType.htm">AlternateDecimalMarkerType</a></td>
+        <td class="api-list">Gets and sets the character to use as a decimal marker for alternate dimensions.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_AlternateDisplayFormat.htm">AlternateDisplayFormat</a></td>
+        <td class="api-list">Gets and sets the alternate units display format for all non-angular dimensions.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_AlternateDisplayUnitType.htm">AlternateDisplayUnitType</a></td>
+        <td class="api-list">Gets and sets whether to display units for alternate dimensions in the drawing.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_AlternateFractionalTextScale.htm">AlternateFractionalTextScale</a></td>
+        <td class="api-list">Gets and sets the size of the stacked text relative to the default text size when using alternate units. The valid range of values is 0.25 to 1.25.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_AlternateIncludedZeroDisplay.htm">AlternateIncludedZeroDisplay</a></td>
+        <td class="api-list">Gets and sets whether to display the included zeroes for alternate dimensions in the drawing.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_AlternateLeadingZeroDisplay.htm">AlternateLeadingZeroDisplay</a></td>
+        <td class="api-list">Gets and sets whether to display the leading zeroes for alternate dimensions in the drawing.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_AlternateLinearPrecision.htm">AlternateLinearPrecision</a></td>
+        <td class="api-list">Gets and sets the precision for linear alternate dimensions in the drawing.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_AlternateLinearUnits.htm">AlternateLinearUnits</a></td>
+        <td class="api-list">Gets and sets the units of length measure used for alternate dimensions in the drawing.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_AlternateTrailingZeroDisplay.htm">AlternateTrailingZeroDisplay</a></td>
+        <td class="api-list">Gets and sets whether to display the trailing zeroes for alternate dimensions in the drawing.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_AngularArrowsInside.htm">AngularArrowsInside</a></td>
+        <td class="api-list">Gets and sets inside or outside placement of arrows for Angular dimensions.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_AngularFormatIsDecimalDegrees.htm">AngularFormatIsDecimalDegrees</a></td>
+        <td class="api-list">Gets and sets whether to display angular dimension values as decimal degrees or degrees-minutes-seconds.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_AngularHideExtensionLineOne.htm">AngularHideExtensionLineOne</a></td>
+        <td class="api-list">Gets and sets if the first extension line of an angular dimension is hidden.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_AngularHideExtensionLineTwo.htm">AngularHideExtensionLineTwo</a></td>
+        <td class="api-list">Gets and sets if the second extension line of an angular dimension is hidden.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_AngularLeadingZeroDisplay.htm">AngularLeadingZeroDisplay</a></td>
+        <td class="api-list">Gets and sets whether to display the leading zeroes for angular dimensions in the drawing.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_AngularPrecision.htm">AngularPrecision</a></td>
+        <td class="api-list">Gets and sets the precision for angular dimensions in the drawing.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_AngularTextModifier.htm">AngularTextModifier</a></td>
+        <td class="api-list">Gets and sets the optional modifier that controls the controls the position of text in an angular dimension.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_AngularTextOrientation.htm">AngularTextOrientation</a></td>
+        <td class="api-list">Gets and sets the orientation of angular dimension text.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_AngularTrailingZeroDisplay.htm">AngularTrailingZeroDisplay</a></td>
+        <td class="api-list">Gets and sets whether to display the trailing zeroes for angular dimensions in the drawing.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_AngularUseQuadrant.htm">AngularUseQuadrant</a></td>
+        <td class="api-list">Gets and sets whether to use a quadrant or ignore the quadrant angular dimension text.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_Application.htm">Application</a></td>
+        <td class="api-list">Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_ArcLengthDimensionSymbolAbove.htm">ArcLengthDimensionSymbolAbove</a></td>
+        <td class="api-list">Gets and sets whether the arc length dimension symbol is above the arc length dimension value or before it.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_ArrowheadHeight.htm">ArrowheadHeight</a></td>
+        <td class="api-list">Gets and sets the height of the arrowhead relative to the associated line.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_ArrowheadSize.htm">ArrowheadSize</a></td>
+        <td class="api-list">Gets and sets the size of the arrowhead.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_ArrowheadType.htm">ArrowheadType</a></td>
+        <td class="api-list">Gets and sets the arrowhead style to use.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_ArrowheadTypeForChainDimensions.htm">ArrowheadTypeForChainDimensions</a></td>
+        <td class="api-list">Gets and sets the internal arrowhead styles to use for chain dimensions.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_BasicDimensionPrefixSuffixInside.htm">BasicDimensionPrefixSuffixInside</a></td>
+        <td class="api-list">Gets and sets whether the prefix and suffix are inside or outside the basic dimension box.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_BendNoteDualFormat.htm">BendNoteDualFormat</a></td>
+        <td class="api-list">Gets and sets the arrangement of the alternate dimension display for bend notes.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_ChamferNoteDualFormat.htm">ChamferNoteDualFormat</a></td>
+        <td class="api-list">Gets and sets the arrangement of the alternate dimension display for chamfer notes.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_Color.htm">Color</a></td>
+        <td class="api-list">Gets and sets the color for the style.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_Comments.htm">Comments</a></td>
+        <td class="api-list">Gets and sets comments associated with the style.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_DecimalMarkerType.htm">DecimalMarkerType</a></td>
+        <td class="api-list">Gets and sets the character to use as a decimal marker for dimensions.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_DiameterArrowsInside.htm">DiameterArrowsInside</a></td>
+        <td class="api-list">Gets and sets inside or outside placement of arrows for diameter dimensions.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_DiameterDualDimensionLine.htm">DiameterDualDimensionLine</a></td>
+        <td class="api-list">Gets and sets if single or dual diameter dimension lines should be displayed.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_DiameterExternalTextOrientation.htm">DiameterExternalTextOrientation</a></td>
+        <td class="api-list">Gets and sets the orientation of text in a diameter dimension when the text is external using a leader line.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_DiameterInternalTextOrientation.htm">DiameterInternalTextOrientation</a></td>
+        <td class="api-list">Gets and sets the orientation of text in a diameter dimension when the text is within a dimension line.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_DiameterLeaderFromCenter.htm">DiameterLeaderFromCenter</a></td>
+        <td class="api-list">Gets and sets if the leader line of a diameter dimension extends to the center or not.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_DiameterMultiLineTextOrientation.htm">DiameterMultiLineTextOrientation</a></td>
+        <td class="api-list">Read-write property that gets and sets the position of multiple lines of text relative to the landing line in a diameter dimension.&nbsp;Valid values are kFirstLineCenteredOnLandingLine, kAllAboveLandingLine, kAllAboveLandingLineWithUnderline, kFirstLineAboveLandingLine, and kJISAlignment.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_DiameterShowDiameterSymbol.htm">DiameterShowDiameterSymbol</a></td>
+        <td class="api-list">Gets and sets if the diameter symbol should be shown in a diameter dimension.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_DimensionDualFormat.htm">DimensionDualFormat</a></td>
+        <td class="api-list">Read-write property that gets and sets the arrangement of the alternate dimension display for dimensions.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_DisplayFormat.htm">DisplayFormat</a></td>
+        <td class="api-list">Gets and sets the display format for all non-angular dimensions.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_DisplayUnitType.htm">DisplayUnitType</a></td>
+        <td class="api-list">Gets and sets whether to display units for dimensions in the drawing.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_ExtendBeyondTicks.htm">ExtendBeyondTicks</a></td>
+        <td class="api-list">Gets and sets the distance extend the dimension line past the extension line in centimeters when the arrowheads is specified as oblique or no marks.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_Extension.htm">Extension</a></td>
+        <td class="api-list">Gets and sets the distance the extension line is drawn past the dimension line.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_ExtensionLine.htm">ExtensionLine</a></td>
+        <td class="api-list">Gets and sets the length of the extension line in centimeters.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_FractionalTextScale.htm">FractionalTextScale</a></td>
+        <td class="api-list">Gets and sets the size of the stacked text relative to the default text size. The valid range of values is 0.25 to 1.25.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_Gap.htm">Gap</a></td>
+        <td class="api-list">Gets and sets the distance between the dimension text and the dimension lines.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_HoleNoteDualFormat.htm">HoleNoteDualFormat</a></td>
+        <td class="api-list">Gets and sets the arrangement of the alternate dimension display for hole notes.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_HoleThreadTypeList.htm">HoleThreadTypeList</a></td>
+        <td class="api-list">Returns the hole and thread type list.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_HorizontalDimensionTextOrientation.htm">HorizontalDimensionTextOrientation</a></td>
+        <td class="api-list">Read-write property that gets and sets the orientation of the text in a horizontal dimension.&nbsp;Valid values are kParallelDimensionText and kInlineHorizontalText.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_IncludedZeroDisplay.htm">IncludedZeroDisplay</a></td>
+        <td class="api-list">Gets and sets whether to display the included zeroes for dimensions in the drawing.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_InternalName.htm">InternalName</a></td>
+        <td class="api-list">Property that returns the internal name of the style. The name is the internal English name of the standard style. This name will remain constant and is not affected by locale. This name is never displayed to the user. Note that this name is not guaranteed to be unique.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_InUse.htm">InUse</a></td>
+        <td class="api-list">Property that indicates if this style is in use.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_LeaderStyle.htm">LeaderStyle</a></td>
+        <td class="api-list">Property that gets and sets the leader style used for the dimension style.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_LeadingZeroDisplay.htm">LeadingZeroDisplay</a></td>
+        <td class="api-list">Gets and sets whether to display the leading zeroes for dimensions in the drawing.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_LinearArrowsInside.htm">LinearArrowsInside</a></td>
+        <td class="api-list">Gets and sets inside or outside placement of arrows for linear dimensions.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_LinearHideExtensionLineOne.htm">LinearHideExtensionLineOne</a></td>
+        <td class="api-list">Gets and sets if the first extension line of a linear dimension is hidden.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_LinearHideExtensionLineTwo.htm">LinearHideExtensionLineTwo</a></td>
+        <td class="api-list">Gets and sets if the second extension line of a linear dimension is hidden.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_LinearMultiLineTextOrientation.htm">LinearMultiLineTextOrientation</a></td>
+        <td class="api-list">Read-write property that gets and sets the position of multiple lines of text relative to the landing line in a linear dimension.&nbsp;Valid values are kAllAboveLandingLine and kFirstLineAboveLandingLine.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_LinearPrecision.htm">LinearPrecision</a></td>
+        <td class="api-list">Gets and sets the precision value for linear dimensions in the drawing.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_LinearUnits.htm">LinearUnits</a></td>
+        <td class="api-list">Gets and sets the units of length measure used for dimensions in the drawing.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_LineType.htm">LineType</a></td>
+        <td class="api-list">Gets and sets the line type override for the style.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_LineWeight.htm">LineWeight</a></td>
+        <td class="api-list">Gets and sets the line weight override for the style.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_Name.htm">Name</a></td>
+        <td class="api-list">Gets/Sets the name of the Style.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_OrdinateAlignment.htm">OrdinateAlignment</a></td>
+        <td class="api-list">Gets and sets the type of alignment to use for ordinate dimensions.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_OrdinateDimensionOriginArrowheadType.htm">OrdinateDimensionOriginArrowheadType</a></td>
+        <td class="api-list">Gets and sets the arrowhead type for the origin member of ordinate dimension sets.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_OrdinateHideOriginIndicator.htm">OrdinateHideOriginIndicator</a></td>
+        <td class="api-list">Gets and sets if the origin indicator is to be hidden or not.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_OrdinateJoggingAllowed.htm">OrdinateJoggingAllowed</a></td>
+        <td class="api-list">Gets and sets if jogged leaders for ordinate dimensions is allowed or not.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_OrdinatePositiveBothDirections.htm">OrdinatePositiveBothDirections</a></td>
+        <td class="api-list">Gets and sets if positive values should be shown in both directions or not for an ordinate dimension.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_OrdinateShowDirection.htm">OrdinateShowDirection</a></td>
+        <td class="api-list">Gets and sets if the direction arrow should be shown or not for ordinate dimensions.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_OrdinateUseOriginIndicator.htm">OrdinateUseOriginIndicator</a></td>
+        <td class="api-list">Gets and sets if the origin indicator is to be used or not.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_OriginOffset.htm">OriginOffset</a></td>
+        <td class="api-list">Gets and sets the distance from an edge or point to the endpoint of the extension line.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_Parent.htm">Parent</a></td>
+        <td class="api-list">Property returning the parent of this object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_PartOffset.htm">PartOffset</a></td>
+        <td class="api-list">Gets and sets the distance from the referenced part edge to a parallel dimension line.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_Prefix.htm">Prefix</a></td>
+        <td class="api-list">Gets and sets the dimension prefix.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_PrefixAndSuffixOrder.htm">PrefixAndSuffixOrder</a></td>
+        <td class="api-list">Gets and sets the location of prefix and suffix.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_PunchNoteDualFormat.htm">PunchNoteDualFormat</a></td>
+        <td class="api-list">Gets and sets the arrangement of the alternate dimension display for punch notes.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_RadialArrowsInside.htm">RadialArrowsInside</a></td>
+        <td class="api-list">Gets and sets inside or outside placement of arrows for radial dimensions.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_RadialJoggedLeader.htm">RadialJoggedLeader</a></td>
+        <td class="api-list">Gets and sets if the leader line of a radial dimension is jogged or not.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_RadialLeaderFromCenter.htm">RadialLeaderFromCenter</a></td>
+        <td class="api-list">Gets and sets if the leader line of a radial dimension extends from the center or not.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_RadialMultiLineTextOrientation.htm">RadialMultiLineTextOrientation</a></td>
+        <td class="api-list">Gets and sets the position of multiple lines of text relative to the landing line in a radial dimension.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_RadialTextOrientation.htm">RadialTextOrientation</a></td>
+        <td class="api-list">Gets and sets the orientation of text in a radial dimension.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_ShowBreakSymbol.htm">ShowBreakSymbol</a></td>
+        <td class="api-list">Gets and sets whether to display break symbols for dimensions on a broken view.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_ShowDimensionLine.htm">ShowDimensionLine</a></td>
+        <td class="api-list">Gets and sets whether to display the dimension line when arrowheads are outside the dimension extension lines.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_Spacing.htm">Spacing</a></td>
+        <td class="api-list">Gets and sets the distance between the parallel dimension lines.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_StyleLocation.htm">StyleLocation</a></td>
+        <td class="api-list">Property that returns the location of this style, i.e. local to the document, cached locally in the document, exists in the library. Styles that exist in the library cannot be edited.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_StyleType.htm">StyleType</a></td>
+        <td class="api-list">Gets the type of the style.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_Suffix.htm">Suffix</a></td>
+        <td class="api-list">Gets and sets the dimension suffix.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_TextStyle.htm">TextStyle</a></td>
+        <td class="api-list">Gets and sets the text style used for the dimension style.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_Tolerance.htm">Tolerance</a></td>
+        <td class="api-list">Property that returns the Tolerance object. The Tolerance object contains methods and properties to query and modify tolerance types and values.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_ToleranceAlternateIncludedZeroDisplay.htm">ToleranceAlternateIncludedZeroDisplay</a></td>
+        <td class="api-list">Gets and sets whether to display the included zeroes for tolerances in alternate units.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_ToleranceAlternateLeadingZeroDisplay.htm">ToleranceAlternateLeadingZeroDisplay</a></td>
+        <td class="api-list">Gets and sets whether to display the leading zeroes for tolerances in alternate units.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_ToleranceAlternateTrailingZeroDisplay.htm">ToleranceAlternateTrailingZeroDisplay</a></td>
+        <td class="api-list">Gets and sets whether to display the trailing zeroes for tolerances in alternate units.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_ToleranceAlternateUnitPrecision.htm">ToleranceAlternateUnitPrecision</a></td>
+        <td class="api-list">Gets and sets the number of decimal places visible to the right of the decimal marker in tolerance text for alternate dimensions.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_ToleranceAngularPrecision.htm">ToleranceAngularPrecision</a></td>
+        <td class="api-list">Gets and sets the precision of the tolerance text for angular dimensions.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_ToleranceFontSize.htm">ToleranceFontSize</a></td>
+        <td class="api-list">Gets and sets the size of the font used for tolerances.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_ToleranceIncludedZeroDisplay.htm">ToleranceIncludedZeroDisplay</a></td>
+        <td class="api-list">Gets and sets whether to display the included zeroes for tolerances.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_ToleranceJustification.htm">ToleranceJustification</a></td>
+        <td class="api-list">Gets and sets the vertical justification of dimension tolerance text.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_ToleranceLeadingZeroDisplay.htm">ToleranceLeadingZeroDisplay</a></td>
+        <td class="api-list">Gets and sets whether to display the leading zeroes for tolerances.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_ToleranceLinearPrecision.htm">ToleranceLinearPrecision</a></td>
+        <td class="api-list">Gets and sets the number of decimal places visible to the right of the decimal marker in tolerance text for linear dimensions.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_ToleranceShowMinuteSecond.htm">ToleranceShowMinuteSecond</a></td>
+        <td class="api-list">Gets and sets whether to show angles using fractional degrees or minutes and seconds.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_ToleranceTextStyle.htm">ToleranceTextStyle</a></td>
+        <td class="api-list">Gets and sets the text style used for tolerance.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_ToleranceTrailingZeroDisplay.htm">ToleranceTrailingZeroDisplay</a></td>
+        <td class="api-list">Gets and sets whether to display the trailing zeroes for tolerances.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_ToleranceZeroToleranceDisplay.htm">ToleranceZeroToleranceDisplay</a></td>
+        <td class="api-list">Gets and sets how to display zero tolerances.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_TrailingZeroDisplay.htm">TrailingZeroDisplay</a></td>
+        <td class="api-list">Gets and sets whether to display the trailing zeroes for dimensions in the drawing.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_UpToDate.htm">UpToDate</a></td>
+        <td class="api-list">Property that gets the up-to-date status of the style against the global repository.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_UseCapitalXForEquallySpacedFeatures.htm">UseCapitalXForEquallySpacedFeatures</a></td>
+        <td class="api-list">Gets and sets whether to use capital X for equally spaced features or not.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DimensionStyle_VerticalDimensionTextOrientation.htm">VerticalDimensionTextOrientation</a></td>
+        <td class="api-list">Gets and sets the orientation of the text in a vertical dimension.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="AngularGeneralDimension_Style.htm">AngularGeneralDimension.Style</a>, <a href="BaselineDimensionSet_Style.htm">BaselineDimensionSet.Style</a>, <a href="BendNote_DimensionStyle.htm">BendNote.DimensionStyle</a>, <a href="ChainDimensionSet_Style.htm">ChainDimensionSet.Style</a>, <a href="ChamferNote_DimensionStyle.htm">ChamferNote.DimensionStyle</a>, <a href="DiameterGeneralDimension_Style.htm">DiameterGeneralDimension.Style</a>, <a href="DimensionStylesEnumerator_Item.htm">DimensionStylesEnumerator.Item</a>, <a href="GeneralDimension_Style.htm">GeneralDimension.Style</a>, <a href="HoleTag_DimensionStyle.htm">HoleTag.DimensionStyle</a>, <a href="HoleThreadNote_Style.htm">HoleThreadNote.Style</a>, <a href="LeaderNote_DimensionStyle.htm">LeaderNote.DimensionStyle</a>, <a href="LinearGeneralDimension_Style.htm">LinearGeneralDimension.Style</a>, <a href="ObjectDefaultsStyle_AngularDimensionStyle.htm">ObjectDefaultsStyle.AngularDimensionStyle</a>, <a href="ObjectDefaultsStyle_BaselineDimensionStyle.htm">ObjectDefaultsStyle.BaselineDimensionStyle</a>, <a href="ObjectDefaultsStyle_BendNoteStyle.htm">ObjectDefaultsStyle.BendNoteStyle</a>, <a href="ObjectDefaultsStyle_BendTagStyle.htm">ObjectDefaultsStyle.BendTagStyle</a>, <a href="ObjectDefaultsStyle_ChainDimensionStyle.htm">ObjectDefaultsStyle.ChainDimensionStyle</a>, <a href="ObjectDefaultsStyle_ChamferNoteStyle.htm">ObjectDefaultsStyle.ChamferNoteStyle</a>, <a href="ObjectDefaultsStyle_DiameterDimensionStyle.htm">ObjectDefaultsStyle.DiameterDimensionStyle</a>, <a href="ObjectDefaultsStyle_HoleNoteStyle.htm">ObjectDefaultsStyle.HoleNoteStyle</a>, <a href="ObjectDefaultsStyle_HoleTagStyle.htm">ObjectDefaultsStyle.HoleTagStyle</a>, <a href="ObjectDefaultsStyle_LeaderTextStyle.htm">ObjectDefaultsStyle.LeaderTextStyle</a>, <a href="ObjectDefaultsStyle_LinearDimensionStyle.htm">ObjectDefaultsStyle.LinearDimensionStyle</a>, <a href="ObjectDefaultsStyle_OrdinateDimensionStyle.htm">ObjectDefaultsStyle.OrdinateDimensionStyle</a>, <a href="ObjectDefaultsStyle_OrdinateSetDimensionStyle.htm">ObjectDefaultsStyle.OrdinateSetDimensionStyle</a>, <a href="ObjectDefaultsStyle_PunchNoteStyle.htm">ObjectDefaultsStyle.PunchNoteStyle</a>, <a href="ObjectDefaultsStyle_RadialDimensionStyle.htm">ObjectDefaultsStyle.RadialDimensionStyle</a>, <a href="ObjectDefaultsStyle_ThreadNoteStyle.htm">ObjectDefaultsStyle.ThreadNoteStyle</a>, <a href="OrdinateDimension_Style.htm">OrdinateDimension.Style</a>, <a href="OrdinateDimensionSet_Style.htm">OrdinateDimensionSet.Style</a>, <a href="PunchNote_DimensionStyle.htm">PunchNote.DimensionStyle</a>, <a href="RadiusGeneralDimension_Style.htm">RadiusGeneralDimension.Style</a><h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingDimension_Sample.htm">Dimensions - edit</a></td>
+        <td class="api-list">This sample demonstrates the editing of sheet dimensions and the associated dimension style.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 9<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(DimensionStyle%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

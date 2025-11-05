@@ -1,0 +1,99 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/ConstraintLimits.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="ConstraintLimits">
+    <meta name="description" content="ConstraintLimits Object">
+    <meta name="topicid" content="GUID-ConstraintLimits">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>ConstraintLimits Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">ConstraintLimits Object
+			</h1><br><h2 class="api">
+          Description
+        </h2>The ConstraintLimits object provides access to various limits related settings for assembly constraints and iMate definitions.<h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ConstraintLimits_Application.htm">Application</a></td>
+        <td class="api-list">Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ConstraintLimits_Maximum.htm">Maximum</a></td>
+        <td class="api-list">Property that returns the Parameter object that controls the maximum limit value. This property returns Nothing if the maximum limit has never been enabled for this constraint or the parameter associated with the maximum value was deleted. Set the MaximumEnabled property to True to make this parameter available.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ConstraintLimits_MaximumEnabled.htm">MaximumEnabled</a></td>
+        <td class="api-list">Read-write property that gets and sets whether the maximum limit value should be enabled.&nbsp;Once enabled, the parameter returned in the Maximum property can be used to control the value of this limit.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ConstraintLimits_Minimum.htm">Minimum</a></td>
+        <td class="api-list">Property that returns the Parameter object that controls the minimum limit value. This property returns Nothing if the minimum limit has never been enabled for this constraint or the parameter associated with the minimum value was deleted. Set the MinimumEnabled property to True to make this parameter available.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ConstraintLimits_MinimumEnabled.htm">MinimumEnabled</a></td>
+        <td class="api-list">Read-write property that gets and sets whether the minimum limit value should be enabled.&nbsp;Once enabled, the parameter returned in the Minimum property can be used to control the value of this limit.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ConstraintLimits_Parent.htm">Parent</a></td>
+        <td class="api-list">Property that returns the parent object. This can be one of the strongly typed assembly constraint objects (such as MateConstraint) or one of the strongly typed iMate definition objects (such as MateiMateDefinition).</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ConstraintLimits_RestingPositionEnabled.htm">RestingPositionEnabled</a></td>
+        <td class="api-list">Read-write property that gets and sets whether the resting position value should be enabled.&nbsp;If enabled, the constraint snaps back to the nominal value after a drag or a solve.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ConstraintLimits_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="AngleConstraint_ConstraintLimits.htm">AngleConstraint.ConstraintLimits</a>, <a href="AngleConstraintProxy_ConstraintLimits.htm">AngleConstraintProxy.ConstraintLimits</a>, <a href="FlushConstraint_ConstraintLimits.htm">FlushConstraint.ConstraintLimits</a>, <a href="FlushConstraintProxy_ConstraintLimits.htm">FlushConstraintProxy.ConstraintLimits</a>, <a href="FlushiMateDefinition_ConstraintLimits.htm">FlushiMateDefinition.ConstraintLimits</a>, <a href="FlushiMateDefinitionProxy_ConstraintLimits.htm">FlushiMateDefinitionProxy.ConstraintLimits</a>, <a href="InsertConstraint_ConstraintLimits.htm">InsertConstraint.ConstraintLimits</a>, <a href="InsertConstraintProxy_ConstraintLimits.htm">InsertConstraintProxy.ConstraintLimits</a>, <a href="InsertiMateDefinition_ConstraintLimits.htm">InsertiMateDefinition.ConstraintLimits</a>, <a href="InsertiMateDefinitionProxy_ConstraintLimits.htm">InsertiMateDefinitionProxy.ConstraintLimits</a>, <a href="MateConstraint_ConstraintLimits.htm">MateConstraint.ConstraintLimits</a>, <a href="MateConstraintProxy_ConstraintLimits.htm">MateConstraintProxy.ConstraintLimits</a>, <a href="MateiMateDefinition_ConstraintLimits.htm">MateiMateDefinition.ConstraintLimits</a>, <a href="MateiMateDefinitionProxy_ConstraintLimits.htm">MateiMateDefinitionProxy.ConstraintLimits</a>, <a href="TangentConstraint_ConstraintLimits.htm">TangentConstraint.ConstraintLimits</a>, <a href="TangentConstraintProxy_ConstraintLimits.htm">TangentConstraintProxy.ConstraintLimits</a>, <a href="TangentiMateDefinition_ConstraintLimits.htm">TangentiMateDefinition.ConstraintLimits</a>, <a href="TangentiMateDefinitionProxy_ConstraintLimits.htm">TangentiMateDefinitionProxy.ConstraintLimits</a><h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2011<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(ConstraintLimits%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

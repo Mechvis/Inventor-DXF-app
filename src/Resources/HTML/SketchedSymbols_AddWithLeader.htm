@@ -1,0 +1,132 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/SketchedSymbols_AddWithLeader.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="SketchedSymbols_AddWithLeader">
+    <meta name="description" content="SketchedSymbols.AddWithLeader Method">
+    <meta name="topicid" content="SketchedSymbols_AddWithLeader">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>SketchedSymbols.AddWithLeader Method</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">SketchedSymbols.AddWithLeader Method</h1>
+
+          Parent Object: <a href="SketchedSymbols.htm">SketchedSymbols</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Method that places a sketched symbol with a leader.</p>
+    <h2 class="api">
+          Syntax
+        </h2>
+        
+            SketchedSymbols.<b>AddWithLeader</b>( <b><i>SketchedSymbolDefinition</i></b> As Variant, <b><i>LeaderPoints</i></b> As <a href="ObjectCollection.htm">ObjectCollection</a>, [<b><i>Rotation</i></b>] As Double, [<b><i>Scale</i></b>] As Double, [<b><i>PromptStrings</i></b>] As Variant, [<b><i>SymbolClipping</i></b>] As Boolean, [<b><i>Static</i></b>] As Boolean ) As <a href="SketchedSymbol.htm">SketchedSymbol</a>
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">SketchedSymbolDefinition</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Input Variant that specifies which SketchedSymbolDefinition to use.&nbsp;The input for the argument can be either a SketchedSymbolDefinition object or string containing the name of an existing SketchedSymbolDefinition object.</td>
+      </tr>
+      <tr>
+        <td class="api-list">LeaderPoints</td>
+        <td class="api-list"><a href="ObjectCollection.htm">ObjectCollection</a></td>
+        <td class="api-list">Input ObjectCollection containing a series of Point2d objects representing the leader originating at the symbol.&nbsp;The last item in the collection (even if it is the only item) can be a GeometryIntent object indicating a geometry to attach the leader to.&nbsp;A GeometryIntent object can be created using the Sheet.CreateGeometryIntent method.&nbsp;The ObjectCollection must contain at least one item, else the method will fail.</td>
+      </tr>
+      <tr>
+        <td class="api-list">Rotation</td>
+        <td class="api-list">Double</td>
+        <td class="api-list">Optional input double that specifies a rotation angle for the symbol in radians. If not specified, a default value of 0 is used, indicating that no rotation is applied.<br /><br /> This is an optional argument whose default value is 0.0.</td>
+      </tr>
+      <tr>
+        <td class="api-list">Scale</td>
+        <td class="api-list">Double</td>
+        <td class="api-list">Optional input double that specifies a scale for the symbol in radians. If not specified, a default value of 1 is used, indicating that no scaling is applied.<br /><br /> This is an optional argument whose default value is 1.0.</td>
+      </tr>
+      <tr>
+        <td class="api-list">PromptStrings</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional input array of Strings that specifies the input strings to use as input for prompted text fields that my be present in the sketched symbol definition.&nbsp;If prompted strings exist in the sketched symbol definition you must supply input strings through this argument or this method will fail.&nbsp;The prompt strings and their order are obtained by querying the TextBox objects in the SketchedSymbolDefinition.&nbsp;The order they’re returned by the TextBoxes collection is the same order the input strings need to be supplied in the PromptStrings array.<br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+      <tr>
+        <td class="api-list">SymbolClipping</td>
+        <td class="api-list">Boolean</td>
+        <td class="api-list">Optional input Boolean that indicates whether to trim the annotations applied to the symbol.&nbsp;If True, the annotations are trimmed.&nbsp;If not specified, a value of True is used.<br /><br /> This is an optional argument whose default value is True.</td>
+      </tr>
+      <tr>
+        <td class="api-list">Static</td>
+        <td class="api-list">Boolean</td>
+        <td class="api-list">Optional input Boolean that indicates whether to show the scale and rotation grip points on the symbol.&nbsp;If True, the grip points are disabled.&nbsp;If not specified, a value of False is used.<br /><br /> This is an optional argument whose default value is False.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SketchedSymbols_AddWithLeader_Sample.htm">Create sketched symbol and leader</a></td>
+        <td class="api-list">This sample illustrates creating sketched symbol with a leader.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 11<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(SketchedSymbols.AddWithLeader%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

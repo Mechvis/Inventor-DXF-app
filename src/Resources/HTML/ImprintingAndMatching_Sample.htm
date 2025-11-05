@@ -1,0 +1,448 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/ImprintingAndMatching_Sample.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="ImprintingAndMatching_Sample">
+    <meta name="description" content="Body Imprinting and matching the results Sample">
+    <meta name="topicid" content="ImprintingAndMatching_Sample">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>Body Imprinting and matching the results</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body><script>
+          function copyCode(language) {
+          // Get the pre element for the specified language.
+          var preElement = document.getElementById(language);
+
+          // Get the text from the element and copy it to the clipboard.
+          var preText = preElement.innerText;
+
+          var isIE = /*@cc_on!@*/false || !!document.documentMode;
+
+          if (isIE)
+          {
+            window.clipboardData.setData('Text', preText);
+          }
+          else
+          {
+            navigator.clipboard.writeText(preText);
+          }
+
+          //alert("Code copied to clipboard");
+          }
+        </script><link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">Body Imprinting and matching the results</h1>
+    <h2 class="api">
+          Description
+        </h2>This sample is intended to demonstrate a technique of finding the matching surfaces between the original input bodies and output imprinted bodies.  This relies on transient keys, which is a unique ID associated with each B-Rep entity.  A transient key is only good as long as the model is not recomputed.<h2 class="api">
+          Code Samples
+        </h2>
+    <div id="tabs">
+      <ul>
+        <li><a href="#VBA">VBA</a></li>
+        <li><a href="#iLogic">iLogic</a></li>
+      </ul>
+      <div id="VBA" class="api-code">To use this sample you need to have a part with multiple bodies.  Two of the bodies should be coincident and those two bodies can be selected when running the sample.<table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('VBA_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="VBA_code">Public Sub SampleImprintMatching2()
+    <span style="color:blue">' Get the active assembly document and its definition.</span>
+    Dim doc As PartDocument
+    Set doc = ThisApplication.ActiveDocument
+    Dim def As PartComponentDefinition
+    Set def = doc.ComponentDefinition
+    
+    <span style="color:blue">' Have two parts selected in the assembly.</span>
+    Dim part1 As ComponentOccurrence
+    Dim part2 As ComponentOccurrence
+    Dim origBody1 As SurfaceBody
+    Dim origBody2 As SurfaceBody
+    Set origBody1 = ThisApplication.CommandManager.Pick(kPartBodyFilter, "Select body 1")
+    Set origBody2 = ThisApplication.CommandManager.Pick(kPartBodyFilter, "Select body 2")
+    
+    <span style="color:blue">' Create alternate bodies.  Ideally this wouldn't be needed but this adds some special</span>
+    <span style="color:blue">' tags to the bodies that allow transient keys to continue to work after the ImprintBodies method is called.</span>
+    <span style="color:blue">' After this there is the original two bodies and the alternate version of each of the</span>
+    <span style="color:blue">' bodies.  The alternate may have more faces than the original, but the transient keys</span>
+    <span style="color:blue">' between the two should still match.</span>
+    Dim body1 As SurfaceBody
+    Dim body2 As SurfaceBody
+    Set body1 = origBody1.AlternateBody(Inventor.SurfaceGeometryFormEnum.SurfaceGeometryForm_NURBS)
+    Set body2 = origBody2.AlternateBody(Inventor.SurfaceGeometryFormEnum.SurfaceGeometryForm_NURBS)
+
+    <span style="color:blue">' Imprint the bodies.  After this call we now have three sets of bodies; the original, the alternate,</span>
+    <span style="color:blue">' and the imprinted bodies.  There should be additional faces in the imprinted bodies but the</span>
+    <span style="color:blue">' transient keys should still match for all three sets of bodies.</span>
+    Dim newBody1 As SurfaceBody
+    Dim newBody2 As SurfaceBody
+    Dim body1OverlapFaces As Faces
+    Dim body2OverlapFaces As Faces
+    Dim body1OverlapEdges As Edges
+    Dim body2OverlapEdges As Edges
+    Call ThisApplication.TransientBRep.ImprintBodies(body1, body2, True, newBody1, newBody2, body1OverlapFaces, body2OverlapFaces, body1OverlapEdges, body2OverlapEdges)
+    
+    <span style="color:blue">' The code below creates new non-parametric base features using the new imprinted bodies</span>
+    <span style="color:blue">' so that the results can be visualized.  The new bodies are created offset from the</span>
+    <span style="color:blue">' original so that they don't overlap and are more easily seen.</span>
+    <span style="color:blue">'</span>
+    <span style="color:blue">' ** After this operation there will be four sets of bodies; the original, the alternate form,</span>
+    <span style="color:blue">' ** the imprinted bodies, and now the body created as a result of the feature creation.</span>
+    <span style="color:blue">' ** Because a new persisted body is created as part of the operation, new transient keys</span>
+    <span style="color:blue">' ** are assigned to the body, so the transient keys will no longer match this body.</span>
+    <span style="color:blue">' ** However, because they're essentially just copies of the imprinted bodies, the faces</span>
+    <span style="color:blue">' ** are in the same order in the two bodies so the indexes can be used to match between</span>
+    <span style="color:blue">' ** the two bodies.</span>
+        
+    <span style="color:blue">' Define a matrix to use in transforming the bodies.</span>
+    Dim trans As Matrix
+    Set trans = ThisApplication.TransientGeometry.CreateMatrix
+    
+    <span style="color:blue">' Move the first imprinted body over based on the range so it doesn't lie on the original.</span>
+    <span style="color:blue">' Moving the body is a modification of the existing body and leaves the transient keys as-is.</span>
+    <span style="color:blue">' However, it does change the face identities so comparing IUnknowns will no longer work.  Because</span>
+    <span style="color:blue">' of this I first save the indices of the overlapping faces while the faces are the same.</span>
+        Dim matchingIndexList1() As Integer
+    Dim matchingIndexList2() As Integer
+    ReDim matchingIndexList1(body1OverlapFaces.Count - 1)
+    ReDim matchingIndexList2(body2OverlapFaces.Count - 1)
+    Dim i As Integer
+    For i = 1 To body1OverlapFaces.Count
+        <span style="color:blue">' Find the indices of the overlapping face in the Faces collection.</span>
+        Dim j As Integer
+        For j = 1 To newBody1.Faces.Count
+            If body1OverlapFaces.Item(i) Is newBody1.Faces.Item(j) Then
+                matchingIndexList1(i - 1) = j
+                Exit For
+            End If
+        Next
+        
+        Dim body2Index As Integer
+        For j = 1 To newBody2.Faces.Count
+            If body2OverlapFaces.Item(i) Is newBody2.Faces.Item(j) Then
+                matchingIndexList2(i - 1) = j
+                Exit For
+            End If
+        Next
+    Next
+
+    <span style="color:blue">' Now do the transformation of the first body.</span>
+    trans.Cell(1, 4) = (body1.RangeBox.MaxPoint.X - body1.RangeBox.MinPoint.X) * 1.1
+    Call ThisApplication.TransientBRep.Transform(newBody1, trans)
+    
+    <span style="color:blue">' Move the second imprinted body over based on the range so it doesn't lie on the original.</span>
+    trans.Cell(1, 4) = trans.Cell(1, 4) + (body1.RangeBox.MaxPoint.X - body1.RangeBox.MinPoint.X) * 1.1
+    Call ThisApplication.TransientBRep.Transform(newBody2, trans)
+
+    <span style="color:blue">' Create a new feature from the first imprinted body.</span>
+    Dim nonParaDef As NonParametricBaseFeatureDefinition
+    Set nonParaDef = def.Features.NonParametricBaseFeatures.CreateDefinition
+    Dim bodyColl As ObjectCollection
+    Set bodyColl = ThisApplication.TransientObjects.CreateObjectCollection
+    Call bodyColl.Add(newBody1)
+    nonParaDef.BRepEntities = bodyColl
+    nonParaDef.OutputType = kSolidOutputType
+    Dim non1 As NonParametricBaseFeature
+    Set non1 = def.Features.NonParametricBaseFeatures.AddByDefinition(nonParaDef)
+    Dim resultBody1 As SurfaceBody
+    Set resultBody1 = non1.SurfaceBodies.Item(1)
+
+    <span style="color:blue">' Create a new feature from the second imprinted body.</span>
+    Set nonParaDef = def.Features.NonParametricBaseFeatures.CreateDefinition
+    Set bodyColl = ThisApplication.TransientObjects.CreateObjectCollection
+    Call bodyColl.Add(newBody2)
+    nonParaDef.BRepEntities = bodyColl
+    nonParaDef.OutputType = kSolidOutputType
+    Dim non2 As NonParametricBaseFeature
+    Set non2 = def.Features.NonParametricBaseFeatures.AddByDefinition(nonParaDef)
+    Dim resultBody2 As SurfaceBody
+    Set resultBody2 = non2.SurfaceBodies.Item(1)
+    
+    <span style="color:blue">' Fit the view to see the result.</span>
+    Dim cam As Camera
+    Set cam = ThisApplication.ActiveView.Camera
+    cam.Fit
+    cam.Apply
+
+    <span style="color:blue">' Create a highlight set used to see the matches.</span>
+    Dim hs As HighlightSet
+    Set hs = doc.CreateHighlightSet
+    
+    <span style="color:blue">' Show the matches between the first imprint body and the original body.</span>
+    For i = 1 To newBody1.Faces.Count
+        <span style="color:blue">' The face in the feature has a different transient key so get the</span>
+        <span style="color:blue">' face as the same index and assume it's the same.</span>
+        Dim newFace As Face
+        Set newFace = resultBody1.Faces.Item(i)
+        
+        hs.AddItem newFace
+        
+        <span style="color:blue">' Get the corresponding face in the original body using the transient key from</span>
+        <span style="color:blue">' the imprinted face at the current index in the face collection.</span>
+        Dim otherFace As Face
+        Set otherFace = origBody1.BindTransientKeyToObject(newBody1.Faces.Item(i).TransientKey)
+        
+        hs.AddItem otherFace
+        
+        MsgBox "Match"
+        hs.Clear
+    Next
+
+    <span style="color:blue">' Show the matches between the second imprint body and the original body.</span>
+    For i = 1 To newBody2.Faces.Count
+        <span style="color:blue">' The face in the feature has a different transient key so get the</span>
+        <span style="color:blue">' face as the same index and assume it's the same.</span>
+        Set newFace = resultBody2.Faces.Item(i)
+        
+        hs.AddItem newFace
+        
+        <span style="color:blue">' Get the corresponding face in the original body using the transient key from</span>
+        <span style="color:blue">' the imprinted face at the current index in the face collection.</span>
+        Set otherFace = origBody2.BindTransientKeyToObject(newBody2.Faces.Item(i).TransientKey)
+        
+        hs.AddItem otherFace
+        
+        MsgBox "Match"
+        hs.Clear
+    Next
+    
+    <span style="color:blue">' Highlight just the overlapping faces.</span>
+    <span style="color:blue">' The collection of overlapping faces returned by the ImprintBodies method correspond to</span>
+    <span style="color:blue">' the bodies returned by the ImprintBodies function.  This means the transient keys on the</span>
+    <span style="color:blue">' overlapping bodies will match all of the bodies except for the bodies created by the</span>
+    <span style="color:blue">' non-parametric base features.  The face index was save previously and will be used here.</span>
+    For i = 1 To body1OverlapFaces.Count
+        Dim overlapFace1 As Face
+        Dim overlapFace2 As Face
+        Set overlapFace1 = resultBody1.Faces.Item(matchingIndexList1(i - 1))
+        Set overlapFace2 = resultBody2.Faces.Item(matchingIndexList2(i - 1))
+        
+        hs.AddItem overlapFace1
+        hs.AddItem overlapFace2
+        
+        MsgBox "Overlap Match"
+        hs.Clear
+    Next
+End Sub</pre>
+      </div>
+      <div id="iLogic" class="api-code">To use this sample you need to have a part with multiple bodies.  Two of the bodies should be coincident and those two bodies can be selected when running the sample.<table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('iLogic_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="iLogic_code">    <span style="color:blue">' Get the active assembly document and its definition.</span>
+    Dim doc As PartDocument
+    doc = ThisApplication.ActiveDocument
+    Dim def As PartComponentDefinition
+    def = doc.ComponentDefinition
+    
+    <span style="color:blue">' Have two parts selected in the assembly.</span>
+    Dim part1 As ComponentOccurrence
+    Dim part2 As ComponentOccurrence
+    Dim origBody1 As SurfaceBody
+    Dim origBody2 As SurfaceBody
+    origBody1 = ThisApplication.CommandManager.Pick(kPartBodyFilter, "Select body 1")
+    origBody2 = ThisApplication.CommandManager.Pick(kPartBodyFilter, "Select body 2")
+    
+    <span style="color:blue">' Create alternate bodies.  Ideally this wouldn't be needed but this adds some special</span>
+    <span style="color:blue">' tags to the bodies that allow transient keys to continue to work after the ImprintBodies method is called.</span>
+    <span style="color:blue">' After this there is the original two bodies and the alternate version of each of the</span>
+    <span style="color:blue">' bodies.  The alternate may have more faces than the original, but the transient keys</span>
+    <span style="color:blue">' between the two should still match.</span>
+    Dim body1 As SurfaceBody
+    Dim body2 As SurfaceBody
+    body1 = origBody1.AlternateBody(Inventor.SurfaceGeometryFormEnum.SurfaceGeometryForm_NURBS)
+    body2 = origBody2.AlternateBody(Inventor.SurfaceGeometryFormEnum.SurfaceGeometryForm_NURBS)
+
+    <span style="color:blue">' Imprint the bodies.  After this call we now have three sets of bodies; the original, the alternate,</span>
+    <span style="color:blue">' and the imprinted bodies.  There should be additional faces in the imprinted bodies but the</span>
+    <span style="color:blue">' transient keys should still match for all three sets of bodies.</span>
+    Dim newBody1 As SurfaceBody
+    Dim newBody2 As SurfaceBody
+    Dim body1OverlapFaces As Faces
+    Dim body2OverlapFaces As Faces
+    Dim body1OverlapEdges As Edges
+    Dim body2OverlapEdges As Edges
+    Call ThisApplication.TransientBRep.ImprintBodies(body1, body2, True, newBody1, newBody2, body1OverlapFaces, body2OverlapFaces, body1OverlapEdges, body2OverlapEdges)
+    
+    <span style="color:blue">' The code below creates new non-parametric base features using the new imprinted bodies</span>
+    <span style="color:blue">' so that the results can be visualized.  The new bodies are created offset from the</span>
+    <span style="color:blue">' original so that they don't overlap and are more easily seen.</span>
+    <span style="color:blue">'</span>
+    <span style="color:blue">' ** After this operation there will be four sets of bodies; the original, the alternate form,</span>
+    <span style="color:blue">' ** the imprinted bodies, and now the body created as a result of the feature creation.</span>
+    <span style="color:blue">' ** Because a new persisted body is created as part of the operation, new transient keys</span>
+    <span style="color:blue">' ** are assigned to the body, so the transient keys will no longer match this body.</span>
+    <span style="color:blue">' ** However, because they're essentially just copies of the imprinted bodies, the faces</span>
+    <span style="color:blue">' ** are in the same order in the two bodies so the indexes can be used to match between</span>
+    <span style="color:blue">' ** the two bodies.</span>
+        
+    <span style="color:blue">' Define a matrix to use in transforming the bodies.</span>
+    Dim trans As Matrix
+    trans = ThisApplication.TransientGeometry.CreateMatrix
+    
+    <span style="color:blue">' Move the first imprinted body over based on the range so it doesn't lie on the original.</span>
+    <span style="color:blue">' Moving the body is a modification of the existing body and leaves the transient keys as-is.</span>
+    <span style="color:blue">' However, it does change the face identities so comparing IUnknowns will no longer work.  Because</span>
+    <span style="color:blue">' of this I first save the indices of the overlapping faces while the faces are the same.</span>
+        Dim matchingIndexList1() As Integer
+    Dim matchingIndexList2() As Integer
+    ReDim matchingIndexList1(body1OverlapFaces.Count - 1)
+    ReDim matchingIndexList2(body2OverlapFaces.Count - 1)
+    Dim i As Integer
+    For i = 1 To body1OverlapFaces.Count
+        <span style="color:blue">' Find the indices of the overlapping face in the Faces collection.</span>
+        Dim j As Integer
+        For j = 1 To newBody1.Faces.Count
+            If body1OverlapFaces.Item(i) Is newBody1.Faces.Item(j) Then
+                matchingIndexList1(i - 1) = j
+                Exit For
+            End If
+        Next
+        
+        Dim body2Index As Integer
+        For j = 1 To newBody2.Faces.Count
+            If body2OverlapFaces.Item(i) Is newBody2.Faces.Item(j) Then
+                matchingIndexList2(i - 1) = j
+                Exit For
+            End If
+        Next
+    Next
+
+    <span style="color:blue">' Now do the transformation of the first body.</span>
+    trans.Cell(1, 4) = (body1.RangeBox.MaxPoint.X - body1.RangeBox.MinPoint.X) * 1.1
+    Call ThisApplication.TransientBRep.Transform(newBody1, trans)
+    
+    <span style="color:blue">' Move the second imprinted body over based on the range so it doesn't lie on the original.</span>
+    trans.Cell(1, 4) = trans.Cell(1, 4) + (body1.RangeBox.MaxPoint.X - body1.RangeBox.MinPoint.X) * 1.1
+    Call ThisApplication.TransientBRep.Transform(newBody2, trans)
+
+    <span style="color:blue">' Create a new feature from the first imprinted body.</span>
+    Dim nonParaDef As NonParametricBaseFeatureDefinition
+    nonParaDef = def.Features.NonParametricBaseFeatures.CreateDefinition
+    Dim bodyColl As ObjectCollection
+    bodyColl = ThisApplication.TransientObjects.CreateObjectCollection
+    Call bodyColl.Add(newBody1)
+    nonParaDef.BRepEntities = bodyColl
+    nonParaDef.OutputType = kSolidOutputType
+    Dim non1 As NonParametricBaseFeature
+    non1 = def.Features.NonParametricBaseFeatures.AddByDefinition(nonParaDef)
+    Dim resultBody1 As SurfaceBody
+    resultBody1 = non1.SurfaceBodies.Item(1)
+
+    <span style="color:blue">' Create a new feature from the second imprinted body.</span>
+    nonParaDef = def.Features.NonParametricBaseFeatures.CreateDefinition
+    bodyColl = ThisApplication.TransientObjects.CreateObjectCollection
+    Call bodyColl.Add(newBody2)
+    nonParaDef.BRepEntities = bodyColl
+    nonParaDef.OutputType = kSolidOutputType
+    Dim non2 As NonParametricBaseFeature
+    non2 = def.Features.NonParametricBaseFeatures.AddByDefinition(nonParaDef)
+    Dim resultBody2 As SurfaceBody
+    resultBody2 = non2.SurfaceBodies.Item(1)
+    
+    <span style="color:blue">' Fit the view to see the result.</span>
+    Dim cam As Camera
+    cam = ThisApplication.ActiveView.Camera
+    cam.Fit
+    cam.Apply
+
+    <span style="color:blue">' Create a highlight set used to see the matches.</span>
+    Dim hs As HighlightSet
+    hs = doc.CreateHighlightSet
+    
+    Dim newFace As Face
+    Dim otherFace As Face
+    
+    <span style="color:blue">' Show the matches between the first imprint body and the original body.</span>
+    For i = 1 To newBody1.Faces.Count
+        <span style="color:blue">' The face in the feature has a different transient key so get the</span>
+        <span style="color:blue">' face as the same index and assume it's the same.</span>
+        
+        newFace = resultBody1.Faces.Item(i)
+        
+        hs.AddItem(newFace)
+        
+        <span style="color:blue">' Get the corresponding face in the original body using the transient key from</span>
+        <span style="color:blue">' the imprinted face at the current index in the face collection.</span>
+        otherFace = origBody1.BindTransientKeyToObject(newBody1.Faces.Item(i).TransientKey)
+        
+        hs.AddItem(otherFace)
+        
+        MsgBox("Match")
+        hs.Clear
+    Next
+
+    <span style="color:blue">' Show the matches between the second imprint body and the original body.</span>
+    For i = 1 To newBody2.Faces.Count
+        <span style="color:blue">' The face in the feature has a different transient key so get the</span>
+        <span style="color:blue">' face as the same index and assume it's the same.</span>
+        newFace = resultBody2.Faces.Item(i)
+        
+        hs.AddItem(newFace)
+        
+        <span style="color:blue">' Get the corresponding face in the original body using the transient key from</span>
+        <span style="color:blue">' the imprinted face at the current index in the face collection.</span>
+        otherFace = origBody2.BindTransientKeyToObject(newBody2.Faces.Item(i).TransientKey)
+        
+        hs.AddItem(otherFace)
+        
+        MsgBox("Match")
+        hs.Clear
+    Next
+    
+    <span style="color:blue">' Highlight just the overlapping faces.</span>
+    <span style="color:blue">' The collection of overlapping faces returned by the ImprintBodies method correspond to</span>
+    <span style="color:blue">' the bodies returned by the ImprintBodies function.  This means the transient keys on the</span>
+    <span style="color:blue">' overlapping bodies will match all of the bodies except for the bodies created by the</span>
+    <span style="color:blue">' non-parametric base features.  The face index was save previously and will be used here.</span>
+    For i = 1 To body1OverlapFaces.Count
+        Dim overlapFace1 As Face
+        Dim overlapFace2 As Face
+        overlapFace1 = resultBody1.Faces.Item(matchingIndexList1(i - 1))
+        overlapFace2 = resultBody2.Faces.Item(matchingIndexList2(i - 1))
+        
+        hs.AddItem(overlapFace1)
+        hs.AddItem(overlapFace2)
+        
+        MsgBox("Overlap Match")
+        hs.Clear
+    Next</pre>
+      </div>
+    </div><br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(ImprintingAndMatching%20Sample%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

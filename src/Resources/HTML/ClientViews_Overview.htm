@@ -1,0 +1,169 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU">
+    <link rel="canonical" href="http://help.autodesk.com/cloudhelp/2026/ENU/Inventor-API/files/ClientViews_Overview.htm">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="27/4/2016">
+    <meta name="user-comments" content="enable">
+    <meta name="description" content="">
+    <meta name="topicid" content="GUID-06D49EB6-7871-4A1B-917F-756735B5D0E7">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>Client Views</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"/>
+    <script type="text/javascript" src="/view/clientframework/client.js"><!--filler--></script>
+	<script>
+	  // This turns on the display of the copyright notice which is not visible by default.
+	  // Because the head is removed when used in the web help, this function will only exists
+	  // when the chm help is being created.
+	  window.onload = function() {
+		copyrightElement = document.getElementById('CopyrightNotice');
+		copyrightElement.style.display = 'block';
+	  };
+	</script>
+</head>
+<body>
+<link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+	
+			<H1 class="dxH1">Client Views</h1>
+	
+<h3>Introduction to client views</h3>
+
+<p Class="Normal">A subset of the Autodesk Inventor API, with a few additions, is provided for developers wishing to work with Autodesk Inventor documents outside of the Autodesk Inventor environment.  This API is provided through Apprentice Server - an ActiveX server that can be incorporated into other applications.  Apprentice Server has no user interface, and most of its API is read-only.</p>
+<p Class="Normal">One part of the Apprentice Server API that has no direct equivalent in Autodesk Inventor is the ClientView object.  When writing an application outside of Autodesk Inventor, the ClientView object provides a convenient means of displaying an Autodesk Inventor document in a similar manner to Autodesk Inventor itself.  </p>
+
+<h3>The purpose of  client views</h3>
+
+<p Class="Normal">The ClientView object allows the developer to associate an Autodesk Inventor document with a window handle in their standalone application, and to manipulate the view of the document through the use of the Camera object.  The view orientation can be modified, as can the perspective, extents, and mouse-driven applied transformation.  A client view can provide a visually appealing graphic with minimal effort on the part of the developer.</p>
+
+<h3>ClientView object model diagram</h3>
+
+ <br>
+<div align="center"> <img src="../images/ov.clientviews_diag.png" border=0 ></div>
+ <br>
+ 
+<h3>Working with client views through the API</h3>
+
+<p Class="Normal">Creation of a new ClientView object is only possible through Apprentice Server.  It is not currently possible to add a new ClientView object within the Autodesk Inventor environment.  For example, using VBA to call the Add method of a ClientView object obtained through the Sheet object of a Drawing document will fail.</p>
+<p Class="Normal">The ClientView object is always associated with a window handle (hWnd).  The ClientViews collection object provides two methods for creating a new ClientView object; Add and AddBySubset.  The latter method is likely to be depreciated.  The Add method associates a document client view with a given window handle.</p>
+
+<h3>Setting up a client view in Apprentice Server</h3>
+
+<p Class="Normal">The following example uses Visual Basic, though any fully ActiveX-compliant environment should work.  The code omits error checking for brevity and clarity. Always check that return values are of the expected type and in the expected range.</p>
+<p Class="Normal">In Visual Basic, add a PictureBox control to a new form.  Keep the default control name Picture1. Double-click the control to enter the code module, and add the following code in the declarations section:</p>
+  
+<br>
+<table Class="Code">
+<tr valign="middle">
+	<td Class="Code">
+	<pre>
+Dim oSvr As ApprenticeServerComponent
+Dim oAppDoc As ApprenticeServerDocument
+Dim oClientView As ClientView
+</pre></td></tr>
+</table>
+<br>
+
+<p Class="Normal">At this point, Visual Basic has no idea what an ApprenticeServerComponent is. A reference to the Apprentice Server type library is needed.  In the Visual Basic user interface, select Project, then References.  In the list of available references, put a check against the item labeled Autodesk Inventor's Apprentice Object Library.  This points to the RxApprentice.tlb type library.</p>
+<p Class="Normal">Continue adding code.  In the Form_Load sub, add the following:</p>
+
+<br>
+<table Class="Code">
+<tr valign="middle">
+	<td Class="Code">
+	<pre>
+Private Sub Form_Load()
+  Dim filename As String
+  filename = "C:\Autodesk\Inventor 10\Tutorial Files\analyze-2.iam"
+  Set oSvr = New ApprenticeServerComponent
+  Set oAppDoc = oSvr.Open(filename)
+  Set oClientView = oAppDoc.ClientViews.Add(Picture1.hWnd)
+End Sub
+</pre></td></tr>
+</table>
+<br>
+
+<p Class="Normal">The preceding code references an assembly file.  Change this reference to suit.  An instance of the ApprenticeServerComponent is created, and the assembly document is opened by Apprentice Server.  The last line adds a new ClientView object to the document's ClientViews collection, and references the window handle (hWnd) of the Picture1 control.</p>
+<p Class="Normal">In the Picture1_Click sub, add the following code:</p>
+
+<br>
+<table Class="Code">
+<tr valign="middle">
+	<td Class="Code">
+	<pre>
+Private Sub Picture1_Click()
+  Dim oCamera As Camera
+  Set oCamera = oClientView.Camera
+  oCamera.ViewOrientationType = kIsoBottomLeftViewOrientation
+  oCamera.Perspective = True
+  oCamera.Apply
+  Me.Refresh
+End Sub
+</pre></td></tr>
+</table>
+<br>
+
+<p Class="Normal">The preceding code responds to a click event on the Picture1 control, setting various camera properties before refreshing the view.  The ISO orientation type is set to bottom left, and perspective viewing is enabled.</p>
+<p Class="Normal">Lastly, add the following code to the Form_Paint event.  This is to ensure the view is maintained if the window is changed in any way.  The Update method takes a Boolean argument; true if the view is dynamically updated, to improve performance.</p>
+
+<br>
+<table Class="Code">
+<tr valign="middle">
+	<td Class="Code">
+	<pre>
+Private Sub Form_Paint()
+  oClientView.Update (False)
+End Sub
+</pre></td></tr>
+</table>
+<br>
+
+<p Class="Normal">The following figure shows the results of running the sample code and clicking on the picture control:</p>
+
+ <br>
+<div align="center"> <img src="../images/ov.clientviews_shot1.png" width=400 border=0 ></div>
+ <br>
+
+<h3>ClientViews and Autodesk Inventor Read-only mode</h3>
+
+<p Class="Normal">The ClientView object in the Apprentice Server API provides a convenient means of displaying Autodesk Inventor documents outside of Autodesk Inventor, but it does require Apprentice Server. For how to get Apprentice Server, please refer to: <a href="Apprentice_Overview.htm" data-topic-id="GUID-F2A12822-98DE-4638-B1C7-6BEEF821D50A"><b>Apprentice Server</b></a>. </p>
+<p Class="Normal">A full installation of Autodesk Inventor will also install 
+    Autodesk Inventor Read-only mode. This is a user application for viewing 
+    Autodesk Inventor files. Autodesk Inventor Read-only mode is distinct from 
+    client views , and has no API but provides the same quality view as Inventor.</p>
+
+<h3>Summary</h3>
+
+<p Class="Normal">An application developer wishing to use an Autodesk Inventor API to display Autodesk Inventor documents in their application 
+    can use ClientView.  The Apprentice Server API provides the ClientView object, enabling Autodesk Inventor files to be viewed and manipulated in a client window.  </p>
+<p Class="Normal">A user application for viewing Autodesk Inventor files is installed with Autodesk Inventor.  It is named Autodesk Inventor Read-only Mode, and is accessible though the Microsoft Windows Start menu.</p>
+
+<h3>Also consider</h3>
+
+<p Class="Normal">Autodesk has viewers for many of its products, but an increasingly popular format is DWF (Drawing Web Format).  Autodesk Inventor can export DWF files for publishing.</p>
+
+<br />
+<br />
+<div id="CopyrightNotice" style="display:none;">
+  <hr />
+  <table width="100%" style="font-size:15">
+	<tr>
+	  <td align="left">
+		&copy; Copyright 2025 Autodesk, Inc.
+	  </td>
+	  <td align="right">
+		<a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(ClientViews_Overview)">Comment on this page.</a>
+	  </td>
+	</tr>
+  </table>
+</div>
+
+</body>
+</html>

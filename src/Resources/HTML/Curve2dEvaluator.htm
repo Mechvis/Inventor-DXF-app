@@ -1,0 +1,140 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/Curve2dEvaluator.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="Curve2dEvaluator">
+    <meta name="description" content="Curve2dEvaluator Object">
+    <meta name="topicid" content="GUID-Curve2dEvaluator">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>Curve2dEvaluator Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">Curve2dEvaluator Object
+			</h1><br><h2 class="api">
+          Description
+        </h2>The Curve2dEvaluator object. See the article in the overviews section.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Curve2dEvaluator_GetCurvature.htm">GetCurvature</a></td>
+        <td class="api-list">Calculates the curvature direction and magnitude of the curve at the given parameter values.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Curve2dEvaluator_GetEndPoints.htm">GetEndPoints</a></td>
+        <td class="api-list">Gets the end points of the curve if the curve is bounded.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Curve2dEvaluator_GetFirstDerivatives.htm">GetFirstDerivatives</a></td>
+        <td class="api-list">Calculates the first order derivatives at the given parameter values on the curve.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Curve2dEvaluator_GetLengthAtParam.htm">GetLengthAtParam</a></td>
+        <td class="api-list">Calculate the length of the curve as measured between the specified parameter values.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Curve2dEvaluator_GetParamAnomaly.htm">GetParamAnomaly</a></td>
+        <td class="api-list">Gets general information about the parameterization of the curve, such as whether or not it is periodic, singular, or unbounded in the parameter domain.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Curve2dEvaluator_GetParamAtLength.htm">GetParamAtLength</a></td>
+        <td class="api-list">Calculates the parameter value at the point measured from the specified starting parameter along the curve.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Curve2dEvaluator_GetParamAtPoint.htm">GetParamAtPoint</a></td>
+        <td class="api-list">Calculates the parameter value on the curve that is equal to the specified point. The point must lie on the curve.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Curve2dEvaluator_GetParamExtents.htm">GetParamExtents</a></td>
+        <td class="api-list">Gets the valid parameter range of the curve if the curve is bounded.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Curve2dEvaluator_GetPointAtParam.htm">GetPointAtParam</a></td>
+        <td class="api-list">Calculates the coordinate points at the given parameter values on the curve.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Curve2dEvaluator_GetSecondDerivatives.htm">GetSecondDerivatives</a></td>
+        <td class="api-list">Calculates the second order derivatives at the given parameter values on the curve.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Curve2dEvaluator_GetStrokes.htm">GetStrokes</a></td>
+        <td class="api-list">Calculates a set of connected line segments that approximate the curve within the specified tolerance.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Curve2dEvaluator_GetTangent.htm">GetTangent</a></td>
+        <td class="api-list">Calculates the tangency directions at the given parameter values on the curve.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Curve2dEvaluator_GetThirdDerivatives.htm">GetThirdDerivatives</a></td>
+        <td class="api-list">Calculates the third order derivatives at the given parameter values on the curve.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Curve2dEvaluator_Continuity.htm">Continuity</a></td>
+        <td class="api-list">Gets the level of continuity of the curve. The continuity is the largest order of continuity maintained for the entire curve.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Curve2dEvaluator_RangeBox.htm">RangeBox</a></td>
+        <td class="api-list">Property that returns a Box2D object which contains the lower-left and upper-right corners of a rectangle that is guaranteed to enclose this object.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="Arc2d_Evaluator.htm">Arc2d.Evaluator</a>, <a href="BSplineCurve2d_Evaluator.htm">BSplineCurve2d.Evaluator</a>, <a href="Circle2d_Evaluator.htm">Circle2d.Evaluator</a>, <a href="DrawingCurve_Evaluator2D.htm">DrawingCurve.Evaluator2D</a>, <a href="EdgeUse_Evaluator.htm">EdgeUse.Evaluator</a>, <a href="EdgeUseProxy_Evaluator.htm">EdgeUseProxy.Evaluator</a>, <a href="EllipseFull2d_Evaluator.htm">EllipseFull2d.Evaluator</a>, <a href="EllipticalArc2d_Evaluator.htm">EllipticalArc2d.Evaluator</a>, <a href="Line2d_Evaluator.htm">Line2d.Evaluator</a>, <a href="LineSegment2d_Evaluator.htm">LineSegment2d.Evaluator</a>, <a href="Polyline2d_Evaluator.htm">Polyline2d.Evaluator</a><h2 class="api">
+            Version
+          </h2>
+        Introduced in version 4<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(Curve2dEvaluator%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

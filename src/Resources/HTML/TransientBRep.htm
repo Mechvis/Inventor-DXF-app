@@ -1,0 +1,172 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/TransientBRep.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="TransientBRep">
+    <meta name="description" content="TransientBRep Object">
+    <meta name="topicid" content="GUID-TransientBRep">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>TransientBRep Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">TransientBRep Object
+			</h1><br><h2 class="api">
+          Description
+        </h2>The TransientBRep object is used to create and manipulate B-Rep objects within a transient space.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TransientBRep_Copy.htm">Copy</a></td>
+        <td class="api-list">Method that creates a copy of the input SurfaceBody, Face, or Edge object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TransientBRep_CreateIntersectionWithPlane.htm">CreateIntersectionWithPlane</a></td>
+        <td class="api-list">Method that intersects a body with a plane.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TransientBRep_CreateRuledSurface.htm">CreateRuledSurface</a></td>
+        <td class="api-list">Method that creates a ruled surface between the two sections.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TransientBRep_CreateSilhouetteCurve.htm">CreateSilhouetteCurve</a></td>
+        <td class="api-list">Method that calculates the silhouette curve geometry for a given face as viewed from a given direction.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TransientBRep_CreateSolidBlock.htm">CreateSolidBlock</a></td>
+        <td class="api-list">Method that creates a solid box.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TransientBRep_CreateSolidCylinderCone.htm">CreateSolidCylinderCone</a></td>
+        <td class="api-list">Method that create a solid cylinder or cone.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TransientBRep_CreateSolidSphere.htm">CreateSolidSphere</a></td>
+        <td class="api-list">Method that create a solid sphere.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TransientBRep_CreateSolidTorus.htm">CreateSolidTorus</a></td>
+        <td class="api-list">Method that creates a solid torus.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TransientBRep_CreateSurfaceBodyDefinition.htm">CreateSurfaceBodyDefinition</a></td>
+        <td class="api-list">Method that creates a new SurfaceBodyDefinition object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TransientBRep_DeleteFaces.htm">DeleteFaces</a></td>
+        <td class="api-list">Method that modifies an existing transient surface body by deleting specified faces.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TransientBRep_DoBoolean.htm">DoBoolean</a></td>
+        <td class="api-list">Method that performs the specified Boolean operation between the blank and tool bodies.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TransientBRep_GetIdenticalBodies.htm">GetIdenticalBodies</a></td>
+        <td class="api-list">Method that find the identical SurfaceBody objects in a SurfaceBody objects collection. In the return value, all the identical surface bodies will be placed in the same ObjectCollection.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TransientBRep_ImprintBodies.htm">ImprintBodies</a></td>
+        <td class="api-list">Method that finds regions of faces on two bodies which overlap and creates new bodies where the faces are split at the edges of the overlaps. This does not modify the original bodies but creates new transient bodies that contain the imprints.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TransientBRep_ReadFromFile.htm">ReadFromFile</a></td>
+        <td class="api-list">Method that creates one or more new SurfaceBody objects based on the content of the input file. A SurfaceBodies collection is returned that can contain one or more SurfaceBody object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TransientBRep_Transform.htm">Transform</a></td>
+        <td class="api-list">Method that transforms the input SurfaceBody.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TransientBRep_WriteToFile.htm">WriteToFile</a></td>
+        <td class="api-list">Writes out the specified bodies as a file.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="Application_TransientBRep.htm">Application.TransientBRep</a>, <a href="InventorServer_TransientBRep.htm">InventorServer.TransientBRep</a>, <a href="InventorServerObject_TransientBRep.htm">InventorServerObject.TransientBRep</a><h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="GraphicsNode_AddSurfaceGraphics_Sample.htm">Client graphics from SAT file body</a></td>
+        <td class="api-list">The following sample demonstrates how to display client graphics based on bodies read in from a SAT file.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SurfaceBodyDefinition_CreateTransientSurfaceBody_Sample.htm">Transient solid body creation</a></td>
+        <td class="api-list">The following sample demonstrates the creation of a transient solid block body. The newly created body is then displayed using client graphics in a part.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SurfaceBodyDefinition_CreateTransientSurfaceBody2_Sample.htm">Transient surface body creation</a></td>
+        <td class="api-list">The following sample demonstrates the creation of a transient surface body consisting of a single rectangular face. The body is created in transient space and then copied over to a part document as a base feature.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TransientBRep_Sample.htm">Create primitive BRep</a></td>
+        <td class="api-list">This sample demonstrates the creation of primitive (solid) BRep.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TransientBRep_CreateSolidCylinderCone_Sample.htm">Client graphics creation of 3D primitives</a></td>
+        <td class="api-list">This sample demonstrates the creation of 3D primitives (cylinder, cone, etc.) using client graphics.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TransientBRepRuledSurf1_Sample.htm">Transient B-Rep Ruled Surface with Lines</a></td>
+        <td class="api-list">Demonstrate creating a transient ruled surface.  This sample uses all straight line segments for each of the sections. A part document must be open.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="TransientBRepRuledSurf2_Sample.htm">Transient B-Rep Ruled Surface with Arc and Line</a></td>
+        <td class="api-list">Demonstrate creating a transient ruled surface.  This sample uses straight line segments for once section and an arc for the second. A part document must be open.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2009<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(TransientBRep%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

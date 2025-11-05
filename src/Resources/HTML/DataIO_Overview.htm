@@ -1,0 +1,302 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU">
+    <link rel="canonical" href="http://help.autodesk.com/cloudhelp/2026/ENU/Inventor-API/files/DataIO_Overview.htm">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="27/4/2016">
+    <meta name="user-comments" content="enable">
+    <meta name="description" content="">
+    <meta name="topicid" content="GUID-2710DD46-99DE-4599-9293-221D1826BCCB">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>DataIO</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"/>
+    <script type="text/javascript" src="/view/clientframework/client.js"><!--filler--></script>
+	<script>
+	  // This turns on the display of the copyright notice which is not visible by default.
+	  // Because the head is removed when used in the web help, this function will only exists
+	  // when the chm help is being created.
+	  window.onload = function() {
+		copyrightElement = document.getElementById('CopyrightNotice');
+		copyrightElement.style.display = 'block';
+	  };
+	</script>
+</head>
+<body>
+<link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+	
+			<H1 class="dxH1">DataIO</h1>
+
+<h3>Introduction to DataIO</h3>
+
+<p Class="Normal">Autodesk Inventor users can save their work or import from files in a variety of formats. For example, a part file can be saved as a SAT file, a STEP file, and so on.  Autodesk Inventor can open files such as DWG, DXF, IGES, STEP, and so on. The type of format available is dependent on the context.</p>
+
+<h3>The purpose of DataIO objects</h3>
+
+<p Class="Normal">To provide a similar level of functionality to the developer, many objects in the Autodesk Inventor API provide access to a DataIO object through a read-only DataIO property.  The DataIO object provides methods to read from and write to files and data streams.  In addition, the DataIO object provides methods to determine what formats and storage types are valid in that context. For example, a sketch can be saved as a DXF file, but cannot be imported from a bitmap.</p>
+
+<p Class="Normal">The following is a list of Autodesk Inventor API objects that can return a DataIO object. </p>
+
+<ul>
+	<li>AssemblyComponentDefinition
+	<li>AttributeSet
+	<li>AttributeSets
+	<li>ComponentDefinition
+	<li>DrawingSketch
+	<li>DrawingView
+	<li>PartComponentDefinition
+	<li>PlanarSketch
+	<li>PlanarSketchProxy
+	<li>SectionDrawingView
+	<li>Sheet
+	<li>SheetMetalComponentDefinition
+	<li>Sketch
+	<li>SurfaceBody
+	<li>SurfaceBodyProxy
+	<li>WeldmentComponentDefinition
+	<li>WeldsComponentDefinition
+</ul>
+
+<h3>Working with DataIO objects</h3>
+
+<p Class="Normal">As DataIO objects are available from such a variety of Autodesk Inventor API objects, so the context of the data to be read or written is variable. It is important to establish, in that context, whether data can be written or read, in what format, and whether to a file or data stream.  Never just assume that a given format is valid.</p>
+<p Class="Normal">The DataIO object supports two methods which determine available formats: <em>GetInputFormats</em> and <em>GetOutputFormats</em>. These methods each return a pair of arrays, identically dimensioned.  The first array, Formats, contains the list of file formats in string form.  For example, "XML" or "ACIS SAT."  The second array contains <em>StorageTypeEnum</em> values. For example, <em>kFileStorage</em> indicates that storing as a file is supported.</p>
+<p Class="Normal">Once the supported formats and storage types are known, the appropriate DataIO method can be used, with the format string passed to identify the required format.  The output (write) methods are <em>WriteDataToFile</em> and <em>WriteDataToStream</em>.  The input (read) methods are <em>ReadDataFromFile</em> and <em>ReadDataFromStream</em>.  A file storage type is most typically used, but these methods also support streams. (For details on streams, see the Microsoft implementation of the IStream interface for structured storage).</p>
+
+<h3>Example Format and StorageType arrays</h3>
+
+<p Class="Normal">The following tables depict DataIO object format and storage type array values that might be returned for a component definition in a part document. It shows Input (read) formats and Storage Types, returned by <em>GetInputFormats</em>.</p>
+<br>
+<table bordercolor="Black" frame="box">
+<tr>
+	<td><b>Format Array</b></td>
+	<td><b>StorageType Array</b></td>
+</tr>
+<tr>
+	<td>ACIS SAT</td>
+	<td>kFileStorage</td>
+</tr>
+<tr>
+	<td>ACIS SAB</td>
+	<td>kFileOrStreamStorage</td>
+</tr>
+</table>
+<br>
+<p Class="Normal">The following example shows output (write) Formats and Storage Types, returned by <em>GetOutputFormats</em>, for the same object.</p>
+<br>
+<table bordercolor="Black" frame="box">
+<tr>
+	<td><b>Format Array</b></td>
+	<td><b>StorageType Array</b></td>
+</tr>
+<tr>
+	<td>ACIS SAT</td>
+	<td>kFileStorage</td>
+</tr>
+<tr>
+	<td>ACIS SAB</td>
+	<td>kFileOrStreamStorage</td>
+</tr>
+    <tr>
+	<td>ACIS SAT with TransientKeys</td>
+	<td>kFileStorage</td>
+    </tr>
+    <tr>
+	<td>ACIS SAB with TransientKeys</td>
+	<td>kFileOrStreamStorage</td>
+    </tr>
+    <tr>
+	<td>ACIS SAT with ProceduralToNURBS</td>
+	<td>kFileStorage</td>
+    </tr>
+    <tr>
+	<td>ACIS SAB with ProceduralToNURBS</td>
+	<td>kFileStorage</td>
+    </tr>
+    <tr>
+	<td>ACIS SAT with ProceduralToNURBS with TransientKeys</td>
+	<td>kFileStorage</td>
+    </tr>
+    <tr>
+	<td>ACIS SAB with ProceduralToNURBS with TransientKeys</td>
+	<td>kFileStorage</td>
+    </tr>
+<tr>
+	<td>ACIS SAT with ProceduralToNURBS with TransientKeys DocUnits</td>
+	<td>kFileStorage</td>
+</tr>
+<tr>
+	<td>ACIS SAB with ProceduralToNURBS with TransientKeys DocUnits</td>
+	<td>kFileStorage</td>
+</tr>
+</table>
+<br>
+<p Class="Normal">These example arrays indicate that "ACIS SAT" is supported for read and write, but file storage only, while "ACIS SAB with TransientKeys" is supported for write-only, but with file or stream storage.</p>
+<br>
+
+<h3>How to use the API to determine available formats and storage types</h3>
+
+<p Class="Normal">This sample assumes an open part document containing a part, and looks at the supported DataIO formats for two objects: the <em>ComponentDefinition</em> and that object's <em>AttributeSets</em> object. A sequence of message boxes are posted containing the valid formats and storage types.</p>
+<p Class="Normal">This code omits error checking for the sake of clarity and brevity.  Always check that return values are of the expected type.</p>
+<p Class="Normal">First, define a subroutine, and then obtain the active part document and its component definition object.</p>
+
+<br>
+<table Class="Code">
+<tr valign="middle">
+	<td Class="Code">
+	<pre>
+Sub query_dataIO()
+
+Dim oDoc As PartDocument
+Set oDoc = ThisApplication.ActiveDocument
+
+Dim oCompDef As ComponentDefinition
+Set oCompDef = oDoc.ComponentDefinition
+</pre></td></tr>
+</table>
+<br>
+
+<p Class="Normal">Declare the variables for the Format and StorageType arrays, and then get the DataIO object from the component definition.</p> 
+ 
+<br>
+<table Class="Code">
+<tr valign="middle">
+	<td Class="Code">
+	<pre>
+Dim sFormats() As String
+Dim sStorageTypes() As StorageTypeEnum
+Dim oDataIO As DataIO
+Set oDataIO = oCompDef.DataIO
+</pre></td></tr>
+</table>
+<br>
+
+<p Class="Normal">Get the supported input (read) formats and display the results in a message box. However, first compose the message string - done by the ioPrint function, defined after this sub.</p>
+
+<br>
+<table Class="Code">
+<tr valign="middle">
+	<td Class="Code">
+	<pre>
+oDataIO.GetInputFormats sFormats, sStorageTypes
+MsgBox ("CompDef Input: " & ioPrint(sFormats, sStorageTypes))
+</pre></td></tr>
+</table>
+<br>
+
+<p Class="Normal">Get the supported output (write) formats and display the results in a message box, but first compose the message string - done by the ioPrint function, defined after this sub.</p>
+
+<br>
+<table Class="Code">
+<tr valign="middle">
+	<td Class="Code">
+	<pre>
+oDataIO.GetOutputFormats sFormats, sStorageTypes
+MsgBox ("CompDef Output: " & ioPrint(sFormats, sStorageTypes))
+
+End Sub
+</pre></td></tr>
+</table>
+<br>
+
+<p Class="Normal">That completes the query_dataIO subroutine. Now, define the ioPrint function. This is a utility function that takes the two arrays and pairs each format and storage type, returning a human-readable string.  This function demonstrates that the format and storage type arrays always have identical dimensions.  The <em>nth</em> item in the format array relates to the <em>nth</em> item in the storage type array.</p>
+
+<br>
+<table Class="Code">
+<tr valign="middle">
+	<td Class="Code">
+	<pre>
+Function ioPrint(sFormats As Variant, sStorageTypes As Variant) _
+   As String
+Dim msgString As String
+Dim lindex As Long
+For lindex = 0 To UBound(sFormats)
+  msgString = msgString & sFormats(lindex)
+  Dim lType As StorageTypeEnum
+  lType = sStorageTypes(lindex)
+  Dim sType As String
+  Select Case lType
+    Case kFileOrStreamStorage
+      msgString = msgString & "(File or Stream) "
+    Case kFileStorage
+      msgString = msgString & "(File) "
+    Case kStorageStorage
+      msgString = msgString & "(Storage) "
+    Case kStreamStorage
+      msgString = msgString & "(Stream) "
+    Case kUnknownStorage
+      msgString = msgString & "(Unknown) "
+  End Select
+Next
+ioPrint = msgString
+End Function
+</pre></td></tr>
+</table>
+<br>
+
+<p Class="Normal">Running the query_dataIO sub generates two message dialog boxes, containing something like the following examples.</p>
+
+<p Class="Normal">CompDef Input:  ACIS SAT (File) ACIS SAB (File or Stream) </p>
+
+<p Class="Normal">CompDef Output: ACIS SAT (File) ACIS SAB (File or Stream)<br>
+ACIS SAT with TransientKeys (File) ACIS SAB with TransientKeys (File or Stream) </p>
+
+<h3>Using the format and storage type information</h3>
+
+<p Class="Normal">This component definition supports writing to a SAT file.  So it is valid to call <em>WriteDataToFile</em>, using the string "ACIS SAT" as the format, supplying a file name for storage, as in the following example.</p>
+
+<br>
+<table Class="Code">
+<tr valign="middle">
+	<td Class="Code">
+	<pre>
+oDataIO.WriteDataToFile "ACIS SAT", "c:\MyNewSATfile.SAT"
+</pre></td></tr>
+</table>
+<br>
+
+<br>
+<table cellspacing="4" cellpadding="4" border="1">
+<tr>
+    <td  bgcolor="Yellow"><b>Note:</b> 
+Some supported file formats such as XML can have tags meaningful only in the given context, so it can be very helpful to use <em>WriteDataToFile</em> to produce a sample file to see that file's structure.
+</td>
+</tr>
+</table>
+<br>
+
+<p Class="Normal">In addition to using the DataIO object, files of many formats can be saved or opened through the <em>Open</em> or <em>SaveAs</em> methods of the <em>Document</em> object.  The extension of the file name indicates to Autodesk Inventor which format is required.</p>
+
+<h3>Summary</h3>
+
+<p Class="Normal">The Autodesk Inventor API supports reading and writing files in a variety of formats, depending on the context (object type).  Many objects in the API provide access to a DataIO object.  This object provides methods to determine what formats and storage types (file or stream) are valid in that context.  The DataIO object supports methods to read and write to and from such valid formats.</p>
+
+<h3>Also consider</h3>
+
+<p Class="Normal">Autodesk Inventor supports a type of Addin called a Translator Addin.  This is much like a regular Addin, but is an Addin that reads and/or writes data in a specific, possibly proprietary, format.  The Addin may do all the work or it may use an existing DataIO object.  Such Addins are classed differently because they hook into Autodesk Inventor's File > Load and File > Save commands.  For more information, refer to the TranslatorAddin object reference.</p>
+
+<br />
+<br />
+<div id="CopyrightNotice" style="display:none;">
+  <hr />
+  <table width="100%" style="font-size:15">
+	<tr>
+	  <td align="left">
+		&copy; Copyright 2025 Autodesk, Inc.
+	  </td>
+	  <td align="right">
+		<a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(DataIO_Overview)">Comment on this page.</a>
+	  </td>
+	</tr>
+  </table>
+</div>
+
+</body>
+</html>

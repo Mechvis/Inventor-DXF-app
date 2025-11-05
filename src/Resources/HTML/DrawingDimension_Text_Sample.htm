@@ -1,0 +1,207 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/DrawingDimension_Text_Sample.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="DrawingDimension_Text_Sample">
+    <meta name="description" content="Aligning drawing dimensions Sample">
+    <meta name="topicid" content="DrawingDimension_Text_Sample">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>Aligning drawing dimensions</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body><script>
+          function copyCode(language) {
+          // Get the pre element for the specified language.
+          var preElement = document.getElementById(language);
+
+          // Get the text from the element and copy it to the clipboard.
+          var preText = preElement.innerText;
+
+          var isIE = /*@cc_on!@*/false || !!document.documentMode;
+
+          if (isIE)
+          {
+            window.clipboardData.setData('Text', preText);
+          }
+          else
+          {
+            navigator.clipboard.writeText(preText);
+          }
+
+          //alert("Code copied to clipboard");
+          }
+        </script><link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">Aligning drawing dimensions</h1>
+    <h2 class="api">
+          Description
+        </h2>This sample demonstrates aligning the selected drawing dimensions along a horizontal or vertical axis.<h2 class="api">
+          Code Samples
+        </h2>
+    <div id="tabs">
+      <ul>
+        <li><a href="#VBA">VBA</a></li>
+        <li><a href="#iLogic">iLogic</a></li>
+      </ul>
+      <div id="VBA" class="api-code">The first dimension selected defines the origin of the axis. A drawing document must be open and at least two dimensions selected.<table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('VBA_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="VBA_code">Public Sub DimensionAlign()
+   Dim oDrawDoc As DrawingDocument
+   Set oDrawDoc = ThisApplication.ActiveDocument
+
+   <span style="color:blue">' Determine if there are any dimensions in the select set.</span>
+   Dim oSelectSet As SelectSet
+   Set oSelectSet = oDrawDoc.SelectSet
+   Dim colDimensions As New Collection
+   Dim i As Long
+   For i = 1 To oSelectSet.Count
+      If Typeof oSelectSet.Item(i) Is DrawingDimension Then
+         <span style="color:blue">' Add any dimensions to the collection. We need to save them</span>
+         <span style="color:blue">' in something besides the selection set because once we start</span>
+         <span style="color:blue">' manipulating them the select set will be cleared.</span>
+         colDimensions.Add oSelectSet.Item(i)
+      End If
+   Next
+
+   If colDimensions.Count &lt; 2 Then
+      MsgBox "You must select at least 2 dimensions for this operation."
+      Exit Sub
+   End If
+
+   <span style="color:blue">' Ask the user if he/she wants vertical or horizontal alignment.</span>
+   Dim bHorizontal As Boolean
+   If MsgBox("Do you want horizontal alignment? (Selecting ""No"" results in vertical alignment)", vbQuestion + vbYesNo, "Align Dimensions") = vbYes Then
+       bHorizontal = True
+   Else
+    bHorizontal = False
+   End If
+
+   For i = 1 To colDimensions.Count
+      Dim oDimension As DrawingDimension
+      Set oDimension = colDimensions.Item(i)
+
+      If i = 1 Then
+         <span style="color:blue">' Get the position of the first dimension text. This is</span>
+         <span style="color:blue">' the position the other dimensions will be aligned to.</span>
+         Dim dPosition As Double
+         If bHorizontal Then
+            dPosition = oDimension.Text.Origin.Y
+         Else
+            dPosition = oDimension.Text.Origin.X
+         End If
+      Else
+         <span style="color:blue">' Change the position of the dimension.</span>
+         Dim oPosition As Point2d
+         Set oPosition = oDimension.Text.Origin
+         If bHorizontal Then
+            oPosition.Y = dPosition
+         Else
+            oPosition.X = dPosition
+         End If
+    
+         oDimension.Text.Origin = oPosition
+      End If
+   Next
+End Sub</pre>
+      </div>
+      <div id="iLogic" class="api-code">The first dimension selected defines the origin of the axis. A drawing document must be open and at least two dimensions selected.<table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('iLogic_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="iLogic_code">    Dim oDrawDoc As DrawingDocument
+   oDrawDoc = ThisApplication.ActiveDocument
+
+   <span style="color:blue">' Determine if there are any dimensions in the select set.</span>
+   Dim oSelectSet As SelectSet
+   oSelectSet = oDrawDoc.SelectSet
+   Dim colDimensions As New Collection
+   Dim i As Long
+   For i = 1 To oSelectSet.Count
+      If Typeof oSelectSet.Item(i) Is DrawingDimension Then
+         <span style="color:blue">' Add any dimensions to the collection. We need to save them</span>
+         <span style="color:blue">' in something besides the selection set because once we start</span>
+         <span style="color:blue">' manipulating them the select set will be cleared.</span>
+         colDimensions.Add(oSelectSet.Item(i))
+      End If
+   Next
+
+   If colDimensions.Count &lt; 2 Then
+      MsgBox("You must select at least 2 dimensions for this operation.")
+      Exit Sub
+   End If
+
+   <span style="color:blue">' Ask the user if he/she wants vertical or horizontal alignment.</span>
+   Dim bHorizontal As Boolean
+   If MsgBox("Do you want horizontal alignment? (Selecting ""No"" results in vertical alignment)", vbQuestion + vbYesNo, "Align Dimensions") = vbYes Then
+       bHorizontal = True
+   Else
+    bHorizontal = False
+   End If
+    
+   Dim dPosition As Double
+   For i = 1 To colDimensions.Count
+      Dim oDimension As DrawingDimension
+      oDimension = colDimensions.Item(i)
+
+      If i = 1 Then
+         <span style="color:blue">' Get the position of the first dimension text. This is</span>
+         <span style="color:blue">' the position the other dimensions will be aligned to.</span>
+         
+         If bHorizontal Then
+            dPosition = oDimension.Text.Origin.Y
+         Else
+            dPosition = oDimension.Text.Origin.X
+         End If
+      Else
+         <span style="color:blue">' Change the position of the dimension.</span>
+         Dim oPosition As Point2d
+         oPosition = oDimension.Text.Origin
+         If bHorizontal Then
+            oPosition.Y = dPosition
+         Else
+            oPosition.X = dPosition
+         End If
+    
+         oDimension.Text.Origin = oPosition
+      End If
+   Next</pre>
+      </div>
+    </div><br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(DrawingDimension_Text%20Sample%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

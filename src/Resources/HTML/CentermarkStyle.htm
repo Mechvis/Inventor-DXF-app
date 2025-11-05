@@ -1,0 +1,166 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/CentermarkStyle.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="CentermarkStyle">
+    <meta name="description" content="CentermarkStyle Object">
+    <meta name="topicid" content="GUID-CentermarkStyle">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>CentermarkStyle Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">CentermarkStyle Object
+			</h1>
+              Derived from: <a href="Style.htm">Style</a> Object
+            <br><h2 class="api">
+          Description
+        </h2>The CentermarkStyle object represents a center mark style in a drawing.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="CentermarkStyle_ConvertToLocal.htm">ConvertToLocal</a></td>
+        <td class="api-list">Method that creates a local cached copy of a global style and returns the local style.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="CentermarkStyle_Copy.htm">Copy</a></td>
+        <td class="api-list">Method that creates a new local Style object. The newly created style is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="CentermarkStyle_Delete.htm">Delete</a></td>
+        <td class="api-list">Method that deletes the Style/Layer/UnfoldMethod.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="CentermarkStyle_GetReferenceKey.htm">GetReferenceKey</a></td>
+        <td class="api-list">Method that generates and returns the reference key for this entity.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="CentermarkStyle_SaveToGlobal.htm">SaveToGlobal</a></td>
+        <td class="api-list">Method that saves this style to the global repository. If a style with the same name is found in the repository, that style is updated.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="CentermarkStyle_UpdateFromGlobal.htm">UpdateFromGlobal</a></td>
+        <td class="api-list">Method that updates this style from the global repository.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="CentermarkStyle_Application.htm">Application</a></td>
+        <td class="api-list">Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="CentermarkStyle_Comments.htm">Comments</a></td>
+        <td class="api-list">Gets and sets comments associated with the style.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="CentermarkStyle_DefaultRadius.htm">DefaultRadius</a></td>
+        <td class="api-list">Gets and sets the size of a sick center mark if it is left detached from geometry.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="CentermarkStyle_ExtensionLength.htm">ExtensionLength</a></td>
+        <td class="api-list">Gets and sets the minimum length of center mark extension lines.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="CentermarkStyle_GapDistance.htm">GapDistance</a></td>
+        <td class="api-list">Gets and sets the gap distance between the center indicator and the extension line.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="CentermarkStyle_InternalName.htm">InternalName</a></td>
+        <td class="api-list">Property that returns the internal name of the style. The name is the internal English name of the standard style. This name will remain constant and is not affected by locale. This name is never displayed to the user. Note that this name is not guaranteed to be unique.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="CentermarkStyle_InUse.htm">InUse</a></td>
+        <td class="api-list">Property that indicates if this style is in use.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="CentermarkStyle_MarkSize.htm">MarkSize</a></td>
+        <td class="api-list">Gets and sets the size of the center indicator mark.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="CentermarkStyle_Name.htm">Name</a></td>
+        <td class="api-list">Gets/Sets the name of the Style.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="CentermarkStyle_OvershootDistance.htm">OvershootDistance</a></td>
+        <td class="api-list">Gets and sets the distance that center mark extension lines extend beyond the edges of the features that they define.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="CentermarkStyle_Parent.htm">Parent</a></td>
+        <td class="api-list">Property returning the parent of this object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="CentermarkStyle_StyleLocation.htm">StyleLocation</a></td>
+        <td class="api-list">Property that returns the location of this style, i.e. local to the document, cached locally in the document, exists in the library. Styles that exist in the library cannot be edited.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="CentermarkStyle_StyleType.htm">StyleType</a></td>
+        <td class="api-list">Gets the type of the style.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="CentermarkStyle_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="CentermarkStyle_UpToDate.htm">UpToDate</a></td>
+        <td class="api-list">Property that gets the up-to-date status of the style against the global repository.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="Centerline_Style.htm">Centerline.Style</a>, <a href="Centermark_Style.htm">Centermark.Style</a>, <a href="CentermarkStylesEnumerator_Item.htm">CentermarkStylesEnumerator.Item</a>, <a href="ObjectDefaultsStyle_CenterlineStyle.htm">ObjectDefaultsStyle.CenterlineStyle</a>, <a href="ObjectDefaultsStyle_CentermarkStyle.htm">ObjectDefaultsStyle.CentermarkStyle</a>, <a href="ObjectDefaultsStyle_CenterOfGravityStyle.htm">ObjectDefaultsStyle.CenterOfGravityStyle</a>, <a href="ObjectDefaultsStyle_SheetMetalPunchStyle.htm">ObjectDefaultsStyle.SheetMetalPunchStyle</a>, <a href="ObjectDefaultsStyle_WorkAxisStyle.htm">ObjectDefaultsStyle.WorkAxisStyle</a>, <a href="ObjectDefaultsStyle_WorkPlaneStyle.htm">ObjectDefaultsStyle.WorkPlaneStyle</a>, <a href="ObjectDefaultsStyle_WorkPointStyle.htm">ObjectDefaultsStyle.WorkPointStyle</a><h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2010<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(CentermarkStyle%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

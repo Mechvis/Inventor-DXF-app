@@ -1,0 +1,197 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/DrawingPrintManager.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="DrawingPrintManager">
+    <meta name="description" content="DrawingPrintManager Object">
+    <meta name="topicid" content="GUID-DrawingPrintManager">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>DrawingPrintManager Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">DrawingPrintManager Object
+			</h1>
+              Derived from: <a href="PrintManager.htm">PrintManager</a> Object
+            <br><h2 class="api">
+          Description
+        </h2>The DrawingPrintManager object supports properties and methods that allow you to get and set the printing parameters and submit the print.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingPrintManager_GetSheetRange.htm">GetSheetRange</a></td>
+        <td class="api-list">Method that gets the sheet range to print. The sheet range is only used when the PrintRange property is set to kPrintSheetRange.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingPrintManager_PrintToFile.htm">PrintToFile</a></td>
+        <td class="api-list">Method that prints to the specified file using the current property settings defined by the PrintManager object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingPrintManager_SetCurrentView.htm">SetCurrentView</a></td>
+        <td class="api-list">Set the current view used for printing.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingPrintManager_SetSheetRange.htm">SetSheetRange</a></td>
+        <td class="api-list">Method that sets the sheet range to print. The range set is only used when the PrintRange property is set to kPrintSheetRange.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingPrintManager_SubmitPrint.htm">SubmitPrint</a></td>
+        <td class="api-list">Method that prints using the current property settings defined by the PrintManager object.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingPrintManager_AllColorsAsBlack.htm">AllColorsAsBlack</a></td>
+        <td class="api-list">Gets/Sets the Boolean flag indicating whether all the Drawing colors should be black in the print.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingPrintManager_Application.htm">Application</a></td>
+        <td class="api-list">Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingPrintManager_ColorMode.htm">ColorMode</a></td>
+        <td class="api-list">Gets/Sets the color mode to be used for printing. Defaults to using kPrintGrayScale.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingPrintManager_NumberOfCopies.htm">NumberOfCopies</a></td>
+        <td class="api-list">Gets/Sets the number of copies to be printed. Defaults to 1.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingPrintManager_Orientation.htm">Orientation</a></td>
+        <td class="api-list">Gets/Sets the orientation of the printer. Defaults to the printer's default.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingPrintManager_PaperHeight.htm">PaperHeight</a></td>
+        <td class="api-list">Gets/Sets the height of the paper to be printed (max value is 327.67cm). Setting this, sets PaperSize to kPaperSizeCustom.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingPrintManager_PaperSize.htm">PaperSize</a></td>
+        <td class="api-list">Gets/Sets the size of the paper to be printed. Defaults to the printer's default.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingPrintManager_PaperSource.htm">PaperSource</a></td>
+        <td class="api-list">Gets/Sets the paper source (tray) on the printer. This is printer specific. Defaults to printer's default (denoted by -1).</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingPrintManager_PaperWidth.htm">PaperWidth</a></td>
+        <td class="api-list">Gets/Sets the width of the paper to be printed (max value is 327.67cm). Setting this, sets PaperSize to kPaperSizeCustom.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingPrintManager_Printer.htm">Printer</a></td>
+        <td class="api-list">Gets/Sets the name of the printer. This is the printer's identifier. Defaults to default printer for this machine.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingPrintManager_PrinterDeviceContext.htm">PrinterDeviceContext</a></td>
+        <td class="api-list">Gets/Sets the printer's device context.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingPrintManager_PrintExcludedSheets.htm">PrintExcludedSheets</a></td>
+        <td class="api-list">Gets/Sets the Boolean flag indicating whether excluded sheets (when PrintRange is set to kPrintAllSheets or kPrintSheetRange) should be printed. Defaults to FALSE.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingPrintManager_PrintRange.htm">PrintRange</a></td>
+        <td class="api-list">Gets/Sets information about which sheets are to be printed. Defaults to kPrintCurrentSheet.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingPrintManager_RemoveLineWeights.htm">RemoveLineWeights</a></td>
+        <td class="api-list">Gets/Sets the Boolean flag indicating whether the Drawing line weights should be removed in the print.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingPrintManager_Rotate90Degrees.htm">Rotate90Degrees</a></td>
+        <td class="api-list">Gets/Sets the Boolean flag indicating whether the Drawing should be rotated 90-deg in the print.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingPrintManager_Scale.htm">Scale</a></td>
+        <td class="api-list">Gets/Sets the scale of the print. Meaningless when the ScaleMode is not kPrintCustomScale.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingPrintManager_ScaleMode.htm">ScaleMode</a></td>
+        <td class="api-list">Gets/Sets the mode by which the scale of the print is defined. Defaults to kPrintBestFitScale.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingPrintManager_TilingEnabled.htm">TilingEnabled</a></td>
+        <td class="api-list">Gets/Sets the Boolean flag indicating whether Tiling is enabled during print.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingPrintManager_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingPrintManager_Sample.htm">Printing - All Sheets in Drawing</a></td>
+        <td class="api-list">This sample demonstrates how to print all sheets in a drawing document and set some of the DrawingPrintManager properties.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DrawingPrintManager_SetSheetRange_Sample.htm">Printing - Drawing Print</a></td>
+        <td class="api-list">This sample demonstrates how to print a drawing, setting specifics such as sheet range.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 5<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(DrawingPrintManager%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

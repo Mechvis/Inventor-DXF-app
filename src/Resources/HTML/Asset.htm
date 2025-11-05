@@ -1,0 +1,187 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/Asset.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="Asset">
+    <meta name="description" content="Asset Object">
+    <meta name="topicid" content="GUID-Asset">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>Asset Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">Asset Object
+			</h1><br><h2 class="api">
+          Description
+        </h2>The Asset object represents an appearance, material, or physical asset within a library.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Asset_CopyTo.htm">CopyTo</a></td>
+        <td class="api-list">Method that copies this asset to the specified target and returns the new asset.&nbsp;A failure will occur if you attempt to replace the asset itself..</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Asset_Delete.htm">Delete</a></td>
+        <td class="api-list">Method that deletes this asset from the library.&nbsp;An asset can only be deleted if it is not currently being used, which you can determine using the IsUsed property.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Asset_Duplicate.htm">Duplicate</a></td>
+        <td class="api-list">Method that creates a copy of this asset within the document using a new display name. This method is only valid when called on an asset that is owned by a document. A failure will occur if you attempt to copy an asset that isn’t owned by a document and if the.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Asset_Application.htm">Application</a></td>
+        <td class="api-list">Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Asset_AssetType.htm">AssetType</a></td>
+        <td class="api-list">Gets the data type that returns whether this is an appearance, physical properties, or material asset.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Asset_Category.htm">Category</a></td>
+        <td class="api-list">Gets the category that this asset is a member of. A value of Nothing indicates this asset is not a member of a category. A value of Nothing is also returned when an Asset is associated with a document, rather than a library. Categories don’t exist in a documen.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Asset_CategoryName.htm">CategoryName</a></td>
+        <td class="api-list">Gets the name of the category this Asset is designated to be in. This can include the the category and subcategories which are delimited by a colon.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Asset_Count.htm">Count</a></td>
+        <td class="api-list">Gets the number of items in this collection.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Asset_DisplayName.htm">DisplayName</a></td>
+        <td class="api-list">Gets and sets the name of this asset as seen in the Material or Appearance Browser.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Asset_HasTexture.htm">HasTexture</a></td>
+        <td class="api-list">Gets the flag that indicates if this asset has texture.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Asset_IsReadOnly.htm">IsReadOnly</a></td>
+        <td class="api-list">Gets the boolean flag that indicates if this asset is read-only. If True any attempted edits will fail.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Asset_IsUsed.htm">IsUsed</a></td>
+        <td class="api-list">Gets the boolean flag that indicates if this asset is being used in the document or in a material definition.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Asset_Item.htm">Item</a></td>
+        <td class="api-list">Allows integer-indexed access to items in the collection.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Asset_LocalType.htm">LocalType</a></td>
+        <td class="api-list">Returns the local type of this asset. This is applicable to appearance asset.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Asset_Name.htm">Name</a></td>
+        <td class="api-list">Gets the key name of the asset. This name will remain constant for all languages and is the name used as input to the Item property.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Asset_Parent.htm">Parent</a></td>
+        <td class="api-list">Read-only property that returns the parent object of this asset.&nbsp;This can return an AssetLibrary, or Document object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="Asset_Type.htm">Type</a></td>
+        <td class="api-list">Gets the constant that indicates the type of this object.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="AliasFreeformFeature_Appearance.htm">AliasFreeformFeature.Appearance</a>, <a href="AliasFreeformFeatureProxy_Appearance.htm">AliasFreeformFeatureProxy.Appearance</a>, <a href="AssemblyComponentDefinition_DefaultVirtualComponentMaterial.htm">AssemblyComponentDefinition.DefaultVirtualComponentMaterial</a>, <a href="Asset_CopyTo.htm">Asset.CopyTo</a>, <a href="Asset_Duplicate.htm">Asset.Duplicate</a>, <a href="Assets_Add.htm">Assets.Add</a>, <a href="Assets_Item.htm">Assets.Item</a>, <a href="AssetsEnumerator_Item.htm">AssetsEnumerator.Item</a>, <a href="AssetValue_Parent.htm">AssetValue.Parent</a>, <a href="BendFeature_Appearance.htm">BendFeature.Appearance</a>, <a href="BendFeatureProxy_Appearance.htm">BendFeatureProxy.Appearance</a>, <a href="BendPartFeature_Appearance.htm">BendPartFeature.Appearance</a>, <a href="BendPartFeatureProxy_Appearance.htm">BendPartFeatureProxy.Appearance</a>, <a href="BooleanAssetValue_Parent.htm">BooleanAssetValue.Parent</a>, <a href="BossFeature_Appearance.htm">BossFeature.Appearance</a>, <a href="BossFeatureProxy_Appearance.htm">BossFeatureProxy.Appearance</a>, <a href="BoundaryPatchFeature_Appearance.htm">BoundaryPatchFeature.Appearance</a>, <a href="BoundaryPatchFeatureProxy_Appearance.htm">BoundaryPatchFeatureProxy.Appearance</a>, <a href="ChamferFeature_Appearance.htm">ChamferFeature.Appearance</a>, <a href="ChamferFeatureProxy_Appearance.htm">ChamferFeatureProxy.Appearance</a>, <a href="ChoiceAssetValue_Parent.htm">ChoiceAssetValue.Parent</a>, <a href="CircularPatternFeature_Appearance.htm">CircularPatternFeature.Appearance</a>, <a href="CircularPatternFeatureProxy_Appearance.htm">CircularPatternFeatureProxy.Appearance</a>, <a href="ClientFeature_Appearance.htm">ClientFeature.Appearance</a>, <a href="ClientFeatureProxy_Appearance.htm">ClientFeatureProxy.Appearance</a>, <a href="CoilFeature_Appearance.htm">CoilFeature.Appearance</a>, <a href="CoilFeatureProxy_Appearance.htm">CoilFeatureProxy.Appearance</a>, <a href="ColorAssetValue_Parent.htm">ColorAssetValue.Parent</a>, <a href="CombineFeature_Appearance.htm">CombineFeature.Appearance</a>, <a href="CombineFeatureProxy_Appearance.htm">CombineFeatureProxy.Appearance</a>, <a href="ComponentOccurrence_Appearance.htm">ComponentOccurrence.Appearance</a>, <a href="ComponentOccurrenceProxy_Appearance.htm">ComponentOccurrenceProxy.Appearance</a>, <a href="ContourFlangeFeature_Appearance.htm">ContourFlangeFeature.Appearance</a>, <a href="ContourFlangeFeatureProxy_Appearance.htm">ContourFlangeFeatureProxy.Appearance</a>, <a href="ContourRollFeature_Appearance.htm">ContourRollFeature.Appearance</a>, <a href="ContourRollFeatureProxy_Appearance.htm">ContourRollFeatureProxy.Appearance</a>, <a href="CoreCavityFeature_Appearance.htm">CoreCavityFeature.Appearance</a>, <a href="CoreCavityFeatureProxy_Appearance.htm">CoreCavityFeatureProxy.Appearance</a>, <a href="CornerChamferFeature_Appearance.htm">CornerChamferFeature.Appearance</a>, <a href="CornerChamferFeatureProxy_Appearance.htm">CornerChamferFeatureProxy.Appearance</a>, <a href="CornerFeature_Appearance.htm">CornerFeature.Appearance</a>, <a href="CornerFeatureProxy_Appearance.htm">CornerFeatureProxy.Appearance</a>, <a href="CornerRoundFeature_Appearance.htm">CornerRoundFeature.Appearance</a>, <a href="CornerRoundFeatureProxy_Appearance.htm">CornerRoundFeatureProxy.Appearance</a>, <a href="CosmeticBendFeature_Appearance.htm">CosmeticBendFeature.Appearance</a>, <a href="CosmeticBendFeatureProxy_Appearance.htm">CosmeticBendFeatureProxy.Appearance</a>, <a href="CutFeature_Appearance.htm">CutFeature.Appearance</a>, <a href="CutFeatureProxy_Appearance.htm">CutFeatureProxy.Appearance</a>, <a href="DecalFeature_Appearance.htm">DecalFeature.Appearance</a>, <a href="DecalFeatureProxy_Appearance.htm">DecalFeatureProxy.Appearance</a>, <a href="DeleteFaceFeature_Appearance.htm">DeleteFaceFeature.Appearance</a>, <a href="DeleteFaceFeatureProxy_Appearance.htm">DeleteFaceFeatureProxy.Appearance</a>, <a href="DirectEditFeature_Appearance.htm">DirectEditFeature.Appearance</a>, <a href="DirectEditFeatureProxy_Appearance.htm">DirectEditFeatureProxy.Appearance</a>, <a href="EmbossFeature_Appearance.htm">EmbossFeature.Appearance</a>, <a href="EmbossFeature_TopFaceAppearance.htm">EmbossFeature.TopFaceAppearance</a>, <a href="EmbossFeatureProxy_Appearance.htm">EmbossFeatureProxy.Appearance</a>, <a href="EmbossFeatureProxy_TopFaceAppearance.htm">EmbossFeatureProxy.TopFaceAppearance</a>, <a href="ExtendFeature_Appearance.htm">ExtendFeature.Appearance</a>, <a href="ExtendFeatureProxy_Appearance.htm">ExtendFeatureProxy.Appearance</a>, <a href="ExtrudeFeature_Appearance.htm">ExtrudeFeature.Appearance</a>, <a href="ExtrudeFeatureProxy_Appearance.htm">ExtrudeFeatureProxy.Appearance</a>, <a href="Face_Appearance.htm">Face.Appearance</a>, <a href="FaceDraftFeature_Appearance.htm">FaceDraftFeature.Appearance</a>, <a href="FaceDraftFeatureProxy_Appearance.htm">FaceDraftFeatureProxy.Appearance</a>, <a href="FaceFeature_Appearance.htm">FaceFeature.Appearance</a>, <a href="FaceFeatureProxy_Appearance.htm">FaceFeatureProxy.Appearance</a>, <a href="FaceOffsetFeature_Appearance.htm">FaceOffsetFeature.Appearance</a>, <a href="FaceOffsetFeatureProxy_Appearance.htm">FaceOffsetFeatureProxy.Appearance</a>, <a href="FaceProxy_Appearance.htm">FaceProxy.Appearance</a>, <a href="FilenameAssetValue_Parent.htm">FilenameAssetValue.Parent</a>, <a href="FilletFeature_Appearance.htm">FilletFeature.Appearance</a>, <a href="FilletFeatureProxy_Appearance.htm">FilletFeatureProxy.Appearance</a>, <a href="FinishDefinition_Appearance.htm">FinishDefinition.Appearance</a>, <a href="FinishFeature_Appearance.htm">FinishFeature.Appearance</a>, <a href="FinishFeatureProxy_Appearance.htm">FinishFeatureProxy.Appearance</a>, <a href="FlangeFeature_Appearance.htm">FlangeFeature.Appearance</a>, <a href="FlangeFeatureProxy_Appearance.htm">FlangeFeatureProxy.Appearance</a>, <a href="FloatAssetValue_Parent.htm">FloatAssetValue.Parent</a>, <a href="FoldFeature_Appearance.htm">FoldFeature.Appearance</a>, <a href="FoldFeatureProxy_Appearance.htm">FoldFeatureProxy.Appearance</a>, <a href="FreeformFeature_Appearance.htm">FreeformFeature.Appearance</a>, <a href="FreeformFeatureProxy_Appearance.htm">FreeformFeatureProxy.Appearance</a>, <a href="GraphicsNode_Appearance.htm">GraphicsNode.Appearance</a>, <a href="GraphicsNodeProxy_Appearance.htm">GraphicsNodeProxy.Appearance</a>, <a href="GrillFeature_Appearance.htm">GrillFeature.Appearance</a>, <a href="GrillFeatureProxy_Appearance.htm">GrillFeatureProxy.Appearance</a>, <a href="HemFeature_Appearance.htm">HemFeature.Appearance</a>, <a href="HemFeatureProxy_Appearance.htm">HemFeatureProxy.Appearance</a>, <a href="HoleFeature_Appearance.htm">HoleFeature.Appearance</a>, <a href="HoleFeatureProxy_Appearance.htm">HoleFeatureProxy.Appearance</a>, <a href="iFeature_Appearance.htm">iFeature.Appearance</a>, <a href="iFeatureProxy_Appearance.htm">iFeatureProxy.Appearance</a>, <a href="IntegerAssetValue_Parent.htm">IntegerAssetValue.Parent</a>, <a href="KnitFeature_Appearance.htm">KnitFeature.Appearance</a>, <a href="KnitFeatureProxy_Appearance.htm">KnitFeatureProxy.Appearance</a>, <a href="LipFeature_Appearance.htm">LipFeature.Appearance</a>, <a href="LipFeatureProxy_Appearance.htm">LipFeatureProxy.Appearance</a>, <a href="LoftedFlangeFeature_Appearance.htm">LoftedFlangeFeature.Appearance</a>, <a href="LoftedFlangeFeatureProxy_Appearance.htm">LoftedFlangeFeatureProxy.Appearance</a>, <a href="LoftFeature_Appearance.htm">LoftFeature.Appearance</a>, <a href="LoftFeatureProxy_Appearance.htm">LoftFeatureProxy.Appearance</a>, <a href="MarkFeature_Appearance.htm">MarkFeature.Appearance</a>, <a href="MarkFeatureProxy_Appearance.htm">MarkFeatureProxy.Appearance</a>, <a href="MaterialAsset_AppearanceAsset.htm">MaterialAsset.AppearanceAsset</a>, <a href="MaterialAsset_CopyTo.htm">MaterialAsset.CopyTo</a>, <a href="MaterialAsset_Duplicate.htm">MaterialAsset.Duplicate</a>, <a href="MaterialAsset_PhysicalPropertiesAsset.htm">MaterialAsset.PhysicalPropertiesAsset</a>, <a href="MeshFeature_Appearance.htm">MeshFeature.Appearance</a>, <a href="MeshFeatureProxy_Appearance.htm">MeshFeatureProxy.Appearance</a>, <a href="MidSurfaceFeature_Appearance.htm">MidSurfaceFeature.Appearance</a>, <a href="MidSurfaceFeatureProxy_Appearance.htm">MidSurfaceFeatureProxy.Appearance</a>, <a href="MirrorFeature_Appearance.htm">MirrorFeature.Appearance</a>, <a href="MirrorFeatureProxy_Appearance.htm">MirrorFeatureProxy.Appearance</a>, <a href="MoveFaceFeature_Appearance.htm">MoveFaceFeature.Appearance</a>, <a href="MoveFaceFeatureProxy_Appearance.htm">MoveFaceFeatureProxy.Appearance</a>, <a href="MoveFeature_Appearance.htm">MoveFeature.Appearance</a>, <a href="MoveFeatureProxy_Appearance.htm">MoveFeatureProxy.Appearance</a>, <a href="NonParametricBaseFeature_Appearance.htm">NonParametricBaseFeature.Appearance</a>, <a href="NonParametricBaseFeatureProxy_Appearance.htm">NonParametricBaseFeatureProxy.Appearance</a>, <a href="PartDocument_ActiveAppearance.htm">PartDocument.ActiveAppearance</a>, <a href="PartDocument_ActiveMaterial.htm">PartDocument.ActiveMaterial</a>, <a href="PartFeature_Appearance.htm">PartFeature.Appearance</a>, <a href="PresentationComponent_Appearance.htm">PresentationComponent.Appearance</a>, <a href="PresentationExplodedView_Appearance.htm">PresentationExplodedView.Appearance</a>, <a href="PresentationMeshFeature_Appearance.htm">PresentationMeshFeature.Appearance</a>, <a href="PublicationComponent_Appearance.htm">PublicationComponent.Appearance</a>, <a href="PunchToolFeature_Appearance.htm">PunchToolFeature.Appearance</a>, <a href="PunchToolFeatureProxy_Appearance.htm">PunchToolFeatureProxy.Appearance</a>, <a href="RectangularPatternFeature_Appearance.htm">RectangularPatternFeature.Appearance</a>, <a href="RectangularPatternFeatureProxy_Appearance.htm">RectangularPatternFeatureProxy.Appearance</a>, <a href="ReferenceAssetValue_Parent.htm">ReferenceAssetValue.Parent</a>, <a href="ReferenceAssetValue_Value.htm">ReferenceAssetValue.Value</a>, <a href="ReferenceAssetValue_Values.htm">ReferenceAssetValue.Values</a>, <a href="ReferenceFeature_Appearance.htm">ReferenceFeature.Appearance</a>, <a href="ReferenceFeatureProxy_Appearance.htm">ReferenceFeatureProxy.Appearance</a>, <a href="RefoldFeature_Appearance.htm">RefoldFeature.Appearance</a>, <a href="RefoldFeatureProxy_Appearance.htm">RefoldFeatureProxy.Appearance</a>, <a href="ReplaceFaceFeature_Appearance.htm">ReplaceFaceFeature.Appearance</a>, <a href="ReplaceFaceFeatureProxy_Appearance.htm">ReplaceFaceFeatureProxy.Appearance</a>, <a href="RestFeature_Appearance.htm">RestFeature.Appearance</a>, <a href="RestFeatureProxy_Appearance.htm">RestFeatureProxy.Appearance</a>, <a href="RevolveFeature_Appearance.htm">RevolveFeature.Appearance</a>, <a href="RevolveFeatureProxy_Appearance.htm">RevolveFeatureProxy.Appearance</a>, <a href="RibFeature_Appearance.htm">RibFeature.Appearance</a>, <a href="RibFeatureProxy_Appearance.htm">RibFeatureProxy.Appearance</a>, <a href="RipFeature_Appearance.htm">RipFeature.Appearance</a>, <a href="RipFeatureProxy_Appearance.htm">RipFeatureProxy.Appearance</a>, <a href="RuledSurfaceFeature_Appearance.htm">RuledSurfaceFeature.Appearance</a>, <a href="RuledSurfaceFeatureProxy_Appearance.htm">RuledSurfaceFeatureProxy.Appearance</a>, <a href="RuleFilletFeature_Appearance.htm">RuleFilletFeature.Appearance</a>, <a href="RuleFilletFeatureProxy_Appearance.htm">RuleFilletFeatureProxy.Appearance</a>, <a href="SculptFeature_Appearance.htm">SculptFeature.Appearance</a>, <a href="SculptFeatureProxy_Appearance.htm">SculptFeatureProxy.Appearance</a>, <a href="ShellFeature_Appearance.htm">ShellFeature.Appearance</a>, <a href="ShellFeatureProxy_Appearance.htm">ShellFeatureProxy.Appearance</a>, <a href="SimplifyFeature_Appearance.htm">SimplifyFeature.Appearance</a>, <a href="SimplifyFeatureProxy_Appearance.htm">SimplifyFeatureProxy.Appearance</a>, <a href="SketchDrivenPatternFeature_Appearance.htm">SketchDrivenPatternFeature.Appearance</a>, <a href="SketchDrivenPatternFeatureProxy_Appearance.htm">SketchDrivenPatternFeatureProxy.Appearance</a>, <a href="SnapFitFeature_Appearance.htm">SnapFitFeature.Appearance</a>, <a href="SnapFitFeatureProxy_Appearance.htm">SnapFitFeatureProxy.Appearance</a>, <a href="SplitFeature_Appearance.htm">SplitFeature.Appearance</a>, <a href="SplitFeatureProxy_Appearance.htm">SplitFeatureProxy.Appearance</a>, <a href="StringAssetValue_Parent.htm">StringAssetValue.Parent</a>, <a href="SurfaceBody_Appearance.htm">SurfaceBody.Appearance</a>, <a href="SurfaceBodyProxy_Appearance.htm">SurfaceBodyProxy.Appearance</a>, <a href="SurfaceGraphicsFace_Appearance.htm">SurfaceGraphicsFace.Appearance</a>, <a href="SweepFeature_Appearance.htm">SweepFeature.Appearance</a>, <a href="SweepFeatureProxy_Appearance.htm">SweepFeatureProxy.Appearance</a>, <a href="TextureAssetValue_Parent.htm">TextureAssetValue.Parent</a>, <a href="ThickenFeature_Appearance.htm">ThickenFeature.Appearance</a>, <a href="ThickenFeatureProxy_Appearance.htm">ThickenFeatureProxy.Appearance</a>, <a href="ThreadFeature_Appearance.htm">ThreadFeature.Appearance</a>, <a href="ThreadFeatureProxy_Appearance.htm">ThreadFeatureProxy.Appearance</a>, <a href="TrimFeature_Appearance.htm">TrimFeature.Appearance</a>, <a href="TrimFeatureProxy_Appearance.htm">TrimFeatureProxy.Appearance</a>, <a href="UnfoldFeature_Appearance.htm">UnfoldFeature.Appearance</a>, <a href="UnfoldFeatureProxy_Appearance.htm">UnfoldFeatureProxy.Appearance</a>, <a href="UnwrapFeature_Appearance.htm">UnwrapFeature.Appearance</a>, <a href="UnwrapFeatureProxy_Appearance.htm">UnwrapFeatureProxy.Appearance</a>, <a href="VirtualComponentDefinition_ActiveMaterial.htm">VirtualComponentDefinition.ActiveMaterial</a>, <a href="WeldmentComponentDefinition_DefaultVirtualComponentMaterial.htm">WeldmentComponentDefinition.DefaultVirtualComponentMaterial</a>, <a href="WeldmentComponentDefinition_WeldBeadAppearance.htm">WeldmentComponentDefinition.WeldBeadAppearance</a>, <a href="WeldmentComponentDefinition_WeldBeadMaterial.htm">WeldmentComponentDefinition.WeldBeadMaterial</a>, <a href="WeldmentComponentDefinition_WeldEndFillAppearance.htm">WeldmentComponentDefinition.WeldEndFillAppearance</a><h2 class="api">
+            Derived Classes
+          </h2><a href="MaterialAsset.htm">MaterialAsset</a><h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="CreateSimpleAppearance_Sample.htm">Create a simple appearance.</a></td>
+        <td class="api-list">Creates a sample appearance in the active part or assembly document.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DumpAllAppearances_Sample.htm">Write out all appearance information to a file.</a></td>
+        <td class="api-list">This sample writes out information about all of the appearances in all libraries.  This can be useful when trying to use the API to modify existing appearances by allowing to easily see what information is available for an appearance.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DumpAllPhysicalProperties_Sample.htm">Write out all physical properties to a file.</a></td>
+        <td class="api-list">This sample writes out information about all of the physical properties in all libraries.  This can be useful when trying to use the API to modify existing materials by allowing to easily see what information is available for a physical property.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DumpDocumentAppearances_Sample.htm">Write out all document appearances</a></td>
+        <td class="api-list">This sample writes out information about all of the appearances in the active document.  This can be useful when trying to use the API to modify existing appearances by allowing you to easily see what information is available for an appearance.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DumpDocumentMaterials_Sample.htm">Write out all document materials to a file.</a></td>
+        <td class="api-list">This sample writes out information about all of the materials in the active document.  This can be useful when trying to use the API to modify existing materials by allowing you to easily see what information is available for a material.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="DumpDocumentPhysicalProperties_Sample.htm">Write out all document physical properties to a file.</a></td>
+        <td class="api-list">This sample writes out information about all of the physical properties in the active document.  This can be useful when trying to use the API to modify existing materials by allowing you to easily see what information is available for a physical property</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2014<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(Asset%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

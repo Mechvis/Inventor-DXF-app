@@ -1,0 +1,142 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/FileUIEvents.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="FileUIEvents">
+    <meta name="description" content="FileUIEvents Object">
+    <meta name="topicid" content="GUID-FileUIEvents">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>FileUIEvents Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">FileUIEvents Object
+			</h1><br><h2 class="api">
+          Description
+        </h2>The FileUIEvents object supports a set of events that are fired when the user is creating, inserting, opening and saving files.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FileUIEvents_PopulateFileMetadata.htm">PopulateFileMetadata</a></td>
+        <td class="api-list">Method that fires the OnPopulateFileMetadata event with the input arguments and returns the values specified in the event.&nbsp;This method should be called just before showing the file naming dialog to the user.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FileUIEvents_Application.htm">Application</a></td>
+        <td class="api-list">Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FileUIEvents_Parent.htm">Parent</a></td>
+        <td class="api-list">Gets the parent object from whom this object can logically be reached.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FileUIEvents_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Events
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FileUIEvents_OnFileInsertDialog.htm">OnFileInsertDialog</a></td>
+        <td class="api-list">The OnFileInsertDialog event notifies a client whenever the end-user has executed a command that provides for the selection and insertion of a document into another document.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FileUIEvents_OnFileInsertNewDialog.htm">OnFileInsertNewDialog</a></td>
+        <td class="api-list">The OnFileInsertNewDialog event notifies the client whenever the end-user executes the Create Component command within an assembly.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FileUIEvents_OnFileNew.htm">OnFileNew</a></td>
+        <td class="api-list">Fires before a File New from standard template is executed.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FileUIEvents_OnFileNewDialog.htm">OnFileNewDialog</a></td>
+        <td class="api-list">The OnFileNewDialog event notifies the client when the end-user executes the New or Create Drawing View command to create a new file.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FileUIEvents_OnFileOpenDialog.htm">OnFileOpenDialog</a></td>
+        <td class="api-list">The OnFileOpenDialog event notifies the client when the end-user executes the Open command to open an existing file.
+By responding to this event the client can override Inventor's standard behavior of displaying the Open dialog and provide their own interface to determine the file to open. This notification is only made in cases where the Open dialog is displayed to allow the end-user to select a file. If the end-user uses the most recently used list in the File menu to open a file the Open dialog is bypassed and the file is opened directly and because the Open dialog is not used this notification is not sent.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FileUIEvents_OnFileOpenFromMRU.htm">OnFileOpenFromMRU</a></td>
+        <td class="api-list">Fires when a file is selected from the MRU list to open.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FileUIEvents_OnFileSaveAsDialog.htm">OnFileSaveAsDialog</a></td>
+        <td class="api-list">The OnFileSaveAsDialog event notifies the client when the end-user executes the Save As or Save Copy As command to create a new file.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FileUIEvents_OnPopulateFileMetadata.htm">OnPopulateFileMetadata</a></td>
+        <td class="api-list">Event that fires when file names and properties are being generated by a command.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="Application_FileUIEvents.htm">Application.FileUIEvents</a><h2 class="api">
+            Version
+          </h2>
+        Introduced in version 4<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(FileUIEvents%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

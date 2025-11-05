@@ -1,0 +1,141 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/ContentFamily_CreateMember.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="ContentFamily_CreateMember">
+    <meta name="description" content="ContentFamily.CreateMember Method">
+    <meta name="topicid" content="ContentFamily_CreateMember">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>ContentFamily.CreateMember Method</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">ContentFamily.CreateMember Method</h1>
+
+          Parent Object: <a href="ContentFamily.htm">ContentFamily</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Method that creates a member part for the specified table row. The full filename of the created member is returned. If the creation fails the FailureReason argument indicates the reason for failure.</p>
+    <h2 class="api">
+          Syntax
+        </h2>
+        
+            ContentFamily.<b>CreateMember</b>( <b><i>Row</i></b> As Variant, <b><i>FailureReason</i></b> As <a href="MemberManagerErrorsEnum.htm">MemberManagerErrorsEnum</a>, <b><i>FailureMessage</i></b> As String, [<b><i>Refresh</i></b>] As <a href="ContentMemberRefreshEnum.htm">ContentMemberRefreshEnum</a>, [<b><i>Custom</i></b>] As Boolean, [<b><i>FileName</i></b>] As String, [<b><i>CustomInput</i></b>] As Variant, [<b><i>Options</i></b>] As Variant ) As String
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">Row</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Input Variant that specifies which row to use to create the member. The row index can be specified by a Long (row index), a ContentTableRow object, or the internal name of a ContentTableRow object.</td>
+      </tr>
+      <tr>
+        <td class="api-list">FailureReason</td>
+        <td class="api-list"><a href="MemberManagerErrorsEnum.htm">MemberManagerErrorsEnum</a></td>
+        <td class="api-list">Output MemberManagerErrorsEnum that indicates the reason for failure, if the creation of the member did fail.</td>
+      </tr>
+      <tr>
+        <td class="api-list">FailureMessage</td>
+        <td class="api-list">String</td>
+        <td class="api-list">Output String that contains a message describing the reason for failure, if the creation of the member did fail. If it didn"t fail this will return an empty String.</td>
+      </tr>
+      <tr>
+        <td class="api-list">Refresh</td>
+        <td class="api-list"><a href="ContentMemberRefreshEnum.htm">ContentMemberRefreshEnum</a></td>
+        <td class="api-list">Optional Input ContentMemberRefreshEnum that specifies the behavior to use if the member already exists locally. kUseDefaultRefreshSetting indicates that the method should use whatever the default setting is as set by the user using the "Content Center" tab of the Application options dialog. kRefreshOutOfDateParts indicates that if the part already exists in the local cache and is out of date if it should be replaced with an up to date version of the part. kDoNotRefreshOutOfDateParts indicates that the existing part will be used and not overridden.<br /><br /> This is an optional argument whose default value is 1.</td>
+      </tr>
+      <tr>
+        <td class="api-list">Custom</td>
+        <td class="api-list">Boolean</td>
+        <td class="api-list">Optional Input Boolean that indicates if this part should be created as a custom or standard part. A value of True indicates it will be a custom member.<br /><br /> This is an optional argument whose default value is False.</td>
+      </tr>
+      <tr>
+        <td class="api-list">FileName</td>
+        <td class="api-list">String</td>
+        <td class="api-list">Optional Input String that defines the filename of the resulting member. This argument is only used in the case of a custom family (ContentFamily.IsCustom is true) and is ignored for a standard family. In the case of a custom factory the filename must be specified and is not optional.<br /><br /> This is an optional argument whose default value is "".</td>
+      </tr>
+      <tr>
+        <td class="api-list">CustomInput</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional input NameValueMap that specifies the input to use for the custom input. If the family is custom and this is not supplied, the default values for custom values are used. For each input value you use the NameValueMap to specify the Column ID as the name and the custom value as the new value . If the factory is not a custom factory this argument is ignored.<br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+      <tr>
+        <td class="api-list">Options</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional Input NameValueMap that specifies additional options for this method. This is not currently being used.<br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ContentCenterPartReplace_Sample.htm">Replace content center part</a></td>
+        <td class="api-list">This sample demonstrates how to replace the content part referenced by an assembly occurrence.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PlaceContentCenterPart_Sample.htm">Place Content Center Parts</a></td>
+        <td class="api-list">Places all of the items in a specified family within an assembly.&nbsp;The specific family is identified by the strings where it's setting the HexHeadNode variable.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2010<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(ContentFamily.CreateMember%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

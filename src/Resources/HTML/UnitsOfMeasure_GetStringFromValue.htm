@@ -1,0 +1,113 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/UnitsOfMeasure_GetStringFromValue.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="UnitsOfMeasure_GetStringFromValue">
+    <meta name="description" content="UnitsOfMeasure.GetStringFromValue Method">
+    <meta name="topicid" content="UnitsOfMeasure_GetStringFromValue">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>UnitsOfMeasure.GetStringFromValue Method</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">UnitsOfMeasure.GetStringFromValue Method</h1>
+
+          Parent Object: <a href="UnitsOfMeasure.htm">UnitsOfMeasure</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Method that creates a string that represents the input value evaluated using the specified units.</p>
+    <h2 class="api">
+            Remarks
+          </h2>The input value is always in database units. The units can be defined using one the predefined units in the UnitTypeEnum enum or you can define your own unit type by combining known units in a string. You can also use the default unit types, (kDefaultDisplayLengthUnits, kDefaultDisplayAngleUnits, kDefaultDisplayMassUnits, kDefaultDisplayTimeUnits, or kDefaultDisplayTemperatureUnits), to use the current unit type defined in the document. For example, if the current length unit of the document is Inches and the precision for the length units is 3 decimal places, inputting 25.0 for the value and kDefaultDisplayLengthUnits for the units specifier will return the string '9.843 in'. This method fails when the value cannot be evaluated using the specified units specifier. This method is currently not supported when the UnitsOfMeasure object was obtained using Apprentice. A common use of this method will be to evaluate a value using the current display units of the document. For \example if the value defines a length you can use kDefaultDisplayLengthUnits as the unit specifier so the value will be evaluated as a length in the current document units. The enum values that specify to use the document default display units are kDefaultDisplayLengthUnits, kDefaultDisplayAngleUnits, kDefaultDisplayMassUnits, kDefaultDisplayTimeUnits, and kDefaultDisplayTemperatureUnits.<h2 class="api">
+          Syntax
+        </h2>
+        
+            UnitsOfMeasure.<b>GetStringFromValue</b>( <b><i>Value</i></b> As Double, <b><i>UnitsSpecifier</i></b> As Variant ) As String
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">Value</td>
+        <td class="api-list">Double</td>
+        <td class="api-list">Input Double value that contains the value in database units for the unit category specified in the second argument.<p /></td>
+      </tr>
+      <tr>
+        <td class="api-list">UnitsSpecifier</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Input variant value that specifies the unit type the string is to be returned in. You specify a unit type using a value from UnitsTypeEnum or a string that describes a unit. For example, both of the following are valid unit specifiers for inch: kInchLengthUnits and "in". string specifiers are typically used for units that are not defined in the enum list. For example, the volume measure for cubic inches is not defined in the enum list but you can specify it using the string "in in in".</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="iPropertyCreateUpdateCustom_Sample.htm">Create or update custom iProperty</a></td>
+        <td class="api-list">This example creates a custom iProperty if it doesn't exist and updates the value if it does already exist.&nbsp;A part document must be open before runnin the sample.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="MeasureEventsSink_OnMeasure_Sample.htm">Using measure events</a></td>
+        <td class="api-list">This sample demonstrates using the measure events to measure distance and angle. Interactive measure is dependent on events and VB only supports events within a class module. To use the sample copy the InteractiveMeasureDistance and InteractiveMeasureAngle subs into a code module. Create a new class module called clsMeasure and copy all of the rest of the code into it.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 4<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(UnitsOfMeasure.GetStringFromValue%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,105 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/CommandControls_AddSplitButtonMRU.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="CommandControls_AddSplitButtonMRU">
+    <meta name="description" content="CommandControls.AddSplitButtonMRU Method">
+    <meta name="topicid" content="CommandControls_AddSplitButtonMRU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>CommandControls.AddSplitButtonMRU Method</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">CommandControls.AddSplitButtonMRU Method</h1>
+
+          Parent Object: <a href="CommandControls.htm">CommandControls</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Method that creates a new split button MRU (Most Recently Used) CommandControl object. An example of this type of control is the 'Circle' drop down in the Sketch tab of the ribbon.</p>
+    <h2 class="api">
+          Syntax
+        </h2>
+        
+            CommandControls.<b>AddSplitButtonMRU</b>( <b><i>ButtonDefinitions</i></b> As <a href="ObjectCollection.htm">ObjectCollection</a>, [<b><i>UseLargeIcon</i></b>] As Boolean, [<b><i>ShowText</i></b>] As Boolean, [<b><i>TargetControlInternalName</i></b>] As String, [<b><i>InsertBeforeTargetControl</i></b>] As Boolean ) As <a href="CommandControl.htm">CommandControl</a>
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">ButtonDefinitions</td>
+        <td class="api-list"><a href="ObjectCollection.htm">ObjectCollection</a></td>
+        <td class="api-list">Input ObjectCollection containing the ButtonDefinition objects hosted by this control. The <b>first</b> ButtonDefinition is used as the displayed control. Also, the internal and display names of the first definition are used for the control. The internal name of the control remains unchanged regardless of the currently displayed control.</td>
+      </tr>
+      <tr>
+        <td class="api-list">UseLargeIcon</td>
+        <td class="api-list">Boolean</td>
+        <td class="api-list">Optional input Boolean that specifies whether to use large icon or small icon for the control. If not specified, the small icon is used by default.<br /><br /> This is an optional argument whose default value is False.</td>
+      </tr>
+      <tr>
+        <td class="api-list">ShowText</td>
+        <td class="api-list">Boolean</td>
+        <td class="api-list">Optional input Boolean that specifies whether to display text (display name) for the control. If not specified, text is displayed by default.<br /><br /> This is an optional argument whose default value is True.</td>
+      </tr>
+      <tr>
+        <td class="api-list">TargetControlInternalName</td>
+        <td class="api-list">String</td>
+        <td class="api-list">Optional input String that specifies the internal name of an existing control to position the new control next to. If specified, the InsertBeforeTargetControl argument indicates whether to place the new control before or after the target control. If not specified, the new control is positioned at the end.<br /><br /> This is an optional argument whose default value is "".</td>
+      </tr>
+      <tr>
+        <td class="api-list">InsertBeforeTargetControl</td>
+        <td class="api-list">Boolean</td>
+        <td class="api-list">Optional input Boolean that specifies whether to position the new control before or after the target control. The argument defaults to False and is not used if the TargetControlInternalName argument is not specified.<br /><br /> This is an optional argument whose default value is False.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2010<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(CommandControls.AddSplitButtonMRU%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,105 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/OccurrencePatternElement.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="OccurrencePatternElement">
+    <meta name="description" content="OccurrencePatternElement Object">
+    <meta name="topicid" content="GUID-OccurrencePatternElement">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>OccurrencePatternElement Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">OccurrencePatternElement Object
+			</h1><br><h2 class="api">
+          Description
+        </h2>The OccurrencePatternElement object represents a single instance within an occurrence pattern.<h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="OccurrencePatternElement_Application.htm">Application</a></td>
+        <td class="api-list">Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="OccurrencePatternElement_Components.htm">Components</a></td>
+        <td class="api-list">Property that returns the set of components that were created for this particular instance. There are cases where this collection can contain a count of zero. The obvious cases are when this element has been set to be independent or suppressed. There is another case when this element is the result of a feature based occurrence pattern and the instance it is associated with within the feature pattern has been suppressed.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="OccurrencePatternElement_Independent.htm">Independent</a></td>
+        <td class="api-list">Gets/Sets whether the element is independent of the pattern or not.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="OccurrencePatternElement_Index.htm">Index</a></td>
+        <td class="api-list">Property that returns the index of this element within the OccurrencePatternElements collection it is a member of.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="OccurrencePatternElement_Name.htm">Name</a></td>
+        <td class="api-list">Property that returns the name of the element.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="OccurrencePatternElement_Occurrences.htm">Occurrences</a></td>
+        <td class="api-list">Property that returns the set of occurrences that were created for this particular instance.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="OccurrencePatternElement_Parent.htm">Parent</a></td>
+        <td class="api-list">Property that returns the parent occurrence pattern of the object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="OccurrencePatternElement_Suppressed.htm">Suppressed</a></td>
+        <td class="api-list">Gets/Sets whether the element is suppressed or not.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="OccurrencePatternElement_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="CircularOccurrencePattern_PatternElement.htm">CircularOccurrencePattern.PatternElement</a>, <a href="CircularOccurrencePatternProxy_PatternElement.htm">CircularOccurrencePatternProxy.PatternElement</a>, <a href="ComponentOccurrence_PatternElement.htm">ComponentOccurrence.PatternElement</a>, <a href="ComponentOccurrenceProxy_PatternElement.htm">ComponentOccurrenceProxy.PatternElement</a>, <a href="FeatureBasedOccurrencePattern_PatternElement.htm">FeatureBasedOccurrencePattern.PatternElement</a>, <a href="FeatureBasedOccurrencePatternProxy_PatternElement.htm">FeatureBasedOccurrencePatternProxy.PatternElement</a>, <a href="OccurrencePattern_PatternElement.htm">OccurrencePattern.PatternElement</a>, <a href="OccurrencePatternElementProxy_NativeObject.htm">OccurrencePatternElementProxy.NativeObject</a>, <a href="OccurrencePatternElements_Item.htm">OccurrencePatternElements.Item</a>, <a href="RectangularOccurrencePattern_OccurrencePatternElement.htm">RectangularOccurrencePattern.OccurrencePatternElement</a>, <a href="RectangularOccurrencePattern_PatternElement.htm">RectangularOccurrencePattern.PatternElement</a>, <a href="RectangularOccurrencePatternProxy_OccurrencePatternElement.htm">RectangularOccurrencePatternProxy.OccurrencePatternElement</a>, <a href="RectangularOccurrencePatternProxy_PatternElement.htm">RectangularOccurrencePatternProxy.PatternElement</a><h2 class="api">
+            Derived Classes
+          </h2><a href="OccurrencePatternElementProxy.htm">OccurrencePatternElementProxy</a><h2 class="api">
+            Version
+          </h2>
+        Introduced in version 5<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(OccurrencePatternElement%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

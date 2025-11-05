@@ -1,0 +1,219 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/PartFeature.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="PartFeature">
+    <meta name="description" content="PartFeature Object">
+    <meta name="topicid" content="GUID-PartFeature">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>PartFeature Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">PartFeature Object
+			</h1><br><h2 class="api">
+          Description
+        </h2>The PartFeature object is the base class for all part modeling features.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PartFeature_Delete.htm">Delete</a></td>
+        <td class="api-list">Method that deletes the feature. The arguments allow control over which dependent objects are also deleted.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PartFeature_GetReferenceKey.htm">GetReferenceKey</a></td>
+        <td class="api-list">Method that generates and returns the reference key for this entity.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PartFeature_GetSuppressionCondition.htm">GetSuppressionCondition</a></td>
+        <td class="api-list">Method that gets the suppression condition for the feature. The method returns False if no condition has been applied.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PartFeature_RemoveParticipant.htm">RemoveParticipant</a></td>
+        <td class="api-list">Method that removes the specified participant from the assembly feature. This method fails for features in a part.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PartFeature_SetAffectedBodies.htm">SetAffectedBodies</a></td>
+        <td class="api-list">Method that sets a collection of SurfaceBody objects affected by this feature.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PartFeature_SetEndOfPart.htm">SetEndOfPart</a></td>
+        <td class="api-list">Method that repositions the end-of-part marker relative to the object this method is called from.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PartFeature_SetSuppressionCondition.htm">SetSuppressionCondition</a></td>
+        <td class="api-list">Method that sets the suppression condition for the feature.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PartFeature_Adaptive.htm">Adaptive</a></td>
+        <td class="api-list">Gets and sets whether this feature is adaptive or not.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PartFeature_Appearance.htm">Appearance</a></td>
+        <td class="api-list">Gets and sets the current appearance of the feature.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PartFeature_AppearanceSourceType.htm">AppearanceSourceType</a></td>
+        <td class="api-list">Gets and sets the source of the appearance for the feature.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PartFeature_Application.htm">Application</a></td>
+        <td class="api-list">Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PartFeature_AttributeSets.htm">AttributeSets</a></td>
+        <td class="api-list">Property that returns the AttributeSets collection object associated with this object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PartFeature_ConsumeInputs.htm">ConsumeInputs</a></td>
+        <td class="api-list">Gets and sets whether the inputs to this feature should be nested under this feature in the browser.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PartFeature_ExtendedName.htm">ExtendedName</a></td>
+        <td class="api-list">Read-only property that returns the full feature name including any extended information.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PartFeature_Faces.htm">Faces</a></td>
+        <td class="api-list">Property that returns a collection that provides access to all of the faces of the feature. The Faces collection object will return the faces that still currently exist in the part. For example, if a face has been consumed by additional modeling operations it will not be returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PartFeature_FeatureDimensions.htm">FeatureDimensions</a></td>
+        <td class="api-list">Property that returns the FeatureDimensions collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PartFeature_HealthStatus.htm">HealthStatus</a></td>
+        <td class="api-list">Property that returns an enum indicating the current state of the object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PartFeature_IsOwnedByFeature.htm">IsOwnedByFeature</a></td>
+        <td class="api-list">Property that returns whether this object is owned by a feature. If True, the OwnedBy property returns the owning feature.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PartFeature_Name.htm">Name</a></td>
+        <td class="api-list">Gets/Sets the name of this Part Feature within the scope of this Document.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PartFeature_OwnedBy.htm">OwnedBy</a></td>
+        <td class="api-list">Property that returns the owning PartFeature object. This property returns Nothing if the IsOwnedByFeature property returns False.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PartFeature_Parameters.htm">Parameters</a></td>
+        <td class="api-list">Property that returns all the parameters associated with the feature.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PartFeature_Parent.htm">Parent</a></td>
+        <td class="api-list">Property that returns the parent of the feature.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PartFeature_Participants.htm">Participants</a></td>
+        <td class="api-list">Property that returns the list of participants for an assembly feature. This list is empty for features in a part.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PartFeature_RangeBox.htm">RangeBox</a></td>
+        <td class="api-list">Property that returns a Box object which contains the opposing points of a rectangular box that is guaranteed to enclose this object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PartFeature_Shared.htm">Shared</a></td>
+        <td class="api-list">Gets and sets whether the part feature is shared or not, applies only to surface features.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PartFeature_Suppressed.htm">Suppressed</a></td>
+        <td class="api-list">Gets and sets whether this feature is suppressed or not.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PartFeature_SurfaceBodies.htm">SurfaceBodies</a></td>
+        <td class="api-list">Property that returns the bodies that this feature has created or modified.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PartFeature_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="AliasFreeformFeature_OwnedBy.htm">AliasFreeformFeature.OwnedBy</a>, <a href="AliasFreeformFeatureProxy_OwnedBy.htm">AliasFreeformFeatureProxy.OwnedBy</a>, <a href="AngleExtent_Parent.htm">AngleExtent.Parent</a>, <a href="BendFeature_OwnedBy.htm">BendFeature.OwnedBy</a>, <a href="BendFeatureProxy_OwnedBy.htm">BendFeatureProxy.OwnedBy</a>, <a href="BendPartFeature_OwnedBy.htm">BendPartFeature.OwnedBy</a>, <a href="BendPartFeatureProxy_OwnedBy.htm">BendPartFeatureProxy.OwnedBy</a>, <a href="BossFeature_OwnedBy.htm">BossFeature.OwnedBy</a>, <a href="BossFeatureProxy_OwnedBy.htm">BossFeatureProxy.OwnedBy</a>, <a href="BoundaryPatchFeature_OwnedBy.htm">BoundaryPatchFeature.OwnedBy</a>, <a href="BoundaryPatchFeatureProxy_OwnedBy.htm">BoundaryPatchFeatureProxy.OwnedBy</a>, <a href="CenteredWidthExtent_Parent.htm">CenteredWidthExtent.Parent</a>, <a href="ChamferDefinition_Parent.htm">ChamferDefinition.Parent</a>, <a href="ChamferFeature_OwnedBy.htm">ChamferFeature.OwnedBy</a>, <a href="ChamferFeatureProxy_OwnedBy.htm">ChamferFeatureProxy.OwnedBy</a>, <a href="CircularPatternFeature_OwnedBy.htm">CircularPatternFeature.OwnedBy</a>, <a href="CircularPatternFeatureProxy_OwnedBy.htm">CircularPatternFeatureProxy.OwnedBy</a>, <a href="ClientFeature_OwnedBy.htm">ClientFeature.OwnedBy</a>, <a href="ClientFeatureProxy_OwnedBy.htm">ClientFeatureProxy.OwnedBy</a>, <a href="CoilFeature_OwnedBy.htm">CoilFeature.OwnedBy</a>, <a href="CoilFeatureProxy_OwnedBy.htm">CoilFeatureProxy.OwnedBy</a>, <a href="CombineFeature_OwnedBy.htm">CombineFeature.OwnedBy</a>, <a href="CombineFeatureProxy_OwnedBy.htm">CombineFeatureProxy.OwnedBy</a>, <a href="ContourFlangeFeature_OwnedBy.htm">ContourFlangeFeature.OwnedBy</a>, <a href="ContourFlangeFeatureProxy_OwnedBy.htm">ContourFlangeFeatureProxy.OwnedBy</a>, <a href="ContourRollFeature_OwnedBy.htm">ContourRollFeature.OwnedBy</a>, <a href="ContourRollFeatureProxy_OwnedBy.htm">ContourRollFeatureProxy.OwnedBy</a>, <a href="CoreCavityFeature_OwnedBy.htm">CoreCavityFeature.OwnedBy</a>, <a href="CoreCavityFeatureProxy_OwnedBy.htm">CoreCavityFeatureProxy.OwnedBy</a>, <a href="CornerChamferFeature_OwnedBy.htm">CornerChamferFeature.OwnedBy</a>, <a href="CornerChamferFeatureProxy_OwnedBy.htm">CornerChamferFeatureProxy.OwnedBy</a>, <a href="CornerFeature_OwnedBy.htm">CornerFeature.OwnedBy</a>, <a href="CornerFeatureProxy_OwnedBy.htm">CornerFeatureProxy.OwnedBy</a>, <a href="CornerRoundFeature_OwnedBy.htm">CornerRoundFeature.OwnedBy</a>, <a href="CornerRoundFeatureProxy_OwnedBy.htm">CornerRoundFeatureProxy.OwnedBy</a>, <a href="CosmeticBendFeature_OwnedBy.htm">CosmeticBendFeature.OwnedBy</a>, <a href="CosmeticBendFeatureProxy_OwnedBy.htm">CosmeticBendFeatureProxy.OwnedBy</a>, <a href="CutAcrossBendsExtent_Parent.htm">CutAcrossBendsExtent.Parent</a>, <a href="CutFeature_OwnedBy.htm">CutFeature.OwnedBy</a>, <a href="CutFeatureProxy_OwnedBy.htm">CutFeatureProxy.OwnedBy</a>, <a href="DecalFeature_OwnedBy.htm">DecalFeature.OwnedBy</a>, <a href="DecalFeatureProxy_OwnedBy.htm">DecalFeatureProxy.OwnedBy</a>, <a href="DeleteFaceFeature_OwnedBy.htm">DeleteFaceFeature.OwnedBy</a>, <a href="DeleteFaceFeatureProxy_OwnedBy.htm">DeleteFaceFeatureProxy.OwnedBy</a>, <a href="DirectEditFeature_OwnedBy.htm">DirectEditFeature.OwnedBy</a>, <a href="DirectEditFeatureProxy_OwnedBy.htm">DirectEditFeatureProxy.OwnedBy</a>, <a href="DistanceAndAngleChamferDef_Parent.htm">DistanceAndAngleChamferDef.Parent</a>, <a href="DistanceChamferDef_Parent.htm">DistanceChamferDef.Parent</a>, <a href="DistanceExtent_Parent.htm">DistanceExtent.Parent</a>, <a href="DistanceFromFaceExtent_Parent.htm">DistanceFromFaceExtent.Parent</a>, <a href="DistanceHeightExtent_Parent.htm">DistanceHeightExtent.Parent</a>, <a href="EdgeWidthExtent_Parent.htm">EdgeWidthExtent.Parent</a>, <a href="EmbossFeature_OwnedBy.htm">EmbossFeature.OwnedBy</a>, <a href="EmbossFeatureProxy_OwnedBy.htm">EmbossFeatureProxy.OwnedBy</a>, <a href="ExtendFeature_OwnedBy.htm">ExtendFeature.OwnedBy</a>, <a href="ExtendFeatureProxy_OwnedBy.htm">ExtendFeatureProxy.OwnedBy</a>, <a href="ExtrudeFeature_OwnedBy.htm">ExtrudeFeature.OwnedBy</a>, <a href="ExtrudeFeatureProxy_OwnedBy.htm">ExtrudeFeatureProxy.OwnedBy</a>, <a href="Face_CreatedByFeature.htm">Face.CreatedByFeature</a>, <a href="FaceDraftFeature_OwnedBy.htm">FaceDraftFeature.OwnedBy</a>, <a href="FaceDraftFeatureProxy_OwnedBy.htm">FaceDraftFeatureProxy.OwnedBy</a>, <a href="FaceFeature_OwnedBy.htm">FaceFeature.OwnedBy</a>, <a href="FaceFeatureProxy_OwnedBy.htm">FaceFeatureProxy.OwnedBy</a>, <a href="FaceOffsetFeature_OwnedBy.htm">FaceOffsetFeature.OwnedBy</a>, <a href="FaceOffsetFeatureProxy_OwnedBy.htm">FaceOffsetFeatureProxy.OwnedBy</a>, <a href="FaceProxy_CreatedByFeature.htm">FaceProxy.CreatedByFeature</a>, <a href="FeatureDimension_Parent.htm">FeatureDimension.Parent</a>, <a href="FeatureDimensionProxy_Parent.htm">FeatureDimensionProxy.Parent</a>, <a href="FeaturePatternElement_Parent.htm">FeaturePatternElement.Parent</a>, <a href="FeaturePatternElementProxy_Parent.htm">FeaturePatternElementProxy.Parent</a>, <a href="Features_Item.htm">Features.Item</a>, <a href="FilletFeature_OwnedBy.htm">FilletFeature.OwnedBy</a>, <a href="FilletFeatureProxy_OwnedBy.htm">FilletFeatureProxy.OwnedBy</a>, <a href="FinishFeature_OwnedBy.htm">FinishFeature.OwnedBy</a>, <a href="FinishFeatureProxy_OwnedBy.htm">FinishFeatureProxy.OwnedBy</a>, <a href="FlangeFeature_OwnedBy.htm">FlangeFeature.OwnedBy</a>, <a href="FlangeFeatureProxy_OwnedBy.htm">FlangeFeatureProxy.OwnedBy</a>, <a href="FlatPatternFeatures_Item.htm">FlatPatternFeatures.Item</a>, <a href="FoldFeature_OwnedBy.htm">FoldFeature.OwnedBy</a>, <a href="FoldFeatureProxy_OwnedBy.htm">FoldFeatureProxy.OwnedBy</a>, <a href="FreeformFeature_OwnedBy.htm">FreeformFeature.OwnedBy</a>, <a href="FreeformFeatureProxy_OwnedBy.htm">FreeformFeatureProxy.OwnedBy</a>, <a href="FromToExtent_Parent.htm">FromToExtent.Parent</a>, <a href="FromToWidthExtent_Parent.htm">FromToWidthExtent.Parent</a>, <a href="FullSweepExtent_Parent.htm">FullSweepExtent.Parent</a>, <a href="GrillFeature_OwnedBy.htm">GrillFeature.OwnedBy</a>, <a href="GrillFeatureProxy_OwnedBy.htm">GrillFeatureProxy.OwnedBy</a>, <a href="HemFeature_OwnedBy.htm">HemFeature.OwnedBy</a>, <a href="HemFeatureProxy_OwnedBy.htm">HemFeatureProxy.OwnedBy</a>, <a href="HoleFeature_OwnedBy.htm">HoleFeature.OwnedBy</a>, <a href="HoleFeatureProxy_OwnedBy.htm">HoleFeatureProxy.OwnedBy</a>, <a href="iFeature_OwnedBy.htm">iFeature.OwnedBy</a>, <a href="iFeatureProxy_OwnedBy.htm">iFeatureProxy.OwnedBy</a>, <a href="KnitFeature_OwnedBy.htm">KnitFeature.OwnedBy</a>, <a href="KnitFeatureProxy_OwnedBy.htm">KnitFeatureProxy.OwnedBy</a>, <a href="LegacyDistanceHeightExtent_Parent.htm">LegacyDistanceHeightExtent.Parent</a>, <a href="LipFeature_OwnedBy.htm">LipFeature.OwnedBy</a>, <a href="LipFeatureProxy_OwnedBy.htm">LipFeatureProxy.OwnedBy</a>, <a href="LoftedFlangeFeature_OwnedBy.htm">LoftedFlangeFeature.OwnedBy</a>, <a href="LoftedFlangeFeatureProxy_OwnedBy.htm">LoftedFlangeFeatureProxy.OwnedBy</a>, <a href="LoftFeature_OwnedBy.htm">LoftFeature.OwnedBy</a>, <a href="LoftFeatureProxy_OwnedBy.htm">LoftFeatureProxy.OwnedBy</a>, <a href="MarkFeature_OwnedBy.htm">MarkFeature.OwnedBy</a>, <a href="MarkFeatureProxy_OwnedBy.htm">MarkFeatureProxy.OwnedBy</a>, <a href="MidSurfaceFeature_OwnedBy.htm">MidSurfaceFeature.OwnedBy</a>, <a href="MidSurfaceFeatureProxy_OwnedBy.htm">MidSurfaceFeatureProxy.OwnedBy</a>, <a href="MirrorFeature_OwnedBy.htm">MirrorFeature.OwnedBy</a>, <a href="MirrorFeatureProxy_OwnedBy.htm">MirrorFeatureProxy.OwnedBy</a>, <a href="MoveFaceFeature_OwnedBy.htm">MoveFaceFeature.OwnedBy</a>, <a href="MoveFaceFeatureProxy_OwnedBy.htm">MoveFaceFeatureProxy.OwnedBy</a>, <a href="MoveFeature_OwnedBy.htm">MoveFeature.OwnedBy</a>, <a href="MoveFeatureProxy_OwnedBy.htm">MoveFeatureProxy.OwnedBy</a>, <a href="NonParametricBaseFeature_OwnedBy.htm">NonParametricBaseFeature.OwnedBy</a>, <a href="NonParametricBaseFeatureProxy_OwnedBy.htm">NonParametricBaseFeatureProxy.OwnedBy</a>, <a href="OffsetWidthExtent_Parent.htm">OffsetWidthExtent.Parent</a>, <a href="PartFeature_OwnedBy.htm">PartFeature.OwnedBy</a>, <a href="PartFeatureExtent_Parent.htm">PartFeatureExtent.Parent</a>, <a href="PartFeatures_Item.htm">PartFeatures.Item</a>, <a href="PartFeaturesEnumerator_Item.htm">PartFeaturesEnumerator.Item</a>, <a href="PitchAndHeightCoilExtent_Parent.htm">PitchAndHeightCoilExtent.Parent</a>, <a href="PitchAndRevolutionCoilExtent_Parent.htm">PitchAndRevolutionCoilExtent.Parent</a>, <a href="PlanarSketch_OwnedBy.htm">PlanarSketch.OwnedBy</a>, <a href="PlanarSketchProxy_OwnedBy.htm">PlanarSketchProxy.OwnedBy</a>, <a href="PunchToolFeature_OwnedBy.htm">PunchToolFeature.OwnedBy</a>, <a href="PunchToolFeatureProxy_OwnedBy.htm">PunchToolFeatureProxy.OwnedBy</a>, <a href="RectangularPatternFeature_OwnedBy.htm">RectangularPatternFeature.OwnedBy</a>, <a href="RectangularPatternFeatureProxy_OwnedBy.htm">RectangularPatternFeatureProxy.OwnedBy</a>, <a href="ReferenceFeature_OwnedBy.htm">ReferenceFeature.OwnedBy</a>, <a href="ReferenceFeatureProxy_OwnedBy.htm">ReferenceFeatureProxy.OwnedBy</a>, <a href="RefoldFeature_OwnedBy.htm">RefoldFeature.OwnedBy</a>, <a href="RefoldFeatureProxy_OwnedBy.htm">RefoldFeatureProxy.OwnedBy</a>, <a href="ReplaceFaceFeature_OwnedBy.htm">ReplaceFaceFeature.OwnedBy</a>, <a href="ReplaceFaceFeatureProxy_OwnedBy.htm">ReplaceFaceFeatureProxy.OwnedBy</a>, <a href="RestFeature_OwnedBy.htm">RestFeature.OwnedBy</a>, <a href="RestFeatureProxy_OwnedBy.htm">RestFeatureProxy.OwnedBy</a>, <a href="RevolutionAndHeightCoilExtent_Parent.htm">RevolutionAndHeightCoilExtent.Parent</a>, <a href="RevolveFeature_OwnedBy.htm">RevolveFeature.OwnedBy</a>, <a href="RevolveFeatureProxy_OwnedBy.htm">RevolveFeatureProxy.OwnedBy</a>, <a href="RibFeature_OwnedBy.htm">RibFeature.OwnedBy</a>, <a href="RibFeatureProxy_OwnedBy.htm">RibFeatureProxy.OwnedBy</a>, <a href="RipFeature_OwnedBy.htm">RipFeature.OwnedBy</a>, <a href="RipFeatureProxy_OwnedBy.htm">RipFeatureProxy.OwnedBy</a>, <a href="RuledSurfaceFeature_OwnedBy.htm">RuledSurfaceFeature.OwnedBy</a>, <a href="RuledSurfaceFeatureProxy_OwnedBy.htm">RuledSurfaceFeatureProxy.OwnedBy</a>, <a href="RuleFilletFeature_OwnedBy.htm">RuleFilletFeature.OwnedBy</a>, <a href="RuleFilletFeatureProxy_OwnedBy.htm">RuleFilletFeatureProxy.OwnedBy</a>, <a href="SculptFeature_OwnedBy.htm">SculptFeature.OwnedBy</a>, <a href="SculptFeatureProxy_OwnedBy.htm">SculptFeatureProxy.OwnedBy</a>, <a href="SheetMetalFeatures_Item.htm">SheetMetalFeatures.Item</a>, <a href="ShellFeature_OwnedBy.htm">ShellFeature.OwnedBy</a>, <a href="ShellFeatureProxy_OwnedBy.htm">ShellFeatureProxy.OwnedBy</a>, <a href="SimplifyFeature_OwnedBy.htm">SimplifyFeature.OwnedBy</a>, <a href="SimplifyFeatureProxy_OwnedBy.htm">SimplifyFeatureProxy.OwnedBy</a>, <a href="Sketch3D_OwnedBy.htm">Sketch3D.OwnedBy</a>, <a href="Sketch3DProxy_OwnedBy.htm">Sketch3DProxy.OwnedBy</a>, <a href="SketchBlockDefinition_OwnedBy.htm">SketchBlockDefinition.OwnedBy</a>, <a href="SketchBlockDefinitionProxy_OwnedBy.htm">SketchBlockDefinitionProxy.OwnedBy</a>, <a href="SketchDrivenPatternFeature_OwnedBy.htm">SketchDrivenPatternFeature.OwnedBy</a>, <a href="SketchDrivenPatternFeatureProxy_OwnedBy.htm">SketchDrivenPatternFeatureProxy.OwnedBy</a>, <a href="SnapFitFeature_OwnedBy.htm">SnapFitFeature.OwnedBy</a>, <a href="SnapFitFeatureProxy_OwnedBy.htm">SnapFitFeatureProxy.OwnedBy</a>, <a href="SpiralCoilExtent_Parent.htm">SpiralCoilExtent.Parent</a>, <a href="SplitFeature_OwnedBy.htm">SplitFeature.OwnedBy</a>, <a href="SplitFeatureProxy_OwnedBy.htm">SplitFeatureProxy.OwnedBy</a>, <a href="SurfaceBody_CreatedByFeature.htm">SurfaceBody.CreatedByFeature</a>, <a href="SurfaceBodyProxy_CreatedByFeature.htm">SurfaceBodyProxy.CreatedByFeature</a>, <a href="SweepFeature_OwnedBy.htm">SweepFeature.OwnedBy</a>, <a href="SweepFeatureProxy_OwnedBy.htm">SweepFeatureProxy.OwnedBy</a>, <a href="ThickenFeature_OwnedBy.htm">ThickenFeature.OwnedBy</a>, <a href="ThickenFeatureProxy_OwnedBy.htm">ThickenFeatureProxy.OwnedBy</a>, <a href="ThreadFeature_OwnedBy.htm">ThreadFeature.OwnedBy</a>, <a href="ThreadFeatureProxy_OwnedBy.htm">ThreadFeatureProxy.OwnedBy</a>, <a href="ThroughAllExtent_Parent.htm">ThroughAllExtent.Parent</a>, <a href="ToExtent_Parent.htm">ToExtent.Parent</a>, <a href="ToHeightExtent_Parent.htm">ToHeightExtent.Parent</a>, <a href="ToNextExtent_Parent.htm">ToNextExtent.Parent</a>, <a href="TrimFeature_OwnedBy.htm">TrimFeature.OwnedBy</a>, <a href="TrimFeatureProxy_OwnedBy.htm">TrimFeatureProxy.OwnedBy</a>, <a href="TwoDistancesChamferDef_Parent.htm">TwoDistancesChamferDef.Parent</a>, <a href="UnfoldFeature_OwnedBy.htm">UnfoldFeature.OwnedBy</a>, <a href="UnfoldFeatureProxy_OwnedBy.htm">UnfoldFeatureProxy.OwnedBy</a>, <a href="UnwrapFeature_OwnedBy.htm">UnwrapFeature.OwnedBy</a>, <a href="UnwrapFeatureProxy_OwnedBy.htm">UnwrapFeatureProxy.OwnedBy</a>, <a href="UserCoordinateSystem_OwnedBy.htm">UserCoordinateSystem.OwnedBy</a>, <a href="UserCoordinateSystemProxy_OwnedBy.htm">UserCoordinateSystemProxy.OwnedBy</a>, <a href="WidthOffsetWidthExtent_Parent.htm">WidthOffsetWidthExtent.Parent</a>, <a href="WorkAxis_OwnedBy.htm">WorkAxis.OwnedBy</a>, <a href="WorkAxisProxy_OwnedBy.htm">WorkAxisProxy.OwnedBy</a>, <a href="WorkPlane_OwnedBy.htm">WorkPlane.OwnedBy</a>, <a href="WorkPlaneProxy_OwnedBy.htm">WorkPlaneProxy.OwnedBy</a>, <a href="WorkPoint_OwnedBy.htm">WorkPoint.OwnedBy</a>, <a href="WorkPointProxy_OwnedBy.htm">WorkPointProxy.OwnedBy</a><h2 class="api">
+            Derived Classes
+          </h2><a href="AliasFreeformFeature.htm">AliasFreeformFeature</a>, <a href="BendFeature.htm">BendFeature</a>, <a href="BendPartFeature.htm">BendPartFeature</a>, <a href="BossFeature.htm">BossFeature</a>, <a href="BoundaryPatchFeature.htm">BoundaryPatchFeature</a>, <a href="ChamferFeature.htm">ChamferFeature</a>, <a href="CircularPatternFeature.htm">CircularPatternFeature</a>, <a href="ClientFeature.htm">ClientFeature</a>, <a href="CoilFeature.htm">CoilFeature</a>, <a href="CombineFeature.htm">CombineFeature</a>, <a href="ContourFlangeFeature.htm">ContourFlangeFeature</a>, <a href="ContourRollFeature.htm">ContourRollFeature</a>, <a href="CornerChamferFeature.htm">CornerChamferFeature</a>, <a href="CornerFeature.htm">CornerFeature</a>, <a href="CornerRoundFeature.htm">CornerRoundFeature</a>, <a href="CosmeticBendFeature.htm">CosmeticBendFeature</a>, <a href="CutFeature.htm">CutFeature</a>, <a href="DecalFeature.htm">DecalFeature</a>, <a href="DeleteFaceFeature.htm">DeleteFaceFeature</a>, <a href="DirectEditFeature.htm">DirectEditFeature</a>, <a href="EmbossFeature.htm">EmbossFeature</a>, <a href="ExtendFeature.htm">ExtendFeature</a>, <a href="ExtrudeFeature.htm">ExtrudeFeature</a>, <a href="FaceDraftFeature.htm">FaceDraftFeature</a>, <a href="FaceFeature.htm">FaceFeature</a>, <a href="FilletFeature.htm">FilletFeature</a>, <a href="FinishFeature.htm">FinishFeature</a>, <a href="FlangeFeature.htm">FlangeFeature</a>, <a href="FoldFeature.htm">FoldFeature</a>, <a href="FreeformFeature.htm">FreeformFeature</a>, <a href="GrillFeature.htm">GrillFeature</a>, <a href="HemFeature.htm">HemFeature</a>, <a href="HoleFeature.htm">HoleFeature</a>, <a href="KnitFeature.htm">KnitFeature</a>, <a href="LipFeature.htm">LipFeature</a>, <a href="LoftedFlangeFeature.htm">LoftedFlangeFeature</a>, <a href="LoftFeature.htm">LoftFeature</a>, <a href="MarkFeature.htm">MarkFeature</a>, <a href="MirrorFeature.htm">MirrorFeature</a>, <a href="MoveFaceFeature.htm">MoveFaceFeature</a>, <a href="MoveFeature.htm">MoveFeature</a>, <a href="NonParametricBaseFeature.htm">NonParametricBaseFeature</a>, <a href="PunchToolFeature.htm">PunchToolFeature</a>, <a href="RectangularPatternFeature.htm">RectangularPatternFeature</a>, <a href="ReferenceFeature.htm">ReferenceFeature</a>, <a href="RefoldFeature.htm">RefoldFeature</a>, <a href="ReplaceFaceFeature.htm">ReplaceFaceFeature</a>, <a href="RestFeature.htm">RestFeature</a>, <a href="RevolveFeature.htm">RevolveFeature</a>, <a href="RibFeature.htm">RibFeature</a>, <a href="RipFeature.htm">RipFeature</a>, <a href="RuledSurfaceFeature.htm">RuledSurfaceFeature</a>, <a href="RuleFilletFeature.htm">RuleFilletFeature</a>, <a href="SculptFeature.htm">SculptFeature</a>, <a href="ShellFeature.htm">ShellFeature</a>, <a href="SimplifyFeature.htm">SimplifyFeature</a>, <a href="SketchDrivenPatternFeature.htm">SketchDrivenPatternFeature</a>, <a href="SnapFitFeature.htm">SnapFitFeature</a>, <a href="SplitFeature.htm">SplitFeature</a>, <a href="SweepFeature.htm">SweepFeature</a>, <a href="ThickenFeature.htm">ThickenFeature</a>, <a href="ThreadFeature.htm">ThreadFeature</a>, <a href="TrimFeature.htm">TrimFeature</a>, <a href="UnfoldFeature.htm">UnfoldFeature</a>, <a href="UnwrapFeature.htm">UnwrapFeature</a><h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="HighlightSet_Sample.htm">Highlight Feature Faces</a></td>
+        <td class="api-list">This sample highlights the faces of an extrusion, revolution, or hole feature. It differentiates the faces on the start cap, end cap, and side faces by highlighting them in different colors. The HighlightFeatureFaces sub highlights the feature faces. Since the highlight set objects are declared outside of this sub, the highlighting remains after the sub has finished executing. Use the ClearHighlight sub to clear the highlighting that does so by releasing the HighlightSet objects.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="RipFeatures_Add_Sample.htm">Create sheet metal rip feature</a></td>
+        <td class="api-list">This sample demonstrates the creation of a rip sheet metal feature.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalComponentDefinition_Sample.htm">Sheet Metal Feature Display</a></td>
+        <td class="api-list">This sample illustrates getting basic information from the various sheet metal features.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 4<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(PartFeature%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

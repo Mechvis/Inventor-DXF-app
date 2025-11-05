@@ -1,0 +1,169 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/FileDialog.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="FileDialog">
+    <meta name="description" content="FileDialog Object">
+    <meta name="topicid" content="GUID-FileDialog">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>FileDialog Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">FileDialog Object
+			</h1><br><h2 class="api">
+          Description
+        </h2>The FileDialog object represents the Inventor dialogs that are displayed when the user invokes the Place Component or Save As command. In the API, the FileDialog object provides the ability to use these same dialogs when a filename is needed from the user. It is very similar in concept to the Microsoft common file control.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FileDialog_SetHelpContext.htm">SetHelpContext</a></td>
+        <td class="api-list">Method that sets the HTML Help Context to display when the help button is pressed in the FileDialog.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FileDialog_SetHelpTopic.htm">SetHelpTopic</a></td>
+        <td class="api-list">Method that sets the HTML Help Topic to display when the help button is pressed in the FileDialog.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FileDialog_ShowOpen.htm">ShowOpen</a></td>
+        <td class="api-list">Method that displays the open dialog. The existence of the specified file is checked for by the dialog, so only valid filenames will be returned. This does not actually open the file but only returns the filename the user has specified through the dialog.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FileDialog_ShowSave.htm">ShowSave</a></td>
+        <td class="api-list">Method that displays the Save As dialog. If the user selects an existing file a warning message is displayed notifying them that the file already exists and the file will be overwritten if they continue. The use of this method does not actually perform a save but only returns the filename the user has specified through the dialog.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FileDialog_CancelError.htm">CancelError</a></td>
+        <td class="api-list">Generate error when user cancels dialog if true.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FileDialog_DialogTitle.htm">DialogTitle</a></td>
+        <td class="api-list">The string displayed in the dialog's title bar.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FileDialog_FileDialogEvents.htm">FileDialogEvents</a></td>
+        <td class="api-list">Property that returns the FileDialogEvents object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FileDialog_FileName.htm">FileName</a></td>
+        <td class="api-list">The selected filename.&nbsp;Can be pre-set to initialize the selected filename in the dialog.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FileDialog_Filter.htm">Filter</a></td>
+        <td class="api-list">The filter used to limit the types of files displayed in the dialog.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FileDialog_FilterIndex.htm">FilterIndex</a></td>
+        <td class="api-list">The index of the default filter in the filter string (first index is 1).</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FileDialog_InitialDirectory.htm">InitialDirectory</a></td>
+        <td class="api-list">The initial directory displayed in the file dialog.&nbsp;This can also be set with the filename property.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FileDialog_InsertMode.htm">InsertMode</a></td>
+        <td class="api-list">Gets and sets whether the FileDialog is being used for inserting a file (as opposed to opening one). If set to True, the OnFileInsertDialog event is fired by the ShowOpen method; if set to False, the OnFileOpenDialog event is fired. This defaults to True when a FileDialog is created.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FileDialog_MultiSelectEnabled.htm">MultiSelectEnabled</a></td>
+        <td class="api-list">Gets and sets whether the 'Open' dialog should allow the selection of multiple files.&nbsp;If multiple files are selected by the user, the FileName property returns a string containing all selected file names delimited by a vertical bar ('|').</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FileDialog_OptionsEnabled.htm">OptionsEnabled</a></td>
+        <td class="api-list">Gets and sets whether the 'Options' button on the dialog is enabled. If the button is enabled and the user clicks it, the OnOptions event is fired.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FileDialog_OptionValues.htm">OptionValues</a></td>
+        <td class="api-list">Read-only property that returns the settings the user specified in the options dialog when a file type known to Inventor was selected.&nbsp;This includes the standard Inventor types (.ipt, .iam, .idw, etc.) and also any files types&nbsp;supported by any translator add-ins.&nbsp;In the case where it’s an unknown type (i.e. .txt, .xml), or if no options were specified this property will return Nothing.<p></p>The NameValueMap that’s returned can be used directly as the NameValueMap for the corresponding translator add-in.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FileDialog_ShowQuickLaunch.htm">ShowQuickLaunch</a></td>
+        <td class="api-list">Gets and sets whether the quick launch controls on the dialog are visible or not. When the dialog is in insert mode the quick launch controls will be always hidden, so to show the quick launch controls the InsertMode should be set to False also.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FileDialog_SuppressResolutionWarnings.htm">SuppressResolutionWarnings</a></td>
+        <td class="api-list">Specifies whether or not to warn that a file is being saved outside of a project resolvable location.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="Application_CreateFileDialog.htm">Application.CreateFileDialog</a>, <a href="FileDialogEvents_Parent.htm">FileDialogEvents.Parent</a><h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FileDialog_Sample.htm">File Dialog</a></td>
+        <td class="api-list">This sample demonstrates the use of the FileDialog object. The only requirement to run this sample is to have Inventor open.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ShowOnlineHelpForFileDialog_Sample.htm">Show online help sample for file dialog</a></td>
+        <td class="api-list">The sample demonstrate how to set the online help for a file dialog.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 6<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(FileDialog%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

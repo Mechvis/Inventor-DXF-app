@@ -1,0 +1,122 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/DimensionConstraints_AddTangentDistance.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="DimensionConstraints_AddTangentDistance">
+    <meta name="description" content="DimensionConstraints.AddTangentDistance Method">
+    <meta name="topicid" content="DimensionConstraints_AddTangentDistance">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>DimensionConstraints.AddTangentDistance Method</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">DimensionConstraints.AddTangentDistance Method</h1>
+
+          Parent Object: <a href="DimensionConstraints.htm">DimensionConstraints</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Method that creates a new tangent distance dimension constraint between the two input entities. The input entities can consist of two circles or a line and a circle. Arcs can also be used in place of the circles.</p>
+    <h2 class="api">
+            Remarks
+          </h2><p>The proximity point arguments are required whenever a circle or arc is input. This point specifies which of the two possible solutions is used when creating the constraint. The figure below illustrates two tangent distance constraints placed using the same input arguments except the proximity point for the smaller circle indicated the position closer to the large circle in one case and further away in the other.</p>
+<center><img src="../images/TangentDimConstraint3.png" /></center>
+<p>The General Dimension command allows you to dimension the difference in radius between two concentric circles. During interactive placement there is special behavior that makes the placement behave similar to that when placing a radius or diameter dimension. However, the command actually creates a TangentDistanceDimConstraint. By providing the appropriate input you can duplicate the result using the AddTangentDistance method. The result is shown below.</p>
+<center><img src="../images/ConcentricDimConstraint.png" /></center>
+<p>The picture below illustrates creating a tangent dimension constraint between a line and an arc. The 1.293 dia. dimension was placed by inputting the red line representing the center line and the red arc. It is defined to be a linear diameter style of dimension.</p>
+<p><center><img src="../images/TangentDimConstraint2.png" /></center></p><h2 class="api">
+          Syntax
+        </h2>
+        
+            DimensionConstraints.<b>AddTangentDistance</b>( <b><i>EntityOne</i></b> As <a href="SketchEntity.htm">SketchEntity</a>, <b><i>EntityTwo</i></b> As <a href="SketchEntity.htm">SketchEntity</a>, <b><i>ProximityPointOne</i></b> As <a href="Point2d.htm">Point2d</a>, <b><i>ProximityPointTwo</i></b> As <a href="Point2d.htm">Point2d</a>, <b><i>TextPoint</i></b> As <a href="Point2d.htm">Point2d</a>, <b><i>LinearDiameter</i></b> As Boolean, [<b><i>Driven</i></b>] As Boolean ) As <a href="TangentDistanceDimConstraint.htm">TangentDistanceDimConstraint</a>
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">EntityOne</td>
+        <td class="api-list"><a href="SketchEntity.htm">SketchEntity</a></td>
+        <td class="api-list">Input , SketchArc, or SketchLine object. Both EntityOne and EntityTwo cannot be sketch lines, at least one must be an arc or circle.</td>
+      </tr>
+      <tr>
+        <td class="api-list">EntityTwo</td>
+        <td class="api-list"><a href="SketchEntity.htm">SketchEntity</a></td>
+        <td class="api-list">Input , SketchArc, or SketchLine object. Both EntityOne and EntityTwo cannot be sketch lines, at least one must be an arc or circle.</td>
+      </tr>
+      <tr>
+        <td class="api-list">ProximityPointOne</td>
+        <td class="api-list"><a href="Point2d.htm">Point2d</a></td>
+        <td class="api-list">The supplied by this argument is used when EntityOne is a circle or arc. This point specifies which of the possible two tangent cases is used when creating the constraint. The closest tangent to the input point is used. If EntityOne is a line, this argument is ignored.</td>
+      </tr>
+      <tr>
+        <td class="api-list">ProximityPointTwo</td>
+        <td class="api-list"><a href="Point2d.htm">Point2d</a></td>
+        <td class="api-list">The supplied by this argument is used when EntityTwo is a circle or arc. This point specifies which of the possible two tangent cases is used when creating the constraint. The closest tangent to the input point is used. If EntityTwo is a line, this argument is ignored.</td>
+      </tr>
+      <tr>
+        <td class="api-list">TextPoint</td>
+        <td class="api-list"><a href="Point2d.htm">Point2d</a></td>
+        <td class="api-list">Input object that defines the position of the dimension text.</td>
+      </tr>
+      <tr>
+        <td class="api-list">LinearDiameter</td>
+        <td class="api-list">Boolean</td>
+        <td class="api-list">In the case when either EntityOne or EntityTwo is a line, it is valid to specify that this constraint be placed as a linear diameter type of dimension. If neither EntityOne nor EntityTwo is a line, this argument is ignored.</td>
+      </tr>
+      <tr>
+        <td class="api-list">Driven</td>
+        <td class="api-list">Boolean</td>
+        <td class="api-list">Optional input Boolean that specifies whether the dimension should be a driven or driving dimension. The default value is False, which causes a driving dimension constraint to be created.<br /><br /> This is an optional argument whose default value is False.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 5<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(DimensionConstraints.AddTangentDistance%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

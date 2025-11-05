@@ -1,0 +1,491 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/SheetMetalComponentDefinition.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="SheetMetalComponentDefinition">
+    <meta name="description" content="SheetMetalComponentDefinition Object">
+    <meta name="topicid" content="GUID-SheetMetalComponentDefinition">
+    <meta name="language" content="ENU">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <title>SheetMetalComponentDefinition Object
+			</title>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+				// This turns on the display of the copyright notice which is not visible by default.
+				// Because the head is removed when used in the web help, this function will only exists
+				// when the chm help is being created.
+				window.onload = function() {
+				copyrightElement = document.getElementById('CopyrightNotice');
+				copyrightElement.style.display = 'block';
+				};
+			</script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">SheetMetalComponentDefinition Object
+			</h1>
+              Derived from: <a href="PartComponentDefinition.htm">PartComponentDefinition</a> Object
+            <br><h2 class="api">
+          Description
+        </h2>The SheetMetalComponentDefinition object derives from the PartComponentDefinition object. It adds the sheet metal-specific behavior to the PartComponentDefinition.<h2 class="api">
+            Methods
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalComponentDefinition_ClearAppearanceOverrides.htm">ClearAppearanceOverrides</a></td>
+        <td class="api-list">Clears the appearance overrides on the provided objects. The objects can include faces, features, work surfaces, surface bodies and occurrences.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalComponentDefinition_CreateFactory.htm">CreateFactory</a></td>
+        <td class="api-list">Converts a part to an iPart factory.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalComponentDefinition_CreateGeometryIntent.htm">CreateGeometryIntent</a></td>
+        <td class="api-list">Method that creates a GeometryIntent object.&nbsp;GeometryIntent objects are used as input when creating annotations in the model.&nbsp;They are used to identify geometry and optionally specific locations on that geometry.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalComponentDefinition_DeleteObjects.htm">DeleteObjects</a></td>
+        <td class="api-list">Method that deletes a collection of objects that belong to the part.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalComponentDefinition_ExportObjects.htm">ExportObjects</a></td>
+        <td class="api-list">Marks all the input objects as exported.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalComponentDefinition_FindUsingPoint.htm">FindUsingPoint</a></td>
+        <td class="api-list">Method that finds all the entities of the specified type at the specified location.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalComponentDefinition_FindUsingRay.htm">FindUsingRay</a></td>
+        <td class="api-list">Method that fires a ray through the part or assembly and returns the entities intersected by the ray. The objects intersected by the ray are returned in the order in which they are intersected, with the first entities returned being those closest to the clipping plane.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalComponentDefinition_FindUsingVector.htm">FindUsingVector</a></td>
+        <td class="api-list">Method that finds all the entities of the specified type along the specified vector using either a cylinder or cone that to define the tolerance within the defined vector.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalComponentDefinition_GetBodySheetMetalStyle.htm">GetBodySheetMetalStyle</a></td>
+        <td class="api-list">Method that gets the sheet metal style for a surface body.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalComponentDefinition_GetEndOfPartPosition.htm">GetEndOfPartPosition</a></td>
+        <td class="api-list">Gets the current end of part position in the browser (in parts).</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalComponentDefinition_GetUnusedGeometries.htm">GetUnusedGeometries</a></td>
+        <td class="api-list">Method that gets the unused sketches and work features.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalComponentDefinition_PurgeUnusedGeometries.htm">PurgeUnusedGeometries</a></td>
+        <td class="api-list">Method that purges unused sketches and work features.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalComponentDefinition_RepositionObject.htm">RepositionObject</a></td>
+        <td class="api-list">Method that repositions the specifies object(s) to the new position within the collection of the object in the document.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalComponentDefinition_SetBodySheetMetalStyle.htm">SetBodySheetMetalStyle</a></td>
+        <td class="api-list">Method that sets the sheet metal style for a surface body.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalComponentDefinition_SetBodySheetMetalStyle2.htm">SetBodySheetMetalStyle2</a></td>
+        <td class="api-list">Method that sets the sheet metal style for a surface body, can ignore computation errors.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalComponentDefinition_SetEndOfPartToTopOrBottom.htm">SetEndOfPartToTopOrBottom</a></td>
+        <td class="api-list">Method that positions the end-of-part marker at the top or bottom of the browser.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalComponentDefinition_SuppressFeatures.htm">SuppressFeatures</a></td>
+        <td class="api-list">Method that suppresses the specified features.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalComponentDefinition_Unfold.htm">Unfold</a></td>
+        <td class="api-list">Method that generates the flat pattern.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalComponentDefinition_Unfold2.htm">Unfold2</a></td>
+        <td class="api-list">Method that generates the flat pattern with the input face as the base face.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalComponentDefinition_UnsuppressFeatures.htm">UnsuppressFeatures</a></td>
+        <td class="api-list">Method that unsuppresses the specified features.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Properties
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalComponentDefinition_ActiveSheetMetalStyle.htm">ActiveSheetMetalStyle</a></td>
+        <td class="api-list">Property that returns the active SheetMetalStyle object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalComponentDefinition_AnalysisManager.htm">AnalysisManager</a></td>
+        <td class="api-list">Property that returns the AnalysisManager object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalComponentDefinition_AnnotationPlanes.htm">AnnotationPlanes</a></td>
+        <td class="api-list">Read-only property that returns the AnnotationPlanes collection object.&nbsp;This object provides access to all of the annotation planes in the part.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalComponentDefinition_AppearanceOverridesObjects.htm">AppearanceOverridesObjects</a></td>
+        <td class="api-list">Gets the objects that have appearance overrides in the active design view. The objects can include faces, features, work surfaces and surface bodies.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalComponentDefinition_Application.htm">Application</a></td>
+        <td class="api-list">Returns the top-level parent application object.  When used the context of Inventor, an Application object is returned.  When used in the context of Apprentice, an ApprenticeServer object is returned.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalComponentDefinition_ASideDefinitions.htm">ASideDefinitions</a></td>
+        <td class="api-list">Read-only property that returns the ASideFaceDefinitions collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalComponentDefinition_AttributeSets.htm">AttributeSets</a></td>
+        <td class="api-list">Property that returns the AttributeSets collection object associated with this object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalComponentDefinition_BendRadius.htm">BendRadius</a></td>
+        <td class="api-list">Property that returns the parameter that controls the bend radius of the part.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalComponentDefinition_BendReliefDepth.htm">BendReliefDepth</a></td>
+        <td class="api-list">Property that returns the parameter that controls the bend relief depth of the part.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalComponentDefinition_BendReliefWidth.htm">BendReliefWidth</a></td>
+        <td class="api-list">Property that returns the parameter that controls the bend relief width of the part.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalComponentDefinition_Bends.htm">Bends</a></td>
+        <td class="api-list">Inventor::PartComponentDefinition::Bends</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalComponentDefinition_BIMComponent.htm">BIMComponent</a></td>
+        <td class="api-list">Read-only property that returns the BIMComponent object associated with this component definition.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalComponentDefinition_BOMQuantity.htm">BOMQuantity</a></td>
+        <td class="api-list">Property that returns the BOMQuantity object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalComponentDefinition_BOMStructure.htm">BOMStructure</a></td>
+        <td class="api-list">Gets and sets how the component is used/viewed in a BOM.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalComponentDefinition_ClientGraphicsCollection.htm">ClientGraphicsCollection</a></td>
+        <td class="api-list">Property that returns the ClientGraphicsCollection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalComponentDefinition_CompactModelHistoryOnNextSave.htm">CompactModelHistoryOnNextSave</a></td>
+        <td class="api-list">Gets/Sets the flag that decides whether the BRep's modifications through its history are saved explicitly in the next save or not (independent of CompactModelHistory setting).</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalComponentDefinition_CornerReliefSize.htm">CornerReliefSize</a></td>
+        <td class="api-list">Property that returns the parameter that controls the corner relief size of the part.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalComponentDefinition_DataIO.htm">DataIO</a></td>
+        <td class="api-list">Gets the object that directly deals with I/O to and from a storage-medium, including Streams(IStream).</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalComponentDefinition_Document.htm">Document</a></td>
+        <td class="api-list">Property that returns the containing Document object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalComponentDefinition_FactoryDocument.htm">FactoryDocument</a></td>
+        <td class="api-list">Read-only property that returns the model state factory document when IsModelStateMember returns True.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalComponentDefinition_Features.htm">Features</a></td>
+        <td class="api-list">Property that returns the PartFeatures collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalComponentDefinition_FlatPattern.htm">FlatPattern</a></td>
+        <td class="api-list">Property that returns the FlatPattern object. If the sheet metal part hasn't been unfolded, this property returns Nothing.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalComponentDefinition_GapSize.htm">GapSize</a></td>
+        <td class="api-list">Inventor::PartComponentDefinition::GapSize</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalComponentDefinition_HasFlatPattern.htm">HasFlatPattern</a></td>
+        <td class="api-list">Property that returns whether the sheet metal body has been unfolded and a FlatPattern object exists.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalComponentDefinition_HasMultipleSolidBodies.htm">HasMultipleSolidBodies</a></td>
+        <td class="api-list">Determines whether the part contains multiple solid bodies or not.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalComponentDefinition_iMateDefinitions.htm">iMateDefinitions</a></td>
+        <td class="api-list">Property that returns the iMateDefinitions collection object associated with this part.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalComponentDefinition_iPartFactory.htm">iPartFactory</a></td>
+        <td class="api-list">Property that returns the iPartFactory object. This property will fail in the case where the part is not an iPart Factory. You can determine this by using the IsiPartFactory property.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalComponentDefinition_iPartMember.htm">iPartMember</a></td>
+        <td class="api-list">Property that returns the iPartMember object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalComponentDefinition_IsContentMember.htm">IsContentMember</a></td>
+        <td class="api-list">Property that indicates if this part is a Content Center part or not. A value of True indicates it is a Content Center part.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalComponentDefinition_IsiPartFactory.htm">IsiPartFactory</a></td>
+        <td class="api-list">Property that returns if the part is an iPart Factory or not. It returns True in the case where the part is a factory. If True, the factory can be obtained using the iPartFactory property.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalComponentDefinition_IsiPartMember.htm">IsiPartMember</a></td>
+        <td class="api-list">Property that returns the iPartMember object. This property will fail in the case where the part is not an iPart Member. You can determine this by using the IsiPartMember property.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalComponentDefinition_IsModelStateFactory.htm">IsModelStateFactory</a></td>
+        <td class="api-list">Read-only property that returns whether the document is a model state factory document or not.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalComponentDefinition_IsModelStateMember.htm">IsModelStateMember</a></td>
+        <td class="api-list">Read-only property that returns whether the document is a model state member document or not.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalComponentDefinition_JacobiRadiusSize.htm">JacobiRadiusSize</a></td>
+        <td class="api-list">Property that returns the parameter that controls the Jacobi radius size of the part.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalComponentDefinition_MassProperties.htm">MassProperties</a></td>
+        <td class="api-list">Mass properties for this ComponentDefinition.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalComponentDefinition_MeshFeatureSets.htm">MeshFeatureSets</a></td>
+        <td class="api-list">Read-only property that returns the MeshFeatureSets collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalComponentDefinition_MinimumRemnant.htm">MinimumRemnant</a></td>
+        <td class="api-list">Property that returns the parameter that controls the minimum remnant of the part.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalComponentDefinition_ModelAnnotations.htm">ModelAnnotations</a></td>
+        <td class="api-list">Read-only property that returns the ModelAnnotations collection object.&nbsp;This object provides access to all of the model annotations in the part.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalComponentDefinition_ModelGeometryVersion.htm">ModelGeometryVersion</a></td>
+        <td class="api-list">Property that returns a string that can be used to determine if the document has been modified. This version string is changed every time the assembly is modified. By saving a previous version string, you can compare the current version string to see if the assembly has been modified.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalComponentDefinition_ModelStates.htm">ModelStates</a></td>
+        <td class="api-list">Read-only property that returns the ModelStates object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalComponentDefinition_ModelToleranceFeatures.htm">ModelToleranceFeatures</a></td>
+        <td class="api-list">Returns the ModelToleranceFeatures collection object.&nbsp;This object provides access to all of the model annotations in the part.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalComponentDefinition_Occurrences.htm">Occurrences</a></td>
+        <td class="api-list">Property that returns the collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalComponentDefinition_OrientedMinimumRangeBox.htm">OrientedMinimumRangeBox</a></td>
+        <td class="api-list">Read-only property that returns the oriented minimum range box for this object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalComponentDefinition_Parameters.htm">Parameters</a></td>
+        <td class="api-list">Gets the Parameters collection object that encapsulates all of the parameters defined in this ComponentDefinition.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalComponentDefinition_PartEvents.htm">PartEvents</a></td>
+        <td class="api-list">Property that returns the PartEvents source object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalComponentDefinition_PointClouds.htm">PointClouds</a></td>
+        <td class="api-list">Gets the PointClouds collection object that encapsulates all of the point clouds defined in this Component Definition.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalComponentDefinition_PreciseRangeBox.htm">PreciseRangeBox</a></td>
+        <td class="api-list">Gets a bounding box that tightly encloses all the solid and surface bodies under the ComponentDefinition.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalComponentDefinition_RangeBox.htm">RangeBox</a></td>
+        <td class="api-list">Property that returns a Box object which contains the opposing points of a rectangular box that is guaranteed to enclose this object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalComponentDefinition_ReferenceComponents.htm">ReferenceComponents</a></td>
+        <td class="api-list">Property that returns the ReferenceComponents collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalComponentDefinition_RepresentationsManager.htm">RepresentationsManager</a></td>
+        <td class="api-list">Read-only property that returns the RepresentationsManager object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalComponentDefinition_RolledBackForEdit.htm">RolledBackForEdit</a></td>
+        <td class="api-list">Property that gets whether the model is currently rolled back to a previous point in the feature history.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalComponentDefinition_SheetMetalStyles.htm">SheetMetalStyles</a></td>
+        <td class="api-list">Property that returns the SheetMetalStyles collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalComponentDefinition_SketchBlockDefinitions.htm">SketchBlockDefinitions</a></td>
+        <td class="api-list">Property that returns the SketchBlockDefinitions collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalComponentDefinition_Sketches.htm">Sketches</a></td>
+        <td class="api-list">Gets the PlanarSketches collection object that encapsulates all of the planar sketches defined in this ComponentDefinition.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalComponentDefinition_Sketches3D.htm">Sketches3D</a></td>
+        <td class="api-list">Property that returns the Sketches3D collection object that encapsulates all of the 3D sketches defined in this ComponentDefinition.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalComponentDefinition_SurfaceBodies.htm">SurfaceBodies</a></td>
+        <td class="api-list">Property that returns all of the <i>result</i> SurfaceBody objects contained within this ComponentDefinition.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalComponentDefinition_Thickness.htm">Thickness</a></td>
+        <td class="api-list">Property that returns the parameter that controls the thickness of the part.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalComponentDefinition_TransitionRadius.htm">TransitionRadius</a></td>
+        <td class="api-list">Property that returns the parameter that controls the transition radius of the part.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalComponentDefinition_Type.htm">Type</a></td>
+        <td class="api-list">Returns an ObjectTypeEnum indicating this object's type.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalComponentDefinition_UnfoldMethod.htm">UnfoldMethod</a></td>
+        <td class="api-list">Read-write property that gets and sets the currently active unfold method for the document.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalComponentDefinition_UnfoldMethods.htm">UnfoldMethods</a></td>
+        <td class="api-list">Property that returns the UnfoldMethods collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalComponentDefinition_UserCoordinateSystems.htm">UserCoordinateSystems</a></td>
+        <td class="api-list">Property that returns the UserCoordinateSystems collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalComponentDefinition_UseSheetMetalStyleMaterial.htm">UseSheetMetalStyleMaterial</a></td>
+        <td class="api-list">Read-write property that specifies if the material is defined by the sheet metal style or it is explictly set.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalComponentDefinition_UseSheetMetalStyleThickness.htm">UseSheetMetalStyleThickness</a></td>
+        <td class="api-list">Read-write property that specifies if the active thickness is defined by the sheet metal style or it is explictly set.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalComponentDefinition_UseSheetMetalStyleUnfoldMethod.htm">UseSheetMetalStyleUnfoldMethod</a></td>
+        <td class="api-list">Read-write property that specifies whether to use the unfold method specified by the sheet metal style or not.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalComponentDefinition_WorkAxes.htm">WorkAxes</a></td>
+        <td class="api-list">Property that returns the WorkAxes collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalComponentDefinition_WorkPlanes.htm">WorkPlanes</a></td>
+        <td class="api-list">Property that returns the WorkPlanes collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalComponentDefinition_WorkPoints.htm">WorkPoints</a></td>
+        <td class="api-list">Property that returns the WorkPoints collection object.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalComponentDefinition_WorkSurfaces.htm">WorkSurfaces</a></td>
+        <td class="api-list">Property that returns the collection object that encapsulates all of the work surfaces defined in this PartComponentDefinition.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Accessed From
+          </h2><a href="ASideDefinition_Parent.htm">ASideDefinition.Parent</a>, <a href="ASideDefinitions_Parent.htm">ASideDefinitions.Parent</a>, <a href="Bend_Parent.htm">Bend.Parent</a>, <a href="FlatPattern_Parent.htm">FlatPattern.Parent</a><h2 class="api">
+            Samples
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list">
+                Name
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="ExportFlatPatternToSAT_Sample.htm">Publish FlatPattern to SAT</a></td>
+        <td class="api-list">This sample demonstrates how to save a FlatPattern file using the SAT translator add-in.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="FoldFeatures_Add_Sample.htm">Create sheet metal face and fold features</a></td>
+        <td class="api-list">This sample demonstrates the creation of sheet metal face and fold features.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="LoftedFlangeFeatures_Add_Sample.htm">Create sheet metal lofted flange feature</a></td>
+        <td class="api-list">The following sample demonstrates the creation of a sheet metal lofted flange feature.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PunchToolFeatureIDs_Sample.htm">Report on punch feature ID's</a></td>
+        <td class="api-list">This program demonstrates accessing punch features and creates a report of the punch ID's used.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="PunchToolFeatures_Add_Sample.htm">Add a punch tool feature</a></td>
+        <td class="api-list">This program demonstrates the creation of a punch tool feature. It uses one of the punch features that's delivered with Inventor. It assumes you already have an existing sheet metal part and have selected a face to place the punch feature on. The selected face should be large so there is room for the punch features.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalComponentDefinition_Sample.htm">Sheet Metal Feature Display</a></td>
+        <td class="api-list">This sample illustrates getting basic information from the various sheet metal features.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalFeatures_Sample.htm">Create sheet metal face and cut features</a></td>
+        <td class="api-list">This sample demonstrates the creation of sheet metal face and cut features.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalFeatures_FlangeFeatures_Sample.htm">Create sheet metal face and flange features</a></td>
+        <td class="api-list">This sample demonstrates the creation of sheet metal face and flange features.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalStyle_Sample.htm">Sheet Metal Style Display</a></td>
+        <td class="api-list">This sample illustrates getting information about sheet metal styles.</td>
+      </tr>
+      <tr>
+        <td class="api-list"><a href="SheetMetalStyle_Thickness_Sample.htm">Sheet Metal Thickness Editing</a></td>
+        <td class="api-list">This sample illustrates editing the thickness of a sheet metal part.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 5.3<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(SheetMetalComponentDefinition%20Object%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

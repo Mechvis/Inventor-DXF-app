@@ -1,0 +1,115 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/ContentTableColumns_Add.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="ContentTableColumns_Add">
+    <meta name="description" content="ContentTableColumns.Add Method">
+    <meta name="topicid" content="ContentTableColumns_Add">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>ContentTableColumns.Add Method</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">ContentTableColumns.Add Method</h1>
+
+          Parent Object: <a href="ContentTableColumns.htm">ContentTableColumns</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Method that creates a new column. Any changes to the table are not actually applied until the Save method of the parent ContentFamily object is called.</p>
+    <h2 class="api">
+          Syntax
+        </h2>
+        
+            ContentTableColumns.<b>Add</b>( <b><i>InternalName</i></b> As String, <b><i>DisplayHeading</i></b> As String, <b><i>DataType</i></b> As <a href="ValueTypeEnum.htm">ValueTypeEnum</a>, [<b><i>Units</i></b>] As Variant, [<b><i>Expression</i></b>] As Variant, [<b><i>PropertySetId</i></b>] As Variant, [<b><i>PropertyIdentifier</i></b>] As Variant ) As <a href="ContentTableColumn.htm">ContentTableColumn</a>
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">InternalName</td>
+        <td class="api-list">String</td>
+        <td class="api-list">Input String that specifies the internal name of this column.</td>
+      </tr>
+      <tr>
+        <td class="api-list">DisplayHeading</td>
+        <td class="api-list">String</td>
+        <td class="api-list">Input String that specifies the display name of this column. This is the name of the column that the end-user sees within the user interface.</td>
+      </tr>
+      <tr>
+        <td class="api-list">DataType</td>
+        <td class="api-list"><a href="ValueTypeEnum.htm">ValueTypeEnum</a></td>
+        <td class="api-list">Input value from ValueTypeEnum that specifies the type of data within this column. Valid values are: kIntegerType, kDoubleType, kStringType, and kBooleanType.</td>
+      </tr>
+      <tr>
+        <td class="api-list">Units</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list"><p>Input value that specifies the type of unit the values in the column are. The unit type needs to be specified if the DataType argument is kIntegerType or kDoubleType. For kStringType and kBooleanType this argument is ignored.</p><p>You specify a unit type using a value from UnitsTypeEnum or a string that describes a unit. For example, both of the following are valid unit specifiers for inch: kInchLengthUnits and "in". String specifiers are typically used for units that are not defined in the enum list. For example, the volume measure for cubic inches is not defined in the enum list but you can specify it using the string "in in in".</p><br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+      <tr>
+        <td class="api-list">Expression</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list"><p>Optional input Variant that specifies the expression to use to automatically populate the rows of this column. Not supplying this argument or providing an empty String will result in the default value of '1' being used.<p />There are two things that can be defined for the expression, a standard expression and limits for a custom expression. These are defined below.</p><p><b>Standard Expression</b> ' This allows you to define an expression and will evaluate it to populate the rows of the table. Expressions can contain expression like you would use to define the value of a parameter and they can also contain the values of other columns. To use the values of other columns enclose the internal name within braces. Here are some examples of valid expression strings.</p><p><code>20 in</code></p><p><code>{SIZE}</code></p><p><code>{TOTAL_LENGTH} ' {HEAD_HEIGHT}</code></p><p><code>{DIA} / 2</code></p><p><b>Custom Expression Limits</b>' A custom expression allows the end-user to specify the value when placing the member into an assembly. You can choose to define the limits for this value, i.e. minimum, maximum, increment and default values. These rules are defined using an ExpressionLimits object. You can create this object using the ContentTableColumn.CreateExpressionLimits method.</p><br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+      <tr>
+        <td class="api-list">PropertySetId</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional input String that specifies the name of the property set that contains the property. This is the InternalName or Name associated with the property set. If this argument is set you must also set the PropertyIdentifier argument to fully define the property to use.<br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+      <tr>
+        <td class="api-list">PropertyIdentifier</td>
+        <td class="api-list">Variant</td>
+        <td class="api-list">Optional input Variant that identifies a property. This can be a Long value that specifies the PropId or the name of a property. If this argument is set you must also set the PropertySetId argument to fully define the property to use.<br /><br /> This is an optional argument whose default value is null.</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2010<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(ContentTableColumns.Add%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

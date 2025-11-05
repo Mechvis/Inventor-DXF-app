@@ -1,0 +1,310 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/TransientBRep_CreateSolidCylinderCone_Sample.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="TransientBRep_CreateSolidCylinderCone_Sample">
+    <meta name="description" content="Client graphics creation of 3D primitives Sample">
+    <meta name="topicid" content="TransientBRep_CreateSolidCylinderCone_Sample">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>Client graphics creation of 3D primitives</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body><script>
+          function copyCode(language) {
+          // Get the pre element for the specified language.
+          var preElement = document.getElementById(language);
+
+          // Get the text from the element and copy it to the clipboard.
+          var preText = preElement.innerText;
+
+          var isIE = /*@cc_on!@*/false || !!document.documentMode;
+
+          if (isIE)
+          {
+            window.clipboardData.setData('Text', preText);
+          }
+          else
+          {
+            navigator.clipboard.writeText(preText);
+          }
+
+          //alert("Code copied to clipboard");
+          }
+        </script><link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">Client graphics creation of 3D primitives</h1>
+    <h2 class="api">
+          Description
+        </h2>This sample demonstrates the creation of 3D primitives (cylinder, cone, etc.) using client graphics.<h2 class="api">
+          Code Samples
+        </h2>
+    <div id="tabs">
+      <ul>
+        <li><a href="#VBA">VBA</a></li>
+        <li><a href="#iLogic">iLogic</a></li>
+        <li><a href="#C#">C#</a></li>
+      </ul>
+      <div id="VBA" class="api-code">To use the sample you need to have an assembly or part document open. The program has two behaviors: the first time it is run it will draw the graphics. The second time it is run it deletes the previously drawn graphics.<table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('VBA_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="VBA_code">Public Sub ClientGraphics3DPrimitives()
+    Dim oDoc As Document
+    Set oDoc = ThisApplication.ActiveDocument
+
+    <span style="color:blue">' Set a reference to component definition of the active document.</span>
+    <span style="color:blue">' This assumes that a part or assembly document is active.</span>
+    Dim oCompDef As ComponentDefinition
+    Set oCompDef = ThisApplication.ActiveDocument.ComponentDefinition
+
+    <span style="color:blue">' Check to see if the test graphics data object already exists.</span>
+    <span style="color:blue">' If it does clean up by removing all associated of the client graphics</span>
+    <span style="color:blue">' from the document. If it doesn't create it.</span>
+    On Error Resume Next
+    Dim oClientGraphics As ClientGraphics
+    Set oClientGraphics = oCompDef.ClientGraphicsCollection.Item("Sample3DGraphicsID")
+    If Err.Number = 0 Then
+        On Error GoTo 0
+        <span style="color:blue">' An existing client graphics object was successfully obtained so clean up.</span>
+        oClientGraphics.Delete
+
+        <span style="color:blue">' update the display to see the results.</span>
+        ThisApplication.ActiveView.Update
+    Else
+        Err.Clear
+        On Error GoTo 0
+
+        <span style="color:blue">' Set a reference to the transient geometry object for user later.</span>
+        Dim oTransGeom As TransientGeometry
+        Set oTransGeom = ThisApplication.TransientGeometry
+
+        <span style="color:blue">' Create the ClientGraphics object.</span>
+        Set oClientGraphics = oCompDef.ClientGraphicsCollection.Add("Sample3DGraphicsID")
+
+        <span style="color:blue">' Create a new graphics node within the client graphics objects.</span>
+        Dim oSurfacesNode As GraphicsNode
+        Set oSurfacesNode = oClientGraphics.AddNode(1)
+
+        Dim oTransientBRep As TransientBRep
+        Set oTransientBRep = ThisApplication.TransientBRep
+
+        <span style="color:blue">' Create a point representing the center of the bottom of the cone</span>
+        Dim oBottom As Point
+        Set oBottom = ThisApplication.TransientGeometry.CreatePoint(0, 0, 0)
+
+        <span style="color:blue">' Create a point representing the tip of the cone</span>
+        Dim oTop As Point
+        Set oTop = ThisApplication.TransientGeometry.CreatePoint(0, 10, 0)
+
+        <span style="color:blue">' Create a transient cone body</span>
+        Dim oBody As SurfaceBody
+        Set oBody = oTransientBRep.CreateSolidCylinderCone(oBottom, oTop, 5, 5, 0)
+
+        <span style="color:blue">' Reset the top point indicating the center of the top of the cylinder</span>
+        Set oTop = ThisApplication.TransientGeometry.CreatePoint(0, -40, 0)
+
+        <span style="color:blue">' Create a transient cylinder body</span>
+        Dim oCylBody As SurfaceBody
+        Set oCylBody = oTransientBRep.CreateSolidCylinderCone(oBottom, oTop, 2.5, 2.5, 2.5)
+
+        <span style="color:blue">' Union the cone and cylinder bodies</span>
+        Call oTransientBRep.DoBoolean(oBody, oCylBody, kBooleanTypeUnion)
+
+        <span style="color:blue">' Create client graphics based on the transient body</span>
+        Dim oSurfaceGraphics As SurfaceGraphics
+        Set oSurfaceGraphics = oSurfacesNode.AddSurfaceGraphics(oBody)
+
+        <span style="color:blue">' Update the view to see the resulting curves.</span>
+        ThisApplication.ActiveView.Update
+    End If
+End Sub</pre>
+      </div>
+      <div id="iLogic" class="api-code">To use the sample you need to have an assembly or part document open. The program has two behaviors: the first time it is run it will draw the graphics. The second time it is run it deletes the previously drawn graphics.<table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('iLogic_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="iLogic_code">    Dim oDoc As Document
+    oDoc = ThisApplication.ActiveDocument
+
+    <span style="color:blue">' Set a reference to component definition of the active document.</span>
+    <span style="color:blue">' This assumes that a part or assembly document is active.</span>
+    Dim oCompDef As ComponentDefinition
+    oCompDef = ThisApplication.ActiveDocument.ComponentDefinition
+
+    <span style="color:blue">' Check to see if the test graphics data object already exists.</span>
+    <span style="color:blue">' If it does clean up by removing all associated of the client graphics</span>
+    <span style="color:blue">' from the document. If it doesn't create it.</span>
+    On Error Resume Next
+    Dim oClientGraphics As ClientGraphics
+    oClientGraphics = oCompDef.ClientGraphicsCollection.Item("Sample3DGraphicsID")
+    If Err.Number = 0 Then
+        On Error GoTo 0
+        <span style="color:blue">' An existing client graphics object was successfully obtained so clean up.</span>
+        oClientGraphics.Delete
+
+        <span style="color:blue">' update the display to see the results.</span>
+        ThisApplication.ActiveView.Update
+    Else
+        Err.Clear
+        On Error GoTo 0
+
+        <span style="color:blue">' Set a reference to the transient geometry object for user later.</span>
+        Dim oTransGeom As TransientGeometry
+        oTransGeom = ThisApplication.TransientGeometry
+
+        <span style="color:blue">' Create the ClientGraphics object.</span>
+        oClientGraphics = oCompDef.ClientGraphicsCollection.Add("Sample3DGraphicsID")
+
+        <span style="color:blue">' Create a new graphics node within the client graphics objects.</span>
+        Dim oSurfacesNode As GraphicsNode
+        oSurfacesNode = oClientGraphics.AddNode(1)
+
+        Dim oTransientBRep As TransientBRep
+        oTransientBRep = ThisApplication.TransientBRep
+
+        <span style="color:blue">' Create a point representing the center of the bottom of the cone</span>
+        Dim oBottom As Point
+        oBottom = ThisApplication.TransientGeometry.CreatePoint(0, 0, 0)
+
+        <span style="color:blue">' Create a point representing the tip of the cone</span>
+        Dim oTop As Point
+        oTop = ThisApplication.TransientGeometry.CreatePoint(0, 10, 0)
+
+        <span style="color:blue">' Create a transient cone body</span>
+        Dim oBody As SurfaceBody
+        oBody = oTransientBRep.CreateSolidCylinderCone(oBottom, oTop, 5, 5, 0)
+
+        <span style="color:blue">' Reset the top point indicating the center of the top of the cylinder</span>
+        oTop = ThisApplication.TransientGeometry.CreatePoint(0, -40, 0)
+
+        <span style="color:blue">' Create a transient cylinder body</span>
+        Dim oCylBody As SurfaceBody
+        oCylBody = oTransientBRep.CreateSolidCylinderCone(oBottom, oTop, 2.5, 2.5, 2.5)
+
+        <span style="color:blue">' Union the cone and cylinder bodies</span>
+        Call oTransientBRep.DoBoolean(oBody, oCylBody, kBooleanTypeUnion)
+
+        <span style="color:blue">' Create client graphics based on the transient body</span>
+        Dim oSurfaceGraphics As SurfaceGraphics
+        oSurfaceGraphics = oSurfacesNode.AddSurfaceGraphics(oBody)
+
+        <span style="color:blue">' Update the view to see the resulting curves.</span>
+        ThisApplication.ActiveView.Update
+    End If</pre>
+      </div>
+      <div id="C#" class="api-code">To use the sample you need to have an assembly or part document open. The program has two behaviors: the first time it is run it will draw the graphics. The second time it is run it deletes the previously drawn graphics. The first line of this sample sets the oApp variable to ThisApplication - this should be appropriately changed.<table width="100%" style="font-size:15">
+          <tr>
+            <td align="right"><button onclick="copyCode('C#_code')" class="copy-code">Copy Code</button></td>
+          </tr>
+        </table>
+        <pre class="api-code" id="C#_code">public void ClientGraphics3DPrimitives()
+{
+    Application oApp = ThisApplication;
+    Document oDoc = oApp.ActiveDocument;
+
+    <span style="color:blue">// Set a reference to component definition of the active document.</span>
+    <span style="color:blue">// This assumes that a part or assembly document is active.</span>
+    Type t = null;
+    if (oDoc.DocumentType == DocumentTypeEnum.kPartDocumentObject)
+    {
+        t = typeof(PartDocument);
+    }
+    else if (oDoc.DocumentType == DocumentTypeEnum.kAssemblyDocumentObject)
+    {
+        t = typeof(AssemblyDocument);
+    }
+
+    System.Reflection.PropertyInfo pi = t.GetProperty("ComponentDefinition");
+    ComponentDefinition oCompDef = (ComponentDefinition)pi.GetValue(oDoc, null);
+
+    <span style="color:blue">// Check to see if the test graphics data object already exists.</span>
+    <span style="color:blue">// If it does clean up by removing all associated of the client graphics</span>
+    <span style="color:blue">// from the document. If it doesn't create it.</span>
+    ClientGraphics oClientGraphics;
+    try
+    {
+        oClientGraphics = oCompDef.ClientGraphicsCollection["Sample3DGraphicsID"];
+
+        <span style="color:blue">// An existing client graphics object was successfully obtained so clean up.</span>
+        oClientGraphics.Delete();
+
+        <span style="color:blue">// update the display to see the results.</span>
+        oApp.ActiveView.Update();
+
+    }
+    catch
+    {
+        <span style="color:blue">// Set a reference to the transient geometry object for user later.</span>
+        TransientGeometry oTransGeom = oApp.TransientGeometry;
+
+        <span style="color:blue">// Create the ClientGraphics object.</span>
+        oClientGraphics = oCompDef.ClientGraphicsCollection.Add("Sample3DGraphicsID");
+
+        <span style="color:blue">// Create a new graphics node within the client graphics objects.</span>
+        GraphicsNode oSurfacesNode = oClientGraphics.AddNode(1);
+
+        TransientBRep oTransientBRep = oApp.TransientBRep;
+
+        <span style="color:blue">// Create a point representing the center of the bottom of the cone</span>
+        Point oBottom = oApp.TransientGeometry.CreatePoint(0, 0, 0);
+
+        <span style="color:blue">// Create a point representing the tip of the cone</span>
+        Point oTop = oApp.TransientGeometry.CreatePoint(0, 10, 0);
+
+        <span style="color:blue">// Create a transient cone body</span>
+        SurfaceBody oBody = oTransientBRep.CreateSolidCylinderCone(oBottom, oTop, 5, 5, 0, null);
+
+        <span style="color:blue">// Reset the top point indicating the center of the top of the cylinder</span>
+        oTop = oApp.TransientGeometry.CreatePoint(0, -40, 0);
+
+        <span style="color:blue">// Create a transient cylinder body</span>
+        SurfaceBody oCylBody = oTransientBRep.CreateSolidCylinderCone(oBottom, oTop, 2.5, 2.5, 2.5, null);
+
+        <span style="color:blue">// Union the cone and cylinder bodies</span>
+        oTransientBRep.DoBoolean(oBody, oCylBody, BooleanTypeEnum.kBooleanTypeUnion);
+
+        <span style="color:blue">// Create client graphics based on the transient body</span>
+        SurfaceGraphics oSurfaceGraphics = oSurfacesNode.AddSurfaceGraphics(oBody);
+
+        <span style="color:blue">// Update the view to see the resulting curves.</span>
+        oApp.ActiveView.Update();
+    }
+}</pre>
+      </div>
+    </div><br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(TransientBRep_CreateSolidCylinderCone%20Sample%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

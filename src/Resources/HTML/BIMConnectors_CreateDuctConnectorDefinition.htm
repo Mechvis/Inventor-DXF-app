@@ -1,0 +1,98 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="topic-type" content="reference-adsk">
+    <meta name="helpsystempath" content="/view/INVNTOR/2026/ENU/">
+    <link rel="canonical" href="/cloudhelp/2026/ENU/Inventor-API/files/BIMConnectors_CreateDuctConnectorDefinition.htm#!">
+    <meta name="product" content="INVNTOR">
+    <meta name="release" content="2026">
+    <meta name="book" content="Developer">
+    <meta name="component" content="Inventor-API">
+    <meta name="created" content="">
+    <meta name="user-comments" content="enable">
+    <meta name="contextid" content="BIMConnectors_CreateDuctConnectorDefinition">
+    <meta name="description" content="BIMConnectors.CreateDuctConnectorDefinition Method">
+    <meta name="topicid" content="BIMConnectors_CreateDuctConnectorDefinition">
+    <meta name="experiencelevel" content="expert">
+    <meta name="audience" content="programmer">
+    <meta name="language" content="ENU">
+    <title>BIMConnectors.CreateDuctConnectorDefinition Method</title>
+    <link rel="stylesheet" href="../Style/jquery-ui.css"><script src="../Scripts/jquery-1.11.1.js"></script><script src="../Scripts/jquery-ui.js"></script><link rel="stylesheet" type="text/css" href="../Style/APIHelp-chm.css">
+    <link rel="stylesheet" type="text/css" href="/view/clientframework/client.css"><script type="text/javascript" src="/view/clientframework/client.js"></script><script>
+          // This turns on the display of the copyright notice which is not visible by default.
+          // Because the head is removed when used in the web help, this function will only exists
+          // when the chm help is being created.
+          window.onload = function() {
+          copyrightElement = document.getElementById('CopyrightNotice');
+          copyrightElement.style.display = 'block';
+          };
+        </script><script>
+          $(function() {
+          $( "#tabs" ).tabs();
+          });
+        </script></head>
+  <body>
+    <link rel="stylesheet" type="text/css" href="../Style/APIHelp.css">
+    <h1 class="api">BIMConnectors.CreateDuctConnectorDefinition Method</h1>
+
+          Parent Object: <a href="BIMConnectors.htm">BIMConnectors</a><br><h2 class="api">
+          Description
+        </h2>
+    <p class="api">Method that creates a new duct connector definition.&nbsp;The created definition object defines the inputs to create a duct connector and is used as input to the Add method of the BIMConnectors object to create a new connector.</p>
+    <h2 class="api">
+          Syntax
+        </h2>
+        
+            BIMConnectors.<b>CreateDuctConnectorDefinition</b>( <b><i>Geometry</i></b> As <a href="ObjectCollection.htm">ObjectCollection</a>, <b><i>ConnectorShape</i></b> As <a href="BIMConnectorShapeEnum.htm">BIMConnectorShapeEnum</a> ) As <a href="BIMDuctConnectorDefinition.htm">BIMDuctConnectorDefinition</a>
+        
+    <h2 class="api">
+            Parameters
+          </h2>
+    <Table class="api-list">
+      <tr class="header">
+        <td class="api-list" style="width:1%;">
+                Name
+              </td>
+        <td class="api-list" style="width:1%;">
+                Type
+              </td>
+        <td class="api-list">
+                Description
+              </td>
+      </tr>
+      <tr>
+        <td class="api-list">Geometry</td>
+        <td class="api-list"><a href="ObjectCollection.htm">ObjectCollection</a></td>
+        <td class="api-list"><p>Input object collection that contains the geometry that defines the shape of the connector.&nbsp;When the specified shape is rectangular, valid input includes a single rectangular face or four linear edges on a planar face that define a rectangle.&nbsp;These edges do not need to connect but two of them need to be parallel to each other and perpendicular to the other two edge.&nbsp;For example, the picture below illustrates four valid lines and the resulting rectangle. </p>
+
+<p><center><img src="../images/CableTrayDef1.png" /></center></p>
+
+<p>When the specified shape is oval, valid input includes a face that defines an oval or four edges that define an oval as illustrated below.</p>
+
+<p><center><img src="../images/CableTrayDef2.png" /></center></p>
+
+<p>When the specified shape is circular, valid input includes a single circular face or a circular edge (it can be an arc). When the specified shape is undefined, valid input includes any of the above.</p></td>
+      </tr>
+      <tr>
+        <td class="api-list">ConnectorShape</td>
+        <td class="api-list"><a href="BIMConnectorShapeEnum.htm">BIMConnectorShapeEnum</a></td>
+        <td class="api-list">Input value that specifies the shape of the connector.&nbsp;This setting affects how the geometry is evaluated to determine the shape of the connector.&nbsp;The following inputs are valid for a duct connector: kRectangularShapeConnector, kCircularShapeConnector, kOvalShapeConnector or kUndefinedShapeConnector</td>
+      </tr>
+    </Table>
+    <h2 class="api">
+            Version
+          </h2>
+        Introduced in version 2011<br><br><div id="CopyrightNotice" style="display:none;">
+      <hr>
+      <table width="100%" style="font-size:15">
+        <tr>
+          <td align="left">
+                © Copyright 2025 Autodesk, Inc.
+              </td>
+          <td align="right"><a href="mailto:mfg.api.help.comments@autodesk.com?subject=Inventor%202026%20API%20Help%20(BIMConnectors.CreateDuctConnectorDefinition%20Function%20Help%20Topic)">Comment on this page.</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>
