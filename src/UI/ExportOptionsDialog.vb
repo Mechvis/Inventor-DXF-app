@@ -142,6 +142,19 @@ Public Class ExportOptionsDialog
         ' Set default export path to user's Documents folder
         txtExportPath.Text = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "DXF Export")
 
+        ' Populate DXF versions with only supported values
+        If cmbAcadVersion IsNot Nothing Then
+            Try
+                cmbAcadVersion.Items.Clear()
+                cmbAcadVersion.Items.AddRange(New Object() {"2018", "2013", "2010", "2007", "2004", "2000", "R12"})
+                If cmbAcadVersion.SelectedItem Is Nothing Then
+                    cmbAcadVersion.SelectedItem = "2004"
+                End If
+            Catch
+                ' ignore if designer has not created the combo yet
+            End Try
+        End If
+
         ' Enable metadata sub-options based on main checkbox
         ChkIncludeMetadata_CheckedChanged(Nothing, Nothing)
     End Sub

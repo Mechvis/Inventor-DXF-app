@@ -190,21 +190,32 @@ Public Class MetadataBlockGenerator
     End Function
     
     ''' <summary>
-    ''' Insert text entities into DXF file content
+    ''' Insert text entities into DXF file content safely at the start of the ENDSEC pair for ENTITIES
+    ''' Ensures we do not break the required code/value pairing (avoids 0/0/TEXT anomalies)
     ''' </summary>
     Private Function InsertTextIntoDXF(dxfContent As String, textEntities As String) As String
         Try
-            ' Find the ENTITIES section end
-            Dim entitiesEndIndex = dxfContent.LastIndexOf("ENDSEC")
-            If entitiesEndIndex = -1 Then
-                Throw New Exception("Could not find ENTITIES section end")
-            End If
-            
-            ' Insert text entities before ENDSEC
-            Return dxfContent.Substring(0, entitiesEndIndex) & _
-                   textEntities & _
-                   dxfContent.Substring(entitiesEndIndex)
-            
+            ' Work line-wise
+            Dim lines = dxfContent.Replace(vbCrLf, vbLf).Replace(vbCr, vbLf).Split(New String() {vbLf}, StringSplitOptions.None).ToList()
+
+            ' Find last occurrence of the pair: code 0 + value ENDSEC
+            Dim insertIndex As Integer = -1
+            For i As Integer = lines.Count - 2 To 0 Step -1
+                If lines(i).Trim() = "0" AndAlso lines(i + 1).Trim().ToUpperInvariant() = "ENDSEC" Then
+                    insertIndex = i ' insert before code 0 of ENDSEC
+                    Exit For
+                End If
+            Next
+            If insertIndex = -1 Then Throw New Exception("Could not find ENTITIES ENDSEC pair")
+
+            ' Prepare inserted lines (ensure they start with a proper 0/TEXT pair)
+            Dim addLines = textEntities.Replace(vbCrLf, vbLf).Replace(vbCr, vbLf).Split(New String() {vbLf}, StringSplitOptions.RemoveEmptyEntries)
+
+            ' Insert before ENDSEC code line
+            lines.InsertRange(insertIndex, addLines)
+
+            ' Rebuild with Windows newlines
+            Return String.Join(vbCrLf, lines)
         Catch ex As Exception
             System.Diagnostics.Debug.WriteLine($"Error inserting text into DXF: {ex.Message}")
             Return dxfContent ' Return original if modification fails

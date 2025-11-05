@@ -25,13 +25,22 @@ Public Class CenterMarkGenerator
     ''' </summary>
     Public Sub GenerateCenterMarks(part As SheetMetalPart, dxfFilePath As String)
         Try
-            ' Extract hole center points from the exported DXF (POINT entities)
-            Dim holeCenters = ExtractHoleCentersFromDXF(dxfFilePath)
+            Dim centers As List(Of Point2D)
 
-            If holeCenters.Count > 0 Then
-                ' Post-process the DXF file to add center marks
-                AddCenterMarksToDXF(dxfFilePath, holeCenters)
-                System.Diagnostics.Debug.WriteLine($"Generated {holeCenters.Count} center marks for {part.PartName}")
+            If _settings.UseModelForCenterMarks Then
+                centers = ExtractCentersFromModel(part)
+            Else
+                ' Extract hole center points from the exported DXF (POINT entities)
+                centers = ExtractHoleCentersFromDXF(dxfFilePath)
+            End If
+
+            If centers.Count > 0 Then
+                ' Optional filtering by feature type
+                Dim filtered = FilterCentersByFeatureType(part, centers)
+                If filtered.Count > 0 Then
+                    AddCenterMarksToDXF(dxfFilePath, filtered)
+                    System.Diagnostics.Debug.WriteLine($"Generated {filtered.Count} center marks for {part.PartName}")
+                End If
             End If
 
         Catch ex As Exception
@@ -39,6 +48,86 @@ Public Class CenterMarkGenerator
             Throw New Exception($"Center mark generation failed: {ex.Message}")
         End Try
     End Sub
+
+    ''' <summary>
+    ''' Filter the detected centers by model feature type using settings toggles.
+    ''' When using DXF-based detection, we cannot distinguish feature types; return as-is.
+    ''' When using model-derived centers, we apply drilled/threaded toggles.
+    ''' </summary>
+    Private Function FilterCentersByFeatureType(part As SheetMetalPart, centers As List(Of Point2D)) As List(Of Point2D)
+        If Not _settings.UseModelForCenterMarks Then
+            Return centers
+        End If
+
+        ' We will re-derive centers and feature types from the model and map them to 2D.
+        ' For simplicity, GenerateCenterMarks calls ExtractCentersFromModel already and this
+        ' function assumes 'centers' are pre-filtered. Keep hook for future refinements.
+        Return centers
+    End Function
+
+    ''' <summary>
+    ''' Extract centers from the model (thread features and drilled holes) and map to flat pattern 2D
+    ''' </summary>
+    Private Function ExtractCentersFromModel(part As SheetMetalPart) As List(Of Point2D)
+        Dim result As New List(Of Point2D)()
+        Try
+            Dim doc = part.Document
+            Dim smDef = TryCast(doc.ComponentDefinition, SheetMetalComponentDefinition)
+            If smDef Is Nothing Then Return result
+
+            ' Ensure flat pattern exists for mapping
+            Dim fp = smDef.FlatPattern
+
+            ' Thread features
+            If _settings.IncludeCenterMarksForThreadedHoles Then
+                Try
+                    For Each th As ThreadFeature In doc.ComponentDefinition.Features.ThreadFeatures
+                        Dim axis As WorkAxis = th.Axis
+                        If axis IsNot Nothing Then
+                            Dim p3d As Point = axis.Geometry.Line.StartPoint
+                            Dim pt2 As Point2d = fp.GetPointMapping(p3d)
+                            result.Add(New Point2D(pt2.X, pt2.Y))
+                        End If
+                    Next
+                Catch
+                    ' ignore thread enumeration errors
+                End Try
+            End If
+
+            ' Drilled holes (straight HoleFeatures)
+            If _settings.IncludeCenterMarksForDrilledHoles Then
+                Try
+                    For Each hf As HoleFeature In doc.ComponentDefinition.Features.HoleFeatures
+                        Dim axis As WorkAxis = hf.HoleTapInfo?.ThreadInfo?.ThreadedCylindricalFace?.Axis
+                        ' Fallback: use placement definition axis or center point
+                        If axis Is Nothing AndAlso hf.PlacementDefinition IsNot Nothing Then
+                            Dim pdef = hf.PlacementDefinition
+                            Dim pnt As Point = Nothing
+                            Try
+                                pnt = pdef.Plane.Center
+                            Catch
+                            End Try
+                            If pnt IsNot Nothing Then
+                                Dim pt2 As Point2d = fp.GetPointMapping(pnt)
+                                result.Add(New Point2D(pt2.X, pt2.Y))
+                                Continue For
+                            End If
+                        End If
+                        If axis IsNot Nothing Then
+                            Dim p3d As Point = axis.Geometry.Line.StartPoint
+                            Dim pt2 As Point2d = fp.GetPointMapping(p3d)
+                            result.Add(New Point2D(pt2.X, pt2.Y))
+                        End If
+                    Next
+                Catch
+                    ' ignore hole enumeration errors
+                End Try
+            End If
+        Catch ex As Exception
+            System.Diagnostics.Debug.WriteLine($"ExtractCentersFromModel failed: {ex.Message}")
+        End Try
+        Return result
+    End Function
 
     ''' <summary>
     ''' Extract hole centers by parsing POINT entities from the DXF file

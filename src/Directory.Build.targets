@@ -1,0 +1,34 @@
+<Project>
+  <!-- Ensure the add-in manifest is copied to the bin folder, and deploy DLL + .addin to the Inventor Addins folder after each build -->
+  <Target Name="CopyInventorAddinManifest" AfterTargets="Build">
+    <!-- Source manifest in the project tree -->
+    <ItemGroup>
+      <AddinManifest Include="$(MSBuildProjectDirectory)\AddIn\SheetMetalDXFExporter.addin" />
+    </ItemGroup>
+
+    <!-- Copy .addin next to the built DLL (bin/...) -->
+    <Copy SourceFiles="@(AddinManifest)" DestinationFolder="$(OutDir)" SkipUnchangedFiles="true" />
+
+    <!-- Deploy to Inventor's Addins folder (per-machine, no admin required to copy to ProgramData) -->
+    <PropertyGroup>
+      <InventorAddinsDir>$(ProgramData)\Autodesk\Inventor 2026\Addins</InventorAddinsDir>
+    </PropertyGroup>
+    <MakeDir Directories="$(InventorAddinsDir)" />
+    <!-- If Inventor is running, the DLL is locked; continue build with warning instead of failing -->
+    <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(InventorAddinsDir)" SkipUnchangedFiles="true" ContinueOnError="true" />
+    <Copy SourceFiles="$(OutDir)SheetMetalDXFExporter.addin" DestinationFolder="$(InventorAddinsDir)" SkipUnchangedFiles="true" ContinueOnError="true" />
+  </Target>
+
+  <!-- Clean target: remove deployed copies from ProgramData so Rebuild/Clean replaces with fresh files -->
+  <Target Name="CleanInventorAddinDeployment" AfterTargets="Clean">
+    <PropertyGroup>
+      <InventorAddinsDir>$(ProgramData)\Autodesk\Inventor 2026\Addins</InventorAddinsDir>
+    </PropertyGroup>
+    <ItemGroup>
+      <DeployedFiles Include="$(InventorAddinsDir)\SheetMetalDXFExporter.dll" />
+      <DeployedFiles Include="$(InventorAddinsDir)\SheetMetalDXFExporter.addin" />
+    </ItemGroup>
+    <Message Text="Cleaning deployed add-in files from $(InventorAddinsDir)" Importance="High" />
+    <Delete Files="@(DeployedFiles)" ContinueOnError="true" />
+  </Target>
+</Project>
