@@ -1,4 +1,6 @@
 Imports Inventor
+Imports System
+Imports System.Globalization
 
 ''' <summary>
 ''' Represents a sheet metal part with its properties and flat pattern information
@@ -11,6 +13,7 @@ Public Class SheetMetalPart
     Public Property PartName As String
     Public Property PartNumber As String = ""
     Public Property StockNumber As String = ""
+    Public Property Revision As String = "A"
     
     ' Material Properties
     Public Property Material As String = ""
@@ -51,7 +54,7 @@ Public Class SheetMetalPart
         
         ' Remove .ipt extension if present in DisplayName
         PartName = partDoc.DisplayName
-        If PartName.EndsWith(".ipt", StringComparison.OrdinalIgnoreCase) Then
+        If PartName.EndsWith(".ipt", System.StringComparison.OrdinalIgnoreCase) Then
             PartName = PartName.Substring(0, PartName.Length - 4)
         End If
 
@@ -63,6 +66,10 @@ Public Class SheetMetalPart
         ExtractGeometricProperties()
         ExtractCustomProperties()
         ExtractSourceFlags()
+        ExtractRevision()
+
+        ' Normalize stock number representation once we know thickness
+        StockNumber = NormalizeStockNumber(StockNumber, Thickness)
     End Sub
     
     ''' <summary>
@@ -212,6 +219,30 @@ Public Class SheetMetalPart
         End Try
     End Sub
 
+    Private Sub ExtractRevision()
+        Try
+            ' Try built-in revision first
+            Dim designProps As PropertySet = Document.PropertySets("Design Tracking Properties")
+            For Each p As Inventor.Property In designProps
+                If String.Equals(p.Name, "Revision Number", StringComparison.OrdinalIgnoreCase) AndAlso Not IsNothing(p.Value) Then
+                    Revision = p.Value.ToString()
+                    Exit Sub
+                End If
+            Next
+            ' Fallback to user-defined "Rev"
+            Dim userProps As PropertySet = Document.PropertySets("Inventor User Defined Properties")
+            For Each p As Inventor.Property In userProps
+                If String.Equals(p.Name, "Rev", StringComparison.OrdinalIgnoreCase) AndAlso Not IsNothing(p.Value) Then
+                    Revision = p.Value.ToString()
+                    Exit Sub
+                End If
+            Next
+        Catch
+            ' keep default
+        End Try
+        If String.IsNullOrWhiteSpace(Revision) Then Revision = "A"
+    End Sub
+
     Private Function IsContentCenterPart(doc As PartDocument) As Boolean
         Try
             Dim ps = doc.PropertySets.Item("Design Tracking Properties")
@@ -222,11 +253,32 @@ Public Class SheetMetalPart
         End Try
     End Function
 
+    Private Shared Function NormalizeStockNumber(raw As String, thickness As Double) As String
+        Try
+            Dim s = If(raw, "").Trim()
+            If Not String.IsNullOrWhiteSpace(s) Then
+                ' Just sanitize invalid filename characters; do not convert text or units
+                For Each ch In System.IO.Path.GetInvalidFileNameChars()
+                    s = s.Replace(ch, "_"c)
+                Next
+                Return s
+            End If
+            ' Fallback to numeric thickness if no stock number iProperty is present
+            Return thickness.ToString("F1", CultureInfo.InvariantCulture) & "mm"
+        Catch
+            Return thickness.ToString("F1", CultureInfo.InvariantCulture) & "mm"
+        End Try
+    End Function
+
     Public ReadOnly Property FormattedFileName As String
         Get
-            ' Use Part Number and Stock Number for filename
             ' Format: PartNumber_StockNumber_Revision
-            Return $"{PartNumber}_{StockNumber}"
+            Dim baseName = $"{PartNumber}_{StockNumber}_{Revision}"
+            ' Sanitize for filesystem
+            For Each invalidChar In System.IO.Path.GetInvalidFileNameChars()
+                baseName = baseName.Replace(invalidChar, "_"c)
+            Next
+            Return baseName
         End Get
     End Property
 

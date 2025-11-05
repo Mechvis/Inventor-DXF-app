@@ -12,11 +12,51 @@
     <!-- Deploy to Inventor's Addins folder (per-machine, no admin required to copy to ProgramData) -->
     <PropertyGroup>
       <InventorAddinsDir>$(ProgramData)\Autodesk\Inventor 2026\Addins</InventorAddinsDir>
+      <!-- Resolve NuGet package root for fallback copying of native/managed SQLite if missing in OutDir -->
+      <NuGetPkgRoot>$(NuGetPackageRoot)</NuGetPkgRoot>
+      <NuGetPkgRoot Condition="'$(NuGetPkgRoot)' == ''">$(UserProfile)\.nuget\packages\</NuGetPkgRoot>
     </PropertyGroup>
+
+    <!-- Ensure SQLite native and managed are present in OutDir (some VS/MSBuild setups may copy native into x64\) -->
+    <ItemGroup>
+      <SqliteNativeFromOutDir Include="$(OutDir)x64\SQLite.Interop.dll" Condition="Exists('$(OutDir)x64\SQLite.Interop.dll')" />
+      <SqliteNativeFromPkg Include="$(NuGetPkgRoot)system.data.sqlite.core\**\runtimes\win-x64\native\SQLite.Interop.dll" />
+      <SqliteManagedFromPkg Include="$(NuGetPkgRoot)system.data.sqlite.core\**\lib\net46\System.Data.SQLite.dll" />
+    </ItemGroup>
+
+    <!-- Flatten native to OutDir root if it exists under x64\ -->
+    <Copy SourceFiles="@(SqliteNativeFromOutDir)" DestinationFiles="$(OutDir)SQLite.Interop.dll" SkipUnchangedFiles="true"
+          Condition="@(SqliteNativeFromOutDir) != '' AND !Exists('$(OutDir)SQLite.Interop.dll')" />
+    <Copy SourceFiles="@(SqliteNativeFromPkg)" DestinationFolder="$(OutDir)" SkipUnchangedFiles="true"
+          Condition="@(SqliteNativeFromPkg) != '' AND !Exists('$(OutDir)SQLite.Interop.dll')" />
+    <Copy SourceFiles="@(SqliteManagedFromPkg)" DestinationFolder="$(OutDir)" SkipUnchangedFiles="true"
+          Condition="@(SqliteManagedFromPkg) != '' AND !Exists('$(OutDir)System.Data.SQLite.dll')" />
+
     <MakeDir Directories="$(InventorAddinsDir)" />
-    <!-- If Inventor is running, the DLL is locked; continue build with warning instead of failing -->
+
+    <!-- Copy main add-in and manifest -->
     <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(InventorAddinsDir)" SkipUnchangedFiles="true" ContinueOnError="true" />
     <Copy SourceFiles="$(OutDir)SheetMetalDXFExporter.addin" DestinationFolder="$(InventorAddinsDir)" SkipUnchangedFiles="true" ContinueOnError="true" />
+
+    <!-- Copy SQLite dependencies next to add-in DLL (prefer OutDir; also fallback directly from NuGet cache) -->
+    <ItemGroup>
+      <!-- From OutDir root -->
+      <AddinDeps Include="$(OutDir)System.Data.SQLite.dll" Condition="Exists('$(OutDir)System.Data.SQLite.dll')" />
+      <AddinDeps Include="$(OutDir)SQLite.Interop.dll" Condition="Exists('$(OutDir)SQLite.Interop.dll')" />
+      <!-- From OutDir x64 subfolder (flatten to Addins root as well) -->
+      <AddinDepsFromSubfolder Include="$(OutDir)x64\SQLite.Interop.dll" Condition="Exists('$(OutDir)x64\SQLite.Interop.dll')" />
+      <!-- Some environments emit e_sqlite3.dll (Microsoft.Data.Sqlite) - copy if present for flexibility -->
+      <AddinDeps Include="$(OutDir)e_sqlite3.dll" Condition="Exists('$(OutDir)e_sqlite3.dll')" />
+    </ItemGroup>
+
+    <Copy SourceFiles="@(AddinDeps)" DestinationFolder="$(InventorAddinsDir)" SkipUnchangedFiles="true" ContinueOnError="true" Condition="@(AddinDeps) != ''" />
+    <Copy SourceFiles="@(AddinDepsFromSubfolder)" DestinationFiles="$(InventorAddinsDir)\SQLite.Interop.dll" SkipUnchangedFiles="true" ContinueOnError="true" Condition="@(AddinDepsFromSubfolder) != '' AND !Exists('$(InventorAddinsDir)\\SQLite.Interop.dll')" />
+
+    <!-- Fallback: copy native/managed directly from the NuGet cache if still missing in Addins dir -->
+    <Copy SourceFiles="@(SqliteManagedFromPkg)" DestinationFolder="$(InventorAddinsDir)" SkipUnchangedFiles="true"
+          Condition="@(SqliteManagedFromPkg) != '' AND !Exists('$(InventorAddinsDir)\\System.Data.SQLite.dll')" />
+    <Copy SourceFiles="@(SqliteNativeFromPkg)" DestinationFolder="$(InventorAddinsDir)" SkipUnchangedFiles="true"
+          Condition="@(SqliteNativeFromPkg) != '' AND !Exists('$(InventorAddinsDir)\\SQLite.Interop.dll')" />
   </Target>
 
   <!-- Clean target: remove deployed copies from ProgramData so Rebuild/Clean replaces with fresh files -->
@@ -27,6 +67,9 @@
     <ItemGroup>
       <DeployedFiles Include="$(InventorAddinsDir)\SheetMetalDXFExporter.dll" />
       <DeployedFiles Include="$(InventorAddinsDir)\SheetMetalDXFExporter.addin" />
+      <DeployedFiles Include="$(InventorAddinsDir)\System.Data.SQLite.dll" />
+      <DeployedFiles Include="$(InventorAddinsDir)\SQLite.Interop.dll" />
+      <DeployedFiles Include="$(InventorAddinsDir)\e_sqlite3.dll" />
     </ItemGroup>
     <Message Text="Cleaning deployed add-in files from $(InventorAddinsDir)" Importance="High" />
     <Delete Files="@(DeployedFiles)" ContinueOnError="true" />

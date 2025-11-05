@@ -29,10 +29,10 @@ Public Class ExportHistoryService
             If Not String.IsNullOrEmpty(dir) Then
                 Directory.CreateDirectory(dir)
             End If
-            
+
             Using conn As New SQLiteConnection(_connectionString)
                 conn.Open()
-                
+
                 Dim createTable As String = "
                     CREATE TABLE IF NOT EXISTS ExportHistory (
                         Id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -51,7 +51,7 @@ Public Class ExportHistoryService
                     CREATE INDEX IF NOT EXISTS idx_partname ON ExportHistory(PartName);
                     CREATE INDEX IF NOT EXISTS idx_exportdate ON ExportHistory(ExportDate DESC);
                 "
-                
+
                 Using cmd As New SQLiteCommand(createTable, conn)
                     cmd.ExecuteNonQuery()
                 End Using
@@ -61,7 +61,7 @@ Public Class ExportHistoryService
             Throw
         End Try
     End Sub
-    
+
     ''' <summary>
     ''' Get the next export ID (for logging purposes)
     ''' </summary>
@@ -69,7 +69,7 @@ Public Class ExportHistoryService
         Try
             Using conn As New SQLiteConnection(_connectionString)
                 conn.Open()
-                
+
                 Dim query As String = "SELECT COALESCE(MAX(Id), 0) + 1 FROM ExportHistory"
                 Using cmd As New SQLiteCommand(query, conn)
                     Return CLng(cmd.ExecuteScalar())
@@ -80,7 +80,7 @@ Public Class ExportHistoryService
             Return 1
         End Try
     End Function
-    
+
     ''' <summary>
     ''' Find previous export of the same part
     ''' </summary>
@@ -88,7 +88,7 @@ Public Class ExportHistoryService
         Try
             Using conn As New SQLiteConnection(_connectionString)
                 conn.Open()
-                
+
                 Dim query As String = "
                     SELECT Id, PartName, Material, Thickness, Revision, FilePath, 
                            ExportDate, IsArchived, ArchivePath, ExportedBy, FileHash
@@ -100,12 +100,12 @@ Public Class ExportHistoryService
                     ORDER BY ExportDate DESC
                     LIMIT 1
                 "
-                
+
                 Using cmd As New SQLiteCommand(query, conn)
                     cmd.Parameters.AddWithValue("@PartName", partName)
                     cmd.Parameters.AddWithValue("@Thickness", thickness)
                     cmd.Parameters.AddWithValue("@Revision", revision)
-                    
+
                     Using reader = cmd.ExecuteReader()
                         If reader.Read() Then
                             Return New ExportHistoryEntry() With {
@@ -128,10 +128,10 @@ Public Class ExportHistoryService
         Catch ex As Exception
             System.Diagnostics.Debug.WriteLine($"Failed to find previous export: {ex.Message}")
         End Try
-        
+
         Return Nothing
     End Function
-    
+
     ''' <summary>
     ''' Add new export entry to history
     ''' </summary>
@@ -139,7 +139,7 @@ Public Class ExportHistoryService
         Try
             Using conn As New SQLiteConnection(_connectionString)
                 conn.Open()
-                
+
                 Dim insert As String = "
                     INSERT INTO ExportHistory 
                     (PartName, Material, Thickness, Revision, FilePath, ExportDate, 
@@ -149,7 +149,7 @@ Public Class ExportHistoryService
                      @IsArchived, @ArchivePath, @ExportedBy, @FileHash);
                     SELECT last_insert_rowid();
                 "
-                
+
                 Using cmd As New SQLiteCommand(insert, conn)
                     cmd.Parameters.AddWithValue("@PartName", entry.PartName)
                     cmd.Parameters.AddWithValue("@Material", If(entry.Material, ""))
@@ -161,7 +161,7 @@ Public Class ExportHistoryService
                     cmd.Parameters.AddWithValue("@ArchivePath", If(entry.ArchivePath, ""))
                     cmd.Parameters.AddWithValue("@ExportedBy", If(entry.ExportedBy, System.Environment.UserName))
                     cmd.Parameters.AddWithValue("@FileHash", If(entry.FileHash, ""))
-                    
+
                     Return CLng(cmd.ExecuteScalar())
                 End Using
             End Using
@@ -170,7 +170,7 @@ Public Class ExportHistoryService
             Throw
         End Try
     End Function
-    
+
     ''' <summary>
     ''' Mark an export as archived
     ''' </summary>
@@ -178,13 +178,13 @@ Public Class ExportHistoryService
         Try
             Using conn As New SQLiteConnection(_connectionString)
                 conn.Open()
-                
+
                 Dim update As String = "
                     UPDATE ExportHistory 
                     SET IsArchived = 1, ArchivePath = @ArchivePath
                     WHERE Id = @Id
                 "
-                
+
                 Using cmd As New SQLiteCommand(update, conn)
                     cmd.Parameters.AddWithValue("@Id", id)
                     cmd.Parameters.AddWithValue("@ArchivePath", archivePath)
@@ -195,7 +195,7 @@ Public Class ExportHistoryService
             System.Diagnostics.Debug.WriteLine($"Failed to mark as archived: {ex.Message}")
         End Try
     End Sub
-    
+
     ''' <summary>
     ''' Compute SHA256 hash of a file
     ''' </summary>
@@ -212,27 +212,27 @@ Public Class ExportHistoryService
             Return ""
         End Try
     End Function
-    
+
     ''' <summary>
     ''' Get export statistics
     ''' </summary>
     Public Function GetExportStats() As Dictionary(Of String, Object)
         Dim stats As New Dictionary(Of String, Object)
-        
+
         Try
             Using conn As New SQLiteConnection(_connectionString)
                 conn.Open()
-                
+
                 ' Total exports
                 Using cmd As New SQLiteCommand("SELECT COUNT(*) FROM ExportHistory", conn)
                     stats("TotalExports") = Convert.ToInt32(cmd.ExecuteScalar())
                 End Using
-                
+
                 ' Archived exports
                 Using cmd As New SQLiteCommand("SELECT COUNT(*) FROM ExportHistory WHERE IsArchived = 1", conn)
                     stats("ArchivedExports") = Convert.ToInt32(cmd.ExecuteScalar())
                 End Using
-                
+
                 ' Unique parts
                 Using cmd As New SQLiteCommand("SELECT COUNT(DISTINCT PartName) FROM ExportHistory", conn)
                     stats("UniqueParts") = Convert.ToInt32(cmd.ExecuteScalar())
