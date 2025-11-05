@@ -1,8 +1,31 @@
 # Copilot Instructions - Inventor Sheet Metal DXF Export Add-in
 
+> **For GitHub Copilot Coding Agent**: This file provides context and guidelines for making changes to this repository. Follow these instructions when implementing features, fixing bugs, or refactoring code. Always build and test changes in Autodesk Inventor 2026 before submitting pull requests.
+
 ## Project Overview
 
 This project is an Autodesk Inventor 2026 add-in that exports sheet metal flat patterns to DXF files with comprehensive UI options for layer control, feature selection, and metadata inclusion. Targeted at sheet metal fabrication workflows.
+
+## Quick Reference
+
+- **Language**: VB.NET
+- **Framework**: .NET Framework 4.7.2
+- **Target Platform**: Windows x64
+- **IDE**: Visual Studio 2022
+- **Build Tool**: MSBuild or dotnet CLI
+- **CI/CD**: GitHub Actions (dotnet-desktop.yml, review-bundle.yml)
+
+### Key Commands
+```powershell
+# Build and register (Administrator required)
+.\build_and_register.ps1 -Configuration Release
+
+# Build only
+msbuild SheetMetalDXFExporter.sln /p:Configuration=Release
+
+# Generate review bundle for PR review
+pwsh ./scripts/Make-ReviewBundle.ps1
+```
 
 ## Architecture & Key Components
 
@@ -14,10 +37,25 @@ This project is an Autodesk Inventor 2026 add-in that exports sheet metal flat p
 
 ## Development Workflow
 
+### Prerequisites
+- .NET Framework 4.7.2 or later
+- Visual Studio 2022 (or MSBuild tools)
+- Autodesk Inventor 2026
+- Administrator privileges for COM registration
+
 ### Build & Run
 ```powershell
-# Build Inventor Add-in (requires .NET Framework 4.8)
-msbuild "SheetMetalDXFExporter.sln" /p:Configuration=Release
+# Recommended: Use the automated build and registration script (requires Administrator)
+.\build_and_register.ps1 -Configuration Release
+
+# Manual build with MSBuild
+msbuild "SheetMetalDXFExporter.sln" /p:Configuration=Release /verbosity:minimal
+
+# Manual build with dotnet CLI (alternative)
+dotnet build "SheetMetalDXFExporter.sln" --configuration Release
+
+# Register COM Add-in after building (requires Administrator)
+regasm "bin\Release\SheetMetalDXFExporter.dll" /codebase
 
 # Debug Setup in Visual Studio:
 # Project → Debug → Start external program: point to Inventor.exe
@@ -27,6 +65,27 @@ msbuild "SheetMetalDXFExporter.sln" /p:Configuration=Release
 # Deploy .addin manifest to scan folder
 copy "SheetMetalDXFExporter.addin" "C:\ProgramData\Autodesk\Inventor 2026\Addins\"
 ```
+
+### Testing
+Currently, this project does not have automated tests. Manual testing is performed by:
+1. Building and registering the add-in
+2. Starting Autodesk Inventor 2026
+3. Opening a sheet metal part (.ipt file)
+4. Using the "Sheet Metal DXF Export" command from the Tools ribbon
+5. Verifying DXF output with a DXF viewer or CAM software
+
+**Note**: When adding tests in the future, follow VB.NET testing conventions using MSTest or NUnit.
+
+### Code Formatting & Linting
+- **EditorConfig**: Settings are defined in `.editorconfig` at repository root
+  - Enforces 4-space indentation
+  - CRLF line endings
+  - UTF-8 encoding
+  - Final newline insertion
+- **Visual Studio**: Automatically applies EditorConfig settings
+- **Code Analysis**: VB compiler warnings are suppressed selectively (see .vbproj NoWarn settings)
+- No external linter is currently configured for VB.NET
+- Follow Visual Studio's built-in code formatting (Ctrl+K, Ctrl+D)
 
 ### Inventor Add-in Development Setup
 ```powershell
@@ -66,12 +125,42 @@ copy "SheetMetalDXFExporter.addin" "C:\ProgramData\Autodesk\Inventor 2026\Addins
 
 ## Code Conventions
 
-*Document project-specific patterns as they emerge:*
+### VB.NET Style Guidelines
+- **Indentation**: 4 spaces (enforced by .editorconfig)
+- **Line endings**: CRLF (Windows)
+- **Encoding**: UTF-8 for VB files, UTF-8 with BOM for C# files
+- **Option Explicit**: On (always declare variables)
+- **Option Strict**: Off (project setting)
+- **Option Infer**: On (type inference enabled)
+- **Option Compare**: Binary (case-sensitive comparisons)
 
-- File naming conventions
-- Module organization patterns
-- Error handling approaches
-- Configuration management
+### Naming Conventions
+- **Classes**: PascalCase (e.g., `DXFExporter`, `SheetMetalScanner`)
+- **Methods**: PascalCase (e.g., `ExportFlatPattern`, `ScanAssembly`)
+- **Variables**: camelCase (e.g., `oCompDef`, `sFname`)
+- **Inventor API objects**: Prefix with `o` (e.g., `oDoc`, `oCompDef`)
+- **Strings**: Prefix with `s` (e.g., `sOut`, `sFilename`)
+- **Constants**: UPPER_SNAKE_CASE or PascalCase
+
+### File Organization
+- **AddIn/**: COM add-in entry point, ribbon commands, event handlers
+- **Export/**: DXF generation logic, DataIO wrappers
+- **UI/**: WinForms/WPF forms, dialogs, user controls
+- **Automation/**: Center mark generation, text block automation
+- **Models/**: Data structures, settings classes, POCOs
+- **Utils/**: Helper functions, extension methods, interop utilities
+
+### Error Handling
+- Use Try/Catch blocks for COM interop calls (Inventor API may throw)
+- Log errors to debug output or file for troubleshooting
+- Provide user-friendly error messages in UI dialogs
+- Don't swallow exceptions silently - always log or notify
+
+### COM Interop Best Practices
+- Release COM objects promptly using `Marshal.ReleaseComObject()` when done
+- Don't create circular references between .NET and COM objects
+- Use `ComVisible(True)` only on classes that need to be exposed to Inventor
+- Match GUIDs in .addin file with AssemblyInfo attributes
 
 ## Inventor Sheet Metal API Patterns
 
@@ -198,18 +287,57 @@ Dim exportOptions As String = "FLAT PATTERN DXF?" & _
 - Check that ClassId and ClientId match between .addin file and assembly attributes
 - Ensure .addin file is in correct scan folder with proper XML format
 - Set breakpoint in `Activate()` method to debug initialization failures
+- Verify COM registration: Run `regasm` with `/codebase` flag as Administrator
+- Check Windows Event Viewer for COM registration errors
 
 ### DXF Export Validation
 - Test with known sheet metal parts to verify layer assignment
 - Use DXF viewer to validate geometry and layer structure  
 - Check flat pattern exists: `oCompDef.HasFlatPattern` before export
 - Verify coordinate transformation with `RebaseGeometry=True`
+- Compare exported DXF against Inventor's native DXF export as baseline
 
 ### Performance Optimization
 - Close unused Inventor documents before batch export
 - Use `AdvancedLegacyExport=False` for better performance on newer files
 - Process large assemblies in smaller batches
 - Consider background processing for extensive part lists
+
+## Security & Best Practices
+
+### Secrets and Sensitive Data
+- **Never commit** passwords, API keys, or license files to the repository
+- Use environment variables or encrypted config files for sensitive settings
+- The `.gitignore` already excludes common sensitive files (`.env`, etc.)
+- CAD binary files are tracked with Git LFS - ensure LFS is installed before cloning
+
+### Code Security
+- Validate all file paths to prevent path traversal attacks
+- Sanitize user input before using in file operations or DXF output
+- Use `Path.GetFullPath()` and `Path.Combine()` for safe path manipulation
+- Don't execute arbitrary code from DXF files or user input
+
+### Git LFS
+- CAD binaries (.ipt, .iam files) are tracked with Git LFS
+- Run `git lfs install` before first clone
+- Run `git lfs fetch --all` to download all LFS objects
+- Check `.gitattributes` for LFS-tracked file patterns
+
+## Release Process
+
+### Creating a Release
+1. Update version number in `AssemblyInfo.vb`
+2. Update CHANGELOG (if present) with release notes
+3. Build in Release configuration: `.\build_and_register.ps1 -Configuration Release`
+4. Test the release build thoroughly with sample parts
+5. Create a GitHub release with the DLL and .addin file
+6. Optionally create a review bundle: `pwsh ./scripts/Make-ReviewBundle.ps1`
+
+### Review Bundle
+- CI creates `ReviewBundle.zip` on each PR in the Actions tab
+- Local generation: `pwsh ./scripts/Make-ReviewBundle.ps1`
+- Bundle excludes `.git`, `.vs`, `bin`, `obj`, `packages`, and other build artifacts
+- Use for code review by non-developers or offline review
 
 ---
 
@@ -219,3 +347,40 @@ Dim exportOptions As String = "FLAT PATTERN DXF?" & _
 3. Performance considerations for large drawing exports
 4. Error handling patterns for malformed input data
 5. Testing strategies for validating DXF output correctness
+
+## Guidelines for Making Changes
+
+### Before Making Changes
+1. **Build the project first** to ensure starting from a working state
+2. **Review existing code patterns** in similar files before adding new code
+3. **Check for existing utilities** in Utils/ before creating new helper functions
+4. **Understand COM object lifetime** - improper cleanup causes memory leaks in Inventor
+
+### When Adding Features
+- Add new commands to `AddIn/` directory
+- Add business logic to appropriate subdirectory (Export/, Automation/, etc.)
+- Update ribbon UI if adding user-facing commands
+- Create models in `Models/` for complex data structures
+- Document non-obvious Inventor API usage with comments
+
+### When Fixing Bugs
+- Reproduce the issue manually in Inventor first
+- Add debug logging to trace execution flow
+- Check COM object references aren't causing issues
+- Verify flat pattern state before export operations
+- Test fix with multiple sheet metal parts (simple and complex)
+
+### When Refactoring
+- Keep changes minimal and focused
+- Don't break existing Inventor API call patterns without testing
+- Maintain backward compatibility with existing .addin files
+- Test refactored code with actual Inventor workloads
+
+### Pull Request Checklist
+- [ ] Code builds successfully in both Debug and Release configurations
+- [ ] Tested manually in Autodesk Inventor 2026
+- [ ] No new compiler warnings introduced
+- [ ] EditorConfig formatting applied
+- [ ] COM objects properly released (no memory leaks)
+- [ ] Error handling added for COM interop calls
+- [ ] Comments added for complex Inventor API usage
