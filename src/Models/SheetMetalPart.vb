@@ -17,6 +17,7 @@ Public Class SheetMetalPart
 
     ' Material Properties
     Public Property Material As String = ""
+    ' Thickness stored in millimeters for external use (DB, filenames)
     Public Property Thickness As Double = 0.0
     Public Property Weight As Double = 0.0
     Public Property Density As Double = 0.0
@@ -102,29 +103,38 @@ Public Class SheetMetalPart
                 PartNumber = FileName
             End If
 
-            ' Try to get Stock Number from User Defined Properties
-            Dim customProps As PropertySet = Document.PropertySets("Inventor User Defined Properties")
-            For Each p As Inventor.Property In customProps
+            ' Stock Number: first check Design Tracking Properties (Project tab)
+            For Each p As Inventor.Property In designProps
                 If String.Equals(p.Name, "Stock Number", StringComparison.OrdinalIgnoreCase) AndAlso Not IsNothing(p.Value) Then
                     StockNumber = p.Value.ToString().Trim()
                     Exit For
                 End If
             Next
 
-            ' Also check for common variations: "Stock No", "Stock", "Material Stock"
+            ' If not in design tracking, try User Defined Properties
             If String.IsNullOrWhiteSpace(StockNumber) Then
+                Dim customProps As PropertySet = Document.PropertySets("Inventor User Defined Properties")
                 For Each p As Inventor.Property In customProps
-                    Dim propName = p.Name.ToLowerInvariant()
-                    If (propName = "stock no" OrElse propName = "stock" OrElse propName = "stockno" OrElse propName = "material stock") AndAlso Not IsNothing(p.Value) Then
+                    If String.Equals(p.Name, "Stock Number", StringComparison.OrdinalIgnoreCase) AndAlso Not IsNothing(p.Value) Then
                         StockNumber = p.Value.ToString().Trim()
                         Exit For
                     End If
                 Next
+
+                ' Also check for common variations
+                If String.IsNullOrWhiteSpace(StockNumber) Then
+                    For Each p As Inventor.Property In customProps
+                        Dim propName = p.Name.ToLowerInvariant()
+                        If (propName = "stock no" OrElse propName = "stock" OrElse propName = "stockno" OrElse propName = "material stock") AndAlso Not IsNothing(p.Value) Then
+                            StockNumber = p.Value.ToString().Trim()
+                            Exit For
+                        End If
+                    Next
+                End If
             End If
 
-            ' Fallback to thickness if Stock Number not found
+            ' Defer to thickness if nothing found; will be formatted later
             If String.IsNullOrWhiteSpace(StockNumber) Then
-                ' Will be set after ExtractMaterialProperties is called
                 StockNumber = ""
             End If
 
@@ -144,17 +154,19 @@ Public Class SheetMetalPart
             End If
 
             ' Get thickness from sheet metal definition
+            ' Inventor API internal length units are centimeters (cm). Convert to millimeters (mm).
             If ComponentDefinition.Thickness IsNot Nothing Then
-                Thickness = ComponentDefinition.Thickness.Value
+                Dim thicknessCm As Double = ComponentDefinition.Thickness.Value
+                Thickness = thicknessCm * 10.0 ' cm -> mm
 
                 ' If Stock Number wasn't found in properties, use thickness as fallback
                 If String.IsNullOrWhiteSpace(StockNumber) Then
-                    StockNumber = $"{Thickness:F1}mm"
+                    StockNumber = $"{Thickness:F1} mm"
                 End If
             End If
 
             ' Calculate weight if mass properties available
-            If Document.ComponentDefinition.MassProperties IsNot Nothing Then
+            If Document.ComponentDefinition.MassProperties Is Not Nothing Then
                 Weight = Document.ComponentDefinition.MassProperties.Mass
                 Density = Document.ComponentDefinition.MassProperties.Density
             End If
@@ -253,7 +265,7 @@ Public Class SheetMetalPart
         End Try
     End Function
 
-    Private Shared Function NormalizeStockNumber(raw As String, thickness As Double) As String
+    Private Shared Function NormalizeStockNumber(raw As String, thicknessMm As Double) As String
         Try
             Dim s = If(raw, "").Trim()
             If Not String.IsNullOrWhiteSpace(s) Then
@@ -263,10 +275,10 @@ Public Class SheetMetalPart
                 Next
                 Return s
             End If
-            ' Fallback to numeric thickness if no stock number iProperty is present
-            Return thickness.ToString("F1", CultureInfo.InvariantCulture) & "mm"
+            ' Fallback to numeric thickness in millimeters if no stock number iProperty is present
+            Return thicknessMm.ToString("F1", CultureInfo.InvariantCulture) & " mm"
         Catch
-            Return thickness.ToString("F1", CultureInfo.InvariantCulture) & "mm"
+            Return thicknessMm.ToString("F1", CultureInfo.InvariantCulture) & " mm"
         End Try
     End Function
 
