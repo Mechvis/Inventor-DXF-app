@@ -21,7 +21,7 @@ Public Class ExportSettings
     Public Property MergeProfilesIntoPolyline As Boolean = True
     Public Property ExportPath As String = ""
     Public Property CustomFileNaming As Boolean = True
-    Public Property FileNameTemplate As String = "{PartNumber}_{StockNumber}_REV_{Rev}"
+    Public Property FileNameTemplate As String = "{PartNumber}_{StockNumber}_Rev_{Rev}"
     ' New: ensure flat pattern exists before export
     Public Property EnsureFlatPatternBeforeExport As Boolean = True
     

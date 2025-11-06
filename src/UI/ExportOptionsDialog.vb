@@ -222,7 +222,7 @@ Public Class ExportOptionsDialog
     ''' </summary>
     Private Sub LoadDefaultSettings()
         ' Set default export path to user's Documents folder
-        txtExportPath.Text = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "DXF Export")
+        txtExportPath.Text = Global.System.IO.Path.Combine(Global.System.Environment.GetFolderPath(Global.System.Environment.SpecialFolder.MyDocuments), "DXF Export")
 
         ' Populate DXF versions with only supported values
         If cmbAcadVersion IsNot Nothing Then
