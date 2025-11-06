@@ -14,6 +14,10 @@ This project is an Autodesk Inventor 2026 add-in that exports sheet metal flat p
 - **IDE**: Visual Studio 2022
 - **Build Tool**: MSBuild or dotnet CLI
 - **CI/CD**: GitHub Actions (dotnet-desktop.yml, review-bundle.yml)
+- **Dependencies**:
+  - Autodesk Inventor 2026 Object Library (COM reference)
+  - System.Data.SQLite (NuGet package for export history)
+  - Standard .NET Framework libraries
 
 ### Key Commands
 ```powershell
@@ -29,11 +33,14 @@ pwsh ./scripts/Make-ReviewBundle.ps1
 
 ## Architecture & Key Components
 
-- **Inventor Add-in Framework**: VB.NET/C# COM add-in using Autodesk Inventor API
+- **Inventor Add-in Framework**: VB.NET COM add-in using Autodesk Inventor API
 - **Sheet Metal Engine**: `SheetMetalComponentDefinition` and `FlatPattern` manipulation
 - **DXF Export Core**: `DataIO.WriteDataToFile()` with URL-style parameter strings
-- **UI Framework**: WinForms/WPF interface for layer toggle and export options
+- **UI Framework**: WinForms interface for layer toggle and export options with preview pane
 - **Center Mark Generator**: Custom automation for hole center marks (not native points)
+- **Metadata Block Generator**: Automatic text block creation with part properties
+- **Export History System**: SQLite database tracking all exports with automatic archival
+- **iProperties Integration**: Extraction of Part Number, Stock Number, and Revision from Inventor properties
 
 ## Development Workflow
 
@@ -87,6 +94,14 @@ Currently, this project does not have automated tests. Manual testing is perform
 - No external linter is currently configured for VB.NET
 - Follow Visual Studio's built-in code formatting (Ctrl+K, Ctrl+D)
 
+### Documentation Structure
+- **README.md**: Quick start guide and project overview
+- **docs/EXPORT_HISTORY.md**: Export history and archival system documentation
+- **docs/IMPLEMENTATION_SUMMARY.md**: Detailed implementation notes for export duplication feature
+- **docs/WORKFLOW_DIAGRAM.md**: Visual workflow and process diagrams
+- **.github/copilot-instructions.md**: This file - comprehensive development guidelines
+- **Resources/**: API reference documentation (see Resources Folder Purpose section)
+
 ### Inventor Add-in Development Setup
 ```powershell
 # Install Inventor SDK Templates
@@ -97,9 +112,10 @@ Currently, this project does not have automated tests. Manual testing is perform
 # New Project → "Autodesk Inventor AddIn" (Visual Studio template)
 
 # Or manual setup:
-# - Class Library (.NET Framework 4.8)
+# - Class Library (.NET Framework 4.7.2 or higher)
 # - Add COM reference: Autodesk Inventor Object Library
 # - Implement Inventor.ApplicationAddInServer
+# - Add NuGet package: System.Data.SQLite (for export history)
 ```
 
 ### Add-in Manifest (.addin file)
@@ -144,11 +160,31 @@ Currently, this project does not have automated tests. Manual testing is perform
 
 ### File Organization
 - **AddIn/**: COM add-in entry point, ribbon commands, event handlers
+  - `InventorAddIn.vb` - Main add-in class implementing ApplicationAddInServer
+  - `DXFExportCommand.vb` - Ribbon command implementation
 - **Export/**: DXF generation logic, DataIO wrappers
-- **UI/**: WinForms/WPF forms, dialogs, user controls
-- **Automation/**: Center mark generation, text block automation
+  - `DXFExporter.vb` - Core export logic with history and archival
+- **UI/**: WinForms dialogs and user controls
+  - `ExportOptionsDialog.vb` - Main export configuration dialog
+  - `DxfPreviewPane.vb` - Preview control for DXF thumbnails
+- **Automation/**: Center mark generation, text block creation
+  - `CenterMarkGenerator.vb` - Custom center mark geometry creation
+  - `MetadataBlockGenerator.vb` - Part information text block insertion
 - **Models/**: Data structures, settings classes, POCOs
+  - `ExportSettings.vb` - Export configuration and options
+  - `SheetMetalPart.vb` - Part data model with iProperties extraction
+  - `ExportHistoryEntry.vb` - Database record model
+  - `DxfPreviewModels.vb` - Preview-related data structures
 - **Utils/**: Helper functions, extension methods, interop utilities
+  - `SheetMetalScanner.vb` - Assembly scanning for sheet metal parts
+  - `ExportHistoryService.vb` - SQLite database service for export tracking
+  - `DXFSanitizer.vb` - DXF file cleanup and validation
+  - `InteropHelpers.vb` - COM interop utilities and safe object release
+- **Resources/**: Reference documentation and configuration templates
+  - `HTML/` - Offline Inventor API documentation (2+ million lines)
+  - `*.xml` - DXF/DWG layer configuration templates
+  - `*.ini` - Export/import configuration templates
+  - `*.pdf` - API documentation and code samples
 
 ### Error Handling
 - Use Try/Catch blocks for COM interop calls (Inventor API may throw)
@@ -225,6 +261,78 @@ oCompDef.DataIO.WriteDataToFile(sOut, sFname)
 ' Target layer: IV_TOOL_CENTER or custom layer for fabrication
 ```
 
+### iProperties Integration
+
+The add-in extracts and uses several iProperties for intelligent file naming and metadata:
+
+**Part Number Extraction** (priority order):
+1. Design Tracking Properties → "Part Number"
+2. Inventor User Defined Properties → "Part Number"
+3. Fallback: Filename without extension
+
+**Stock Number Extraction** (checks multiple property names):
+- Custom properties: "Stock Number", "Stock No", "Stock", "StockNo", "Material Stock"
+- Fallback: Formatted thickness (e.g., "2.0mm")
+
+**Revision Extraction**:
+- Design Tracking Properties → "Revision Number"
+- Fallback: Empty string
+
+**Usage in File Naming**:
+```vb
+' Default filename template: {PartNumber}_{StockNumber}_{Rev}
+' Example output: 073-102-1002_2.0mm_A.dxf
+' If Part Number = "073-102-1002", Stock Number = "2.0mm", Rev = "A"
+```
+
+**Best Practice**: Always set Part Number in iProperties for consistent, meaningful filenames. Stock Number is optional but recommended for shops using standardized material stock codes.
+
+### Export History and Archival System
+
+The add-in includes an automatic export tracking and archival system:
+
+**Key Features**:
+- SQLite database (`ExportHistory.db`) tracks all exports with unique IDs
+- Automatic detection of duplicate exports based on Part Number, Thickness, and Revision
+- Existing files archived to `_Archive/` folder before re-export
+- Archived files renamed with timestamp: `PartNumber_StockNumber_Rev_YYYY-MM-DD_HHMMSS.dxf`
+- File hash (SHA256) computation for content-based deduplication
+
+**Database Schema**:
+```sql
+CREATE TABLE ExportHistory (
+    Id INTEGER PRIMARY KEY AUTOINCREMENT,
+    PartName TEXT NOT NULL,        -- Part Number from iProperties
+    Material TEXT,
+    Thickness REAL,
+    Revision TEXT,
+    FilePath TEXT NOT NULL,
+    ExportDate TEXT NOT NULL,
+    IsArchived INTEGER NOT NULL DEFAULT 0,
+    ArchivePath TEXT,
+    ExportedBy TEXT,
+    FileHash TEXT
+);
+```
+
+**Configuration** (in ExportSettings.vb):
+```vb
+' Enable export history tracking
+EnableExportHistory = True
+
+' Enable automatic archival of duplicates
+ArchiveDuplicates = True
+
+' Archive folder name (relative to export folder)
+ArchiveFolderName = "_Archive"
+```
+
+**Implementation Notes**:
+- Export history service is in `Utils/ExportHistoryService.vb`
+- Database is created automatically on first use in the export folder
+- Archive folder is excluded from version control via `.gitignore`
+- See `docs/EXPORT_HISTORY.md` for complete documentation
+
 ## Metadata Block Requirements
 
 ### Essential Sheet Metal Data
@@ -249,20 +357,75 @@ oCompDef.DataIO.WriteDataToFile(sOut, sFname)
 ```
 src/
 ├── AddIn/          # Inventor add-in entry point and registration
+│   ├── InventorAddIn.vb
+│   └── DXFExportCommand.vb
 ├── Export/         # DXF generation and DataIO wrapper
-├── UI/            # Layer selection, feature toggles, options panel
-├── Automation/    # Center mark generation, text block creation
-├── Models/        # Data structures for export settings
-└── Utils/         # Inventor API helpers, file operations
+│   └── DXFExporter.vb
+├── UI/             # Layer selection, feature toggles, options panel
+│   ├── ExportOptionsDialog.vb
+│   └── DxfPreviewPane.vb
+├── Automation/     # Center mark generation, text block creation
+│   ├── CenterMarkGenerator.vb
+│   └── MetadataBlockGenerator.vb
+├── Models/         # Data structures for export settings
+│   ├── ExportSettings.vb
+│   ├── SheetMetalPart.vb
+│   ├── ExportHistoryEntry.vb
+│   └── DxfPreviewModels.vb
+├── Utils/          # Inventor API helpers, file operations
+│   ├── SheetMetalScanner.vb
+│   ├── ExportHistoryService.vb
+│   ├── DXFSanitizer.vb
+│   └── InteropHelpers.vb
+└── Resources/      # Reference documentation and configuration
+    ├── HTML/       # Offline Inventor 2026 API documentation
+    ├── *.xml       # Layer configuration templates
+    ├── *.ini       # Export/import configuration templates
+    └── *.pdf       # API reference PDFs
 ```
+
+### Resources Folder Purpose
+
+The **Resources/** folder contains reference materials and configuration templates that assist during development:
+
+1. **HTML Documentation** (`Resources/HTML/`)
+   - Complete offline copy of Autodesk Inventor 2026 API documentation
+   - Over 2 million lines of reference material covering all API objects
+   - Useful for offline development and quick API lookups
+   - Not embedded in the application - reference material only
+
+2. **XML Configuration Templates** (`Resources/*.xml`)
+   - `FlatPattern.xml` - DXF/DWG layer editing instructions template
+   - `FlatPatternExportOpts.xml` - Export options configuration template
+   - `FaceLoops.xml` - Face loop processing configuration
+   - `MechVisionDXF.xml` - Custom DXF export configuration
+   - Used as reference for understanding Inventor's layer customization system
+
+3. **INI Configuration Files** (`Resources/*.ini`)
+   - `exportdxf.ini` - DXF export configuration template
+   - `exportdwg.ini` - DWG export configuration template
+   - `importdxf.ini`, `importacad.ini`, `importmdt.ini` - Import templates
+   - Show available export/import parameters and line type mappings
+   - Reference for understanding DataIO parameter strings
+
+4. **PDF Documentation** (`Resources/*.pdf`)
+   - `Samples.pdf` - Code samples and examples
+   - `Properties.pdf` - iProperties API reference
+   - `Ext feat.pdf`, `Extrude def.pdf` - Feature API documentation
+   - Useful for understanding complex API patterns
+
+**Best Practice**: When modifying DXF export parameters or layer configurations, consult these files to understand available options and proper formatting. Do not modify these files unless updating reference documentation.
 
 ## Integration Points
 
 - **Inventor COM API**: Primary interop assembly for sheet metal access
 - **Assembly Scanning**: Recursive search for `SheetMetalComponentDefinition` parts
 - **Flat Pattern Engine**: `HasFlatPattern`, `Unfold()`, `FlatPattern.Edit` workflow
-- **iProperties System**: Material data, custom properties, BOM integration
+- **iProperties System**: Material data, custom properties, Part Number, Stock Number, Revision extraction
 - **File System Export**: Batch processing with custom naming conventions
+- **SQLite Database**: Export history tracking with automatic archival
+- **SHA256 Hashing**: Content-based file comparison for duplicate detection
+- **Thumbnail Generation**: DXF preview rendering for UI display
 
 ### All Export Options Reference (Inventor 2026 API)
 ```vb
@@ -362,6 +525,10 @@ Dim exportOptions As String = "FLAT PATTERN DXF?" & _
 - Update ribbon UI if adding user-facing commands
 - Create models in `Models/` for complex data structures
 - Document non-obvious Inventor API usage with comments
+- If adding new export options, consult `Resources/*.xml` and `Resources/*.ini` for parameter examples
+- If modifying export history, update database schema in `Utils/ExportHistoryService.vb`
+- If adding iProperties usage, update extraction logic in `Models/SheetMetalPart.vb`
+- Update relevant documentation in `docs/` folder
 
 ### When Fixing Bugs
 - Reproduce the issue manually in Inventor first
@@ -384,3 +551,31 @@ Dim exportOptions As String = "FLAT PATTERN DXF?" & _
 - [ ] COM objects properly released (no memory leaks)
 - [ ] Error handling added for COM interop calls
 - [ ] Comments added for complex Inventor API usage
+- [ ] Documentation updated if adding new features (especially in docs/ folder)
+- [ ] Export history database schema updated if modifying tracked data
+
+### Working with Resources Folder
+
+**Reference Material - Not Application Resources**:
+- Files in `src/Resources/` are **reference documentation only**
+- They are NOT embedded resources in the application binary
+- They are NOT loaded or read by the application at runtime
+- Purpose: Assist developers in understanding Inventor API and export parameters
+
+**When to Consult Resources**:
+1. **Adding DXF export parameters**: Check `Resources/exportdxf.ini` for parameter syntax
+2. **Layer customization**: Review `Resources/FlatPattern.xml` for layer editing instructions
+3. **API research**: Search `Resources/HTML/*.htm` for object/method documentation
+4. **Understanding iProperties**: Consult `Resources/Properties.pdf` for property structure
+5. **Export options**: Review `Resources/FlatPatternExportOpts.xml` for available options
+
+**Do NOT**:
+- Modify these files unless updating reference documentation
+- Attempt to load or parse these files in application code
+- Include paths to these files in user-facing features
+- Commit changes to HTML documentation (it's auto-generated by Autodesk)
+
+**Recommended Workflow**:
+- Before implementing new export features, search relevant INI/XML files for examples
+- Use HTML documentation for offline API reference instead of online docs
+- Treat PDFs as code samples and API pattern guides
