@@ -1,38 +1,45 @@
 Imports System.IO
 Imports System.Drawing
+Imports Inventor
 
 ''' <summary>
 ''' Main export options dialog for configuring DXF export settings
 ''' Provides tabbed interface for part selection, layer control, and metadata options
 ''' </summary>
 Public Class ExportOptionsDialog
-    
+
     Private _sheetMetalParts As List(Of SheetMetalPart)
     Private _exportSettings As ExportSettings
-    
+    Private _app As Inventor.Application
+
+    ' Preview window host
+    Private _previewForm As Form
+    Private _previewPane As DxfPreviewPane
+
     Public ReadOnly Property ExportSettings As ExportSettings
         Get
             Return _exportSettings
         End Get
     End Property
-    
-    Public Sub New(sheetMetalParts As List(Of SheetMetalPart))
+
+    Public Sub New(app As Inventor.Application, sheetMetalParts As List(Of SheetMetalPart))
         InitializeComponent()
-        
+
+        _app = app
         _sheetMetalParts = sheetMetalParts
         _exportSettings = New ExportSettings()
-        
+
         ' Apply runtime sizing and autosize for checkboxes (designer-safe)
         For Each chk As CheckBox In grpLayers.Controls.OfType(Of CheckBox)()
             chk.Size = New System.Drawing.Size(280, 20)
             chk.AutoSize = True
         Next
-        
+
         SetupPartsGrid()
         SetupEventHandlers()
         LoadDefaultSettings()
     End Sub
-    
+
     ''' <summary>
     ''' Setup the parts selection data grid
     ''' </summary>
@@ -43,35 +50,37 @@ Public Class ExportOptionsDialog
         dgvParts.SelectionMode = DataGridViewSelectionMode.FullRowSelect
         dgvParts.RowTemplate.Height = 56
         dgvParts.RowHeadersVisible = False
-        
+
+        dgvParts.Columns.Clear()
+
         ' Thumbnail image column
         Dim colThumb As New DataGridViewImageColumn()
         colThumb.HeaderText = "Preview"
         colThumb.Width = 64
         colThumb.ImageLayout = DataGridViewImageCellLayout.Zoom
         dgvParts.Columns.Add(colThumb)
-        
+
         ' Add columns
         Dim colSelect As New DataGridViewCheckBoxColumn()
         colSelect.HeaderText = "Export"
         colSelect.DataPropertyName = "IsSelected"
         colSelect.Width = 60
         dgvParts.Columns.Add(colSelect)
-        
+
         Dim colPartName As New DataGridViewTextBoxColumn()
         colPartName.HeaderText = "Part Name"
         colPartName.DataPropertyName = "PartName"
         colPartName.Width = 200
         colPartName.ReadOnly = True
         dgvParts.Columns.Add(colPartName)
-        
+
         Dim colMaterial As New DataGridViewTextBoxColumn()
         colMaterial.HeaderText = "Material Info"
         colMaterial.DataPropertyName = "MaterialInfo"
         colMaterial.Width = 150
         colMaterial.ReadOnly = True
         dgvParts.Columns.Add(colMaterial)
-        
+
         Dim colWeight As New DataGridViewTextBoxColumn()
         colWeight.HeaderText = "Weight (kg)"
         colWeight.DataPropertyName = "Weight"
@@ -79,7 +88,7 @@ Public Class ExportOptionsDialog
         colWeight.ReadOnly = True
         colWeight.DefaultCellStyle.Format = "F3"
         dgvParts.Columns.Add(colWeight)
-        
+
         Dim colDimensions As New DataGridViewTextBoxColumn()
         colDimensions.HeaderText = "Size (L x W mm)"
         colDimensions.Width = 120
@@ -93,6 +102,14 @@ Public Class ExportOptionsDialog
         colFlatPattern.Width = 100
         colFlatPattern.ReadOnly = True
         dgvParts.Columns.Add(colFlatPattern)
+
+        ' Per-item preview button
+        Dim colPreview As New DataGridViewButtonColumn()
+        colPreview.HeaderText = "DXF"
+        colPreview.Text = "Preview"
+        colPreview.UseColumnTextForButtonValue = True
+        colPreview.Width = 80
+        dgvParts.Columns.Add(colPreview)
 
         ' Bind data (without images)
         dgvParts.DataSource = _sheetMetalParts
@@ -138,6 +155,66 @@ Public Class ExportOptionsDialog
         AddHandler chkCornerRelief.CheckedChanged, AddressOf LayerCheckBox_CheckedChanged
         AddHandler chkFormFeatures.CheckedChanged, AddressOf LayerCheckBox_CheckedChanged
         AddHandler chkPunchMarks.CheckedChanged, AddressOf LayerCheckBox_CheckedChanged
+
+        ' Grid preview actions
+        AddHandler dgvParts.CellContentClick, AddressOf DgvParts_CellContentClick
+        AddHandler dgvParts.CellDoubleClick, AddressOf DgvParts_CellDoubleClick
+    End Sub
+
+    Private Sub DgvParts_CellContentClick(sender As Object, e As DataGridViewCellEventArgs)
+        Try
+            If e.RowIndex < 0 Then Return
+            Dim isPreviewButton As Boolean = TypeOf dgvParts.Columns(e.ColumnIndex) Is DataGridViewButtonColumn
+            If isPreviewButton Then
+                Dim part = TryCast(dgvParts.Rows(e.RowIndex).DataBoundItem, SheetMetalPart)
+                If part IsNot Nothing Then
+                    PreviewPart(part)
+                End If
+            End If
+        Catch
+        End Try
+    End Sub
+
+    Private Sub DgvParts_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs)
+        Try
+            If e.RowIndex < 0 Then Return
+            Dim part = TryCast(dgvParts.Rows(e.RowIndex).DataBoundItem, SheetMetalPart)
+            If part IsNot Nothing Then
+                PreviewPart(part)
+            End If
+        Catch
+        End Try
+    End Sub
+
+    Private Sub EnsurePreviewWindow()
+        If _previewForm IsNot Nothing AndAlso Not _previewForm.IsDisposed Then Return
+        _previewForm = New Form()
+        _previewForm.Text = "DXF Preview"
+        _previewForm.StartPosition = FormStartPosition.CenterScreen
+        _previewForm.Size = New Size(900, 700)
+        _previewForm.ShowInTaskbar = False
+        _previewForm.TopMost = False
+
+        _previewPane = New DxfPreviewPane()
+        _previewPane.Dock = DockStyle.Fill
+        _previewPane.Initialize(_app, _exportSettings)
+        _previewForm.Controls.Add(_previewPane)
+    End Sub
+
+    Private Sub PreviewPart(part As SheetMetalPart)
+        UpdateExportSettings()
+        EnsurePreviewWindow()
+        Try
+            _previewPane.Initialize(_app, _exportSettings)
+            _previewPane.ShowPreviewFor(part.Document)
+            If Not _previewForm.Visible Then
+                _previewForm.Show(Me)
+            Else
+                _previewForm.Activate()
+            End If
+        Catch ex As Exception
+            MessageBox.Show($"Preview failed: {ex.Message}", "DXF Preview", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
     End Sub
 
     ''' <summary>

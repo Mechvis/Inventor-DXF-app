@@ -26,6 +26,38 @@ Public Class DxfPreviewPane
         PopulateUiDefaults()
     End Sub
 
+    ' New: allow external callers to load a preview for a specific document
+    Public Sub ShowPreviewFor(doc As Inventor.Document)
+        Try
+            If doc Is Nothing Then
+                lblStatus.Text = "No document provided"
+                Return
+            End If
+
+            Dim layerXml = GetLayerMapPath()
+            Dim optsXml = GetExportOptsPath()
+
+            Dim ok = DXFExporter.ExportToTempDxfShared(_app, doc, _settings, layerXml, optsXml, _tempDxf)
+            If Not ok Then
+                lblStatus.Text = "Preview export failed"
+                Return
+            End If
+
+            _entities = DXFExporter.ParseEntitiesShared(_tempDxf)
+            _overrides = _entities.ToDictionary(Function(en) en.Id, Function(en) New DxfOverride() With {.Include = True})
+            dg.DataSource = _entities.Select(Function(en) New With {
+                .Id = en.Id,
+                .Type = en.Type.ToString(),
+                .Layer = en.Layer,
+                .Closed = en.Closed,
+                .BBox = $"{en.BBox.Item1:F3},{en.BBox.Item2:F3} – {en.BBox.Item3:F3},{en.BBox.Item4:F3}"
+            }).ToList()
+            lblStatus.Text = $"Preview loaded: {_entities.Count} entities"
+        Catch ex As Exception
+            lblStatus.Text = "Preview error: " & ex.Message
+        End Try
+    End Sub
+
     Private Sub PopulateUiDefaults()
         cboVersion.Items.Clear()
         cboVersion.Items.AddRange(New Object() {

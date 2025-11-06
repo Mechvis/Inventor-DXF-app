@@ -66,7 +66,10 @@ Public Class CenterMarkGenerator
     End Function
 
     ''' <summary>
-    ''' Extract centers from the model (thread features and drilled holes) and map to flat pattern 2D
+    ''' Extract centers from the model (threaded/tapped and drilled holes) and map to flat pattern 2D
+    ''' - Tapped/threaded holes: include when IncludeCenterMarksForThreadedHoles is enabled
+    ''' - Drilled holes: include when IncludeCenterMarksForDrilledHoles is enabled
+    ''' Uses HoleFeature.HoleCenterPoints for robust center retrieval
     ''' </summary>
     Private Function ExtractCentersFromModel(part As SheetMetalPart) As List(Of Point2D)
         Dim result As New List(Of Point2D)()
@@ -78,51 +81,93 @@ Public Class CenterMarkGenerator
             ' Ensure flat pattern exists for mapping
             Dim fp = smDef.FlatPattern
 
-            ' Thread features
+            ' Iterate hole features and decide inclusion by type
+            Dim featureSet = doc.ComponentDefinition.Features
+            Dim holeFeatures = featureSet.HoleFeatures
+
+            For Each hf As HoleFeature In holeFeatures
+                Try
+                    If hf Is Nothing OrElse hf.Suppressed Then Continue For
+
+                    Dim isTapped As Boolean = False
+                    Try
+                        isTapped = hf.Tapped
+                    Catch
+                        ' Older versions may not expose .Tapped consistently
+                    End Try
+
+                    Dim includeThis As Boolean = False
+                    If isTapped Then
+                        includeThis = _settings.IncludeCenterMarksForThreadedHoles
+                    Else
+                        includeThis = _settings.IncludeCenterMarksForDrilledHoles
+                    End If
+
+                    If Not includeThis Then Continue For
+
+                    ' Use HoleCenterPoints collection whenever available
+                    Dim centers = hf.HoleCenterPoints
+                    If centers IsNot Nothing Then
+                        For Each p3d As Point In centers
+                            Try
+                                Dim pt2 As Point2D = fp.GetPointMapping(p3d)
+                                result.Add(New Point2D(pt2.X, pt2.Y))
+                            Catch
+                                ' ignore mapping failures for this point
+                            End Try
+                        Next
+                    Else
+                        ' Fallback: try placement definition-derived point
+                        Dim pdef = hf.PlacementDefinition
+                        If pdef IsNot Nothing Then
+                            Try
+                                Dim pnt As Point = Nothing
+                                ' Not all placement defs expose a Center; skip if missing
+                                Dim hasCenter As Boolean = False
+                                Try
+                                    pnt = pdef.Plane.Center
+                                    hasCenter = (pnt IsNot Nothing)
+                                Catch
+                                End Try
+                                If hasCenter Then
+                                    Dim pt2 As Point2D = fp.GetPointMapping(pnt)
+                                    result.Add(New Point2D(pt2.X, pt2.Y))
+                                End If
+                            Catch
+                            End Try
+                        End If
+                    End If
+                Catch
+                    ' continue with next hole feature
+                End Try
+            Next
+
+            ' Optional: external ThreadFeatures (rare for sheet metal). Best-effort axis mapping.
             If _settings.IncludeCenterMarksForThreadedHoles Then
                 Try
-                    For Each th As ThreadFeature In doc.ComponentDefinition.Features.ThreadFeatures
-                        Dim axis As WorkAxis = th.Axis
-                        If axis IsNot Nothing Then
-                            Dim p3d As Point = axis.Geometry.Line.StartPoint
-                            Dim pt2 As Point2d = fp.GetPointMapping(p3d)
-                            result.Add(New Point2D(pt2.X, pt2.Y))
-                        End If
+                    For Each th As ThreadFeature In featureSet.ThreadFeatures
+                        Try
+                            If th Is Nothing OrElse th.Suppressed Then Continue For
+                            ' Try grabbing a representative point along the axis if accessible
+                            Dim axis As WorkAxis = Nothing
+                            Try
+                                axis = th.Axis
+                            Catch
+                                axis = Nothing
+                            End Try
+                            If axis IsNot Nothing Then
+                                Dim p3d As Point = axis.Geometry.Line.StartPoint
+                                Dim pt2 As Point2D = fp.GetPointMapping(p3d)
+                                result.Add(New Point2D(pt2.X, pt2.Y))
+                            End If
+                        Catch
+                        End Try
                     Next
                 Catch
-                    ' ignore thread enumeration errors
+                    ' Ignore if ThreadFeatures not accessible
                 End Try
             End If
 
-            ' Drilled holes (straight HoleFeatures)
-            If _settings.IncludeCenterMarksForDrilledHoles Then
-                Try
-                    For Each hf As HoleFeature In doc.ComponentDefinition.Features.HoleFeatures
-                        Dim axis As WorkAxis = hf.HoleTapInfo?.ThreadInfo?.ThreadedCylindricalFace?.Axis
-                        ' Fallback: use placement definition axis or center point
-                        If axis Is Nothing AndAlso hf.PlacementDefinition IsNot Nothing Then
-                            Dim pdef = hf.PlacementDefinition
-                            Dim pnt As Point = Nothing
-                            Try
-                                pnt = pdef.Plane.Center
-                            Catch
-                            End Try
-                            If pnt IsNot Nothing Then
-                                Dim pt2 As Point2d = fp.GetPointMapping(pnt)
-                                result.Add(New Point2D(pt2.X, pt2.Y))
-                                Continue For
-                            End If
-                        End If
-                        If axis IsNot Nothing Then
-                            Dim p3d As Point = axis.Geometry.Line.StartPoint
-                            Dim pt2 As Point2d = fp.GetPointMapping(p3d)
-                            result.Add(New Point2D(pt2.X, pt2.Y))
-                        End If
-                    Next
-                Catch
-                    ' ignore hole enumeration errors
-                End Try
-            End If
         Catch ex As Exception
             System.Diagnostics.Debug.WriteLine($"ExtractCentersFromModel failed: {ex.Message}")
         End Try
@@ -218,14 +263,16 @@ Public Class CenterMarkGenerator
     Private Function GenerateCenterMarkDXFEntities(holeCenters As List(Of Point2D)) As String
         Dim sb As New StringBuilder()
 
+        Dim layerName As String = If(_settings?.HoleCentersLayer?.LayerName, "IV_TOOL_CENTER")
+
         For Each center In holeCenters
-            ' Create horizontal line
+            ' Create horizontal line (left part)
             sb.AppendLine("  0")
             sb.AppendLine("LINE")
             sb.AppendLine("  8")
-            sb.AppendLine(_settings.HoleCentersLayer.LayerName)
+            sb.AppendLine(layerName)
             sb.AppendLine(" 10")
-            sb.AppendLine(center.X.ToString("F3", Globalization.CultureInfo.InvariantCulture))
+            sb.AppendLine((center.X - DEFAULT_MARK_SIZE).ToString("F3", Globalization.CultureInfo.InvariantCulture))
             sb.AppendLine(" 20")
             sb.AppendLine(center.Y.ToString("F3", Globalization.CultureInfo.InvariantCulture))
             sb.AppendLine(" 11")
@@ -233,11 +280,11 @@ Public Class CenterMarkGenerator
             sb.AppendLine(" 21")
             sb.AppendLine(center.Y.ToString("F3", Globalization.CultureInfo.InvariantCulture))
 
-            ' Create second part of horizontal line
+            ' Create horizontal line (right part)
             sb.AppendLine("  0")
             sb.AppendLine("LINE")
             sb.AppendLine("  8")
-            sb.AppendLine(_settings.HoleCentersLayer.LayerName)
+            sb.AppendLine(layerName)
             sb.AppendLine(" 10")
             sb.AppendLine((center.X + DEFAULT_GAP_SIZE).ToString("F3", Globalization.CultureInfo.InvariantCulture))
             sb.AppendLine(" 20")
@@ -251,7 +298,7 @@ Public Class CenterMarkGenerator
             sb.AppendLine("  0")
             sb.AppendLine("LINE")
             sb.AppendLine("  8")
-            sb.AppendLine(_settings.HoleCentersLayer.LayerName)
+            sb.AppendLine(layerName)
             sb.AppendLine(" 10")
             sb.AppendLine(center.X.ToString("F3", Globalization.CultureInfo.InvariantCulture))
             sb.AppendLine(" 20")
@@ -261,11 +308,11 @@ Public Class CenterMarkGenerator
             sb.AppendLine(" 21")
             sb.AppendLine((center.Y - DEFAULT_GAP_SIZE).ToString("F3", Globalization.CultureInfo.InvariantCulture))
 
-            ' Create second part of vertical line (top part)
+            ' Create vertical line (top part)
             sb.AppendLine("  0")
             sb.AppendLine("LINE")
             sb.AppendLine("  8")
-            sb.AppendLine(_settings.HoleCentersLayer.LayerName)
+            sb.AppendLine(layerName)
             sb.AppendLine(" 10")
             sb.AppendLine(center.X.ToString("F3", Globalization.CultureInfo.InvariantCulture))
             sb.AppendLine(" 20")

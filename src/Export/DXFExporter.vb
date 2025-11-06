@@ -85,6 +85,56 @@ Partial Public Class DXFExporter
             ArchiveExistingFile(part, outputPath)
         End If
 
+        ' Pre-export: create a temporary DXF to compare content hash with last export
+        Dim tempDxf As String = Path.Combine(Path.GetTempPath(), "DXF_PRECMP_" & Guid.NewGuid().ToString("N") & ".dxf")
+        Dim preHash As String = ""
+        Try
+            Dim sm = CType(part.Document.ComponentDefinition, SheetMetalComponentDefinition)
+            sm.DataIO.WriteDataToFile(exportString, tempDxf)
+            preHash = ExportHistoryService.ComputeFileHash(tempDxf)
+        Catch ex As Exception
+            System.Diagnostics.Debug.WriteLine("Pre-export temp DXF generation failed (ignored): " & ex.Message)
+        End Try
+
+        ' If there is a previous export with same revision and different content, ask whether to bump revision and collect a comment
+        Dim rev As String = GetRevisionValue(part.Document)
+        Dim revisionComment As String = String.Empty
+        If _historyService IsNot Nothing AndAlso Not String.IsNullOrEmpty(preHash) Then
+            Dim prev = _historyService.FindPreviousExport(part.PartNumber, part.Thickness, rev)
+            If prev IsNot Nothing AndAlso Not String.IsNullOrEmpty(prev.FileHash) AndAlso Not String.Equals(prev.FileHash, preHash, StringComparison.OrdinalIgnoreCase) Then
+                Dim prompt = $"The geometry changed since the last export for Part {part.PartNumber} Rev {rev}." & vbCrLf &
+                             "Would you like to increment the revision?"
+                Dim res = System.Windows.Forms.MessageBox.Show(prompt, "Revision change detected", System.Windows.Forms.MessageBoxButtons.YesNoCancel, System.Windows.Forms.MessageBoxIcon.Question)
+                If res = System.Windows.Forms.DialogResult.Cancel Then
+                    ' Abort export
+                    Try : If File.Exists(tempDxf) Then File.Delete(tempDxf) : End Try
+                        Throw New OperationCanceledException("Export canceled by user")
+                End If
+                If res = System.Windows.Forms.DialogResult.Yes Then
+                    ' Propose next alpha revision (A->B, Z wraps to AA)
+                    Dim nextRev = ComputeNextRevision(rev)
+                    Dim input As String = Microsoft.VisualBasic.Interaction.InputBox("Enter revision comment (optional):", "Revision Comment", "Geometry update")
+                    revisionComment = If(input, String.Empty)
+
+                    ' Update iProperties: Design Tracking → Revision Number, and custom properties Rev and Rev Comment
+                    Try
+                        SetRevisionProperties(part.Document, nextRev, revisionComment)
+                        rev = nextRev
+                        ' Update part model value so subsequent filename generation uses updated rev
+                        part.Revision = nextRev
+                    Catch updEx As Exception
+                        System.Windows.Forms.MessageBox.Show("Failed to update revision iProperties: " & updEx.Message, "iProperties", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Warning)
+                    End Try
+                    ' Regenerate output path if naming uses {Rev}
+                    outputPath = GenerateOutputPath(part)
+                Else
+                    ' Keep revision, but allow entering a comment to log
+                    Dim input As String = Microsoft.VisualBasic.Interaction.InputBox("Enter export comment (optional):", "Export Comment", "Minor change without revision bump")
+                    revisionComment = If(input, String.Empty)
+                End If
+            End If
+        End If
+
         ' Route based on read-only and flat pattern state
         If part.IsReadOnly AndAlso (Not part.HasFlatPattern OrElse part.NeedsUpdate) Then
             If Not ExportViaTempCopy(part.Document, outputPath, exportString) Then
@@ -92,9 +142,9 @@ Partial Public Class DXFExporter
             End If
             ' Post steps
             PostProcess(part, outputPath)
-            
+
             ' Record export in history
-            RecordExport(part, outputPath)
+            RecordExport(part, outputPath, revisionComment, If(String.IsNullOrEmpty(preHash), ExportHistoryService.ComputeFileHash(outputPath), preHash))
             Return
         End If
 
@@ -111,108 +161,298 @@ Partial Public Class DXFExporter
         PostProcess(part, outputPath)
         
         ' Record export in history
-        RecordExport(part, outputPath)
+        RecordExport(part, outputPath, revisionComment, If(String.IsNullOrEmpty(preHash), ExportHistoryService.ComputeFileHash(outputPath), preHash))
+
+        ' Cleanup temp file
+        Try : If File.Exists(tempDxf) Then File.Delete(tempDxf) : End Try
     End Sub
 
-    Private Sub PostProcess(part As SheetMetalPart, outputPath As String)
-        ' Skip metadata and center mark generation in CAM mode
-        If Not _settings.CamOptimizedOutput AndAlso _settings.IncludeMetadataBlock Then
-            AddMetadataBlock(part, outputPath)
-        End If
-
-        If Not _settings.CamOptimizedOutput AndAlso _settings.GenerateCenterMarks AndAlso _settings.IncludeHoleCenters Then
-            Dim centerMarkGen As New CenterMarkGenerator(_inventorApp, _settings)
-            centerMarkGen.GenerateCenterMarks(part, outputPath)
-        End If
-
-        ' Always run final DXF sanitizer to enforce layer mapping and drop unwanted entities
-        DXFSanitizer.Sanitize(outputPath, _settings)
-    End Sub
-
-    Private Function ExportDirect(doc As PartDocument, args As String, dxfOut As String) As Boolean
-        Try
-            Dim sm = CType(doc.ComponentDefinition, SheetMetalComponentDefinition)
-
-            ' Be defensive about API differences: avoid ReadOnly/RequiresUpdate properties
-            If _settings.EnsureFlatPatternBeforeExport Then
-                Try
-                    If Not sm.HasFlatPattern Then
-                        sm.Unfold()
-                        sm.FlatPattern.ExitEdit()
-                    Else
-                        ' Touch the flat pattern to ensure it regenerates without relying on RequiresUpdate
-                        sm.FlatPattern.Edit()
-                        sm.FlatPattern.ExitEdit()
-                    End If
-                Catch exEns As Exception
-                    System.Diagnostics.Debug.WriteLine("Ensure flat pattern step failed (ignored): " & exEns.Message)
-                End Try
-            End If
-
-            System.Diagnostics.Debug.WriteLine("Exporting with args: " & args)
-            System.Diagnostics.Debug.WriteLine("Output file: " & dxfOut)
-            Log("Exporting: " & doc.DisplayName & " -> " & dxfOut)
-            Log("Args: " & args)
-
-            sm.DataIO.WriteDataToFile(args, dxfOut)
-            Return True
-        Catch comEx As COMException
-            Log("Direct export COM error 0x" & Hex(comEx.ErrorCode) & ": " & comEx.Message)
-            System.Diagnostics.Debug.WriteLine("Direct export COM failed: " & comEx.Message)
-            Return False
-        Catch ex As Exception
-            Log("Direct export failed: " & ex.Message)
-            System.Diagnostics.Debug.WriteLine("Direct export failed: " & ex.Message)
-            System.Diagnostics.Debug.WriteLine("Stack trace: " & ex.StackTrace)
-            Return False
-        End Try
-    End Function
-
-    Private Function ExportViaTempCopy(src As PartDocument, dxfOut As String, args As String) As Boolean
-        Try
-            Dim tempDir = Global.System.IO.Path.Combine(Global.System.IO.Path.GetTempPath(), "MVD_DXF")
-            Global.System.IO.Directory.CreateDirectory(tempDir)
-
-            Dim srcName = If(Not String.IsNullOrEmpty(src.FullFileName), Global.System.IO.Path.GetFileName(src.FullFileName), src.InternalName & ".ipt")
-            Dim tempIpt = Global.System.IO.Path.Combine(tempDir, srcName)
-
-            If Not String.IsNullOrEmpty(src.FullFileName) AndAlso Global.System.IO.File.Exists(src.FullFileName) Then
-                Global.System.IO.File.Copy(src.FullFileName, tempIpt, True)
-            Else
-                ' Fall back: save a copy to temp if unsaved
-                src.SaveAs(tempIpt, False)
-            End If
-
-            Dim tempDoc = CType(_inventorApp.Documents.Open(tempIpt, False), PartDocument)
-            Dim sm = CType(tempDoc.ComponentDefinition, SheetMetalComponentDefinition)
-
-            Try
-                If Not sm.HasFlatPattern Then
-                    sm.Unfold()
-                    sm.FlatPattern.ExitEdit()
+    Private Function ComputeNextRevision(cur As String) As String
+        If String.IsNullOrWhiteSpace(cur) Then Return "A"
+        Dim s = cur.Trim().ToUpperInvariant()
+        ' Simple alpha increment (A..Z, ZWAPPS to AA)
+        Dim carry As Boolean = True
+        Dim chars = s.ToCharArray()
+        For i As Integer = chars.Length - 1 To 0 Step -1
+            If carry Then
+                If chars(i) = "Z"c Then
+                    chars(i) = "A"c
+                    carry = True
+                ElseIf chars(i) >= "A"c AndAlso chars(i) < "Z"c Then
+                    chars(i) = ChrW(AscW(chars(i)) + 1)
+                    carry = False
                 Else
-                    sm.FlatPattern.Edit()
-                    sm.FlatPattern.ExitEdit()
+                    ' Non-alpha, reset to A
+                    chars(i) = "A"c
+                    carry = False
                 End If
-            Catch exEns As Exception
-                System.Diagnostics.Debug.WriteLine("Ensure flat pattern (temp) failed (ignored): " & exEns.Message)
-            End Try
-
-            Log("Exporting (temp copy): " & tempDoc.DisplayName & " -> " & dxfOut)
-            Log("Args: " & args)
-            sm.DataIO.WriteDataToFile(args, dxfOut)
-            tempDoc.Close(False)
-            Return True
-        Catch comEx As COMException
-            Log("Temp copy export COM error 0x" & Hex(comEx.ErrorCode) & ": " & comEx.Message)
-            System.Diagnostics.Debug.WriteLine("Temp copy export COM failed: " & comEx.Message)
-            Return False
-        Catch ex As Exception
-            Log("Temp copy export failed: " & ex.Message)
-            System.Diagnostics.Debug.WriteLine("Temp copy export failed: " & ex.Message)
-            Return False
-        End Try
+            End If
+        Next
+        Dim result = New String(chars)
+        If carry Then result = "A" & result
+        Return result
     End Function
+
+    Private Sub SetRevisionProperties(doc As PartDocument, newRev As String, revComment As String)
+        ' Update Design Tracking → Revision Number
+        Try
+            Dim designProps As PropertySet = doc.PropertySets("Design Tracking Properties")
+            For Each p As Inventor.Property In designProps
+                If String.Equals(p.Name, "Revision Number", StringComparison.OrdinalIgnoreCase) Then
+                    p.Value = newRev
+                    Exit For
+                End If
+            Next
+        Catch ex As Exception
+            System.Diagnostics.Debug.WriteLine("Failed to set DT Revision Number: " & ex.Message)
+        End Try
+        
+        ' Ensure custom properties exist and are updated: Rev, Rev Comment
+        Try
+            Dim userProps As PropertySet = doc.PropertySets("Inventor User Defined Properties")
+            Dim revProp As Inventor.Property = Nothing
+            Dim commentProp As Inventor.Property = Nothing
+            
+            ' Get or add Rev
+            Try
+                revProp = userProps.Item("Rev")
+            Catch
+                revProp = userProps.Add(newRev, "Rev")
+            End Try
+            revProp.Value = newRev
+            
+            ' Get or add Rev Comment
+            Try
+                commentProp = userProps.Item("Rev Comment")
+            Catch
+                commentProp = userProps.Add(If(revComment, String.Empty), "Rev Comment")
+            End Try
+            commentProp.Value = If(revComment, String.Empty)
+        Catch ex As Exception
+            System.Diagnostics.Debug.WriteLine("Failed to update custom revision properties: " & ex.Message)
+        End Try
+        
+        Try
+            doc.Update()
+            doc.Save()
+        Catch
+            ' ignore save failures (read-only etc.)
+        End Try
+    End Sub
+
+    ''' <summary>
+    ''' Export result summary with per-part failures
+    ''' </summary>
+    Public Class ExportResult
+        Public Property Total As Integer
+        Public Property Succeeded As Integer
+        Public Property Failed As Integer
+        Public Property Failures As New List(Of Tuple(Of String, String)) ' (PartName, Error)
+    End Class
+
+    ''' <summary>
+    ''' Export multiple sheet metal parts to DXF files
+    ''' </summary>
+    Public Function ExportParts(parts As List(Of SheetMetalPart)) As ExportResult
+        Dim result As New ExportResult() With {.Total = parts.Count}
+
+        For Each part In parts.Where(Function(p) p.IsSelected)
+            Try
+                ExportSinglePart(part)
+                result.Succeeded += 1
+            Catch ex As Exception
+                System.Diagnostics.Debug.WriteLine("Failed to export " & part.PartName & ": " & ex.Message)
+                result.Failures.Add(New Tuple(Of String, String)(part.PartName, ex.Message))
+                result.Failed += 1
+                ' Continue with next part
+            End Try
+        Next
+
+        Return result
+    End Function
+
+    ''' <summary>
+    ''' Export a single sheet metal part to DXF
+    ''' </summary>
+    Public Sub ExportSinglePart(part As SheetMetalPart)
+        ' Ensure we have a valid and writable export directory
+        If String.IsNullOrWhiteSpace(_settings.ExportPath) Then
+            Dim fallback As String = Global.System.IO.Path.Combine(Global.System.Environment.GetFolderPath(Global.System.Environment.SpecialFolder.MyDocuments), "DXF Exports")
+            _settings.ExportPath = fallback
+        End If
+
+        Dim exportString = BuildExportString()
+        Dim outputPath = GenerateOutputPath(part)
+
+        ' Make sure target directory exists
+        Try
+            Dim dir = Global.System.IO.Path.GetDirectoryName(outputPath)
+            If Not String.IsNullOrEmpty(dir) Then
+                Global.System.IO.Directory.CreateDirectory(dir)
+            End If
+        Catch ex As Exception
+            Throw New Exception("Cannot create export folder for '" & outputPath & "': " & ex.Message)
+        End Try
+
+        ' Check for duplicate and archive if needed
+        If _settings.ArchiveDuplicates AndAlso _historyService IsNot Nothing Then
+            ArchiveExistingFile(part, outputPath)
+        End If
+
+        ' Pre-export: create a temporary DXF to compare content hash with last export
+        Dim tempDxf As String = Path.Combine(Path.GetTempPath(), "DXF_PRECMP_" & Guid.NewGuid().ToString("N") & ".dxf")
+        Dim preHash As String = ""
+        Try
+            Dim sm = CType(part.Document.ComponentDefinition, SheetMetalComponentDefinition)
+            sm.DataIO.WriteDataToFile(exportString, tempDxf)
+            preHash = ExportHistoryService.ComputeFileHash(tempDxf)
+        Catch ex As Exception
+            System.Diagnostics.Debug.WriteLine("Pre-export temp DXF generation failed (ignored): " & ex.Message)
+        End Try
+
+        ' If there is a previous export with same revision and different content, ask whether to bump revision and collect a comment
+        Dim rev As String = GetRevisionValue(part.Document)
+        Dim revisionComment As String = String.Empty
+        If _historyService IsNot Nothing AndAlso Not String.IsNullOrEmpty(preHash) Then
+            Dim prev = _historyService.FindPreviousExport(part.PartNumber, part.Thickness, rev)
+            If prev IsNot Nothing AndAlso Not String.IsNullOrEmpty(prev.FileHash) AndAlso Not String.Equals(prev.FileHash, preHash, StringComparison.OrdinalIgnoreCase) Then
+                Dim prompt = $"The geometry changed since the last export for Part {part.PartNumber} Rev {rev}." & vbCrLf &
+                             "Would you like to increment the revision?"
+                Dim res = System.Windows.Forms.MessageBox.Show(prompt, "Revision change detected", System.Windows.Forms.MessageBoxButtons.YesNoCancel, System.Windows.Forms.MessageBoxIcon.Question)
+                If res = System.Windows.Forms.DialogResult.Cancel Then
+                    ' Abort export
+                    Try : If File.Exists(tempDxf) Then File.Delete(tempDxf) : End Try
+                    Throw New OperationCanceledException("Export canceled by user")
+                End If
+                If res = System.Windows.Forms.DialogResult.Yes Then
+                    ' Propose next alpha revision (A->B, Z wraps to AA)
+                    Dim nextRev = ComputeNextRevision(rev)
+                    Dim input As String = Microsoft.VisualBasic.Interaction.InputBox("Enter revision comment (optional):", "Revision Comment", "Geometry update")
+                    revisionComment = If(input, String.Empty)
+
+                    ' Update iProperties: Design Tracking → Revision Number, and custom properties Rev and Rev Comment
+                    Try
+                        SetRevisionProperties(part.Document, nextRev, revisionComment)
+                        rev = nextRev
+                        ' Update part model value so subsequent filename generation uses updated rev
+                        part.Revision = nextRev
+                    Catch updEx As Exception
+                        System.Windows.Forms.MessageBox.Show("Failed to update revision iProperties: " & updEx.Message, "iProperties", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Warning)
+                    End Try
+                    ' Regenerate output path if naming uses {Rev}
+                    outputPath = GenerateOutputPath(part)
+                Else
+                    ' Keep revision, but allow entering a comment to log
+                    Dim input As String = Microsoft.VisualBasic.Interaction.InputBox("Enter export comment (optional):", "Export Comment", "Minor change without revision bump")
+                    revisionComment = If(input, String.Empty)
+                End If
+            End If
+        End If
+
+        ' Route based on read-only and flat pattern state
+        If part.IsReadOnly AndAlso (Not part.HasFlatPattern OrElse part.NeedsUpdate) Then
+            If Not ExportViaTempCopy(part.Document, outputPath, exportString) Then
+                Throw New Exception("Temp-copy export failed")
+            End If
+            ' Post steps
+            PostProcess(part, outputPath)
+            
+            ' Record export in history
+            RecordExport(part, outputPath, revisionComment, If(String.IsNullOrEmpty(preHash), ExportHistoryService.ComputeFileHash(outputPath), preHash))
+            Return
+        End If
+
+        ' Direct export (may create/update flat if allowed)
+        If Not ExportDirect(part.Document, exportString, outputPath) Then
+            ' Fallback: try via temp copy even if not read-only (handles odd cases)
+            Log("Direct export failed. Retrying via temporary copy...")
+            If Not ExportViaTempCopy(part.Document, outputPath, exportString) Then
+                Throw New Exception("Direct export failed and temp-copy fallback also failed")
+            End If
+        End If
+
+        ' Post steps
+        PostProcess(part, outputPath)
+        
+        ' Record export in history
+        RecordExport(part, outputPath, revisionComment, If(String.IsNullOrEmpty(preHash), ExportHistoryService.ComputeFileHash(outputPath), preHash))
+
+        ' Cleanup temp file
+        Try : If File.Exists(tempDxf) Then File.Delete(tempDxf) : End Try
+    End Sub
+
+    Private Function ComputeNextRevision(cur As String) As String
+        If String.IsNullOrWhiteSpace(cur) Then Return "A"
+        Dim s = cur.Trim().ToUpperInvariant()
+        ' Simple alpha increment (A..Z, ZWAPPS to AA)
+        Dim carry As Boolean = True
+        Dim chars = s.ToCharArray()
+        For i As Integer = chars.Length - 1 To 0 Step -1
+            If carry Then
+                If chars(i) = "Z"c Then
+                    chars(i) = "A"c
+                    carry = True
+                ElseIf chars(i) >= "A"c AndAlso chars(i) < "Z"c Then
+                    chars(i) = ChrW(AscW(chars(i)) + 1)
+                    carry = False
+                Else
+                    ' Non-alpha, reset to A
+                    chars(i) = "A"c
+                    carry = False
+                End If
+            End If
+        Next
+        Dim result = New String(chars)
+        If carry Then result = "A" & result
+        Return result
+    End Function
+
+    Private Sub SetRevisionProperties(doc As PartDocument, newRev As String, revComment As String)
+        ' Update Design Tracking → Revision Number
+        Try
+            Dim designProps As PropertySet = doc.PropertySets("Design Tracking Properties")
+            For Each p As Inventor.Property In designProps
+                If String.Equals(p.Name, "Revision Number", StringComparison.OrdinalIgnoreCase) Then
+                    p.Value = newRev
+                    Exit For
+                End If
+            Next
+        Catch ex As Exception
+            System.Diagnostics.Debug.WriteLine("Failed to set DT Revision Number: " & ex.Message)
+        End Try
+        
+        ' Ensure custom properties exist and are updated: Rev, Rev Comment
+        Try
+            Dim userProps As PropertySet = doc.PropertySets("Inventor User Defined Properties")
+            Dim revProp As Inventor.Property = Nothing
+            Dim commentProp As Inventor.Property = Nothing
+            
+            ' Get or add Rev
+            Try
+                revProp = userProps.Item("Rev")
+            Catch
+                revProp = userProps.Add(newRev, "Rev")
+            End Try
+            revProp.Value = newRev
+            
+            ' Get or add Rev Comment
+            Try
+                commentProp = userProps.Item("Rev Comment")
+            Catch
+                commentProp = userProps.Add(If(revComment, String.Empty), "Rev Comment")
+            End Try
+            commentProp.Value = If(revComment, String.Empty)
+        Catch ex As Exception
+            System.Diagnostics.Debug.WriteLine("Failed to update custom revision properties: " & ex.Message)
+        End Try
+        
+        Try
+            doc.Update()
+            doc.Save()
+        Catch
+            ' ignore save failures (read-only etc.)
+        End Try
+    End Sub
 
     ''' <summary>
     ''' Build the URL-style export string with all layer parameters
@@ -367,13 +607,6 @@ Partial Public Class DXFExporter
                     Return p.Value.ToString()
                 End If
             Next
-            ' Fallback to user-defined "Rev"
-            Dim userProps As PropertySet = doc.PropertySets("Inventor User Defined Properties")
-            For Each p As Inventor.Property In userProps
-                If String.Equals(p.Name, "Rev", StringComparison.OrdinalIgnoreCase) AndAlso Not IsNothing(p.Value) Then
-                    Return p.Value.ToString()
-                End If
-            Next
         Catch
         End Try
         Return "A"
@@ -451,13 +684,17 @@ Partial Public Class DXFExporter
     ''' Record export in history database
     ''' </summary>
     Private Sub RecordExport(part As SheetMetalPart, filePath As String)
+        RecordExport(part, filePath, String.Empty, String.Empty)
+    End Sub
+
+    Private Sub RecordExport(part As SheetMetalPart, filePath As String, revisionComment As String, precomputedHash As String)
         If _historyService Is Nothing OrElse Not _settings.EnableExportHistory Then
             Return
         End If
         
         Try
-            ' Compute file hash
-            Dim fileHash = ExportHistoryService.ComputeFileHash(filePath)
+            ' Compute file hash (use precomputed when available)
+            Dim fileHash = If(String.IsNullOrEmpty(precomputedHash), ExportHistoryService.ComputeFileHash(filePath), precomputedHash)
             
             ' Get revision
             Dim rev As String = GetRevisionValue(part.Document)
@@ -468,6 +705,7 @@ Partial Public Class DXFExporter
                 .Material = part.Material,
                 .Thickness = part.Thickness,
                 .Revision = rev,
+                .RevisionComment = revisionComment,
                 .FilePath = filePath,
                 .ExportDate = DateTime.Now,
                 .IsArchived = False,
@@ -743,75 +981,4 @@ Partial Public Class DXFExporter
                             outLines.Add(" 10")
                             outLines.Add(vtx.Item1.ToString("F6", CultureInfo.InvariantCulture))
                             outLines.Add(" 20")
-                            outLines.Add(vtx.Item2.ToString("F6", CultureInfo.InvariantCulture))
-                        Next
-                        outLines.Add("  0")
-                        outLines.Add("SEQEND")
-                    Else
-                        outLines.AddRange(block)
-                    End If
-
-                    Continue While
-                End If
-
-                outLines.Add(lines(i))
-                outLines.Add(lines(i + 1))
-                i += 2
-            End While
-
-            If outLines.Count < 2 OrElse Not (outLines(outLines.Count - 2).Trim() = "0" AndAlso outLines(outLines.Count - 1).Trim().ToUpperInvariant() = "EOF") Then
-                outLines.Add("  0")
-                outLines.Add("EOF")
-            End If
-
-            Global.System.IO.File.WriteAllLines(outDxf, outLines, Encoding.GetEncoding("latin1"))
-            Return True
-        Catch ex As Exception
-            System.Diagnostics.Debug.WriteLine("ApplyOverridesAndWriteShared failed: " & ex.Message)
-            Return False
-        End Try
-    End Function
-
-    Public Shared Function ValidateDxfShared(dxfPath As String, r12Mode As Boolean) As String
-        Try
-            Dim lines = Global.System.IO.File.ReadAllLines(dxfPath, Encoding.GetEncoding("latin1"))
-            If lines.Length Mod 2 <> 0 Then Return "Odd line count"
-            Dim hasEof As Boolean = False
-            For i As Integer = 0 To lines.Length - 2 Step 2
-                If lines(i).Trim() = "0" AndAlso lines(i + 1).Trim().ToUpperInvariant() = "EOF" Then
-                    hasEof = True
-                End If
-            Next
-            If Not hasEof Then Return "Missing EOF"
-            For i As Integer = 0 To lines.Length - 1 Step 2
-                Dim tmp As Integer
-                If Not Integer.TryParse(lines(i).Trim(), tmp) Then Return "Non-integer code at line " & (i + 1).ToString()
-            Next
-            Dim inEnt As Boolean = False
-            Dim iIdx As Integer = 0
-            While iIdx < lines.Length - 1
-                Dim c = lines(iIdx).Trim()
-                Dim v = lines(iIdx + 1).Trim().ToUpperInvariant()
-                If c = "0" AndAlso v = "SECTION" AndAlso iIdx + 3 < lines.Length AndAlso lines(iIdx + 2).Trim() = "2" AndAlso lines(iIdx + 3).Trim().ToUpperInvariant() = "ENTITIES" Then
-                    inEnt = True
-                    iIdx += 4
-                    Continue While
-                End If
-                If c = "0" AndAlso v = "ENDSEC" AndAlso inEnt Then
-                    inEnt = False
-                    iIdx += 2
-                    Continue While
-                End If
-                If inEnt AndAlso c = "0" Then
-                    If v = "TEXT" OrElse v = "MTEXT" OrElse v = "POINT" OrElse v = "HATCH" Then Return "Disallowed entity " & v
-                    If r12Mode AndAlso v = "LWPOLYLINE" Then Return "R12 cannot contain LWPOLYLINE"
-                End If
-                iIdx += 2
-            End While
-            Return "OK"
-        Catch ex As Exception
-            Return ex.Message
-        End Try
-    End Function
-
-End Class
+     

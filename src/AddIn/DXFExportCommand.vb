@@ -33,13 +33,8 @@ Public Class DXFExportCommand
                 Return
             End If
 
-            ' Ensure custom iProperty Rev exists on each part if we will use it in naming
-            For Each p In sheetMetalParts
-                EnsureRevisionIProperty(p.Document)
-            Next
-
-            ' Show export options dialog
-            _exportDialog = New ExportOptionsDialog(sheetMetalParts)
+            ' Show export options dialog (with per-item DXF preview)
+            _exportDialog = New ExportOptionsDialog(_inventorApp, sheetMetalParts)
 
             If _exportDialog.ShowDialog() = System.Windows.Forms.DialogResult.OK Then
                 ' Execute the export with selected options
@@ -80,25 +75,6 @@ Public Class DXFExportCommand
                 _exportDialog.Dispose()
                 _exportDialog = Nothing
             End If
-        End Try
-    End Sub
-
-    Private Sub EnsureRevisionIProperty(doc As PartDocument)
-        Try
-            Dim userProps As PropertySet = doc.PropertySets("Inventor User Defined Properties")
-            Dim revProp As Inventor.Property = Nothing
-            For Each p As Inventor.Property In userProps
-                If String.Equals(p.Name, "Rev", StringComparison.OrdinalIgnoreCase) Then
-                    revProp = p
-                    Exit For
-                End If
-            Next
-            If revProp Is Nothing Then
-                userProps.Add("A", "Rev") ' default Rev=A
-                doc.Save2(True)
-            End If
-        Catch
-            ' ignore if cannot create
         End Try
     End Sub
 

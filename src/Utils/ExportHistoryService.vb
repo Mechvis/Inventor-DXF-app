@@ -18,9 +18,9 @@ Public Class ExportHistoryService
         _connectionString = $"Data Source={_dbPath};Version=3;"
         InitializeDatabase()
     End Sub
-    
+
     ''' <summary>
-    ''' Initialize database schema if not exists
+    ''' Initialize database schema if not exists and run lightweight migrations
     ''' </summary>
     Private Sub InitializeDatabase()
         Try
@@ -55,6 +55,24 @@ Public Class ExportHistoryService
                 Using cmd As New SQLiteCommand(createTable, conn)
                     cmd.ExecuteNonQuery()
                 End Using
+
+                ' Migration: add RevisionComment column if not exists
+                Dim hasColumn As Boolean = False
+                Using pragmaCmd As New SQLiteCommand("PRAGMA table_info(ExportHistory);", conn)
+                    Using rdr = pragmaCmd.ExecuteReader()
+                        While rdr.Read()
+                            If String.Equals(rdr("name").ToString(), "RevisionComment", StringComparison.OrdinalIgnoreCase) Then
+                                hasColumn = True
+                                Exit While
+                            End If
+                        End While
+                    End Using
+                End Using
+                If Not hasColumn Then
+                    Using alterCmd As New SQLiteCommand("ALTER TABLE ExportHistory ADD COLUMN RevisionComment TEXT;", conn)
+                        alterCmd.ExecuteNonQuery()
+                    End Using
+                End If
             End Using
         Catch ex As Exception
             System.Diagnostics.Debug.WriteLine($"Failed to initialize database: {ex.Message}")
@@ -91,7 +109,7 @@ Public Class ExportHistoryService
 
                 Dim query As String = "
                     SELECT Id, PartName, Material, Thickness, Revision, FilePath, 
-                           ExportDate, IsArchived, ArchivePath, ExportedBy, FileHash
+                           ExportDate, IsArchived, ArchivePath, ExportedBy, FileHash, RevisionComment
                     FROM ExportHistory
                     WHERE PartName = @PartName 
                       AND Thickness = @Thickness 
@@ -119,7 +137,8 @@ Public Class ExportHistoryService
                                 .IsArchived = reader.GetInt32(7) = 1,
                                 .ArchivePath = If(reader.IsDBNull(8), "", reader.GetString(8)),
                                 .ExportedBy = If(reader.IsDBNull(9), "", reader.GetString(9)),
-                                .FileHash = If(reader.IsDBNull(10), "", reader.GetString(10))
+                                .FileHash = If(reader.IsDBNull(10), "", reader.GetString(10)),
+                                .RevisionComment = If(reader.IsDBNull(11), "", reader.GetString(11))
                             }
                         End If
                     End Using
@@ -143,10 +162,10 @@ Public Class ExportHistoryService
                 Dim insert As String = "
                     INSERT INTO ExportHistory 
                     (PartName, Material, Thickness, Revision, FilePath, ExportDate, 
-                     IsArchived, ArchivePath, ExportedBy, FileHash)
+                     IsArchived, ArchivePath, ExportedBy, FileHash, RevisionComment)
                     VALUES 
                     (@PartName, @Material, @Thickness, @Revision, @FilePath, @ExportDate,
-                     @IsArchived, @ArchivePath, @ExportedBy, @FileHash);
+                     @IsArchived, @ArchivePath, @ExportedBy, @FileHash, @RevisionComment);
                     SELECT last_insert_rowid();
                 "
 
@@ -161,6 +180,7 @@ Public Class ExportHistoryService
                     cmd.Parameters.AddWithValue("@ArchivePath", If(entry.ArchivePath, ""))
                     cmd.Parameters.AddWithValue("@ExportedBy", If(entry.ExportedBy, System.Environment.UserName))
                     cmd.Parameters.AddWithValue("@FileHash", If(entry.FileHash, ""))
+                    cmd.Parameters.AddWithValue("@RevisionComment", If(entry.RevisionComment, ""))
 
                     Return CLng(cmd.ExecuteScalar())
                 End Using
@@ -201,7 +221,7 @@ Public Class ExportHistoryService
     ''' </summary>
     Public Shared Function ComputeFileHash(filePath As String) As String
         Try
-            Using sha256 As SHA256 = SHA256.Create()
+            Using sha256 As SHA256 = sha256.Create()
                 Using stream As FileStream = File.OpenRead(filePath)
                     Dim hash = sha256.ComputeHash(stream)
                     Return BitConverter.ToString(hash).Replace("-", "").ToLowerInvariant()
@@ -241,8 +261,8 @@ Public Class ExportHistoryService
         Catch ex As Exception
             System.Diagnostics.Debug.WriteLine($"Failed to get export stats: {ex.Message}")
         End Try
-        
+
         Return stats
     End Function
-    
+
 End Class

@@ -13,7 +13,7 @@ Public Class SheetMetalPart
     Public Property PartName As String
     Public Property PartNumber As String = ""
     Public Property StockNumber As String = ""
-    Public Property Revision As String = "A"
+    Public Property Revision As String = ""
 
     ' Material Properties
     Public Property Material As String = ""
@@ -78,7 +78,7 @@ Public Class SheetMetalPart
     ''' </summary>
     Private Sub ExtractPartNumberAndStockNumber()
         Try
-            ' Try to get Part Number from Design Tracking Properties
+            ' Get Part Number from Design Tracking Properties
             Dim designProps As PropertySet = Document.PropertySets("Design Tracking Properties")
             For Each p As Inventor.Property In designProps
                 If String.Equals(p.Name, "Part Number", StringComparison.OrdinalIgnoreCase) AndAlso Not IsNothing(p.Value) Then
@@ -166,7 +166,7 @@ Public Class SheetMetalPart
             End If
 
             ' Calculate weight if mass properties available
-            If Document.ComponentDefinition.MassProperties Is Not Nothing Then
+            If Document.ComponentDefinition.MassProperties IsNot Nothing Then
                 Weight = Document.ComponentDefinition.MassProperties.Mass
                 Density = Document.ComponentDefinition.MassProperties.Density
             End If
@@ -233,19 +233,11 @@ Public Class SheetMetalPart
 
     Private Sub ExtractRevision()
         Try
-            ' Try built-in revision first
+            ' Read from Project tab → Design Tracking Properties → "Revision Number"
             Dim designProps As PropertySet = Document.PropertySets("Design Tracking Properties")
             For Each p As Inventor.Property In designProps
                 If String.Equals(p.Name, "Revision Number", StringComparison.OrdinalIgnoreCase) AndAlso Not IsNothing(p.Value) Then
-                    Revision = p.Value.ToString()
-                    Exit Sub
-                End If
-            Next
-            ' Fallback to user-defined "Rev"
-            Dim userProps As PropertySet = Document.PropertySets("Inventor User Defined Properties")
-            For Each p As Inventor.Property In userProps
-                If String.Equals(p.Name, "Rev", StringComparison.OrdinalIgnoreCase) AndAlso Not IsNothing(p.Value) Then
-                    Revision = p.Value.ToString()
+                    Revision = p.Value.ToString().Trim()
                     Exit Sub
                 End If
             Next
